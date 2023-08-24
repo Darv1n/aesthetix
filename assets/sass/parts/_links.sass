@@ -1,0 +1,56 @@
+a
+	margin: 0
+	background-color: transparent
+	color: $link-color
+	text-decoration: none
+	@extend .transition
+	cursor: pointer
+	-webkit-text-decoration-skip: objects
+	&:hover, &:focus, &:active
+		color: $link-color-dark
+
+.link
+	color: $primary-gray-color
+	&:hover, &:focus, &:active
+		color: $primary-gray-color-hover
+
+.link-border
+	border-bottom: $border-width solid transparent
+	&:hover, &:focus, &:active
+		border-bottom: $border-width solid $primary-text-color
+
+.link-unborder
+	border-bottom: $border-width solid $primary-gray-color
+	&:hover, &:focus, &:active
+		border-bottom: $border-width solid transparent
+
+.link-color-border
+	border-bottom: $border-width solid transparent
+	&:hover, &:focus, &:active
+		border-bottom: $border-width solid $link-color-dark
+
+.link-color-unborder
+	border-bottom: $border-width solid $link-color
+	&:hover, &:focus, &:active
+		border-bottom: $border-width solid transparent
+
+.link-telegram
+	color: #0088CC
+	&:hover, &:focus, &:active
+		color: darken( #0088CC, 10% )
+
+.link-whatsapp
+	color: #4FCE5D
+	&:hover, &:focus, &:active
+		color: darken( #4FCE5D, 10% )
+
+a.inactive
+	color: inherit
+	text-decoration: none
+	&:hover, &:focus, &:active
+		color: inherit
+		
+h1, h2, h3, h4, h5, h6
+	a
+		color: inherit
+		text-decoration: none

@@ -1,0 +1,180 @@
+// #Menu Toggle
+@media (min-width: 992px)
+	.main-menu_type-open
+		.menu-toggle
+			display: none
+
+.menu-toggle
+	position: relative
+	display: block
+	z-index: 12
+	&_left
+		text-align: left
+	&_right
+		text-align: right
+		margin-left: auto
+		margin-right: 0
+	&_center
+		text-align: center
+		margin: auto
+
+// #Menu
+.main-menu
+	padding: 1rem 0
+	&_left
+		text-align: left
+	&_right
+		text-align: right
+	.menu
+		padding: 0
+		margin-bottom: 0
+		&-item
+			position: relative
+			display: block
+			a
+				display: inline-block
+				padding: $padding/2 0
+				color: $primary-text-color
+				text-decoration: none
+				&:hover, &:focus, &:active
+					text-decoration: none
+					color: $link-color-dark
+		.current-menu-item a
+			text-decoration: none
+			color: $link-color-dark
+
+.main-menu_burgered
+	position: relative
+	width: 100%
+	.menu
+		padding: .25rem .5rem
+		overflow-y: auto
+	.main-navigation
+		position: absolute
+		top: 100%
+		left: 0
+		z-index: 10
+		width: 100%
+		visibility: hidden
+		opacity: 0
+		&.toggled-on
+			visibility: visible
+			opacity: 1
+	&.main-menu_right
+		.main-navigation
+			left: auto
+			right: 0
+	// .menu-toggle_left ~ .main-navigation
+	// 	.menu-item
+	// 		text-align: left
+	// .menu-toggle_center ~ .main-navigation
+	// 	.menu-item
+	// 		text-align: center
+	// .menu-toggle_right ~ .main-navigation
+	// 	.menu-item
+	// 		text-align: right
+
+
+// .header_menu_absolute, .header_menu_fixed
+// 	&.header_simple
+// 		.main-menu_burgered
+// 			.main-navigation
+// 				left: auto
+// 				right: 0 // в простом меню кнопка всегда справа и меню открывается справа
+// 	&:not(.header_simple)
+// 		&.main-menu_center
+// 			.main-navigation
+// 				text-align: center
+// 				left: 50%
+// 				transform: translateX(-50%)
+// 		&.main-menu_right
+// 			.main-navigation
+// 				text-align: right
+// 				left: auto
+// 				right: 0
+
+// Sub menu.
+.sub-menu
+	position: relative
+	display: none
+	padding-left: $padding
+	padding-right: $padding
+	background: $primary-bg-color
+
+// Dropdown.
+.menu-item-has-children
+	.sub-menu-toggle
+		cursor: pointer
+		transition: $transition
+	.sub-menu-toggle, > a
+		display: inline-block
+		vertical-align: middle
+
+// .header_logo-center
+// 	.menu-toggle
+// 		margin: auto
+// 	.main-menu
+// 		.menu-item
+// 			text-align: center
+
+// .header_content
+// 	.main-menu
+// 		.menu-item
+// 			text-align: left
+
+.header_menu_absolute
+	.main-menu_burgered
+		.main-navigation
+			max-width: 540px
+			background: $primary-bg-color
+			max-height: 400px
+			overflow-x: auto
+
+.header_menu_fixed
+	&.header_expanded
+		position: fixed
+		top: 0
+		z-index: 9999
+		height: 100vh
+		width: 100%
+		background: $primary-bg-color
+		&.is_wpadminbar
+			top: 32px
+	.main-menu_burgered
+		// position: absolute
+		// left: 0
+		// padding: .25rem .5rem
+	.main-menu_right
+		.menu-toggle
+			// margin-left: auto
+	&.header_simple
+		.main-menu
+			// left: auto // если хедер простой, то меню фиксируем справа
+			// right: 0
+
+@media (min-width: 992px)
+	.main-menu_type-open
+		.menu > .menu-item
+			display: inline-block
+			margin: 0 1rem
+		.menu-item-has-children.level-1
+			position: relative
+			> .sub-menu
+				position: absolute
+				left: 0
+				z-index: 11
+				padding: .5rem 1.5rem
+				min-width: 290px
+				background: $primary-bg-color
+				border-radius: $elem-bd-radius
+				border: $elem-bd-width solid $primary-bg-color-hover
+				.menu-item
+					//display: block
+					//margin: 0
+					a
+						//padding: .5rem 0
+		&.main-menu_right
+			.menu-item-has-children.level-1
+				> .sub-menu
+					left: auto
+					right: 0

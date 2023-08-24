@@ -1,0 +1,2 @@
+# aesthetix
+ aesthetix (parent theme)

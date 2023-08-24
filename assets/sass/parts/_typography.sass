@@ -1,0 +1,360 @@
+*
+	box-sizing: border-box
+	&::before, &::after
+		box-sizing: border-box
+
+*::-moz-selection, *::selection
+	color: #fff
+	background-color: #0f4c81
+	text-shadow: none
+
+*::-ms-clear
+	display: none
+
+*:-webkit-autofill
+	box-shadow: 0 0 100px #fff inset
+	-webkit-text-fill-color: currentColor
+
+\::-webkit-scrollbar
+	width: 10px
+
+\::-webkit-scrollbar-track
+	-webkit-box-shadow: inset 0 0 6px rgba( 0, 0, 0, .3 )
+	-webkit-border-radius: 10px
+	border-radius: 10px
+
+\::-webkit-scrollbar-thumb
+	-webkit-border-radius: 10px
+	border-radius: 10px
+	background: rgba( $primary-color-500, 1 )
+	-webkit-box-shadow: inset 0 0 6px rgba( 0, 0, 0, .5 )
+	&:window-inactive
+		background: rgba( $primary-color-500, .5 )
+
+*:disabled, .disabled
+	cursor: not-allowed
+
+html
+	height: 100%
+	min-height: 100%
+	font-family: sans-serif
+	line-height: 1.15
+	text-rendering: optimizeLegibility
+	text-decoration-skip: ink
+	-webkit-font-smoothing: antialiased
+	-webkit-text-size-adjust: 100%
+	-ms-text-size-adjust: 100%
+	hyphens: auto
+	word-wrap: break-word
+	overflow-x: hidden
+
+body
+	margin: 0
+	line-height: 1.35
+	position: relative
+	width: 100%
+	min-width: 320px
+	font-family: $secondary-font
+	font-weight: normal
+	font-size: $medium-font-size
+	line-height: $line-height
+	background: $primary-bg-color
+	color: $primary-text-color
+	overflow-x: hidden
+
+[tabindex="-1"]:focus
+	outline: 0 !important
+
+.hidden, [hidden]
+	display: none !important
+
+.transition
+	transition: $transition
+
+.mb
+	margin-bottom: $margin
+
+.primary-font
+	font-family: $primary-font
+	font-weight: $primary-font-weight
+
+.primary-color
+	color: $primary-color-500
+
+.secondary-color
+	color: $secondary-color-500
+
+.gray-color
+	color: $primary-gray-color
+
+.white-color
+	color: $white-color
+
+.text-color
+	color: $primary-text-color
+
+.allert-color
+	color: $allert-color
+
+.error-color
+	color: $error-color
+
+.warning-color
+	color: $warning-color
+
+.accept-color
+	color: $accept-color
+
+.bold
+	font-weight: bold
+
+.italic
+	font-style: italic
+
+.small
+	font-size: $small-font-size
+
+.large
+	font-size: $large-font-size
+
+.initialism
+	font-size: 90%
+	text-transform: uppercase
+
+.center-text
+  text-align: center
+
+.list
+	&-unstyled, &-inline, &-block
+		padding-left: 0
+		list-style: none
+	&-inline
+		> *
+			vertical-align: text-top
+			display: inline-block
+			&:not(:last-child)
+				margin-right: $gutter*2
+	&-block
+		> *
+			display: block
+			&:not(:last-child)
+				margin-bottom: $gutter*2
+
+article, main, aside, section, header, footer, menu, nav, details, figcaption, figure, hgroup, pre, audio, video
+	display: block
+
+output, canvas
+	display: inline-block
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
+	@extend .primary-font
+	margin: 0
+	font-weight: bold
+	line-height: 1.2
+	hyphens: none
+	clear: both
+
+h1, .h1
+	font-size: $h3
+h2, .h2
+	font-size: $h4
+h3, .h3
+	font-size: $h5
+h4, .h4, h5, .h5, h6, .h6
+	font-size: $h6
+
+@media (min-width: 576px)
+	h1, .h1
+		font-size: $h2
+	h2, .h2
+		font-size: $h3
+	h3, .h3
+		font-size: $h4
+	h4, .h4
+		font-size: $h5
+
+@media (min-width: 992px)
+	h1, .h1
+		font-size: $h1
+	h2, .h2
+		font-size: $h2
+	h3, .h3
+		font-size: $h3
+	h4, .h4
+		font-size: $h4
+	h5, .h5
+		font-size: $h5
+
+b, strong, optgroup, dl dt
+	@extend .bold
+
+i, em, address, cite, dfn
+	@extend .italic
+
+small
+	@extend .small
+
+big, .big
+	@extend .large
+
+p, dd, dl, figure, optgroup, fieldset, blockquote
+	margin: 0
+
+ul, ol
+	list-style: none
+	margin: 0
+	padding: 0
+
+hr
+	box-sizing: content-box
+	height: 1px
+	overflow: visible
+	background: $primary-bd-color
+	margin: 1.5rem 0
+
+img, iframe, embed
+	max-width: 100%
+
+img
+	display: block
+	height: auto
+	border-style: none
+	vertical-align: middle
+
+iframe
+	border: none
+
+svg
+	@extend .transition
+	display: block
+	width: 100%
+	height: 100%
+	fill: currentColor
+
+svg:not(:root)
+	overflow: hidden
+
+legend
+	box-sizing: border-box
+	display: table
+	max-width: 100%
+	white-space: normal
+
+pre, code, kbd, samp
+	font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+
+fieldset, legend, mark, code, kbd
+	background: $primary-bg-color
+	border: $border-width solid $primary-bd-color
+	border-radius: $border-radius
+	color: $primary-text-color
+
+pre, mark, code, kbd, legend, samp
+	font-size: .875rem
+
+mark, code, kbd, legend
+	padding: .25rem
+
+fieldset
+	padding: .25rem .75rem
+
+a > code
+	color: inherit
+
+abbr
+	border: none
+	text-decoration: none
+
+abbr
+	&[title], &[data-original-title]
+		text-decoration: underline dotted
+		cursor: help
+		border-bottom: 0
+
+sub, sup
+	position: relative
+	vertical-align: baseline
+	font-size: 75%
+	line-height: 0
+
+sub
+	bottom: -.25rem
+
+sup
+	top: -.5rem
+
+del
+	opacity: 0.8
+
+progress
+	vertical-align: baseline
+
+summary
+	display: list-item
+	cursor: pointer
+
+template
+	display: none
+
+object, embed, video
+	width: 100%
+	max-width: 100%
+
+blockquote, q
+	quotes: none
+
+blockquote
+	@extend .mb
+	position: relative
+	display: block
+	padding: $margin*2
+	border-left: 3px solid $primary-color-500
+	padding-left: 1.5rem
+	> *:last-child
+		margin-bottom: 0
+	p
+		margin-bottom: $margin
+		line-height: 30.7px
+		letter-spacing: .5px
+		opacity: 0.9
+	a
+		@extend .italic
+	cite
+		&::before
+			content: "\2014\00a0"
+
+caption, cite
+	@extend .italic
+	padding-top: 0.5rem
+	color: $primary-gray-color
+	text-align: right
+	caption-side: bottom
+
+table
+	@extend .mb
+	width: 100%
+	max-width: 100%
+	background-color: transparent
+	font-size: .75rem
+	border-collapse: collapse
+	border-spacing: 0
+	table-layout: fixed
+	td, th
+		padding: .375rem .75rem
+		vertical-align: middle
+		border-bottom: 1px solid $primary-bd-color
+	th
+		font-weight: bold
+
+@media (min-width: 576px)
+	table
+		font-size: .875rem
+		td, th
+			padding: .5rem 1rem
+
+
+
+
+
+
+

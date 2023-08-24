@@ -1,0 +1,248 @@
+.sticky
+	background: $primary-bg-color
+	padding: 2rem
+	.related-posts
+		border: none
+		padding-bottom: 0
+
+.logo
+	position: relative
+	display: block
+	> *
+		display: block
+	&__title
+		margin-bottom: $gutter
+		font-size: $h1
+		line-height: $h1
+	&__description
+		margin-bottom: 0 !important
+		font-size: $medium-font-size
+		line-height: $medium-font-size
+		color: $primary-gray-color
+
+a.logo
+	color: $black-color
+	text-decoration: none
+	&:hover, &:focus, &:active
+		color: $black-color
+
+.custom-logo
+	width: auto
+	max-height: 86px
+
+.section
+	position: relative
+	padding-top: $margin*3
+	padding-bottom: $margin*2
+	&-title
+		@extend .mb
+	&_content, &_breadcrumbs
+		padding: $margin 0
+	&-primary, &-secondary
+		color: $primary-text-color
+		background: $primary-bg-color
+		border: $border-width solid $primary-bd-color
+		.gray-color
+			color: $primary-gray-color
+	&-secondary
+		background: $primary-bg-color-hover
+		border: $border-width solid $primary-bd-color-hover
+
+.front-page 
+	.section_content
+		padding: 0
+	.content-area
+		> .section
+			margin-bottom: 0
+
+.content-area
+	@extend .mb
+	&-title
+		margin-bottom: 0
+	> * 
+		&:not(:last-child)
+			@extend .mb
+
+.header, .footer
+	position: relative
+	*
+		hyphens: none
+	h1, h2, h3, h4, h5, h6, p
+		margin-bottom: $margin/2
+	&__item
+		display: block
+		margin-bottom: $margin/2
+		vertical-align: middle
+		ul 
+			li
+			display: inline-block
+			&:not(:last-child)
+				margin-right: $margin
+
+.header
+	ul, ol
+		&:last-child
+			margin-bottom: 0
+	&__top-bar
+		font-size: $small-font-size
+	&__top-bar, &__middle-bar, &__bottom-bar
+		padding: $margin/2 0
+	&_background-image
+		.header__middle-bar
+			min-height: 320px
+	&_simple
+		.logo
+			margin-right: $margin
+	&_logo-center
+		.logo
+			text-align: center
+		.custom-logo-link
+			display: inline-block
+	&_top-bar-active
+		.header__middle-bar
+			padding-top: $margin/2
+
+.footer
+	padding-top: $margin-section
+	.btn, .button, .widget, .footer-column, .social-list, .contacts-list, .copyright
+		@extend .mb
+	&__middle-bar
+		padding-top: $margin*2
+		padding-bottom: $margin
+	&__bottom-bar
+		padding-top: $margin
+		background-color: $primary-bg-color-hover
+		.widget
+			margin-bottom: $margin/2
+	&_bottom-bar-active 
+		.footer__middle-bar
+			@extend .mb
+
+@media (min-width: 768px)
+	.header__top-bar .header-column, .footer__bottom-bar .footer-column
+		&:last-child
+			text-align: right
+
+// .post-col
+// 	margin-bottom: $bootstrap-gutter*2
+
+// .row-1-col
+// 	.post-col
+// 		margin-bottom: 0
+
+.post
+	position: relative
+	display: block
+	width: 100%
+	@extend .mb
+	&-header
+		> *
+			margin-bottom: $gutter
+			&:last-child
+				margin-bottom: 0
+	&-header, &-footer, &-thumbnail, &-content, &-meta
+		max-width: 960px
+	&-content
+		> *
+			margin-bottom: $margin
+		> *:first-child
+			margin-top: 0 !important
+		h2
+			margin-top: $gutter*5
+		h3
+			margin-top: $gutter*4
+		h4
+			margin-top: $gutter*3
+		h5
+			margin-top: $gutter*2
+		h6
+			margin-top: $gutter
+		ul, ol
+			li
+				max-width: 960px
+				&:not(:last-child)
+					margin-bottom: $margin/2
+		ul, ol
+			ul, ol
+				margin-bottom: 0
+		.btn, .button
+			@extend .mb
+	&-meta
+		@extend .list-inline
+		&__item
+			margin-bottom: $gutter
+			font-size: $small-font-size
+		&_block
+			@extend .list-block
+	&-date
+		&-modified
+			padding-left: $gutter
+			color: $primary-gray-color
+	&-footer
+		&__item
+			display: block
+			&:not(:last-child)
+				margin-bottom: $gutter*2
+		&__list, &__tags, &__cats
+			@extend .list-inline
+	&.post_single
+		> *
+			&:not(:last-child)
+				@extend .mb
+	&.post_archive
+		.post-title
+			font-size: $h4
+		.post-meta
+			margin-bottom: $gutter
+	&.post_tils
+		> *
+			&:not(:last-child)
+				margin-bottom: $gutter*2
+	&.post_list
+		> * > *
+			&:not(:last-child)
+				margin-bottom: $gutter*2
+		> * > * > *
+			&:not(:last-child)
+				margin-bottom: $gutter*2
+	&.post_banner
+		a.post-thumbnail
+			padding-bottom: 140%
+		.post-meta, .post-header
+			position: absolute
+			left: .5rem
+			padding: .5rem
+			margin-bottom: 0
+			background: $white-color
+			max-width: calc( 100% - 1rem )
+		.post-meta
+			top: .5rem
+		.post-header
+			bottom: .5rem
+		.post-title
+			font-size: $h5
+
+@media ( min-width: 768px )
+	.post
+		&.post_list
+			> * > *
+				&:not(:last-child)
+					margin-bottom: 0
+
+@media ( min-width: 992px )
+	.post
+		&-content
+			h2
+				margin-top: $gutter*6
+			h3
+				margin-top: $gutter*5
+			h4
+				margin-top: $gutter*4
+			h5
+				margin-top: $gutter*3
+			h6
+				margin-top: $gutter*2
+
+a.post-thumbnail
+	display: block
+	padding-bottom: 66.66%

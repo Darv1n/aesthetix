@@ -1,0 +1,93 @@
+.comment-text
+	> *:first-child
+		margin-top: 0 !important
+	p, blockquote
+		max-width: 960px
+	h1, h2, h3, h4, h5, h6, p, ul, ol, dl
+		margin-bottom: $margin
+	h2
+		margin-top: $gutter*5
+	h3
+		margin-top: $gutter*4
+	h4
+		margin-top: $gutter*3
+	h5
+		margin-top: $gutter*2
+	h6
+		margin-top: $gutter
+	ul, ol
+		li
+			max-width: 960px
+			&:not(:last-child)
+				margin-bottom: $margin/2
+	ul, ol
+		ul, ol
+			margin-bottom: 0
+	.btn, .button
+		@extend .mb
+
+.comments-area
+	ol.comments-list, ul.children
+		padding-left: 0
+		list-style-type: none
+	ul.children
+		margin-left: $margin*2
+	.comment-body
+		padding: $padding
+		background-color: $primary-bg-color
+		margin-bottom: 1rem
+		&.comment-body-avatars
+			position: relative
+			padding-left: 90px
+			.comment-author-avatar
+				position: absolute
+				top: $margin
+				left: $margin
+				.avatar
+					border-radius: $border-radius
+		.entry__meta
+			margin-bottom: 0
+		.comment-meta, .comment-content
+			margin-bottom: $gutter*2
+		.comment-content
+			font-size: $small-font-size
+			p:last-child
+				margin-bottom: 0
+		.comment-reply-link
+			text-transform: uppercase
+			font-size: 12px
+			color: $primary-gray-color
+
+.comment
+	position: relative
+	padding: $elem-padding
+	border: $border-width solid $primary-bd-color
+	border-radius: $border-radius
+	&-meta
+		position: relative
+		padding-left: 65px
+		&__avatar
+			position: absolute
+			top: 0
+			left: 0
+		&__title
+			font-size: $h6
+		&__content
+			> *
+				display: block
+				margin-bottom: 0
+			> *:not(:last-child)
+		&__list
+			@extend .list-inline
+			font-size: $small-font-size
+
+
+.comment-respond
+	.logged-in-as, .comment-form-comment, .comment-form-comment label
+		display: block
+		margin-bottom: 1rem
+
+.comment-form
+	margin-bottom: 2rem
+	textarea
+		max-width: 100%

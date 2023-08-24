@@ -1,0 +1,323 @@
+*::-webkit-file-upload-button
+	-webkit-appearance: button
+	font: inherit
+
+*::-webkit-input-placeholder, *::-moz-input-placeholder, *:-moz-placeholder, *:-ms-input-placeholder
+	color: inherit
+	opacity: 1
+	transition: opacity .3s
+
+*:focus
+	&::-webkit-input-placeholder, &::-moz-input-placeholder, &:-moz-placeholder, &:-ms-input-placeholder
+		opacity: 0
+
+button, input, select, textarea
+	@extend .transition
+	outline: 0
+
+button, [type="button"], [type="reset"], [type="submit"], select
+	cursor: pointer
+	text-transform: none
+
+button, input
+	overflow: visible
+
+button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner
+	border: none
+	padding: 0
+
+input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"]
+	-webkit-appearance: listbox
+
+textarea
+	resize: vertical
+	overflow: auto
+
+[type="number"]
+	&::-webkit-inner-spin-button, &::-webkit-outer-spin-button
+		height: auto
+
+[type="search"]
+	outline-offset: -2px
+	-webkit-appearance: none
+	&::-webkit-search-decoration
+		-webkit-appearance: none
+
+[type="checkbox"], [type="radio"]
+	box-sizing: border-box
+	padding: 0
+
+
+[type="number"]
+	&::-webkit-inner-spin-button
+  		height: auto
+
+[type="search"]
+	-webkit-appearance: none !important
+	-moz-appearance: none !important
+	appearance: none !important
+	&:focus
+		-webkit-appearance: none !important
+		-moz-appearance: none !important
+		appearance: none !important
+
+form
+	@extend .mb
+	*
+		hyphens: none
+		outline: none
+	label, input, select, textarea
+		@extend .mb
+		max-width: 480px
+	label
+		display: block
+		> *:last-child
+			margin-bottom: 0
+	textarea
+		min-height: 140px
+
+textarea,
+select,
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+	padding: $input-padding
+	width: 100%
+	border: $button-bd-width solid $primary-bd-color
+	border-radius: $button-bd-radius
+	box-shadow: 0px 0px 0px -7px rgba(0, 0, 0, 0)
+	&:focus, &:focus-visible
+		border: $button-bd-width solid $secondary-bd-color
+		box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, .1)
+		outline: none
+
+button,
+.button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"]
+	display: inline-block
+	padding: $small-button-padding-top $small-button-padding-side
+	font-size: $medium-font-size
+	font-family: inherit
+	color: $button-text-color
+	background: $primary-color-500
+	border: $button-bd-width solid $primary-color-500
+	border-radius: $button-bd-radius
+	box-shadow: $button-shadow
+	line-height: $line-height
+	text-align: center
+	white-space: nowrap
+	user-select: none
+	transition: $transition
+	text-decoration: none
+	cursor: pointer
+	outline: none
+	&:hover, &:focus, &:active, &.active
+		color: $button-text-color-hover
+		box-shadow: $button-shadow-hover
+		text-decoration: none
+	&:hover
+		background: $primary-color-400
+		border: $button-bd-width solid $primary-color-400
+	&:focus, &:active, &.active
+		background: $primary-color-600
+		border: $button-bd-width solid $primary-color-600
+
+.button
+	&-secondary
+		background: $secondary-color-500
+		border: $button-bd-width solid $secondary-color-500
+		&:hover
+			background: $secondary-color-400
+			border: $button-bd-width solid $secondary-color-400
+		&:focus, &:active, &.active
+			background: $secondary-color-600
+			border: $button-bd-width solid $secondary-color-600
+	&_squared
+		padding: $small-button-padding-top $small-button-padding-top
+
+@media( min-width: 576px )
+	button,
+	.button,
+	input[type="button"],
+	input[type="reset"],
+	input[type="submit"]
+		padding: $button-padding-top $button-padding-side
+	.button_squared
+		padding: $button-padding-top $button-padding-top
+	.button_small
+		padding: $small-button-padding-top $small-button-padding-side
+
+.button-empty, .button-default, .button-gray
+	color: $primary-gray-color
+	background: $primary-bg-color
+	border: $button-bd-width solid $primary-bd-color
+	&:hover, &:focus, &:active, &.active
+		color: $primary-gray-color-hover
+		background: $primary-bg-color-hover
+		border: $button-bd-width solid $secondary-bd-color
+	&-primary
+		border: $button-bd-width solid $primary-color-500
+		&:focus, &:active, &.active
+			border: $button-bd-width solid $primary-color-600
+		&:hover
+			border: $button-bd-width solid $primary-color-400
+	&-secondary
+		border: $button-bd-width solid $secondary-color-500
+		&:focus, &:active, &.active
+			border: $button-bd-width solid $secondary-color-600
+		&:hover
+			border: $button-bd-width solid $secondary-color-400
+
+.button-gradient
+	position: relative
+	z-index: 1
+	color: $button-text-color
+	background: $primary-gradient
+	border: none
+	overflow: hidden
+	&::after
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		background: $primary-gradient-reflect
+		transform: translateX(-100%)
+		transition: $transition
+		z-index: -1
+	&:hover, &:focus, &:active, &.active
+		color: $button-text-color-hover
+		background: $primary-gradient
+		border: none
+	&:hover
+		&::after
+			transform: translateX(0)
+	&-secondary
+		background: $secondary-gradient
+		&::after
+			background: $secondary-gradient-reflect
+	&-default, &-gray
+		background: $gray-gradient
+		&::after
+			background: $gray-gradient-reflect
+
+.button-slide
+	position: relative
+	z-index: 1
+	color: $button-text-color
+	background: $primary-color-500
+	border: none
+	overflow: hidden
+	&::after
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		background: $secondary-color-500
+		transform: translateX(-100%)
+		transition: $transition
+		z-index: -1
+	&:hover, &:focus, &:active, &.active
+		color: $button-text-color-hover
+		border: none
+	&:hover
+		&::after
+			transform: translateX(0)
+	&-secondary
+		background: $secondary-color-500
+		&::after
+			background: $primary-color-500
+	&-default, &-gray
+		background: $primary-bd-color
+		&::after
+			background: $secondary-bd-color
+
+.button
+	&-disabled, [disabled]
+		background: $primary-bd-color
+		border: $button-bd-width solid $secondary-bd-color
+		color: $primary-text-color
+		cursor: not-allowed
+		box-shadow: none
+		&:hover, &:focus, &:active
+			background: $primary-gray-color
+			border: $button-bd-width solid $primary-gray-color-hover
+			color: $primary-text-color
+			box-shadow: none
+		&.button-slide, &.button-gradient
+			border: none
+			&::after
+				display: none
+
+.button-set
+	> *
+		display: inline-block
+	> *:not(:last-child)
+		margin-right: $margin
+		margin-bottom: $margin/2
+
+.button-telegram
+	background: #0088CC
+	border: $button-bd-width solid #0088CC
+	&:hover
+		background: lighten( #0088CC, 10% )
+		border: $button-bd-width solid lighten( #0088CC, 10% )
+	&:focus, &:active
+		background: darken( #0088CC, 10% )
+		border: $button-bd-width solid darken( #0088CC, 10% )
+
+.button-whatsapp
+	background: #4FCE5D
+	border: $button-bd-width solid #4FCE5D
+	&:hover
+		background: lighten( #4FCE5D, 10% )
+		border: $button-bd-width solid lighten( #4FCE5D, 10% )
+	&:focus, &:active
+		background: darken( #4FCE5D, 10% )
+		border: $button-bd-width solid darken( #4FCE5D, 10% )
+
+.search-form
+	position: relative
+	max-width: 480px
+	input[type="search"]
+		padding-right: 90px
+		width: 100%
+		margin-bottom: 0
+	&__label
+		margin-bottom: 0
+	&__submit
+		position: absolute
+		top: 0
+		right: 0
+		z-index: 2
+		height: 100% !important
+		width: 90px !important
+
+.button-reset
+	padding: 0
+	color: $black-color
+	background: transparent
+	border: none
+	box-shadow: none
+	&:hover, &:focus, &:active
+		background: transparent
+		border: none
+		box-shadow: none
+		color: $black-color

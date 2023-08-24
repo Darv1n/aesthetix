@@ -1,0 +1,90 @@
+@import "../_vars"
+
+.woocommerce, .woocommerce-page
+	table.shop_table_responsive
+		thead
+			display: none
+		tbody tr:first-child td:first-child
+			border-top: 0
+		tbody th
+			display: none
+		tr
+			display: block
+			td
+				display: block
+				text-align: right !important
+				&.order-actions
+					text-align: left !important
+					&::before
+						display: none
+					.button
+						float: none
+						margin: .125em .25em .125em 0
+				&::before
+					content: attr(data-title) ": "
+					font-weight: 700
+					float: left
+				&.actions::before, &.product-remove::before
+					display: none
+				.shipping-calculator-form
+					text-align: left
+	.col2-set
+		.col-1, .col-2
+			float: none
+			width: 100%
+	ul.products li.product, &[class*=columns-] ul.products li.product
+		display: inline-block
+		margin-right: 20px
+		vertical-align: top
+		clear: none
+	#content 
+		table.cart
+			.product-thumbnail
+				display: block
+				text-align: center !important
+				&::before
+					display: none
+			td.actions
+				text-align: left
+				.coupon
+					zoom: 1
+					padding-bottom: .5em
+					&::after, &::before
+						content: ' '
+						display: table
+					&::after
+						clear: both
+					.button, .input-text, input
+						width: 48%
+						box-sizing: border-box
+					.button.alt, .input-text + .button
+						float: right
+	.cart-collaterals
+		.cart_totals, .cross-sells, .shipping_calculator
+			width: 100%
+			float: none
+			text-align: left
+	&.woocommerce-checkout
+		form.login
+			.form-row
+				width: 100%
+				float: none
+	#payment
+		.terms
+			text-align: left
+			padding: 0
+		#place_order
+			float: none
+			width: 100%
+			box-sizing: border-box
+			margin-bottom: 1em
+	.lost_reset_password
+		.form-row-first, .form-row-last
+			width: 100%
+			float: none
+			margin-right: 0
+
+.woocommerce-account
+	.woocommerce-MyAccount-content, .woocommerce-MyAccount-navigation
+		float: none
+		width: 100%
