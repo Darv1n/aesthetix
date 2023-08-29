@@ -34,7 +34,15 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 				$input_id          = '_customize-input-' . $this->id;
 				$description_id    = '_customize-description-' . $this->id;
 				$describedby_attr  = ( ! empty( $this->description ) ) ? ' aria-describedby="' . esc_attr( $description_id ) . '" ' : '';
-				$reordered_choices = explode( ',', esc_attr( $this->value() ) );
+				$reordered_choices = array();
+				$saved_choices     = explode( ',', esc_attr( $this->value() ) );
+
+				foreach ( $saved_choices as $key => $value ) {
+					if( isset( $this->choices[ $value ] ) ) {
+						$reordered_choices[ $value ] = $this->choices[ $value ];
+					}
+				}
+				$reordered_choices = array_merge( $reordered_choices, array_diff_assoc( $this->choices, $reordered_choices ) );
 
 				?>
 
@@ -46,11 +54,20 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 				<?php endif; ?>
 
 				<ul class="sortable-list">
-					<?php foreach ( $reordered_choices as $item ) : ?>
-						<li class="sortable-list__item visible" data-key="<?php echo esc_html( trim( $item ) ); ?>"><?php echo esc_html( $this->choices[ trim( $item ) ] ); ?>
-							<i class="dashicons dashicons-visibility visible"></i>
+					<?php foreach ( $reordered_choices as $key => $item ) {
+
+						if ( in_array( $key, $saved_choices, true ) ) {
+							$visible = 'visible';
+						} else {
+							$visible = 'invisible';
+						}
+
+						?>
+
+						<li class="sortable-list__item <?php echo $visible; ?>" data-key="<?php echo esc_attr( trim( $key ) ); ?>"><?php echo esc_html( $item ); ?>
+							<i class="dashicons dashicons-visibility <?php echo $visible; ?>"></i>
 						</li>
-					<?php endforeach; ?>
+					<?php } ?>
 				</ul>
 
 				<input id="<?php echo esc_attr( $input_id ); ?>"<?php echo $describedby_attr; ?> type="hidden" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?>>

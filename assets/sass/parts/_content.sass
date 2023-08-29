@@ -123,13 +123,6 @@ a.logo
 		&:last-child
 			text-align: right
 
-// .post-col
-// 	margin-bottom: $bootstrap-gutter*2
-
-// .row-1-col
-// 	.post-col
-// 		margin-bottom: 0
-
 .post
 	position: relative
 	display: block
@@ -170,7 +163,8 @@ a.logo
 	&-meta
 		@extend .list-inline
 		&__item
-			margin-bottom: $gutter
+			padding-top: .125rem
+			padding-bottom: .125rem
 			font-size: $small-font-size
 		&_block
 			@extend .list-block
@@ -192,8 +186,6 @@ a.logo
 	&.post_archive
 		.post-title
 			font-size: $h4
-		.post-meta
-			margin-bottom: $gutter
 	&.post_tils
 		> *
 			&:not(:last-child)

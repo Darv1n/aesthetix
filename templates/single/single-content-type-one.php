@@ -10,29 +10,37 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'post_single' ); ?>>
 
-<?php
+	<?php do_action( 'aesthetix_before_single_entry_post' ); ?>
 
-	// Post header part.
-	get_template_part( 'templates/single/single-entry', 'post-header' ); 
+	<?php
 
-	// Post thumbnail part.
-	if ( has_post_thumbnail() && get_aesthetix_options( 'single_' . get_post_type() . '_thumbnail_display' ) ) {
-		get_template_part( 'templates/single/single-entry', 'post-thumbnail' );
-	}
+		$structure = get_aesthetix_options( 'single_' . $post->post_type . '_structure' );
+		$structure = array_map( 'trim', explode( ',', $structure ) );
 
-	// Post meta part.
-	if ( get_aesthetix_options( 'single_' . get_post_type() . '_meta_display' ) ) {
-		get_template_part( 'templates/single/single-entry', 'post-meta' );
-	}
+		foreach ( $structure as $key => $value ) {
+			switch ( $value ) {
+				case has_action( 'aesthetix_single_entry_post_loop_' . $value ):
+					do_action( 'aesthetix_single_entry_post_loop_' . $value, $post );
+					break;
+				case 'header':
+					get_template_part( 'templates/single/single-entry', 'post-header' );
+					break;
+				case 'thumbnail':
+					get_template_part( 'templates/single/single-entry', 'post-thumbnail' );
+					break;
+				case 'meta':
+					get_template_part( 'templates/single/single-entry', 'post-meta' );
+					break;
+				case 'content':
+					get_template_part( 'templates/single/single-entry', 'post-content' );
+					break;
+				case 'footer':
+					get_template_part( 'templates/single/single-entry', 'post-footer' );
+					break;
+			}
+		}
+	?>
 
-	// Post content part.
-	get_template_part( 'templates/single/single-entry', 'post-content' );
-
-	// Post footer part.
-	if ( get_aesthetix_options( 'single_' . get_post_type() . '_entry_footer_display' ) ) {
-		get_template_part( 'templates/single/single-entry', 'post-footer' );
-	}
-
-?>
+	<?php do_action( 'aesthetix_after_single_entry_post' ); ?>
 
 </article>

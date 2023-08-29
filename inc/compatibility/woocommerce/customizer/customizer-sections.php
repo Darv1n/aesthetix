@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! function_exists( 'get_aesthetix_customizer_sections_woo_callback' ) ) {
 	function get_aesthetix_customizer_sections_woo_callback( $sections ) {
 
-		$sections['woo-general'] = array(
+		$sections['woo_general'] = array(
 			'title'    => __( 'General', 'aesthetix' ),
 			'type'     => 'section',
 			'priority' => 2,

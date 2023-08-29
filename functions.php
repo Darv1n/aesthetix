@@ -27,9 +27,6 @@ require_once get_template_directory() . '/inc/customizer/customizer-defaults.php
 require_once get_template_directory() . '/inc/customizer/customizer-functions.php';
 require_once get_template_directory() . '/inc/customizer/customizer-selects.php';
 require_once get_template_directory() . '/inc/customizer/customizer-converters.php';
-// require_once get_template_directory() . '/inc/customizer/skyrocket-custom-controls.php';
-// require_once get_template_directory() . '/inc/customizer/skyrocket-customizer.php';
-
 
 // TGM Plugin Activation.
 require_once get_template_directory() . '/inc/addons/tgm/class-tgm-plugin-activation.php';
@@ -55,14 +52,14 @@ if ( is_plugin_active( 'breadcrumb-navxt/breadcrumb-navxt.php' ) ) {
 	require_once get_template_directory() . '/inc/compatibility/breadcrumb-navxt.php';
 }
 
-// Load Rate my Post compatibility file.
-if ( is_plugin_active( 'rate-my-post/rate-my-post.php' ) ) {
-	require_once get_template_directory() . '/inc/compatibility/rate-my-post.php';
-}
-
 // Load Kama Postviews compatibility file.
 if ( is_plugin_active( 'kama-postviews/kama-postviews.php' ) ) {
 	require_once get_template_directory() . '/inc/compatibility/kama-postviews.php';
+}
+
+// Load Rate my Post compatibility file.
+if ( is_plugin_active( 'rate-my-post/rate-my-post.php' ) ) {
+	require_once get_template_directory() . '/inc/compatibility/rate-my-post.php';
 }
 
 require_once get_template_directory() . '/inc/libs/minifier.php'; // html/css/js minifier functions.

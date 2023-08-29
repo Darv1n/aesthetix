@@ -59,7 +59,6 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'root_primary_font'                       => 'playfair-display',
 			'root_secondary_font'                     => 'open-sans',
 			'root_color_scheme'                       => 'white',
-			'root_sortable_color_scheme'              => 'white,black',
 			'root_primary_color'                      => 'sky',
 			'root_secondary_color'                    => 'orange',
 			'root_gray_color'                         => 'slate',
@@ -76,13 +75,11 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 			'sidebar_left_display'                    => true,
 			'sidebar_right_display'                   => false,
-			'sidebar_display_home'                    => true,
-			'sidebar_display_post'                    => true,
-			'sidebar_display_page'                    => true,
-			'sidebar_display_archive'                 => true,
-			'sidebar_display_search'                  => true,
-			'sidebar_display_error'                   => true,
-			'sidebar_display_author'                  => false,\
+
+			'woo_general_left_woo_display'=> true,
+			'woo_general_right_woo_display'=> true,
+
+
 		);
 
 		foreach ( get_post_types() as $key => $post_type ) {
@@ -100,17 +97,10 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			}
 
 			$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
-				'single_' . $post_type . '_meta_display'               => true,
-				'single_' . $post_type . '_meta_author_display'        => false,
-				'single_' . $post_type . '_meta_date_display'          => true,
-				'single_' . $post_type . '_meta_date_modified_display' => false,
-				'single_' . $post_type . '_meta_cats_display'          => true,
-				'single_' . $post_type . '_meta_tags_display'          => false,
-				'single_' . $post_type . '_meta_comments_display'      => false,
-				'single_' . $post_type . '_meta_time_display'          => true,
-				'single_' . $post_type . '_meta_edit_display'          => true,
+				'single_' . $post_type . '_structure'             => 'header,thumbnail,meta,content,footer',
+				'single_' . $post_type . '_meta_structure'        => 'date,time,edit',
+				'single_' . $post_type . '_footer_structure'      => 'edit',
 
-				'single_' . $post_type . '_thumbnail_display'          => true,
 				'single_' . $post_type . '_post_nav_display'           => false,
 				'single_' . $post_type . '_entry_footer_display'       => true,
 
@@ -125,27 +115,24 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 			if ( $post_type_object->has_archive || ! empty( $object_taxonomies ) ) {
 				$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
-					'archive_' . $post_type . '_meta_display'          => true,
-					'archive_' . $post_type . '_meta_author_display'   => false,
-					'archive_' . $post_type . '_meta_date_display'     => true,
-					'archive_' . $post_type . '_meta_comments_display' => false,
-					'archive_' . $post_type . '_meta_time_display'     => true,
-					'archive_' . $post_type . '_meta_edit_display'     => false,
+					'archive_' . $post_type . '_structure'             => 'thumbnail,meta,title,excerpt,more',
+					'archive_' . $post_type . '_meta_structure'        => 'date,time,edit',
 					'archive_' . $post_type . '_posts_per_page'        => get_option( 'posts_per_page' ),
 					'archive_' . $post_type . '_posts_order'           => 'desc',
 					'archive_' . $post_type . '_posts_orderby'         => 'date',
 					'archive_' . $post_type . '_pagination'            => 'numeric',
 					'archive_' . $post_type . '_detail_button'         => 'button',
-					'archive_' . $post_type . '_detail_description'    => 'excerpt',
 				) );
 			}
 
 			if ( $post_type === 'post' ) {
 				$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
+					'archive_' . $post_type . '_meta_structure'  => 'date,cats,tags,time,edit',
+					'single_' . $post_type . '_meta_structure'   => 'date,cats,tags,time,edit',
+					'single_' . $post_type . '_footer_structure' => 'cats,tags,edit',
+
 					'single_post_entry_footer_cats_display' => false,
 					'single_post_entry_footer_tags_display' => true,
-					'archive_post_meta_cats_display'        => false,
-					'archive_post_meta_tags_display'        => false,
 				) );
 			}
 		}
@@ -174,6 +161,9 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 		// Merge child and parent default options.
 		$aesthetix_defaults = apply_filters( 'get_aesthetix_options', $aesthetix_defaults );
+
+		// Merge defaults and theme options.
+		$aesthetix_defaults = wp_parse_args( get_option( 'aesthetix_options' ), $aesthetix_defaults );
 
 		// Return controls.
 		if ( is_null( $control ) ) {

@@ -9,6 +9,168 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if ( ! function_exists( 'get_aesthetix_customizer_archive_post_structure' ) ) {
+
+	/**
+	 * Return array with the customizer archive post structure.
+	 *
+	 * @param string $control   array key to get one value.
+	 * @param string $post_type current post type
+	 *
+	 * @return string|string[]|false
+	 */
+	function get_aesthetix_customizer_archive_post_structure( $control = null, $post_type = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'title'     => __( 'Post Title', 'aesthetix' ),
+			'thumbnail' => __( 'Post Thumbnail', 'aesthetix' ),
+			'meta'      => __( 'Post Meta Data', 'aesthetix' ),
+			'excerpt'   => __( 'Post Excerpt', 'aesthetix' ),
+			'more'      => __( 'Post Read More', 'aesthetix' ),
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_archive_post_structure', $converter, $post_type );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+if ( ! function_exists( 'get_aesthetix_customizer_single_post_structure' ) ) {
+
+	/**
+	 * Return array with the customizer single post structure.
+	 *
+	 * @param string $control   array key to get one value.
+	 * @param string $post_type current post type
+	 *
+	 * @return string|string[]|false
+	 */
+	function get_aesthetix_customizer_single_post_structure( $control = null, $post_type = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'header'    => __( 'Post Header', 'aesthetix' ),
+			'thumbnail' => __( 'Post Thumbnail', 'aesthetix' ),
+			'meta'      => __( 'Post Meta Data', 'aesthetix' ),
+			'content'   => __( 'Post Content', 'aesthetix' ),
+			'footer'    => __( 'Post Footer', 'aesthetix' ),
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_single_post_structure', $converter, $post_type );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+if ( ! function_exists( 'get_aesthetix_customizer_single_post_footer_structure' ) ) {
+
+	/**
+	 * Return array with the customizer single post footer structure.
+	 *
+	 * @param string $control   array key to get one value.
+	 * @param string $post_type current post type
+	 *
+	 * @return string|string[]|false
+	 */
+	function get_aesthetix_customizer_single_post_footer_structure( $control = null, $post_type = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'edit'    => __( 'Edit', 'aesthetix' ),
+		);
+
+		if ( $post_type === 'post' ) {
+			$converter['cats'] = __( 'Categories', 'aesthetix' );
+			$converter['tags'] = __( 'Tags', 'aesthetix' );
+		}
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_single_post_footer_structure', $converter, $post_type );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+if ( ! function_exists( 'get_aesthetix_customizer_post_meta_structure' ) ) {
+
+	/**
+	 * Return array with the customizer post meta structure.
+	 *
+	 * @param string $control array key to get one value.
+	 * @param string $post_type current post type
+	 *
+	 * @return string|string[]|false
+	 */
+	function get_aesthetix_customizer_post_meta_structure( $control = null, $post_type = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'author'   => __( 'Author', 'aesthetix' ),
+			'date'     => __( 'Publication date', 'aesthetix' ),
+			'time'     => __( 'Reading time', 'aesthetix' ),
+			'comments' => __( 'Comments', 'aesthetix' ),
+			'edit'     => __( 'Edit', 'aesthetix' ),
+		);
+
+		if ( $post_type === 'post' ) {
+			$converter['cats'] = __( 'Categories', 'aesthetix' );
+			$converter['tags'] = __( 'Tags', 'aesthetix' );
+		}
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_post_meta_structure', $converter, $post_type );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
 if ( ! function_exists( 'get_aesthetix_customizer_fonts' ) ) {
 
 	/**
