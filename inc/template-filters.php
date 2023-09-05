@@ -133,12 +133,14 @@ if ( ! function_exists( 'aesthetix_robots_txt' ) ) {
 	 */
 	function aesthetix_robots_txt( $output, $public ) {
 
-		$output .= 'Disallow: /wp-json\n';
+		$output .= 'Disallow: /cgi-bin' . "\r\n";
+		$output .= 'Disallow: /wp-json' . "\r\n";
+		$output .= 'Disallow: */xmlrpc.php' . "\r\n";
 
 		return apply_filters( 'aesthetix_robots_txt', $output, $public );
 	}
 }
-add_filter( 'robots_txt', 'aesthetix_robots_txt', 20, 2 ); // Add a few rules to the dynamic robots.txt
+// add_filter( 'robots_txt', 'aesthetix_robots_txt', 20, 2 ); // Add a few rules to the dynamic robots.txt
 
 if ( ! function_exists( 'unset_intermediate_image_sizes' ) ) {
 
