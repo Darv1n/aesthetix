@@ -2,55 +2,57 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2023-08-31 23:55+0400\n"
-"PO-Revision-Date: 2023-08-31 23:58+0400\n"
+"PO-Revision-Date: 2023-09-05 18:57+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.3.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;_x;_ex\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: 404.php:20
 msgid "404 page header"
-msgstr ""
+msgstr "404 lehekülje päis"
 
 #: 404.php:21
 msgid "Oops! That page can&rsquo;t be found"
-msgstr ""
+msgstr "Oih! Seda lehte ei leitud"
 
 #: 404.php:24
 msgid "404 page content"
-msgstr ""
+msgstr "404 lehekülje sisu"
 
 #: 404.php:25
 msgid ""
 "It looks like nothing was found at this location. Maybe try one of the links "
 "below or a search?"
 msgstr ""
+"Näib, et sellest asukohast ei leitud midagi. Võib-olla proovige mõnda "
+"allolevatest linkidest või otsingut?"
 
 #: 404.php:30
 msgid "404 page footer"
-msgstr ""
+msgstr "404 lehekülje jalus"
 
 #: archive.php:23 index.php:29
 msgid "Archive page header"
-msgstr ""
+msgstr "Arhiivi lehe päis"
 
 #: archive.php:30 index.php:34
 msgid "Archive page content"
-msgstr ""
+msgstr "Arhiveeri lehe sisu"
 
 #: archive.php:59 index.php:60
 msgid "Archive page footer"
-msgstr ""
+msgstr "Arhiivi lehe jalus"
 
 #: comments.php:69
 msgid "Published Date"
-msgstr ""
+msgstr "Avaldamise kuupäev"
 
 #: comments.php:73 inc/customizer/customizer-selects.php:108
 #: inc/customizer/customizer-selects.php:152
@@ -59,45 +61,48 @@ msgstr ""
 #: templates/single/single-entry-post-footer.php:65
 #: templates/single/single-entry-post-meta.php:69
 msgid "Edit"
-msgstr ""
+msgstr "Muuda"
 
 #: comments.php:98
 msgid "Your comment is awaiting moderation"
-msgstr ""
+msgstr "Teie kommentaar ootab modereerimist"
 
 #: comments.php:114
 msgid "Comments:&nbsp;"
-msgstr ""
+msgstr "Kommentaarid:&nbsp;"
 
 #: comments.php:129
 msgid "Previous comments"
-msgstr ""
+msgstr "Eelmised kommentaarid"
 
 #: comments.php:130
 msgid "New comments"
-msgstr ""
+msgstr "Uued kommentaarid"
 
 #: comments.php:152
 msgid "Name"
-msgstr ""
+msgstr "Nimi"
 
 #: comments.php:156 inc/customizer/customizer-controls.php:298
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #: comments.php:161
 msgid ""
 "Save my name, email, and website in this browser for the next time I comment."
 msgstr ""
+"Salvestage minu nimi, e-posti aadress ja veebisait sellesse brauserisse "
+"järgmiseks kommenteerimiseks."
 
 #: comments.php:166
 msgid "Comment"
-msgstr ""
+msgstr "Kommenteeri"
 
 #: comments.php:170
 #, php-format
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr ""
+"Kommentaari postitamiseks peate olema <a href=\"%s\">sisse loginud</a>."
 
 #: comments.php:173
 #, php-format
@@ -105,77 +110,79 @@ msgid ""
 "<a href=\"%1$s\" aria-label=\"Logged in as %2$s. Edit your profile.\">Logged "
 "in as %2$s</a>. <a href=\"%3$s\">Log out?</a>"
 msgstr ""
+"<a href=\"%1$s\" aria-label=\"Sisse logitud kui %2$s. Muutke oma profiili."
+"\">Sisse logitud kui %2$s</a>. <a href=\"%3$s\">Logige välja?</a>"
 
 #: comments.php:177
 msgid "Your email address will not be published."
-msgstr ""
+msgstr "Teie e-posti aadressi ei avaldata."
 
 #: comments.php:181
 msgid "Leave a Reply"
-msgstr ""
+msgstr "Jäta vastus"
 
 #: comments.php:182
 msgid "Post Comment"
-msgstr ""
+msgstr "Postita kommentaar"
 
 #: comments.php:188
 msgid "Comments are closed"
-msgstr ""
+msgstr "Kommentaarid on suletud"
 
 #: footer.php:23
 msgid "Site footer"
-msgstr ""
+msgstr "Saidi jalus"
 
 #: header.php:29
 msgid "Site header"
-msgstr ""
+msgstr "Saidi päis"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:334
 msgid "Install Required Plugins"
-msgstr ""
+msgstr "Laadige alla nõutavad pluginad"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:335
 msgid "Install Plugins"
-msgstr ""
+msgstr "Laadige alla pluginad"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:337
 #, php-format
 msgid "Installing Plugin: %s"
-msgstr ""
+msgstr "Plugina alla laadimine: %s"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:339
 #, php-format
 msgid "Updating Plugin: %s"
-msgstr ""
+msgstr "Plugina värskendamine: %s"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:340
 msgid "Something went wrong with the plugin API."
-msgstr ""
+msgstr "Midagi läks plugina API-ga valesti."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:392
 msgid "Return to Required Plugins Installer"
-msgstr ""
+msgstr "Tagasi nõutavate pluginate installijasse"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:393
 #: inc/addons/tgm/class-tgm-plugin-activation.php:920
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2626
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3673
 msgid "Return to the Dashboard"
-msgstr ""
+msgstr "Tagasi töölauale"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:394
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3252
 msgid "Plugin activated successfully."
-msgstr ""
+msgstr "Plugin aktiveeriti edukalt."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:395
 msgid "The following plugin was activated successfully:"
-msgstr ""
+msgstr "Plugina aktiveerimine õnnestus:"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:397
 #, php-format
 msgid "No action taken. Plugin %1$s was already active."
-msgstr ""
+msgstr "Tegevust ei ole. Plugin %1$s oli juba aktiivne."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:399
 #, php-format
@@ -183,39 +190,44 @@ msgid ""
 "Plugin not activated. A higher version of %s is needed for this theme. "
 "Please update the plugin."
 msgstr ""
+"Plugin pole aktiveeritud. Selle teema jaoks on vaja %s kõrgemat versiooni. "
+"Värskendage pluginat."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:401
 #, php-format
 msgid "All plugins installed and activated successfully. %1$s"
-msgstr ""
+msgstr "Kõik pluginad on edukalt installitud ja aktiveeritud. %1$s"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:402
 msgid "Dismiss this notice"
-msgstr ""
+msgstr "Loobu sellest teavitusest"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:403
 msgid ""
 "There are one or more required or recommended plugins to install, update or "
 "activate."
 msgstr ""
+"Installimiseks, värskendamiseks või aktiveerimiseks on vaja ühte või mitut "
+"nõutavat või soovitatavat pluginat."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:404
 msgid "Please contact the administrator of this site for help."
-msgstr ""
+msgstr "Abi saamiseks võtke ühendust selle saidi administraatoriga."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:608
 msgid "Update Required"
-msgstr ""
+msgstr "Uuendus on kohustuslik"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:725
 msgid "Set the parent_slug config variable instead."
-msgstr ""
+msgstr "Määrake selle asemel muutuja parent_slug config."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:1027
 msgid ""
 "The remote plugin package does not contain a folder with the desired slug "
 "and renaming did not work."
 msgstr ""
+"Kaugplugina pakett ei sisalda soovitud kausta ja ümbernimetamist ei toiminud."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:1027
 #: inc/addons/tgm/class-tgm-plugin-activation.php:1030
@@ -223,822 +235,838 @@ msgid ""
 "Please contact the plugin provider and ask them to package their plugin "
 "according to the WordPress guidelines."
 msgstr ""
+"Võtke ühendust plugina pakkujaga ja paluge tal oma plugin WordPressi juhiste "
+"järgi paigaldada."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:1030
 msgid ""
 "The remote plugin package consists of more than one file, but the files are "
 "not packaged in a folder."
 msgstr ""
+"Kaugplugina pakett koosneb rohkem kui ühest failist, kuid failid ei ole "
+"pakitud kausta."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2075
 #, php-format
 msgid "TGMPA v%s"
-msgstr ""
+msgstr "TGMPA v%s"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2366
 msgid "Required"
-msgstr ""
+msgstr "Nõutud"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2369
 msgid "Recommended"
-msgstr ""
+msgstr "Soovitatav"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2385
 msgid "WordPress Repository"
-msgstr ""
+msgstr "WordPressi hoidla"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2388
 msgid "External Source"
-msgstr ""
+msgstr "Väline allikas"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2391
 msgid "Pre-Packaged"
-msgstr ""
+msgstr "Eelpakendatud"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2408
 msgid "Not Installed"
-msgstr ""
+msgstr "Ei ole installitud"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2412
 msgid "Installed But Not Activated"
-msgstr ""
+msgstr "Installitud, kuid mitte aktiveeritud"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2414
 msgid "Active"
-msgstr ""
+msgstr "Aktiivne"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2420
 msgid "Required Update not Available"
-msgstr ""
+msgstr "Nõutav värskendus pole saadaval"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2423
 msgid "Requires Update"
-msgstr ""
+msgstr "Nõuab värskendust"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2426
 msgid "Update recommended"
-msgstr ""
+msgstr "Soovitatav värskendada"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2435
 #, php-format
 msgid "%1$s, %2$s"
-msgstr ""
+msgstr "%1$s, %2$s"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2575
 msgid "unknown"
-msgstr ""
+msgstr "teadmata"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2583
 msgid "Installed version:"
-msgstr ""
+msgstr "Installitud versioon:"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2591
 msgid "Minimum required version:"
-msgstr ""
+msgstr "Minimaalne nõutav versioon:"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2603
 msgid "Available version:"
-msgstr ""
+msgstr "Saadaval versioon:"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2626
 msgid "No plugins to install, update or activate."
-msgstr ""
+msgstr "Installimiseks, värskendamiseks või aktiveerimiseks pole pluginaid."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2640
 msgid "Plugin"
-msgstr ""
+msgstr "Plugin"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2641
 msgid "Source"
-msgstr ""
+msgstr "Allikas"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2642
 msgid "Type"
-msgstr ""
+msgstr "Tüüp"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2646
 msgid "Version"
-msgstr ""
+msgstr "Versioon"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2647
 msgid "Status"
-msgstr ""
+msgstr "Olek"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2696
 #, php-format
 msgid "Install %2$s"
-msgstr ""
+msgstr "Installi %2$s"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2701
 #, php-format
 msgid "Update %2$s"
-msgstr ""
+msgstr "Värskenda %2$s"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2707
 #, php-format
 msgid "Activate %2$s"
-msgstr ""
+msgstr "Aktiveeri %2$s"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2777
 msgid "Upgrade message from the plugin author:"
-msgstr ""
+msgstr "Teavitus täiendusest plugina autorilt:"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2810
 msgid "Install"
-msgstr ""
+msgstr "Installi"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2816
 msgid "Update"
-msgstr ""
+msgstr "Värskenda"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2819
 msgid "Activate"
-msgstr ""
+msgstr "Aktiveerige"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2850
 msgid "No plugins were selected to be installed. No action taken."
-msgstr ""
+msgstr "Installimiseks ei valitud ühtegi pluginat. Tegevusi ei toimunud."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2852
 msgid "No plugins were selected to be updated. No action taken."
-msgstr ""
+msgstr "Värskendamiseks ei valitud ühtegi pluginat. Tegevusi ei toimunud."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2893
 msgid "No plugins are available to be installed at this time."
-msgstr ""
+msgstr "Hetkel pole installimiseks saadaval ühtegi pluginat."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:2895
 msgid "No plugins are available to be updated at this time."
-msgstr ""
+msgstr "Praegu pole värskendamiseks saadaval ühtegi pluginat."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3001
 msgid "No plugins were selected to be activated. No action taken."
-msgstr ""
+msgstr "Aktiveerimiseks pole valitud ühtegi pluginat. Tegevusi ei toimunud."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3027
 msgid "No plugins are available to be activated at this time."
-msgstr ""
+msgstr "Hetkel pole aktiveerimiseks saadaval ühtegi pluginat."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3251
 msgid "Plugin activation failed."
-msgstr ""
+msgstr "Plugina aktiveerimine ebaõnnestus."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3591
 #, php-format
 msgid "Updating Plugin %1$s (%2$d/%3$d)"
-msgstr ""
+msgstr "Plugina %1$s värskendamine (%2$d/%3$d)"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3594
 #, php-format
 msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
-msgstr ""
+msgstr "%1$s installimisel ilmnes viga: <strong>%2$s</strong>."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3596
 #, php-format
 msgid "The installation of %1$s failed."
-msgstr ""
+msgstr "Faili %1$s installimine ebaõnnestus."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3600
 msgid ""
 "The installation and activation process is starting. This process may take a "
 "while on some hosts, so please be patient."
 msgstr ""
+"Käivitatakse installi- ja aktiveerimisprotsess. See protsess võib veidi aega "
+"võtta, seega olge kannatlik."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3602
 #, php-format
 msgid "%1$s installed and activated successfully."
-msgstr ""
+msgstr "%1$s installiti ja aktiveeriti edukalt."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3602
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3610
 msgid "Show Details"
-msgstr ""
+msgstr "Näita detaile"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3602
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3610
 msgid "Hide Details"
-msgstr ""
+msgstr "Varja detaile"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3603
 msgid "All installations and activations have been completed."
-msgstr ""
+msgstr "Kõik installimised ja aktiveerimised on lõpule viidud."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3605
 #, php-format
 msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
-msgstr ""
+msgstr "Plugina %1$s installimine ja aktiveerimine (%2$d/%3$d)"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3608
 msgid ""
 "The installation process is starting. This process may take a while on some "
 "hosts, so please be patient."
 msgstr ""
+"Installimisprotsess algab. See protsess võib veidi aega võtta, seega olge "
+"kannatlik."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3610
 #, php-format
 msgid "%1$s installed successfully."
-msgstr ""
+msgstr "%1$s installimine õnnestus."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3611
 msgid "All installations have been completed."
-msgstr ""
+msgstr "Kõik paigaldused on lõpetatud."
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:3613
 #, php-format
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
-msgstr ""
+msgstr "Plugina %1$s installimine (%2$d/%3$d)"
 
 #: inc/compatibility/breadcrumb-navxt.php:18
 msgid "Home"
-msgstr ""
+msgstr "Kodu"
 
 #: inc/compatibility/kama-postviews.php:74
 #: inc/compatibility/kama-postviews.php:129
 msgid "Views"
-msgstr ""
+msgstr "Vaated"
 
 #: inc/compatibility/rate-my-post.php:47 inc/compatibility/rate-my-post.php:102
 #: inc/compatibility/rate-my-post.php:124
 msgid "Rating"
-msgstr ""
+msgstr "Hinnang"
 
 #: inc/compatibility/woocommerce/customizer/customizer-controls.php:18
 #: inc/customizer/customizer-controls.php:212
 msgid "Which pages display sidebar"
-msgstr ""
+msgstr "Millistel lehtedel külgriba kuvatakse"
 
 #: inc/compatibility/woocommerce/customizer/customizer-controls.php:19
 #: inc/customizer/customizer-controls.php:207
 msgid "Select element border radius"
-msgstr ""
+msgstr "Valige elemendi äärise raadius"
 
 #: inc/compatibility/woocommerce/customizer/customizer-sections.php:17
 #: inc/customizer/customizer-controls.php:31
 msgid "General"
-msgstr ""
+msgstr "Üldine"
 
 #: inc/customizer/customizer-controls.php:25
 msgid "White"
-msgstr ""
+msgstr "Valge"
 
 #: inc/customizer/customizer-controls.php:26
 msgid "Black"
-msgstr ""
+msgstr "Must"
 
 #: inc/customizer/customizer-controls.php:30
 #: inc/customizer/customizer-controls.php:38
 msgid "Narrow"
-msgstr ""
+msgstr "Kitsas"
 
 #: inc/customizer/customizer-controls.php:32
 msgid "Average"
-msgstr ""
+msgstr "Keskmine"
 
 #: inc/customizer/customizer-controls.php:33
 #: inc/customizer/customizer-controls.php:39
 msgid "Wide"
-msgstr ""
+msgstr "Lai"
 
 #: inc/customizer/customizer-controls.php:34
 msgid "Fluid"
-msgstr ""
+msgstr "Vedelik"
 
 #: inc/customizer/customizer-controls.php:43
 msgid "Header Simple"
-msgstr ""
+msgstr "Päis Lihtne"
 
 #: inc/customizer/customizer-controls.php:44
 msgid "Header Logo Center"
-msgstr ""
+msgstr "Päise logokeskus"
 
 #: inc/customizer/customizer-controls.php:45
 msgid "Header Content"
-msgstr ""
+msgstr "Päise sisu"
 
 #: inc/customizer/customizer-controls.php:49
 msgid "Open"
-msgstr ""
+msgstr "Avatud"
 
 #: inc/customizer/customizer-controls.php:50
 msgid "Close"
-msgstr ""
+msgstr "Sulge"
 
 #: inc/customizer/customizer-controls.php:54
 msgid "Absolute"
-msgstr ""
+msgstr "Absoluutne"
 
 #: inc/customizer/customizer-controls.php:55
 msgid "Fixed"
-msgstr ""
+msgstr "Parandatud"
 
 #: inc/customizer/customizer-controls.php:59
 #: inc/customizer/customizer-controls.php:65
 #: inc/customizer/customizer-controls.php:94
 msgid "Right"
-msgstr ""
+msgstr "Parem"
 
 #: inc/customizer/customizer-controls.php:60
 #: inc/customizer/customizer-controls.php:66
 #: inc/customizer/customizer-controls.php:95
 msgid "Left"
-msgstr ""
+msgstr "Vasak"
 
 #: inc/customizer/customizer-controls.php:61
 #: inc/customizer/customizer-controls.php:67
 msgid "Center"
-msgstr ""
+msgstr "Keskel"
 
 #: inc/customizer/customizer-controls.php:71
 msgid "Button + Icon + Text"
-msgstr ""
+msgstr "Nupp + ikoon + tekst"
 
 #: inc/customizer/customizer-controls.php:72
 msgid "Button + Icon"
-msgstr ""
+msgstr "Nupp + ikoon"
 
 #: inc/customizer/customizer-controls.php:73
 msgid "Button + Text"
-msgstr ""
+msgstr "Nupp + tekst"
 
 #: inc/customizer/customizer-controls.php:74
 msgid "Icon"
-msgstr ""
+msgstr "Ikoon"
 
 #: inc/customizer/customizer-controls.php:75
 msgid "Icon + Text"
-msgstr ""
+msgstr "Ikoon + tekst"
 
 #: inc/customizer/customizer-controls.php:76
 msgid "Text"
-msgstr ""
+msgstr "Tekst"
 
 #: inc/customizer/customizer-controls.php:80
 msgid "WooCommerce (Plugin must be activated)"
-msgstr ""
+msgstr "WooCommerce (plugin peab olema aktiveeritud)"
 
 #: inc/customizer/customizer-controls.php:81
 msgid "Breadcrumb NavXT plugin"
-msgstr ""
+msgstr "Breadcrumb NavXT-plugin"
 
 #: inc/customizer/customizer-controls.php:82
 msgid "Yoast (Must be enabled in the plugin)"
-msgstr ""
+msgstr "Yoast (plugin peab olema lubatud)"
 
 #: inc/customizer/customizer-controls.php:83
 msgid "RankMath (Must be enabled in the plugin)"
-msgstr ""
+msgstr "RankMath (plugin peab olema lubatud)"
 
 #: inc/customizer/customizer-controls.php:84
 msgid "SEOPress (Must be enabled in the plugin)"
-msgstr ""
+msgstr "SEOPress (plugin peab olema lubatud)"
 
 #: inc/customizer/customizer-controls.php:88
 msgid "Footer Simple"
-msgstr ""
+msgstr "Jalus Lihtne"
 
 #: inc/customizer/customizer-controls.php:89
 msgid "Footer Three Columns"
-msgstr ""
+msgstr "Jalus kolm veergu"
 
 #: inc/customizer/customizer-controls.php:90
 msgid "Footer Four Columns"
-msgstr ""
+msgstr "Jalus neli veergu"
 
 #: inc/customizer/customizer-controls.php:99
 msgid "Before"
-msgstr ""
+msgstr "Enne"
 
 #: inc/customizer/customizer-controls.php:100
 msgid "After"
-msgstr ""
+msgstr "Pärast"
 
 #: inc/customizer/customizer-controls.php:104
 #: inc/customizer/customizer-controls.php:114
 msgid "One"
-msgstr ""
+msgstr "Üks"
 
 #: inc/customizer/customizer-controls.php:105
 #: inc/customizer/customizer-controls.php:115
 msgid "Two"
-msgstr ""
+msgstr "Kaks"
 
 #: inc/customizer/customizer-controls.php:116
 msgid "Three"
-msgstr ""
+msgstr "Kolm"
 
 #: inc/customizer/customizer-controls.php:117
 msgid "Four"
-msgstr ""
+msgstr "Neli"
 
 #: inc/customizer/customizer-controls.php:118
 msgid "Five"
-msgstr ""
+msgstr "Viis"
 
 #: inc/customizer/customizer-controls.php:119
 msgid "Six"
-msgstr ""
+msgstr "Kuus"
 
 #: inc/customizer/customizer-controls.php:123
 msgid "List"
-msgstr ""
+msgstr "Nimekiri"
 
 #: inc/customizer/customizer-controls.php:124
 msgid "Tils"
-msgstr ""
+msgstr "Tils"
 
 #: inc/customizer/customizer-controls.php:125
 msgid "Banner"
-msgstr ""
+msgstr "Bänner"
 
 #: inc/customizer/customizer-controls.php:126
 msgid "Simple"
-msgstr ""
+msgstr "Lihtne"
 
 #: inc/customizer/customizer-controls.php:130
 msgid "Default"
-msgstr ""
+msgstr "Vaikimisi"
 
 #: inc/customizer/customizer-controls.php:131
 msgid "Numeric"
-msgstr ""
+msgstr "Numbriline"
 
 #: inc/customizer/customizer-controls.php:135
 msgid "Button"
-msgstr ""
+msgstr "Nupp"
 
 #: inc/customizer/customizer-controls.php:136
 msgid "Link"
-msgstr ""
+msgstr "Link"
 
 #: inc/customizer/customizer-controls.php:140
 msgid "Cover"
-msgstr ""
+msgstr "Kaas"
 
 #: inc/customizer/customizer-controls.php:141
 msgid "Pattern"
-msgstr ""
+msgstr "Muster"
 
 #: inc/customizer/customizer-controls.php:148
 msgid "Content"
-msgstr ""
+msgstr "Sisu"
 
 #: inc/customizer/customizer-controls.php:149
 msgid "Select container width"
-msgstr ""
+msgstr "Valige mahuti laius"
 
 #: inc/customizer/customizer-controls.php:149
 msgid "Here you can change the width of the site"
-msgstr ""
+msgstr "Siin saate muuta saidi laiust"
 
 #: inc/customizer/customizer-controls.php:150
 msgid "Select content width"
-msgstr ""
+msgstr "Valige sisu laius"
 
 #: inc/customizer/customizer-controls.php:150
 msgid "Note: its work if sidebar dont show"
-msgstr ""
+msgstr "Märkus: see töötab, kui külgriba ei kuvata"
 
 #: inc/customizer/customizer-controls.php:152
 msgid "Header"
-msgstr ""
+msgstr "Päis"
 
 #: inc/customizer/customizer-controls.php:153
 #: inc/customizer/customizer-controls.php:165
 msgid "Top bar display"
-msgstr ""
+msgstr "Ülemise riba kuva"
 
 #: inc/customizer/customizer-controls.php:153
 msgid ""
 "This checkbox displays two sidebars before the header of the site. They are "
 "adds in the widget section options"
 msgstr ""
+"See märkeruut kuvab saidi päise ees kaks külgriba. Need lisatakse vidinate "
+"jaotise valikutes"
 
 #: inc/customizer/customizer-controls.php:154
 msgid "Select header type"
-msgstr ""
+msgstr "Valige päise tüüp"
 
 #: inc/customizer/customizer-controls.php:156
 #: templates/button-menu-toggle.php:23
 #: templates/footer/footer-content-type-three-columns.php:31
 msgid "Menu"
-msgstr ""
+msgstr "Menüü"
 
 #: inc/customizer/customizer-controls.php:157
 msgid "Select menu type"
-msgstr ""
+msgstr "Valige menüü tüüp"
 
 #: inc/customizer/customizer-controls.php:158
 msgid "Select menu position"
-msgstr ""
+msgstr "Valige menüü asukoht"
 
 #: inc/customizer/customizer-controls.php:158
 msgid "Position of the menu container when opened"
-msgstr ""
+msgstr "Menüü asukoht avamisel"
 
 #: inc/customizer/customizer-controls.php:159
 msgid "Select menu alignment"
-msgstr ""
+msgstr "Valige menüü joondus"
 
 #: inc/customizer/customizer-controls.php:159
 msgid "Alignment of the menu container"
-msgstr ""
+msgstr "Menüü joondamine"
 
 #: inc/customizer/customizer-controls.php:160
 msgid "Select menu button alignment"
-msgstr ""
+msgstr "Valige menüünuppude joondus"
 
 #: inc/customizer/customizer-controls.php:161
 msgid "Select menu button type"
-msgstr ""
+msgstr "Valige menüünupu tüüp"
 
 #: inc/customizer/customizer-controls.php:162
 msgid "Select menu button icon position"
-msgstr ""
+msgstr "Valige menüünupu ikooni asukoht"
 
 #: inc/customizer/customizer-controls.php:164
 msgid "Footer"
-msgstr ""
+msgstr "Jalus"
 
 #: inc/customizer/customizer-controls.php:165
 msgid ""
 "This checkbox displays two sidebars before the footer of the site. They are "
 "adds in the widget section options"
 msgstr ""
+"See märkeruut kuvab saidi jaluse ees kaks külgriba. Need lisatakse vidinate "
+"jaotise valikutes"
 
 #: inc/customizer/customizer-controls.php:166
 msgid "Bottom bar display"
-msgstr ""
+msgstr "Alumise riba ekraan"
 
 #: inc/customizer/customizer-controls.php:166
 msgid ""
 "This checkbox displays two sidebars after the footer of the site. They are "
 "adds in the widget section options"
 msgstr ""
+"See märkeruut kuvab saidi jaluse järel kaks külgriba. Need lisatakse "
+"vidinate jaotise valikutes"
 
 #: inc/customizer/customizer-controls.php:167
 msgid "Select footer type"
-msgstr ""
+msgstr "Valige jaluse tüüp"
 
 #: inc/customizer/customizer-controls.php:169
 msgid "Breadcrumbs"
-msgstr ""
+msgstr "Järjestus"
 
 #: inc/customizer/customizer-controls.php:170
 msgid "Breadcrumbs display"
-msgstr ""
+msgstr "Järjestuse väljapanek"
 
 #: inc/customizer/customizer-controls.php:171
 msgid "Select breadcrumbs type"
-msgstr ""
+msgstr "Valige järjestuse tüüp"
 
 #: inc/customizer/customizer-controls.php:172
 msgid "Breadcrumbs separator"
-msgstr ""
+msgstr "Järjestuse eraldaja"
 
 #: inc/customizer/customizer-controls.php:174
 msgid "Scroll top"
-msgstr ""
+msgstr "Kerige üles"
 
 #: inc/customizer/customizer-controls.php:175
 msgid "Scroll to top button display"
-msgstr ""
+msgstr "Kerige ülemise nupu kuvani"
 
 #: inc/customizer/customizer-controls.php:176
 msgid "Select scroll top button alignment"
-msgstr ""
+msgstr "Valige kerimisnupu joondus"
 
 #: inc/customizer/customizer-controls.php:177
 msgid "Select scroll top button type"
-msgstr ""
+msgstr "Valige kerimisnupu tüüp"
 
 #: inc/customizer/customizer-controls.php:178
 msgid "Select scroll top button icon position"
-msgstr ""
+msgstr "Valige kerimisnupu ikooni asukoht"
 
 #: inc/customizer/customizer-controls.php:180
 #: inc/customizer/customizer-controls.php:204
 msgid "Other"
-msgstr ""
+msgstr "Muud"
 
 #: inc/customizer/customizer-controls.php:181
 msgid "Comments display"
-msgstr ""
+msgstr "Kommentaaride kuvamine"
 
 #: inc/customizer/customizer-controls.php:181
 msgid "Comments block hide/display"
-msgstr ""
+msgstr "Kommentaarid blokeerivad peitmise/kuvamise"
 
 #: inc/customizer/customizer-controls.php:182
 msgid "Cookie display"
-msgstr ""
+msgstr "Küpsiste kuvamine"
 
 #: inc/customizer/customizer-controls.php:182
 msgid "Displays a notification about the use of cookies on the site"
-msgstr ""
+msgstr "Kuvab teatise küpsiste kasutamise kohta saidil"
 
 #: inc/customizer/customizer-controls.php:183
 msgid "External UTM Links"
-msgstr ""
+msgstr "Välised UTM-i lingid"
 
 #: inc/customizer/customizer-controls.php:183
 msgid "Adds utm tags to all external links"
-msgstr ""
+msgstr "Lisab utm-sildid kõikidele välistele linkidele"
 
 #: inc/customizer/customizer-controls.php:188
 msgid "Fonts"
-msgstr ""
+msgstr "Fondid"
 
 #: inc/customizer/customizer-controls.php:189
 msgid "Select primary font"
-msgstr ""
+msgstr "Valige esmane font"
 
 #: inc/customizer/customizer-controls.php:190
 msgid "Select secondary font"
-msgstr ""
+msgstr "Valige teine font"
 
 #: inc/customizer/customizer-controls.php:191
 msgid "Colors"
-msgstr ""
+msgstr "Värvid"
 
 #: inc/customizer/customizer-controls.php:192
 msgid "Select color scheme"
-msgstr ""
+msgstr "Valige värviskeem"
 
 #: inc/customizer/customizer-controls.php:193
 msgid "Select primary color"
-msgstr ""
+msgstr "Valige põhivärv"
 
 #: inc/customizer/customizer-controls.php:194
 msgid "Select secondary color"
-msgstr ""
+msgstr "Valige teisene värv"
 
 #: inc/customizer/customizer-controls.php:195
 msgid "Select gray color"
-msgstr ""
+msgstr "Valige hall värv"
 
 #: inc/customizer/customizer-controls.php:196
 msgid "Select link color"
-msgstr ""
+msgstr "Valige lingi värv"
 
 #: inc/customizer/customizer-controls.php:197
 msgid "Buttons"
-msgstr ""
+msgstr "Nupud"
 
 #: inc/customizer/customizer-controls.php:198
 #: inc/customizer/customizer-controls.php:275
 msgid "Select button type"
-msgstr ""
+msgstr "Valige nupu tüüp"
 
 #: inc/customizer/customizer-controls.php:199
 msgid "Display button icons"
-msgstr ""
+msgstr "Kuva nuppude ikoonid"
 
 #: inc/customizer/customizer-controls.php:200
 msgid "Select button icon position"
-msgstr ""
+msgstr "Valige nupu ikooni asukoht"
 
 #: inc/customizer/customizer-controls.php:201
 msgid "Select button size"
-msgstr ""
+msgstr "Valige nupu suurus"
 
 #: inc/customizer/customizer-controls.php:202
 msgid "Select button border width"
-msgstr ""
+msgstr "Valige nupu äärise laius"
 
 #: inc/customizer/customizer-controls.php:203
 msgid "Select button border radius"
-msgstr ""
+msgstr "Valige nupu äärise raadius"
 
 #: inc/customizer/customizer-controls.php:205
 msgid "Select element shadow"
-msgstr ""
+msgstr "Valige elemendi vari"
 
 #: inc/customizer/customizer-controls.php:206
 msgid "Select element border width"
-msgstr ""
+msgstr "Valige elemendi äärise laius"
 
 #: inc/customizer/customizer-controls.php:213
 msgid "Left Sidebar Display"
-msgstr ""
+msgstr "Vasaku külgriba ekraan"
 
 #: inc/customizer/customizer-controls.php:214
 msgid "Right Sidebar Display"
-msgstr ""
+msgstr "Parema külgriba ekraan"
 
 #: inc/customizer/customizer-controls.php:229
 msgid "By date"
-msgstr ""
+msgstr "Kuupäeva järgi"
 
 #: inc/customizer/customizer-controls.php:230
 msgid "By modified date"
-msgstr ""
+msgstr "Muudetud kuupäeva järgi"
 
 #: inc/customizer/customizer-controls.php:231
 msgid "By title"
-msgstr ""
+msgstr "Pealkirja järgi"
 
 #: inc/customizer/customizer-controls.php:232
 msgid "By random"
-msgstr ""
+msgstr "Juhuslikult"
 
 #: inc/customizer/customizer-controls.php:236
 msgid "By menu order"
-msgstr ""
+msgstr "Menüü järjekorras"
 
 #: inc/customizer/customizer-controls.php:241
 #: inc/customizer/customizer-controls.php:276
 msgid "Post Structure"
-msgstr ""
+msgstr "Postituse struktuur"
 
 #: inc/customizer/customizer-controls.php:243
 #: inc/customizer/customizer-controls.php:278
 msgid "Post Meta Structure"
-msgstr ""
+msgstr "Postituse meta struktuur"
 
 #: inc/customizer/customizer-controls.php:245
 msgid "Post Footer Structure"
-msgstr ""
+msgstr "Postituse jaluse struktuur"
 
 #: inc/customizer/customizer-controls.php:248
 msgid "Main options"
-msgstr ""
+msgstr "Peamised valikud"
 
 #: inc/customizer/customizer-controls.php:249
 #: inc/customizer/customizer-controls.php:270
 msgid "Select template type"
-msgstr ""
+msgstr "Valige malli tüüp"
 
 #: inc/customizer/customizer-controls.php:249
 msgid "This field displays template of the post"
-msgstr ""
+msgstr "Sellel väljal kuvatakse postituse mall"
 
 #: inc/customizer/customizer-controls.php:250
 msgid "Prev/next post navigation display"
-msgstr ""
+msgstr "Eelmise/järgmise postituse navigeerimiskuva"
 
 #: inc/customizer/customizer-controls.php:251
 msgid "Entry footer display"
-msgstr ""
+msgstr "Kirje jaluse kuva"
 
 #: inc/customizer/customizer-controls.php:256
 msgid "Entry footer cats display"
-msgstr ""
+msgstr "Sisendjaluse kasside ekraan"
 
 #: inc/customizer/customizer-controls.php:257
 msgid "Entry footer tags display"
-msgstr ""
+msgstr "Kuvatakse kirje jaluse sildid"
 
 #: inc/customizer/customizer-controls.php:258
 msgid "Similar posts display"
-msgstr ""
+msgstr "Sarnaste postituste kuvamine"
 
 #: inc/customizer/customizer-controls.php:259
 #: inc/customizer/customizer-controls.php:272
 msgid "Select posts order"
-msgstr ""
+msgstr "Valige postituste järjekord"
 
 #: inc/customizer/customizer-controls.php:260
 #: inc/customizer/customizer-controls.php:273
 msgid "Select posts orderby"
-msgstr ""
+msgstr "Valige postitused järjekorras"
 
 #: inc/customizer/customizer-controls.php:261
 msgid "Select posts count"
-msgstr ""
+msgstr "Valige postituste arv"
 
 #: inc/customizer/customizer-controls.php:268
 msgid "Main Options"
-msgstr ""
+msgstr "Peamised valikud"
 
 #: inc/customizer/customizer-controls.php:269
 msgid "Select columns of posts"
-msgstr ""
+msgstr "Valige postituste veerud"
 
 #: inc/customizer/customizer-controls.php:269
 msgid "Choose how many columns to display posts"
-msgstr ""
+msgstr "Valige, mitu veergu postitusi kuvada"
 
 #: inc/customizer/customizer-controls.php:270
 msgid "This field displays template of posts"
-msgstr ""
+msgstr "Sellel väljal kuvatakse postituste mall"
 
 #: inc/customizer/customizer-controls.php:271
 msgid "Select posts per page"
-msgstr ""
+msgstr "Valige postitused lehel"
 
 #: inc/customizer/customizer-controls.php:274
 msgid "Post Pagination"
-msgstr ""
+msgstr "Postituse leheküljed"
 
 #: inc/customizer/customizer-controls.php:286
 msgid "Social List"
-msgstr ""
+msgstr "Sotsiaalne nimekiri"
 
 #: inc/customizer/customizer-controls.php:286
 msgid ""
 "Add a link to social-list networks using a shortcode <strong>[aesthetix-"
 "social-list]</strong>"
 msgstr ""
+"Lisage link sotsiaalloendi võrkudele, kasutades lühikoodi <strong>[aesthetix-"
+"social-list]</strong>"
 
 #: inc/customizer/customizer-controls.php:287
 msgid "Facebook link"
@@ -1070,7 +1098,7 @@ msgstr ""
 
 #: inc/customizer/customizer-controls.php:295
 msgid "Contacts List"
-msgstr ""
+msgstr "Kontaktide loend"
 
 #: inc/customizer/customizer-controls.php:295
 msgid ""
@@ -1078,18 +1106,21 @@ msgid ""
 "list]</strong> or single <strong>[aesthetix-email]</strong>, "
 "<strong>[aesthetix-phone]</strong>, <strong>[aesthetix-address]</strong>"
 msgstr ""
+"Lisage kontaktide loendi link, kasutades lühikoodi <strong>[aesthetix-"
+"contacts-list]</strong> või üksikut <strong>[aesthetix-email]</strong>, "
+"<strong>[aesthetix-phone]</strong> >, <strong>[esthetixi aadress]</strong>"
 
 #: inc/customizer/customizer-controls.php:296
 msgid "Address"
-msgstr ""
+msgstr "Aadress"
 
 #: inc/customizer/customizer-controls.php:297
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #: inc/customizer/customizer-controls.php:299
 msgid "Whatsapp phone"
-msgstr ""
+msgstr "Whatsapp telefon"
 
 #: inc/customizer/customizer-controls.php:299
 msgid "Enter data in the format 7999XXXXXXX without \"+\""
@@ -1097,15 +1128,15 @@ msgstr ""
 
 #: inc/customizer/customizer-controls.php:300
 msgid "Telegram chat link"
-msgstr ""
+msgstr "Telegrami vestluse link"
 
 #: inc/customizer/customizer-controls.php:300
 msgid "Enter you telegram chet link for contact with you"
-msgstr ""
+msgstr "Teiega ühenduse võtmiseks sisestage oma telegrammi link"
 
 #: inc/customizer/customizer-controls.php:302
 msgid "Verifications and counters"
-msgstr ""
+msgstr "Kontrollid ja loendurid"
 
 #: inc/customizer/customizer-controls.php:303
 #: inc/customizer/customizer-controls.php:305
@@ -1114,7 +1145,7 @@ msgstr ""
 
 #: inc/customizer/customizer-controls.php:303
 msgid "Get your google verification code in the Google Search Console"
-msgstr ""
+msgstr "Hankige oma Google'i kinnituskood Google'i otsingukonsoolist"
 
 #: inc/customizer/customizer-controls.php:304
 #: inc/customizer/customizer-controls.php:306
@@ -1135,306 +1166,310 @@ msgstr ""
 
 #: inc/customizer/customizer-sections.php:31
 msgid "General options"
-msgstr ""
+msgstr "Üldised valikud"
 
 #: inc/customizer/customizer-sections.php:35
 msgid "Root style options"
-msgstr ""
+msgstr "Juurestiili valikud"
 
 #: inc/customizer/customizer-sections.php:39
 msgid "Sidebar options"
-msgstr ""
+msgstr "Külgriba valikud"
 
 #: inc/customizer/customizer-sections.php:43
 msgid "Front page options"
-msgstr ""
+msgstr "Esilehe valikud"
 
 #: inc/customizer/customizer-sections.php:47
 msgid "Archive options"
-msgstr ""
+msgstr "Arhiivi valikud"
 
 #: inc/customizer/customizer-sections.php:59
 msgid "Single "
-msgstr ""
+msgstr "Üksik"
 
 #: inc/customizer/customizer-sections.php:63
 msgid "Archive "
-msgstr ""
+msgstr "Arhiiv"
 
 #: inc/customizer/customizer-sections.php:69
 msgid "Other options"
-msgstr ""
+msgstr "Muud võimalused"
 
 #: inc/customizer/customizer-selects.php:30
 msgid "Post Title"
-msgstr ""
+msgstr "Postituse pealkiri"
 
 #: inc/customizer/customizer-selects.php:31
 #: inc/customizer/customizer-selects.php:70
 msgid "Post Thumbnail"
-msgstr ""
+msgstr "Postituse pisipilt"
 
 #: inc/customizer/customizer-selects.php:32
 #: inc/customizer/customizer-selects.php:71
 msgid "Post Meta Data"
-msgstr ""
+msgstr "Postitage metaandmed"
 
 #: inc/customizer/customizer-selects.php:33
 msgid "Post Excerpt"
-msgstr ""
+msgstr "Postituse väljavõte"
 
 #: inc/customizer/customizer-selects.php:34
 msgid "Post Read More"
-msgstr ""
+msgstr "Postitus Loe edasi"
 
 #: inc/customizer/customizer-selects.php:69
 msgid "Post Header"
-msgstr ""
+msgstr "Postituse päis"
 
 #: inc/customizer/customizer-selects.php:72
 msgid "Post Content"
-msgstr ""
+msgstr "Postituse sisu"
 
 #: inc/customizer/customizer-selects.php:73
 msgid "Post Footer"
-msgstr ""
+msgstr "Postituse jalus"
 
 #: inc/customizer/customizer-selects.php:112
 #: inc/customizer/customizer-selects.php:156
 msgid "Categories"
-msgstr ""
+msgstr "Kategooriad"
 
 #: inc/customizer/customizer-selects.php:113
 #: inc/customizer/customizer-selects.php:157
 msgid "Tags"
-msgstr ""
+msgstr "Sildid"
 
 #: inc/customizer/customizer-selects.php:148
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #: inc/customizer/customizer-selects.php:149
 #: templates/archive/archive-entry-post-meta.php:35
 #: templates/single/single-entry-post-meta.php:35
 msgid "Publication date"
-msgstr ""
+msgstr "Avaldamise kuupäev"
 
 #: inc/customizer/customizer-selects.php:150
 #: templates/archive/archive-entry-post-meta.php:57
 #: templates/single/single-entry-post-meta.php:57
 msgid "Reading time"
-msgstr ""
+msgstr "Lugemisaeg"
 
 #: inc/customizer/customizer-selects.php:151
 #: templates/archive/archive-entry-post-meta.php:63
 #: templates/single/single-entry-post-meta.php:63
 msgid "Comments"
-msgstr ""
+msgstr "Kommentaarid"
 
 #: inc/setup.php:26
 msgid "Primary menu"
-msgstr ""
+msgstr "Esmane menüü"
 
 #: inc/setup.php:254
 msgid "Sidebar left"
-msgstr ""
+msgstr "Külgriba vasakul"
 
 #: inc/setup.php:256
 msgid "Add widgets in left sidebar"
-msgstr ""
+msgstr "Lisage vidinad vasakule külgribale"
 
 #: inc/setup.php:264
 msgid "Sidebar right"
-msgstr ""
+msgstr "Külgriba paremal"
 
 #: inc/setup.php:266
 msgid "Add widgets in right sidebar"
-msgstr ""
+msgstr "Lisage vidinad paremale külgribale"
 
 #: inc/setup.php:275
 msgid "Header top bar left"
-msgstr ""
+msgstr "Päise ülemine riba vasakul"
 
 #: inc/setup.php:277
 msgid "Header top sidebar left"
-msgstr ""
+msgstr "Päise ülemine külgriba vasakul"
 
 #: inc/setup.php:284
 msgid "Header top bar right"
-msgstr ""
+msgstr "Päise ülemine riba paremal"
 
 #: inc/setup.php:286
 msgid "Header top sidebar right"
-msgstr ""
+msgstr "Päise ülemine külgriba paremal"
 
 #: inc/setup.php:296
 msgid "Footer top bar left"
-msgstr ""
+msgstr "Jaluse ülemine riba vasak"
 
 #: inc/setup.php:298
 msgid "Footer top sidebar left"
-msgstr ""
+msgstr "Jaluse ülemine külgriba vasak"
 
 #: inc/setup.php:305
 msgid "Footer top bar right"
-msgstr ""
+msgstr "Jaluse ülemine riba parempoolne"
 
 #: inc/setup.php:307
 msgid "Footer top sidebar right"
-msgstr ""
+msgstr "Jaluse ülemine külgriba parempoolne"
 
 #: inc/setup.php:317
 msgid "Footer bottom bar left"
-msgstr ""
+msgstr "Jaluse alumine riba vasak"
 
 #: inc/setup.php:319
 msgid "Footer bottom sidebar left"
-msgstr ""
+msgstr "Jaluse alumine külgriba vasak"
 
 #: inc/setup.php:326
 msgid "Footer bottom bar right"
-msgstr ""
+msgstr "Jaluse alumine riba parem"
 
 #: inc/setup.php:328
 msgid "Footer bottom sidebar right"
-msgstr ""
+msgstr "Jaluse alumine külgriba parempoolne"
 
 #: inc/setup.php:338 inc/setup.php:340
 msgid "First footer sidebar"
-msgstr ""
+msgstr "Esimene jaluse külgriba"
 
 #: inc/setup.php:347 inc/setup.php:349
 msgid "Second footer sidebar"
-msgstr ""
+msgstr "Teise jaluse külgriba"
 
 #: inc/setup.php:359 inc/setup.php:361
 msgid "Third footer sidebar"
-msgstr ""
+msgstr "Kolmas jaluse külgriba"
 
 #: inc/setup.php:371 inc/setup.php:373
 msgid "Fourth footer sidebar"
-msgstr ""
+msgstr "Neljanda jaluse külgriba"
 
 #: inc/shortcodes.php:89
 msgid "Created by"
-msgstr ""
+msgstr "Lõi"
 
 #: inc/shortcodes.php:92
 msgid "All rights reserved"
-msgstr ""
+msgstr "Kõik õigused kaitstud"
 
 #: inc/shortcodes.php:160
 msgid "Privacy policy"
-msgstr ""
+msgstr "Privaatsuspoliitika"
 
 #: inc/shortcodes.php:256
 msgid "Write to Telegram"
-msgstr ""
+msgstr "Kirjutage Telegrami"
 
 #: inc/shortcodes.php:279
 msgid "Write to WhatsApp"
-msgstr ""
+msgstr "Kirjutage WhatsAppi"
 
 #: inc/template-actions.php:83
 #, php-format
 msgid "Page generated in %s seconds"
-msgstr ""
+msgstr "Leht genereeriti %s sekundiga"
 
 #: inc/template-actions.php:214
 msgid "Content section"
-msgstr ""
+msgstr "Sisu jaotis"
 
 #: inc/template-filters.php:174
 msgid "Setup Menu"
-msgstr ""
+msgstr "Seadistusmenüü"
 
 #: search.php:21
 msgid "Search page header"
-msgstr ""
+msgstr "Otsingulehe päis"
 
 #: search.php:23
 #, php-format
 msgid "Search Results for: %s"
-msgstr ""
+msgstr "Otsingutulemused: %s"
 
 #: search.php:27
 msgid "Search page content"
-msgstr ""
+msgstr "Otsige lehe sisu"
 
 #: search.php:38 search.php:46
 msgid "Post type:"
-msgstr ""
+msgstr "Postituse tüüp:"
 
 #: search.php:73
 msgid "Search page footer"
-msgstr ""
+msgstr "Otsi lehe jalus"
 
 #: searchform.php:16
 msgid "Search..."
-msgstr ""
+msgstr "Otsing..."
 
 #: searchform.php:16
 msgid "Search for"
-msgstr ""
+msgstr "Otsima"
 
 #: searchform.php:18
 msgid "Search"
-msgstr ""
+msgstr "Otsing"
 
 #: templates/archive/archive-content-none.php:12
 msgid "Nothing Found"
-msgstr ""
+msgstr "Ei leitud midagi"
 
 #: templates/archive/archive-content-none.php:19
 #, php-format
 msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>"
 msgstr ""
+"Kas olete valmis oma esimest postitust avaldama? <a href=\"%1$s\">Alustage "
+"siit</a>"
 
 #: templates/archive/archive-content-none.php:21
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different keywords"
 msgstr ""
+"Vabandust, kuid teie otsinguterminitele ei vastanud midagi. Palun proovi "
+"uuesti mõne teise märksõnaga"
 
 #: templates/archive/archive-content-none.php:23
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help"
-msgstr ""
+msgstr "Näib, et me ei leia seda, mida otsite. Ehk aitab otsimine"
 
 #: templates/archive/archive-entry-post-detail-button.php:12
 msgid "Read more"
-msgstr ""
+msgstr "Loe rohkem"
 
 #: templates/archive/archive-entry-post-meta.php:11
 #: templates/single/single-entry-post-meta.php:11
 msgid "Post meta information"
-msgstr ""
+msgstr "Postitage metateave"
 
 #: templates/archive/archive-entry-post-meta.php:58
 #: templates/single/single-entry-post-meta.php:58
 msgid "min."
-msgstr ""
+msgstr "min."
 
 #: templates/archive/archive-entry-post-title.php:11
 msgid "Post title"
-msgstr ""
+msgstr "Postituse pealkiri"
 
 #: templates/archive/archive-pagination.php:28
 msgid "Site post navigation"
-msgstr ""
+msgstr "Saidi postituste navigeerimine"
 
 #: templates/archive/archive-pagination.php:77
 msgid "Older Posts"
-msgstr ""
+msgstr "Vanemad postitused"
 
 #: templates/archive/archive-pagination.php:85
 msgid "Newer Posts"
-msgstr ""
+msgstr "Uuemad postitused"
 
 #: templates/button-scroll-top.php:15
 msgid "Scroll up"
-msgstr ""
+msgstr "Keri üles"
 
 #: templates/cookie.php:13
 #, php-format
@@ -1443,11 +1478,14 @@ msgid ""
 "can be found in the <a class=\"%s\" href=\"%s\" target=\"_blank\">Privacy "
 "Policy</a></p>"
 msgstr ""
+"Jätkates teenuse %s kasutamist, nõustute küpsiste kasutamisega. Lisateavet "
+"leiate <a class=\"%s\" href=\"%s\" target=\"_blank\">privaatsuseeskirjadest</"
+"a></p>"
 
 #: templates/footer/footer-content-type-four-columns.php:46
 #: templates/footer/footer-content-type-three-columns.php:55
 msgid "Contacts"
-msgstr ""
+msgstr "Kontaktid"
 
 #: templates/footer/footer-content-type-three-columns.php:33
 #: templates/footer/footer-top-bar.php:37
@@ -1456,63 +1494,64 @@ msgstr ""
 #: templates/header/header-content-type-simple.php:30
 #: templates/main-menu.php:21
 msgid "Site main menu"
-msgstr ""
+msgstr "Saidi peamenüü"
 
 #: templates/single/single-content-type-page.php:13
 msgid "Page header"
-msgstr ""
+msgstr "Lehe päis"
 
 #: templates/single/single-content-type-page.php:18
 msgid "Page thumbnail"
-msgstr ""
+msgstr "Lehekülje pisipilt"
 
 #: templates/single/single-content-type-page.php:23
 msgid "Page content"
-msgstr ""
+msgstr "Lehe sisu"
 
 #: templates/single/single-content-type-page.php:29
 #: templates/single/single-entry-post-footer.php:16
 msgid "Pages:"
-msgstr ""
+msgstr "Leheküljed:"
 
 #: templates/single/single-content-type-page.php:36
 msgid "Page footer"
-msgstr ""
+msgstr "Lehe jalus"
 
 #: templates/single/single-entry-post-content.php:11
 msgid "Post content"
-msgstr ""
+msgstr "Postitage sisu"
 
 #: templates/single/single-entry-post-content.php:12
 #, php-format
 msgid "Continue reading <span class=\"screen-reader-text\">\"%s\"</span>"
 msgstr ""
+"Jätkake artikli <span class=\"screen-reader-text\">„%s”</span> lugemist"
 
 #: templates/single/single-entry-post-footer.php:11
 msgid "Post footer"
-msgstr ""
+msgstr "Postituse jalus"
 
 #: templates/single/single-entry-post-footer.php:37
 msgid "Post categories"
-msgstr ""
+msgstr "Postituste kategooriad"
 
 #: templates/single/single-entry-post-footer.php:51
 msgid "Post tags"
-msgstr ""
+msgstr "Postitage sildid"
 
 #: templates/single/single-entry-post-header.php:11
 msgid "Post header"
-msgstr ""
+msgstr "Postituse päis"
 
 #: templates/single/single-entry-post-thumbnail.php:12
 msgid "Post thumbnail"
-msgstr ""
+msgstr "Postituse pisipilt"
 
 #: templates/single/single-similar-posts.php:13
 msgid "Similar posts"
-msgstr ""
+msgstr "Sarnased postitused"
 
 #: templates/single/single-similar-posts.php:15
 #, php-format
 msgid "Similar %1$s"
-msgstr ""
+msgstr "Sarnane %1$s"
