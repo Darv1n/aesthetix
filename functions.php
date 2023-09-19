@@ -79,5 +79,3 @@ if ( ! class_exists( 'SimpleXLSX' ) ) {
 if ( ! class_exists( 'SimpleXLSXGen' ) ) {
 	require_once get_template_directory() . '/inc/libs/SimpleXLSXGen.php';
 }
-
-

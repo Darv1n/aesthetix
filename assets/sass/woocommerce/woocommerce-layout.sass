@@ -1,6 +1,7 @@
 .woocommerce, .woocommerce-page
-	.woocommerce-error .button, .woocommerce-info .button, .woocommerce-message .button
-		float: right
+	.woocommerce-error, .woocommerce-info, .woocommerce-message
+		.button
+			float: right
 	.col2-set
 		zoom: 1
 		width: 100%
@@ -9,133 +10,73 @@
 			display: table
 		&::after
 			clear: both
-		.col-1, .col-2
-			width: 48%
-			max-width: 48%
 		.col-1
 			float: left
+			width: 48%
 		.col-2
 			float: right
-	div.product
-		div.images
-			float: left
 			width: 48%
-		div.thumbnails
-			zoom: 1
-			&::after, &::before
-				content: ' '
-				display: table
-			&::after
-				clear: both
-			a
+	#content
+		div.product
+			div.images
 				float: left
-				width: 30.75%
-				margin-right: 3.8%
-				margin-bottom: 1em
-			a.last
-				margin-right: 0
-			a.first
-				clear: both
-			&.columns-1 a
-				width: 100%
-				margin-right: 0
-				float: none
-			&.columns-2 a
 				width: 48%
-			&.columns-4 a
-				width: 22.05%
-			&.columns-5 a
-				width: 16.9%
-		div.summary
-			float: right
-			width: 48%
-			clear: none
-		.woocommerce-tabs
-			clear: both
-			ul.tabs
+			div.thumbnails
 				zoom: 1
 				&::after, &::before
 					content: ' '
 					display: table
 				&::after
 					clear: both
-				li
-					display: inline-block
-		#reviews .comment
-			zoom: 1
-			&::after, &::before
-				content: ' '
-				display: table
-			&::after
-				clear: both
-			img
+				a
+					float: left
+					width: 30.75%
+					margin-right: 3.8%
+					margin-bottom: 1em
+					&.last
+						margin-right: 0
+					&.first
+						clear: both
+				&.columns-1
+					a
+						width: 100%
+						margin-right: 0
+						float: none
+				&.columns-2
+					a
+						width: 48%
+				&.columns-4
+					a
+						width: 22.05%
+				&.columns-5
+					a
+						width: 16.9%
+			div.summary
 				float: right
-				height: auto
-	ul.products
-		display: flex
-		flex-wrap: wrap
-		clear: both
-		zoom: 1
-		&::after, &::before
-			content: ' '
-			display: table
-		&::after
-			clear: both
-		li.product
-			float: left
-			margin: 0 20px 2.992em 0
-			padding: 0
-			position: relative
-			width: 22.05%
-			margin-left: 0
-		&.columns-1 li.product
-			width: 100%
-			margin-right: 0
-		&.columns-2 li.product
-			width: 48%
-			&:nth-child(2n)
-				margin-right: 0
-				clear: right
-			&:nth-child(odd)
-				clear: left
-		&.columns-3 li.product
-			width: 30.75%
-			&:nth-child(3n)
-				margin-right: 0
-				clear: right
-			&:nth-child(3n+1)
-				clear: left
-		&.columns-4 li.product
-			&:nth-child(4n)
-				margin-right: 0
-				clear: right
-			&:nth-child(4n+1)
-				clear: left
-		&.columns-5 li.product
-			width: 16.95%
-			&:nth-child(5n)
-				margin-right: 0
-				clear: right
-			&:nth-child(5n+1)
-				clear: left
-		&.columns-6 li.product
-			width: 13.5%
-			&:nth-child(6n)
-				margin-right: 0
-				clear: right
-			&:nth-child(6n+1)
-				clear: left
-	.woocommerce-pagination
-		ul.page-numbers
-			zoom: 1
-			&::after, &::before
-				content: ' '
-				display: table
-			&::after
+				width: 48%
+				clear: none
+			.woocommerce-tabs
 				clear: both
-			li
-				display: inline-block
-	#content
+				ul.tabs
+					zoom: 1
+					&::after, &::before
+						content: ' '
+						display: table
+					&::after
+						clear: both
+					li
+						display: inline-block
+			#reviews
+				.comment
+					zoom: 1
+					&::after, &::before
+						content: ' '
+						display: table
+					&::after
+						clear: both
+					img
+						float: right
+						height: auto
 		table.cart
 			img
 				height: auto
@@ -151,6 +92,37 @@
 						display: none
 				.button
 					margin-left: 5px
+	ul.products
+		display: flex
+		flex-wrap: wrap
+		clear: both
+		zoom: 1
+		&::after, &::before
+			content: ' '
+			display: table
+		&::after
+			clear: both
+		li.product
+			float: left
+			margin-right: 12px
+			margin-bottom: 15px
+			padding: 0
+			position: relative
+			margin-left: 0
+		&.columns-1
+			li.product
+				width: 100%
+				margin-right: 0
+	.woocommerce-pagination 
+		ul.page-numbers
+			zoom: 1
+			&::after, &::before
+				content: ' '
+				display: table
+			&::after
+				clear: both
+			li
+				display: inline-block
 	.cart-collaterals
 		zoom: 1
 		width: 100%
@@ -186,12 +158,11 @@
 			.col2-set
 				.col-1, .col-2
 					width: 47%
-					max-width: 47%
 		.cart_totals
 			float: right
 			width: 48%
-	ul
-		&.cart_list li, &.product_list_widget li
+	ul.cart_list, ul.product_list_widget
+		li
 			zoom: 1
 			&::after, &::before
 				content: ' '
@@ -211,8 +182,8 @@
 				clear: both
 			label
 				display: block
-				&.checkbox
-					display: inline
+			label.checkbox
+				display: inline
 			select
 				width: 100%
 			.input-text
@@ -264,12 +235,13 @@
 			padding: 3px
 			legend
 				padding: 3px 0
-				border-bottom: 1px solid var(--ast-border-color)
+				border-bottom: 1px solid #111
 				width: 100%
 				margin: 10px 0
 			.form-row
 				padding-left: 0
 				padding-right: 0
+
 
 @media (min-width: 545px)
 	.woocommerce
@@ -278,3 +250,74 @@
 				td.actions
 					> input[type=submit]
 						margin: 5px auto
+
+@media (min-width: 576px)
+	.woocommerce, .woocommerce-page
+		ul.products
+			&.columns-2, &.columns-3, &.columns-4, &.columns-5, &.columns-6
+				li.product
+					width: 48%
+					&:nth-child(2n)
+						margin-right: 0
+						clear: right
+
+// @media (min-width: 768px)
+
+@media (min-width: 992px)
+	.woocommerce, .woocommerce-page
+		ul.products
+			&.columns-2, &.columns-3, &.columns-4, &.columns-5, &.columns-6
+				li.product
+					&:nth-child(2n)
+						margin-right: 12px
+						clear: none
+			&.columns-3, &.columns-4, &.columns-5, &.columns-6
+				li.product
+					width: calc(33.33% - 8px)
+					&:nth-child(3n)
+						margin-right: 0
+						clear: right
+					&:nth-child(3n+1)
+						clear: left
+
+@media (min-width: 1200px)
+	.woocommerce, .woocommerce-page
+		ul.products
+			&.columns-3, &.columns-4, &.columns-5, &.columns-6
+				li.product
+					&:nth-child(3n)
+						margin-right: 12px
+						clear: none
+					&:nth-child(3n+1)
+						clear: none
+			&.columns-3
+				li.product
+					&:nth-child(3n)
+						margin-right: 0
+						clear: right
+					&:nth-child(3n+1)
+						clear: left	
+			&.columns-4
+				li.product
+					width: calc(25% - 9px)
+					&:nth-child(4n)
+						margin-right: 0
+						clear: right
+					&:nth-child(4n+1)
+						clear: left	
+			&.columns-5
+				li.product
+					width: calc(20% - 16px)
+					&:nth-child(5n)
+						margin-right: 0
+						clear: right
+					&:nth-child(5n+1)
+						clear: left
+			&.columns-6
+				li.product
+					width: calc(16.66% - 16.66px)
+					&:nth-child(6n)
+						margin-right: 0
+						clear: right
+					&:nth-child(6n+1)
+						clear: left

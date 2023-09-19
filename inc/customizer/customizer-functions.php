@@ -110,3 +110,33 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 		}
 	}
 }
+
+function prefix_filter_theme_json_theme( $theme_json ) {
+
+	$new_data = array(
+		'version'  => 2,
+		'settings' => array(
+			'border' => array(
+					'style'  => 'solid',
+					'width'  => get_aesthetix_customizer_converter_borders( get_aesthetix_options( 'root_border_width' ) ),
+					'radius' => get_aesthetix_customizer_converter_radiuses( get_aesthetix_options( 'root_border_radius' ) ),
+				),
+			'color' => array(
+				'palette' => array(
+					array(
+						'slug'  => 'base',
+						'color' => 'white',
+						'name'  => __( 'Base', 'text-domain' ),
+					),
+				),
+			),
+		),
+	);
+
+	$theme_json->update_with( $new_data );
+
+	// vardump( $theme_json );
+
+	return $theme_json;
+}
+add_filter( 'wp_theme_json_data_default', 'prefix_filter_theme_json_theme' );
