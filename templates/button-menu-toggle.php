@@ -4,11 +4,9 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package aesthetix
+ * @package Aesthetix
+ * @since 1.0.0
  */
- ?>
-
-<?php
 
 $menu_classes = get_aesthetix_menu_toggle_classes();
 

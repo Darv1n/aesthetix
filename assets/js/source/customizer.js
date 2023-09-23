@@ -18,6 +18,7 @@
 			update: aesthetix_sortable( $( this ) ),
 		});
 */
+
 		$('.sortable-list').sortable({
 			update: function(event, ui) {
 				var items = [];
@@ -27,7 +28,6 @@
 				$(this).next().val( items.join(',') ).trigger( 'change' );
 			}
 		});
-
 
 		$( '.dashicons-visibility' ).on( 'click', function( e ) {
 			var items = [];

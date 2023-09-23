@@ -2,7 +2,8 @@
 /**
  * Customizer controls array
  *
- * @package aesthetix
+ * @package Aesthetix
+ * @since 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -205,13 +206,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'box_shadow'           => array( 'select_control', __( 'Select element shadow', 'aesthetix' ), '', get_aesthetix_customizer_box_shadows() ),
 			'border_width'         => array( 'select_control', __( 'Select element border width', 'aesthetix' ), '', get_aesthetix_customizer_button_border_widths() ),
 			'border_radius'        => array( 'select_control', __( 'Select element border radius', 'aesthetix' ), '', get_aesthetix_customizer_button_border_radiuses() ),
-		);
-
-		// Sidebar options.
-		$aesthetix_controls['sidebar'] = array(
-			'tab_title'     => array( 'tab_title', __( 'Which pages display sidebar', 'aesthetix' ), '' ),
-			'left_display'  => array( 'checkbox_control', __( 'Left Sidebar Display', 'aesthetix' ), '' ),
-			'right_display' => array( 'checkbox_control', __( 'Right Sidebar Display', 'aesthetix' ), '' ),
 		);
 
 		$post_types = get_aesthetix_customizer_post_types();

@@ -5,7 +5,8 @@
  * @link Plugin        https://wordpress.org/plugins/breadcrumb-navxt/
  * @link Documentation https://mtekk.us/code/breadcrumb-navxt/breadcrumb-navxt-doc/
  *
- * @package aesthetix
+ * @package Aesthetix
+ * @since 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

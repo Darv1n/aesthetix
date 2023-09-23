@@ -4,7 +4,8 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package aesthetix
+ * @package Aesthetix
+ * @since 1.0.0
  */
  ?>
 

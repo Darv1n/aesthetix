@@ -4,31 +4,26 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package aesthetix
+ * @package Aesthetix
+ * @since 1.0.0
  */
 
 if ( ! is_active_sidebar( 'sidebar' ) ) {
 	return;
 }
 
-?>
+$sidebar = apply_filters( 'get_aesthetix_sidebar', 'sidebar' );
 
-<?php if ( ! get_aesthetix_options( 'sidebar_left_display' ) && get_aesthetix_options( 'sidebar_right_display' ) ) {
-	$class = 'widget-area_right order-3 order-lg-3';
-} else {
-	$class = 'widget-area_left order-2 order-lg-1';
-} ?>
+if ( is_active_sidebar( $sidebar ) ) { ?>
 
-<aside id="secondary" <?php aesthetix_widget_area_classes( $class ); ?> role="complementary">
+	<aside id="aside" <?php aesthetix_widget_area_classes( 'order-3 order-lg-3' ); ?> role="complementary">
 
-	<?php do_action( 'aesthetix_before_main_sidebar' ); ?>
+		<?php do_action( 'aesthetix_before_sidebar' ); ?>
 
-		<?php do_action( 'aesthetix_before_left_sidebar' ); ?>
+			<?php dynamic_sidebar( $sidebar ); ?>
 
-			<?php dynamic_sidebar( 'sidebar' ); ?>
+		<?php do_action( 'aesthetix_after_sidebar' ); ?>
 
-		<?php do_action( 'aesthetix_after_left_sidebar' ); ?>
+	</aside>
 
-	<?php do_action( 'aesthetix_after_main_sidebar' ); ?>
-
-</aside>
+<?php }

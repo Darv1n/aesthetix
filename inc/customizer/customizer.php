@@ -2,7 +2,8 @@
 /**
  * Customizer main setup
  *
- * @package aesthetix
+ * @package Aesthetix
+ * @since 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -42,6 +43,7 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 						$reordered_choices[ $value ] = $this->choices[ $value ];
 					}
 				}
+
 				$reordered_choices = array_merge( $reordered_choices, array_diff_assoc( $this->choices, $reordered_choices ) );
 
 				?>
@@ -69,11 +71,17 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 						</li>
 					<?php } ?>
 				</ul>
+				<?php // vardump( esc_attr( json_encode( $this->value() ) ) ); ?>
 
 				<input id="<?php echo esc_attr( $input_id ); ?>"<?php echo $describedby_attr; ?> type="hidden" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?>>
 
 				<?php
 			}
+		}
+
+		// Sanitize textfield.
+		function aesthetix_sanitize_textfield( $input ) {
+			return sanitize_text_field( $input );
 		}
 
 		// Sanitize checkbox.
@@ -89,11 +97,6 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 			return ( array_key_exists( $input, $controls ) ? $input : $setting->default );
 		}
 
-		// Sanitize custom controls.
-		function aesthetix_sanitize_custom_control( $input ) {
-			return $input;
-		}
-
 		// Sanitize number absint.
 		function aesthetix_sanitize_number_control( $number, $setting ) {
 
@@ -103,6 +106,14 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 			// Return default if not integer.
 			return ( $number ? $number : $setting->default );
 
+		}
+
+		function aesthetix_sanitize_sortable( $input ) {
+			$sanitized_input = array();
+			foreach ( $input as $key => $value ) {
+				$sanitized_input[ $key ] = sanitize_text_field( $value );
+			}
+			return $sanitized_input;
 		}
 
 		// Sanitize textarea.
@@ -144,7 +155,7 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 			) );
 			$wp_customize->add_control( 'aesthetix_options[' . $section . '_' . $id . ']', array(
 				'label'       => $name,
-				'section'     => 'aesthetix_' . $section,
+				'section'     => apply_filters( 'aesthetix_customizer_section_control', 'aesthetix_' . $section, $id ),
 				'type'        => 'hidden',
 				'description' => $description,
 				'priority'    => $priority,
@@ -164,7 +175,7 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 			) );
 			$wp_customize->add_control( 'aesthetix_options[' . $section . '_' . $id . ']', array(
 				'label'       => $name,
-				'section'     => 'aesthetix_' . $section,
+				'section'     => apply_filters( 'aesthetix_customizer_section_control', 'aesthetix_' . $section, $id ),
 				'type'        => 'number',
 				'input_attrs' => $atts,
 				'priority'    => $priority,
@@ -185,7 +196,7 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 			$wp_customize->add_control( 'aesthetix_options[' . $section . '_' . $id . ']', array(
 				'label'       => $name,
 				'description' => wp_kses_post( $description ),
-				'section'     => 'aesthetix_' . $section,
+				'section'     => apply_filters( 'aesthetix_customizer_section_control', 'aesthetix_' . $section, $id ),
 				'type'        => 'text',
 				'priority'    => $priority,
 			) );
@@ -205,7 +216,7 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 			$wp_customize->add_control( 'aesthetix_options[' . $section . '_' . $id . ']', array(
 				'label'       => $name,
 				'description' => wp_kses_post( $description ),
-				'section'     => 'aesthetix_' . $section,
+				'section'     => apply_filters( 'aesthetix_customizer_section_control', 'aesthetix_' . $section, $id ),
 				'type'        => 'textarea',
 				'priority'    => $priority,
 			) );
@@ -225,7 +236,7 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 			$wp_customize->add_control( 'aesthetix_options[' . $section . '_' . $id . ']', array(
 				'label'       => $name,
 				'description' => wp_kses_post( $description ),
-				'section'     => 'aesthetix_' . $section,
+				'section'     => apply_filters( 'aesthetix_customizer_section_control', 'aesthetix_' . $section, $id ),
 				'type'        => 'text',
 				'priority'    => $priority,
 			) );
@@ -245,7 +256,7 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 			$wp_customize->add_control( 'aesthetix_options[' . $section . '_' . $id . ']', array(
 				'label'       => $name,
 				'description' => wp_kses_post( $description ),
-				'section'     => 'aesthetix_' . $section,
+				'section'     => apply_filters( 'aesthetix_customizer_section_control', 'aesthetix_' . $section, $id ),
 				'type'        => 'checkbox',
 				'priority'    => $priority,
 			) );
@@ -265,7 +276,7 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 			$wp_customize->add_control( 'aesthetix_options[' . $section . '_' . $id . ']', array(
 				'label'       => $name,
 				'description' => wp_kses_post( $description ),
-				'section'     => 'aesthetix_' . $section,
+				'section'     => apply_filters( 'aesthetix_customizer_section_control', 'aesthetix_' . $section, $id ),
 				'type'        => 'select',
 				'choices'     => $atts,
 				'priority'    => $priority,
@@ -286,19 +297,11 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 			$wp_customize->add_control( 'aesthetix_options[' . $section . '_' . $id . ']', array(
 				'label'       => $name,
 				'description' => wp_kses_post( $description ),
-				'section'     => 'aesthetix_' . $section,
+				'section'     => apply_filters( 'aesthetix_customizer_section_control', 'aesthetix_' . $section, $id ),
 				'type'        => 'radio',
 				'choices'     => $atts,
 				'priority'    => $priority,
 			) );
-		}
-
-		function aesthetix_sanitize_sortable( $input ) {
-			$sanitized_input = array();
-			foreach ( $input as $key => $value ) {
-				$sanitized_input[ $key ] = sanitize_text_field( $value );
-			}
-			return $sanitized_input;
 		}
 
 		// Sortable control.
@@ -310,12 +313,12 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 				'type'              => 'option',
 				'transport'         => 'refresh',
 				'capability'        => 'edit_theme_options',
-				'sanitize_callback' => 'aesthetix_sanitize_sortable',
+				'sanitize_callback' => 'aesthetix_sanitize_textfield',
 			) );
 			$wp_customize->add_control( new Sortable_Custom_Control( $wp_customize, 'aesthetix_options[' . $section . '_' . $id . ']', array(
 				'label'       => $name,
 				'description' => wp_kses_post( $description ),
-				'section'     => 'aesthetix_' . $section,
+				'section'     => apply_filters( 'aesthetix_customizer_section_control', 'aesthetix_' . $section, $id ),
 				'type'        => 'sortable',
 				'choices'     => $atts,
 				'priority'    => $priority,

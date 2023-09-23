@@ -4,7 +4,8 @@
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package aesthetix
+ * @package Aesthetix
+ * @since 1.0.0
  */
 
 require_once ABSPATH . '/wp-admin/includes/plugin.php';
@@ -37,9 +38,14 @@ require_once get_template_directory() . '/inc/compatibility/gutenberg.php';
 if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 	require_once get_template_directory() . '/inc/compatibility/woocommerce/woocommerce-setup.php';
 	require_once get_template_directory() . '/inc/compatibility/woocommerce/woocommerce-functions.php';
+	require_once get_template_directory() . '/inc/compatibility/woocommerce/woocommerce-actions.php';
+	require_once get_template_directory() . '/inc/compatibility/woocommerce/woocommerce-filters.php';
 	require_once get_template_directory() . '/inc/compatibility/woocommerce/woocommerce-wrappers.php';
+	require_once get_template_directory() . '/inc/compatibility/woocommerce/customizer/customizer-functions.php';
 	require_once get_template_directory() . '/inc/compatibility/woocommerce/customizer/customizer-sections.php';
 	require_once get_template_directory() . '/inc/compatibility/woocommerce/customizer/customizer-controls.php';
+	require_once get_template_directory() . '/inc/compatibility/woocommerce/customizer/customizer-selects.php';
+	require_once get_template_directory() . '/inc/compatibility/woocommerce/customizer/customizer-defaults.php';
 }
 
 // Yoast SEO.

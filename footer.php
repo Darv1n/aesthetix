@@ -6,7 +6,8 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package aesthetix
+ * @package Aesthetix
+ * @since 1.0.0
  */
 
 ?>

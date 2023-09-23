@@ -4,11 +4,11 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package aesthetix
+ * @package Aesthetix
+ * @since 1.0.0
  */
- ?>
 
-<?php $args = array(
+$args = array(
 	'theme_location' => 'primary',
 	'menu_id'        => 'primary-navigation',
 	'container'      => '',

@@ -4,7 +4,8 @@
  *
  * @link https://wp-kama.ru/plugin/kama-postviews
  *
- * @package aesthetix
+ * @package Aesthetix
+ * @since 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

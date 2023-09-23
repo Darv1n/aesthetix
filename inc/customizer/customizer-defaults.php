@@ -2,7 +2,8 @@
 /**
  * Customizer default options
  *
- * @package aesthetix
+ * @package Aesthetix
+ * @since 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -72,14 +73,6 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'root_box_shadow'                         => 'shadow-md',
 			'root_border_width'                       => 'border-2',
 			'root_border_radius'                      => 'rounded-md',
-
-			'sidebar_left_display'                    => true,
-			'sidebar_right_display'                   => false,
-
-			'woo_general_left_woo_display'=> true,
-			'woo_general_right_woo_display'=> true,
-
-
 		);
 
 		foreach ( get_post_types() as $key => $post_type ) {
@@ -100,14 +93,12 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 				'single_' . $post_type . '_structure'             => 'header,thumbnail,meta,content,footer',
 				'single_' . $post_type . '_meta_structure'        => 'date,time,edit',
 				'single_' . $post_type . '_footer_structure'      => 'edit',
-
-				'single_' . $post_type . '_post_nav_display'           => false,
-				'single_' . $post_type . '_entry_footer_display'       => true,
-
-				'single_' . $post_type . '_similar_posts_display'     => true,
-				'single_' . $post_type . '_similar_posts_order'       => 'desc',
-				'single_' . $post_type . '_similar_posts_orderby'     => 'date',
-				'single_' . $post_type . '_similar_posts_count'       => 3,
+				'single_' . $post_type . '_post_nav_display'      => false,
+				'single_' . $post_type . '_entry_footer_display'  => true,
+				'single_' . $post_type . '_similar_posts_display' => true,
+				'single_' . $post_type . '_similar_posts_order'   => 'desc',
+				'single_' . $post_type . '_similar_posts_orderby' => 'date',
+				'single_' . $post_type . '_similar_posts_count'   => 3,
 			) );
 
 			$post_type_object  = get_post_type_object( $post_type );
@@ -115,13 +106,13 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 			if ( $post_type_object->has_archive || ! empty( $object_taxonomies ) ) {
 				$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
-					'archive_' . $post_type . '_structure'             => 'thumbnail,meta,title,excerpt,more',
-					'archive_' . $post_type . '_meta_structure'        => 'date,time,edit',
-					'archive_' . $post_type . '_posts_per_page'        => get_option( 'posts_per_page' ),
-					'archive_' . $post_type . '_posts_order'           => 'desc',
-					'archive_' . $post_type . '_posts_orderby'         => 'date',
-					'archive_' . $post_type . '_pagination'            => 'numeric',
-					'archive_' . $post_type . '_detail_button'         => 'button',
+					'archive_' . $post_type . '_structure'      => 'thumbnail,meta,title,excerpt,more',
+					'archive_' . $post_type . '_meta_structure' => 'date,time,edit',
+					'archive_' . $post_type . '_posts_per_page' => get_option( 'posts_per_page' ),
+					'archive_' . $post_type . '_posts_order'    => 'desc',
+					'archive_' . $post_type . '_posts_orderby'  => 'date',
+					'archive_' . $post_type . '_pagination'     => 'numeric',
+					'archive_' . $post_type . '_detail_button'  => 'button',
 				) );
 			}
 
@@ -175,5 +166,3 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 		}
 	}
 }
-
-

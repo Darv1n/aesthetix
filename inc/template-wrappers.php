@@ -2,7 +2,8 @@
 /**
  * aesthetix wrappers functions
  *
- * @package aesthetix
+ * @package Aesthetix
+ * @since 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -22,8 +23,9 @@ if ( ! function_exists( 'aesthetix_body_classes' ) ) {
 	function aesthetix_body_classes( $classes ) {
 
 		// Adds a class of no-sidebar when there is no sidebar present.
-		if ( ! get_aesthetix_options( 'sidebar_left_display' ) && ! get_aesthetix_options( 'sidebar_right_display' ) ) {
-			$classes[] = 'no-sidebar';
+		$sidebar = apply_filters( 'get_aesthetix_sidebar', 'sidebar' );
+		if ( is_active_sidebar( $sidebar ) ) {
+			$classes[] = 'has-sidebar';
 		}
 
 		// Check if the site is being viewed from a mobile device.
@@ -196,10 +198,9 @@ if ( ! function_exists( 'get_aesthetix_content_area_classes' ) ) {
 		$classes[] = 'order-1';
 		$classes[] = 'col-sm-12';
 
-		if ( get_aesthetix_options( 'sidebar_left_display' ) && get_aesthetix_options( 'sidebar_right_display' ) ) {
-			$classes[] = 'col-lg-6';
-			$classes[] = 'order-lg-2';
-		} elseif ( get_aesthetix_options( 'sidebar_left_display' ) || get_aesthetix_options( 'sidebar_right_display' ) ) {
+		$sidebar = apply_filters( 'get_aesthetix_sidebar', 'sidebar' );
+
+		if ( is_active_sidebar( $sidebar ) ) {
 			$classes[] = 'col-lg-8';
 			$classes[] = 'order-lg-2';
 			$classes[] = 'col-xl-9';
@@ -270,13 +271,8 @@ if ( ! function_exists( 'get_aesthetix_widget_area_classes' ) ) {
 
 		$classes[] = 'col-12';
 		$classes[] = 'col-sm-12';
-
-		if ( get_aesthetix_options( 'sidebar_left_display' ) && get_aesthetix_options( 'sidebar_right_display' ) ) {
-			$classes[] = 'col-lg-3';
-		} else {
-			$classes[] = 'col-lg-4';
-			$classes[] = 'col-xl-3';
-		}
+		$classes[] = 'col-lg-4';
+		$classes[] = 'col-xl-3';
 
 		$classes[] = 'widget-area';
 

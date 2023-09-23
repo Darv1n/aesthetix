@@ -1,12 +1,11 @@
 <?php
 /**
- * WooCommerce wrappers
+ * WooCommerce wrappers.
  *
  * @link https://woocommerce.com/
- * @link https://docs.woocommerce.com/document/third-party-custom-theme-compatibility/
- * @link https://github.com/woocommerce/woocommerce/wiki/Enabling-product-gallery-features-(zoom,-swipe,-lightbox)-in-3.0.0
  *
- * @package aesthetix
+ * @package Aesthetix
+ * @since 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -20,5 +19,5 @@ function add_custom_class_to_add_to_cart_button( $classes, $product ) {
 
     return $classes;
 }
-add_filter( 'woocommerce_product_single_add_to_cart_class', 'add_custom_class_to_add_to_cart_button', 10, 2 );
+// add_filter( 'woocommerce_product_single_add_to_cart_class', 'add_custom_class_to_add_to_cart_button', 10, 2 );
 

@@ -4,14 +4,11 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package aesthetix
+ * @package Aesthetix
+ * @since 1.0.0
  */
 
-get_header();
-
-if ( get_aesthetix_options( 'sidebar_left_display' ) ) {
-	get_sidebar();
-} ?>
+get_header(); ?>
 
 <main id="primary" <?php aesthetix_content_area_classes(); ?> role="main">
 
@@ -72,10 +69,5 @@ if ( get_aesthetix_options( 'sidebar_left_display' ) ) {
 
 <?php
 
-if ( get_aesthetix_options( 'sidebar_left_display' ) && get_aesthetix_options( 'sidebar_right_display' ) ) {
-	get_sidebar( 'right' );
-} elseif ( get_aesthetix_options( 'sidebar_right_display' ) ) {
-	get_sidebar();
-}
-
+get_sidebar();
 get_footer();

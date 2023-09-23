@@ -4,11 +4,9 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package aesthetix
+ * @package Aesthetix
+ * @since 1.0.0
  */
- ?>
-
-<?php
 
 // Check if the image is set in the customizer settings or display the text.
 if ( has_custom_logo() ) {

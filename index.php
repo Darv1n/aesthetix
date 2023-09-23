@@ -9,74 +9,66 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package aesthetix
+ * @package Aesthetix
+ * @since 1.0.0
  */
 
-get_header();
+get_header(); ?>
 
-if ( get_aesthetix_options( 'sidebar_left_display' ) ) {
-	get_sidebar();
-} ?>
+<main id="primary" <?php aesthetix_content_area_classes(); ?> role="main">
 
-	<main id="primary" <?php aesthetix_content_area_classes(); ?> role="main">
+	<?php do_action( 'aesthetix_before_index_page' ); ?>
 
-		<?php do_action( 'aesthetix_before_index_page' ); ?>
+	<?php if ( have_posts() ) : ?>
+		<?php $i = 0; ?>
 
-		<?php if ( have_posts() ) : ?>
-			<?php $i = 0; ?>
+		<?php if ( is_home() && ! is_front_page() ) { ?>
+			<header class="content-area-header" aria-label="<?php _e( 'Archive page header', 'aesthetix' ); ?>">
+				<h1 class="content-area-title"><?php single_post_title(); ?></h1>
+			</header>
+		<?php } ?>
 
-			<?php if ( is_home() && ! is_front_page() ) { ?>
-				<header class="content-area-header" aria-label="<?php _e( 'Archive page header', 'aesthetix' ); ?>">
-					<h1 class="content-area-title"><?php single_post_title(); ?></h1>
-				</header>
-			<?php } ?>
+		<section class="content-area-content" aria-label="<?php _e( 'Archive page content', 'aesthetix' ); ?>">
+			<div <?php aesthetix_archive_page_columns_wrapper_classes(); ?>>
 
-			<section class="content-area-content" aria-label="<?php _e( 'Archive page content', 'aesthetix' ); ?>">
-				<div <?php aesthetix_archive_page_columns_wrapper_classes(); ?>>
+				<?php while ( have_posts() ) : ?>
+					<?php the_post(); ?>
 
-					<?php while ( have_posts() ) : ?>
-						<?php the_post(); ?>
+					<div <?php aesthetix_archive_page_columns_classes( $i ); ?>>
 
-						<div <?php aesthetix_archive_page_columns_classes( $i ); ?>>
+						<?php
+							// Get a template with a post type, if there is one in the theme.
+							if ( file_exists( get_theme_file_path( 'templates/archive/archive-content-type-' . get_post_type() . '.php' ) ) ) {
+								get_template_part( 'templates/archive/archive-content-type', get_post_type(), array( 'counter' => $i ) );
+							} elseif ( get_aesthetix_options( 'archive_' . get_post_type() . '_template_type' ) ) {
+								get_template_part( 'templates/archive/archive-content-type', get_aesthetix_options( 'archive_' . get_post_type() . '_template_type' ), array( 'counter' => $i ) );
+							} else {
+								get_template_part( 'templates/archive/archive-content-type', 'tils', array( 'counter' => $i ) );
+							}
+						?>
 
-							<?php
-								// Get a template with a post type, if there is one in the theme.
-								if ( file_exists( get_theme_file_path( 'templates/archive/archive-content-type-' . get_post_type() . '.php' ) ) ) {
-									get_template_part( 'templates/archive/archive-content-type', get_post_type(), array( 'counter' => $i ) );
-								} elseif ( get_aesthetix_options( 'archive_' . get_post_type() . '_template_type' ) ) {
-									get_template_part( 'templates/archive/archive-content-type', get_aesthetix_options( 'archive_' . get_post_type() . '_template_type' ), array( 'counter' => $i ) );
-								} else {
-									get_template_part( 'templates/archive/archive-content-type', 'tils', array( 'counter' => $i ) );
-								}
-							?>
+					</div>
 
-						</div>
+				<?php endwhile; ?>
 
-					<?php endwhile; ?>
+			</div>
+		</section>
 
-				</div>
-			</section>
+		<footer class="content-area-footer" aria-label="<?php _e( 'Archive page footer', 'aesthetix' ); ?>">
+			<?php get_template_part( 'templates/archive/archive', 'pagination' ); ?>
+		</footer>
 
-			<footer class="content-area-footer" aria-label="<?php _e( 'Archive page footer', 'aesthetix' ); ?>">
-				<?php get_template_part( 'templates/archive/archive', 'pagination' ); ?>
-			</footer>
+	<?php else : ?>
 
-		<?php else : ?>
+		<?php get_template_part( 'templates/archive/archive-content', 'none' ); ?>
 
-			<?php get_template_part( 'templates/archive/archive-content', 'none' ); ?>
+	<?php endif; ?>
 
-		<?php endif; ?>
+	<?php do_action( 'aesthetix_after_index_page' ); ?>
 
-		<?php do_action( 'aesthetix_after_index_page' ); ?>
-
-	</main>
+</main>
 
 <?php
 
-if ( get_aesthetix_options( 'sidebar_left_display' ) && get_aesthetix_options( 'sidebar_right_display' ) ) {
-	get_sidebar( 'right' );
-} elseif ( get_aesthetix_options( 'sidebar_right_display' ) ) {
-	get_sidebar();
-}
-
+get_sidebar();
 get_footer();

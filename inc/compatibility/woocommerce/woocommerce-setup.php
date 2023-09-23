@@ -1,35 +1,38 @@
 <?php
 /**
- * WooCommerce setup
+ * WooCommerce setup.
  *
  * @link https://woocommerce.com/
  * @link https://docs.woocommerce.com/document/third-party-custom-theme-compatibility/
  * @link https://github.com/woocommerce/woocommerce/wiki/Enabling-product-gallery-features-(zoom,-swipe,-lightbox)-in-3.0.0
  *
- * @package aesthetix
+ * @package Aesthetix
+ * @since 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! function_exists( 'aesthetix_woocommerce_setup' ) ) {
+if ( ! function_exists( 'aesthetix_woo_setup' ) ) {
 
 	/**
 	 * WooCommerce setup function.
 	 *
 	 * @return void
+	 * 
+	 * @since 1.0.0
 	 */
-	function aesthetix_woocommerce_setup() {
+	function aesthetix_woo_setup() {
 
 		add_theme_support( 'woocommerce', array(
 			'product_grid' => array(
-				// 'default_rows'    => numberofrows,
-				// 'min_rows'        => numberofrows,
-				// 'max_rows'        => numberofrows,
-				// 'default_columns' => numberofcolumns,
-				'min_columns' => 2,
-				'max_columns' => 6,
+				'default_rows'    => 3,
+				'min_rows'        => 2,
+				'max_rows'        => 8,
+				'default_columns' => 4,
+				'min_columns'     => 2,
+				'max_columns'     => 5,
 			),
 		) );
 
@@ -49,9 +52,9 @@ if ( ! function_exists( 'aesthetix_woocommerce_setup' ) ) {
 		// add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 	}
 }
-add_action( 'after_setup_theme', 'aesthetix_woocommerce_setup' );
+add_action( 'after_setup_theme', 'aesthetix_woo_setup' );
 
-if ( ! function_exists( 'aesthetix_woocommerce_enqueue_styles' ) ) {
+if ( ! function_exists( 'aesthetix_woo_enqueue_styles' ) ) {
 
 	/**
 	 * Function for 'woocommerce_enqueue_styles' filter-hook.
@@ -59,8 +62,10 @@ if ( ! function_exists( 'aesthetix_woocommerce_enqueue_styles' ) ) {
 	 * @param array $array List of default WooCommerce styles.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
-	function aesthetix_woocommerce_enqueue_styles( $styles ){
+	function aesthetix_woo_enqueue_styles( $styles ) {
 
 		$styles = array(
 			'woocommerce-layout'      => array(
@@ -89,16 +94,18 @@ if ( ! function_exists( 'aesthetix_woocommerce_enqueue_styles' ) ) {
 		return $styles;
 	}
 }
-add_filter( 'woocommerce_enqueue_styles', 'aesthetix_woocommerce_enqueue_styles' );
+add_filter( 'woocommerce_enqueue_styles', 'aesthetix_woo_enqueue_styles' );
 
-if ( ! function_exists( 'aesthetix_woocommerce_scripts' ) ) {
+if ( ! function_exists( 'aesthetix_woo_scripts' ) ) {
 
 	/**
 	 * WooCommerce specific scripts & stylesheets.
 	 *
 	 * @return void
+	 * 
+	 * @since 1.0.0
 	 */
-	function aesthetix_woocommerce_scripts() {
+	function aesthetix_woo_scripts() {
 
 		// wp_enqueue_style( 'woocommerce', get_theme_file_uri( '/assets/css/woocommerce.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/woocommerce.min.css' ) ) );
 
@@ -142,58 +149,98 @@ if ( ! function_exists( 'aesthetix_woocommerce_scripts' ) ) {
 
 	}
 }
-add_action( 'wp_enqueue_scripts', 'aesthetix_woocommerce_scripts' );
+add_action( 'wp_enqueue_scripts', 'aesthetix_woo_scripts' );
 
-if ( ! function_exists( 'aesthetix_woocommerce_active_body_class' ) ) {
+if ( ! function_exists( 'aesthetix_woo_widgets_init' ) ) {
 
 	/**
-	 * Add 'woocommerce-active' class to the body tag.
+	 * Register widget area.
 	 *
-	 * @param  array $classes CSS classes applied to the body tag.
-	 * @return array $classes modified to include 'woocommerce-active' class.
+	 * @return void
+	 * 
+	 * @since 1.0.0
 	 */
-	function aesthetix_woocommerce_active_body_class( $classes ) {
-		$classes[] = 'woocommerce-active';
-
-		return $classes;
+	function aesthetix_woo_widgets_init() {
+		register_sidebar(
+			apply_filters(
+				'aesthetix_woo_sidebar_shop_init',
+				array(
+					'name'          => esc_html__( 'WooCommerce Sidebar', 'aesthetix' ),
+					'id'            => 'shop-sidebar',
+					'description'   => __( 'This sidebar will be used on Product archive, Cart, Checkout and My Account pages', 'aesthetix' ),
+					'before_widget' => '<div id="%1$s" class="widget %2$s">',
+					'after_widget'  => '</div>',
+					'before_title'  => '<h2 class="widget-title">',
+					'after_title'   => '</h2>',
+				)
+			)
+		);
+		register_sidebar(
+			apply_filters(
+				'aesthetix_woo_sidebar_single_product_init',
+				array(
+					'name'          => esc_html__( 'Product Sidebar', 'aesthetix' ),
+					'id'            => 'single-product-sidebar',
+					'description'   => __( 'This sidebar will be used on Single Product page', 'aesthetix' ),
+					'before_widget' => '<div id="%1$s" class="widget %2$s">',
+					'after_widget'  => '</div>',
+					'before_title'  => '<h2 class="widget-title">',
+					'after_title'   => '</h2>',
+				)
+			)
+		);
 	}
 }
-add_filter( 'body_class', 'aesthetix_woocommerce_active_body_class' );
+add_action( 'widgets_init', 'aesthetix_woo_widgets_init' );
 
-if ( ! function_exists( 'aesthetix_woocommerce_products_per_page' ) ) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if ( ! function_exists( 'aesthetix_woo_products_per_page' ) ) {
 
 	/**
 	 * Products per page.
 	 *
 	 * @return int.
 	 */
-	function aesthetix_woocommerce_products_per_page() {
+	function aesthetix_woo_products_per_page() {
 		return 12;
 	}
 }
-// add_filter( 'loop_shop_per_page', 'aesthetix_woocommerce_products_per_page' );
+// add_filter( 'loop_shop_per_page', 'aesthetix_woo_products_per_page' );
 
-if ( ! function_exists( 'aesthetix_woocommerce_thumbnail_columns' ) ) {
-
-	/**
-	 * Product gallery thumnbail columns.
-	 *
-	 * @return int.
-	 */
-	function aesthetix_woocommerce_thumbnail_columns() {
-		return 4;
-	}
-}
-add_filter( 'woocommerce_product_thumbnails_columns', 'aesthetix_woocommerce_thumbnail_columns' );
-
-if ( ! function_exists( 'aesthetix_woocommerce_loop_columns' ) ) {
+if ( ! function_exists( 'aesthetix_woo_loop_columns' ) ) {
 
 	/**
 	 * Set min and max loop shop columns count.
 	 *
 	 * @return integer products per row.
 	 */
-	function aesthetix_woocommerce_loop_columns( $columns ) {
+	function aesthetix_woo_loop_columns( $columns ) {
 
 		return 4;
 
@@ -206,21 +253,24 @@ if ( ! function_exists( 'aesthetix_woocommerce_loop_columns' ) ) {
 		return $columns;
 	}
 }
-add_filter( 'loop_shop_columns', 'aesthetix_woocommerce_loop_columns' );
+// add_filter( 'loop_shop_columns', 'aesthetix_woo_loop_columns' );
 
-if ( ! function_exists( 'filter_get_aesthetix_customizer_post_types' ) ) {
-	function filter_get_aesthetix_customizer_post_types( $post_types ) {
+if ( ! function_exists( 'aesthetix_woo_thumbnail_columns' ) ) {
 
-		if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
-			unset( $post_types[ array_search( 'product', $post_types ) ] );
-		}
-
-		return $post_types;
+	/**
+	 * Product gallery thumnbail columns.
+	 *
+	 * @return int.
+	 */
+	function aesthetix_woo_thumbnail_columns() {
+		return 4;
 	}
 }
-add_filter( 'get_aesthetix_customizer_post_types', 'filter_get_aesthetix_customizer_post_types' );
+// add_filter( 'woocommerce_product_thumbnails_columns', 'aesthetix_woo_thumbnail_columns' );
 
-if ( ! function_exists( 'aesthetix_woocommerce_related_products_args' ) ) {
+
+
+if ( ! function_exists( 'aesthetix_woo_related_products_args' ) ) {
 
 	/**
 	 * Related Products Args.
@@ -229,7 +279,7 @@ if ( ! function_exists( 'aesthetix_woocommerce_related_products_args' ) ) {
 	 *
 	 * @return array.
 	 */
-	function aesthetix_woocommerce_related_products_args( $args ) {
+	function aesthetix_woo_related_products_args( $args ) {
 		$defaults = array(
 			'posts_per_page' => 3,
 			'columns'        => 3,
@@ -240,65 +290,33 @@ if ( ! function_exists( 'aesthetix_woocommerce_related_products_args' ) ) {
 		return $args;
 	}
 }
-// add_filter( 'woocommerce_output_related_products_args', 'aesthetix_woocommerce_related_products_args' );
+add_filter( 'woocommerce_output_related_products_args', 'aesthetix_woo_related_products_args' );
 
-if ( ! function_exists( 'aesthetix_woocommerce_product_columns_wrapper' ) ) {
+if ( ! function_exists( 'aesthetix_woo_product_columns_wrapper' ) ) {
 
 	/**
 	 * Product columns wrapper.
 	 *
 	 * @return void
 	 */
-	function aesthetix_woocommerce_product_columns_wrapper() {
-		echo '<div class="columns-' . absint( aesthetix_woocommerce_loop_columns() ) . '">';
+	function aesthetix_woo_product_columns_wrapper() {
+		echo '<div class="columns-' . absint( aesthetix_woo_loop_columns() ) . '">';
 	}
 }
-// add_action( 'woocommerce_before_shop_loop', 'aesthetix_woocommerce_product_columns_wrapper', 40 );
+// add_action( 'woocommerce_before_shop_loop', 'aesthetix_woo_product_columns_wrapper', 40 );
 
-if ( ! function_exists( 'aesthetix_woocommerce_product_columns_wrapper_close' ) ) {
+if ( ! function_exists( 'aesthetix_woo_product_columns_wrapper_close' ) ) {
 
 	/**
 	 * Product columns wrapper close.
 	 *
 	 * @return  void
 	 */
-	function aesthetix_woocommerce_product_columns_wrapper_close() {
+	function aesthetix_woo_product_columns_wrapper_close() {
 		echo '</div>';
 	}
 }
-// add_action( 'woocommerce_after_shop_loop', 'aesthetix_woocommerce_product_columns_wrapper_close', 40 );
-
-/**
- * Remove default WooCommerce wrapper.
- */
-remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10 );
-remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
-
-if ( ! function_exists( 'aesthetix_woocommerce_wrapper_before' ) ) {
-
-	/**
-	 * Wraps all WooCommerce content in wrappers which match the theme markup.
-	 *
-	 * @return  void
-	 */
-	function aesthetix_woocommerce_wrapper_before() { ?>
-		<main id="primary" <?php aesthetix_content_area_classes(); ?> role="main">
-	<?php }
-}
-add_action( 'woocommerce_before_main_content', 'aesthetix_woocommerce_wrapper_before' );
-
-if ( ! function_exists( 'aesthetix_woocommerce_wrapper_after' ) ) {
-
-	/**
-	 * Closes the wrapping divs.
-	 *
-	 * @return  void
-	 */
-	function aesthetix_woocommerce_wrapper_after() { ?>
-		</main><!-- #main -->
-	<?php }
-}
-add_action( 'woocommerce_after_main_content', 'aesthetix_woocommerce_wrapper_after' );
+// add_action( 'woocommerce_after_shop_loop', 'aesthetix_woo_product_columns_wrapper_close', 40 );
 
 /**
  * Sample implementation of the WooCommerce Mini Cart.
@@ -306,14 +324,13 @@ add_action( 'woocommerce_after_main_content', 'aesthetix_woocommerce_wrapper_aft
  * You can add the WooCommerce Mini Cart to header.php like so ...
  *
 	<?php
-		if ( function_exists( 'aesthetix_woocommerce_header_cart' ) ) {
-			aesthetix_woocommerce_header_cart();
+		if ( function_exists( 'aesthetix_woo_header_cart' ) ) {
+			aesthetix_woo_header_cart();
 		}
 	?>
  */
 
-
-if ( ! function_exists( 'aesthetix_woocommerce_cart_link_fragment' ) ) {
+if ( ! function_exists( 'aesthetix_woo_cart_link_fragment' ) ) {
 	/**
 	 * Cart Fragments. Ensure cart contents update when products are added to the cart via AJAX.
 	 *
@@ -321,32 +338,31 @@ if ( ! function_exists( 'aesthetix_woocommerce_cart_link_fragment' ) ) {
 	 *
 	 * @return array Fragments to refresh via AJAX.
 	 */
-	function aesthetix_woocommerce_cart_link_fragment( $fragments ) {
+	function aesthetix_woo_cart_link_fragment( $fragments ) {
 		ob_start();
-		aesthetix_woocommerce_cart_link();
+		aesthetix_woo_cart_link();
 		$fragments['a.cart-contents'] = ob_get_clean();
 
 		return $fragments;
 	}
 }
-add_filter( 'woocommerce_add_to_cart_fragments', 'aesthetix_woocommerce_cart_link_fragment' );
+add_filter( 'woocommerce_add_to_cart_fragments', 'aesthetix_woo_cart_link_fragment' );
 
-if ( ! function_exists( 'aesthetix_woocommerce_cart_link' ) ) {
+if ( ! function_exists( 'aesthetix_woo_cart_link' ) ) {
 
 	/**
 	 * Cart Link. Displayed a link to the cart including the number of items present and the cart total.
 	 *
 	 * @return void
 	 */
-	function aesthetix_woocommerce_cart_link() {
-		?>
+	function aesthetix_woo_cart_link() { ?>
 		<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'aesthetix' ); ?>">
 			<?php
-			$item_count_text = sprintf(
-				/* translators: number of items in the mini cart. */
-				_n( '%d item', '%d items', WC()->cart->get_cart_contents_count(), 'aesthetix' ),
-				WC()->cart->get_cart_contents_count()
-			);
+				$item_count_text = sprintf(
+					/* translators: number of items in the mini cart. */
+					_n( '%d item', '%d items', WC()->cart->get_cart_contents_count(), 'aesthetix' ),
+					WC()->cart->get_cart_contents_count()
+				);
 			?>
 			<span class="amount"><?php echo wp_kses_data( WC()->cart->get_cart_subtotal() ); ?></span> <span class="count"><?php echo esc_html( $item_count_text ); ?></span>
 		</a>
@@ -354,31 +370,31 @@ if ( ! function_exists( 'aesthetix_woocommerce_cart_link' ) ) {
 	}
 }
 
-if ( ! function_exists( 'aesthetix_woocommerce_header_cart' ) ) {
+if ( ! function_exists( 'aesthetix_woo_header_cart' ) ) {
 
 	/**
 	 * Display Header Cart.
 	 *
 	 * @return void
 	 */
-	function aesthetix_woocommerce_header_cart() {
+	function aesthetix_woo_header_cart() {
 		if ( is_cart() ) {
 			$class = 'current-menu-item';
 		} else {
 			$class = '';
-		}
-		?>
+		} ?>
+
 		<ul id="site-header-cart" class="site-header-cart">
 			<li class="<?php echo esc_attr( $class ); ?>">
-				<?php aesthetix_woocommerce_cart_link(); ?>
+				<?php aesthetix_woo_cart_link(); ?>
 			</li>
 			<li>
 				<?php
-				$instance = array(
-					'title' => '',
-				);
+					$instance = array(
+						'title' => '',
+					);
 
-				the_widget( 'WC_Widget_Cart', $instance );
+					the_widget( 'WC_Widget_Cart', $instance );
 				?>
 			</li>
 		</ul>

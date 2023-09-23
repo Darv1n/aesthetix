@@ -294,21 +294,19 @@ input[type="submit"]
 		border: $button-bd-width solid darken( #4FCE5D, 10% )
 
 .search-form
-	position: relative
+	display: flex
 	max-width: 480px
-	input[type="search"]
-		padding-right: 90px
+	> *
+		margin-bottom: 0 !important
+	.search-field
+		flex: auto
 		width: 100%
-		margin-bottom: 0
-	&__label
-		margin-bottom: 0
-	&__submit
-		position: absolute
-		top: 0
-		right: 0
-		z-index: 2
-		height: 100% !important
-		width: 90px !important
+		border-top-right-radius: 0
+		border-bottom-right-radius: 0
+		border-right-width: 0
+	.search-submit
+		border-top-left-radius: 0
+		border-bottom-left-radius: 0
 
 .button-reset
 	padding: 0
