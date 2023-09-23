@@ -109,7 +109,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 			if ( $post_type_object->has_archive || ! empty( $object_taxonomies ) ) {
 				$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
-					'archive_' . $post_type . '_structure'          => 'thumbnail,taxonomies,meta,title,excerpt,more',
+					'archive_' . $post_type . '_structure'          => 'thumbnail,taxonomies,meta,title,excerpt,author,more',
 					'archive_' . $post_type . '_meta_structure'     => 'date,time,edit',
 					'archive_' . $post_type . '_posts_per_page'     => get_option( 'posts_per_page' ),
 					'archive_' . $post_type . '_posts_order'        => 'desc',

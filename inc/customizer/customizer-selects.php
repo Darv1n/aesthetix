@@ -35,6 +35,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_structure' ) ) {
 			'taxonomies' => __( 'Post Taxonomies', 'aesthetix' ),
 			'meta'       => __( 'Post Meta Data', 'aesthetix' ),
 			'excerpt'    => __( 'Post Excerpt', 'aesthetix' ),
+			'author'     => __( 'Post Author Widget', 'aesthetix' ),
 			'more'       => __( 'Post Read More', 'aesthetix' ),
 		);
 

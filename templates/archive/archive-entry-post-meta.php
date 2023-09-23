@@ -33,7 +33,9 @@
 						<?php break;
 					case 'date': ?>
 						<li class="post-meta__item icon icon_before icon_calendar">
-							<time class="post-date published data-title" datetime="<?php echo get_the_date( 'Y-m-d\TH:i:sP' ); ?>" data-title="<?php _e( 'Publication date', 'aesthetix' ); ?>"><?php echo get_the_date( 'j F, Y' ); ?></time>
+							<time class="post-date published data-title" datetime="<?php echo get_the_date( 'Y-m-d\TH:i:sP' ); ?>" data-title="<?php _e( 'Publication date', 'aesthetix' ); ?>">
+									<?php echo get_the_date( 'j F, Y' ); ?>
+							</time>
 						</li>
 						<?php break;
 					case 'category': ?>

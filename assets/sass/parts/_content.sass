@@ -123,6 +123,9 @@ a.logo
 		&:last-child
 			text-align: right
 
+.avatar
+	border-radius: 50%
+
 .post
 	position: relative
 	display: block
@@ -187,6 +190,16 @@ a.logo
 		&__link
 			font-size: $small-font-size
 			padding: $gutter $gutter*3
+	&-author
+		&-avatar
+			float: left
+			margin-right: $gutter*2
+		&-name
+			// padding-top: $gutter
+		&-date
+			padding-bottom: $gutter
+			font-size: $small-font-size
+			color: $primary-gray-color
 	&.post_single
 		> *
 			&:not(:last-child)

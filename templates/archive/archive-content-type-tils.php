@@ -41,6 +41,9 @@
 					case 'excerpt':
 						get_template_part( 'templates/archive/archive-entry', 'post-content' );
 						break;
+					case 'author':
+						get_template_part( 'templates/archive/archive-entry', 'post-author' );
+						break;
 					case 'more':
 						get_template_part( 'templates/archive/archive-entry', 'post-detail-button' );
 						break;
