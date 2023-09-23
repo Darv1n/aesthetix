@@ -122,6 +122,26 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'six'   => __( 'Six', 'aesthetix' ),
 		);
 
+		$archive_page_slides_count_select = array(
+			'one'   => __( 'One', 'aesthetix' ),
+			'two'   => __( 'Two', 'aesthetix' ),
+			'three' => __( 'Three', 'aesthetix' ),
+			'four'  => __( 'Four', 'aesthetix' ),
+			'five'  => __( 'Five', 'aesthetix' ),
+			'six'   => __( 'Six', 'aesthetix' ),
+			'seven' => __( 'Seven', 'aesthetix' ),
+			'eight' => __( 'Eight', 'aesthetix' ),
+			'nine'  => __( 'Nine', 'aesthetix' ),
+			'Ten'   => __( 'Ten', 'aesthetix' ),
+		);
+
+		$archive_page_slides_to_show_select = array(
+			'one'   => __( 'One', 'aesthetix' ),
+			'two'   => __( 'Two', 'aesthetix' ),
+			'three' => __( 'Three', 'aesthetix' ),
+			'four'  => __( 'Four', 'aesthetix' ),
+		);
+
 		$archive_page_template_type_select = array(
 			'list'    => __( 'List', 'aesthetix' ),
 			'tils'    => __( 'Tils', 'aesthetix' ),
@@ -179,6 +199,15 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'comments_display'                => array( 'checkbox_control', __( 'Comments display', 'aesthetix' ), __( 'Comments block hide/display', 'aesthetix' ) ),
 			'cookie_display'                  => array( 'checkbox_control', __( 'Cookie display', 'aesthetix' ), __( 'Displays a notification about the use of cookies on the site', 'aesthetix' ) ),
 			'external_utm_links'              => array( 'checkbox_control', __( 'External UTM Links', 'aesthetix' ), __( 'Adds utm tags to all external links', 'aesthetix' ) ),
+		);
+
+		$aesthetix_controls['front_page'] = array(
+			'slider_tab_title'            => array( 'tab_title', __( 'Slider', 'aesthetix' ), '' ),
+			'slider_display'              => array( 'checkbox_control', __( 'Slider display', 'aesthetix' ), '' ),
+			'slider_post_type'            => array( 'select_control', __( 'Slider post type', 'aesthetix' ), '', get_post_types( array( 'publicly_queryable' => 1, ) ) ),
+			'slider_slides_count'         => array( 'select_control', __( 'Slides count', 'aesthetix' ), '', $archive_page_slides_count_select ),
+			'slider_slides_to_show'       => array( 'select_control', __( 'Slides to show', 'aesthetix' ), '', $archive_page_slides_to_show_select ),
+			'slider_slides_template_type' => array( 'select_control', __( 'Select template type', 'aesthetix' ), __( 'This field displays template of posts', 'aesthetix' ), $archive_page_template_type_select ),
 		);
 
 		// Sidebar options.

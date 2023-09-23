@@ -59,7 +59,7 @@
 		/**
 		 * Hook: before_site_content.
 		 *
-		 * @hooked aesthetix_first_screen (if need)        - 10
+		 * @hooked aesthetix_first_screen                  - 10
 		 * @hooked aesthetix_breadcrumbs                   - 15
 		 * @hooked aesthetix_section_content_wrapper_start - 50
 		 */

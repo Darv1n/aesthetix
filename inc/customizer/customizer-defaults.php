@@ -59,6 +59,12 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'general_cookie_display'                  => true,
 			'general_external_utm_links'              => true,
 
+			'front_page_slider_display'               => true,
+			'front_page_slider_post_type'             => 'post',
+			'front_page_slider_slides_count'          => 'six',
+			'front_page_slider_slides_to_show'        => 'four',
+			'front_page_slider_slides_template_type'  => 'tils',
+
 			'root_primary_font'                       => 'playfair-display',
 			'root_secondary_font'                     => 'open-sans',
 			'root_color_scheme'                       => 'white',
@@ -147,7 +153,6 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'other_phone'              => '',
 			'other_email'              => '',
 		) );
-
 
 		// Merge child and parent default options.
 		$aesthetix_defaults = apply_filters( 'get_aesthetix_options', $aesthetix_defaults );

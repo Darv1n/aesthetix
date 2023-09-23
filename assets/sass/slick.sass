@@ -36,6 +36,9 @@
 		-o-transform: translate3d(0, 0, 0)
 		transform: translate3d(0, 0, 0)
 
+.slick-slide
+	margin: .5rem
+
 .slick-track
 	position: relative
 	top: 0
@@ -92,15 +95,22 @@
 	margin-bottom: .5rem
 	font-size: 0
 	overflow: hidden
+	border-radius: 50%
 	&:before
-		@include pseudo($top: 50%, $left: 50%, $width: 14px, $height: 14px, $background: url(../img/icons/sets/set-default.svg#arrow-down) center no-repeat)
+		content: ''
+		position: absolute
+		top: 50%
+		left: 50%
+		width: 14px
+		height: 14px
+		background: url( ../img/icons/sets/set-default.svg#arrow-down )
 		filter: invert(100%)
 
 .slick-prev::before
-	transform: translate(-50%, -50%) rotate(90deg)
+	transform: translate( -50%, -50% ) rotate( 90deg )
 	
 .slick-next::before
-	transform: translate(-50%, -50%) rotate(-90deg)
+	transform: translate( -50%, -50% ) rotate(-90deg )
 
 .slick-prev
 	left: -2.5rem
@@ -152,6 +162,7 @@
 		&:hover, &:focus
 			background: $primary-color-500
 			border: 2px solid $primary-color-500
-	.slick-active button
-		background: $primary-color-500
-		border: 2px solid $primary-color-500
+	.slick-active
+		button
+			background: $primary-color-500
+			border: 2px solid $primary-color-500

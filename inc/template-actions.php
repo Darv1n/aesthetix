@@ -57,10 +57,132 @@ if ( ! function_exists( 'aesthetix_pre_get_posts' ) ) {
 }
 add_action( 'pre_get_posts', 'aesthetix_pre_get_posts', 1 );
 
+if ( ! function_exists( 'aesthetix_first_screen' ) ) {
+
+	/**
+	 * Display first screen on action hook before_site_content.
+	 * 
+	 * @since 1.1.0
+	 */
+	function aesthetix_first_screen( $before = '', $after  = '' ) {
+
+		if ( is_front_page() || is_home() && get_aesthetix_options( 'front_page_slider_display' ) ) {
+
+			$output    = '';
+			$i         = 0;
+			$post_type = get_aesthetix_options( 'front_page_slider_post_type' );
+
+			$args = array(
+				'posts_per_page' => (int) get_aesthetix_count_columns( get_aesthetix_options( 'front_page_slider_slides_count' ) ),
+				'post_type'      => $post_type,
+			);
+
+			$query = new WP_Query( $args );
+
+			if ( $query->have_posts() ) { ?>
+
+				<section id="first-screen" class="section section_fisrt-screen">
+					<div <?php aesthetix_container_classes(); ?>>
+						<div class="slick-slider">
+
+						<?php while ( $query->have_posts() ) {
+							$query->the_post(); ?>
+
+							<div class="slick-item">
+
+								<?php
+									// Get a template with a post type, if there is one in the theme.
+									if ( file_exists( get_theme_file_path( 'templates/archive/archive-content-type-' . $post_type . '.php' ) ) ) {
+										get_template_part( 'templates/archive/archive-content-type', $post_type, array( 'counter' => $i ) );
+									} else if ( get_aesthetix_options( 'front_page_slider_slides_template_type' ) ) {
+										get_template_part( 'templates/archive/archive-content-type', get_aesthetix_options( 'front_page_slider_slides_template_type' ), array( 'counter' => $i ) );
+									} else {
+										get_template_part( 'templates/archive/archive-content-type', 'tils', array( 'counter' => $i ) );
+									}
+								?>
+
+							</div>
+
+							<?php $i++;
+						} ?>
+
+						</div>
+					</div>
+				</section>
+
+				<?php
+			}
+
+			wp_enqueue_style( 'slick-styles' );
+			wp_enqueue_script( 'slick-scripts' );
+
+			$breakpoints = array( 1200, 992, 768, 576 );
+			$slick_args  = array(
+				'arrows'         => true,
+				'dots'           => false,
+				'infinite'       => true,
+				'speed'          => 300,
+				'slidesToShow'   => 4,
+				'slidesToScroll' => 1,
+				'adaptiveHeight' => true,
+			);
+
+			$slides_to_show = (int) get_aesthetix_count_columns( get_aesthetix_options( 'front_page_slider_slides_to_show' ) ); 
+
+			foreach ( $breakpoints as $key => $breakpoint ) {
+
+				if ( $breakpoint === 1200 && $slides_to_show > 3 ) {
+					$slick_args['responsive'][ $key ] = array(
+						'breakpoint' => (int) $breakpoint,
+						'settings'   => array(
+							'slidesToShow'   => 4,
+							'slidesToScroll' => 1,
+						),
+					);
+				} else if ( $breakpoint === 992 && $slides_to_show > 2 ) {
+					$slick_args['responsive'][ $key ] = array(
+						'breakpoint' => (int) $breakpoint,
+						'settings'   => array(
+							'arrows' => false,
+						),
+					);
+					if ( $slides_to_show > 2 ) {
+						$slick_args['responsive'][ $key ]['settings']['slidesToShow']   = 3;
+						$slick_args['responsive'][ $key ]['settings']['slidesToScroll'] = 1;
+					}
+				} else if ( $breakpoint === 768 && $slides_to_show > 1 ) {
+					$slick_args['responsive'][ $key ] = array(
+						'breakpoint' => (int) $breakpoint,
+						'settings'   => array(
+							'slidesToShow'   => 2,
+							'slidesToScroll' => 1,
+						),
+					);
+				} else {
+					$slick_args['responsive'][ $key ] = array(
+						'breakpoint' => (int) $breakpoint,
+						'settings'   => array(
+							'slidesToShow'   => 1,
+							'slidesToScroll' => 1,
+						),
+					);
+				}
+			}
+
+			$slick_init = 'jQuery(function($) {
+				$(\'.slick-slider\').slick(' . json_encode( $slick_args, JSON_PRETTY_PRINT ) . ');
+			});';
+
+			wp_add_inline_script( 'slick-scripts', minify_js( $slick_init ) );
+		}
+	}
+}
+add_action( 'before_site_content', 'aesthetix_first_screen', 10 );
+
 if ( ! function_exists( 'aesthetix_breadcrumbs' ) ) {
 
 	/**
-	 * Display breadcrumbs on action hook wp_footer_close.
+	 * Display breadcrumbs on action hook before_site_content.
 	 * 
 	 * @since 1.0.0
 	 */
