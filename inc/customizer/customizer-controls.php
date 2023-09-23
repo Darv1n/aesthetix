@@ -257,6 +257,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			if ( $post_type_object->has_archive || ! empty( $object_taxonomies ) ) {
 				$aesthetix_controls['archive_' . $post_type] = array(
 					'options_title'         => array( 'tab_title', __( 'Main Options', 'aesthetix' ), '' ),
+					'masonry'               => array( 'checkbox_control', __( 'Masonry blog style', 'aesthetix' ), '' ),
 					'columns'               => array( 'select_control', __( 'Select columns of posts', 'aesthetix' ), __( 'Choose how many columns to display posts', 'aesthetix' ), $archive_page_columns_select ),
 					'template_type'         => array( 'select_control', __( 'Select template type', 'aesthetix' ), __( 'This field displays template of posts', 'aesthetix' ), $archive_page_template_type_select ),
 					'posts_per_page'        => array( 'number_control', __( 'Select posts per page', 'aesthetix' ), array( 'step' => '1', 'min' => '1', 'max' => '100' ) ),

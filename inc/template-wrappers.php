@@ -632,6 +632,10 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_wrapper_classes' ) )
 		$classes[] = 'row';
 		$classes[] = 'row-' . get_aesthetix_count_columns( get_aesthetix_options( 'archive_post_columns' ) ) . '-col';
 
+		if ( get_aesthetix_options( 'archive_' . get_post_type() . '_masonry' ) ) {
+			$classes[] = 'masonry-gallery';
+		}
+
 		// Check the function has accepted any classes.
 		if ( isset( $class ) && ! empty( $class ) ) {
 			if ( is_array( $class ) ) {
@@ -728,6 +732,7 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_classes' ) ) {
 
 		$classes   = array();
 		$classes[] = 'col-12';
+		$classes[] = 'post-col';
 
 		if ( ! isset( $columns_count ) || is_null( $columns_count ) || empty( $columns_count ) ) {
 			if ( get_post_type() ) {
@@ -764,9 +769,8 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_classes' ) ) {
 			$classes[] = 'col-lg-4';
 		}
 
-		$classes[] = 'post-col';
-		if ( is_int( $counter ) ) {
-			// $classes[] = 'post-col-' . $counter;
+		if ( get_aesthetix_options( 'archive_' . get_post_type() . '_masonry' ) ) {
+			$classes[] = 'masonry-item';
 		}
 
 		// Check the function has accepted any classes.

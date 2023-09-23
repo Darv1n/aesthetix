@@ -17,7 +17,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 	 *
 	 * @param string $control array key to get one value.
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
 	 * 
 	 * @since 1.0.0
 	 */
@@ -80,7 +80,8 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 		foreach ( get_post_types() as $key => $post_type ) {
 			$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
 				'single_' . $post_type . '_template_type'  => 'one',
-				'archive_' . $post_type . '_columns'       => 'three',
+				'archive_' . $post_type . '_columns'       => 'four',
+				'archive_' . $post_type . '_masonry'       => true,
 				'archive_' . $post_type . '_template_type' => 'tils',
 			) );
 		}

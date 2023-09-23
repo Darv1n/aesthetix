@@ -40,7 +40,7 @@ if ( (int) $pages === 1 ) {
 			if ( 1 !== $pages && ( ! ( $i >= $paged + $range + 1 || $i <= $paged - $range - 1 ) || $pages <= $showitems ) ) {
 
 				if ( $paged === $i ) { ?>
-					<span class="<?php button_classes( 'button-small button-disabled posts-navigation__item posts-navigation__item_current' ); ?>"><?php echo $i; ?></span>
+					<span <?php button_classes( 'button-small button-disabled posts-navigation__item posts-navigation__item_current' ); ?>><?php echo $i; ?></span>
 				<?php } else {
 
 					if ( $paged === $i ) {
@@ -57,7 +57,7 @@ if ( (int) $pages === 1 ) {
 						$classes = 'button-small posts-navigation__item';
 					} ?>
 
-					<a class="<?php button_classes( $classes ); ?>" href="<?php echo esc_url( get_pagenum_link( $i ) ); ?>" role="button"<?php echo $rel; ?>><?php echo $i; ?></a>
+					<a <?php button_classes( $classes ); ?> href="<?php echo esc_url( get_pagenum_link( $i ) ); ?>" role="button"<?php echo $rel; ?>><?php echo $i; ?></a>
 
 				<?php }
 			}
@@ -65,7 +65,7 @@ if ( (int) $pages === 1 ) {
 
 		// Last Page.
 		if ( $pages > 5 && $paged < $pages - 2 ) { ?>
-			<a class="<?php button_classes( 'posts-navigation__item posts-navigation__item_last button-small icon icon_center icon_chevron-right' ); ?>" href="<?php echo esc_url( get_pagenum_link( $pages ) ); ?>" role="button">+1</a>
+			<a <?php button_classes( 'posts-navigation__item posts-navigation__item_last button-small icon icon_center icon_chevron-right' ); ?> href="<?php echo esc_url( get_pagenum_link( $pages ) ); ?>" role="button">+1</a>
 		<?php }
 
 	} else { ?>
