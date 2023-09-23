@@ -20,6 +20,8 @@ if ( ! function_exists( 'aesthetix_pre_get_posts' ) ) {
 	 * @link https://developer.wordpress.org/reference/hooks/pre_get_posts/
 	 *
 	 * @return void
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_pre_get_posts( $query ) {
 
@@ -55,100 +57,12 @@ if ( ! function_exists( 'aesthetix_pre_get_posts' ) ) {
 }
 add_action( 'pre_get_posts', 'aesthetix_pre_get_posts', 1 );
 
-if ( ! function_exists( 'aesthetix_page_speed_start' ) ) {
-
-	/**
-	 * Get start page generation time in a global variable.
-	 */
-	function aesthetix_page_speed_start() {
-		$start_time             = microtime();
-		$start_array            = explode( ' ', $start_time );
-		$GLOBALS['start_times'] = $start_array[1] + $start_array[0]; // Пишем время в глобальную переменную.
-	}
-}
-add_action( 'wp_head', 'aesthetix_page_speed_start', 1 );
-
-if ( ! function_exists( 'aesthetix_page_speed_end' ) ) {
-
-	/**
-	 * Print page generation time in a comment at the bottom of the source code.
-	 */
-	function aesthetix_page_speed_end() {
-		global $start_times; // получаем время из глобальной переменной.
-
-		$end_time  = microtime();
-		$end_array = explode( ' ', $end_time );
-		$end_times = $end_array[1] + $end_array[0];
-		$time      = $end_times - $start_times;
-
-		sprintf( __( 'Page generated in %s seconds', 'aesthetix' ), esc_html( $time ) ); // Печатаем комментарий.
-	}
-}
-add_action( 'wp_footer', 'aesthetix_page_speed_end', 90 );
-
-if ( ! function_exists( 'aesthetix_seo_verification' ) ) {
-
-	/**
-	 * Add verification codes on wp_head hook.
-	 */
-	function aesthetix_seo_verification() {
-
-		if ( get_aesthetix_options( 'other_yandex_verification' ) ) {
-			echo '<meta name="yandex-verification" content="' . esc_html( get_aesthetix_options( 'other_yandex_verification' ) ) . '" />' . "\n";
-		}
-		if ( get_aesthetix_options( 'other_google_verification' ) ) {
-			echo '<meta name="google-site-verification" content="' . esc_html( get_aesthetix_options( 'other_google_verification' ) ) . '" />' . "\n";
-		}
-		if ( get_aesthetix_options( 'other_mailru_verification' ) ) {
-			echo '<meta name="pmail-verification" content="' . esc_html( get_aesthetix_options( 'other_mailru_verification' ) ) . '">' . "\n";
-		}
-	}
-}
-add_action( 'wp_head', 'aesthetix_seo_verification', 1 );
-
-if ( ! function_exists( 'aesthetix_print_counters' ) ) {
-
-	/**
-	 * Print counters.
-	 */
-	function aesthetix_print_counters() {
-
-		if ( get_aesthetix_options( 'other_google_counter' ) ) {
-			echo '<!-- Global site tag (gtag.js) - Google Analytics -->
-					<script async src="https://www.googletagmanager.com/gtag/js?id=' . esc_html( get_aesthetix_options( 'other_google_counter' ) ) . '"></script>
-					<script>
-						window.dataLayer = window.dataLayer || [];
-						function gtag(){dataLayer.push(arguments);}
-						gtag("js", new Date());
-
-						gtag("config", "' . esc_html( get_aesthetix_options( 'other_google_counter' ) ) . '");
-					</script>' . "\n";
-
-		}
-
-		if ( get_aesthetix_options( 'other_yandex_counter' ) ) {
-			echo '<!-- Yandex.Metrika counter -->
-				<script type="text/javascript" >
-					(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-					m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-					(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-					ym(' . esc_html( get_aesthetix_options( 'other_yandex_counter' ) ) . ', "init", {
-						clickmap:true,
-						trackLinks:true,
-						accurateTrackBounce:true
-					});
-				</script>
-				<!-- /Yandex.Metrika counter -->' . "\n";
-		}
-	}
-}
-add_action( 'wp_footer', 'aesthetix_print_counters', 25 );
-
 if ( ! function_exists( 'aesthetix_breadcrumbs' ) ) {
 
 	/**
 	 * Display breadcrumbs on action hook wp_footer_close.
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_breadcrumbs( $before = '', $after  = '' ) {
 
@@ -209,6 +123,8 @@ if ( ! function_exists( 'aesthetix_section_content_wrapper_start' ) ) {
 
 	/**
 	 * Display section content wrapper start in header.php.
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_section_content_wrapper_start() {
 
@@ -228,6 +144,8 @@ if ( ! function_exists( 'aesthetix_section_content_wrapper_end' ) ) {
 
 	/**
 	 * Display section content wrapper end in footer.php.
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_section_content_wrapper_end() {
 

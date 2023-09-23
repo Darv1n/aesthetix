@@ -32,7 +32,7 @@
 					case has_action( 'aesthetix_single_entry_post_footer_loop_' . $value ):
 						do_action( 'aesthetix_single_entry_post_footer_loop_' . $value, $post );
 						break;
-					case 'cats': ?>
+					case 'category': ?>
 						<?php if ( has_category() ) { ?>
 							<div class="post-footer__item post-footer__cats">
 								<strong><?php _e( 'Post categories', 'aesthetix' ) ?>:</strong>
@@ -46,7 +46,7 @@
 							</div>
 						<?php } ?>
 						<?php break;
-					case 'tags': ?>
+					case 'post_tag': ?>
 						<?php if ( has_tag() ) { ?>
 							<div class="post-footer__item post-footer__tags">
 								<strong><?php _e( 'Post tags', 'aesthetix' ); ?>:</strong>

@@ -17,7 +17,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_sections' ) ) {
 	 *
 	 * @param string $control array key to get one value.
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_sections( $control = null ) {
 

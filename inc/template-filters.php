@@ -19,7 +19,9 @@ if ( ! function_exists( 'external_utm_links' ) ) {
 	 *
 	 * @link https://developer.wordpress.org/reference/hooks/the_content/
 	 *
-	 * @return string[]
+	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function external_utm_links( $content ) {
 
@@ -41,6 +43,8 @@ if ( ! function_exists( 'external_utm_links_callback' ) ) {
 	 * @param array $matches Array with link pattern.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function external_utm_links_callback( $matches ) {
 
@@ -74,6 +78,8 @@ if ( ! function_exists( 'aesthetix_privacy_policy_url' ) ) {
 	 * @param int $policy_page_id The ID of privacy policy page.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_privacy_policy_url( $url ) {
 
@@ -100,6 +106,8 @@ if ( ! function_exists( 'aesthetix_robots' ) ) {
 	 * @param array $robots Parameter for filter.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_robots( $robots ) {
 
@@ -131,6 +139,8 @@ if ( ! function_exists( 'aesthetix_robots_txt' ) ) {
 	 * @param bool   $public whether the site is considered 'public'.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_robots_txt( $output, $public ) {
 
@@ -148,9 +158,11 @@ if ( ! function_exists( 'unset_intermediate_image_sizes' ) ) {
 	/**
 	 * Function for 'intermediate_image_sizes' filter-hook.
 	 * 
-	 * @param string[] $default_sizes An array of intermediate image size names.
+	 * @param array $default_sizes An array of intermediate image size names.
 	 *
-	 * @return string[]
+	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function unset_intermediate_image_sizes( $sizes ) {
 
@@ -187,6 +199,8 @@ if ( ! function_exists( 'aesthetix_nav_menu_args' ) ) {
 	 * @param array $args Parameter for filter.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_nav_menu_args( $args = '' ) {
 		if ( $args['container'] === 'div' ) {
@@ -208,6 +222,8 @@ if ( ! function_exists( 'remove_nav_menu_item_id' ) ) {
 	 * @param int      $depth     Depth of menu item. Used for padding.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function remove_nav_menu_item_id( $id, $item, $args ) {
 		return '';
@@ -224,6 +240,8 @@ if ( ! function_exists( 'level_nav_menu_item_class' ) ) {
 	 * @param stdClass $args              An object containing wp_nav_menu() arguments.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function level_nav_menu_item_class( $menu ) {
 		$level = 1;
@@ -247,12 +265,14 @@ if ( ! function_exists( 'remove_nav_menu_item_class' ) ) {
 	/**
 	 * Function for 'nav_menu_css_class' filter-hook.
 	 * 
-	 * @param string[] $classes   Array of the CSS classes that are applied to the menu item's `<li>` element.
+	 * @param array $classes   Array of the CSS classes that are applied to the menu item's `<li>` element.
 	 * @param WP_Post  $menu_item The current menu item object.
 	 * @param stdClass $args      An object of wp_nav_menu() arguments.
 	 * @param int      $depth     Depth of menu item. Used for padding.
 	 *
-	 * @return string[]
+	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function remove_nav_menu_item_class( $classes, $item, $args ) {
 
@@ -275,6 +295,8 @@ if ( ! function_exists( 'aesthetix_search_highlight' ) ) {
 	 * @param string $text is text for highlight.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_search_highlight( $text ) {
 

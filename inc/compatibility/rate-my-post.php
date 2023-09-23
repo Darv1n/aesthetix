@@ -22,6 +22,8 @@ if ( ! function_exists( 'rmp_save_post' ) ) {
 	 * @link https://developer.wordpress.org/reference/hooks/save_post/
 	 *
 	 * @return void
+	 * 
+	 * @since 1.0.0
 	 */
 	function rmp_save_post( $post_id ) {
 
@@ -40,7 +42,9 @@ if ( ! function_exists( 'get_rmp_result_customizer_post_meta_structure' ) ) {
 	 * @param string $control   array key to get one value.
 	 * @param string $post_type current post type
 	 *
-	 * @return string[]
+	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_rmp_result_customizer_post_meta_structure( $converter, $post_type ) {
 
@@ -59,7 +63,9 @@ if ( ! function_exists( 'get_rmp_result_options' ) ) {
 	 *
 	 * @param string $aesthetix_defaults array with default theme options.
 	 *
-	 * @return string[]
+	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_rmp_result_options( $aesthetix_defaults ) {
 
@@ -97,6 +103,8 @@ if ( ! function_exists( 'rmp_result_archive_entry_post_meta_loop' ) ) {
 	 * @link https://developer.wordpress.org/reference/hooks/save_post/
 	 *
 	 * @return void
+	 * 
+	 * @since 1.0.0
 	 */
 	function rmp_result_archive_entry_post_meta_loop( $post ) {  ?>
 
@@ -117,7 +125,9 @@ if ( ! function_exists( 'get_rmp_customizer_single_post_footer_structure' ) ) {
 	 * @param string $control   array key to get one value.
 	 * @param string $post_type current post type
 	 *
-	 * @return string[]
+	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_rmp_customizer_single_post_footer_structure( $converter, $post_type ) {
 
@@ -136,7 +146,9 @@ if ( ! function_exists( 'get_rmp_options' ) ) {
 	 *
 	 * @param string $aesthetix_defaults array with default theme options.
 	 *
-	 * @return string[]
+	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_rmp_options( $aesthetix_defaults ) {
 
@@ -168,6 +180,8 @@ if ( ! function_exists( 'rmp_single_entry_post_footer_loop_rmp' ) ) {
 	 * @link https://developer.wordpress.org/reference/hooks/save_post/
 	 *
 	 * @return void
+	 * 
+	 * @since 1.0.0
 	 */
 	function rmp_single_entry_post_footer_loop_rmp( $post ) {  ?>
 
@@ -179,7 +193,11 @@ add_action( 'aesthetix_single_entry_post_footer_loop_rmp', 'rmp_single_entry_pos
 
 if ( ! function_exists( 'wp_enqueue_rmp_styles' ) ) {
 
-	// Enqueue rmp styles.
+	/**
+	 * Enqueue rmp styles.
+	 * 
+	 * @since 1.0.0
+	 */
 	function wp_enqueue_rmp_styles() {
 
 		$css = '

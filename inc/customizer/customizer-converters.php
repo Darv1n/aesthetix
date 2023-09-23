@@ -18,7 +18,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_borders' ) ) {
 	 *
 	 * @param string $control Key to get one value. Optional. Default null.
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_converter_borders( $control = null ) {
 
@@ -57,7 +59,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_radiuses' ) ) {
 	 *
 	 * @param string $control Key to get one value. Optional. Default null.
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_converter_radiuses( $control = null ) {
 
@@ -99,7 +103,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_paddings' ) ) {
 	 *
 	 * @param string $control Key to get one value. Optional. Default null.
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_converter_paddings( $control = null ) {
 
@@ -139,7 +145,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_shadows' ) ) {
 	 *
 	 * @param string $control Key to get one value. Optional. Default null.
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_converter_shadows( $control = null ) {
 
@@ -180,7 +188,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_button_sizes' ) ) {
 	 *
 	 * @param string $control Key to get one value. Optional. Default null.
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_converter_button_sizes( $control = null ) {
 
@@ -220,7 +230,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_colors' ) ) {
 	 * @param string $control Key to get one value. Optional. Default null.
 	 * @param string $name    If exists return array with this substring (example border). Optional. Default null.
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_converter_colors( $control = null, $name = null ) {
 

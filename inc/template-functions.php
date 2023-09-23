@@ -16,6 +16,8 @@ if ( ! function_exists( 'vardump' ) ) {
 	 * Dump code var.
 	 *
 	 * @param string $var parameter for dumping.
+	 * 
+	 * @since 1.0.0
 	 */
 	function vardump( $var = '' ) {
 		if ( current_user_can( 'manage_options' ) ) {
@@ -34,6 +36,8 @@ if ( ! function_exists( 'array_key_first' ) ) {
 	 * @param array $array array to search for the first key.
 	 *
 	 * @return int
+	 * 
+	 * @since 1.0.0
 	 */
 	function array_key_first( $array = array() ) {
 
@@ -57,6 +61,8 @@ if ( ! function_exists( 'array_key_last' ) ) {
 	 * @param array $array array to search for the last key.
 	 *
 	 * @return int
+	 * 
+	 * @since 1.0.0
 	 */
 	function array_key_last( $array = array() ) {
 
@@ -76,6 +82,8 @@ if ( ! function_exists( 'sanitize_form_field' ) ) {
 	 * @param string $string sanitize and unslash string.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function sanitize_form_field( $string = '' ) {
 		return sanitize_text_field( wp_unslash( $string ) );
@@ -90,6 +98,8 @@ if ( ! function_exists( 'is_int_even' ) ) {
 	 * @param int $var source int.
 	 *
 	 * @return int
+	 * 
+	 * @since 1.0.0
 	 */
 	function is_int_even( $var = 0 ) {
 		return ! ( (int) $var & 1 );
@@ -104,6 +114,8 @@ if ( ! function_exists( 'shuffle_assoc' ) ) {
 	 * @param array $array source array.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function shuffle_assoc( $array = array() ) {
 
@@ -128,6 +140,8 @@ if ( ! function_exists( 'kses_available_tags' ) ) {
 	 * Available tags for wp_kses() function.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function kses_available_tags() {
 
@@ -169,6 +183,8 @@ if ( ! function_exists( 'get_curl_content' ) ) {
 	 * @param string $proxy proxy server.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_curl_content( $url, $proxy = '' ) {
 
@@ -209,6 +225,8 @@ if ( ! function_exists( 'save_remote_file' ) ) {
 	 * @param string $sleep       Delay after receiving a file. Default: 0.1 sec
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function save_remote_file( $file_link = null, $file_name = null, $file_path = null, $sleep = 100000 ) {
 
@@ -267,6 +285,8 @@ if ( ! function_exists( 'get_escape_title' ) ) {
 	 * @param string $string source title.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_escape_title( $string = null ) {
 
@@ -293,6 +313,8 @@ if ( ! function_exists( 'get_title_slug' ) ) {
 	 * @param string $string source title.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_title_slug( $string = null ) {
 
@@ -322,6 +344,8 @@ if ( ! function_exists( 'get_random_date' ) ) {
 	 * @param string $format     format date for output.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_random_date( $start_date, $end_date, $format = 'Y-m-d H:i:s' ) {
 
@@ -342,6 +366,8 @@ if ( ! function_exists( 'get_explode_part' ) ) {
 	 * @param string $separator separator for explode string.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_explode_part( $string = null, $num = 0, $separator = ',' ) {
 
@@ -374,6 +400,8 @@ if ( ! function_exists( 'get_first_value_from_string' ) ) {
 	 * @param string $separator separator for explode string.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_first_value_from_string( $string = null, $separator = ',' ) {
 
@@ -396,6 +424,8 @@ if ( ! function_exists( 'get_last_value_from_string' ) ) {
 	 * @param string $separator separator for explode string.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_last_value_from_string( $string = null, $separator = ',' ) {
 
@@ -418,6 +448,8 @@ if ( ! function_exists( 'get_first_post_img' ) ) {
 	 * @param object $post object for search image.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_first_post_img( $post = null ) {
 
@@ -446,6 +478,8 @@ if ( ! function_exists( 'format_bytes' ) ) {
 	 * @param int $precision number of characters for rounding.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function format_bytes( $bytes, $precision = 2 ) {
 
@@ -471,6 +505,8 @@ if ( ! function_exists( 'str_word_count_utf8' ) ) {
 	 * @param string $string source string.
 	 *
 	 * @return int
+	 * 
+	 * @since 1.0.0
 	 */
 	function str_word_count_utf8( $string ) {
 		$array = preg_split( '/\W+/u', $string, -1, PREG_SPLIT_NO_EMPTY );
@@ -486,6 +522,8 @@ if ( ! function_exists( 'read_time_estimate' ) ) {
 	 * @param string $content source content.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function read_time_estimate( $content = null ) {
 
@@ -525,6 +563,8 @@ if ( ! function_exists( 'mb_ucfirst' ) && extension_loaded( 'mbstring' ) ) {
 	 * @param string $encoding the default encoding is UTF-8.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function mb_ucfirst( $str, $encoding = 'UTF-8' ) {
 		$str = mb_ereg_replace( '^[\ ]+', '', $str );
@@ -541,6 +581,8 @@ if ( ! function_exists( 'RGBtoHEX' ) ) {
 	 * @param string $string source string for converting.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function RGBtoHEX( $string = null ) {
 
@@ -573,43 +615,6 @@ if ( ! function_exists( 'RGBtoHEX' ) ) {
 	}
 }
 
-if ( ! function_exists( 'get_range_number' ) ) {
-
-	/**
-	 * Returns an array with the start number of the range and the end number of the range in which the passed number is located.
-	 *
-	 * @param int   $num  source int.
-	 * @param array $list source array.
-	 *
-	 * @return string
-	 */
-	function get_range_number( $num, $list ) {
-
-		$curent_range_step = array();
-
-		foreach ( $list as $key => $range ) {
-			$options['min_range'] = $list[ $key ];
-			if ( $key + 1 >= count( $list ) ) {
-				$options['max_range'] = PHP_INT_MAX;
-			} else {
-				$options['max_range'] = $list[ $key + 1 ];
-			}
-
-			$check_range = filter_var( $num, FILTER_VALIDATE_INT, array( 'default' => false, 'options' => $options ) );
-
-			if ( ! $check_range ) {
-				$curent_range_step = array( $list[ $key ], $list[ $key + 1 ] );
-			}
-		}
-
-		return $curent_range_step;
-
-		/*// Usage:
-		$range_step = range(0, 100, 5); // получаем массив [0,5,10,15,20,25,....100]
-		$result_range = get_range_number( 95, $range_step );*/
-	}
-}
-
 if ( ! function_exists( 'remove_emoji' ) ) {
 
 	/**
@@ -618,6 +623,8 @@ if ( ! function_exists( 'remove_emoji' ) ) {
 	 * @param string $string source string.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function remove_emoji( $string = null ) {
 

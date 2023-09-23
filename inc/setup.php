@@ -16,6 +16,8 @@ if ( ! function_exists( 'aesthetix_setup' ) ) {
 	 * Default theme setup on after_setup_theme hook.
 	 *
 	 * @return void
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_setup() {
 
@@ -144,6 +146,8 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 	 * Enqueue scripts and styles.
 	 *
 	 * @return void
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_enqueue_scripts() {
 
@@ -249,6 +253,8 @@ if ( ! function_exists( 'aesthetix_widgets_init' ) ) {
 	 * Register widget area.
 	 *
 	 * @return void
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_widgets_init() {
 

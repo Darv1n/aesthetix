@@ -10,7 +10,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-add_filter( 'body_class', 'aesthetix_body_classes', 10 );
 if ( ! function_exists( 'aesthetix_body_classes' ) ) {
 
 	/**
@@ -19,6 +18,8 @@ if ( ! function_exists( 'aesthetix_body_classes' ) ) {
 	 * @param string $classes body classes.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_body_classes( $classes ) {
 
@@ -51,8 +52,8 @@ if ( ! function_exists( 'aesthetix_body_classes' ) ) {
 		return $classes;
 	}
 }
+add_filter( 'body_class', 'aesthetix_body_classes', 10 );
 
-add_filter( 'post_class', 'aesthetix_post_classes', 10 );
 if ( ! function_exists( 'aesthetix_post_classes' ) ) {
 
 	/**
@@ -61,6 +62,8 @@ if ( ! function_exists( 'aesthetix_post_classes' ) ) {
 	 * @param string $classes post classes.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_post_classes( $classes ) {
 
@@ -125,6 +128,7 @@ if ( ! function_exists( 'aesthetix_post_classes' ) ) {
 		return $classes;
 	}
 }
+add_filter( 'post_class', 'aesthetix_post_classes', 10 );
 
 if ( ! function_exists( 'get_aesthetix_container_classes' ) ) {
 
@@ -134,6 +138,8 @@ if ( ! function_exists( 'get_aesthetix_container_classes' ) ) {
 	 * @param string $class Additional container classes.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_container_classes( $class = '' ) {
 
@@ -167,6 +173,8 @@ if ( ! function_exists( 'aesthetix_container_classes' ) ) {
 	 * @param bool   $echo  Echo or return container classes.
 	 *
 	 * @return string|void
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_container_classes( $class = '', $echo = true ) {
 
@@ -188,6 +196,8 @@ if ( ! function_exists( 'get_aesthetix_content_area_classes' ) ) {
 	 * @param string $class Additional content area classes.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_content_area_classes( $class = '' ) {
 
@@ -242,6 +252,8 @@ if ( ! function_exists( 'aesthetix_content_area_classes' ) ) {
 	 * @param bool   $echo  Echo or return content area classes.
 	 *
 	 * @return string|void
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_content_area_classes( $class = '', $echo = true ) {
 
@@ -263,6 +275,8 @@ if ( ! function_exists( 'get_aesthetix_widget_area_classes' ) ) {
 	 * @param string $class Additional widget area classes.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_widget_area_classes( $class = '' ) {
 
@@ -301,6 +315,8 @@ if ( ! function_exists( 'aesthetix_widget_area_classes' ) ) {
 	 * @param bool   $echo  Echo or return widget area classes.
 	 *
 	 * @return string|void
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_widget_area_classes( $class = '', $echo = true ) {
 
@@ -322,6 +338,8 @@ if ( ! function_exists( 'get_aesthetix_header_classes' ) ) {
 	 * @param string $class Additional header classes.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_header_classes( $class = '' ) {
 
@@ -376,6 +394,8 @@ if ( ! function_exists( 'aesthetix_header_classes' ) ) {
 	 * @param bool   $echo  Echo or return header classes.
 	 *
 	 * @return string|void
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_header_classes( $class = '', $echo = true ) {
 
@@ -397,6 +417,8 @@ if ( ! function_exists( 'get_aesthetix_footer_classes' ) ) {
 	 * @param string $class Additional footer classes.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_footer_classes( $class = '' ) {
 
@@ -441,6 +463,8 @@ if ( ! function_exists( 'aesthetix_footer_classes' ) ) {
 	 * @param bool   $echo  Echo or return footer classes.
 	 *
 	 * @return string|void
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_footer_classes( $class = '', $echo = true ) {
 
@@ -462,6 +486,8 @@ if ( ! function_exists( 'get_aesthetix_main_menu_classes' ) ) {
 	 * @param string $class Additional main menu classes.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_main_menu_classes( $class = '' ) {
 
@@ -508,6 +534,8 @@ if ( ! function_exists( 'aesthetix_main_menu_classes' ) ) {
 	 * @param bool   $echo  Echo or return main menu classes.
 	 *
 	 * @return string|void
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_main_menu_classes( $class = '', $echo = true ) {
 
@@ -529,6 +557,8 @@ if ( ! function_exists( 'get_aesthetix_meta_display_classes' ) ) {
 	 * @param string $class Additional meta display classes.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_meta_display_classes( $class = '' ) {
 
@@ -566,10 +596,12 @@ if ( ! function_exists( 'aesthetix_meta_display_classes' ) ) {
 	 * Display classes for meta display single template TWO.
 	 *
 	 * @param array  $args   Array with params for function:
-	 *        string $class Additional meta display classes.
-	 *        bool   $echo  Echo or return meta display classes.
+	 * @param string $class Additional meta display classes.
+	 * @param bool   $echo  Echo or return meta display classes.
 	 *
 	 * @return string|void
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_meta_display_classes( $class = '', $echo = true ) {
 
@@ -591,6 +623,8 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_wrapper_classes' ) )
 	 * @param string $class Additional archive page columns wrapper classes.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_archive_page_columns_wrapper_classes( $class = '' ) {
 
@@ -623,6 +657,8 @@ if ( ! function_exists( 'aesthetix_archive_page_columns_wrapper_classes' ) ) {
 	 * @param bool   $echo  Echo or return archive page columns wrapper classes.
 	 *
 	 * @return string|void
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_archive_page_columns_wrapper_classes( $class = '', $echo = true ) {
 
@@ -645,6 +681,8 @@ if ( ! function_exists( 'get_aesthetix_count_columns' ) ) {
 	 * @param bool   $int     Need return int or not.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_count_columns( $control = null, $int = true ) {
 
@@ -683,6 +721,8 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_classes' ) ) {
 	 * @param string $columns_count Return classes with specified columns.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_archive_page_columns_classes( $counter = null, $class = '', $columns_count = null ) {
 
@@ -756,6 +796,8 @@ if ( ! function_exists( 'aesthetix_archive_page_columns_classes' ) ) {
 	 * @param bool   $echo          Echo or return archive page columns classes.
 	 *
 	 * @return string|void
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_archive_page_columns_classes( $counter = null, $class = '', $columns_count = null, $echo = true ) {
 
@@ -778,6 +820,8 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 	 * @param string $color Button color (primary, secondary, gray, default). Default 'primary'.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_button_classes( $class = '', $color = 'primary' ) {
 
@@ -843,6 +887,8 @@ if ( ! function_exists( 'button_classes' ) ) {
 	 * @param bool   $echo  Echo or return button classes.
 	 *
 	 * @return string|void
+	 * 
+	 * @since 1.0.0
 	 */
 	function button_classes( $class = '', $color = 'primary', $echo = true ) {
 
@@ -864,6 +910,8 @@ if ( ! function_exists( 'get_link_classes' ) ) {
 	 * @param string $class Link classes.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_link_classes( $class = '' ) {
 
@@ -897,6 +945,8 @@ if ( ! function_exists( 'link_classes' ) ) {
 	 * @param bool   $echo  Echo or return link classes.
 	 *
 	 * @return string|void
+	 * 
+	 * @since 1.0.0
 	 */
 	function link_classes( $class = '', $echo = true ) {
 
@@ -919,6 +969,8 @@ if ( ! function_exists( 'get_aesthetix_link_more_classes' ) ) {
 	 * @param string $color Link more color (primary, secondary, gray, default). Default 'primary'.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_link_more_classes( $class = '', $color = 'primary' ) {
 
@@ -965,6 +1017,8 @@ if ( ! function_exists( 'aesthetix_link_more_classes' ) ) {
 	 * @param bool   $echo  Echo or return link more classes.
 	 *
 	 * @return string|void
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_link_more_classes( $class = '', $color = 'primary', $echo = true ) {
 
@@ -987,6 +1041,8 @@ if ( ! function_exists( 'get_aesthetix_menu_toggle_classes' ) ) {
 	 * @param string $color Menu toggle color (primary, secondary, gray, default). Default 'primary'.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_menu_toggle_classes( $class = '', $color = 'primary' ) {
 
@@ -1049,6 +1105,8 @@ if ( ! function_exists( 'the_aesthetix_menu_toggle_classes' ) ) {
 	 * @param bool   $echo  Echo or return menu toggle classes.
 	 *
 	 * @return string|void
+	 * 
+	 * @since 1.0.0
 	 */
 	function the_aesthetix_menu_toggle_classes( $class = '', $color = 'primary', $echo = true ) {
 
@@ -1071,6 +1129,8 @@ if ( ! function_exists( 'get_aesthetix_scroll_top_classes' ) ) {
 	 * @param string $color Scroll top color (primary, secondary, gray, default). Default 'primary'.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_scroll_top_classes( $class = '', $color = 'primary' ) {
 
@@ -1128,6 +1188,8 @@ if ( ! function_exists( 'the_aesthetix_scroll_top_classes' ) ) {
 	 * @param bool   $echo  Echo or return scroll top classes.
 	 *
 	 * @return string|void
+	 * 
+	 * @since 1.0.0
 	 */
 	function the_aesthetix_scroll_top_classes( $class = '', $color = 'primary', $echo = true ) {
 
@@ -1149,6 +1211,8 @@ if ( ! function_exists( 'get_elem_classes' ) ) {
 	 * @param string $class Elem classes.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_elem_classes( $class = '' ) {
 
@@ -1182,6 +1246,8 @@ if ( ! function_exists( 'elem_classes' ) ) {
 	 * @param bool   $echo  Echo or return elem classes.
 	 *
 	 * @return string|void
+	 * 
+	 * @since 1.0.0
 	 */
 	function elem_classes( $class = '', $echo = true ) {
 

@@ -18,6 +18,8 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 	 * @param string $control array key to get one value.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_controls( $control = null ) {
 
@@ -135,11 +137,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 		$archive_page_detail_button_select = array(
 			'button'  => __( 'Button', 'aesthetix' ),
 			'link'    => __( 'Link', 'aesthetix' ),
-		);
-
-		$bg_image_size = array(
-			'cover'   => __( 'Cover', 'aesthetix' ),
-			'initial' => __( 'Pattern', 'aesthetix' ),
 		);
 
 		$aesthetix_controls = array();
@@ -266,12 +263,25 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 					'posts_order'           => array( 'select_control', __( 'Select posts order', 'aesthetix' ), '', $archive_page_order_select ),
 					'posts_orderby'         => array( 'select_control', __( 'Select posts orderby', 'aesthetix' ), '', $archive_page_orderby_select ),
 					'pagination'            => array( 'select_control', __( 'Post Pagination', 'aesthetix' ), '', $archive_page_pagination_select ),
-					'detail_button'         => array( 'select_control', __( 'Select button type', 'aesthetix' ), '', $archive_page_detail_button_select ),
+					'detail_button'         => array( 'select_control', __( 'Read more button type', 'aesthetix' ), '', $archive_page_detail_button_select ),
 					'structure_title'       => array( 'tab_title', __( 'Post Structure', 'aesthetix' ), '' ),
 					'structure'             => array( 'sortable_control', '', '', get_aesthetix_customizer_archive_post_structure( null, $post_type ) ),
 					'meta_structure_title'  => array( 'tab_title', __( 'Post Meta Structure', 'aesthetix' ), '' ),
 					'meta_structure'        => array( 'sortable_control', '', '', get_aesthetix_customizer_post_meta_structure( null, $post_type ) ),
 				);
+
+				$archive_page_taxonomies_display = array();
+				$archive_page_taxonomies_display['none'] = __( 'None', 'aesthetix' );
+
+				foreach ( $object_taxonomies as $key => $object_taxonomy ) {
+					$taxonomy = get_taxonomy( $object_taxonomy );
+					$archive_page_taxonomies_display[ $taxonomy->name ] = $taxonomy->label;
+				}
+
+				$aesthetix_controls['archive_' . $post_type] = array_merge( $aesthetix_controls['archive_' . $post_type], array(
+					'taxonomies_title'   => array( 'tab_title', __( 'Taxonomy Options', 'aesthetix' ), '' ),
+					'taxonomies_display' => array( 'select_control', __( 'Select taxomy for display', 'aesthetix' ), '', $archive_page_taxonomies_display ),
+				) );
 			}
 		}
 

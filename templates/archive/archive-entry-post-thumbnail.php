@@ -16,5 +16,11 @@
 }
 
 if ( isset( $background_image ) ) { ?>
-	<a class="post-thumbnail" href="<?php the_permalink(); ?>" style="background: url( <?php echo esc_url( $background_image ); ?> ) center/cover no-repeat" aria-hidden="true" tabindex="-1" role="img"></a>
+
+		<?php do_action( 'aesthetix_archive_entry_post_before_thumbnail' ); ?>
+
+		<a class="post-thumbnail" href="<?php the_permalink(); ?>" style="background: url( <?php echo esc_url( $background_image ); ?> ) center/cover no-repeat" aria-hidden="true" tabindex="-1" role="img"></a>
+
+		<?php do_action( 'aesthetix_archive_entry_post_after_thumbnail' ); ?>
+
 <?php }

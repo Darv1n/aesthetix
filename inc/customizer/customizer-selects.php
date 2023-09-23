@@ -18,7 +18,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_structure' ) ) {
 	 * @param string $control   array key to get one value.
 	 * @param string $post_type current post type
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_archive_post_structure( $control = null, $post_type = null ) {
 
@@ -28,11 +30,12 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_structure' ) ) {
 		}
 
 		$converter = array(
-			'title'     => __( 'Post Title', 'aesthetix' ),
-			'thumbnail' => __( 'Post Thumbnail', 'aesthetix' ),
-			'meta'      => __( 'Post Meta Data', 'aesthetix' ),
-			'excerpt'   => __( 'Post Excerpt', 'aesthetix' ),
-			'more'      => __( 'Post Read More', 'aesthetix' ),
+			'title'      => __( 'Post Title', 'aesthetix' ),
+			'thumbnail'  => __( 'Post Thumbnail', 'aesthetix' ),
+			'taxonomies' => __( 'Post Taxonomies', 'aesthetix' ),
+			'meta'       => __( 'Post Meta Data', 'aesthetix' ),
+			'excerpt'    => __( 'Post Excerpt', 'aesthetix' ),
+			'more'       => __( 'Post Read More', 'aesthetix' ),
 		);
 
 		// Merge child and parent default options.
@@ -57,7 +60,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_single_post_structure' ) ) {
 	 * @param string $control   array key to get one value.
 	 * @param string $post_type current post type
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_single_post_structure( $control = null, $post_type = null ) {
 
@@ -96,7 +101,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_single_post_footer_structure' 
 	 * @param string $control   array key to get one value.
 	 * @param string $post_type current post type
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_single_post_footer_structure( $control = null, $post_type = null ) {
 
@@ -136,7 +143,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_meta_structure' ) ) {
 	 * @param string $control array key to get one value.
 	 * @param string $post_type current post type
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_post_meta_structure( $control = null, $post_type = null ) {
 
@@ -179,7 +188,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_fonts' ) ) {
 	 *
 	 * @param string $control array key to get one value.
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_fonts( $control = null ) {
 
@@ -235,7 +246,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_colors' ) ) {
 	 *
 	 * @param string $control array key to get one value.
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_colors( $control = null ) {
 
@@ -285,7 +298,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_gray_colors' ) ) {
 	 *
 	 * @param string $control array key to get one value.
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_gray_colors( $control = null ) {
 
@@ -323,7 +338,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_link_colors' ) ) {
 	 *
 	 * @param string $control array key to get one value.
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_link_colors( $control = null ) {
 
@@ -360,7 +377,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_button_types' ) ) {
 	 *
 	 * @param string $control array key to get one value.
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_button_types( $control = null ) {
 
@@ -397,7 +416,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_button_sizes' ) ) {
 	 *
 	 * @param string $control array key to get one value.
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_button_sizes( $control = null ) {
 
@@ -436,7 +457,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_button_border_widths' ) ) {
 	 *
 	 * @param string $control array key to get one value.
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_button_border_widths( $control = null ) {
 
@@ -474,7 +497,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_button_border_radiuses' ) ) {
 	 *
 	 * @param string $control array key to get one value.
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_button_border_radiuses( $control = null ) {
 
@@ -516,7 +541,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_box_shadows' ) ) {
 	 *
 	 * @param string $control array key to get one value.
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_box_shadows( $control = null ) {
 

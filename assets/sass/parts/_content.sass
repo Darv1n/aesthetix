@@ -179,6 +179,14 @@ a.logo
 				margin-bottom: $gutter*2
 		&__list, &__tags, &__cats
 			@extend .list-inline
+	&-taxonomies
+		@extend .list-inline
+		position: absolute
+		top: $gutter*2
+		left: $gutter*2
+		&__link
+			font-size: $small-font-size
+			padding: $gutter $gutter*3
 	&.post_single
 		> *
 			&:not(:last-child)

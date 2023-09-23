@@ -16,6 +16,8 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_types' ) ) {
 	 * Get customizer post types for constract section and fields.
 	 *
 	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_post_types() {
 
@@ -35,6 +37,8 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 	 * @param string $control array key to get one value.
 	 *
 	 * @return void
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_aesthetix_customizer_roots( $control = null ) {
 

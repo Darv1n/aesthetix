@@ -16,6 +16,8 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 	 * Add postMessage support for site title and description for the Theme Customizer.
 	 *
 	 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_customize_register( $wp_customize ) {
 
@@ -386,6 +388,8 @@ if ( ! function_exists( 'aesthetix_customize_preview_js' ) ) {
 
 	/**
 	 * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_customize_preview_js() {
 		// wp_enqueue_style( 'aesthetix-customizer-ui', get_theme_file_uri( '/assets/css/customizer-ui.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/customizer-ui.min.css' ) ) );
@@ -398,6 +402,8 @@ if ( ! function_exists( 'aesthetix_customize_panels_js' ) ) {
 
 	/**
 	 * Load dynamic logic for the customizer controls area.
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_customize_panels_js() {
 

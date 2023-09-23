@@ -18,6 +18,8 @@ if ( ! function_exists( 'kama_postviews_wp_head' ) ) {
 	 * Function for 'wp_head' action hook.
 	 *
 	 * @return void
+	 * 
+	 * @since 1.0.0
 	 */
 	function kama_postviews_wp_head() {
 
@@ -47,6 +49,8 @@ if ( ! function_exists( 'kama_postviews_save_post' ) ) {
 	 * @link https://developer.wordpress.org/reference/hooks/save_post/
 	 *
 	 * @return void
+	 * 
+	 * @since 1.0.0
 	 */
 	function kama_postviews_save_post( $post_id ) {
 
@@ -67,7 +71,9 @@ if ( ! function_exists( 'get_kama_postview_customizer_post_meta_structure' ) ) {
 	 * @param string $control   array key to get one value.
 	 * @param string $post_type current post type
 	 *
-	 * @return string[]
+	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_kama_postview_customizer_post_meta_structure( $converter, $post_type ) {
 
@@ -86,7 +92,9 @@ if ( ! function_exists( 'get_kama_postview_options' ) ) {
 	 *
 	 * @param string $aesthetix_defaults array with default theme options.
 	 *
-	 * @return string[]
+	 * @return array
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_kama_postview_options( $aesthetix_defaults ) {
 
@@ -124,6 +132,8 @@ if ( ! function_exists( 'kama_postview_archive_entry_post_meta_loop' ) ) {
 	 * @link https://developer.wordpress.org/reference/hooks/save_post/
 	 *
 	 * @return void
+	 * 
+	 * @since 1.0.0
 	 */
 	function kama_postview_archive_entry_post_meta_loop( $post ) {  ?>
 

@@ -36,7 +36,7 @@
 							<time class="post-date published data-title" datetime="<?php echo get_the_date( 'Y-m-d\TH:i:sP' ); ?>" data-title="<?php _e( 'Publication date', 'aesthetix' ); ?>"><?php echo get_the_date( 'j F, Y' ); ?></time>
 						</li>
 						<?php break;
-					case 'cats': ?>
+					case 'category': ?>
 						<?php if ( has_category() ) { ?>
 							<li class="post-meta__item icon icon_before icon_folder">
 								<?php foreach ( get_the_category() as $key => $category ) { ?>
@@ -45,7 +45,7 @@
 							</li>
 						<?php } ?>
 						<?php break;
-					case 'tags': ?>
+					case 'post_tag': ?>
 						<?php if ( has_tag() ) { ?>
 							<li class="post-meta__item icon icon_before icon_tag">
 								<?php foreach ( get_the_tags() as $key => $tag ) { ?>

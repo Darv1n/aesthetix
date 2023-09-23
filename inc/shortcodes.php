@@ -30,6 +30,8 @@ if ( ! function_exists( 'aesthetix_shortcode_copyright' ) ) {
 	 * @param array $atts shortcode attributes..
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_shortcode_copyright( $atts ) {
 
@@ -106,6 +108,8 @@ if ( ! function_exists( 'aesthetix_current_year' ) ) {
 	 * @param array $atts shortcode attributes.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_current_year( $atts ) {
 
@@ -128,6 +132,8 @@ if ( ! function_exists( 'aesthetix_current_date' ) ) {
 	 * @param array $atts shortcode attributes.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_current_date( $atts ) {
 
@@ -152,6 +158,8 @@ if ( ! function_exists( 'aesthetix_privacy_link' ) ) {
 	 * @param array $atts shortcode attributes.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_privacy_link( $atts ) {
 
@@ -184,6 +192,8 @@ if ( ! function_exists( 'aesthetix_shortcode_social_list' ) ) {
 	 * @param array $atts shortcode attributes.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_shortcode_social_list( $atts ) {
 
@@ -245,6 +255,8 @@ if ( ! function_exists( 'aesthetix_shortcode_telegram' ) ) {
 	 * @param array $atts shortcode attributes.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_shortcode_telegram( $atts ) {
 
@@ -268,6 +280,8 @@ if ( ! function_exists( 'aesthetix_shortcode_whatsapp' ) ) {
 	 * @param array $atts shortcode attributes.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_shortcode_whatsapp( $atts ) {
 
@@ -291,6 +305,8 @@ if ( ! function_exists( 'aesthetix_shortcode_contact_list' ) ) {
 	 * @param array $atts shortcode attributes.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_shortcode_contact_list( $atts ) {
 
@@ -328,6 +344,8 @@ if ( ! function_exists( 'aesthetix_shortcode_address' ) ) {
 	 * @param array $atts shortcode attributes.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_shortcode_address() {
 
@@ -350,6 +368,8 @@ if ( ! function_exists( 'aesthetix_shortcode_phone' ) ) {
 	 * @param array $atts shortcode attributes.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_shortcode_phone() {
 
@@ -373,6 +393,8 @@ if ( ! function_exists( 'aesthetix_shortcode_email' ) ) {
 	 * @param array $atts shortcode attributes.
 	 *
 	 * @return string
+	 * 
+	 * @since 1.0.0
 	 */
 	function aesthetix_shortcode_email() {
 

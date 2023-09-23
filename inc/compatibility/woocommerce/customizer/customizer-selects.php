@@ -18,7 +18,9 @@ if ( ! function_exists( 'get_woocommerce_customizer_product_catalog_structure' )
 	 * @param string $control   array key to get one value.
 	 * @param string $post_type current post type
 	 *
-	 * @return string|string[]|false
+	 * @return string|array|false
+	 * 
+	 * @since 1.0.0
 	 */
 	function get_woocommerce_customizer_product_catalog_structure( $control = null, $post_type = null ) {
 
