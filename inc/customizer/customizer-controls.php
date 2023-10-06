@@ -179,6 +179,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'menu_button_type'                => array( 'select_control', __( 'Select menu button type', 'aesthetix' ), '', $general_menu_button_type_select ),
 			'menu_button_icon_position'       => array( 'select_control', __( 'Select menu button icon position', 'aesthetix' ), '', $alignment_pseudo_select ),
 
+			'mobile_menu_tab_title'           => array( 'tab_title', __( 'Mobile Menu', 'aesthetix' ), '' ),
+			'mobile_menu_structure'           => array( 'sortable_control', '', '', get_aesthetix_mobile_menu_structure() ),
+
 			'footer_tab_title'                => array( 'tab_title', __( 'Footer', 'aesthetix' ), '' ),
 			'footer_top_bar_display'          => array( 'checkbox_control', __( 'Top bar display', 'aesthetix' ), __( 'This checkbox displays two sidebars before the footer of the site. They are adds in the widget section options', 'aesthetix' ) ),
 			'footer_bottom_bar_display'       => array( 'checkbox_control', __( 'Bottom bar display', 'aesthetix' ), __( 'This checkbox displays two sidebars after the footer of the site. They are adds in the widget section options', 'aesthetix' ) ),
@@ -196,9 +199,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'scroll_top_button_icon_position' => array( 'select_control', __( 'Select scroll top button icon position', 'aesthetix' ), '', $alignment_pseudo_select ),
 
 			'other_tab_title'                 => array( 'tab_title', __( 'Other', 'aesthetix' ), '' ),
-			'comments_display'                => array( 'checkbox_control', __( 'Comments display', 'aesthetix' ), __( 'Comments block hide/display', 'aesthetix' ) ),
 			'cookie_display'                  => array( 'checkbox_control', __( 'Cookie display', 'aesthetix' ), __( 'Displays a notification about the use of cookies on the site', 'aesthetix' ) ),
-			'external_utm_links'              => array( 'checkbox_control', __( 'External UTM Links', 'aesthetix' ), __( 'Adds utm tags to all external links', 'aesthetix' ) ),
 		);
 
 		$aesthetix_controls['front_page'] = array(

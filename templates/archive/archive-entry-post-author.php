@@ -27,7 +27,7 @@ $avatar_url  = apply_filters( 'get_aesthetix_avatar_url', $avatar_url );
 			<?php the_author(); ?>
 		</a>
 	</div>
-	<time class="post-author-date" datetime="<?php echo get_the_date( 'Y-m-d\TH:i:sP' ); ?>" data-title="<?php _e( 'Publication date', 'aesthetix' ); ?>">
+	<time class="post-author-date" datetime="<?php echo get_the_date( 'Y-m-d\TH:i:sP' ); ?>" data-title="<?php esc_attr_e( 'Publication date', 'aesthetix' ); ?>">
 		<?php echo get_the_date( 'j F, Y' ); ?>
 	</time>
 </div>

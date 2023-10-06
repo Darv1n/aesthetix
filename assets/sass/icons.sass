@@ -87,6 +87,8 @@ button, .button
 	&.icon
 		width: auto
 		height: auto
+		&.button-reset
+			padding: calc( 1rem / 2 + .5rem ) calc( 1.125rem / 2 + .5rem )
 	&.icon_before
 		padding-left: calc( var( --button-padding-side ) + 1.125rem + .25rem )
 		&::before
@@ -97,8 +99,12 @@ button, .button
 			left: auto
 			right: calc( var( --button-padding-side ) + .125rem )
 
+
 @media( min-width: 576px )
 	button, .button
+		&.icon
+			&.button-reset
+				padding: calc( 1rem / 2 + .75rem ) calc( 1.125rem / 2 + .75rem )
 		&.icon_before
 			padding-left: calc( ( var( --button-padding-side ) * 1.25 ) + 1.125rem + .25rem )
 			&::before
@@ -591,5 +597,3 @@ button, .button
 	&_youtube
 		&::before
 			background: url( ../img/icons/sets/social.svg#youtube ) center/cover no-repeat
-
-

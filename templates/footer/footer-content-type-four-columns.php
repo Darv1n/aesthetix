@@ -44,7 +44,7 @@
 				dynamic_sidebar( 'sidebar-footer-four' );
 			} else { ?>
 				<div class="widget widget_footer_contacts">
-					<h3 class="widget-title"><?php _e( 'Contacts', 'aesthetix' ); ?></h3>
+					<h3 class="widget-title"><?php esc_html_e( 'Contacts', 'aesthetix' ); ?></h3>
 					<?php echo do_shortcode( '[aesthetix-contacts-list]' ); ?>
 					<?php echo do_shortcode( '[aesthetix-social-list]' ); ?>
 				</div>

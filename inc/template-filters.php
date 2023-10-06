@@ -10,62 +10,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! function_exists( 'external_utm_links' ) ) {
-
-	/**
-	 * Function for 'the_content' filter-hook.
-	 *
-	 * @param string $content Post content.
-	 *
-	 * @link https://developer.wordpress.org/reference/hooks/the_content/
-	 *
-	 * @return array
-	 * 
-	 * @since 1.0.0
-	 */
-	function external_utm_links( $content ) {
-
-		if ( ! is_admin() && get_aesthetix_options( 'general_external_utm_links' ) && $content !== '' ) {
-			$pattern = '/<a (.*?)href=[\"\'](.*?)[\"\'](.*?)>(.*?)<\/a>/si';
-			$content = preg_replace_callback( $pattern, 'external_utm_links_callback', $content, - 1, $count );
+if ( ! function_exists( 'primary_menu_fallback' ) ) {
+	function primary_menu_fallback() {
+		if ( current_user_can( 'edit_theme_options' ) ) {
+			echo '<ul id="top-menu">';
+				echo '<li>';
+					echo '<a ' . link_classes( '', false ) . ' href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '">' . esc_html__( 'Setup Menu', 'aesthetix' ) .'</a>';
+				echo '</li>';
+			echo '</ul>';
 		}
-
-		return apply_filters( 'external_utm_links', $content );
-	}
-}
-add_filter( 'the_content', 'external_utm_links', 10 ); // Add utm with current domain to external links in the post content.
-
-if ( ! function_exists( 'external_utm_links_callback' ) ) {
-
-	/**
-	 * Callback for 'external_utm_links' function.
-	 *
-	 * @param array $matches Array with link pattern.
-	 *
-	 * @return string
-	 * 
-	 * @since 1.0.0
-	 */
-	function external_utm_links_callback( $matches ) {
-
-		if ( ! is_array( $matches ) || count( $matches ) !== 4 ) {
-			return;
-		}
-
-		$home_parse_url  = wp_parse_url( get_home_url() );
-		$match_parse_url = wp_parse_url( $matches[2] );
-
-		if ( isset( $home_parse_url['host'] ) && isset( $match_parse_url['host'] ) && $home_parse_url['host'] === $match_parse_url['host'] ) {
-			$url = $matches[2];
-		} elseif ( isset( $match_parse_url['query'] ) && stripos( $match_parse_url['query'], 'utm_' ) !== false ) {
-			$url = $matches[2];
-		} elseif ( isset( $home_parse_url['host'] ) && isset( $match_parse_url['host'] ) && $home_parse_url['host'] !== $match_parse_url['host'] ) {
-			$url = add_query_arg( array( 'utm_source' => $home_parse_url['host'] ), $matches[2] );
-		} else {
-			$url = $matches[2];
-		}
-
-		return '<a ' . $matches[1] . ' href="' . $url . '" ' . $matches[3] . '>' . $matches[4] . '</a>';
 	}
 }
 
@@ -178,18 +131,6 @@ if ( ! function_exists( 'unset_intermediate_image_sizes' ) ) {
 	}
 }
 add_filter( 'intermediate_image_sizes', 'unset_intermediate_image_sizes' );
-
-if ( ! function_exists( 'primary_menu_fallback' ) ) {
-	function primary_menu_fallback() {
-		if ( current_user_can( 'edit_theme_options' ) ) {
-			echo '<ul id="top-menu">';
-				echo '<li>';
-					echo '<a ' . link_classes( '', false ) . ' href="'. esc_url( admin_url( 'nav-menus.php' ) ) .'">'. esc_html__( 'Setup Menu', 'aesthetix' ) .'</a>';
-				echo '</li>';
-			echo '</ul>';
-		}
-	}
-}
 
 if ( ! function_exists( 'aesthetix_nav_menu_args' ) ) {
 
@@ -312,7 +253,7 @@ if ( ! function_exists( 'aesthetix_search_highlight' ) ) {
 			}
 
 			if ( empty( $query_terms ) ) {
-				return '';
+				return $text;
 			}
 
 			foreach ( $query_terms as $term ) {

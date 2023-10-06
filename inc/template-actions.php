@@ -57,229 +57,170 @@ if ( ! function_exists( 'aesthetix_pre_get_posts' ) ) {
 }
 add_action( 'pre_get_posts', 'aesthetix_pre_get_posts', 1 );
 
-if ( ! function_exists( 'aesthetix_first_screen' ) ) {
+if ( ! function_exists( 'admin_bar_init_callback' ) ) {
 
 	/**
-	 * Display first screen on action hook before_site_content.
+	 * Function for `admin_bar_init` action-hook.
 	 * 
-	 * @since 1.1.0
+	 * @return void
+	 * 
+	 * @since 1.1.1
 	 */
-	function aesthetix_first_screen( $before = '', $after  = '' ) {
+	function admin_bar_init_callback() {
+		remove_action( 'wp_head', '_admin_bar_bump_cb' );
 
-		if ( is_front_page() || is_home() && get_aesthetix_options( 'front_page_slider_display' ) ) {
-
-			$output    = '';
-			$i         = 0;
-			$post_type = get_aesthetix_options( 'front_page_slider_post_type' );
-
-			$args = array(
-				'posts_per_page' => (int) get_aesthetix_count_columns( get_aesthetix_options( 'front_page_slider_slides_count' ) ),
-				'post_type'      => $post_type,
-			);
-
-			$query = new WP_Query( $args );
-
-			if ( $query->have_posts() ) { ?>
-
-				<section id="first-screen" class="section section_fisrt-screen">
-					<div <?php aesthetix_container_classes(); ?>>
-						<div class="slick-slider">
-
-						<?php while ( $query->have_posts() ) {
-							$query->the_post(); ?>
-
-							<div class="slick-item">
-
-								<?php
-									// Get a template with a post type, if there is one in the theme.
-									if ( file_exists( get_theme_file_path( 'templates/archive/archive-content-type-' . $post_type . '.php' ) ) ) {
-										get_template_part( 'templates/archive/archive-content-type', $post_type, array( 'counter' => $i ) );
-									} else if ( get_aesthetix_options( 'front_page_slider_slides_template_type' ) ) {
-										get_template_part( 'templates/archive/archive-content-type', get_aesthetix_options( 'front_page_slider_slides_template_type' ), array( 'counter' => $i ) );
-									} else {
-										get_template_part( 'templates/archive/archive-content-type', 'tils', array( 'counter' => $i ) );
-									}
-								?>
-
-							</div>
-
-							<?php $i++;
-						} ?>
-
-						</div>
-					</div>
-				</section>
-
-				<?php
-			}
-
-			wp_enqueue_style( 'slick-styles' );
-			wp_enqueue_script( 'slick-scripts' );
-
-			$breakpoints = array( 1200, 992, 768, 576 );
-			$slick_args  = array(
-				'arrows'         => true,
-				'dots'           => false,
-				'infinite'       => true,
-				'speed'          => 300,
-				'slidesToShow'   => 4,
-				'slidesToScroll' => 1,
-				'adaptiveHeight' => true,
-			);
-
-			$slides_to_show = (int) get_aesthetix_count_columns( get_aesthetix_options( 'front_page_slider_slides_to_show' ) ); 
-
-			foreach ( $breakpoints as $key => $breakpoint ) {
-
-				if ( $breakpoint === 1200 && $slides_to_show > 3 ) {
-					$slick_args['responsive'][ $key ] = array(
-						'breakpoint' => (int) $breakpoint,
-						'settings'   => array(
-							'slidesToShow'   => 4,
-							'slidesToScroll' => 1,
-						),
-					);
-				} else if ( $breakpoint === 992 && $slides_to_show > 2 ) {
-					$slick_args['responsive'][ $key ] = array(
-						'breakpoint' => (int) $breakpoint,
-						'settings'   => array(
-							'arrows' => false,
-						),
-					);
-					if ( $slides_to_show > 2 ) {
-						$slick_args['responsive'][ $key ]['settings']['slidesToShow']   = 3;
-						$slick_args['responsive'][ $key ]['settings']['slidesToScroll'] = 1;
+		add_action( 'wp_head', static function() {
+			$type_attr = current_theme_supports( 'html5', 'style' ) ? '' : ' type="text/css"'; ?>
+				<style<?php echo $type_attr; ?> media="screen">
+					header { margin-top: 32px !important; }
+					@media screen and ( max-width: 782px ) {
+						header { margin-top: 46px !important; }
 					}
-				} else if ( $breakpoint === 768 && $slides_to_show > 1 ) {
-					$slick_args['responsive'][ $key ] = array(
-						'breakpoint' => (int) $breakpoint,
-						'settings'   => array(
-							'slidesToShow'   => 2,
-							'slidesToScroll' => 1,
-						),
-					);
-				} else {
-					$slick_args['responsive'][ $key ] = array(
-						'breakpoint' => (int) $breakpoint,
-						'settings'   => array(
-							'slidesToShow'   => 1,
-							'slidesToScroll' => 1,
-						),
-					);
+				</style>
+		<?php } );
+	}
+}
+add_action( 'admin_bar_init', 'admin_bar_init_callback');
+
+if ( ! function_exists( 'before_site_content_structure' ) ) {
+
+	/**
+	 * Display before site content structure in header.php.
+	 * 
+	 * @since 1.1.1
+	 */
+	function before_site_content_structure() {
+
+		$structure = array(
+			'search-sidebar',
+			'first-screen',
+			'breadcrumbs',
+			'content-wrapper-start',
+		);
+
+		$structure = apply_filters( 'before_site_content_structure', $structure );
+
+		foreach ( $structure as $key => $value ) {
+			switch ( $value ) {
+				case has_action( 'before_site_content_structure_loop_' . $value ):
+					do_action( 'before_site_content_structure_loop_' . $value );
+					break;
+				case 'search-sidebar':
+					get_template_part( 'templates/search-sidebar' );
+					break;
+				case 'first-screen':
+					get_template_part( 'templates/first-screen' );
+					break;
+				case 'breadcrumbs':
+					get_template_part( 'templates/breadcrumbs' );
+					break;
+				case 'content-wrapper-start':
+					get_template_part( 'templates/content-wrapper', 'start' );
+					break;
+				default:
+					break;
+			}
+		}
+	}
+}
+add_action( 'before_site_content', 'before_site_content_structure' );
+
+if ( ! function_exists( 'after_site_content_structure' ) ) {
+
+	/**
+	 * Display after site content structure in footer.php.
+	 * 
+	 * @since 1.1.1
+	 */
+	function after_site_content_structure() {
+
+		$structure = array(
+			'content-wrapper-end',
+		);
+
+		$structure = apply_filters( 'after_site_content_structure', $structure );
+
+		foreach ( $structure as $key => $value ) {
+			switch ( $value ) {
+				case has_action( 'after_site_content_structure_loop_' . $value ):
+					do_action( 'after_site_content_structure_loop_' . $value );
+					break;
+				case 'content-wrapper-end':
+					get_template_part( 'templates/content-wrapper', 'end' );
+					break;
+				default:
+					break;
+			}
+		}
+	}
+}
+add_action( 'after_site_content', 'after_site_content_structure' );
+
+if ( ! function_exists( 'wp_footer_close_structure' ) ) {
+
+	/**
+	 * Display mobile menu structure in footer.php.
+	 * 
+	 * @since 1.1.1
+	 */
+	function wp_footer_close_structure() {
+
+		$structure = array(
+			'scroll-top',
+			'cookie',
+		);
+
+		$structure = apply_filters( 'wp_footer_close_structure', $structure );
+
+		foreach ( $structure as $key => $value ) {
+			switch ( $value ) {
+				case has_action( 'wp_footer_close_structure_loop_' . $value ):
+					do_action( 'wp_footer_close_structure_loop_' . $value );
+					break;
+				case 'scroll-top':
+					get_template_part( 'templates/button', 'scroll-top' );
+					break;
+				case 'cookie':
+					get_template_part( 'templates/cookie' );
+					break;
+				default:
+					break;
+			}
+		}
+	}
+}
+add_action( 'wp_footer_close', 'wp_footer_close_structure' );
+
+if ( ! function_exists( 'aesthetix_after_main_navigation_structure' ) ) {
+
+	/**
+	 * Display mobile menu structure in templates/header-content-*.php.
+	 * 
+	 * @since 1.1.1
+	 */
+	function aesthetix_after_main_navigation_structure() {
+
+		$structure = get_aesthetix_options( 'general_mobile_menu_structure' );
+
+		if ( is_string( $structure ) && ! empty( $structure ) ) {
+			$structure = array_map( 'trim', explode( ',', $structure ) );
+
+			foreach ( $structure as $key => $value ) {
+				switch ( $value ) {
+					case has_action( 'aesthetix_after_main_navigation_structure_loop_' . $value ):
+						do_action( 'aesthetix_after_main_navigation_structure_loop_' . $value );
+						break;
+					case 'menu':
+						get_template_part( 'templates/button', 'menu-toggle' );
+						break;
+					case 'search':
+						get_template_part( 'templates/button', 'search-toggle' );
+						break;
+					default:
+						break;
 				}
 			}
-
-			$slick_init = 'jQuery(function($) {
-				$(\'.slick-slider\').slick(' . json_encode( $slick_args, JSON_PRETTY_PRINT ) . ');
-			});';
-
-			wp_add_inline_script( 'slick-scripts', minify_js( $slick_init ) );
 		}
 	}
 }
-add_action( 'before_site_content', 'aesthetix_first_screen', 10 );
-
-if ( ! function_exists( 'aesthetix_breadcrumbs' ) ) {
-
-	/**
-	 * Display breadcrumbs on action hook before_site_content.
-	 * 
-	 * @since 1.0.0
-	 */
-	function aesthetix_breadcrumbs( $before = '', $after  = '' ) {
-
-		if ( ! is_front_page() && ! is_home() && get_aesthetix_options( 'general_breadcrumbs_display' ) ) {
-
-			$before .= '<section id="section-breadcrumbs" class="section section_breadcrumbs">';
-				$before .= '<div class="' . esc_attr( implode( ' ', get_aesthetix_container_classes() ) ) . '">';
-					$before .= '<div class="row">';
-						$before .= '<div class="col-12 align-items-center">';
-
-						$after .= '</div>';
-					$after .= '</div>';
-				$after .= '</div>';
-			$after .= '</section>';
-
-			if ( get_aesthetix_options( 'general_breadcrumbs_type' ) === 'navxt' && is_plugin_active( 'breadcrumb-navxt/breadcrumb-navxt.php' ) ) {
-
-				$before .= '<nav id="breadcrumbs" class="breadcrumbs breadcrumbs_' . esc_attr( get_aesthetix_options( 'general_breadcrumbs_type' ) ) . '" typeof="BreadcrumbList" vocab="https://schema.org/" aria-label="breadcrumb">';
-					$before .= '<ol class="list-inline list-unstyled">';
-					$after  .= '</ol>';
-				$after  .= '</nav>';
-			} else {
-				$before .= '<div id="breadcrumbs" class="breadcrumbs breadcrumbs_' . esc_attr( get_aesthetix_options( 'general_breadcrumbs_type' ) ) . '">';
-				$after  .= '</div>';
-			}
-
-			if ( get_aesthetix_options( 'general_breadcrumbs_type' ) === 'navxt' && is_plugin_active( 'breadcrumb-navxt/breadcrumb-navxt.php' ) ) {
-				echo $before;
-					bcn_display_list();
-				echo $after;
-			} elseif ( get_aesthetix_options( 'general_breadcrumbs_type' ) === 'kama' && class_exists( 'Kama_Breadcrumbs' ) ) {
-				echo $before;
-					kama_breadcrumbs();
-				echo $after;
-			} elseif ( get_aesthetix_options( 'general_breadcrumbs_type' ) === 'yoast' && is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
-				echo $before;
-					yoast_breadcrumb( '<nav class="breadcrumbs__navigation">', '</nav>' );
-				echo $after;
-			} elseif ( get_aesthetix_options( 'general_breadcrumbs_type' ) === 'rankmath' && is_plugin_active( 'seo-by-rank-math/rank-math.php' ) ) {
-				echo $before;
-					rank_math_the_breadcrumbs();
-				echo $after;
-			} elseif ( get_aesthetix_options( 'general_breadcrumbs_type' ) === 'seopress' && is_plugin_active( 'wp-seopress/seopress.php' ) ) {
-				echo $before;
-					seopress_display_breadcrumbs();
-				echo $after;
-			} elseif ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
-				echo $before;
-					woocommerce_breadcrumb();
-				echo $after;
-			}
-		}
-	}
-}
-add_action( 'before_site_content', 'aesthetix_breadcrumbs', 15 );
-
-if ( ! function_exists( 'aesthetix_section_content_wrapper_start' ) ) {
-
-	/**
-	 * Display section content wrapper start in header.php.
-	 * 
-	 * @since 1.0.0
-	 */
-	function aesthetix_section_content_wrapper_start() {
-
-		$output = '<section id="section-content" class="section section_content" aria-label="' . _x( 'Content section', 'aesthetix' ) . '">';
-			$output .= '<div class="' . esc_attr( implode( ' ', get_aesthetix_container_classes() ) ) . '">';
-				$output .= '<div class="row">';
-
-		// Filter html output.
-		$output = apply_filters( 'aesthetix_section_content_wrapper_start', $output );
-
-		echo $output;
-	}
-}
-add_action( 'before_site_content', 'aesthetix_section_content_wrapper_start', 50 );
-
-if ( ! function_exists( 'aesthetix_section_content_wrapper_end' ) ) {
-
-	/**
-	 * Display section content wrapper end in footer.php.
-	 * 
-	 * @since 1.0.0
-	 */
-	function aesthetix_section_content_wrapper_end() {
-
-				$output = '</div>';
-			$output .= '</div>';
-		$output .= '</section>';
-
-		// Filter html output.
-		$output = apply_filters( 'aesthetix_section_content_wrapper_end', $output );
-
-		echo $output;
-	}
-}
-add_action( 'after_site_content', 'aesthetix_section_content_wrapper_end', 50 );
-
+add_action( 'aesthetix_after_main_navigation', 'aesthetix_after_main_navigation_structure' );

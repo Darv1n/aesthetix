@@ -10,6 +10,43 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if ( ! function_exists( 'get_aesthetix_mobile_menu_structure' ) ) {
+
+	/**
+	 * Return array with the customizer mobile menu structure.
+	 *
+	 * @param string $control   array key to get one value.
+	 *
+	 * @return string|array|false
+	 * 
+	 * @since 1.1.1
+	 */
+	function get_aesthetix_mobile_menu_structure( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'menu'   => __( 'Menu Button', 'aesthetix' ),
+			'search' => __( 'Search Button', 'aesthetix' ),
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_mobile_menu_structure', $converter );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
 if ( ! function_exists( 'get_aesthetix_customizer_archive_post_structure' ) ) {
 
 	/**

@@ -48,9 +48,7 @@
 
 					<?php do_action( 'aesthetix_before_main_navigation' ); ?>
 
-						<?php get_template_part( 'templates/button-menu-toggle' ); ?>
-
-						<nav id="main-navigation" class="main-navigation" role="navigation" aria-label="<?php _e( 'Site main menu', 'aesthetix' ); ?>">
+						<nav id="main-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Site main menu', 'aesthetix' ); ?>">
 
 							<?php
 								$args = array(

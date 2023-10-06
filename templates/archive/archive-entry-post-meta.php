@@ -33,8 +33,8 @@
 						<?php break;
 					case 'date': ?>
 						<li class="post-meta__item icon icon_before icon_calendar">
-							<time class="post-date published data-title" datetime="<?php echo get_the_date( 'Y-m-d\TH:i:sP' ); ?>" data-title="<?php _e( 'Publication date', 'aesthetix' ); ?>">
-									<?php echo get_the_date( 'j F, Y' ); ?>
+							<time class="post-date published data-title" datetime="<?php echo get_the_date( 'Y-m-d\TH:i:sP' ); ?>" data-title="<?php esc_attr_e( 'Publication date', 'aesthetix' ); ?>">
+								<?php echo get_the_date( 'j F, Y' ); ?>
 							</time>
 						</li>
 						<?php break;
@@ -57,19 +57,19 @@
 						<?php } ?>
 						<?php break;
 					case 'time': ?>
-						<li class="post-meta__item icon icon_before icon_clock data-title" data-title="<?php _e( 'Reading time', 'aesthetix' ); ?>">
-							<?php echo read_time_estimate( get_the_content() ) . ' ' . __( 'min.', 'aesthetix' ); ?>
+						<li class="post-meta__item icon icon_before icon_clock data-title" data-title="<?php esc_attr_e( 'Reading time', 'aesthetix' ); ?>">
+							<?php echo read_time_estimate( get_the_content() ) . ' ' . esc_html__( 'min.', 'aesthetix' ); ?>
 						</li>
 						<?php break;
 					case 'comments': ?>
 						<li class="post-meta__item icon icon_before icon_comment">
-							<a <?php link_classes( 'post-meta__link' ); ?> href="<?php echo esc_url( get_comments_link() ); ?>" rel="bookmark"><?php _e( 'Comments', 'aesthetix' ) ?>: <?php echo get_comments_number(); ?></a>
+							<a <?php link_classes( 'post-meta__link' ); ?> href="<?php echo esc_url( get_comments_link() ); ?>" rel="bookmark"><?php esc_html_e( 'Comments', 'aesthetix' ) ?>: <?php echo get_comments_number(); ?></a>
 						</li>
 						<?php break;
 					case 'edit': ?>
 						<?php if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) { ?>
 							<li class="post-meta__item icon icon_before icon_pen-to-square">
-								<a <?php link_classes( 'post-meta__link' ); ?> href="<?php echo esc_url( get_edit_post_link() ); ?>"><?php _e( 'Edit', 'aesthetix' ) ?></a>
+								<a <?php link_classes( 'post-meta__link' ); ?> href="<?php echo esc_url( get_edit_post_link() ); ?>"><?php esc_html_e( 'Edit', 'aesthetix' ) ?></a>
 							</li>
 						<?php } ?>
 						<?php break;

@@ -35,7 +35,7 @@
 				dynamic_sidebar( 'sidebar-footer-top-right' );
 			} else { ?>
 				<div class="main-menu">
-					<nav id="footer-navigation" class="footer-navigation" role="navigation" aria-label="<?php _e( 'Site main menu', 'aesthetix' ); ?>">
+					<nav id="footer-navigation" class="footer-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Site main menu', 'aesthetix' ); ?>">
 						<?php
 							$args = array(
 								'theme_location' => 'primary',

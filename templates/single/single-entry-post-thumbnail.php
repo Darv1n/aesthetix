@@ -10,7 +10,7 @@
  ?>
 
 <?php if ( has_post_thumbnail() ) { ?>
-	<div class="post-thumbnail" aria-label="<?php _e( 'Post thumbnail', 'aesthetix' ); ?>">
+	<div class="post-thumbnail" aria-label="<?php esc_attr_e( 'Post thumbnail', 'aesthetix' ); ?>">
 		<?php the_post_thumbnail(); ?>
 	</div>
 <?php } ?>

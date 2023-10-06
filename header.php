@@ -27,7 +27,7 @@
 		wp_body_open();
 	} ?>
 
-	<header id="header" <?php aesthetix_header_classes(); ?> aria-label="<?php _e( 'Site header', 'aesthetix' ); ?>">
+	<header id="header" <?php aesthetix_header_classes(); ?> aria-label="<?php esc_attr_e( 'Site Header', 'aesthetix' ); ?>">
 
 		<?php do_action( 'wp_header_open' ); ?>
 
@@ -59,8 +59,6 @@
 		/**
 		 * Hook: before_site_content.
 		 *
-		 * @hooked aesthetix_first_screen                  - 10
-		 * @hooked aesthetix_breadcrumbs                   - 15
-		 * @hooked aesthetix_section_content_wrapper_start - 50
+		 * @hooked aesthetix_before_site_content - 10
 		 */
 		do_action( 'before_site_content' );

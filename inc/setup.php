@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! function_exists( 'aesthetix_setup' ) ) {
+if ( ! function_exists( 'aesthetix_setup_theme' ) ) {
 
 	/**
 	 * Default theme setup on after_setup_theme hook.
@@ -19,7 +19,7 @@ if ( ! function_exists( 'aesthetix_setup' ) ) {
 	 * 
 	 * @since 1.0.0
 	 */
-	function aesthetix_setup() {
+	function aesthetix_setup_theme() {
 
 		// Make theme available for translation.
 		load_theme_textdomain( 'aesthetix', get_template_directory() . '/languages' );
@@ -83,7 +83,7 @@ if ( ! function_exists( 'aesthetix_setup' ) ) {
 		// Убираем пустые теги.
 		remove_filter( 'the_excerpt', 'wpautop' );
 		remove_filter( 'the_content', 'wpautop' );
-		// add_filter( 'the_content', 'wpautop', 12 );
+		add_filter( 'the_content', 'wpautop', 12 );
 
 		// Убираем meta generator.
 		add_filter( 'the_generator', '__return_empty_string' );
@@ -138,7 +138,7 @@ if ( ! function_exists( 'aesthetix_setup' ) ) {
 		} );
 	}
 }
-add_action( 'after_setup_theme', 'aesthetix_setup' );
+add_action( 'after_setup_theme', 'aesthetix_setup_theme' );
 
 if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 
@@ -239,6 +239,70 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 		// Slick.
 		wp_register_style( 'slick-styles', get_theme_file_uri( '/assets/css/slick.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/slick.min.css' ) ) );
 		wp_register_script( 'slick-scripts', get_theme_file_uri( '/assets/libs/slick/slick.min.js' ), array( 'jquery' ), filemtime( get_theme_file_path( '/assets/libs/slick/slick.min.js' ) ), true );
+
+		if ( is_front_page() || is_home() && get_aesthetix_options( 'front_page_slider_display' ) ) {
+			wp_enqueue_style( 'slick-styles' );
+			wp_enqueue_script( 'slick-scripts' );
+
+			$breakpoints = array( 1200, 992, 768, 576 );
+			$slick_args  = array(
+				'arrows'         => true,
+				'dots'           => false,
+				'infinite'       => true,
+				'speed'          => 300,
+				'slidesToShow'   => 4,
+				'slidesToScroll' => 1,
+				'adaptiveHeight' => true,
+			);
+
+			$slides_to_show = (int) get_aesthetix_count_columns( get_aesthetix_options( 'front_page_slider_slides_to_show' ) ); 
+
+			foreach ( $breakpoints as $key => $breakpoint ) {
+
+				if ( $breakpoint === 1200 && $slides_to_show > 3 ) {
+					$slick_args['responsive'][ $key ] = array(
+						'breakpoint' => (int) $breakpoint,
+						'settings'   => array(
+							'slidesToShow'   => 4,
+							'slidesToScroll' => 1,
+						),
+					);
+				} else if ( $breakpoint === 992 && $slides_to_show > 2 ) {
+					$slick_args['responsive'][ $key ] = array(
+						'breakpoint' => (int) $breakpoint,
+						'settings'   => array(
+							'arrows' => false,
+						),
+					);
+					if ( $slides_to_show > 2 ) {
+						$slick_args['responsive'][ $key ]['settings']['slidesToShow']   = 3;
+						$slick_args['responsive'][ $key ]['settings']['slidesToScroll'] = 1;
+					}
+				} else if ( $breakpoint === 768 && $slides_to_show > 1 ) {
+					$slick_args['responsive'][ $key ] = array(
+						'breakpoint' => (int) $breakpoint,
+						'settings'   => array(
+							'slidesToShow'   => 2,
+							'slidesToScroll' => 1,
+						),
+					);
+				} else {
+					$slick_args['responsive'][ $key ] = array(
+						'breakpoint' => (int) $breakpoint,
+						'settings'   => array(
+							'slidesToShow'   => 1,
+							'slidesToScroll' => 1,
+						),
+					);
+				}
+			}
+
+			$slick_init = 'jQuery(function($) {
+				$(\'.slick-slider\').slick(' . json_encode( $slick_args ) . ');
+			});';
+
+			wp_add_inline_script( 'slick-scripts', minify_js( $slick_init ) );
+		}
 
 		// Register feedback form scripts.
 /*		wp_register_script( 'feedback-handler', get_theme_file_uri( '/assets/js/feedback-handler.min.js' ), array( 'jquery' ), filemtime( get_theme_file_path( '/assets/js/feedback-handler.min.js' ) ), true );

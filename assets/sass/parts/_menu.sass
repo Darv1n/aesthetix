@@ -21,6 +21,9 @@
 // #Menu
 .main-menu
 	padding: 1rem 0
+	> *
+		display: inline-block
+		vertical-align: middle
 	&_left
 		text-align: left
 	&_right
@@ -59,7 +62,7 @@
 		width: 100%
 		visibility: hidden
 		opacity: 0
-		&.toggled-on
+		&.on
 			visibility: visible
 			opacity: 1
 	&.main-menu_right

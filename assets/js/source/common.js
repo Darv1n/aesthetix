@@ -1,15 +1,25 @@
 jQuery( document ).ready( function( $ ) {
 
-	$(document).on( 'click', '.toggle-icon', function (e) {
+	$( 'body' ).on( 'click', '.toggle-icon', function (e) {
 
-		var icon_on  = $( this ).data( 'icon-on' );
-		    icon_off = $( this ).data( 'icon-off' );
+		var on  = $( this ).data( 'icon-on' );
+		    off = $( this ).data( 'icon-off' );
 
-		if ( $( this ).hasClass( icon_off ) ) {
-			$( this ).removeClass( icon_off ).addClass( icon_on );
-		} else if ( $( this ).hasClass( icon_on ) ) {
-			$( this ).removeClass( icon_on ).addClass( icon_off );
+		if ( $( this ).hasClass( off ) ) {
+			$( this ).removeClass( off ).addClass( on );
+		} else if ( $( this ).hasClass( on ) ) {
+			$( this ).removeClass( on ).addClass( off );
 		}
+	});
+
+	$( '.search-sidebar-open' ).on( 'click', function() {
+		$( '#search-sidebar' ).addClass( 'on' );
+		$( this ).attr( 'aria-expanded', 'true' );
+	});
+
+	$( '.search-sidebar-close' ).on( 'click', function() {
+		$( '#search-sidebar' ).removeClass( 'on' );
+		$( '.search-sidebar-open' ).attr( 'aria-expanded', 'false' );
 	});
 
 	$( '.scroll-top' ).on( 'click', function() {
@@ -32,9 +42,9 @@ jQuery( document ).ready( function( $ ) {
 			header         = $( '#header' );
 
 		menuToggle.click( function() {
-			$( this ).add( mainNavigation ).toggleClass( 'toggled-on' );
+			$( this ).add( mainNavigation ).toggleClass( 'on' );
 			header.toggleClass( 'header_expanded' );
-			$( this ).add( mainNavigation ).attr( 'aria-expanded', $( this ).add( mainNavigation ).attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
+			// $( this ).add( mainNavigation ).attr( 'aria-expanded', $( this ).add( mainNavigation ).attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
 		} );
 
 		// Init dropdown toggle for sub menu.
@@ -53,23 +63,21 @@ jQuery( document ).ready( function( $ ) {
 		dropdownToggle.attr( 'aria-expanded', 'false' );
 
 		mainNavigation.find( '.sub-menu-toggle' ).click( function() {
-			$( this ).toggleClass( 'toggled-on' );
+			$( this ).toggleClass( 'on' );
 			$( this ).next( '.sub-menu' ).slideToggle( 'fast' );
-			$( this ).next( '.sub-menu' ).toggleClass( 'toggled-on' );
+			$( this ).next( '.sub-menu' ).toggleClass( 'on' );
 			$( this ).next( '.sub-menu' ).attr( 'aria-expanded', $( this ).next( '.sub-menu'  ).attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
 			$( this ).attr( 'aria-expanded', $( this ).next( '.sub-menu'  ).attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
 		} );
 
 		function onResizeMainMenu() {
 			if ( $( window ).width() < 992 || menuContainer.hasClass( 'main-menu_type-close' )) {
-				menuToggle.attr( 'aria-haspopup', 'true' );
-				menuToggle.attr( 'aria-controls', 'primary-menu' );
 				menuToggle.attr( 'aria-expanded', 'false' );
-				mainNavigation.attr( 'aria-expanded', 'false' );
+				// mainNavigation.attr( 'aria-expanded', 'false' );
 				menuContainer.addClass( 'main-menu_burgered' );
 			} else {
 				menuToggle.attr( 'aria-expanded', 'true' );
-				mainNavigation.attr( 'aria-expanded', 'true' );
+				// mainNavigation.attr( 'aria-expanded', 'true' );
 				menuContainer.removeClass( 'main-menu_burgered' );
 			}
 		}

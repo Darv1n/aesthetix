@@ -858,7 +858,7 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 				$classes[] = 'icon_' . get_aesthetix_options( 'root_button_icon_position' );
 			}
 
-			if ( in_array( $color_scheme, array( 'white', 'light' ), true ) && ( $button_type === 'empty' || ( $button_type === 'common' && in_array( $color, array( 'gray', 'default' ), true ) ) ) ) {
+			if ( in_array( 'button-icon', $classes, true ) || $color_scheme === 'white' && ( $button_type === 'empty' || ( $button_type === 'common' && in_array( $color, array( 'gray', 'default' ), true ) ) ) ) {
 				$classes[] = 'icon_black';
 			} else {
 				$classes[] = 'icon_white';
@@ -1077,7 +1077,7 @@ if ( ! function_exists( 'get_aesthetix_menu_toggle_classes' ) ) {
 				$classes[] = 'icon_' . get_aesthetix_options( 'general_menu_button_icon_position' );
 			}
 
-			if ( ! in_array( $menu_button_type, array( 'button-icon-text', 'button-icon', 'button-text' ), true ) || in_array( $color_scheme, array( 'white', 'light' ), true ) && ( $button_type === 'empty' || ( $button_type === 'common' && in_array( $color, array( 'gray', 'default' ), true ) ) ) ) {
+			if ( ! in_array( $menu_button_type, array( 'button-icon-text', 'button-icon' ), true ) || $color_scheme === 'white' && ( $button_type === 'empty' || ( $button_type === 'common' && in_array( $color, array( 'gray', 'default' ), true ) ) ) ) {
 				$classes[] = 'icon_black';
 			} else {
 				$classes[] = 'icon_white';
@@ -1165,7 +1165,7 @@ if ( ! function_exists( 'get_aesthetix_scroll_top_classes' ) ) {
 				$classes[] = 'icon_' . get_aesthetix_options( 'general_menu_button_icon_position' );
 			}
 
-			if ( ! in_array( $scroll_top_type, array( 'button-icon-text', 'button-icon', 'button-text' ), true ) || in_array( $color_scheme, array( 'white' ), true ) && ( $button_type === 'empty' || ( $button_type === 'common' && in_array( $color, array( 'gray', 'default' ), true ) ) ) ) {
+			if ( ! in_array( $scroll_top_type, array( 'button-icon-text', 'button-icon' ), true ) || $color_scheme === 'white' && ( $button_type === 'empty' || ( $button_type === 'common' && in_array( $color, array( 'gray', 'default' ), true ) ) ) ) {
 				$classes[] = 'icon_black';
 			} else {
 				$classes[] = 'icon_white';

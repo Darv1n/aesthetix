@@ -26,7 +26,7 @@ if ( (int) $pages === 1 ) {
 	return;
 } ?>
 
-<nav class="navigation posts-navigation posts-navigation_<?php echo esc_attr( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) ); ?>" data-max-pages="<?php echo esc_attr( $pages ); ?>" role="navigation" aria-label="<?php _e( 'Site post navigation', 'aesthetix' ); ?>">
+<nav class="navigation posts-navigation posts-navigation_<?php echo esc_attr( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) ); ?>" data-max-pages="<?php echo esc_attr( $pages ); ?>" role="navigation" aria-label="<?php esc_attr_e( 'Site post navigation', 'aesthetix' ); ?>">
 
 	<?php if ( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) === 'numeric' ) {
 
@@ -75,7 +75,7 @@ if ( (int) $pages === 1 ) {
 			<?php if ( get_next_posts_link() ) { ?>
 				<div class="col-12 col-md-6">
 					<div class="posts-navigation__item_prev">
-						<?php next_posts_link( __( 'Older Posts', 'aesthetix' ) ); ?>
+						<?php next_posts_link( esc_html__( 'Older Posts', 'aesthetix' ) ); ?>
 					</div>
 				</div>
 			<?php } ?>
@@ -83,7 +83,7 @@ if ( (int) $pages === 1 ) {
 			<?php if ( get_previous_posts_link() ) { ?>
 				<div class="col-12 col-md-6">
 					<div class="posts-navigation__item_next">
-						<?php previous_posts_link( __( 'Newer Posts', 'aesthetix' ) ); ?>
+						<?php previous_posts_link( esc_html__( 'Newer Posts', 'aesthetix' ) ); ?>
 					</div>
 				</div>
 			<?php } ?>

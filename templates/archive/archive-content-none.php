@@ -10,7 +10,7 @@
  ?>
 
 <header class="content-area-header">
-	<h2 class="content-area-title"><?php _e( 'Nothing Found', 'aesthetix' ); ?></h2>
+	<h2 class="content-area-title"><?php esc_html_e( 'Nothing Found', 'aesthetix' ); ?></h2>
 </header>
 
 <section class="content-area-content no-results">
@@ -19,9 +19,9 @@
 		<?php if ( is_home() && current_user_can( 'publish_posts' ) ) { ?>
 			<?php printf( '<p>' . wp_kses( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>', 'aesthetix' ), array( 'a' => array( 'href' => array() ) ) ) . '</p>', esc_url( admin_url( 'post-new.php' ) ) ); ?>
 		<?php } elseif ( is_search() ) { ?>
-			<p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords', 'aesthetix' ); ?></p>
+			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords', 'aesthetix' ); ?></p>
 		<?php } else { ?>
-			<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help', 'aesthetix' ); ?></p>
+			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help', 'aesthetix' ); ?></p>
 		<?php } ?>
 	</div>
 

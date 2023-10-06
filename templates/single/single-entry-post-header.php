@@ -9,10 +9,6 @@
  */
  ?>
 
-<header class="post-header" aria-label="<?php _e( 'Post header', 'aesthetix' ); ?>">
-	<?php do_action( 'aesthetix_before_single_inner_entry_header' ); ?>
-
+<header class="post-header" aria-label="<?php esc_attr_e( 'Post header', 'aesthetix' ); ?>">
 	<?php the_title( '<h1 class="post-title">', '</h1>' ); ?>
-
-	<?php do_action( 'aesthetix_after_single_inner_entry_header' ); ?>
 </header>

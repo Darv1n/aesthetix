@@ -10,5 +10,5 @@
  ?>
 
 <div class="post-link-more">
-	<a <?php aesthetix_link_more_classes(); ?> href="<?php the_permalink(); ?>"><?php _e( 'Read more', 'aesthetix' ); ?></a>
+	<a <?php aesthetix_link_more_classes(); ?> href="<?php the_permalink(); ?>"><?php esc_html_e( 'Read more', 'aesthetix' ); ?></a>
 </div>

@@ -9,10 +9,10 @@
  */
  ?>
 
-<button id="scroll-top" <?php the_aesthetix_scroll_top_classes(); ?>>
-	<?php if ( in_array( get_aesthetix_options( 'general_scroll_top_button_type' ), array( 'icon', 'button-icon' ), true ) ) { ?>
-		<i class="icon"></i>
-	<?php } else {
-		_e( 'Scroll up', 'aesthetix' );
-	} ?>
-</button>
+<?php if ( get_aesthetix_options( 'general_scroll_top_button_display' ) ) { ?>
+	<button id="scroll-top" <?php the_aesthetix_scroll_top_classes(); ?>>
+		<?php if ( ! in_array( get_aesthetix_options( 'general_scroll_top_button_type' ), array( 'icon', 'button-icon' ), true ) ) {
+			esc_html_e( 'Scroll up', 'aesthetix' );
+		} ?>
+	</button>
+<?php }

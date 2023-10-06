@@ -29,9 +29,9 @@
 			if ( is_active_sidebar( 'sidebar-footer-two' ) ) {
 				dynamic_sidebar( 'sidebar-footer-two' );
 			} else { ?>
-				<h3 class="widget-title"><?php _e( 'Menu', 'aesthetix' ); ?></h3>
+				<h3 class="widget-title"><?php esc_html_e( 'Menu', 'aesthetix' ); ?></h3>
 				<div class="main-menu">
-					<nav id="footer-navigation" class="footer-navigation" role="navigation" aria-label="<?php _e( 'Site main menu', 'aesthetix' ); ?>">
+					<nav id="footer-navigation" class="footer-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Site main menu', 'aesthetix' ); ?>">
 						<?php
 							$args = array(
 								'theme_location' => 'primary',
@@ -53,7 +53,7 @@
 				dynamic_sidebar( 'sidebar-footer-three' );
 			} else { ?>
 				<div class="widget widget_footer_contacts">
-					<h3 class="widget-title"><?php _e( 'Contacts', 'aesthetix' ); ?></h3>
+					<h3 class="widget-title"><?php esc_html_e( 'Contacts', 'aesthetix' ); ?></h3>
 					<?php echo do_shortcode( '[aesthetix-contacts-list]' ); ?>
 					<?php echo do_shortcode( '[aesthetix-social-list]' ); ?>
 				</div>

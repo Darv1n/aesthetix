@@ -42,6 +42,8 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'general_menu_button_type'                => 'button-icon-text',
 			'general_menu_button_icon_position'       => 'before',
 
+			'general_mobile_menu_structure'           => 'search,menu',
+
 			'general_footer_type'                     => 'footer-four-columns',
 			'general_footer_top_bar_display'          => false,
 			'general_footer_bottom_bar_display'       => false,
@@ -52,12 +54,10 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 			'general_scroll_top_button_display'       => true,
 			'general_scroll_top_button_alignment'     => 'right',
-			'general_scroll_top_button_type'          => 'icon-text',
+			'general_scroll_top_button_type'          => 'icon',
 			'general_scroll_top_button_icon_position' => 'before',
 
-			'general_comments_display'                => false,
 			'general_cookie_display'                  => true,
-			'general_external_utm_links'              => true,
 
 			'front_page_slider_display'               => true,
 			'front_page_slider_post_type'             => 'post',
