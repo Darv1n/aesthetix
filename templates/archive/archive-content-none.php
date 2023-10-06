@@ -9,12 +9,11 @@
  */
  ?>
 
-<header class="content-area-header">
+<header class="content-area-header" aria-label="<?php esc_attr_e( 'Page header', 'aesthetix' ); ?>">
 	<h2 class="content-area-title"><?php esc_html_e( 'Nothing Found', 'aesthetix' ); ?></h2>
 </header>
 
-<section class="content-area-content no-results">
-
+<section <?php aesthetix_section_classes( 'content-area-content' ); ?> aria-label="<?php esc_attr_e( 'Page content', 'aesthetix' ); ?>">
 	<div class="no-results-content">
 		<?php if ( is_home() && current_user_can( 'publish_posts' ) ) { ?>
 			<?php printf( '<p>' . wp_kses( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>', 'aesthetix' ), array( 'a' => array( 'href' => array() ) ) ) . '</p>', esc_url( admin_url( 'post-new.php' ) ) ); ?>
@@ -24,9 +23,8 @@
 			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help', 'aesthetix' ); ?></p>
 		<?php } ?>
 	</div>
-
 </section>
 
-<footer class="content-area-footer">
+<footer class="content-area-footer" aria-label="<?php esc_attr_e( 'Page footer', 'aesthetix' ); ?>">
 	<?php get_search_form(); ?>
 </footer>

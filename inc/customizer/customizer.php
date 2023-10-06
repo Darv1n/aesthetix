@@ -327,6 +327,26 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 			) ) );
 		}
 
+		// Image control.
+		function aesthetix_image_control( $section, $id, $name, $description, $priority ) {
+			global $wp_customize;
+
+			$wp_customize->add_setting( 'aesthetix_options[' . $section . '_' . $id . ']', array(
+				'default'           => get_aesthetix_options( $section . '_' . $id ),
+				'type'              => 'option',
+				'transport'         => 'refresh',
+				'capability'        => 'edit_theme_options',
+				'sanitize_callback' => 'aesthetix_sanitize_textfield',
+			) );
+			$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'aesthetix_options[' . $section . '_' . $id . ']', array(
+				'label'       => $name,
+				'description' => wp_kses_post( $description ),
+				'section'     => apply_filters( 'aesthetix_customizer_section_control', 'aesthetix_' . $section, $id ),
+				'type'        => 'image',
+				'priority'    => $priority,
+			) ) );
+		}
+
 		// Add sections.
 		$priority = 1;
 		foreach ( get_aesthetix_customizer_sections() as $section_name => $section ) {
@@ -376,7 +396,12 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 						break;
 					case 'sortable_control':
 						aesthetix_sortable_control( $section_name, $control_name, $value[1], $value[2]/*description*/, $value[3]/*atts*/, $priority );
-						break;	
+						break;
+					case 'image_control':
+						aesthetix_image_control( $section_name, $control_name, $value[1], $value[2]/*description*/, $priority );
+						break;
+					default:
+						break;
 				}
 			}
 		}

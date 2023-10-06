@@ -10,6 +10,34 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if ( ! function_exists( 'ajax_localize_params' ) ) {
+	function ajax_localize_params() {
+
+		global $wp_query;
+
+		// Parameters for the ajax handler.
+		$ajax_localize = array(
+			'url'   => admin_url( 'admin-ajax.php' ),
+			'query' => $wp_query->query,
+			'lang'  => determine_locale(),
+			'nonce' => wp_create_nonce( 'ajax-nonce' ), // Создаем nonce.
+		);
+
+		if ( isset( $wp_query->query_vars ) ) {
+			foreach ( $wp_query->query_vars as $key => $query_var ) {
+				if ( ! empty( $query_var ) ) {
+					$ajax_localize['query'][ $key ] = $query_var;
+				}
+			}
+		}
+
+		// Add filter to array.
+		$ajax_localize = apply_filters( 'ajax_localize_params', $ajax_localize );
+
+		return $ajax_localize;
+	}
+}
+
 if ( ! function_exists( 'primary_menu_fallback' ) ) {
 	function primary_menu_fallback() {
 		if ( current_user_can( 'edit_theme_options' ) ) {

@@ -108,7 +108,7 @@ if ( ! function_exists( 'aesthetix_comments_list' ) ) {
 
 ?>
 
-<section id="comments" class="section section_comments comments-area">
+<section id="comments" <?php aesthetix_section_classes( 'section_comments comments-area' ); ?>>
 
 	<?php if ( have_comments() ) { ?>
 

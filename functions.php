@@ -18,6 +18,7 @@ require_once get_template_directory() . '/inc/template-functions.php';
 require_once get_template_directory() . '/inc/template-filters.php';
 require_once get_template_directory() . '/inc/template-actions.php';
 require_once get_template_directory() . '/inc/template-wrappers.php';
+require_once get_template_directory() . '/inc/handlers.php';
 require_once get_template_directory() . '/inc/shortcodes.php';
 
 // Customizer.

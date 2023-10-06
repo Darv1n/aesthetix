@@ -136,6 +136,7 @@ if ( ! function_exists( 'after_site_content_structure' ) ) {
 
 		$structure = array(
 			'content-wrapper-end',
+			'subscription-form',
 		);
 
 		$structure = apply_filters( 'after_site_content_structure', $structure );
@@ -144,6 +145,9 @@ if ( ! function_exists( 'after_site_content_structure' ) ) {
 			switch ( $value ) {
 				case has_action( 'after_site_content_structure_loop_' . $value ):
 					do_action( 'after_site_content_structure_loop_' . $value );
+					break;
+				case 'subscription-form':
+					get_template_part( 'templates/subscription-form' );
 					break;
 				case 'content-wrapper-end':
 					get_template_part( 'templates/content-wrapper', 'end' );

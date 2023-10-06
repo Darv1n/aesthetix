@@ -192,6 +192,10 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'breadcrumbs_type'                => array( 'select_control', __( 'Select breadcrumbs type', 'aesthetix' ), '', $general_breadcrumbs_select ),
 			'breadcrumbs_separator'           => array( 'text_control', __( 'Breadcrumbs separator', 'aesthetix' ), '' ),
 
+			'subscription_form_tab_title'     => array( 'tab_title', __( 'Subscription form', 'aesthetix' ), '' ),
+			'subscription_form_type'          => array( 'select_control', __( 'Subscription form type', 'aesthetix' ), '', get_aesthetix_subscription_form_type() ),
+			'subscription_form_bg'            => array( 'image_control', __( 'Subscription form background image', 'aesthetix' ), '', '' ),
+
 			'scroll_top_tab_title'            => array( 'tab_title', __( 'Scroll top', 'aesthetix' ), '' ),
 			'scroll_top_button_display'       => array( 'checkbox_control', __( 'Scroll to top button display', 'aesthetix' ), '' ),
 			'scroll_top_button_alignment'     => array( 'select_control', __( 'Select scroll top button alignment', 'aesthetix' ), '', $alignment_select ),

@@ -24,6 +24,7 @@ add_shortcode( 'aesthetix-phone', 'aesthetix_shortcode_phone' ); // [aesthetix-p
 add_shortcode( 'aesthetix-email', 'aesthetix_shortcode_email' ); // [aesthetix-email].
 
 if ( ! function_exists( 'aesthetix_shortcode_copyright' ) ) {
+
 	/**
 	 * Add shortcode [aesthetix-copyright year="2016" display="rights" font-size="small"]
 	 *
@@ -362,6 +363,7 @@ if ( ! function_exists( 'aesthetix_shortcode_address' ) ) {
 }
 
 if ( ! function_exists( 'aesthetix_shortcode_phone' ) ) {
+
 	/**
 	 * Add shortcode with phone number [aesthetix-phone]
 	 *

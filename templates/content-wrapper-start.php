@@ -9,6 +9,6 @@
  */
  ?>
 
-<section id="section-content" class="section section_content" aria-label="<?php esc_attr_e( 'Content Section', 'aesthetix' ); ?>">
+<section id="section-content" <?php aesthetix_section_classes( 'section_content' ); ?> aria-label="<?php esc_attr_e( 'Site Content', 'aesthetix' ); ?>">
 	<div <?php aesthetix_container_classes(); ?>>
 		<div class="row">

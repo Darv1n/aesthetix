@@ -52,6 +52,9 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'general_breadcrumbs_type'                => 'woocommerce',
 			'general_breadcrumbs_separator'           => '/',
 
+			'general_subscription_form_type'          => 'theme',
+			'general_subscription_form_bg'            => '',
+
 			'general_scroll_top_button_display'       => true,
 			'general_scroll_top_button_alignment'     => 'right',
 			'general_scroll_top_button_type'          => 'icon',

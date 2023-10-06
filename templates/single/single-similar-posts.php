@@ -11,7 +11,7 @@
 
 <?php if ( get_post_type() === 'post' && get_aesthetix_options( 'single_' . get_post_type() . '_similar_posts_display' ) ) { ?>
 
-	<section id="similar-posts" class="section section_similar-posts similar-posts" aria-label="<?php esc_attr_e( 'Similar posts', 'aesthetix' ); ?>">
+	<section id="similar-posts" <?php aesthetix_section_classes( 'section_similar-posts similar-posts' ); ?> aria-label="<?php esc_attr_e( 'Similar posts', 'aesthetix' ); ?>">
 
 		<h2 class="section-title"><?php esc_html_e( 'Similar posts', 'aesthetix' ); ?></h2>
 

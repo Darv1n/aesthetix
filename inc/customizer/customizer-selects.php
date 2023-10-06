@@ -15,7 +15,7 @@ if ( ! function_exists( 'get_aesthetix_mobile_menu_structure' ) ) {
 	/**
 	 * Return array with the customizer mobile menu structure.
 	 *
-	 * @param string $control   array key to get one value.
+	 * @param string $control array key to get one value.
 	 *
 	 * @return string|array|false
 	 * 
@@ -207,6 +207,43 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_meta_structure' ) ) {
 
 		// Merge child and parent default options.
 		$converter = apply_filters( 'get_aesthetix_customizer_post_meta_structure', $converter, $post_type );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+if ( ! function_exists( 'get_aesthetix_subscription_form_type' ) ) {
+
+	/**
+	 * Return array with the customizer subscription form type.
+	 *
+	 * @param string $control array key to get one value.
+	 *
+	 * @return string|array|false
+	 * 
+	 * @since 1.1.2
+	 */
+	function get_aesthetix_subscription_form_type( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'none'  => __( 'None', 'aesthetix' ),
+			'theme' => __( 'Theme (Messages will be sent to email)', 'aesthetix' ),
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_subscription_form_type', $converter );
 
 		// Return controls.
 		if ( is_null( $control ) ) {

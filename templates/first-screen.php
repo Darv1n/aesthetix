@@ -22,7 +22,7 @@ if ( is_front_page() || is_home() && get_aesthetix_options( 'front_page_slider_d
 
 	if ( $query->have_posts() ) { ?>
 
-		<section id="first-screen" class="section section_fisrt-screen">
+		<section id="section-first-screen" <?php aesthetix_section_classes( 'section_fisrt-screen' ); ?> aria-label="<?php esc_attr_e( 'First Screen Slider', 'aesthetix' ); ?>">
 			<div <?php aesthetix_container_classes(); ?>>
 				<div class="slick-slider">
 

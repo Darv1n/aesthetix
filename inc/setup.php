@@ -325,6 +325,19 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 				'nonce' => wp_create_nonce( 'comments-handler-nonce' ),
 			)
 		);*/
+
+		if ( get_aesthetix_options( 'general_subscription_form_type' ) === 'theme' ) {
+
+			/**
+			 * Form js handler  - /assets/js/source/subscription-from-handler.js
+			 * Setup js scripts - /inc/setup.php
+			 * Form php handler - /inc/handlers.php
+			 * Form html        - /templates/subscription-form.php
+			 */
+			wp_enqueue_script( 'subscription-from-scripts', get_theme_file_uri( '/assets/js/subscription-from-handler.min.js' ), array( 'jquery' ), filemtime( get_theme_file_path( '/assets/js/subscription-from-handler.min.js' ) ), true );
+		}
+
+		wp_localize_script( 'jquery', 'ajax_obj', ajax_localize_params() );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'aesthetix_enqueue_scripts' );

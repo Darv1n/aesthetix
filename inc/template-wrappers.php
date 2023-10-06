@@ -130,6 +130,84 @@ if ( ! function_exists( 'aesthetix_post_classes' ) ) {
 }
 add_filter( 'post_class', 'aesthetix_post_classes', 10 );
 
+if ( ! function_exists( 'get_aesthetix_section_classes' ) ) {
+
+	/**
+	 * Get classes for section wrapper.
+	 *
+	 * @param string $class Additional section classes.
+	 *
+	 * @return array
+	 * 
+	 * @since 1.1.2
+	 */
+	function get_aesthetix_section_classes( $class = '' ) {
+
+		// Check the function has accepted any classes.
+		if ( isset( $class ) && ! empty( $class ) ) {
+			if ( is_array( $class ) ) {
+				$classes = $class;
+			} elseif ( is_string( $class ) ) {
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
+			}
+		} else {
+			$classes = array();
+		}
+
+		// Add elements to array.
+		$classes[] = 'section';
+
+		if ( in_array( 'section_fisrt-screen', $classes, true ) || in_array( 'section_subscription-form', $classes, true ) ) {
+
+			if ( ! in_array( 'has_background', $classes, true ) ) {
+				$classes[] = 'section-secondary';
+			}
+
+			$classes[] = 'container';
+
+			if ( in_array( 'container-average', get_aesthetix_container_classes(), true ) ) {
+				$classes[] = 'container-wide';
+			}
+
+			if ( in_array( 'container-wide', get_aesthetix_container_classes(), true ) ) {
+				$classes[] = 'container-fluid';
+			}
+		}
+
+		// Add filter to array.
+		$classes = apply_filters( 'get_aesthetix_section_classes', $classes );
+		$classes = array_unique( (array) $classes );
+
+		return $classes;
+	}
+}
+
+if ( ! function_exists( 'aesthetix_section_classes' ) ) {
+
+	/**
+	 * Display classes for section wrapper.
+	 *
+	 * @param string $class Additional section classes.
+	 * @param bool   $echo  Echo or return section classes.
+	 *
+	 * @return string|void
+	 * 
+	 * @since 1.1.2
+	 */
+	function aesthetix_section_classes( $class = '', $echo = true ) {
+
+		$classes = get_aesthetix_section_classes( $class );
+
+		if ( $echo ) {
+			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
+		} else {
+			return 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
+		}
+	}
+}
+
 if ( ! function_exists( 'get_aesthetix_container_classes' ) ) {
 
 	/**
@@ -143,20 +221,24 @@ if ( ! function_exists( 'get_aesthetix_container_classes' ) ) {
 	 */
 	function get_aesthetix_container_classes( $class = '' ) {
 
-		// Add elements to array.
-		$classes   = array();
-		$classes[] = 'container';
-		$classes[] = 'container-' . get_aesthetix_options( 'general_container_width' );
-
 		// Check the function has accepted any classes.
 		if ( isset( $class ) && ! empty( $class ) ) {
 			if ( is_array( $class ) ) {
-				$classes = array_merge( $classes, $class );
+				$classes = $class;
 			} elseif ( is_string( $class ) ) {
-				$classes = array_merge( $classes, explode( ' ', $class ) );
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
 			}
+		} else {
+			$classes = array();
 		}
 
+		// Add elements to array.
+		$classes[] = 'container';
+		$classes[] = 'container-' . get_aesthetix_options( 'general_container_width' );
+
+		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_container_classes', $classes );
 		$classes = array_unique( (array) $classes );
 
@@ -201,9 +283,20 @@ if ( ! function_exists( 'get_aesthetix_content_area_classes' ) ) {
 	 */
 	function get_aesthetix_content_area_classes( $class = '' ) {
 
-		// Add elements to array.
-		$classes   = array();
+		// Check the function has accepted any classes.
+		if ( isset( $class ) && ! empty( $class ) ) {
+			if ( is_array( $class ) ) {
+				$classes = $class;
+			} elseif ( is_string( $class ) ) {
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
+			}
+		} else {
+			$classes = array();
+		}
 
+		// Add elements to array.
 		$classes[] = 'col-12';
 		$classes[] = 'order-1';
 		$classes[] = 'col-sm-12';
@@ -227,15 +320,7 @@ if ( ! function_exists( 'get_aesthetix_content_area_classes' ) ) {
 
 		$classes[] = 'content-area';
 
-		// Check the function has accepted any classes.
-		if ( isset( $class ) && ! empty( $class ) ) {
-			if ( is_array( $class ) ) {
-				$classes = array_merge( $classes, $class );
-			} elseif ( is_string( $class ) ) {
-				$classes = array_merge( $classes, explode( ' ', $class ) );
-			}
-		}
-
+		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_content_area_classes', $classes );
 		$classes = array_unique( (array) $classes );
 
@@ -280,9 +365,20 @@ if ( ! function_exists( 'get_aesthetix_widget_area_classes' ) ) {
 	 */
 	function get_aesthetix_widget_area_classes( $class = '' ) {
 
-		// Add elements to array.
-		$classes   = array();
+		// Check the function has accepted any classes.
+		if ( isset( $class ) && ! empty( $class ) ) {
+			if ( is_array( $class ) ) {
+				$classes = $class;
+			} elseif ( is_string( $class ) ) {
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
+			}
+		} else {
+			$classes = array();
+		}
 
+		// Add elements to array.
 		$classes[] = 'col-12';
 		$classes[] = 'col-sm-12';
 		$classes[] = 'col-lg-4';
@@ -290,15 +386,7 @@ if ( ! function_exists( 'get_aesthetix_widget_area_classes' ) ) {
 
 		$classes[] = 'widget-area';
 
-		// Check the function has accepted any classes.
-		if ( isset( $class ) && ! empty( $class ) ) {
-			if ( is_array( $class ) ) {
-				$classes = array_merge( $classes, $class );
-			} elseif ( is_string( $class ) ) {
-				$classes = array_merge( $classes, explode( ' ', $class ) );
-			}
-		}
-
+		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_widget_area_classes', $classes );
 		$classes = array_unique( (array) $classes );
 
@@ -343,8 +431,20 @@ if ( ! function_exists( 'get_aesthetix_header_classes' ) ) {
 	 */
 	function get_aesthetix_header_classes( $class = '' ) {
 
+		// Check the function has accepted any classes.
+		if ( isset( $class ) && ! empty( $class ) ) {
+			if ( is_array( $class ) ) {
+				$classes = $class;
+			} elseif ( is_string( $class ) ) {
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
+			}
+		} else {
+			$classes = array();
+		}
+
 		// Add elements to array.
-		$classes   = array();
 		$classes[] = 'header';
 
 		if ( has_custom_header() ) {
@@ -369,15 +469,7 @@ if ( ! function_exists( 'get_aesthetix_header_classes' ) ) {
 
 		$classes[] = 'header_menu_' . get_aesthetix_options( 'general_menu_position' );
 
-		// Check the function has accepted any classes.
-		if ( isset( $class ) && ! empty( $class ) ) {
-			if ( is_array( $class ) ) {
-				$classes = array_merge( $classes, $class );
-			} elseif ( is_string( $class ) ) {
-				$classes = array_merge( $classes, explode( ' ', $class ) );
-			}
-		}
-
+		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_header_classes', $classes );
 		$classes = array_unique( (array) $classes );
 
@@ -422,8 +514,20 @@ if ( ! function_exists( 'get_aesthetix_footer_classes' ) ) {
 	 */
 	function get_aesthetix_footer_classes( $class = '' ) {
 
+		// Check the function has accepted any classes.
+		if ( isset( $class ) && ! empty( $class ) ) {
+			if ( is_array( $class ) ) {
+				$classes = $class;
+			} elseif ( is_string( $class ) ) {
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
+			}
+		} else {
+			$classes = array();
+		}
+
 		// Add elements to array.
-		$classes   = array();
 		$classes[] = 'footer';
 
 		if ( get_aesthetix_options( 'general_footer_bottom_bar_display' ) ) {
@@ -438,15 +542,7 @@ if ( ! function_exists( 'get_aesthetix_footer_classes' ) ) {
 			$classes[] = 'footer_four-columns';
 		}
 
-		// Check the function has accepted any classes.
-		if ( isset( $class ) && ! empty( $class ) ) {
-			if ( is_array( $class ) ) {
-				$classes = array_merge( $classes, $class );
-			} elseif ( is_string( $class ) ) {
-				$classes = array_merge( $classes, explode( ' ', $class ) );
-			}
-		}
-
+		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_footer_classes', $classes );
 		$classes = array_unique( (array) $classes );
 
@@ -491,8 +587,20 @@ if ( ! function_exists( 'get_aesthetix_main_menu_classes' ) ) {
 	 */
 	function get_aesthetix_main_menu_classes( $class = '' ) {
 
+		// Check the function has accepted any classes.
+		if ( isset( $class ) && ! empty( $class ) ) {
+			if ( is_array( $class ) ) {
+				$classes = $class;
+			} elseif ( is_string( $class ) ) {
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
+			}
+		} else {
+			$classes = array();
+		}
+
 		// Add elements to array.
-		$classes   = array();
 		$classes[] = 'main-menu';
 
 		if ( get_aesthetix_options( 'general_menu_type' ) === 'menu-open' ) {
@@ -509,15 +617,7 @@ if ( ! function_exists( 'get_aesthetix_main_menu_classes' ) ) {
 
 		$classes[] = 'main-menu_' . get_aesthetix_options( 'general_menu_position' );
 
-		// Check the function has accepted any classes.
-		if ( isset( $class ) && ! empty( $class ) ) {
-			if ( is_array( $class ) ) {
-				$classes = array_merge( $classes, $class );
-			} elseif ( is_string( $class ) ) {
-				$classes = array_merge( $classes, explode( ' ', $class ) );
-			}
-		}
-
+		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_main_menu_classes', $classes );
 		$classes = array_unique( (array) $classes );
 
@@ -562,8 +662,20 @@ if ( ! function_exists( 'get_aesthetix_meta_display_classes' ) ) {
 	 */
 	function get_aesthetix_meta_display_classes( $class = '' ) {
 
+		// Check the function has accepted any classes.
+		if ( isset( $class ) && ! empty( $class ) ) {
+			if ( is_array( $class ) ) {
+				$classes = $class;
+			} elseif ( is_string( $class ) ) {
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
+			}
+		} else {
+			$classes = array();
+		}
+
 		// Add elements to array.
-		$classes   = array();
 		$classes[] = 'post__part';
 		$classes[] = 'post__meta';
 		$classes[] = 'post-meta';
@@ -574,15 +686,7 @@ if ( ! function_exists( 'get_aesthetix_meta_display_classes' ) ) {
 			$classes[] = 'post-meta_inline';
 		}
 
-		// Check the function has accepted any classes.
-		if ( isset( $class ) && ! empty( $class ) ) {
-			if ( is_array( $class ) ) {
-				$classes = array_merge( $classes, $class );
-			} elseif ( is_string( $class ) ) {
-				$classes = array_merge( $classes, explode( ' ', $class ) );
-			}
-		}
-
+		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_meta_display_classes', $classes );
 		$classes = array_unique( (array) $classes );
 
@@ -628,23 +732,28 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_wrapper_classes' ) )
 	 */
 	function get_aesthetix_archive_page_columns_wrapper_classes( $class = '' ) {
 
-		$classes   = array();
-		$classes[] = 'row';
-		$classes[] = 'row-' . get_aesthetix_count_columns( get_aesthetix_options( 'archive_post_columns' ) ) . '-col';
-
-		if ( get_aesthetix_options( 'archive_' . get_post_type() . '_masonry' ) ) {
-			$classes[] = 'masonry-gallery';
-		}
-
 		// Check the function has accepted any classes.
 		if ( isset( $class ) && ! empty( $class ) ) {
 			if ( is_array( $class ) ) {
-				$classes = array_merge( $classes, $class );
+				$classes = $class;
 			} elseif ( is_string( $class ) ) {
-				$classes = array_merge( $classes, explode( ' ', $class ) );
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
 			}
+		} else {
+			$classes = array();
 		}
 
+		// Add elements to array.
+		$classes[] = 'row';
+		$classes[] = 'row-' . get_aesthetix_count_columns( get_aesthetix_options( 'archive_post_columns' ) ) . '-col';
+
+		if ( in_array( 'loop', $classes, true ) && get_aesthetix_options( 'archive_' . get_post_type() . '_masonry' ) ) {
+			$classes[] = 'masonry-gallery';
+		}
+
+		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_archive_page_columns_wrapper_classes', $classes );
 		$classes = array_unique( (array) $classes );
 
@@ -730,7 +839,20 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_classes' ) ) {
 	 */
 	function get_aesthetix_archive_page_columns_classes( $counter = null, $class = '', $columns_count = null ) {
 
-		$classes   = array();
+		// Check the function has accepted any classes.
+		if ( isset( $class ) && ! empty( $class ) ) {
+			if ( is_array( $class ) ) {
+				$classes = $class;
+			} elseif ( is_string( $class ) ) {
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
+			}
+		} else {
+			$classes = array();
+		}
+
+		// Add elements to array.
 		$classes[] = 'col-12';
 		$classes[] = 'post-col';
 
@@ -773,15 +895,7 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_classes' ) ) {
 			$classes[] = 'masonry-item';
 		}
 
-		// Check the function has accepted any classes.
-		if ( isset( $class ) && ! empty( $class ) ) {
-			if ( is_array( $class ) ) {
-				$classes = array_merge( $classes, $class );
-			} elseif ( is_string( $class ) ) {
-				$classes = array_merge( $classes, explode( ' ', $class ) );
-			}
-		}
-
+		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_archive_page_columns_classes', $classes, $counter );
 		$classes = array_unique( (array) $classes );
 
@@ -829,11 +943,23 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 	 */
 	function get_button_classes( $class = '', $color = 'primary' ) {
 
+		// Check the function has accepted any classes.
+		if ( isset( $class ) && ! empty( $class ) ) {
+			if ( is_array( $class ) ) {
+				$classes = $class;
+			} elseif ( is_string( $class ) ) {
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
+			}
+		} else {
+			$classes = array();
+		}
+
 		$color_scheme = get_aesthetix_options( 'root_color_scheme' );
 		$button_type  = get_aesthetix_options( 'root_button_type' );
 
 		// Add elements to array.
-		$classes   = array();
 		$classes[] = 'button';
 
 		if ( $button_type === 'common' ) {
@@ -841,15 +967,6 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 		} else {
 			$classes[] = 'button-' . $button_type;
 			$classes[] = 'button-' . $button_type . '-' . $color;
-		}
-
-		// Check the function has accepted any classes.
-		if ( isset( $class ) && ! empty( $class ) ) {
-			if ( is_array( $class ) ) {
-				$classes = array_merge( $classes, $class );
-			} elseif ( is_string( $class ) ) {
-				$classes = array_merge( $classes, explode( ' ', $class ) );
-			}
 		}
 
 		if ( in_array( 'icon', $classes, true ) ) {
@@ -874,6 +991,7 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 			}
 		}
 
+		// Add filter to array.
 		$classes = apply_filters( 'get_button_classes', $classes );
 		$classes = array_unique( (array) $classes );
 
@@ -919,20 +1037,24 @@ if ( ! function_exists( 'get_link_classes' ) ) {
 	 */
 	function get_link_classes( $class = '' ) {
 
-		// Add elements to array.
-		$classes   = array();
-		$classes[] = 'link';
-		$classes[] = 'link-color-unborder';
-
 		// Check the function has accepted any classes.
 		if ( isset( $class ) && ! empty( $class ) ) {
 			if ( is_array( $class ) ) {
-				$classes = array_merge( $classes, $class );
+				$classes = $class;
 			} elseif ( is_string( $class ) ) {
-				$classes = array_merge( $classes, explode( ' ', $class ) );
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
 			}
+		} else {
+			$classes = array();
 		}
 
+		// Add elements to array.
+		$classes[] = 'link';
+		$classes[] = 'link-color-unborder';
+
+		// Add filter to array.
 		$classes = apply_filters( 'get_link_classes', $classes );
 		$classes = array_unique( (array) $classes );
 
@@ -978,7 +1100,18 @@ if ( ! function_exists( 'get_aesthetix_link_more_classes' ) ) {
 	 */
 	function get_aesthetix_link_more_classes( $class = '', $color = 'primary' ) {
 
-		$classes = array();
+		// Check the function has accepted any classes.
+		if ( isset( $class ) && ! empty( $class ) ) {
+			if ( is_array( $class ) ) {
+				$classes = $class;
+			} elseif ( is_string( $class ) ) {
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
+			}
+		} else {
+			$classes = array();
+		}
 
 		if ( get_post_type() ) {
 			$post_type = get_post_type();
@@ -995,15 +1128,7 @@ if ( ! function_exists( 'get_aesthetix_link_more_classes' ) ) {
 			$classes   = get_link_classes( $classes );
 		}
 
-		// Check the function has accepted any classes.
-		if ( isset( $class ) && ! empty( $class ) ) {
-			if ( is_array( $class ) ) {
-				$classes = array_merge( $classes, $class );
-			} elseif ( is_string( $class ) ) {
-				$classes = array_merge( $classes, explode( ' ', $class ) );
-			}
-		}
-
+		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_link_more_classes', $classes );
 		$classes = array_unique( (array) $classes );
 
@@ -1050,7 +1175,19 @@ if ( ! function_exists( 'get_aesthetix_menu_toggle_classes' ) ) {
 	 */
 	function get_aesthetix_menu_toggle_classes( $class = '', $color = 'primary' ) {
 
-		$classes          = array();
+		// Check the function has accepted any classes.
+		if ( isset( $class ) && ! empty( $class ) ) {
+			if ( is_array( $class ) ) {
+				$classes = $class;
+			} elseif ( is_string( $class ) ) {
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
+			}
+		} else {
+			$classes = array();
+		}
+
 		$menu_button_type = get_aesthetix_options( 'general_menu_button_type' );
 		$button_type      = get_aesthetix_options( 'root_button_type' );
 		$color_scheme     = get_aesthetix_options( 'root_color_scheme' );
@@ -1092,6 +1229,7 @@ if ( ! function_exists( 'get_aesthetix_menu_toggle_classes' ) ) {
 			$classes[] = 'menu-toggle_' . get_aesthetix_options( 'general_menu_button_alignment' );
 		}
 
+		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_menu_toggle_classes', $classes );
 		$classes = array_unique( $classes );
 
@@ -1138,7 +1276,19 @@ if ( ! function_exists( 'get_aesthetix_scroll_top_classes' ) ) {
 	 */
 	function get_aesthetix_scroll_top_classes( $class = '', $color = 'primary' ) {
 
-		$classes         = array();
+		// Check the function has accepted any classes.
+		if ( isset( $class ) && ! empty( $class ) ) {
+			if ( is_array( $class ) ) {
+				$classes = $class;
+			} elseif ( is_string( $class ) ) {
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
+			}
+		} else {
+			$classes = array();
+		}
+
 		$scroll_top_type = get_aesthetix_options( 'general_scroll_top_button_type' );
 		$button_type     = get_aesthetix_options( 'root_button_type' );
 		$color_scheme    = get_aesthetix_options( 'root_color_scheme' );
@@ -1175,6 +1325,7 @@ if ( ! function_exists( 'get_aesthetix_scroll_top_classes' ) ) {
 		$classes[] = 'scroll-top';
 		$classes[] = 'scroll-top_' . get_aesthetix_options( 'general_scroll_top_button_alignment' );
 
+		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_scroll_top_classes', $classes );
 		$classes = array_unique( $classes );
 
@@ -1220,20 +1371,24 @@ if ( ! function_exists( 'get_elem_classes' ) ) {
 	 */
 	function get_elem_classes( $class = '' ) {
 
-		// Add elements to array.
-		$classes   = array();
-		$classes[] = 'elem';
-		$classes[] = 'elem_' . get_aesthetix_options( 'root_color_scheme' );
-
 		// Check the function has accepted any classes.
 		if ( isset( $class ) && ! empty( $class ) ) {
 			if ( is_array( $class ) ) {
-				$classes = array_merge( $classes, $class );
+				$classes = $class;
 			} elseif ( is_string( $class ) ) {
-				$classes = array_merge( $classes, explode( ' ', $class ) );
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
 			}
+		} else {
+			$classes = array();
 		}
 
+		// Add elements to array.
+		$classes[] = 'elem';
+		$classes[] = 'elem_' . get_aesthetix_options( 'root_color_scheme' );
+
+		// Add filter to array.
 		$classes = apply_filters( 'get_elem_classes', $classes );
 		$classes = array_unique( (array) $classes );
 

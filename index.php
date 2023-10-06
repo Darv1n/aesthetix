@@ -28,8 +28,8 @@ get_header(); ?>
 			</header>
 		<?php } ?>
 
-		<section class="content-area-content" aria-label="<?php esc_attr_e( 'Archive page content', 'aesthetix' ); ?>">
-			<div <?php aesthetix_archive_page_columns_wrapper_classes(); ?>>
+		<section <?php aesthetix_section_classes( 'content-area-content' ); ?> aria-label="<?php esc_attr_e( 'Archive page content', 'aesthetix' ); ?>">
+			<div <?php aesthetix_archive_page_columns_wrapper_classes( 'loop' ); ?>>
 
 				<?php while ( have_posts() ) : ?>
 					<?php the_post(); ?>

@@ -12,6 +12,7 @@
 		display: block
 	&__title
 		margin-bottom: $gutter
+		font-family: $primary-font
 		font-size: $h1
 		line-height: $h1
 	&__description
@@ -38,15 +39,16 @@ a.logo
 		@extend .mb
 	&_content, &_breadcrumbs
 		padding: $margin 0
-	&-primary, &-secondary
-		color: $primary-text-color
+	&-primary
 		background: $primary-bg-color
 		border: $border-width solid $primary-bd-color
-		.gray-color
-			color: $primary-gray-color
+		border-radius: $border-radius
 	&-secondary
-		background: $primary-bg-color-hover
-		border: $border-width solid $primary-bd-color-hover
+		background: $secondary-bg-color
+		border: $border-width solid $secondary-bd-color
+		border-radius: $border-radius
+	&_subscription-form
+		border-radius: $border-radius
 
 .front-page 
 	.section_content
@@ -162,6 +164,12 @@ a.logo
 		&::before
 			width: 2.25rem
 			height: 2rem	
+
+.form
+	> *:not(:last-child)
+		margin-bottom: .75rem
+	&-subtitle, &-confirm-text
+		font-size: $small-font-size
 
 .avatar
 	border-radius: 50%

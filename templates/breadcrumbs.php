@@ -10,7 +10,7 @@
 
 if ( ! is_front_page() && ! is_home() && get_aesthetix_options( 'general_breadcrumbs_display' ) ) {
 
-	$before .= '<section id="section-breadcrumbs" class="section section_breadcrumbs">';
+	$before .= '<section id="section-breadcrumbs" class="' . esc_attr( implode( ' ', aesthetix_section_classes( 'section_breadcrumbs' ) ) ) . '">';
 		$before .= '<div class="' . esc_attr( implode( ' ', get_aesthetix_container_classes() ) ) . '">';
 			$before .= '<div class="row">';
 				$before .= '<div class="col-12 align-items-center">';

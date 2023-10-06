@@ -21,7 +21,7 @@ get_header(); ?>
 			</h1>
 		</header>
 
-		<section class="content-area-content" aria-label="<?php esc_attr_e( 'Search page content', 'aesthetix' ); ?>">
+		<section <?php aesthetix_section_classes( 'content-area-content' ); ?> aria-label="<?php esc_attr_e( 'Search page content', 'aesthetix' ); ?>">
 
 			<div <?php aesthetix_archive_page_columns_wrapper_classes(); ?>>
 
