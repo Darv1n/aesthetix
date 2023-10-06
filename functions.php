@@ -69,6 +69,13 @@ if ( is_plugin_active( 'rate-my-post/rate-my-post.php' ) ) {
 	require_once get_template_directory() . '/inc/compatibility/rate-my-post.php';
 }
 
+// Load Mailchimp compatibility file.
+if ( is_plugin_active( 'mailchimp-for-wp/mailchimp-for-wp.php' ) ) {
+	vardump( true );
+	require_once get_template_directory() . '/inc/compatibility/mailchimp.php';
+}
+
+
 require_once get_template_directory() . '/inc/libs/minifier.php'; // html/css/js minifier functions.
 require_once get_template_directory() . '/inc/libs/kama-breadcrumb.php';
 

@@ -54,6 +54,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 			'general_subscription_form_type'          => 'theme',
 			'general_subscription_form_bg'            => '',
+			'general_subscription_form_shortcode'     => '[mc4wp_form id=264]',
 
 			'general_scroll_top_button_display'       => true,
 			'general_scroll_top_button_alignment'     => 'right',
