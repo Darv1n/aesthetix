@@ -15,7 +15,7 @@
 
 	<?php
 
-		$structure = get_aesthetix_options( 'archive_' . $post->post_type . '_structure' );
+		$structure = get_aesthetix_options( 'archive_' . get_post_type() . '_structure' );
 
 		if ( is_string( $structure ) && ! empty( $structure ) ) {
 

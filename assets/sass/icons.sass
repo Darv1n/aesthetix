@@ -505,6 +505,16 @@ button, .button
 	&_sort-up
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#sort-up ) center/cover no-repeat
+	&_spinner
+		&::before
+			background: url( ../img/icons/sets/fa-regular.svg#spinner ) center/cover no-repeat
+			transform-origin: center
+			animation: icon_rotation 2s infinite linear
+	&_spinner-third
+		&::before
+			background: url( ../img/icons/sets/fa-regular.svg#spinner-third ) center/cover no-repeat
+			transform-origin: center
+			animation: icon_rotation 2s infinite linear
 	&_star
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#star ) center/cover no-repeat
@@ -597,3 +607,9 @@ button, .button
 	&_youtube
 		&::before
 			background: url( ../img/icons/sets/social.svg#youtube ) center/cover no-repeat
+
+@keyframes icon_rotation
+	from
+		transform: translate( 0, -50% ) rotate( 0deg )
+	to
+		transform: translate( 0, -50% ) rotate( 359deg )

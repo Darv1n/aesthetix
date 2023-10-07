@@ -150,8 +150,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 		);
 
 		$archive_page_pagination_select = array(
-			'default' => __( 'Default', 'aesthetix' ),
-			'numeric' => __( 'Numeric', 'aesthetix' ),
+			'default'  => __( 'Default', 'aesthetix' ),
+			'numeric'  => __( 'Numeric', 'aesthetix' ),
+			'loadmore' => __( 'Load More', 'aesthetix' ),
 		);
 
 		$archive_page_detail_button_select = array(

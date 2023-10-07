@@ -67,8 +67,9 @@ if ( (int) $pages === 1 ) {
 		if ( $pages > 5 && $paged < $pages - 2 ) { ?>
 			<a <?php button_classes( 'posts-navigation__item posts-navigation__item_last button-small icon icon_center icon_chevron-right' ); ?> href="<?php echo esc_url( get_pagenum_link( $pages ) ); ?>" role="button">+1</a>
 		<?php }
-
-	} else { ?>
+	} elseif ( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) === 'loadmore' ) { ?>
+		<button <?php button_classes( 'loadmore icon icon_download' ); ?> type="button" data-default-icon="icon_download" data-loading-icon="icon_spinner" data-default-text="<?php esc_attr_e( 'Load More', 'aesthetix' ); ?>" data-loading-text="<?php esc_attr_e( 'Loading...', 'aesthetix' ); ?>" data-disabled-text="<?php esc_attr_e( 'All posts have been uploaded', 'aesthetix' ); ?>" data-current-page="1" data-max-pages="<?php echo $wp_query->max_num_pages; ?>"><?php esc_html_e( 'Load More', 'aesthetix' ); ?></button>
+	<?php } else { ?>
 
 		<div class="row">
 

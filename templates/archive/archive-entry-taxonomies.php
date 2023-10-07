@@ -9,7 +9,7 @@
  */
  ?>
 
-<?php $taxonomies_display = get_aesthetix_options( 'archive_' . $post->post_type . '_taxonomies_display' );
+<?php $taxonomies_display = get_aesthetix_options( 'archive_' . get_post_type() . '_taxonomies_display' );
 
 if ( $taxonomies_display !== 'none' && has_term( '', $taxonomies_display ) ) { ?>
 	<ul class="post-taxonomies">

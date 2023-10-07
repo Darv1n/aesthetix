@@ -37,7 +37,7 @@ if ( ! function_exists( 'aesthetix_pre_get_posts' ) ) {
 		}
 
 		// Sort post by aesthetix option.
-		if ( $query->is_archive ) {
+		if ( $query->is_archive || $query->is_home ) {
 
 			$post_type = $query->get( 'post_type' ) ?? 'post';
 

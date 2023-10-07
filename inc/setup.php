@@ -326,14 +326,11 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 			)
 		);*/
 
-		if ( get_aesthetix_options( 'general_subscription_form_type' ) === 'theme' ) {
+		if ( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) === 'loadmore' && ( is_archive() || is_search() || is_home() ) ) {
+			wp_enqueue_script( 'loadmore-scripts', get_theme_file_uri( '/assets/js/loadmore.min.js' ), array( 'jquery' ), filemtime( get_theme_file_path( '/assets/js/loadmore.min.js' ) ), true );
+		}
 
-			/**
-			 * Form js handler  - /assets/js/source/subscription-from-handler.js
-			 * Setup js scripts - /inc/setup.php
-			 * Form php handler - /inc/handlers.php
-			 * Form html        - /templates/subscription-form.php
-			 */
+		if ( get_aesthetix_options( 'general_subscription_form_type' ) === 'theme' ) {
 			wp_enqueue_script( 'subscription-from-scripts', get_theme_file_uri( '/assets/js/subscription-from-handler.min.js' ), array( 'jquery' ), filemtime( get_theme_file_path( '/assets/js/subscription-from-handler.min.js' ) ), true );
 		}
 
