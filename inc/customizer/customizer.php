@@ -73,7 +73,6 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 						</li>
 					<?php } ?>
 				</ul>
-				<?php // vardump( esc_attr( json_encode( $this->value() ) ) ); ?>
 
 				<input id="<?php echo esc_attr( $input_id ); ?>"<?php echo $describedby_attr; ?> type="hidden" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?>>
 

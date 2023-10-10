@@ -33,12 +33,16 @@ if ( get_aesthetix_options( 'general_subscription_form_type' ) !== 'none' ) {
 
 	<section id="section-subscription-from" <?php aesthetix_section_classes( $classes ); ?><?php echo isset( $background_image ) ? ' style="background: url( ' . esc_url( $background_image ) . ' ) center bottom/cover no-repeat"' : ''; ?> aria-label="<?php esc_attr_e( 'Subscription Form', 'aesthetix' ); ?>">
 		<div <?php aesthetix_container_classes(); ?>>
+
+			<div class="title-wrapper">
+				<h2 class="form-title"><?php echo apply_filters( 'get_aesthetix_general_subscription_form_title', esc_html__( 'Stay in the loop', 'aesthetix' ) ); ?></h2>
+				<p class="form-subtitle"><?php echo apply_filters( 'get_aesthetix_general_subscription_form_subtitle', esc_html__( 'Subscribe to our newsletter for all the latest updates:', 'aesthetix' ) ); ?></p>
+			</div>
+
 			<?php if ( get_aesthetix_options( 'general_subscription_form_type' ) === 'mailchimp' && ! empty( get_aesthetix_options( 'general_subscription_form_shortcode' ) ) ) { ?>
 				<?php echo do_shortcode( get_aesthetix_options( 'general_subscription_form_shortcode' ) ); ?>
 			<?php } else { ?>
 				<form id="subscription-from" class="form subscription-from">
-					<h2 class="form-title"><?php esc_html_e( 'Stay in the loop', 'aesthetix' ); ?></h2>
-					<p class="form-subtitle"><?php esc_html_e( 'Subscribe to my newsletter for all the latest updates:', 'aesthetix' ); ?></p>
 					<label class="form-label" for="form-email">
 						<input id="form-email" class="form-input required" type="email" name="form-email" placeholder="<?php esc_attr_e( 'E-mail? (required)', 'aesthetix' ) ?>" value="" required>
 					</label>

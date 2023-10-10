@@ -167,6 +167,10 @@ if ( ! function_exists( 'get_aesthetix_section_classes' ) ) {
 
 			$classes[] = 'container';
 
+			if ( in_array( 'container-general', get_aesthetix_container_classes(), true ) ) {
+				$classes[] = 'container-average';
+			}
+
 			if ( in_array( 'container-average', get_aesthetix_container_classes(), true ) ) {
 				$classes[] = 'container-wide';
 			}

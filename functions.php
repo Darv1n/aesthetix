@@ -71,7 +71,6 @@ if ( is_plugin_active( 'rate-my-post/rate-my-post.php' ) ) {
 
 // Load Mailchimp compatibility file.
 if ( is_plugin_active( 'mailchimp-for-wp/mailchimp-for-wp.php' ) ) {
-	vardump( true );
 	require_once get_template_directory() . '/inc/compatibility/mailchimp.php';
 }
 

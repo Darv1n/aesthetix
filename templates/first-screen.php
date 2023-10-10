@@ -8,7 +8,7 @@
  * @since 1.1.1
  */
 
-if ( is_front_page() || is_home() && get_aesthetix_options( 'front_page_slider_display' ) ) {
+if ( ( is_front_page() || is_home() ) && get_aesthetix_options( 'front_page_slider_display' ) ) {
 
 	$i         = 0;
 	$post_type = get_aesthetix_options( 'front_page_slider_post_type' );
