@@ -1,6 +1,6 @@
 <?php
 /**
- * Theme shortcodes
+ * Theme shortcodes.
  *
  * @package Aesthetix
  * @since 1.0.0

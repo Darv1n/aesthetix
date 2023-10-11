@@ -1,12 +1,16 @@
 <?php
 /**
- * aesthetix functions and definitions
+ * Main functions.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
  * @package Aesthetix
  * @since 1.0.0
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 require_once ABSPATH . '/wp-admin/includes/plugin.php';
 require_once ABSPATH . '/wp-admin/includes/taxonomy.php';

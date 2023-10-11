@@ -1,6 +1,6 @@
 <?php
 /**
- * Main setup options
+ * Main setup options.
  *
  * @package Aesthetix
  * @since 1.0.0

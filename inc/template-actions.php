@@ -1,6 +1,6 @@
 <?php
 /**
- * Template actions
+ * Template actions.
  *
  * @package Aesthetix
  * @since 1.0.0

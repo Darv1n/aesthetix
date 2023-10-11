@@ -10,7 +10,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-
 if ( ! function_exists( 'get_aesthetix_customizer_converter_borders' ) ) {
 
 	/**

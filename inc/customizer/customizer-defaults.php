@@ -58,7 +58,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 			'general_scroll_top_button_display'       => true,
 			'general_scroll_top_button_alignment'     => 'right',
-			'general_scroll_top_button_type'          => 'icon',
+			'general_scroll_top_button_type'          => 'button-icon',
 			'general_scroll_top_button_icon_position' => 'before',
 
 			'general_cookie_display'                  => true,
@@ -90,7 +90,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 		foreach ( get_post_types() as $key => $post_type ) {
 			$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
 				'single_' . $post_type . '_template_type'  => 'one',
-				'archive_' . $post_type . '_columns'       => 'four',
+				'archive_' . $post_type . '_columns'       => 'three',
 				'archive_' . $post_type . '_masonry'       => true,
 				'archive_' . $post_type . '_template_type' => 'tils',
 			) );
@@ -119,22 +119,23 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 			if ( $post_type_object->has_archive || ! empty( $object_taxonomies ) ) {
 				$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
-					'archive_' . $post_type . '_structure'          => 'thumbnail,taxonomies,meta,title,excerpt,author,more',
-					'archive_' . $post_type . '_meta_structure'     => 'date,time,edit',
-					'archive_' . $post_type . '_posts_per_page'     => get_option( 'posts_per_page' ),
-					'archive_' . $post_type . '_posts_order'        => 'desc',
-					'archive_' . $post_type . '_posts_orderby'      => 'date',
-					'archive_' . $post_type . '_pagination'         => 'numeric',
-					'archive_' . $post_type . '_detail_button'      => 'button',
-					'archive_' . $post_type . '_taxonomies_display' => 'none',
+					'archive_' . $post_type . '_structure'           => 'thumbnail,meta,title,excerpt,author,more',
+					'archive_' . $post_type . '_thumbnail_structure' => 'taxonomies,formats',
+					'archive_' . $post_type . '_meta_structure'      => 'date,time,edit',
+					'archive_' . $post_type . '_posts_per_page'      => get_option( 'posts_per_page' ),
+					'archive_' . $post_type . '_posts_order'         => 'desc',
+					'archive_' . $post_type . '_posts_orderby'       => 'date',
+					'archive_' . $post_type . '_pagination'          => 'numeric',
+					'archive_' . $post_type . '_detail_button'       => 'button',
+					'archive_' . $post_type . '_taxonomies_display'  => 'none',
 				) );
 			}
 
 			if ( $post_type === 'post' ) {
 				$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
 					'archive_post_meta_structure'           => 'date,category,post_tag,time,edit',
-					'archive_post_taxonomies_display'       => 'category',
-					'single_post_meta_structure'            => 'date,category,,post_tag,time,edit',
+					'archive_post_taxonomies_display'       => 'tag',
+					'single_post_meta_structure'            => 'date,category,post_tag,time,edit',
 					'single_post_footer_structure'          => 'category,post_tag,edit',
 					'single_post_entry_footer_cats_display' => false,
 					'single_post_entry_footer_tags_display' => true,

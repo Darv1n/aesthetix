@@ -26,7 +26,7 @@ if ( (int) $pages === 1 ) {
 	return;
 } ?>
 
-<nav class="navigation posts-navigation posts-navigation_<?php echo esc_attr( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) ); ?>" data-max-pages="<?php echo esc_attr( $pages ); ?>" role="navigation" aria-label="<?php esc_attr_e( 'Site post navigation', 'aesthetix' ); ?>">
+<nav class="navigation posts-navigation posts-navigation_<?php echo esc_attr( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) ); ?>" data-max-pages="<?php echo esc_attr( $pages ); ?>" role="navigation" aria-label="<?php esc_attr_e( 'Site Post Pagination', 'aesthetix' ); ?>">
 
 	<?php if ( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) === 'numeric' ) {
 

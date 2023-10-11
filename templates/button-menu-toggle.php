@@ -15,9 +15,9 @@ if ( in_array( 'toggle-icon', $menu_classes, true ) ) { ?>
 <?php } else { ?>
 	<button id="menu-toggle" class="<?php echo esc_attr( implode( ' ', $menu_classes ) ); ?>" aria-label="<?php esc_attr_e( 'Open Menu Button', 'aesthetix' ); ?>" aria-haspopup="true" aria-controls="main-navigation">
 <?php } ?>
-	<?php if ( in_array( get_aesthetix_options( 'general_menu_button_type' ), array( 'icon', 'button-icon' ), true ) ) { ?>
-		<i class="icon"></i>
-	<?php } else {
+	<?php if ( ! in_array( get_aesthetix_options( 'general_menu_button_type' ), array( 'icon', 'button-icon' ), true ) ) {
 		esc_html_e( 'Menu', 'aesthetix' );
+	} else {
+		
 	} ?>
 </button>

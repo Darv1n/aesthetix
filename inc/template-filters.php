@@ -132,7 +132,7 @@ if ( ! function_exists( 'aesthetix_robots_txt' ) ) {
 		return apply_filters( 'aesthetix_robots_txt', $output, $public );
 	}
 }
-// add_filter( 'robots_txt', 'aesthetix_robots_txt', 20, 2 ); // Add a few rules to the dynamic robots.txt
+add_filter( 'robots_txt', 'aesthetix_robots_txt', 20, 2 ); // Add a few rules to the dynamic robots.txt
 
 if ( ! function_exists( 'unset_intermediate_image_sizes' ) ) {
 
@@ -203,7 +203,7 @@ add_filter( 'nav_menu_item_id', 'remove_nav_menu_item_id', 10, 3 );
 if ( ! function_exists( 'level_nav_menu_item_class' ) ) {
 
 	/**
-	 * Function for `wp_nav_menu_objects` filter-hook.
+	 * Function for 'wp_nav_menu_objects' filter-hook.
 	 * 
 	 * @param array    $sorted_menu_items The menu items, sorted by each menu item's menu order.
 	 * @param stdClass $args              An object containing wp_nav_menu() arguments.
@@ -212,22 +212,22 @@ if ( ! function_exists( 'level_nav_menu_item_class' ) ) {
 	 * 
 	 * @since 1.0.0
 	 */
-	function level_nav_menu_item_class( $menu ) {
+	function level_nav_menu_item_class( $sorted_menu_items, $args ) {
 		$level = 1;
 		$stack = array('0');
-		foreach ( $menu as $key => $item ) {
+		foreach ( $sorted_menu_items as $key => $item ) {
 			while ( $item->menu_item_parent != array_pop( $stack ) ) {
 				$level--;
 			}
 			$level++;
 			$stack[] = $item->menu_item_parent;
 			$stack[] = $item->ID;
-			$menu[ $key ]->classes[] = 'level-'. ( $level - 1 );
+			$sorted_menu_items[ $key ]->classes[] = 'level-'. ( $level - 1 );
 		}
-		return $menu;
+		return $sorted_menu_items;
 	}
 }
-add_filter( 'wp_nav_menu_objects', 'level_nav_menu_item_class' );
+add_filter( 'wp_nav_menu_objects', 'level_nav_menu_item_class', 10, 2 );
 
 if ( ! function_exists( 'remove_nav_menu_item_class' ) ) {
 
@@ -301,3 +301,58 @@ if ( ! function_exists( 'aesthetix_search_highlight' ) ) {
 add_filter( 'the_title', 'aesthetix_search_highlight' );
 add_filter( 'the_content', 'aesthetix_search_highlight' );
 add_filter( 'the_excerpt', 'aesthetix_search_highlight' );
+
+if ( ! function_exists( 'aesthetix_icon_color' ) ) {
+
+	/**
+	 * Return icon color depending on button, link or theme color scheme.
+	 *
+	 * @param string $classes Classes on the basis of which decisions are made.
+	 *
+	 * @return array
+	 * 
+	 * @since 1.1.6
+	 */
+	function aesthetix_icon_color( $classes, $color = '' ) {
+
+		if ( is_string( $classes ) ) {
+			$classes = explode( ' ', $classes );
+		}
+
+		if ( ! is_array( $classes ) || ! in_array( 'icon', $classes, true ) ) {
+			return $classes;
+		}
+
+		$color_scheme = get_aesthetix_options( 'root_color_scheme' );
+
+		if ( in_array( 'link', $classes, true ) ) {
+			if ( $color_scheme === 'black' ) {
+				$classes[] = 'icon_white';
+			} else {
+				$classes[] = 'icon_black';
+			}
+		}
+
+		if ( in_array( 'button', $classes, true ) ) {
+
+			if ( in_array( 'button-reset', $classes, true ) ) {
+				if ( $color_scheme === 'black' ) {
+					$classes[] = 'icon_white';
+				} else {
+					$classes[] = 'icon_black';
+				}
+			} else {
+				if ( get_aesthetix_options( 'root_button_type' ) === 'empty' || in_array( $color, array( 'gray', 'default', 'disabled' ), true ) ) {
+					$classes[] = 'icon_black';
+				} else {
+					$classes[] = 'icon_white';
+				}
+			}
+		}
+
+		return $classes;
+	}
+}
+add_filter( 'get_link_classes', 'aesthetix_icon_color', 90 );
+add_filter( 'get_button_classes', 'aesthetix_icon_color', 90, 2 );
+

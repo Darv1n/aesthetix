@@ -70,8 +70,8 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 			$roots['primary-bd-color']         = get_aesthetix_customizer_converter_colors( $gray_color . '-800' );
 			$roots['secondary-bg-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-900' );
 			$roots['secondary-bd-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-700' );
-			$roots['primary-gray-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-400' );
-			$roots['primary-gray-color-hover'] = get_aesthetix_customizer_converter_colors( $gray_color . '-500' );
+			$roots['primary-gray-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-300' );
+			$roots['primary-gray-color-hover'] = get_aesthetix_customizer_converter_colors( $gray_color . '-400' );
 			$roots['svg-filter']               = 'invert(100%)';
 		} else {
 			$roots['primary-text-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-800' );

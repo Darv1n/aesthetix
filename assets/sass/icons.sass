@@ -30,6 +30,7 @@
 	&_after
 		padding-right: calc( 1.125rem + .125rem + .25rem )
 		&::before
+			left: auto
 			right: .125rem
 	&_top
 		&::before
@@ -83,12 +84,11 @@
 		&::after
 			border-radius: 50%
 
-button, .button
-	&.icon
+.button
+	&.button-icon
 		width: auto
 		height: auto
-		&.button-reset
-			padding: calc( 1rem / 2 + .5rem ) calc( 1.125rem / 2 + .5rem )
+		padding: calc( 1rem / 2 + .5rem ) calc( 1.125rem / 2 + .5rem )
 	&.icon_before
 		padding-left: calc( var( --button-padding-side ) + 1.125rem + .25rem )
 		&::before
@@ -98,13 +98,24 @@ button, .button
 		&::before
 			left: auto
 			right: calc( var( --button-padding-side ) + .125rem )
-
+	&-small
+		&.icon
+			&::before
+				width: .825rem
+				height: .75rem
+		&.icon_before
+			padding-left: calc( .875rem + .825rem + .25rem )
+			&::before
+				left: .875rem
+		&.icon_after
+			padding-right: calc( .875rem + .825rem + .25rem )
+			&::before
+				right: .875rem
 
 @media( min-width: 576px )
-	button, .button
-		&.icon
-			&.button-reset
-				padding: calc( 1rem / 2 + .75rem ) calc( 1.125rem / 2 + .75rem )
+	.button
+		&.button-icon
+			padding: calc( 1rem / 2 + .75rem ) calc( 1.125rem / 2 + .75rem )
 		&.icon_before
 			padding-left: calc( ( var( --button-padding-side ) * 1.25 ) + 1.125rem + .25rem )
 			&::before
@@ -113,80 +124,28 @@ button, .button
 			padding-right: calc( ( var( --button-padding-side ) * 1.25 ) + 1.125rem + .25rem )
 			&::before
 				right: calc( ( var( --button-padding-side ) * 1.25 ) )
-
+		&-small
+			&.icon_before
+				padding-left: calc( .875rem + .825rem + .25rem )
+				&::before
+					left: .875rem
+			&.icon_after
+				padding-right: calc( .875rem + .825rem + .25rem )
+				&::before
+					right: .875rem
 .icon
-	&_0
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#0 ) center/cover no-repeat
-	&_1
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#1 ) center/cover no-repeat
-	&_2
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#2 ) center/cover no-repeat
-	&_3
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#3 ) center/cover no-repeat
-	&_4
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#4 ) center/cover no-repeat
-	&_5
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#5 ) center/cover no-repeat
-	&_6
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#6 ) center/cover no-repeat
-	&_7
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#7 ) center/cover no-repeat
-	&_8
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#8 ) center/cover no-repeat
-	&_9
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#9 ) center/cover no-repeat
-	&_address-book
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#address-book ) center/cover no-repeat
-	&_address-card
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#address-card ) center/cover no-repeat
-	&_align-center
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#align-center ) center/cover no-repeat
-	&_align-justify
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#align-justify ) center/cover no-repeat
-	&_align-left
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#align-left ) center/cover no-repeat
-	&_align-right
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#align-right ) center/cover no-repeat
 	&_angle-down
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#angle-down ) center/cover no-repeat
 	&_angle-left
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#angle-left ) center/cover no-repeat
-	&_align-right
+	&_angle-right
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#align-right ) center/cover no-repeat
+			background: url( ../img/icons/sets/fa-regular.svg#angle-right ) center/cover no-repeat
 	&_angle-up
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#angle-up ) center/cover no-repeat
-	&_angles-down
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#angles-down ) center/cover no-repeat
-	&_angles-left
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#angles-left ) center/cover no-repeat
-	&_angles-right
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#angles-right ) center/cover no-repeat
-	&_angles-up
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#angles-up ) center/cover no-repeat
 	&_arrow-down
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#arrow-down ) center/cover no-repeat
@@ -199,18 +158,6 @@ button, .button
 	&_arrow-up
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#arrow-up ) center/cover no-repeat
-	&_arrow-down-long
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#arrow-down-long ) center/cover no-repeat
-	&_arrow-left-long
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#arrow-left-long ) center/cover no-repeat
-	&_arrow-right-long
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#arrow-right-long ) center/cover no-repeat
-	&_arrow-up-long
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#arrow-up-long ) center/cover no-repeat
 	&_arrow-down-arrow-up
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#arrow-down-arrow-up ) center/cover no-repeat
@@ -259,12 +206,6 @@ button, .button
 	&_calendar
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#calendar ) center/cover no-repeat
-	&_calendar-check
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#calendar-check ) center/cover no-repeat
-	&_calendar-days
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#calendar-days ) center/cover no-repeat
 	&_calendar-lines
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#calendar-lines ) center/cover no-repeat
@@ -286,15 +227,15 @@ button, .button
 	&_cart-arrow-down
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#cart-arrow-down ) center/cover no-repeat
-	&_cart-shopping
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#cart-shopping ) center/cover no-repeat
 	&_cart-minus
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#cart-minus ) center/cover no-repeat
 	&_cart-plus
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#cart-plus ) center/cover no-repeat
+	&_cart-shopping
+		&::before
+			background: url( ../img/icons/sets/fa-regular.svg#cart-shopping ) center/cover no-repeat
 	&_check
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#check ) center/cover no-repeat
@@ -310,18 +251,6 @@ button, .button
 	&_chevron-up
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#chevron-up ) center/cover no-repeat
-	&_chevrons-down
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#chevrons-down ) center/cover no-repeat
-	&_chevrons-left
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#chevrons-left ) center/cover no-repeat
-	&_chevrons-right
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#chevrons-right ) center/cover no-repeat
-	&_chevrons-up
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#chevrons-up ) center/cover no-repeat
 	&_clock
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#clock ) center/cover no-repeat
@@ -367,22 +296,10 @@ button, .button
 	&_download
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#download ) center/cover no-repeat
-	&_ellipsis
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#ellipsis ) center/cover no-repeat
-	&_ellipsis-stroke
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#ellipsis-stroke ) center/cover no-repeat
-	&_ellipsis-stroke-vertical
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#ellipsis-stroke-vertical ) center/cover no-repeat
-	&_ellipsis-vertical
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#ellipsis-vertical ) center/cover no-repeat
 	&_envelope
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#envelope ) center/cover no-repeat
-	&_vars.sass
+	&_exclamation
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#exclamation ) center/cover no-repeat
 	&_eye
@@ -424,12 +341,6 @@ button, .button
 	&_image
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#image ) center/cover no-repeat
-	&_inbox-in
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#inbox-in ) center/cover no-repeat
-	&_inbox-out
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#inbox-out ) center/cover no-repeat
 	&_info
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#info ) center/cover no-repeat
@@ -448,33 +359,24 @@ button, .button
 	&_loader
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#loader ) center/cover no-repeat
-	&_location
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#location ) center/cover no-repeat
 	&_location-dot
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#location-dot ) center/cover no-repeat
 	&_location-dot-slash
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#location-dot-slash ) center/cover no-repeat
-	&_lock-off
+	&_lock
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#lock ) center/cover no-repeat
-	&_lock-on
+	&_lock-open
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#lock-open ) center/cover no-repeat
 	&_magnifying-glass
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#magnifying-glass ) center/cover no-repeat
-	&_map
+	&_map-pin
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#map ) center/cover no-repeat
-	&_map-location
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#map-location ) center/cover no-repeat
-	&_map-location-dot
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#map-location-dot ) center/cover no-repeat
+			background: url( ../img/icons/sets/fa-regular.svg#map-pin ) center/cover no-repeat
 	&_pen
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#pen ) center/cover no-repeat
@@ -484,18 +386,36 @@ button, .button
 	&_phone
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#phone ) center/cover no-repeat
+	&_phone-slash
+		&::before
+			background: url( ../img/icons/sets/fa-regular.svg#phone-slash ) center/cover no-repeat
+	&_phone-volume
+		&::before
+			background: url( ../img/icons/sets/fa-regular.svg#phone-volume ) center/cover no-repeat
 	&_print
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#print ) center/cover no-repeat
 	&_question
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#question ) center/cover no-repeat
+	&_quote, &_quote-left
+		&::before
+			background: url( ../img/icons/sets/fa-regular.svg#quote-left ) center/cover no-repeat
+	&_quote-right
+		&::before
+			background: url( ../img/icons/sets/fa-regular.svg#quote-right ) center/cover no-repeat
 	&_reply
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#reply ) center/cover no-repeat
 	&_share
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#share ) center/cover no-repeat
+	&_shuffle
+		&::before
+			background: url( ../img/icons/sets/fa-regular.svg#shuffle ) center/cover no-repeat
+	&_sidebar, &_aside
+		&::before
+			background: url( ../img/icons/sets/fa-regular.svg#sidebar ) center/cover no-repeat
 	&_sort
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#sort ) center/cover no-repeat
@@ -510,26 +430,24 @@ button, .button
 			background: url( ../img/icons/sets/fa-regular.svg#spinner ) center/cover no-repeat
 			transform-origin: center
 			animation: icon_rotation 2s infinite linear
-	&_spinner-third
+	&_standard-definition
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#spinner-third ) center/cover no-repeat
-			transform-origin: center
-			animation: icon_rotation 2s infinite linear
+			background: url( ../img/icons/sets/fa-regular.svg#standard-definition ) center/cover no-repeat
 	&_star
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#star ) center/cover no-repeat
 	&_star-sharp
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#star-sharp ) center/cover no-repeat
-	&_shuffle
-		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#shuffle ) center/cover no-repeat
 	&_tag
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#tag ) center/cover no-repeat
 	&_tags
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#tags ) center/cover no-repeat
+	&_thumbtack
+		&::before
+			background: url( ../img/icons/sets/fa-regular.svg#thumbtack ) center/cover no-repeat
 	&_toggle-off
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#toggle-off ) center/cover no-repeat
@@ -539,9 +457,15 @@ button, .button
 	&_trash
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#trash ) center/cover no-repeat
+	&_trash-slash
+		&::before
+			background: url( ../img/icons/sets/fa-regular.svg#trash-slash ) center/cover no-repeat
 	&_triangle-exclamation
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#triangle-exclamation ) center/cover no-repeat
+	&_video
+		&::before
+			background: url( ../img/icons/sets/fa-regular.svg#video ) center/cover no-repeat
 	&_unlock
 		&::before
 			background: url( ../img/icons/sets/fa-regular.svg#unlock ) center/cover no-repeat

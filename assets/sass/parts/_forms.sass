@@ -146,8 +146,6 @@ input[type="submit"]
 		&:focus, &:active, &.active
 			background: $secondary-color-600
 			border: $button-bd-width solid $secondary-color-600
-	&_squared
-		padding: $small-button-padding-top $small-button-padding-top
 
 @media( min-width: 576px )
 	button,
@@ -156,15 +154,14 @@ input[type="submit"]
 	input[type="reset"],
 	input[type="submit"]
 		padding: $button-padding-top $button-padding-side
-	.button_squared
-		padding: $button-padding-top $button-padding-top
-	.button_small
-		padding: $small-button-padding-top $small-button-padding-side
+	.button-small
+		font-size: $small-font-size
+		padding: .175rem .875rem
 
 .button-empty, .button-default, .button-gray
 	color: $primary-gray-color
-	background: $primary-bg-color
-	border: $button-bd-width solid $primary-bd-color
+	background: $secondary-bg-color
+	border: $button-bd-width solid $secondary-bg-color
 	&:hover, &:focus, &:active, &.active
 		color: $primary-gray-color-hover
 		background: $primary-bg-color-hover
@@ -250,21 +247,23 @@ input[type="submit"]
 			background: $secondary-bd-color
 
 .button
-	&-disabled, [disabled]
+	&-disabled
 		background: $primary-bd-color
-		border: $button-bd-width solid $secondary-bd-color
+		border: $button-bd-width solid $primary-bd-color
 		color: $primary-text-color
-		cursor: not-allowed
+		cursor: auto
 		box-shadow: none
 		&:hover, &:focus, &:active
-			background: $primary-gray-color
-			border: $button-bd-width solid $primary-gray-color-hover
+			background: $primary-bd-color
+			border: $button-bd-width solid $primary-bd-color
 			color: $primary-text-color
 			box-shadow: none
 		&.button-slide, &.button-gradient
 			border: none
 			&::after
 				display: none
+	&[disabled]
+		cursor: not-allowed
 
 .button-set
 	> *

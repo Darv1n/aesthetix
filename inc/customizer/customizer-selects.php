@@ -69,7 +69,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_structure' ) ) {
 		$converter = array(
 			'title'      => __( 'Post Title', 'aesthetix' ),
 			'thumbnail'  => __( 'Post Thumbnail', 'aesthetix' ),
-			'taxonomies' => __( 'Post Taxonomies', 'aesthetix' ),
 			'meta'       => __( 'Post Meta Data', 'aesthetix' ),
 			'excerpt'    => __( 'Post Excerpt', 'aesthetix' ),
 			'author'     => __( 'Post Author Widget', 'aesthetix' ),
@@ -161,6 +160,44 @@ if ( ! function_exists( 'get_aesthetix_customizer_single_post_footer_structure' 
 
 		// Merge child and parent default options.
 		$converter = apply_filters( 'get_aesthetix_customizer_single_post_footer_structure', $converter, $post_type );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+if ( ! function_exists( 'get_aesthetix_customizer_post_thumbnail_structure' ) ) {
+
+	/**
+	 * Return array with the customizer post thumbnail structure.
+	 *
+	 * @param string $control array key to get one value.
+	 * @param string $post_type current post type
+	 *
+	 * @return string|array|false
+	 * 
+	 * @since 1.1.6
+	 */
+	function get_aesthetix_customizer_post_thumbnail_structure( $control = null, $post_type = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'taxonomies' => __( 'Post Taxonomies', 'aesthetix' ),
+			'formats'     => __( 'Post Sticky & Formats', 'aesthetix' ),
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_post_thumbnail_structure', $converter, $post_type );
 
 		// Return controls.
 		if ( is_null( $control ) ) {

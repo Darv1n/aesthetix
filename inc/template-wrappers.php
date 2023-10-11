@@ -1,6 +1,6 @@
 <?php
 /**
- * aesthetix wrappers functions
+ * Template wrappers.
  *
  * @package Aesthetix
  * @since 1.0.0
@@ -74,9 +74,6 @@ if ( ! function_exists( 'aesthetix_post_classes' ) ) {
 
 		if ( in_array( 'hentry', $classes, true ) ) {
 			unset( $classes[ array_search( 'hentry', $classes ) ] );
-		}
-		if ( in_array( 'sticky', $classes, true ) ) {
-			unset( $classes[ array_search( 'sticky', $classes ) ] );
 		}
 		if ( in_array( 'post-' . get_the_ID(), $classes, true ) ) {
 			unset( $classes[ array_search( 'post-' . get_the_ID(), $classes ) ] );
@@ -974,15 +971,8 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 		}
 
 		if ( in_array( 'icon', $classes, true ) ) {
-
-			if ( ! in_array( 'icon_center', $classes, true ) ) {
+			if ( ! in_array( 'icon_center', $classes, true ) && ! in_array( 'icon_before', $classes, true ) && ! in_array( 'icon_after', $classes, true ) ) {
 				$classes[] = 'icon_' . get_aesthetix_options( 'root_button_icon_position' );
-			}
-
-			if ( in_array( 'button-icon', $classes, true ) || $color_scheme === 'white' && ( $button_type === 'empty' || ( $button_type === 'common' && in_array( $color, array( 'gray', 'default' ), true ) ) ) ) {
-				$classes[] = 'icon_black';
-			} else {
-				$classes[] = 'icon_white';
 			}
 		}
 
@@ -996,7 +986,7 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 		}
 
 		// Add filter to array.
-		$classes = apply_filters( 'get_button_classes', $classes );
+		$classes = apply_filters( 'get_button_classes', $classes, $color );
 		$classes = array_unique( (array) $classes );
 
 		return $classes;
@@ -1045,7 +1035,7 @@ if ( ! function_exists( 'get_link_classes' ) ) {
 		if ( isset( $class ) && ! empty( $class ) ) {
 			if ( is_array( $class ) ) {
 				$classes = $class;
-			} elseif ( is_string( $class ) ) {
+			} else if ( is_string( $class ) ) {
 				$classes = explode( ' ', $class );
 			} else {
 				$classes = array();
@@ -1205,7 +1195,7 @@ if ( ! function_exists( 'get_aesthetix_menu_toggle_classes' ) ) {
 
 		// Квадрат, если нет текста
 		if ( in_array( $menu_button_type, array( 'button-icon', 'icon' ), true ) ) {
-			$classes[] = 'button_squared';
+			$classes[] = 'button-icon';
 		}
 
 		// Если есть иконка.
@@ -1218,11 +1208,11 @@ if ( ! function_exists( 'get_aesthetix_menu_toggle_classes' ) ) {
 				$classes[] = 'icon_' . get_aesthetix_options( 'general_menu_button_icon_position' );
 			}
 
-			if ( ! in_array( $menu_button_type, array( 'button-icon-text', 'button-icon' ), true ) || $color_scheme === 'white' && ( $button_type === 'empty' || ( $button_type === 'common' && in_array( $color, array( 'gray', 'default' ), true ) ) ) ) {
+/*			if ( ! in_array( $menu_button_type, array( 'button-icon-text', 'button-icon' ), true ) || $color_scheme === 'white' && ( $button_type === 'empty' || ( $button_type === 'common' && in_array( $color, array( 'gray', 'default', 'disabled' ), true ) ) ) ) {
 				$classes[] = 'icon_black';
 			} else {
 				$classes[] = 'icon_white';
-			}
+			}*/
 		}
 
 		$classes[] = 'menu-toggle';
@@ -1306,7 +1296,7 @@ if ( ! function_exists( 'get_aesthetix_scroll_top_classes' ) ) {
 
 		// Квадрат, если нет текста
 		if ( in_array( $scroll_top_type, array( 'button-icon', 'icon' ), true ) ) {
-			$classes[] = 'button_squared';
+			$classes[] = 'button-icon';
 		}
 
 		// Если есть иконка.
@@ -1319,11 +1309,11 @@ if ( ! function_exists( 'get_aesthetix_scroll_top_classes' ) ) {
 				$classes[] = 'icon_' . get_aesthetix_options( 'general_menu_button_icon_position' );
 			}
 
-			if ( ! in_array( $scroll_top_type, array( 'button-icon-text', 'button-icon' ), true ) || $color_scheme === 'white' && ( $button_type === 'empty' || ( $button_type === 'common' && in_array( $color, array( 'gray', 'default' ), true ) ) ) ) {
+/*			if ( ! in_array( $scroll_top_type, array( 'button-icon-text', 'button-icon' ), true ) || $color_scheme === 'white' && ( $button_type === 'empty' || ( $button_type === 'common' && in_array( $color, array( 'gray', 'default', 'disabled' ), true ) ) ) ) {
 				$classes[] = 'icon_black';
 			} else {
 				$classes[] = 'icon_white';
-			}
+			}*/
 		}
 
 		$classes[] = 'scroll-top';

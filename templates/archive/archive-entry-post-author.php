@@ -17,7 +17,7 @@ $avatar_url  = apply_filters( 'get_aesthetix_avatar_url', $avatar_url );
 
 ?>
 
-<div class="post-author">
+<div class="post-author" aria-label="<?php esc_attr_e( 'Post Author', 'aesthetix' ); ?>">
 	<div class="post-author-avatar">
 		<img class="avatar avatar-<?php echo esc_attr( $avatar_size ); ?> photo" src="<?php echo esc_url( $avatar_url ); ?>" alt="<?php the_author(); ?>" width="<?php echo esc_attr( $avatar_size ); ?>" height="<?php echo esc_attr( $avatar_size ); ?>">
 	</div>

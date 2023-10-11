@@ -16,5 +16,35 @@
 }
 
 if ( isset( $background_image ) ) { ?>
-	<a class="post-thumbnail" href="<?php the_permalink(); ?>" style="background: url( <?php echo esc_url( $background_image ); ?> ) center/cover no-repeat" aria-hidden="true" tabindex="-1" role="img"></a>
+	<div class="post-thumbnail-wrap">
+		<a class="post-thumbnail" href="<?php the_permalink(); ?>" style="background: url( <?php echo esc_url( $background_image ); ?> ) center/cover no-repeat" aria-hidden="true" tabindex="-1" role="img" aria-label="<?php esc_attr_e( 'Post Thumbnail', 'aesthetix' ); ?>"></a>
+	
+	<?php
+
+		$structure = get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_structure' );
+
+		if ( is_string( $structure ) && ! empty( $structure ) ) {
+
+			$structure = array_map( 'trim', explode( ',', $structure ) );
+
+			foreach ( $structure as $key => $value ) {
+				switch ( $value ) {
+					case has_action( 'aesthetix_archive_entry_post_thumbnail_loop_' . $value ):
+						do_action( 'aesthetix_archive_entry_post_thumbnail_loop_' . $value, $post );
+						break;
+					case 'taxonomies':
+						get_template_part( 'templates/archive/archive-entry', 'post-taxonomies' );
+						break;
+					case 'formats':
+						get_template_part( 'templates/archive/archive-entry', 'post-formats' );
+						break;
+					default:
+						break;
+				}
+			}
+		}
+
+	?>
+
+	</div>
 <?php }
