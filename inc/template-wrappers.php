@@ -1357,8 +1357,8 @@ if ( ! function_exists( 'get_aesthetix_searchform_button_classes' ) ) {
 	/**
 	 * Get searchform button classes.
 	 *
-	 * @param string $class Scroll top classes.
-	 * @param string $color Scroll top color (primary, secondary, gray, default). Default 'primary'.
+	 * @param string $class Searchform button classes.
+	 * @param string $color Searchform button color (primary, secondary, gray, default). Default 'primary'.
 	 *
 	 * @return array
 	 * 
@@ -1424,9 +1424,9 @@ if ( ! function_exists( 'the_aesthetix_searchform_button_classes' ) ) {
 	/**
 	 * Display scroll top classes.
 	 *
-	 * @param string $class Additional scroll top classes.
-	 * @param string $color Scroll top color (primary, secondary, gray, default). Default 'primary'.
-	 * @param bool   $echo  Echo or return scroll top classes.
+	 * @param string $class Additional searchform button classes.
+	 * @param string $color Searchform button color (primary, secondary, gray, default). Default 'primary'.
+	 * @param bool   $echo  Echo or return searchform button classes.
 	 *
 	 * @return string|void
 	 * 
@@ -1435,6 +1435,98 @@ if ( ! function_exists( 'the_aesthetix_searchform_button_classes' ) ) {
 	function the_aesthetix_searchform_button_classes( $class = '', $color = 'primary', $echo = true ) {
 
 		$classes = get_aesthetix_searchform_button_classes( $class, $color );
+
+		if ( $echo ) {
+			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
+		} else {
+			return 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
+		}
+	}
+}
+
+if ( ! function_exists( 'get_aesthetix_subscribe_button_classes' ) ) {
+
+	/**
+	 * Get subscribe button classes.
+	 *
+	 * @param string $class Subscribe button classes.
+	 * @param string $color Subscribe button color (primary, secondary, gray, default). Default 'primary'.
+	 *
+	 * @return array
+	 * 
+	 * @since 1.1.7
+	 */
+	function get_aesthetix_subscribe_button_classes( $class = '', $color = 'primary' ) {
+
+		// Check the function has accepted any classes.
+		if ( isset( $class ) && ! empty( $class ) ) {
+			if ( is_array( $class ) ) {
+				$classes = $class;
+			} elseif ( is_string( $class ) ) {
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
+			}
+		} else {
+			$classes = array();
+		}
+
+		$button_type = get_aesthetix_options( 'general_subscription_form_toggle_type' );
+
+		// Квадрат, если нет текста.
+		if ( in_array( $button_type, array( 'button-icon', 'icon' ), true ) ) {
+			$classes[] = 'button-icon';
+		}
+
+		// Если есть иконка.
+		if ( in_array( $button_type, array( 'button-icon-text', 'button-icon', 'icon-text', 'icon' ), true ) ) {
+			$classes[] = 'icon';
+			$classes[] = 'icon_paper-plane';
+
+			if ( in_array( $button_type, array( 'icon', 'button-icon' ), true ) ) {
+				$classes[] = 'icon_center';
+			} elseif ( in_array( $button_type, array( 'button-icon-text', 'icon-text' ), true ) ) {
+				$classes[] = 'icon_' . get_aesthetix_options( 'general_subscription_form_toggle_icon_position' );
+			}
+		}
+
+		$classes[] = 'search-submit';
+
+		// Если есть кнопка.
+		if ( ! in_array( $button_type, array( 'button-icon-text', 'button-icon', 'button-text' ), true ) ) {
+			$classes[] = 'button-reset';
+		}
+
+		if ( in_array( $button_type, array( 'button-icon-text', 'button-text', 'icon-text', 'text' ), true ) ) {
+			$classes[] = 'has_text';
+		}
+
+		$classes = get_button_classes( $classes, $color );
+
+		// Add filter to array.
+		$classes = apply_filters( 'get_aesthetix_subscribe_button_classes', $classes );
+		$classes = array_unique( $classes );
+
+		return $classes;
+	}
+}
+
+if ( ! function_exists( 'the_aesthetix_subscribe_button_classes' ) ) {
+
+	/**
+	 * Display subscribe button classes.
+	 *
+	 * @param string $class Additional subscribe button classes.
+	 * @param string $color Subscribe button color (primary, secondary, gray, default). Default 'primary'.
+	 * @param bool   $echo  Echo or return subscribe button classes.
+	 *
+	 * @return string|void
+	 * 
+	 * @since 1.1.8
+	 */
+	function the_aesthetix_subscribe_button_classes( $class = '', $color = 'primary', $echo = true ) {
+
+		$classes = get_aesthetix_subscribe_button_classes( $class, $color );
 
 		if ( $echo ) {
 			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';

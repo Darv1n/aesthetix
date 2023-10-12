@@ -1,6 +1,6 @@
 <?php
 /**
- * Customizer converters
+ * Customizer converters.
  *
  * @package Aesthetix
  * @since 1.0.0

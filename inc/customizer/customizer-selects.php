@@ -1,6 +1,6 @@
 <?php
 /**
- * Customizer selects
+ * Customizer selects.
  *
  * @package Aesthetix
  * @since 1.0.0
@@ -29,8 +29,9 @@ if ( ! function_exists( 'get_aesthetix_mobile_menu_structure' ) ) {
 		}
 
 		$converter = array(
-			'menu'   => __( 'Menu Button', 'aesthetix' ),
-			'search' => __( 'Search Button', 'aesthetix' ),
+			'menu'      => __( 'Menu Button', 'aesthetix' ),
+			'search'    => __( 'Search Button', 'aesthetix' ),
+			'subscribe' => __( 'Subscribe Button', 'aesthetix' ),
 		);
 
 		// Merge child and parent default options.

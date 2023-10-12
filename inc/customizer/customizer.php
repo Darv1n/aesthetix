@@ -1,6 +1,6 @@
 <?php
 /**
- * Customizer main setup
+ * Customizer main setup.
  *
  * @package Aesthetix
  * @since 1.0.0

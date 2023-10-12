@@ -220,6 +220,9 @@ if ( ! function_exists( 'aesthetix_after_main_navigation_structure' ) ) {
 					case 'search':
 						get_template_part( 'templates/button', 'search-toggle' );
 						break;
+					case 'subscribe':
+						get_template_part( 'templates/button', 'subscribe' );
+						break;
 					default:
 						break;
 				}

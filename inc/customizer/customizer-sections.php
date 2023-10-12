@@ -1,6 +1,6 @@
 <?php
 /**
- * Customizer sections
+ * Customizer sections.
  *
  * @package Aesthetix
  * @since 1.0.0

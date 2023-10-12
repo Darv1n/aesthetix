@@ -1,6 +1,6 @@
 <?php
 /**
- * Customizer default options
+ * Customizer default options.
  *
  * @package Aesthetix
  * @since 1.0.0
@@ -29,64 +29,66 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 		}
 
 		$aesthetix_defaults = array(
-			'general_container_width'                 => 'average',
-			'general_content_width'                   => 'wide',
+			'general_container_width'                        => 'average',
+			'general_content_width'                          => 'wide',
 
-			'general_header_top_bar_display'          => false,
-			'general_header_type'                     => 'header-simple',
+			'general_header_top_bar_display'                 => false,
+			'general_header_type'                            => 'header-simple',
 
-			'general_menu_type'                       => 'menu-open',
-			'general_menu_position'                   => 'absolute',
-			'general_menu_align'                      => 'right',
-			'general_menu_button_alignment'           => 'right',
-			'general_menu_button_type'                => 'button-icon-text',
-			'general_menu_button_icon_position'       => 'before',
-			'general_mobile_menu_structure'           => 'search,menu',
+			'general_menu_type'                              => 'menu-open',
+			'general_menu_position'                          => 'fixed',
+			'general_menu_align'                             => 'right',
+			'general_menu_button_alignment'                  => 'right',
+			'general_menu_button_type'                       => 'button-icon-text',
+			'general_menu_button_icon_position'              => 'before',
+			'general_mobile_menu_structure'                  => 'search,subscribe,menu',
 
-			'general_searchform_button_type'          => 'icon',
-			'general_searchform_button_icon_position' => 'before',
+			'general_searchform_button_type'                 => 'icon',
+			'general_searchform_button_icon_position'        => 'before',
 
-			'general_scroll_top_button_display'       => true,
-			'general_scroll_top_button_alignment'     => 'right',
-			'general_scroll_top_button_type'          => 'icon',
-			'general_scroll_top_button_icon_position' => 'before',
+			'general_scroll_top_button_display'              => true,
+			'general_scroll_top_button_alignment'            => 'right',
+			'general_scroll_top_button_type'                 => 'icon',
+			'general_scroll_top_button_icon_position'        => 'before',
 
-			'general_footer_type'                     => 'footer-four-columns',
-			'general_footer_top_bar_display'          => false,
-			'general_footer_bottom_bar_display'       => false,
+			'general_footer_type'                            => 'footer-four-columns',
+			'general_footer_top_bar_display'                 => false,
+			'general_footer_bottom_bar_display'              => false,
 
-			'general_breadcrumbs_display'             => true,
-			'general_breadcrumbs_type'                => 'woocommerce',
-			'general_breadcrumbs_separator'           => '/',
+			'general_breadcrumbs_display'                    => true,
+			'general_breadcrumbs_type'                       => 'woocommerce',
+			'general_breadcrumbs_separator'                  => '/',
 
-			'general_subscription_form_type'          => 'theme',
-			'general_subscription_form_bg'            => '',
-			'general_subscription_form_shortcode'     => '',
+			'general_subscription_form_type'                 => 'theme',
+			'general_subscription_form_toggle_type'          => 'button-icon-text',
+			'general_subscription_form_toggle_icon_position' => 'before',
+			'general_subscription_form_bg'                   => '',
+			'general_subscription_form_shortcode'            => '',
 
-			'general_cookie_display'                  => true,
+			'general_cookie_display'                         => true,
 
-			'front_page_slider_display'               => true,
-			'front_page_slider_post_type'             => 'post',
-			'front_page_slider_slides_count'          => 'six',
-			'front_page_slider_slides_to_show'        => 'four',
-			'front_page_slider_slides_template_type'  => 'tils',
+			'front_page_slider_display'                      => true,
+			'front_page_slider_post_type'                    => 'post',
+			'front_page_slider_slides_count'                 => 'six',
+			'front_page_slider_slides_to_show'               => 'four',
+			'front_page_slider_slides_template_type'         => 'tils',
 
-			'root_primary_font'                       => 'playfair-display',
-			'root_secondary_font'                     => 'open-sans',
-			'root_color_scheme'                       => 'white',
-			'root_primary_color'                      => 'sky',
-			'root_secondary_color'                    => 'orange',
-			'root_gray_color'                         => 'slate',
-			'root_link_color'                         => 'primary',
-			'root_button_type'                        => 'common',
-			'root_button_icon'                        => true,
-			'root_button_icon_position'               => 'before',
-			'root_button_size'                        => 'btn-sm',
-			'root_button_border_width'                => 'border-2',
-			'root_button_border_radius'               => 'rounded-md',
-			'root_box_shadow'                         => 'shadow-md',
-			'root_border_width'                       => 'border-2',
-			'root_border_radius'                      => 'rounded-md',
+			'root_primary_font'                              => 'playfair-display',
+			'root_secondary_font'                            => 'open-sans',
+			'root_color_scheme'                              => 'white',
+			'root_primary_color'                             => 'sky',
+			'root_secondary_color'                           => 'orange',
+			'root_gray_color'                                => 'slate',
+			'root_link_color'                                => 'primary',
+			'root_button_type'                               => 'common',
+			'root_button_icon'                               => true,
+			'root_button_icon_position'                      => 'before',
+			'root_button_size'                               => 'btn-sm',
+			'root_button_border_width'                       => 'border-2',
+			'root_button_border_radius'                      => 'rounded-md',
+			'root_box_shadow'                                => 'shadow-md',
+			'root_border_width'                              => 'border-2',
+			'root_border_radius'                             => 'rounded-md',
 		);
 
 		foreach ( get_post_types() as $key => $post_type ) {
