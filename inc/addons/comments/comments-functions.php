@@ -10,9 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-add_filter( 'comment_form_fields', 'aesthetix_comment_form_fields', 10 );
 function aesthetix_comment_form_fields( $fields ) {
-	// die( vardump( $fields ) ); // Посмотрим какие поля есть.
 
 	$new_order    = array(); // Сюда собираем поля в новом порядке.
 	$order_fields = array( 'author', 'email', 'url', 'comment', 'cookies' );
@@ -33,3 +31,4 @@ function aesthetix_comment_form_fields( $fields ) {
 
 	return $new_order;
 }
+add_filter( 'comment_form_fields', 'aesthetix_comment_form_fields', 10 );

@@ -22,13 +22,13 @@ get_header(); ?>
 	<?php if ( have_posts() ) : ?>
 		<?php $i = 0; ?>
 
-		<?php if ( is_home() && ! is_front_page() ) { ?>
-			<header class="content-area-header" aria-label="<?php esc_attr_e( 'Archive page header', 'aesthetix' ); ?>">
+		<?php if ( ! is_home() && ! is_front_page() ) { ?>
+			<header class="content-area-header" aria-label="<?php esc_attr_e( 'Archive Page Header', 'aesthetix' ); ?>">
 				<h1 class="content-area-title"><?php single_post_title(); ?></h1>
 			</header>
 		<?php } ?>
 
-		<section <?php aesthetix_section_classes( 'content-area-content' ); ?> aria-label="<?php esc_attr_e( 'Archive page content', 'aesthetix' ); ?>">
+		<section <?php aesthetix_section_classes( 'content-area-content' ); ?> aria-label="<?php esc_attr_e( 'Archive Page Content', 'aesthetix' ); ?>">
 			<div <?php aesthetix_archive_page_columns_wrapper_classes( 'loop' ); ?>>
 
 				<?php while ( have_posts() ) : ?>
@@ -54,7 +54,7 @@ get_header(); ?>
 			</div>
 		</section>
 
-		<footer class="content-area-footer" aria-label="<?php esc_attr_e( 'Archive page footer', 'aesthetix' ); ?>">
+		<footer class="content-area-footer" aria-label="<?php esc_attr_e( 'Archive Page Footer', 'aesthetix' ); ?>">
 			<?php get_template_part( 'templates/archive/archive', 'pagination' ); ?>
 		</footer>
 

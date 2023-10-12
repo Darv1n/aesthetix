@@ -41,8 +41,15 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'general_menu_button_alignment'           => 'right',
 			'general_menu_button_type'                => 'button-icon-text',
 			'general_menu_button_icon_position'       => 'before',
-
 			'general_mobile_menu_structure'           => 'search,menu',
+
+			'general_searchform_button_type'          => 'icon',
+			'general_searchform_button_icon_position' => 'before',
+
+			'general_scroll_top_button_display'       => true,
+			'general_scroll_top_button_alignment'     => 'right',
+			'general_scroll_top_button_type'          => 'icon',
+			'general_scroll_top_button_icon_position' => 'before',
 
 			'general_footer_type'                     => 'footer-four-columns',
 			'general_footer_top_bar_display'          => false,
@@ -55,11 +62,6 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'general_subscription_form_type'          => 'theme',
 			'general_subscription_form_bg'            => '',
 			'general_subscription_form_shortcode'     => '',
-
-			'general_scroll_top_button_display'       => true,
-			'general_scroll_top_button_alignment'     => 'right',
-			'general_scroll_top_button_type'          => 'button-icon',
-			'general_scroll_top_button_icon_position' => 'before',
 
 			'general_cookie_display'                  => true,
 
@@ -79,7 +81,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'root_button_type'                        => 'common',
 			'root_button_icon'                        => true,
 			'root_button_icon_position'               => 'before',
-			'root_button_size'                        => 'btn',
+			'root_button_size'                        => 'btn-sm',
 			'root_button_border_width'                => 'border-2',
 			'root_button_border_radius'               => 'rounded-md',
 			'root_box_shadow'                         => 'shadow-md',

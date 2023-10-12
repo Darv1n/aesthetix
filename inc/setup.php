@@ -267,7 +267,7 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 							'slidesToScroll' => 1,
 						),
 					);
-				} else if ( $breakpoint === 992 && $slides_to_show > 2 ) {
+				} elseif ( $breakpoint === 992 && $slides_to_show > 2 ) {
 					$slick_args['responsive'][ $key ] = array(
 						'breakpoint' => (int) $breakpoint,
 						'settings'   => array(
@@ -278,7 +278,7 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 						$slick_args['responsive'][ $key ]['settings']['slidesToShow']   = 3;
 						$slick_args['responsive'][ $key ]['settings']['slidesToScroll'] = 1;
 					}
-				} else if ( $breakpoint === 768 && $slides_to_show > 1 ) {
+				} elseif ( $breakpoint === 768 && $slides_to_show > 1 ) {
 					$slick_args['responsive'][ $key ] = array(
 						'breakpoint' => (int) $breakpoint,
 						'settings'   => array(

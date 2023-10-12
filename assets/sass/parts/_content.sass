@@ -42,6 +42,10 @@ a.logo
 		border-radius: $border-radius
 	&_subscription-form
 		border-radius: $border-radius
+		.title-wrapper
+			margin-bottom: .75rem
+			> *:not(:last-child)
+				margin-bottom: .25rem
 
 .front-page 
 	.section_content
@@ -55,8 +59,13 @@ a.logo
 	&-title
 		margin-bottom: 0
 	> * 
+		padding: 0
 		&:not(:last-child)
 			@extend .mb
+
+.content-area, .widget-area
+	padding-top: 1rem
+	padding-bottom: 1rem
 
 .header, .footer
 	position: relative
@@ -156,13 +165,7 @@ a.logo
 		height: 2rem
 		&::before
 			width: 2.25rem
-			height: 2rem	
-
-.form
-	> *:not(:last-child)
-		margin-bottom: .75rem
-	&-subtitle, &-confirm-text
-		font-size: $small-font-size
+			height: 2rem
 
 .avatar
 	border-radius: 50%

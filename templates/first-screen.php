@@ -35,7 +35,7 @@ if ( ( is_front_page() || is_home() ) && get_aesthetix_options( 'front_page_slid
 							// Get a template with a post type, if there is one in the theme.
 							if ( file_exists( get_theme_file_path( 'templates/archive/archive-content-type-' . $post_type . '.php' ) ) ) {
 								get_template_part( 'templates/archive/archive-content-type', $post_type, array( 'counter' => $i ) );
-							} else if ( get_aesthetix_options( 'front_page_slider_slides_template_type' ) ) {
+							} elseif ( get_aesthetix_options( 'front_page_slider_slides_template_type' ) ) {
 								get_template_part( 'templates/archive/archive-content-type', get_aesthetix_options( 'front_page_slider_slides_template_type' ), array( 'counter' => $i ) );
 							} else {
 								get_template_part( 'templates/archive/archive-content-type', 'tils', array( 'counter' => $i ) );

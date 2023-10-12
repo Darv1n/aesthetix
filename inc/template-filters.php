@@ -313,7 +313,7 @@ if ( ! function_exists( 'aesthetix_icon_color' ) ) {
 	 * 
 	 * @since 1.1.6
 	 */
-	function aesthetix_icon_color( $classes, $color = '' ) {
+	function aesthetix_icon_color( $classes, $color = 'primary', $button_type = null ) {
 
 		if ( is_string( $classes ) ) {
 			$classes = explode( ' ', $classes );
@@ -342,7 +342,12 @@ if ( ! function_exists( 'aesthetix_icon_color' ) ) {
 					$classes[] = 'icon_black';
 				}
 			} else {
-				if ( get_aesthetix_options( 'root_button_type' ) === 'empty' || in_array( $color, array( 'gray', 'default', 'disabled' ), true ) ) {
+
+				if ( is_null( $button_type ) ) {
+					$button_type = get_aesthetix_options( 'root_button_type' );
+				}
+
+				if ( $color_scheme === 'white' && ( $button_type === 'empty' || in_array( 'button-disabled', $classes, true ) ) ) {
 					$classes[] = 'icon_black';
 				} else {
 					$classes[] = 'icon_white';
@@ -354,5 +359,5 @@ if ( ! function_exists( 'aesthetix_icon_color' ) ) {
 	}
 }
 add_filter( 'get_link_classes', 'aesthetix_icon_color', 90 );
-add_filter( 'get_button_classes', 'aesthetix_icon_color', 90, 2 );
+add_filter( 'get_button_classes', 'aesthetix_icon_color', 90, 3 );
 

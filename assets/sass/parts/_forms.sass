@@ -116,68 +116,64 @@ input[type="submit"]
 	background: $primary-color-500
 	border: $button-bd-width solid $primary-color-500
 	border-radius: $button-bd-radius
-	box-shadow: $button-shadow
+	box-shadow: $box-shadow
 	line-height: $line-height
 	text-align: center
 	white-space: nowrap
 	user-select: none
 	transition: $transition
 	text-decoration: none
-	cursor: pointer
 	outline: none
 	&:hover, &:focus, &:active, &.active
-		color: $button-text-color-hover
-		box-shadow: $button-shadow-hover
-		text-decoration: none
-	&:hover
 		background: $primary-color-400
 		border: $button-bd-width solid $primary-color-400
+		color: $button-text-color-hover
+		box-shadow: $box-shadow-hover
+		text-decoration: none
 	&:focus, &:active, &.active
-		background: $primary-color-600
-		border: $button-bd-width solid $primary-color-600
+		border: $button-bd-width solid $primary-color-500
 
 .button
 	&-secondary
 		background: $secondary-color-500
 		border: $button-bd-width solid $secondary-color-500
-		&:hover
+		&:hover, &:focus, &:active, &.active
 			background: $secondary-color-400
 			border: $button-bd-width solid $secondary-color-400
 		&:focus, &:active, &.active
-			background: $secondary-color-600
-			border: $button-bd-width solid $secondary-color-600
+			border: $button-bd-width solid $secondary-color-500
+	&-gray
+		background: $primary-bd-color
+		border: $button-bd-width solid $primary-bd-color
+		color: $primary-text-color
+		&:hover, &:focus, &:active, &.active
+			background: $primary-bd-color
+			border: $button-bd-width solid $primary-bd-color
+			color: $primary-text-color
+		&:focus, &:active, &.active
+			border: $button-bd-width solid $secondary-bg-color
 
 @media( min-width: 576px )
 	button,
 	.button,
 	input[type="button"],
 	input[type="reset"],
-	input[type="submit"]
+	input[type="submit"],
 		padding: $button-padding-top $button-padding-side
 	.button-small
 		font-size: $small-font-size
 		padding: .175rem .875rem
 
-.button-empty, .button-default, .button-gray
-	color: $primary-gray-color
-	background: $secondary-bg-color
-	border: $button-bd-width solid $secondary-bg-color
+.button-empty
+	background: transparent
+	border: $button-bd-width solid $primary-gray-color
+	color: $primary-text-color
 	&:hover, &:focus, &:active, &.active
-		color: $primary-gray-color-hover
-		background: $primary-bg-color-hover
-		border: $button-bd-width solid $secondary-bd-color
-	&-primary
-		border: $button-bd-width solid $primary-color-500
-		&:focus, &:active, &.active
-			border: $button-bd-width solid $primary-color-600
-		&:hover
-			border: $button-bd-width solid $primary-color-400
-	&-secondary
-		border: $button-bd-width solid $secondary-color-500
-		&:focus, &:active, &.active
-			border: $button-bd-width solid $secondary-color-600
-		&:hover
-			border: $button-bd-width solid $secondary-color-400
+		background: transparent
+		border: $button-bd-width solid $primary-gray-color-hover
+		color: $primary-text-color
+	&:focus, &:active, &.active
+		border: $button-bd-width solid $primary-gray-color
 
 .button-gradient
 	position: relative
@@ -208,7 +204,7 @@ input[type="submit"]
 		background: $secondary-gradient
 		&::after
 			background: $secondary-gradient-reflect
-	&-default, &-gray
+	&-gray
 		background: $gray-gradient
 		&::after
 			background: $gray-gradient-reflect
@@ -241,13 +237,13 @@ input[type="submit"]
 		background: $secondary-color-500
 		&::after
 			background: $primary-color-500
-	&-default, &-gray
+	&-gray
 		background: $primary-bd-color
 		&::after
 			background: $secondary-bd-color
 
 .button
-	&-disabled
+	&-disabled, &[disabled]
 		background: $primary-bd-color
 		border: $button-bd-width solid $primary-bd-color
 		color: $primary-text-color
@@ -268,9 +264,9 @@ input[type="submit"]
 .button-set
 	> *
 		display: inline-block
+		margin-bottom: $margin/2
 	> *:not(:last-child)
 		margin-right: $margin
-		margin-bottom: $margin/2
 
 .button-telegram
 	background: #0088CC
@@ -293,19 +289,26 @@ input[type="submit"]
 		border: $button-bd-width solid darken( #4FCE5D, 10% )
 
 .search-form
-	display: flex
+	position: relative
 	max-width: 480px
 	> *
 		margin-bottom: 0 !important
 	.search-field
-		flex: auto
 		width: 100%
-		border-top-right-radius: 0
-		border-bottom-right-radius: 0
-		border-right-width: 0
 	.search-submit
-		border-top-left-radius: 0
-		border-bottom-left-radius: 0
+		position: absolute
+		top: 50%
+		right: 0
+		transform: translateY( -50% )
+		&.button-reset
+			&.has_text
+				right: .75rem
+
+.form
+	> *:not(:last-child)
+		margin-bottom: .75rem
+	&-subtitle, &-confirm-text
+		font-size: $small-font-size
 
 .button-reset
 	padding: 0

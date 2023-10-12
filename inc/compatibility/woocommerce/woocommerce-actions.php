@@ -94,7 +94,7 @@ if ( ! function_exists( 'aesthetix_woo_shop_out_of_stock' ) ) {
 
 		if ( 'outofstock' === $stock_status ) { ?>
 			<span class="stock out-of-stock"><?php esc_html_e( $out_of_stock_string ); ?></span>
-		<?php } else if ( 'onbackorder' === $stock_status ) { ?>
+		<?php } elseif ( 'onbackorder' === $stock_status ) { ?>
 			<span class="stock on-backorder"><?php esc_html_e( $on_backorder_string ); ?></span>
 		<?php }
 	}

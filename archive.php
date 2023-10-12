@@ -17,14 +17,16 @@ get_header(); ?>
 	<?php if ( have_posts() ) : ?>
 		<?php $i = 0; ?>
 
-		<header class="content-area-header" aria-label="<?php esc_attr_e( 'Archive page header', 'aesthetix' ); ?>">
-			<?php the_archive_title( '<h1 class="content-area-title">', '</h1>' ); ?>
-			<?php the_archive_description( '<div class="content-area-description">', '</div>' ); ?>
-		</header>
+		<?php if ( get_the_archive_title() || get_the_archive_description() ): ?>
+			<header class="content-area-header" aria-label="<?php esc_attr_e( 'Archive Page Header', 'aesthetix' ); ?>">
+				<?php the_archive_title( '<h1 class="content-area-title">', '</h1>' ); ?>
+				<?php the_archive_description( '<div class="content-area-description">', '</div>' ); ?>
+			</header>
+		<?php endif ?>
 
 		<?php do_action( 'aesthetix_before_archive_page_content' ); ?>
 
-		<section <?php aesthetix_section_classes( 'content-area-content' ); ?> aria-label="<?php esc_attr_e( 'Archive page content', 'aesthetix' ); ?>">
+		<section <?php aesthetix_section_classes( 'content-area-content' ); ?> aria-label="<?php esc_attr_e( 'Archive Page Content', 'aesthetix' ); ?>">
 			<div <?php aesthetix_archive_page_columns_wrapper_classes( 'loop' ); ?>>
 
 				<?php while ( have_posts() ) : ?>
@@ -53,7 +55,7 @@ get_header(); ?>
 
 		<?php do_action( 'aesthetix_after_archive_page_content' ); ?>
 
-		<footer class="content-area-footer" aria-label="<?php esc_attr_e( 'Archive page footer', 'aesthetix' ); ?>">
+		<footer class="content-area-footer" aria-label="<?php esc_attr_e( 'Archive Page Footer', 'aesthetix' ); ?>">
 			<?php get_template_part( 'templates/archive/archive', 'pagination' ); ?>
 		</footer>
 

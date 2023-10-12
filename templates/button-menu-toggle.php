@@ -8,7 +8,7 @@
  * @since 1.0.0
  */
 
-$menu_classes = get_aesthetix_menu_toggle_classes();
+$menu_classes = get_aesthetix_menu_button_classes();
 
 if ( in_array( 'toggle-icon', $menu_classes, true ) ) { ?>
 	<button id="menu-toggle" class="<?php echo esc_attr( implode( ' ', $menu_classes ) ); ?>" data-icon-on="icon_xmark" data-icon-off="icon_bars" aria-label="<?php esc_attr_e( 'Open Menu Button', 'aesthetix' ); ?>" aria-haspopup="true" aria-controls="main-navigation">
@@ -17,7 +17,5 @@ if ( in_array( 'toggle-icon', $menu_classes, true ) ) { ?>
 <?php } ?>
 	<?php if ( ! in_array( get_aesthetix_options( 'general_menu_button_type' ), array( 'icon', 'button-icon' ), true ) ) {
 		esc_html_e( 'Menu', 'aesthetix' );
-	} else {
-		
 	} ?>
 </button>
