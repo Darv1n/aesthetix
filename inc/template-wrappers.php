@@ -48,6 +48,7 @@ if ( ! function_exists( 'aesthetix_body_classes' ) ) {
 		$classes[] = 'theme_' . get_aesthetix_options( 'root_color_scheme' );
 		$classes[] = 'theme_' . get_aesthetix_options( 'general_container_width' );
 		$classes   = array_unique( (array) $classes );
+		sort( $classes );
 
 		return $classes;
 	}
@@ -121,6 +122,7 @@ if ( ! function_exists( 'aesthetix_post_classes' ) ) {
 
 		$classes = apply_filters( 'aesthetix_post_classes', $classes );
 		$classes = array_unique( (array) $classes );
+		sort( $classes );
 
 		return $classes;
 	}
@@ -180,6 +182,7 @@ if ( ! function_exists( 'get_aesthetix_section_classes' ) ) {
 		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_section_classes', $classes );
 		$classes = array_unique( (array) $classes );
+		sort( $classes );
 
 		return $classes;
 	}
@@ -242,6 +245,7 @@ if ( ! function_exists( 'get_aesthetix_container_classes' ) ) {
 		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_container_classes', $classes );
 		$classes = array_unique( (array) $classes );
+		sort( $classes );
 
 		return $classes;
 	}
@@ -324,6 +328,7 @@ if ( ! function_exists( 'get_aesthetix_content_area_classes' ) ) {
 		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_content_area_classes', $classes );
 		$classes = array_unique( (array) $classes );
+		sort( $classes );
 
 		return $classes;
 	}
@@ -390,6 +395,7 @@ if ( ! function_exists( 'get_aesthetix_widget_area_classes' ) ) {
 		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_widget_area_classes', $classes );
 		$classes = array_unique( (array) $classes );
+		sort( $classes );
 
 		return $classes;
 	}
@@ -473,6 +479,7 @@ if ( ! function_exists( 'get_aesthetix_header_classes' ) ) {
 		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_header_classes', $classes );
 		$classes = array_unique( (array) $classes );
+		sort( $classes );
 
 		return $classes;
 	}
@@ -546,6 +553,7 @@ if ( ! function_exists( 'get_aesthetix_footer_classes' ) ) {
 		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_footer_classes', $classes );
 		$classes = array_unique( (array) $classes );
+		sort( $classes );
 
 		return $classes;
 	}
@@ -621,6 +629,7 @@ if ( ! function_exists( 'get_aesthetix_main_menu_classes' ) ) {
 		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_main_menu_classes', $classes );
 		$classes = array_unique( (array) $classes );
+		sort( $classes );
 
 		return $classes;
 	}
@@ -690,6 +699,7 @@ if ( ! function_exists( 'get_aesthetix_meta_display_classes' ) ) {
 		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_meta_display_classes', $classes );
 		$classes = array_unique( (array) $classes );
+		sort( $classes );
 
 		return $classes;
 	}
@@ -757,6 +767,7 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_wrapper_classes' ) )
 		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_archive_page_columns_wrapper_classes', $classes );
 		$classes = array_unique( (array) $classes );
+		sort( $classes );
 
 		return $classes;
 	}
@@ -899,6 +910,7 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_classes' ) ) {
 		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_archive_page_columns_classes', $classes, $counter );
 		$classes = array_unique( (array) $classes );
+		sort( $classes );
 
 		return $classes;
 	}
@@ -935,15 +947,16 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 	/**
 	 * Get classes for buttons.
 	 *
-	 * @param string $class       Button classes.
-	 * @param string $color       Button color (primary, secondary, gray, default). Default 'primary'.
-	 * @param string $button_type Button type (common, empty, gradient, slide). Default 'root_button_type'.
+	 * @param string $class          Additional button classes.
+	 * @param string $button_color   Button color (primary, secondary, gray, default). Default 'primary'.
+	 * @param string $button_type    Button type (common, empty, gradient, slide). Default 'root_button_type'.
+	 * @param string $button_content Button content (common, empty, gradient, slide). Default null.
 	 *
 	 * @return array
 	 * 
 	 * @since 1.0.0
 	 */
-	function get_button_classes( $class = '', $color = 'primary', $button_type = null ) {
+	function get_button_classes( $class = '', $button_color = null, $button_type = null, $button_content = null ) {
 
 		// Check the function has accepted any classes.
 		if ( isset( $class ) && ! empty( $class ) ) {
@@ -958,30 +971,62 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 			$classes = array();
 		}
 
-		if ( is_null( $button_type ) ) {
-			$button_type  = get_aesthetix_options( 'root_button_type' );
+		if ( is_null( $button_color ) ) {
+			$button_color = 'primary';
 		}
 
-		// Add elements to array.
+		if ( is_null( $button_type ) ) {
+			$button_type = get_aesthetix_options( 'root_button_type' );
+		}
+
 		$classes[] = 'button';
 
-		if ( $button_type === 'common' ) {
-			$classes[] = 'button-' . $color;
-		} elseif ( $button_type === 'empty' ) {
-			$classes[] = 'button-' . $button_type;
-		} else {
-			$classes[] = 'button-' . $button_type;
-			$classes[] = 'button-' . $button_type . '-' . $color;
+		if ( ! is_null( $button_content ) ) {
+
+			if ( in_array( (string) $button_content, array( 'button-icon', 'icon' ), true ) ) {
+				$classes[] = 'button-icon';
+			}
+
+			if ( in_array( (string) $button_content, array( 'icon-text', 'text' ), true ) ) {
+				$classes[] = 'button-text';
+			}
+
+			// If it's not a button.
+			if ( ! in_array( (string) $button_content, array( 'button-icon-text', 'button-icon', 'button-text' ), true ) ) {
+				$classes[] = 'button-reset';
+			}
+
+			// If there is an icon.
+			if ( in_array( 'icon', $classes, true ) ) {
+				if ( in_array( (string) $button_content, array( 'button-icon', 'icon' ), true ) ) {
+					$classes[] = 'icon_center';
+				} elseif ( in_array( (string) $button_type, array( 'button-icon-text', 'icon-text' ), true ) ) {
+					$classes[] = 'icon_' . get_aesthetix_options( 'root_button_icon_position' );
+				}
+			}
 		}
 
+		if ( ! in_array( 'button-reset', $classes, true ) ) {
+			if ( $button_type === 'common' ) {
+				$classes[] = 'button-' . $button_color;
+			} elseif ( $button_type === 'empty' ) {
+				$classes[] = 'button-' . $button_type;
+			} else {
+				$classes[] = 'button-' . $button_type;
+				$classes[] = 'button-' . $button_type . '-' . $button_color;
+			}
+		}
+
+		// Add globalicon position.
 		if ( in_array( 'icon', $classes, true ) ) {
 			if ( ! in_array( 'icon_center', $classes, true ) && ! in_array( 'icon_before', $classes, true ) && ! in_array( 'icon_after', $classes, true ) ) {
 				$classes[] = 'icon_' . get_aesthetix_options( 'root_button_icon_position' );
 			}
 		}
 
-		// Удаляем все классы icon, если в опции стоит запрет.
-		if ( ! get_aesthetix_options( 'root_button_icon' ) ) {
+		// Remove all icon classes if the option is disabled.
+		// Remove all icon classes if the content does not imply the presence of an icon
+		if ( ! get_aesthetix_options( 'root_button_icon' ) || ( ! is_null( $button_content ) && ! in_array( $button_content, array( 'button-icon-text', 'button-icon', 'icon-text', 'icon' ), true ) ) ) {
 			foreach ( $classes as $key => $class ) {
 				if ( stripos( $class, 'icon' ) !== false ) {
 					unset( $classes[ $key ] );
@@ -990,8 +1035,9 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 		}
 
 		// Add filter to array.
-		$classes = apply_filters( 'get_button_classes', $classes, $color, $button_type );
+		$classes = apply_filters( 'get_button_classes', $classes, $button_color, $button_type, $button_content );
 		$classes = array_unique( (array) $classes );
+		sort( $classes );
 
 		return $classes;
 	}
@@ -1002,18 +1048,19 @@ if ( ! function_exists( 'button_classes' ) ) {
 	/**
 	 * Display classes for buttons.
 	 *
-	 * @param string $class Additional button classes.
-	 * @param string $color Button color (primary, secondary, gray, default). Default 'primary'.
-	 * @param string $button_type Button type (common, empty, gradient, slide). Default 'root_button_type'.
-	 * @param bool   $echo  Echo or return button classes.
+	 * @param string $class          Additional button classes.
+	 * @param string $button_color   Button color (primary, secondary, gray, default). Default 'primary'.
+	 * @param string $button_type    Button type (common, empty, gradient, slide). Default 'root_button_type'.
+	 * @param string $button_content Button content (common, empty, gradient, slide). Default null.
+	 * @param bool   $echo           Echo or return button classes.
 	 *
 	 * @return string|void
 	 * 
 	 * @since 1.0.0
 	 */
-	function button_classes( $class = '', $color = 'primary', $button_type = null, $echo = true ) {
+	function button_classes( $class = '', $button_color = null, $button_type = null, $button_content = null, $echo = true ) {
 
-		$classes = get_button_classes( $class, $color, $button_type );
+		$classes = get_button_classes( $class, $button_color, $button_type, $button_content );
 
 		if ( $echo ) {
 			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
@@ -1056,6 +1103,7 @@ if ( ! function_exists( 'get_link_classes' ) ) {
 		// Add filter to array.
 		$classes = apply_filters( 'get_link_classes', $classes );
 		$classes = array_unique( (array) $classes );
+		sort( $classes );
 
 		return $classes;
 	}
@@ -1130,6 +1178,7 @@ if ( ! function_exists( 'get_aesthetix_link_more_classes' ) ) {
 		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_link_more_classes', $classes );
 		$classes = array_unique( (array) $classes );
+		sort( $classes );
 
 		return $classes;
 	}
@@ -1151,444 +1200,6 @@ if ( ! function_exists( 'aesthetix_link_more_classes' ) ) {
 	function aesthetix_link_more_classes( $class = '', $color = 'primary', $echo = true ) {
 
 		$classes = get_aesthetix_link_more_classes( $class, $color );
-
-		if ( $echo ) {
-			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
-		} else {
-			return 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
-		}
-	}
-}
-
-if ( ! function_exists( 'get_aesthetix_menu_button_classes' ) ) {
-
-	/**
-	 * Get menu toggle classes.
-	 *
-	 * @param string $class Menu toggle classes.
-	 * @param string $color Menu toggle color (primary, secondary, gray, default). Default 'primary'.
-	 *
-	 * @return array
-	 * 
-	 * @since 1.0.0
-	 */
-	function get_aesthetix_menu_button_classes( $class = '', $color = 'primary' ) {
-
-		// Check the function has accepted any classes.
-		if ( isset( $class ) && ! empty( $class ) ) {
-			if ( is_array( $class ) ) {
-				$classes = $class;
-			} elseif ( is_string( $class ) ) {
-				$classes = explode( ' ', $class );
-			} else {
-				$classes = array();
-			}
-		} else {
-			$classes = array();
-		}
-
-		$button_type = get_aesthetix_options( 'general_menu_button_type' );
-
-		// Квадрат, если нет текста
-		if ( in_array( $button_type, array( 'button-icon', 'icon' ), true ) ) {
-			$classes[] = 'button-icon';
-		}
-
-		// Если есть иконка.
-		if ( in_array( $button_type, array( 'button-icon-text', 'button-icon', 'icon-text', 'icon' ), true ) ) {
-			$classes[] = 'toggle-icon';
-			$classes[] = 'icon';
-			$classes[] = 'icon_bars';
-
-			if ( in_array( $button_type, array( 'icon', 'button-icon' ), true ) ) {
-				$classes[] = 'icon_center';
-			} if ( in_array( $button_type, array( 'button-icon-text', 'icon-text' ), true ) ) {
-				$classes[] = 'icon_' . get_aesthetix_options( 'general_menu_button_icon_position' );
-			}
-		}
-
-		$classes[] = 'menu-toggle';
-
-		if ( get_aesthetix_options( 'general_header_type' ) === 'header-simple' ) {
-			$classes[] = 'menu-toggle_right';
-		} else {
-			$classes[] = 'menu-toggle_' . get_aesthetix_options( 'general_menu_button_alignment' );
-		}
-
-		// Если есть кнопка.
-		if ( ! in_array( $button_type, array( 'button-icon-text', 'button-icon', 'button-text' ), true ) ) {
-			$classes[] = 'button-reset';
-		}
-
-		if ( in_array( $button_type, array( 'button-icon-text', 'button-text', 'icon-text', 'text' ), true ) ) {
-			$classes[] = 'has_text';
-		}
-
-		$classes = get_button_classes( $classes, $color );
-
-		// Add filter to array.
-		$classes = apply_filters( 'get_aesthetix_menu_button_classes', $classes );
-		$classes = array_unique( $classes );
-
-		return $classes;
-	}
-}
-
-if ( ! function_exists( 'the_aesthetix_menu_button_classes' ) ) {
-
-	/**
-	 * Display menu toggle classes.
-	 *
-	 * @param string $class Additional menu toggle classes.
-	 * @param string $color Menu toggle color (primary, secondary, gray, default). Default 'primary'.
-	 * @param bool   $echo  Echo or return menu toggle classes.
-	 *
-	 * @return string|void
-	 * 
-	 * @since 1.0.0
-	 */
-	function the_aesthetix_menu_button_classes( $class = '', $color = 'primary', $echo = true ) {
-
-		$classes = get_aesthetix_menu_button_classes( $class, $color );
-
-		if ( $echo ) {
-			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
-		} else {
-			return 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
-		}
-	}
-}
-
-if ( ! function_exists( 'get_aesthetix_scroll_top_button_classes' ) ) {
-
-	/**
-	 * Get scroll top classes.
-	 *
-	 * @param string $class Scroll top classes.
-	 * @param string $color Scroll top color (primary, secondary, gray, default). Default 'primary'.
-	 *
-	 * @return array
-	 * 
-	 * @since 1.0.0
-	 */
-	function get_aesthetix_scroll_top_button_classes( $class = '', $color = 'primary' ) {
-
-		// Check the function has accepted any classes.
-		if ( isset( $class ) && ! empty( $class ) ) {
-			if ( is_array( $class ) ) {
-				$classes = $class;
-			} elseif ( is_string( $class ) ) {
-				$classes = explode( ' ', $class );
-			} else {
-				$classes = array();
-			}
-		} else {
-			$classes = array();
-		}
-
-		$button_type = get_aesthetix_options( 'general_scroll_top_button_type' );
-
-		// Квадрат, если нет текста.
-		if ( in_array( $button_type, array( 'button-icon', 'icon' ), true ) ) {
-			$classes[] = 'button-icon';
-		}
-
-		// Если есть иконка.
-		if ( in_array( $button_type, array( 'button-icon-text', 'button-icon', 'icon-text', 'icon' ), true ) ) {
-			$classes[] = 'icon';
-			$classes[] = 'icon_arrow-up';
-
-			if ( in_array( $button_type, array( 'icon', 'button-icon' ), true ) ) {
-				$classes[] = 'icon_center';
-			} elseif ( in_array( $button_type, array( 'button-icon-text', 'icon-text' ), true ) ) {
-				$classes[] = 'icon_' . get_aesthetix_options( 'general_menu_button_icon_position' );
-			}
-		}
-
-		$classes[] = 'scroll-top';
-		$classes[] = 'scroll-top_' . get_aesthetix_options( 'general_scroll_top_button_alignment' );
-
-		// Если есть кнопка.
-		if ( ! in_array( $button_type, array( 'button-icon-text', 'button-icon', 'button-text' ), true ) ) {
-			$classes[] = 'button-reset';
-		}
-
-		if ( in_array( $button_type, array( 'button-icon-text', 'button-text', 'icon-text', 'text' ), true ) ) {
-			$classes[] = 'has_text';
-		}
-
-		$classes = get_button_classes( $classes, $color );
-
-		// Add filter to array.
-		$classes = apply_filters( 'get_aesthetix_scroll_top_button_classes', $classes );
-		$classes = array_unique( $classes );
-
-		return $classes;
-	}
-}
-
-if ( ! function_exists( 'the_aesthetix_scroll_top_button_classes' ) ) {
-
-	/**
-	 * Display scroll top classes.
-	 *
-	 * @param string $class Additional scroll top classes.
-	 * @param string $color Scroll top color (primary, secondary, gray, default). Default 'primary'.
-	 * @param bool   $echo  Echo or return scroll top classes.
-	 *
-	 * @return string|void
-	 * 
-	 * @since 1.0.0
-	 */
-	function the_aesthetix_scroll_top_button_classes( $class = '', $color = 'primary', $echo = true ) {
-
-		$classes = get_aesthetix_scroll_top_button_classes( $class, $color );
-
-		if ( $echo ) {
-			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
-		} else {
-			return 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
-		}
-	}
-}
-
-if ( ! function_exists( 'get_aesthetix_searchform_button_classes' ) ) {
-
-	/**
-	 * Get searchform button classes.
-	 *
-	 * @param string $class Searchform button classes.
-	 * @param string $color Searchform button color (primary, secondary, gray, default). Default 'primary'.
-	 *
-	 * @return array
-	 * 
-	 * @since 1.1.7
-	 */
-	function get_aesthetix_searchform_button_classes( $class = '', $color = 'primary' ) {
-
-		// Check the function has accepted any classes.
-		if ( isset( $class ) && ! empty( $class ) ) {
-			if ( is_array( $class ) ) {
-				$classes = $class;
-			} elseif ( is_string( $class ) ) {
-				$classes = explode( ' ', $class );
-			} else {
-				$classes = array();
-			}
-		} else {
-			$classes = array();
-		}
-
-		$button_type = get_aesthetix_options( 'general_searchform_button_type' );
-
-		// Квадрат, если нет текста.
-		if ( in_array( $button_type, array( 'button-icon', 'icon' ), true ) ) {
-			$classes[] = 'button-icon';
-		}
-
-		// Если есть иконка.
-		if ( in_array( $button_type, array( 'button-icon-text', 'button-icon', 'icon-text', 'icon' ), true ) ) {
-			$classes[] = 'icon';
-			$classes[] = 'icon_magnifying-glass';
-
-			if ( in_array( $button_type, array( 'icon', 'button-icon' ), true ) ) {
-				$classes[] = 'icon_center';
-			} elseif ( in_array( $button_type, array( 'button-icon-text', 'icon-text' ), true ) ) {
-				$classes[] = 'icon_' . get_aesthetix_options( 'general_searchform_button_icon_position' );
-			}
-		}
-
-		$classes[] = 'search-submit';
-
-		// Если есть кнопка.
-		if ( ! in_array( $button_type, array( 'button-icon-text', 'button-icon', 'button-text' ), true ) ) {
-			$classes[] = 'button-reset';
-		}
-
-		if ( in_array( $button_type, array( 'button-icon-text', 'button-text', 'icon-text', 'text' ), true ) ) {
-			$classes[] = 'has_text';
-		}
-
-		$classes = get_button_classes( $classes, $color );
-
-		// Add filter to array.
-		$classes = apply_filters( 'get_aesthetix_searchform_button_classes', $classes );
-		$classes = array_unique( $classes );
-
-		return $classes;
-	}
-}
-
-if ( ! function_exists( 'the_aesthetix_searchform_button_classes' ) ) {
-
-	/**
-	 * Display scroll top classes.
-	 *
-	 * @param string $class Additional searchform button classes.
-	 * @param string $color Searchform button color (primary, secondary, gray, default). Default 'primary'.
-	 * @param bool   $echo  Echo or return searchform button classes.
-	 *
-	 * @return string|void
-	 * 
-	 * @since 1.1.7
-	 */
-	function the_aesthetix_searchform_button_classes( $class = '', $color = 'primary', $echo = true ) {
-
-		$classes = get_aesthetix_searchform_button_classes( $class, $color );
-
-		if ( $echo ) {
-			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
-		} else {
-			return 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
-		}
-	}
-}
-
-if ( ! function_exists( 'get_aesthetix_subscribe_button_classes' ) ) {
-
-	/**
-	 * Get subscribe button classes.
-	 *
-	 * @param string $class Subscribe button classes.
-	 * @param string $color Subscribe button color (primary, secondary, gray, default). Default 'primary'.
-	 *
-	 * @return array
-	 * 
-	 * @since 1.1.7
-	 */
-	function get_aesthetix_subscribe_button_classes( $class = '', $color = 'primary' ) {
-
-		// Check the function has accepted any classes.
-		if ( isset( $class ) && ! empty( $class ) ) {
-			if ( is_array( $class ) ) {
-				$classes = $class;
-			} elseif ( is_string( $class ) ) {
-				$classes = explode( ' ', $class );
-			} else {
-				$classes = array();
-			}
-		} else {
-			$classes = array();
-		}
-
-		$button_type = get_aesthetix_options( 'general_subscription_form_toggle_type' );
-
-		// Квадрат, если нет текста.
-		if ( in_array( $button_type, array( 'button-icon', 'icon' ), true ) ) {
-			$classes[] = 'button-icon';
-		}
-
-		// Если есть иконка.
-		if ( in_array( $button_type, array( 'button-icon-text', 'button-icon', 'icon-text', 'icon' ), true ) ) {
-			$classes[] = 'icon';
-			$classes[] = 'icon_paper-plane';
-
-			if ( in_array( $button_type, array( 'icon', 'button-icon' ), true ) ) {
-				$classes[] = 'icon_center';
-			} elseif ( in_array( $button_type, array( 'button-icon-text', 'icon-text' ), true ) ) {
-				$classes[] = 'icon_' . get_aesthetix_options( 'general_subscription_form_toggle_icon_position' );
-			}
-		}
-
-		$classes[] = 'search-submit';
-
-		// Если есть кнопка.
-		if ( ! in_array( $button_type, array( 'button-icon-text', 'button-icon', 'button-text' ), true ) ) {
-			$classes[] = 'button-reset';
-		}
-
-		if ( in_array( $button_type, array( 'button-icon-text', 'button-text', 'icon-text', 'text' ), true ) ) {
-			$classes[] = 'has_text';
-		}
-
-		$classes = get_button_classes( $classes, $color );
-
-		// Add filter to array.
-		$classes = apply_filters( 'get_aesthetix_subscribe_button_classes', $classes );
-		$classes = array_unique( $classes );
-
-		return $classes;
-	}
-}
-
-if ( ! function_exists( 'the_aesthetix_subscribe_button_classes' ) ) {
-
-	/**
-	 * Display subscribe button classes.
-	 *
-	 * @param string $class Additional subscribe button classes.
-	 * @param string $color Subscribe button color (primary, secondary, gray, default). Default 'primary'.
-	 * @param bool   $echo  Echo or return subscribe button classes.
-	 *
-	 * @return string|void
-	 * 
-	 * @since 1.1.8
-	 */
-	function the_aesthetix_subscribe_button_classes( $class = '', $color = 'primary', $echo = true ) {
-
-		$classes = get_aesthetix_subscribe_button_classes( $class, $color );
-
-		if ( $echo ) {
-			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
-		} else {
-			return 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
-		}
-	}
-}
-
-if ( ! function_exists( 'get_elem_classes' ) ) {
-
-	/**
-	 * Get classes for elems.
-	 *
-	 * @param string $class Elem classes.
-	 *
-	 * @return array
-	 * 
-	 * @since 1.0.0
-	 */
-	function get_elem_classes( $class = '' ) {
-
-		// Check the function has accepted any classes.
-		if ( isset( $class ) && ! empty( $class ) ) {
-			if ( is_array( $class ) ) {
-				$classes = $class;
-			} elseif ( is_string( $class ) ) {
-				$classes = explode( ' ', $class );
-			} else {
-				$classes = array();
-			}
-		} else {
-			$classes = array();
-		}
-
-		// Add elements to array.
-		$classes[] = 'elem';
-		$classes[] = 'elem_' . get_aesthetix_options( 'root_color_scheme' );
-
-		// Add filter to array.
-		$classes = apply_filters( 'get_elem_classes', $classes );
-		$classes = array_unique( (array) $classes );
-
-		return $classes;
-	}
-}
-
-if ( ! function_exists( 'elem_classes' ) ) {
-
-	/**
-	 * Display classes for elems.
-	 *
-	 * @param string $class Additional elem classes.
-	 * @param bool   $echo  Echo or return elem classes.
-	 *
-	 * @return string|void
-	 * 
-	 * @since 1.0.0
-	 */
-	function elem_classes( $class = '', $echo = true ) {
-
-		$classes = get_elem_classes( $class );
 
 		if ( $echo ) {
 			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';

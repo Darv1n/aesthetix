@@ -3,19 +3,13 @@
 	position: fixed
 	z-index: 9
 	bottom: $margin
+	right: $margin
 	margin-bottom: 0 !important
-	&_left
-		left: $margin
-	&_right
-		right: $margin
 
 @media (min-width: 992px)
 	.scroll-top
 		bottom: $margin*2
-		&_left
-			left: $margin*2
-		&_right
-			right: $margin*2
+		right: $margin*2
 
 .breadcrumbs
 	*
@@ -111,15 +105,3 @@
 		*
 			display: inline-block
 			font-size: $small-font-size
-
-// #popup.
-.popup
-	position: relative
-	padding: $padding*2
-	margin: auto
-	display: block
-	max-width: 720px
-	background: $white-color
-	&-form
-		margin-bottom: 0
-

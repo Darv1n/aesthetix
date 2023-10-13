@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! function_exists( 'get_mailchimp_aesthetix_subscription_form_type' ) ) {
 
 	/**
-	 * Function for 'get_aesthetix_subscription_form_type' filter-hook.
+	 * Function for 'get_aesthetix_customizer_subscription_form_type' filter-hook.
 	 * 
 	 * @param array $converter Array with subscribation forms in customizer options.
 	 *
@@ -31,7 +31,7 @@ if ( ! function_exists( 'get_mailchimp_aesthetix_subscription_form_type' ) ) {
 		return $converter;
 	}
 }
-add_filter( 'get_aesthetix_subscription_form_type', 'get_mailchimp_aesthetix_subscription_form_type' );
+add_filter( 'get_aesthetix_customizer_subscription_form_type', 'get_mailchimp_aesthetix_subscription_form_type' );
 
 if ( ! function_exists( 'get_mailchimp_aesthetix_options' ) ) {
 

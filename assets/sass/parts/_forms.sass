@@ -132,6 +132,20 @@ input[type="submit"]
 		text-decoration: none
 	&:focus, &:active, &.active
 		border: $button-bd-width solid $primary-color-500
+	&.icon
+		&::before
+			filter: invert(100%)
+
+@media( min-width: 576px )
+	button,
+	.button,
+	input[type="button"],
+	input[type="reset"],
+	input[type="submit"],
+		padding: $button-padding-top $button-padding-side
+	.button-small
+		font-size: $small-font-size
+		padding: .175rem .875rem
 
 .button
 	&-secondary
@@ -146,120 +160,107 @@ input[type="submit"]
 		background: $primary-bd-color
 		border: $button-bd-width solid $primary-bd-color
 		color: $primary-text-color
+		&.icon
+			&::before
+				filter: $svg-filter
 		&:hover, &:focus, &:active, &.active
-			background: $primary-bd-color
-			border: $button-bd-width solid $primary-bd-color
+			background: $secondary-bd-color
+			border: $button-bd-width solid $secondary-bd-color
 			color: $primary-text-color
 		&:focus, &:active, &.active
-			border: $button-bd-width solid $secondary-bg-color
-
-@media( min-width: 576px )
-	button,
-	.button,
-	input[type="button"],
-	input[type="reset"],
-	input[type="submit"],
-		padding: $button-padding-top $button-padding-side
-	.button-small
-		font-size: $small-font-size
-		padding: .175rem .875rem
-
-.button-empty
-	background: transparent
-	border: $button-bd-width solid $primary-gray-color
-	color: $primary-text-color
-	&:hover, &:focus, &:active, &.active
+			border: $button-bd-width solid $secondary-bd-color
+	&-empty
 		background: transparent
-		border: $button-bd-width solid $primary-gray-color-hover
-		color: $primary-text-color
-	&:focus, &:active, &.active
 		border: $button-bd-width solid $primary-gray-color
-
-.button-gradient
-	position: relative
-	z-index: 1
-	color: $button-text-color
-	background: $primary-gradient
-	border: none
-	overflow: hidden
-	&::after
-		content: ''
-		position: absolute
-		top: 0
-		left: 0
-		width: 100%
-		height: 100%
-		background: $primary-gradient-reflect
-		transform: translateX(-100%)
-		transition: $transition
-		z-index: -1
-	&:hover, &:focus, &:active, &.active
-		color: $button-text-color-hover
+		color: $primary-text-color
+		&.icon
+			&::before
+				filter: $svg-filter
+		&:hover, &:focus, &:active, &.active
+			background: transparent
+			border: $button-bd-width solid $primary-gray-color-hover
+			color: $primary-text-color
+		&:focus, &:active, &.active
+			border: $button-bd-width solid $primary-gray-color
+	&-gradient
+		position: relative
+		z-index: 1
 		background: $primary-gradient
 		border: none
-	&:hover
+		overflow: hidden
 		&::after
-			transform: translateX(0)
-	&-secondary
-		background: $secondary-gradient
-		&::after
-			background: $secondary-gradient-reflect
-	&-gray
-		background: $gray-gradient
-		&::after
-			background: $gray-gradient-reflect
-
-.button-slide
-	position: relative
-	z-index: 1
-	color: $button-text-color
-	background: $primary-color-500
-	border: none
-	overflow: hidden
-	&::after
-		content: ''
-		position: absolute
-		top: 0
-		left: 0
-		width: 100%
-		height: 100%
-		background: $secondary-color-500
-		transform: translateX(-100%)
-		transition: $transition
-		z-index: -1
-	&:hover, &:focus, &:active, &.active
-		color: $button-text-color-hover
-		border: none
-	&:hover
-		&::after
-			transform: translateX(0)
-	&-secondary
-		background: $secondary-color-500
-		&::after
-			background: $primary-color-500
-	&-gray
-		background: $primary-bd-color
-		&::after
-			background: $secondary-bd-color
-
-.button
-	&-disabled, &[disabled]
-		background: $primary-bd-color
-		border: $button-bd-width solid $primary-bd-color
-		color: $primary-text-color
-		cursor: auto
-		box-shadow: none
-		&:hover, &:focus, &:active
-			background: $primary-bd-color
-			border: $button-bd-width solid $primary-bd-color
-			color: $primary-text-color
-			box-shadow: none
-		&.button-slide, &.button-gradient
+			content: ''
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			background: $primary-gradient-reflect
+			transform: translateX(-100%)
+			transition: $transition
+			z-index: -1
+		&:hover, &:focus, &:active, &.active
+			background: $primary-gradient
 			border: none
+		&:hover
 			&::after
-				display: none
-	&[disabled]
-		cursor: not-allowed
+				transform: translateX(0)
+		&-secondary
+			background: $secondary-gradient
+			&::after
+				background: $secondary-gradient-reflect
+			&:hover, &:focus, &:active, &.active
+				background: $secondary-gradient
+		&-gray
+			background: $gray-gradient
+			color: $primary-text-color
+			&.icon
+				&::before
+					filter: $svg-filter
+			&::after
+				background: $gray-gradient-reflect
+			&:hover, &:focus, &:active, &.active
+				background: $gray-gradient
+				color: $primary-text-color
+	&-slide
+		position: relative
+		z-index: 1
+		background: $primary-color-500
+		border: none
+		overflow: hidden
+		&::after
+			content: ''
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			background: $secondary-color-500
+			transform: translateX(-100%)
+			transition: $transition
+			z-index: -1
+		&:hover, &:focus, &:active, &.active
+			border: none
+		&:hover
+			&::after
+				transform: translateX(0)
+		&-secondary
+			background: $secondary-color-500
+			&::after
+				background: $primary-color-500
+			&:hover, &:focus, &:active, &.active
+				background: $secondary-color-500
+		&-gray
+			background: $primary-bd-color
+			color: $primary-text-color
+			&.icon
+				&::before
+					filter: $svg-filter
+			&::after
+				background: $secondary-bd-color
+			&:hover, &:focus, &:active, &.active
+				background: $primary-bd-color
+				color: $primary-text-color
 
 .button-set
 	> *
@@ -288,6 +289,12 @@ input[type="submit"]
 		background: darken( #4FCE5D, 10% )
 		border: $button-bd-width solid darken( #4FCE5D, 10% )
 
+.form
+	> *:not(:last-child)
+		margin-bottom: .75rem
+	&-subtitle, &-confirm-text
+		font-size: $small-font-size
+
 .search-form
 	position: relative
 	max-width: 480px
@@ -301,23 +308,45 @@ input[type="submit"]
 		right: 0
 		transform: translateY( -50% )
 		&.button-reset
-			&.has_text
-				right: .75rem
+			right: 1rem
 
-.form
-	> *:not(:last-child)
-		margin-bottom: .75rem
-	&-subtitle, &-confirm-text
-		font-size: $small-font-size
-
-.button-reset
-	padding: 0
-	color: $black-color
-	background: transparent
-	border: none
-	box-shadow: none
-	&:hover, &:focus, &:active
+.button
+	&-disabled, &[disabled]
+		background: $primary-bd-color
+		border: $button-bd-width solid $primary-bd-color
+		color: $primary-text-color
+		box-shadow: none
+		&.icon
+			&::before
+				filter: $svg-filter
+		&::after
+			display: none
+		&:hover, &:focus, &:active
+			background: $primary-bd-color
+			border: $button-bd-width solid $primary-bd-color
+			color: $primary-text-color
+			box-shadow: none
+		&.button-gradient
+			background: $gray-gradient
+			border: none
+			&:hover, &:focus, &:active
+				border: none
+		&.button-empty
+			background: transparent
+			color: $primary-text-color
+	&[disabled]
+		cursor: not-allowed
+	&-reset
+		padding: 0
 		background: transparent
+		color: $primary-text-color
 		border: none
 		box-shadow: none
-		color: $black-color
+		&:hover, &:focus, &:active
+			background: transparent
+			color: $black-color
+			border: none
+			box-shadow: none
+		&.icon
+			&::before
+				filter: $svg-filter
