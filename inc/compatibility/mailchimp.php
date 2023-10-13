@@ -13,10 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! function_exists( 'get_mailchimp_aesthetix_subscription_form_type' ) ) {
+if ( ! function_exists( 'get_mailchimp_aesthetix_subscribe_form_type' ) ) {
 
 	/**
-	 * Function for 'get_aesthetix_customizer_subscription_form_type' filter-hook.
+	 * Function for 'get_aesthetix_customizer_subscribe_form_type' filter-hook.
 	 * 
 	 * @param array $converter Array with subscribation forms in customizer options.
 	 *
@@ -24,14 +24,14 @@ if ( ! function_exists( 'get_mailchimp_aesthetix_subscription_form_type' ) ) {
 	 * 
 	 * @since 1.1.3
 	 */
-	function get_mailchimp_aesthetix_subscription_form_type( $converter ) {
+	function get_mailchimp_aesthetix_subscribe_form_type( $converter ) {
 
 		$converter['mailchimp'] = 'Mailchimp';
 
 		return $converter;
 	}
 }
-add_filter( 'get_aesthetix_customizer_subscription_form_type', 'get_mailchimp_aesthetix_subscription_form_type' );
+add_filter( 'get_aesthetix_customizer_subscribe_form_type', 'get_mailchimp_aesthetix_subscribe_form_type' );
 
 if ( ! function_exists( 'get_mailchimp_aesthetix_options' ) ) {
 
@@ -47,7 +47,7 @@ if ( ! function_exists( 'get_mailchimp_aesthetix_options' ) ) {
 	function get_mailchimp_aesthetix_options( $aesthetix_defaults ) {
 
 		$mailchimp_defaults = array(
-			'general_subscription_form_type' => 'mailchimp',
+			'general_subscribe_form_type' => 'mailchimp',
 		);
 
 		return wp_parse_args( $mailchimp_defaults, $aesthetix_defaults );

@@ -82,21 +82,21 @@ if ( ! function_exists( 'ajax_loadmore_handler_callback' ) ) {
 add_action( 'wp_ajax_loadmore_handler', 'ajax_loadmore_handler_callback' );
 add_action( 'wp_ajax_nopriv_loadmore_handler', 'ajax_loadmore_handler_callback' );
 
-if ( ! function_exists( 'ajax_subscription_form_callback' ) ) {
+if ( ! function_exists( 'ajax_subscribe_form_callback' ) ) {
 
 	/**
-	 * Subscription form handler.
+	 * Subscribe form handler.
 	 * 
-	 * Form js handler  - /assets/js/source/subscription-from-handler.js
+	 * Form js handler  - /assets/js/source/subscribe-from-handler.js
 	 * Setup js scripts - /inc/setup.php
 	 * Form php handler - /inc/handlers.php
-	 * Form html        - /templates/subscription-form.php
+	 * Form html        - /templates/subscribe-form.php
 	 * 
 	 * @return json
 	 * 
 	 * @since 1.1.2
 	 */
-	function ajax_subscription_form_callback() {
+	function ajax_subscribe_form_callback() {
 
 		parse_str( $_POST['query'], $data );
 
@@ -143,7 +143,7 @@ if ( ! function_exists( 'ajax_subscription_form_callback' ) ) {
 
 			// Return json about successful sending.
 			if ( $wp_mail ) {
-				wp_send_json_success( __( 'Subscription completed successfully', 'aesthetix' ) );
+				wp_send_json_success( __( 'Subscribe completed successfully', 'aesthetix' ) );
 			} else {
 				$errors['submit'] = __( 'An unknown error occurred while submitting the form. Please write to <a href="mailto:team@zolin.digital">team@zolin.digital</a>', 'aesthetix' );
 				wp_send_json_error( $errors );
@@ -154,5 +154,5 @@ if ( ! function_exists( 'ajax_subscription_form_callback' ) ) {
 		wp_die();
 	}
 }
-add_action( 'wp_ajax_subscription_form_action', 'ajax_subscription_form_callback' );
-add_action( 'wp_ajax_nopriv_subscription_form_action', 'ajax_subscription_form_callback' );
+add_action( 'wp_ajax_subscribe_form_action', 'ajax_subscribe_form_callback' );
+add_action( 'wp_ajax_nopriv_subscribe_form_action', 'ajax_subscribe_form_callback' );

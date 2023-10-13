@@ -1,15 +1,15 @@
 /**
- * Subscription form js handler
+ * Subscribe form js handler
  *
- * Form js handler  - /assets/js/source/subscription-from-handler.js
+ * Form js handler  - /assets/js/source/subscribe-from-handler.js
  * Setup js scripts - /inc/setup.php
  * Form php handler - /inc/handlers.php
- * Form html        - /templates/subscription-form.php
+ * Form html        - /templates/subscribe-form.php
  */
 
 jQuery( document ).ready( function($) {
 
-	$( '#subscription-from' ).on( 'submit', function( e ) {
+	$( '.subscribe-from' ).on( 'submit', function( e ) {
 
 		var form   = $( this );
 			submit = form.find( '.form-submit' );
@@ -20,7 +20,7 @@ jQuery( document ).ready( function($) {
 				type: 'POST',
 				url: ajax_obj.url,
 				data: {
-					'action': 'subscription_form_action',
+					'action': 'subscribe_form_action',
 					'query': form.serialize(),
 					'nonce': ajax_obj.nonce,
 				},

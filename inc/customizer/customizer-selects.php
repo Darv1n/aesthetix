@@ -257,10 +257,10 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_meta_structure' ) ) {
 	}
 }
 
-if ( ! function_exists( 'get_aesthetix_customizer_subscription_form_type' ) ) {
+if ( ! function_exists( 'get_aesthetix_customizer_subscribe_form_type' ) ) {
 
 	/**
-	 * Return array with the customizer subscription form type.
+	 * Return array with the customizer subscribe form type.
 	 *
 	 * @param string $control array key to get one value.
 	 *
@@ -268,7 +268,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_subscription_form_type' ) ) {
 	 * 
 	 * @since 1.1.2
 	 */
-	function get_aesthetix_customizer_subscription_form_type( $control = null ) {
+	function get_aesthetix_customizer_subscribe_form_type( $control = null ) {
 
 		// Sanitize string (just to be safe).
 		if ( ! is_null( $control ) ) {
@@ -281,7 +281,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_subscription_form_type' ) ) {
 		);
 
 		// Merge child and parent default options.
-		$converter = apply_filters( 'get_aesthetix_customizer_subscription_form_type', $converter );
+		$converter = apply_filters( 'get_aesthetix_customizer_subscribe_form_type', $converter );
 
 		// Return controls.
 		if ( is_null( $control ) ) {

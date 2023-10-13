@@ -181,7 +181,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'breadcrumbs_separator'                 => array( 'text_control', __( 'Breadcrumbs separator', 'aesthetix' ), '' ),
 
 			'subscribe_form_tab_title'              => array( 'tab_title', __( 'Subscribe form', 'aesthetix' ), '' ),
-			'subscribe_form_type'                   => array( 'select_control', __( 'Subscribe form type', 'aesthetix' ), '', get_aesthetix_customizer_subscription_form_type() ),
+			'subscribe_form_type'                   => array( 'select_control', __( 'Subscribe form type', 'aesthetix' ), '', get_aesthetix_customizer_subscribe_form_type() ),
 			'subscribe_form_bg'                     => array( 'image_control', __( 'Subscribe form background image', 'aesthetix' ), '', '' ),
 			'subscribe_form_shortcode'              => array( 'text_control', __( 'Subscribe form shortcode', 'aesthetix' ), __( 'Use this field if you chose Mailchimp', 'aesthetix' ) ),
 

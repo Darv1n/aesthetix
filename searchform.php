@@ -10,9 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$button_color   = $args['button-color'] ?? get_aesthetix_options( 'general_searchform_form_button_color' );
-$button_type    = $args['button-type'] ?? get_aesthetix_options( 'general_searchform_form_button_type' );
-$button_content = $args['button-content'] ?? get_aesthetix_options( 'general_searchform_form_button_content' );
+$button_color   = $args['button_color'] ?? get_aesthetix_options( 'general_searchform_form_button_color' );
+$button_type    = $args['button_type'] ?? get_aesthetix_options( 'general_searchform_form_button_type' );
+$button_content = $args['button_content'] ?? get_aesthetix_options( 'general_searchform_form_button_content' );
 
 ?>
 

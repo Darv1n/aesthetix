@@ -158,7 +158,7 @@ if ( ! function_exists( 'get_aesthetix_section_classes' ) ) {
 		// Add elements to array.
 		$classes[] = 'section';
 
-		if ( in_array( 'section_fisrt-screen', $classes, true ) || in_array( 'section_subscription-form', $classes, true ) ) {
+		if ( in_array( 'section_fisrt-screen', $classes, true ) || in_array( 'section_subscribe-form', $classes, true ) ) {
 
 			if ( ! in_array( 'has_background', $classes, true ) ) {
 				$classes[] = 'section-secondary';

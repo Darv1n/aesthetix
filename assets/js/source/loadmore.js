@@ -1,5 +1,5 @@
 /**
- * Subscription form js handler
+ * subscribe form js handler
  *
  * Form js handler  - /assets/js/source/loadmore.js
  * Setup js scripts - /inc/setup.php

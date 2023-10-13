@@ -25,6 +25,12 @@ require_once get_template_directory() . '/inc/template-wrappers.php';
 require_once get_template_directory() . '/inc/handlers.php';
 require_once get_template_directory() . '/inc/shortcodes.php';
 
+// Widgets.
+require_once get_template_directory() . '/inc/widgets/widgets-init.php';
+require_once get_template_directory() . '/inc/widgets/class-widget-subscribe-form.php';
+require_once get_template_directory() . '/inc/widgets/class-widget-subscribe-popup-form.php';
+require_once get_template_directory() . '/inc/widgets/class-widget-search-popup-form.php';
+
 // Customizer.
 require_once get_template_directory() . '/inc/customizer/customizer.php';
 require_once get_template_directory() . '/inc/customizer/customizer-sections.php';
