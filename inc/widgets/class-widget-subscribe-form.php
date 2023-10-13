@@ -30,7 +30,7 @@ class Subscribe_Form_Widget extends WC_Widget {
 		$this->settings           = array(
 			'title'       => array(
 				'type'  => 'text',
-				'std'   => apply_filters( 'get_aesthetix_general_subscribe_form_title', esc_html__( 'Stay in the loop', 'aesthetix' ) ),
+				'std'   => get_aesthetix_options( 'general_subscribe_form_title' ),
 				'label' => __( 'Title', 'aesthetix' ),
 			),
 		);

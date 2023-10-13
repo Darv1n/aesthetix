@@ -64,14 +64,14 @@ if ( ! function_exists( 'aesthetix_privacy_policy_url' ) ) {
 	 */
 	function aesthetix_privacy_policy_url( $url ) {
 
+		if ( empty( $url ) ) {
+			$url = get_home_url();
+		}
+
 		if ( empty( $url ) && is_multisite() && ! is_main_site() ) {
 			switch_to_blog( 1 );
 			$url = get_privacy_policy_url();
 			restore_current_blog();
-		}
-
-		if ( empty( $url ) ) {
-			$url = get_home_url();
 		}
 
 		return trailingslashit( $url );
@@ -246,7 +246,7 @@ if ( ! function_exists( 'remove_nav_menu_item_class' ) ) {
 	function remove_nav_menu_item_class( $classes, $item, $args ) {
 
 		foreach ( $classes as $key => $class ) {
-			if ( ! in_array( $class, array( 'menu-item', 'current-menu-item', 'menu-item-has-children', 'level-1' ), true ) ) {
+			if ( ! in_array( $class, array( 'menu-item', 'current-menu-item', 'menu-item-has-children' ), true ) ) {
 				unset( $classes[ $key ] ); 
 			}
 		}

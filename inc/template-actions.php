@@ -91,12 +91,26 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 	 */
 	function before_site_content_structure() {
 
-		$structure = array(
-			'search-sidebar',
+		$structure             = array();
+		$mobile_menu_structure = get_aesthetix_options( 'general_mobile_menu_structure' );
+
+		if ( is_string( $mobile_menu_structure ) && ! empty( $mobile_menu_structure ) ) {
+			$mobile_menu_structure = array_map( 'trim', explode( ',', $mobile_menu_structure ) );
+		}
+
+		if ( in_array( 'search', $mobile_menu_structure, true ) || is_active_widget( 0, 0, 'aesthetix_search_popup_form_widget' ) ) {
+			$structure[] = 'search-popup';
+		}
+
+		if ( in_array( 'subscribe', $mobile_menu_structure, true ) || is_active_widget( 0, 0, 'aesthetix_subscribe_popup_form_widget' ) ) {
+			$structure[] = 'subscribe-popup';
+		}
+
+		$structure = array_merge( $structure, array(
 			'first-screen',
 			'breadcrumbs',
 			'content-wrapper-start',
-		);
+		) );
 
 		$structure = apply_filters( 'before_site_content_structure', $structure );
 
@@ -105,8 +119,11 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 				case has_action( 'before_site_content_structure_loop_' . $value ):
 					do_action( 'before_site_content_structure_loop_' . $value );
 					break;
-				case 'search-sidebar':
-					get_template_part( 'templates/search-sidebar' );
+				case 'search-popup':
+					get_template_part( 'templates/search-popup' );
+					break;
+				case 'subscribe-popup':
+					get_template_part( 'templates/subscribe-popup' );
 					break;
 				case 'first-screen':
 					get_template_part( 'templates/first-screen' );
@@ -136,8 +153,11 @@ if ( ! function_exists( 'after_site_content_structure' ) ) {
 
 		$structure = array(
 			'content-wrapper-end',
-			'subscribe-form',
 		);
+
+		if ( get_aesthetix_options( 'general_subscribe_form_display' ) ) {
+			$structure[] = 'subscribe-form';
+		}
 
 		$structure = apply_filters( 'after_site_content_structure', $structure );
 
@@ -147,7 +167,7 @@ if ( ! function_exists( 'after_site_content_structure' ) ) {
 					do_action( 'after_site_content_structure_loop_' . $value );
 					break;
 				case 'subscribe-form':
-					get_template_part( 'templates/subscribe-form', '', array( 'section' => true ) );
+					get_template_part( 'templates/subscribe-form', '', array( 'section' => true, 'title' => get_aesthetix_options( 'general_subscribe_form_title' ) ) );
 					break;
 				case 'content-wrapper-end':
 					get_template_part( 'templates/content-wrapper', 'end' );
@@ -218,10 +238,10 @@ if ( ! function_exists( 'aesthetix_after_main_navigation_structure' ) ) {
 						get_template_part( 'templates/button', 'menu-toggle' );
 						break;
 					case 'search':
-						get_template_part( 'templates/button', 'search-toggle' );
+						get_template_part( 'templates/search-popup', 'toggle' );
 						break;
 					case 'subscribe':
-						get_template_part( 'templates/button', 'subscribe' );
+						get_template_part( 'templates/subscribe-popup', 'toggle' );
 						break;
 					default:
 						break;

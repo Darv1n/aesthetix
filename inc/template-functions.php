@@ -28,6 +28,86 @@ if ( ! function_exists( 'vardump' ) ) {
 	}
 }
 
+if ( ! function_exists( 'is_subscribe_form_theme_active' ) ) {
+
+	/**
+	 * Adds conditions for subscribe form theme script activation.
+	 * 
+	 * @return bool
+	 * 
+	 * @since 1.2.1
+	 */
+	function is_subscribe_form_theme_active() {
+
+		$active = false;
+
+		$widgets = array( 'aesthetix_subscribe_form_widget', 'aesthetix_subscribe_popup_form_widget' );
+		foreach ( $widgets as $key => $widget ) {
+			if ( is_active_widget( 0, 0, $widget ) ) {
+				$active = true;
+			}
+		}
+
+		if ( get_aesthetix_options( 'general_subscribe_form_display' ) ) {
+			$active = true;
+		}
+
+		$mobile_menu_structure = get_aesthetix_options( 'general_mobile_menu_structure' );
+
+		if ( is_string( $mobile_menu_structure ) && ! empty( $mobile_menu_structure ) ) {
+			$mobile_menu_structure = array_map( 'trim', explode( ',', $mobile_menu_structure ) );
+		}
+
+		if ( in_array( 'subscribe', $mobile_menu_structure, true ) ) {
+			$active = true;
+		}
+
+		if ( get_aesthetix_options( 'general_subscribe_form_type' ) !== 'theme' ) {
+			$active = false;
+		}
+		
+		$active = apply_filters( 'is_subscribe_form_theme_active', $active );
+
+		return $active;
+	}
+}
+
+if ( ! function_exists( 'is_magnific_popup_active' ) ) {
+
+	/**
+	 * Adds conditions for magnific popup script activation.
+	 * 
+	 * @return bool
+	 * 
+	 * @since 1.2.1
+	 */
+	function is_magnific_popup_active() {
+
+		$active = false;
+
+		$widgets = array( 'aesthetix_search_popup_form_widget', 'aesthetix_subscribe_popup_form_widget' );
+		foreach ( $widgets as $key => $widget ) {
+			if ( is_active_widget( 0, 0, $widget ) ) {
+				$active = true;
+			}
+		}
+
+		$mobile_menu_structure = get_aesthetix_options( 'general_mobile_menu_structure' );
+
+		if ( is_string( $mobile_menu_structure ) && ! empty( $mobile_menu_structure ) ) {
+			$mobile_menu_structure = array_map( 'trim', explode( ',', $mobile_menu_structure ) );
+		}
+
+		if ( in_array( 'search', $mobile_menu_structure, true ) || in_array( 'subscribe', $mobile_menu_structure, true ) ) {
+			$active = true;
+		}
+		
+		$active = apply_filters( 'is_magnific_popup_active', $active );
+
+		return $active;
+	}
+}
+
 if ( ! function_exists( 'array_key_first' ) ) {
 
 	/**

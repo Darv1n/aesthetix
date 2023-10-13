@@ -53,7 +53,9 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'general_breadcrumbs_type'                     => 'woocommerce',
 			'general_breadcrumbs_separator'                => '/',
 
+			'general_subscribe_form_display'               => true,
 			'general_subscribe_form_type'                  => 'theme',
+			'general_subscribe_form_title'                 => apply_filters( 'get_aesthetix_general_subscribe_form_title', esc_html__( 'Subscribe to our newsletter for all the latest updates', 'aesthetix' ) ),
 			'general_subscribe_form_bg'                    => '',
 			'general_subscribe_form_shortcode'             => '',
 			'general_subscribe_popup_form_button_color'    => 'secondary',
@@ -102,7 +104,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
 				'single_' . $post_type . '_template_type'  => 'one',
 				'archive_' . $post_type . '_columns'       => 'three',
-				'archive_' . $post_type . '_masonry'       => true,
+				'archive_' . $post_type . '_masonry'       => false,
 				'archive_' . $post_type . '_template_type' => 'tils',
 			) );
 		}

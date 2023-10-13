@@ -15,57 +15,46 @@
 		color: $primary-gray-color
 
 a.logo
-	color: $black-color
+	color: $primary-text-color
 	text-decoration: none
 	&:hover, &:focus, &:active
-		color: $black-color
+		color: $primary-text-color
 
 .custom-logo
 	width: auto
 	max-height: 86px
 
-.section
-	position: relative
-	padding-top: $margin*3
-	padding-bottom: $margin*2
-	&-title
-		@extend .mb
-	&_content, &_breadcrumbs
-		padding: $margin 0
-	&-primary
-		background: $primary-bg-color
-		border: $border-width solid $primary-bd-color
-		border-radius: $border-radius
-	&-secondary
-		background: $secondary-bg-color
-		border: $border-width solid $secondary-bd-color
-		border-radius: $border-radius
-	&_subscribe-form
-		border-radius: $border-radius
-		.title-wrapper
-			margin-bottom: .75rem
-			> *:not(:last-child)
-				margin-bottom: .25rem
+.section, .content-area, .widget-area
+	padding-top: 1rem
+	padding-bottom: 1rem
 
-.front-page 
-	.section_content
-		padding: 0
-	.content-area
-		> .section
-			margin-bottom: 0
-
-.content-area
-	@extend .mb
-	&-title
-		margin-bottom: 0
+.content-area, .content-area-header, .content-area-content, .content-area-footer
 	> * 
 		padding: 0
 		&:not(:last-child)
 			@extend .mb
 
-.content-area, .widget-area
-	padding-top: 1rem
-	padding-bottom: 1rem
+.section
+	position: relative
+	&-title
+		@extend .mb
+	&-md
+		padding-top: 2rem
+		padding-bottom: 2rem
+	&-lg
+		padding-top: 4rem
+		padding-bottom: 4rem
+	&-xl
+		padding-top: 6rem
+		padding-bottom: 6rem
+	&-rounded
+		border-radius: $border-radius
+	&-primary
+		background: $primary-bg-color
+		border: $border-width solid $primary-bd-color
+	&-secondary
+		background: $secondary-bg-color
+		border: $border-width solid $secondary-bd-color
 
 .header, .footer
 	position: relative
@@ -77,11 +66,6 @@ a.logo
 		display: block
 		margin-bottom: $margin/2
 		vertical-align: middle
-		ul 
-			li
-			display: inline-block
-			&:not(:last-child)
-				margin-right: $margin
 
 .header
 	ul, ol
@@ -126,46 +110,6 @@ a.logo
 	.header__top-bar .header-column, .footer__bottom-bar .footer-column
 		&:last-child
 			text-align: right
-
-.search-sidebar
-	width: 100%
-	height: 100vh
-	position: fixed
-	top: 0
-	left: 0
-	z-index: 2000
-	padding-top: calc(50vh - 100px)
-	display: none
-	&::before
-		content: ''
-		position: absolute
-		top: 0
-		left: 0
-		width: 100%
-		height: 100%
-		z-index: -1
-		opacity: 0.9
-		background: $primary-bg-color
-	.search-form
-		width: 100%
-	&.on
-		display: block
-	&-wrap
-		position: relative
-		display: flex
-		flex-direction: column
-		align-items: center
-		margin: auto
-		max-width: 480px
-	&-close
-		position: absolute
-		top: -2.75rem
-		right: 0
-		width: 2.25rem
-		height: 2rem
-		&::before
-			width: 2.25rem
-			height: 2rem
 
 .avatar
 	border-radius: 50%

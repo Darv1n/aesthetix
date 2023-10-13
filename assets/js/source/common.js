@@ -12,16 +12,6 @@ jQuery( document ).ready( function( $ ) {
 		}
 	});
 
-	$( '.search-sidebar-open' ).on( 'click', function() {
-		$( '#search-sidebar' ).addClass( 'on' );
-		$( this ).attr( 'aria-expanded', 'true' );
-	});
-
-	$( '.search-sidebar-close' ).on( 'click', function() {
-		$( '#search-sidebar' ).removeClass( 'on' );
-		$( '.search-sidebar-open' ).attr( 'aria-expanded', 'false' );
-	});
-
 	$( '.scroll-top' ).on( 'click', function() {
 		$( 'html, body' ).animate( { scrollTop : 0 }, 800 );
 		return false;

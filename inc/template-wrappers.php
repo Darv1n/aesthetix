@@ -160,10 +160,6 @@ if ( ! function_exists( 'get_aesthetix_section_classes' ) ) {
 
 		if ( in_array( 'section_fisrt-screen', $classes, true ) || in_array( 'section_subscribe-form', $classes, true ) ) {
 
-			if ( ! in_array( 'has_background', $classes, true ) ) {
-				$classes[] = 'section-secondary';
-			}
-
 			$classes[] = 'container';
 
 			if ( in_array( 'container-general', get_aesthetix_container_classes(), true ) ) {
@@ -176,6 +172,17 @@ if ( ! function_exists( 'get_aesthetix_section_classes' ) ) {
 
 			if ( in_array( 'container-wide', get_aesthetix_container_classes(), true ) ) {
 				$classes[] = 'container-fluid';
+			}
+
+			$classes[] = 'section-rounded';
+		}
+
+		if ( in_array( 'section_subscribe-form', $classes, true ) ) {
+
+			$classes[] = 'section-lg';
+
+			if ( ! in_array( 'has_background', $classes, true ) ) {
+				$classes[] = 'section-secondary';
 			}
 		}
 

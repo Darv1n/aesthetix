@@ -276,7 +276,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_subscribe_form_type' ) ) {
 		}
 
 		$converter = array(
-			'none'  => __( 'None', 'aesthetix' ),
 			'theme' => __( 'Theme (Messages will be sent to email)', 'aesthetix' ),
 		);
 

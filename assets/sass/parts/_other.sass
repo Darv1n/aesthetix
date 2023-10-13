@@ -85,6 +85,19 @@
 		outline-width: 0
 		object-fit: cover
 
+.popup
+	position: relative
+	margin: auto
+	max-width: 480px
+	padding: calc( 36px + .5rem ) 0
+	&.has-inside
+		max-width: calc( 480px + 4rem )
+	&-inside
+		padding: 2rem
+		background: $primary-bg-color
+	button[type="button"]
+		color: $white-color
+
 // #masonry.
 .masonry-container
 	margin-right: -$gutter

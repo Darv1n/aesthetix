@@ -13,6 +13,8 @@ jQuery( document ).ready( function($) {
 
 		var form   = $( this );
 			submit = form.find( '.form-submit' );
+			defaultText  = submit.data( 'default-text' );
+			processText  = submit.data( 'process-text' );
 
 		// Ajax request.
 		if ( ! form.hasClass( 'processing' ) ) {
@@ -25,13 +27,13 @@ jQuery( document ).ready( function($) {
 					'nonce': ajax_obj.nonce,
 				},
 				beforeSend: function() {
-					submit.data( 'process-text' );
+					submit.text( processText );
 					form.find( '.error' ).removeClass( 'error' );
 					form.find( '.notification' ).remove();
 					form.addClass( 'processing' );
 				},
 				complete: function() {
-					submit.data( 'default-text' );
+					submit.text( defaultText );
 					form.trigger( 'reset' ).removeClass( 'processing' );
 				},
 				success: function( response ) {

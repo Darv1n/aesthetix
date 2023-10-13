@@ -71,7 +71,7 @@ class Subscribe_Popup_Form_Widget extends WC_Widget {
 		$template_args['button_type']    = isset( $instance['button_type'] ) ? $instance['button_type'] : $this->settings['button_type']['std'];
 		$template_args['button_content'] = isset( $instance['button_content'] ) ? $instance['button_content'] : $this->settings['button_content']['std'];
 
-		get_template_part( 'templates/button', 'subscribe', $template_args );
+		get_template_part( 'templates/subscribe-popup', 'toggle', $template_args );
 
 		$this->widget_end( $args, $instance );
 	}
