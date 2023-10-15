@@ -42,6 +42,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'general_menu_button_color'                    => 'primary',
 			'general_menu_button_type'                     => 'common',
 			'general_menu_button_content'                  => 'button-icon-text',
+			'general_menu_button_rounded'                  => false,
 
 			'general_mobile_menu_structure'                => 'search,subscribe,menu',
 
@@ -61,18 +62,22 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'general_subscribe_popup_form_button_color'    => 'secondary',
 			'general_subscribe_popup_form_button_type'     => 'common',
 			'general_subscribe_popup_form_button_content'  => 'button-icon-text',
+			'general_subscribe_popup_form_button_rounded'  => true,
 
-			'general_scroll_top_button_display'            => true,
+			'general_scroll_top_button_display'            => false,
 			'general_scroll_top_button_color'              => 'primary',
 			'general_scroll_top_button_type'               => 'common',
 			'general_scroll_top_button_content'            => 'button-icon',
+			'general_scroll_top_button_rounded'            => false,
 
 			'general_searchform_form_button_color'         => 'primary',
 			'general_searchform_form_button_type'          => 'common',
 			'general_searchform_form_button_content'       => 'button-icon',
+			'general_searchform_form_button_rounded'       => false,
 			'general_searchform_popup_form_button_color'   => 'primary',
 			'general_searchform_popup_form_button_type'    => 'common',
-			'general_searchform_popup_form_button_content' => 'icon',
+			'general_searchform_popup_form_button_content' => 'button-icon',
+			'general_searchform_popup_form_button_rounded' => true,
 
 			'general_cookie_display'                       => true,
 
@@ -89,12 +94,18 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'root_secondary_color'                         => 'orange',
 			'root_gray_color'                              => 'slate',
 			'root_link_color'                              => 'primary',
+
 			'root_button_type'                             => 'common',
 			'root_button_icon'                             => true,
 			'root_button_icon_position'                    => 'before',
-			'root_button_size'                             => 'btn-sm',
+			'root_button_size'                             => 'md',
 			'root_button_border_width'                     => 'border-2',
 			'root_button_border_radius'                    => 'rounded-md',
+
+			'root_input_size'                              => 'md',
+			'root_input_border_width'                      => 'border-2',
+			'root_input_border_radius'                     => 'rounded-md',
+
 			'root_box_shadow'                              => 'shadow-md',
 			'root_border_width'                            => 'border-2',
 			'root_border_radius'                           => 'rounded-md',

@@ -1,29 +1,53 @@
 jQuery( document ).ready( function( $ ) {
 
-	$( 'body' ).on( 'click', '.toggle-icon', function (e) {
+	var searchForm = $( '.search-form' );
+
+	if ( searchForm.length > 0 ) {
+		searchForm.each( function() {
+			var width = $( this ).find( '.search-submit' ).outerWidth();
+			$( this ).find( '.search-field' ).css( 'padding-right', width );
+		} );
+	}
+
+	$( 'body' ).on( 'click', '.toggle-icon', function( e ) {
 
 		var on  = $( this ).data( 'icon-on' );
-		    off = $( this ).data( 'icon-off' );
+			off = $( this ).data( 'icon-off' );
 
 		if ( $( this ).hasClass( off ) ) {
 			$( this ).removeClass( off ).addClass( on );
 		} else if ( $( this ).hasClass( on ) ) {
 			$( this ).removeClass( on ).addClass( off );
 		}
-	});
+	} );
 
 	$( '.scroll-top' ).on( 'click', function() {
 		$( 'html, body' ).animate( { scrollTop : 0 }, 800 );
 		return false;
-	});
+	} );
 
 	$( window ).on( 'scroll', function() {
-		if ( $(this).scrollTop() >= 800 ) {
-			$( '.scroll-top' ).fadeIn(350);
+		if ( $( this ).scrollTop() >= 800 ) {
+			$( '.scroll-top' ).fadeIn( 350 );
 		} else {
-			$( '.scroll-top' ).fadeOut(350);
+			$( '.scroll-top' ).fadeOut( 350 );
 		}
 	});
+
+	$( 'body' ).on( 'click', '.notification-button', function( e ) {
+		$( this ).parent().remove();
+	} );
+
+	window.notificationButton = function() {
+		var notification = $( '.notification' );
+		if ( notification.length > 0 ) {
+			notification.each( function() {
+				$( this ).prepend( '<button class="button button-icon button-none button-sm notification-button icon icon_center icon_xmark" type="button"></button>' );
+			});
+		}
+	}
+
+	notificationButton();
 
 	function initMainNavigation( menuContainer ) {
 
@@ -34,7 +58,6 @@ jQuery( document ).ready( function( $ ) {
 		menuToggle.click( function() {
 			$( this ).add( mainNavigation ).toggleClass( 'on' );
 			header.toggleClass( 'header_expanded' );
-			// $( this ).add( mainNavigation ).attr( 'aria-expanded', $( this ).add( mainNavigation ).attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
 		} );
 
 		// Init dropdown toggle for sub menu.
@@ -63,11 +86,9 @@ jQuery( document ).ready( function( $ ) {
 		function onResizeMainMenu() {
 			if ( $( window ).width() < 992 || menuContainer.hasClass( 'main-menu_type-close' )) {
 				menuToggle.attr( 'aria-expanded', 'false' );
-				// mainNavigation.attr( 'aria-expanded', 'false' );
 				menuContainer.addClass( 'main-menu_burgered' );
 			} else {
 				menuToggle.attr( 'aria-expanded', 'true' );
-				// mainNavigation.attr( 'aria-expanded', 'true' );
 				menuContainer.removeClass( 'main-menu_burgered' );
 			}
 		}
@@ -79,10 +100,11 @@ jQuery( document ).ready( function( $ ) {
 		$( window ).on('resize', onResizeMainMenu);
 
 	}
+
 	initMainNavigation( $( '#main-menu' ) );
 
 	function initCookieAcceper( cookieAccepter ) {
-		var button = cookieAccepter.find( '#cookie-action' );
+		var button = cookieAccepter.find( '.cookie-button' );
 
 		if ( cookieAccepter.length === 1 ) {
 			if ( null === localStorage.getItem( 'cookieAccept' ) || 'off' === localStorage.getItem( 'cookieAccept' ) ) {
@@ -100,6 +122,7 @@ jQuery( document ).ready( function( $ ) {
 			}
 		}
 	}
+
 	initCookieAcceper( $( '#cookie' ) );
 
 	// Find all YouTube videos.

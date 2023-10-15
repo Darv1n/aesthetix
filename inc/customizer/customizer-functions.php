@@ -93,10 +93,17 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 		$roots['link-color-dark']      = get_aesthetix_customizer_converter_colors( $link_color . '-600' );
 		$roots['link-color']           = get_aesthetix_customizer_converter_colors( $link_color . '-500' );
 		$roots['link-color-light']     = get_aesthetix_customizer_converter_colors( $link_color . '-400' );
-		$roots['button-padding-top']   = get_first_value_from_string( get_aesthetix_customizer_converter_button_sizes( get_aesthetix_options( 'root_button_size' ) ), ' ' );
-		$roots['button-padding-side']  = get_last_value_from_string( get_aesthetix_customizer_converter_button_sizes( get_aesthetix_options( 'root_button_size' ) ), ' ' );
+
+		$roots['button-padding-top']   = get_first_value_from_string( get_aesthetix_customizer_converter_sizes( get_aesthetix_options( 'root_button_size' ) ), ' ' );
+		$roots['button-padding-side']  = get_last_value_from_string( get_aesthetix_customizer_converter_sizes( get_aesthetix_options( 'root_button_size' ) ), ' ' );
 		$roots['button-border-width']  = get_aesthetix_customizer_converter_borders( get_aesthetix_options( 'root_button_border_width' ) );
 		$roots['button-border-radius'] = get_aesthetix_customizer_converter_radiuses( get_aesthetix_options( 'root_button_border_radius' ) );
+
+		$roots['input-padding-top']    = get_first_value_from_string( get_aesthetix_customizer_converter_sizes( get_aesthetix_options( 'root_input_size' ) ), ' ' );
+		$roots['input-padding-side']   = get_last_value_from_string( get_aesthetix_customizer_converter_sizes( get_aesthetix_options( 'root_input_size' ) ), ' ' );
+		$roots['input-border-width']   = get_aesthetix_customizer_converter_borders( get_aesthetix_options( 'root_input_border_width' ) );
+		$roots['input-border-radius']  = get_aesthetix_customizer_converter_radiuses( get_aesthetix_options( 'root_input_border_radius' ) );
+
 		$roots['box-shadow']           = get_aesthetix_customizer_converter_shadows( get_aesthetix_options( 'root_box_shadow' ) );
 		$roots['box-shadow-hover']     = str_replace( '0.15', '0.25', get_aesthetix_customizer_converter_shadows( get_aesthetix_options( 'root_box_shadow' ) ) );
 		$roots['border-width']         = get_aesthetix_customizer_converter_borders( get_aesthetix_options( 'root_border_width' ) );

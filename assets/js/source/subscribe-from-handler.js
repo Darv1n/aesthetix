@@ -35,15 +35,16 @@ jQuery( document ).ready( function($) {
 				complete: function() {
 					submit.text( defaultText );
 					form.trigger( 'reset' ).removeClass( 'processing' );
+					notificationButton();
 				},
 				success: function( response ) {
-					console.log( response.data );
+					// console.log( response.data );
 					if ( response.success ) {
 						form.append( '<div class="notification notification_accept">' + response.data + '</div>' );
 					} else {
 						$.each( response.data, function( key, val ) {
 							form.find( '#' + key ).addClass( 'error' );
-							form.find( '#' + key ).after( '<span class="notification notification_warning notification_warning_' + key + '">' + val + '</span>' );
+							form.find( '#' + key ).after( '<span class="notification notification_warning">' + val + '</span>' );
 						});
 					}
 				},

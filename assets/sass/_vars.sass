@@ -62,7 +62,14 @@ $button-text-color-hover: var( --white-color )
 $button-shadow: var( --elem-shadow )
 $button-shadow-hover: var( --elem-shadow-hover )
 
-$input-padding: .75rem 1rem
+$small-input-padding-top: var( --input-padding-top )
+$small-input-padding-side: var( --input-padding-side )
+$small-input-padding: var( --input-padding-top ) var( --input-padding-side )
+$input-padding-top: calc( var( --input-padding-top ) * 1.25 )
+$input-padding-side: calc( var( --input-padding-side ) * 1.25 )
+$input-padding: calc( var( --input-padding-top ) * 1.25 ) calc( var( --input-padding-side ) * 1.25 )
+$input-bd-width: var( --input-border-width )
+$input-bd-radius: var( --input-border-radius )
 $input-shadow: 0px 0px 0px -7px rgba( 0, 0, 0, 0 )
 $input-shadow-focus: 0px 5px 15px -7px rgba( 0, 0, 0, .2 )
 

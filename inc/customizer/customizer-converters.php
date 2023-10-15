@@ -72,14 +72,15 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_radiuses' ) ) {
 		// Main converter array.
 		$converter = array(
 			'rounded-none' => '0px',
-			'rounded-sm'   => '.125rem',
-			'rounded'      => '.25rem',
+			'rounded-xs'   => '.125rem',
+			'rounded-sm'   => '.25rem',
 			'rounded-md'   => '.375rem',
 			'rounded-lg'   => '.5rem',
 			'rounded-xl'   => '.75rem',
 			'rounded-2xl'  => '1rem',
 			'rounded-3xl'  => '1.25rem',
 			'rounded-4xl'  => '1.5rem',
+			'rounded-full' => '1.625rem',
 		);
 
 		$converter = apply_filters( 'get_aesthetix_customizer_converter_radiuses', $converter );
@@ -180,7 +181,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_shadows' ) ) {
 	}
 }
 
-if ( ! function_exists( 'get_aesthetix_customizer_converter_button_sizes' ) ) {
+if ( ! function_exists( 'get_aesthetix_customizer_converter_sizes' ) ) {
 
 	/**
 	 * Return string or array with css values.
@@ -191,7 +192,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_button_sizes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 */
-	function get_aesthetix_customizer_converter_button_sizes( $control = null ) {
+	function get_aesthetix_customizer_converter_sizes( $control = null ) {
 
 		// Sanitize string (just to be safe).
 		if ( ! is_null( $control ) ) {
@@ -200,15 +201,14 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_button_sizes' ) ) {
 
 		// Main converter array.
 		$converter = array(
-			'btn-xs' => '.25rem 1.25rem',
-			'btn-sm' => '.375rem 1.375rem',
-			'btn'    => '.5rem 1.5rem',
-			'btn-md' => '.625rem 1.625rem',
-			'btn-lg' => '.75rem 1.75rem',
-			'btn-xl' => '.875rem 1.875rem',
+			'xs' => '.25rem 1rem',
+			'sm' => '.375rem 1.25rem',
+			'md' => '.5rem 1.375rem',
+			'lg' => '.625rem 1.5rem',
+			'xl' => '.75rem 1.625rem',
 		);
 
-		$converter = apply_filters( 'get_aesthetix_customizer_converter_button_sizes', $converter );
+		$converter = apply_filters( 'get_aesthetix_customizer_converter_sizes', $converter );
 
 		// Return controls.
 		if ( is_null( $control ) ) {

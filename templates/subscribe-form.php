@@ -35,7 +35,7 @@ if ( get_aesthetix_options( 'general_subscribe_form_bg' ) ) {
 				<h2 class="form-title h3"><?php echo esc_html( $form_title ); ?></h2>
 			<?php } ?>
 			<label class="form-label" for="form-email">
-				<input id="form-email" class="form-input required" type="email" name="form-email" placeholder="<?php esc_attr_e( 'E-mail? (required)', 'aesthetix' ) ?>" value="" required>
+				<input id="form-email" <?php input_classes( 'form-input required' ); ?> type="email" name="form-email" placeholder="<?php esc_attr_e( 'E-mail? (required)', 'aesthetix' ) ?>" value="" required>
 			</label>
 			<input id="form-anticheck" class="form-anticheck" type="checkbox" name="form-anticheck" style="display: none !important;" value="true" checked="checked">
 			<input id="form-submitted" type="text" name="form-submitted" value="" style="display: none !important;">

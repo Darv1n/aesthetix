@@ -4,8 +4,6 @@
 .icon
 	position: relative
 	display: block
-	// width: 1.125rem
-	// height: 1rem
 	transition: $transition
 	&::before
 		content: ''
@@ -82,90 +80,6 @@
 	&_rounded
 		&::after
 			border-radius: 50%
-
-.button
-	&.icon_before
-		padding-left: calc( var( --button-padding-side ) + 1.125rem + .25rem )
-		&::before
-			left: calc( var( --button-padding-side ) + .125rem )
-	&.icon_after
-		padding-right: calc( var( --button-padding-side ) + 1.125rem + .25rem )
-		&::before
-			left: auto
-			right: calc( var( --button-padding-side ) + .125rem )
-	&.button-icon
-		width: auto
-		height: auto
-		padding: calc( 1rem / 2 + .5rem ) calc( 1.125rem / 2 + .5rem )
-		&.search-submit
-			padding-right: calc( 1.125rem + .75rem )
-			padding-left: calc( 1.125rem + .75rem )
-	&.button-text
-		&.icon_before
-			padding-left: calc( 1.125rem + .25rem )
-			&::before
-				left: .125rem
-		&.icon_after
-			padding-right: calc( 1.125rem + .25rem )
-			&::before
-				left: auto
-				right: .125rem
-	&.button-small
-		&.icon
-			&::before
-				width: .825rem
-				height: .75rem
-		&.icon_before
-			padding-left: calc( .875rem + .825rem + .25rem )
-			&::before
-				left: .875rem
-		&.icon_after
-			padding-right: calc( .875rem + .825rem + .25rem )
-			&::before
-				right: .875rem
-		&.button-text
-			&.icon_before
-				padding-left: calc( .825rem + .25rem )
-				&::before
-					left: .125rem
-			&.icon_after
-				padding-right: calc( .825rem + .25rem )
-				&::before
-					right: .125rem
-
-@media( min-width: 576px )
-	.button
-		&.icon_before
-			padding-left: calc( ( var( --button-padding-side ) * 1.25 ) + 1.125rem + .25rem )
-			&::before
-				left: calc( var( --button-padding-side ) * 1.25 + .125rem )
-		&.icon_after
-			padding-right: calc( ( var( --button-padding-side ) * 1.25 ) + 1.125rem + .25rem )
-			&::before
-				right: calc( var( --button-padding-side ) * 1.25 + .125rem )
-		&.button-icon
-			padding: calc( 1rem / 2 + .75rem ) calc( 1.125rem / 2 + .75rem )
-			&.search-submit
-				padding-right: calc( 1.125rem + 1rem )
-				padding-left: calc( 1.125rem + 1rem )
-		&.button-text
-			&.icon_before
-				padding-left: calc( 1.125rem + .25rem )
-				&::before
-					left: .125rem
-			&.icon_after
-				padding-right: calc( 1.125rem + .25rem )
-				&::before
-					right: .125rem
-		&.button-small
-			&.icon_before
-				padding-left: calc( .875rem + .825rem + .25rem )
-				&::before
-					left: .875rem
-			&.icon_after
-				padding-right: calc( .875rem + .825rem + .25rem )
-				&::before
-					right: .875rem
 
 .icon
 	&_angle-down

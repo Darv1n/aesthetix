@@ -54,7 +54,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_structure' ) ) {
 	 * Return array with the customizer archive post structure.
 	 *
 	 * @param string $control   array key to get one value.
-	 * @param string $post_type current post type
+	 * @param string $post_type current post type.
 	 *
 	 * @return string|array|false
 	 * 
@@ -96,7 +96,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_single_post_structure' ) ) {
 	 * Return array with the customizer single post structure.
 	 *
 	 * @param string $control   array key to get one value.
-	 * @param string $post_type current post type
+	 * @param string $post_type current post type.
 	 *
 	 * @return string|array|false
 	 * 
@@ -137,7 +137,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_single_post_footer_structure' 
 	 * Return array with the customizer single post footer structure.
 	 *
 	 * @param string $control   array key to get one value.
-	 * @param string $post_type current post type
+	 * @param string $post_type current post type.
 	 *
 	 * @return string|array|false
 	 * 
@@ -179,7 +179,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_thumbnail_structure' ) ) 
 	 * Return array with the customizer post thumbnail structure.
 	 *
 	 * @param string $control array key to get one value.
-	 * @param string $post_type current post type
+	 * @param string $post_type current post type.
 	 *
 	 * @return string|array|false
 	 * 
@@ -217,7 +217,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_meta_structure' ) ) {
 	 * Return array with the customizer post meta structure.
 	 *
 	 * @param string $control array key to get one value.
-	 * @param string $post_type current post type
+	 * @param string $post_type current post type.
 	 *
 	 * @return string|array|false
 	 * 
@@ -600,7 +600,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_button_type' ) ) {
 	}
 }
 
-if ( ! function_exists( 'get_aesthetix_customizer_button_sizes' ) ) {
+if ( ! function_exists( 'get_aesthetix_customizer_sizes' ) ) {
 
 	/**
 	 * Return array with the customizer button sizes.
@@ -611,7 +611,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_button_sizes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 */
-	function get_aesthetix_customizer_button_sizes( $control = null ) {
+	function get_aesthetix_customizer_sizes( $control = null ) {
 
 		// Sanitize string (just to be safe).
 		if ( ! is_null( $control ) ) {
@@ -619,16 +619,15 @@ if ( ! function_exists( 'get_aesthetix_customizer_button_sizes' ) ) {
 		}
 
 		$converter = array(
-			'btn-xs' => 'btn-xs',
-			'btn-sm' => 'btn-sm',
-			'btn'    => 'btn',
-			'btn-md' => 'btn-md',
-			'btn-lg' => 'btn-lg',
-			'btn-xl' => 'btn-xl',
+			'xs' => __( 'Extra small', 'aesthetix' ),
+			'sm' => __( 'Small', 'aesthetix' ),
+			'md' => __( 'Medium', 'aesthetix' ),
+			'lg' => __( 'Large', 'aesthetix' ),
+			'xl' => __( 'Extra Large', 'aesthetix' ),
 		);
 
 		// Merge child and parent default options.
-		$converter = apply_filters( 'get_aesthetix_customizer_button_sizes', $converter );
+		$converter = apply_filters( 'get_aesthetix_customizer_sizes', $converter );
 
 		// Return controls.
 		if ( is_null( $control ) ) {
@@ -701,14 +700,15 @@ if ( ! function_exists( 'get_aesthetix_customizer_button_border_radiuses' ) ) {
 
 		$converter = array(
 			'rounded-none' => 'rounded-none',
+			'rounded-xs'   => 'rounded-xs',
 			'rounded-sm'   => 'rounded-sm',
-			'rounded'      => 'rounded',
 			'rounded-md'   => 'rounded-md',
 			'rounded-lg'   => 'rounded-lg',
 			'rounded-xl'   => 'rounded-xl',
 			'rounded-2xl'  => 'rounded-2xl',
 			'rounded-3xl'  => 'rounded-3xl',
 			'rounded-4xl'  => 'rounded-4xl',
+			'rounded-full' => 'rounded-full',
 		);
 
 		// Merge child and parent default options.

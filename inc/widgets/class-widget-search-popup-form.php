@@ -33,13 +33,19 @@ class Search_Popup_Form_Widget extends WC_Widget {
 				'std'   => '',
 				'label' => __( 'Title', 'aesthetix' ),
 			),
-			'button_color' => array(
+			'input_size'   => array(
+				'type'    => 'select',
+				'std'     => get_aesthetix_options( 'root_input_size' ),
+				'label'   => __( 'Select search popup form input size', 'aesthetix' ),
+				'options' => get_aesthetix_customizer_sizes(),
+			),
+			'button_color'   => array(
 				'type'    => 'select',
 				'std'     => get_aesthetix_options( 'general_searchform_popup_form_button_color' ),
 				'label'   => __( 'Select search popup form button color', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_button_color(),
 			),
-			'button_type' => array(
+			'button_type'    => array(
 				'type'    => 'select',
 				'std'     => get_aesthetix_options( 'general_searchform_popup_form_button_type' ),
 				'label'   => __( 'Select search popup form button type', 'aesthetix' ),
@@ -50,6 +56,11 @@ class Search_Popup_Form_Widget extends WC_Widget {
 				'std'     => get_aesthetix_options( 'general_searchform_popup_form_button_content' ),
 				'label'   => __( 'Select search popup form button content', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_button_content(),
+			),
+			'button_rounded' => array(
+				'type'  => 'checkbox',
+				'std'   => get_aesthetix_options( 'general_searchform_popup_form_button_rounded' ),
+				'label' => __( 'Rounded button', 'aesthetix' ),
 			),
 		);
 
@@ -67,6 +78,8 @@ class Search_Popup_Form_Widget extends WC_Widget {
 		$this->widget_start( $args, $instance );
 
 		$template_args                   = array();
+		$template_args['input_size']     = isset( $instance['input_size'] ) ? $instance['input_size'] : $this->settings['input_size']['std'];
+		$template_args['button_size']    = isset( $instance['button_size'] ) ? $instance['button_size'] : $this->settings['button_size']['std'];
 		$template_args['button_color']   = isset( $instance['button_color'] ) ? $instance['button_color'] : $this->settings['button_color']['std'];
 		$template_args['button_type']    = isset( $instance['button_type'] ) ? $instance['button_type'] : $this->settings['button_type']['std'];
 		$template_args['button_content'] = isset( $instance['button_content'] ) ? $instance['button_content'] : $this->settings['button_content']['std'];

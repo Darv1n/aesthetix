@@ -76,6 +76,7 @@ form
 	textarea
 		min-height: 140px
 
+.input,
 textarea,
 select,
 input[type="text"],
@@ -93,15 +94,64 @@ input[type="time"],
 input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
-	padding: $input-padding
+	padding: var( --input-padding-top ) var( --input-padding-top )
 	width: 100%
-	border: $button-bd-width solid $primary-bd-color
-	border-radius: $button-bd-radius
-	box-shadow: 0px 0px 0px -7px rgba(0, 0, 0, 0)
+	border: $input-bd-width solid $primary-bd-color
+	border-radius: $input-bd-radius
+	box-shadow: $input-shadow
+	font-size: $medium-font-size
+	line-height: 1.125rem
 	&:focus, &:focus-visible
-		border: $button-bd-width solid $secondary-bd-color
-		box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, .1)
+		border: $input-bd-width solid $secondary-bd-color
+		box-shadow: $input-shadow-focus
 		outline: none
+	&.input-xs, &.input-sm
+		line-height: .825rem
+		font-size: $small-font-size
+
+.input
+	&-xs
+		padding: .25rem .25rem
+	&-sm
+		padding: .375rem .375rem
+	&-md
+		padding: .5rem .5rem
+	&-lg
+		padding: .625rem .625rem
+	&-xl
+		padding: .75rem .75rem
+
+@media( min-width: 576px )
+	.input,
+	textarea,
+	select,
+	input[type="text"],
+	input[type="email"],
+	input[type="url"],
+	input[type="password"],
+	input[type="search"],
+	input[type="number"],
+	input[type="tel"],
+	input[type="range"],
+	input[type="date"],
+	input[type="month"],
+	input[type="week"],
+	input[type="time"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="color"],
+		padding: calc( var( --input-padding-top ) * 1.25 ) calc( var( --input-padding-top ) * 1.25 )
+	.input
+		&-xs
+			padding: calc( .25rem * 1.25 ) calc( .25rem * 1.25 )
+		&-sm
+			padding: calc( .375rem * 1.25 ) calc( .375rem * 1.25 )
+		&-md
+			padding: calc( .5rem * 1.25 ) calc( .5rem * 1.25 )
+		&-lg
+			padding: calc( .625rem * 1.25 ) calc( .625rem * 1.25 )
+		&-xl
+			padding: calc( .75rem * 1.25 ) calc( .75rem * 1.25 )
 
 button,
 .button,
@@ -109,7 +159,7 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"]
 	display: inline-block
-	padding: $small-button-padding-top $small-button-padding-side
+	padding: var( --button-padding-top ) var( --button-padding-side )
 	font-size: $medium-font-size
 	font-family: inherit
 	color: $button-text-color
@@ -117,7 +167,7 @@ input[type="submit"]
 	border: $button-bd-width solid $primary-color-500
 	border-radius: $button-bd-radius
 	box-shadow: $box-shadow
-	line-height: $line-height
+	line-height: 1.125rem
 	text-align: center
 	white-space: nowrap
 	user-select: none
@@ -132,9 +182,6 @@ input[type="submit"]
 		text-decoration: none
 	&:focus, &:active, &.active
 		border: $button-bd-width solid $primary-color-500
-	&.icon
-		&::before
-			filter: invert(100%)
 
 @media( min-width: 576px )
 	button,
@@ -142,12 +189,136 @@ input[type="submit"]
 	input[type="button"],
 	input[type="reset"],
 	input[type="submit"],
-		padding: $button-padding-top $button-padding-side
-	.button-small
-		font-size: $small-font-size
-		padding: .175rem .875rem
+		padding: calc( var( --button-padding-top ) * 1.25 ) calc( var( --button-padding-side ) * 1.25 )
 
 .button
+	&.icon
+		&::before
+			filter: invert(100%)
+	&.icon_before
+		padding-left: calc( var( --button-padding-side ) + 1.125rem + .25rem )
+		&::before
+			left: calc( var( --button-padding-side ) + .125rem )
+	&.icon_after
+		padding-right: calc( var( --button-padding-side ) + 1.125rem + .25rem )
+		&::before
+			left: auto
+			right: calc( var( --button-padding-side ) + .125rem )
+	&.button-rounded
+		border-radius: 1.625rem
+	&.button-num
+		padding: var( --button-padding-top ) calc( var( --button-padding-top ) * 1.5 )
+	&.button-icon
+		padding: calc( var( --button-padding-top ) + 1.125rem / 2 ) calc( var( --button-padding-top ) + 1.125rem / 2 )
+		&_long
+			padding: calc( var( --button-padding-top ) + 1.125rem / 2 ) calc( var( --button-padding-top ) * 2 + 1.125rem / 2 )
+	&.button-text
+		padding: var( --button-padding-top ) var( --button-padding-top )
+		&.icon_before
+			padding-left: calc( var( --button-padding-top ) + 1.125rem + .25rem )
+			&::before
+				left: var( --button-padding-top )
+		&.icon_after
+			padding-right: calc( var( --button-padding-top ) + 1.125rem + .25rem )
+			&::before
+				right: var( --button-padding-top )
+	&-xs, &-sm
+		font-size: $small-font-size
+		line-height: .825rem
+		&.icon
+			&::before
+				width: .825rem
+				height: .75rem
+	&-xs
+		padding: .25rem 1rem
+		&.icon_before
+			padding-left: calc( 1rem + .825rem + .25rem )
+			&::before
+				left: 1rem
+		&.icon_after
+			padding-right: calc( 1rem + .825rem + .25rem )
+			&::before
+				right: 1rem
+		&.button-icon
+			padding: calc( .25rem + .825rem / 2 ) calc( .25rem + .825rem / 2 )
+			&_long
+				padding: calc( .25rem + .825rem / 2 ) calc( .25rem * 2 + .825rem / 2 )
+		&.button-text
+			&.icon_before
+				padding-left: calc( .25rem + .825rem + .25rem )
+			&.icon_after
+				padding-right: calc( .25rem + .825rem + .25rem )
+		&.button-num
+			padding: .25rem calc( .25rem * 1.5 )
+	&-sm
+		padding: .375rem 1.25rem
+		&.icon_before
+			padding-left: calc( 1.25rem + .825rem + .25rem )
+			&::before
+				left: 1.25rem
+		&.icon_after
+			padding-right: calc( 1.25rem + .825rem + .25rem )
+			&::before
+				right: 1.25rem
+		&.button-icon
+			padding: calc( .375rem + .825rem / 2 ) calc( .375rem + .825rem / 2 )
+			&_long
+				padding: calc( .375rem + .825rem / 2 ) calc( .375rem * 2 + .825rem / 2 )
+		&.button-text
+			&.icon_before
+				padding-left: calc( .375rem + .825rem + .25rem )
+			&.icon_after
+				padding-right: calc( .375rem + .825rem + .25rem )
+		&.button-num
+			padding: .375rem calc( .375rem * 1.5 )
+	&-md
+		padding: .5rem 1.375rem
+		&.icon_before
+			padding-left: calc( 1.375rem + 1.125rem + .25rem )
+			&::before
+				left: 1.375rem
+		&.icon_after
+			padding-right: calc( 1.375rem + 1.125rem + .25rem )
+			&::before
+				right: 1.375rem
+		&.button-icon
+			padding: calc( .5rem + 1.125rem / 2 ) calc( .5rem + 1.125rem / 2 )
+			&_long
+				padding: calc( .5rem + 1.125rem / 2 ) calc( .5rem * 2 + 1.125rem / 2 )
+		&.button-num
+			padding: .5rem calc( .5rem * 1.5 )
+	&-lg
+		padding: .625rem 1.5rem
+		&.icon_before
+			padding-left: calc( 1.5rem + 1.125rem + .25rem )
+			&::before
+				left: 1.5rem
+		&.icon_after
+			padding-right: calc( 1.5rem + 1.125rem + .25rem )
+			&::before
+				right: 1.5rem
+		&.button-icon
+			padding: calc( .625rem + 1.125rem / 2 ) calc( .625rem + 1.125rem / 2 )
+			&_long
+				padding: calc( .625rem + 1.125rem / 2 ) calc( .625rem * 2 + 1.125rem / 2 )
+		&.button-num
+			padding: .625rem calc( .625rem * 1.5 )
+	&-xl
+		padding: .75rem 1.625rem
+		&.icon_before
+			padding-left: calc( 1.625rem + 1.125rem + .25rem )
+			&::before
+				left: 1.625rem
+		&.icon_after
+			padding-right: calc( 1.625rem + 1.125rem + .25rem )
+			&::before
+				right: 1.625rem
+		&.button-icon
+			padding: calc( .75rem + 1.125rem / 2 ) calc( .75rem + 1.125rem / 2 )
+			&_long
+				padding: calc( .75rem + 1.125rem / 2 ) calc( .75rem * 2 + 1.125rem / 2 )
+		&.button-num
+			padding: .75rem calc( .75rem * 1.5 )
 	&-secondary
 		background: $secondary-color-500
 		border: $button-bd-width solid $secondary-color-500
@@ -262,6 +433,123 @@ input[type="submit"]
 				background: $primary-bd-color
 				color: $primary-text-color
 
+@media( min-width: 576px )
+	.button
+		&.icon_before
+			padding-left: calc( ( var( --button-padding-side ) * 1.25 ) + 1.125rem + .25rem )
+			&::before
+				left: calc( var( --button-padding-side ) * 1.25 + .125rem )
+		&.icon_after
+			padding-right: calc( ( var( --button-padding-side ) * 1.25 ) + 1.125rem + .25rem )
+			&::before
+				right: calc( var( --button-padding-side ) * 1.25 + .125rem )
+		&.button-num
+			padding: calc( var( --button-padding-top ) * 1.25 ) calc( var( --button-padding-top ) * 1.25 * 1.5 )
+		&.button-icon
+			padding: calc( var( --button-padding-top ) * 1.25 + 1.125rem / 2 ) calc( var( --button-padding-top ) * 1.25 + 1.125rem / 2 )
+			&_long
+				padding: calc( var( --button-padding-top ) * 1.25 + 1.125rem / 2 ) calc( var( --button-padding-top ) * 1.25 * 2 + 1.125rem / 2 )
+		&.button-text
+			padding: calc( var( --button-padding-top ) * 1.25 ) calc( var( --button-padding-top ) * 1.25 )
+			&.icon_before
+				padding-left: calc( var( --button-padding-top ) * 1.25 + 1.125rem + .25rem )
+				&::before
+					left: calc( var( --button-padding-top ) * 1.25 )
+			&.icon_after
+				padding-right: calc( var( --button-padding-top ) * 1.25 + 1.125rem + .25rem )
+				&::before
+					right: calc( var( --button-padding-top ) * 1.25 )
+		&-xs
+			padding: calc( .25rem * 1.25 ) calc( 1rem * 1.25 )
+			&.icon_before
+				padding-left: calc( ( 1rem * 1.25 ) + .825rem + .25rem )
+				&::before
+					left: calc( 1rem * 1.25 )
+			&.icon_after
+				padding-right: calc( ( 1rem * 1.25 ) + .825rem + .25rem )
+				&::before
+					right: calc( 1rem * 1.25 )
+			&.button-icon
+				padding: calc( .25rem * 1.25 + .825rem / 2 ) calc( .25rem * 1.25 + .825rem / 2 )
+				&_long
+					padding: calc( .25rem * 1.25 + .825rem / 2 ) calc( .25rem * 1.25 * 2 + .825rem / 2 )
+			&.button-text
+				&.icon_before
+					padding-left: calc( .25rem * 1.25 + .825rem + .25rem )
+				&.icon_after
+					padding-right: calc( .25rem * 1.25 + .825rem + .25rem )
+			&.button-num
+				padding: calc( .25rem * 1.25 ) calc( .25rem * 1.25 * 1.5 )
+		&-sm
+			padding: calc( .375rem * 1.25 ) calc( 1.25rem * 1.25 )
+			&.icon_before
+				padding-left: calc( ( 1.25rem * 1.25 ) + .825rem + .25rem )
+				&::before
+					left: calc( 1.25rem * 1.25 )
+			&.icon_after
+				padding-right: calc( ( 1.25rem * 1.25 ) + .825rem + .25rem )
+				&::before
+					right: calc( 1.25rem * 1.25 )
+			&.button-icon
+				padding: calc( .375rem * 1.25 + .825rem / 2 ) calc( .375rem * 1.25 + .825rem / 2 )
+				&_long
+					padding: calc( .375rem * 1.25 + .825rem / 2 ) calc( .375rem * 1.25 * 2 + .825rem / 2 )
+			&.button-text
+				&.icon_before
+					padding-left: calc( .375rem * 1.25 + .825rem + .25rem )
+				&.icon_after
+					padding-right: calc( .375rem * 1.25 + .825rem + .25rem )
+			&.button-num
+				padding: calc( .375rem * 1.25 ) calc( .375rem * 1.25 * 1.5 )
+		&-md
+			padding: calc( .5rem * 1.25 ) calc( 1.375rem * 1.25 )
+			&.icon_before
+				padding-left: calc( ( 1.375rem * 1.25 ) + 1.125rem + .25rem )
+				&::before
+					left: calc( 1.375rem * 1.25 )
+			&.icon_after
+				padding-right: calc( ( 1.375rem * 1.25 ) + 1.125rem + .25rem )
+				&::before
+					right: calc( 1.375rem * 1.25 )
+			&.button-icon
+				padding: calc( .5rem * 1.25 + 1.125rem / 2 ) calc( .5rem * 1.25 + 1.125rem / 2 )
+				&_long
+					padding: calc( .5rem * 1.25 + 1.125rem / 2 ) calc( .5rem * 1.25 * 2 + 1.125rem / 2 )
+			&.button-num
+				padding: calc( .5rem * 1.25 ) calc( .5rem * 1.25 * 1.5 )
+		&-lg
+			padding: calc( .625rem * 1.25 ) calc( 1.5rem * 1.25 )
+			&.icon_before
+				padding-left: calc( ( 1.5rem * 1.25 ) + 1.125rem + .25rem )
+				&::before
+					left: calc( 1.5rem * 1.25 )
+			&.icon_after
+				padding-right: calc( ( 1.5rem * 1.25 ) + 1.125rem + .25rem )
+				&::before
+					right: calc( 1.5rem * 1.25 )
+			&.button-icon
+				padding: calc( .625rem * 1.25 + 1.125rem / 2 ) calc( .625rem * 1.25 + 1.125rem / 2 )
+				&_long
+					padding: calc( .625rem * 1.25 + 1.125rem / 2 ) calc( .625rem * 1.25 * 2 + 1.125rem / 2 )
+			&.button-num
+				padding: calc( .625rem * 1.25 ) calc( .625rem * 1.25 * 1.5 )
+		&-xl
+			padding: calc( .75rem * 1.25 ) calc( 1.625rem * 1.25 )
+			&.icon_before
+				padding-left: calc( ( 1.625rem * 1.25 ) + 1.125rem + .25rem )
+				&::before
+					left: calc( 1.625rem * 1.25 )
+			&.icon_after
+				padding-right: calc( ( 1.625rem * 1.25 ) + 1.125rem + .25rem )
+				&::before
+					right: calc( 1.625rem * 1.25 )
+			&.button-icon
+				padding: calc( .75rem * 1.25 + 1.125rem / 2 ) calc( .75rem * 1.25 + 1.125rem / 2 )
+				&_long
+					padding: calc( .75rem * 1.25 + 1.125rem / 2 ) calc( .75rem * 1.25 * 2 + 1.125rem / 2 )
+			&.button-num
+				padding: calc( .75rem * 1.25 ) calc( .75rem * 1.25 * 1.5 )
+
 .button-set
 	> *
 		display: inline-block
@@ -293,6 +581,8 @@ input[type="submit"]
 	margin-bottom: 0
 	> *:not(:last-child)
 		margin-bottom: .75rem
+	.notification
+		max-width: 480px
 	&-confirm-text
 		font-size: $small-font-size
 
@@ -308,18 +598,17 @@ input[type="submit"]
 		top: 50%
 		right: 0
 		transform: translateY( -50% )
-		&.button-reset
-			right: 1rem
 
 .button
+	&-disabled, &[disabled], &-none, &-reset
+		&.icon
+			&::before
+				filter: $svg-filter
 	&-disabled, &[disabled]
 		background: $primary-bd-color
 		border: $button-bd-width solid $primary-bd-color
 		color: $primary-text-color
 		box-shadow: none
-		&.icon
-			&::before
-				filter: $svg-filter
 		&::after
 			display: none
 		&:hover, &:focus, &:active
@@ -337,17 +626,24 @@ input[type="submit"]
 			color: $primary-text-color
 	&[disabled]
 		cursor: not-allowed
-	&-reset
-		padding: 0
+	&-none, &-reset
 		background: transparent
 		color: $primary-text-color
-		border: none
+		border: $button-bd-width solid transparent
 		box-shadow: none
 		&:hover, &:focus, &:active
 			background: transparent
-			color: $black-color
-			border: none
+			color: $primary-text-color
+			border: $button-bd-width solid transparent
 			box-shadow: none
-		&.icon
-			&::before
-				filter: $svg-filter
+	&-none
+		&.button-icon
+			&.icon
+				&:hover, &:focus, &:active
+					&::before
+						filter: invert(50%)
+	&-reset
+		padding: 0
+		border: none
+		&:hover, &:focus, &:active
+			border: none

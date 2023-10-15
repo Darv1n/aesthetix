@@ -51,6 +51,11 @@ class Subscribe_Popup_Form_Widget extends WC_Widget {
 				'label'   => __( 'Select subscribe popup form button content', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_button_content(),
 			),
+			'button_rounded' => array(
+				'type'  => 'checkbox',
+				'std'   => get_aesthetix_options( 'general_subscribe_popup_form_button_content' ),
+				'label' => __( 'Rounded button', 'aesthetix' ),
+			),
 		);
 
 		parent::__construct();
