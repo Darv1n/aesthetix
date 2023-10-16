@@ -1,11 +1,12 @@
 <?php
 /**
  * Template part for displaying breadcrumbs.
+ * 
+ * @since 1.1.1
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Aesthetix
- * @since 1.1.1
  */
 
 if ( ! is_front_page() && ! is_home() && get_aesthetix_options( 'general_breadcrumbs_display' ) ) {

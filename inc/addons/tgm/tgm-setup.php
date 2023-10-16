@@ -1,9 +1,10 @@
 <?php
 /**
- * Register recommended plugins
+ * Register recommended plugins.
+ *
+ * @since 1.0.0
  *
  * @package Aesthetix
- * @since 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

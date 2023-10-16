@@ -1,9 +1,10 @@
 <?php
 /**
  * Template actions.
+ * 
+ * @since 1.0.0
  *
  * @package Aesthetix
- * @since 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -13,15 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! function_exists( 'aesthetix_pre_get_posts' ) ) {
 
 	/**
-	 * Function for 'pre_get_posts' action hook.
+	 * Function for 'pre_get_posts' action-hook.
+	 * 
+	 * @since 1.0.0
+	 * 
+	 * @link https://developer.wordpress.org/reference/hooks/pre_get_posts/
 	 *
 	 * @param WP_Query $query The WP_Query instance (passed by reference).
 	 *
-	 * @link https://developer.wordpress.org/reference/hooks/pre_get_posts/
-	 *
 	 * @return void
-	 * 
-	 * @since 1.0.0
 	 */
 	function aesthetix_pre_get_posts( $query ) {
 
@@ -62,9 +63,9 @@ if ( ! function_exists( 'admin_bar_init_callback' ) ) {
 	/**
 	 * Function for `admin_bar_init` action-hook.
 	 * 
-	 * @return void
-	 * 
 	 * @since 1.1.1
+	 * 
+	 * @return void
 	 */
 	function admin_bar_init_callback() {
 		remove_action( 'wp_head', '_admin_bar_bump_cb' );

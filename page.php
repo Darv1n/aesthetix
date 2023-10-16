@@ -7,10 +7,11 @@
  * and that other 'pages' on your WordPress site may use a
  * different template.
  *
+ * @since 1.0.0
+ *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Aesthetix
- * @since 1.0.0
  */
 
 get_header(); ?>

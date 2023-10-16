@@ -242,7 +242,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 
 		/**
 		 * Adds a reference of this object to $instance, populates default strings,
-		 * does the tgmpa_init action hook, and hooks in the interactions to init.
+		 * does the tgmpa_init action-hook, and hooks in the interactions to init.
 		 *
 		 * {@internal This method should be `protected`, but as too many TGMPA implementations
 		 * haven't upgraded beyond v2.3.6 yet, this gives backward compatibility issues.

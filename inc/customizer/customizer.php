@@ -2,8 +2,9 @@
 /**
  * Customizer main setup.
  *
- * @package Aesthetix
  * @since 1.0.0
+ *
+ * @package Aesthetix
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,10 +15,10 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 
 	/**
 	 * Add postMessage support for site title and description for the Theme Customizer.
-	 *
-	 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
 	 */
 	function aesthetix_customize_register( $wp_customize ) {
 

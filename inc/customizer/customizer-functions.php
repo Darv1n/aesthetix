@@ -2,8 +2,9 @@
 /**
  * Customizer functions.
  *
- * @package Aesthetix
  * @since 1.0.0
+ *
+ * @package Aesthetix
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,10 +15,10 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_types' ) ) {
 
 	/**
 	 * Get customizer post types for constract section and fields.
-	 *
-	 * @return array
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @return array
 	 */
 	function get_aesthetix_customizer_post_types() {
 
@@ -33,12 +34,12 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 
 	/**
 	 * Get roots array for enque inline script.
-	 *
-	 * @param string $control array key to get one value.
-	 *
-	 * @return void
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $control Array key to get one value.
+	 *
+	 * @return void
 	 */
 	function get_aesthetix_customizer_roots( $control = null ) {
 

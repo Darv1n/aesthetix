@@ -2,10 +2,11 @@
 /**
  * The template for displaying archive pages
  *
+ * @since 1.0.0
+ *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Aesthetix
- * @since 1.0.0
  */
 
 get_header(); ?>

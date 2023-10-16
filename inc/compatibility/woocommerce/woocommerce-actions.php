@@ -1,11 +1,12 @@
 <?php
 /**
  * WooCommerce actions.
+ * 
+ * @since 1.0.0
  *
  * @link https://woocommerce.com/
  *
  * @package Aesthetix
- * @since 1.0.0
  */
 
 /**

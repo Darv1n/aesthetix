@@ -2,8 +2,9 @@
 /**
  * Customizer sections.
  *
- * @package Aesthetix
  * @since 1.0.0
+ *
+ * @package Aesthetix
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -22,7 +23,6 @@ if ( ! function_exists( 'aesthetix_customizer_section_control_callback' ) ) {
 }
 add_filter( 'aesthetix_customizer_section_control', 'aesthetix_customizer_section_control_callback', 10, 2 );
 
-// Usage: filter customizer sections.
 if ( ! function_exists( 'get_aesthetix_customizer_sections_woo_callback' ) ) {
 	function get_aesthetix_customizer_sections_woo_callback( $sections ) {
 

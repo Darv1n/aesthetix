@@ -2,8 +2,9 @@
 /**
  * Customizer selects.
  *
- * @package Aesthetix
  * @since 1.0.0
+ *
+ * @package Aesthetix
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,13 +15,13 @@ if ( ! function_exists( 'get_woocommerce_customizer_product_catalog_structure' )
 
 	/**
 	 * Return array with the customizer product catalog structure.
-	 *
-	 * @param string $control   array key to get one value.
-	 * @param string $post_type current post type
-	 *
-	 * @return string|array|false
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $control   Array key to get one value.
+	 * @param string $post_type Current post type
+	 *
+	 * @return string|array|false
 	 */
 	function get_woocommerce_customizer_product_catalog_structure( $control = null, $post_type = null ) {
 

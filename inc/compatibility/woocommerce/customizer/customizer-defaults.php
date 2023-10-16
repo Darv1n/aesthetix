@@ -2,15 +2,15 @@
 /**
  * Customizer default options.
  *
- * @package Aesthetix
  * @since 1.0.0
+ *
+ * @package Aesthetix
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Replace default settings in customizer.
 if ( ! function_exists( 'aesthetix_woocommerce_options_callback' ) ) {
 	function aesthetix_woocommerce_options_callback( $aesthetix_defaults ) {
 

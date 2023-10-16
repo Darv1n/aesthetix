@@ -1,11 +1,12 @@
 <?php
 /**
  * Template part for displaying archive entry post sticky.
+ * 
+ * @since 1.1.6
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Aesthetix
- * @since 1.1.6
  */
 
 if ( is_sticky() || has_post_format() ) { ?>

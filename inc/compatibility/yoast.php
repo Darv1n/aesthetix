@@ -1,11 +1,12 @@
 <?php
 /**
- * Yoast SEO Compatibility File
+ * Yoast SEO Compatibility File.
+ * 
+ * @since 1.0.0
  *
  * @link https://yoast.com/
  *
  * @package Aesthetix
- * @since 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -55,7 +56,7 @@ if ( function_exists( 'yoast_breadcrumb' ) ) {
 	}
 	add_filter( 'wpseo_og_article_published_time', 'wpseo_og_article_published_time_callback', 90, 2 );
 
-	// Добавляем закрывающий слег в теги rel="canonical".
+	// Add a closing slash to the rel="canonical" tags.
 	if ( ! function_exists( 'wpseo_canonical_callback' ) ) {
 		function wpseo_canonical_callback( $canonical_url ) {
 			return trailingslashit( $canonical_url );
@@ -71,8 +72,17 @@ if ( function_exists( 'yoast_breadcrumb' ) ) {
 	}
 	add_filter( 'wpseo_breadcrumb_single_link', 'wpseo_breadcrumb_single_link_callback' );
 
-	// Yoast breadcrumb styles.
 	if ( ! function_exists( 'wp_enqueue_yoast_breadcrumb_styles' ) ) {
+
+		/**
+		 * Function for wp_enqueue_scripts action-hook.
+		 * 
+		 * @since 1.0.0
+		 * 
+		 * @link https://developer.wordpress.org/reference/hooks/wp_enqueue_scripts/
+		 * 
+		 * @return void
+		 */
 		function wp_enqueue_yoast_breadcrumb_styles() {
 
 			if ( get_aesthetix_options( 'general_breadcrumbs_type' ) !== 'yoast' ) {

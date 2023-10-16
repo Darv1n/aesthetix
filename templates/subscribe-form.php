@@ -7,10 +7,11 @@
  * Form php handler - /inc/handlers.php
  * Form html        - /templates/subscribe-form.php
  *
+ * @since 1.1.2
+ * 
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Aesthetix
- * @since 1.1.2
  */
 
 $section_wrapper = isset( $args['section'] ) ?? false;

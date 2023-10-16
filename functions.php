@@ -1,11 +1,12 @@
 <?php
 /**
  * Main functions.
+ * 
+ * @since 1.0.0
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
  * @package Aesthetix
- * @since 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

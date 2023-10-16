@@ -1,13 +1,14 @@
 <?php
 /**
  * WooCommerce setup.
+ * 
+ * @since 1.0.0
  *
  * @link https://woocommerce.com/
  * @link https://docs.woocommerce.com/document/third-party-custom-theme-compatibility/
  * @link https://github.com/woocommerce/woocommerce/wiki/Enabling-product-gallery-features-(zoom,-swipe,-lightbox)-in-3.0.0
  *
  * @package Aesthetix
- * @since 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -18,10 +19,10 @@ if ( ! function_exists( 'aesthetix_woo_setup' ) ) {
 
 	/**
 	 * WooCommerce setup function.
-	 *
-	 * @return void
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @return void
 	 */
 	function aesthetix_woo_setup() {
 
@@ -59,11 +60,11 @@ if ( ! function_exists( 'aesthetix_woo_enqueue_styles' ) ) {
 	/**
 	 * Function for 'woocommerce_enqueue_styles' filter-hook.
 	 * 
+	 * @since 1.0.0
+	 * 
 	 * @param array $array List of default WooCommerce styles.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function aesthetix_woo_enqueue_styles( $styles ) {
 
@@ -100,10 +101,10 @@ if ( ! function_exists( 'aesthetix_woo_scripts' ) ) {
 
 	/**
 	 * WooCommerce specific scripts & stylesheets.
-	 *
-	 * @return void
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @return void
 	 */
 	function aesthetix_woo_scripts() {
 
@@ -155,10 +156,10 @@ if ( ! function_exists( 'aesthetix_woo_widgets_init' ) ) {
 
 	/**
 	 * Register widget area.
-	 *
-	 * @return void
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @return void
 	 */
 	function aesthetix_woo_widgets_init() {
 		register_sidebar(

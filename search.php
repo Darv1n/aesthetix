@@ -1,11 +1,12 @@
 <?php
 /**
- * The template for disdisplaying search results pages
+ * The template for disdisplaying search results pages.
+ * 
+ * @since 1.0.0
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
  * @package Aesthetix
- * @since 1.0.0
  */
 
 get_header(); ?>

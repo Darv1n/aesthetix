@@ -2,8 +2,9 @@
 /**
  * Template wrappers.
  *
- * @package Aesthetix
  * @since 1.0.0
+ *
+ * @package Aesthetix
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,12 +15,12 @@ if ( ! function_exists( 'aesthetix_body_classes' ) ) {
 
 	/**
 	 * Add custom classes to the array of body classes.
-	 *
-	 * @param string $classes body classes.
-	 *
-	 * @return array
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $classes Body classes.
+	 *
+	 * @return array
 	 */
 	function aesthetix_body_classes( $classes ) {
 
@@ -59,12 +60,12 @@ if ( ! function_exists( 'aesthetix_post_classes' ) ) {
 
 	/**
 	 * Add custom classes to the array of post classes.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $classes post classes.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function aesthetix_post_classes( $classes ) {
 
@@ -133,12 +134,12 @@ if ( ! function_exists( 'get_aesthetix_section_classes' ) ) {
 
 	/**
 	 * Get classes for section wrapper.
+	 * 
+	 * @since 1.1.2
 	 *
 	 * @param string $class Additional section classes.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.1.2
 	 */
 	function get_aesthetix_section_classes( $class = '' ) {
 
@@ -199,13 +200,13 @@ if ( ! function_exists( 'aesthetix_section_classes' ) ) {
 
 	/**
 	 * Display classes for section wrapper.
+	 * 
+	 * @since 1.1.2
 	 *
 	 * @param string $class Additional section classes.
 	 * @param bool   $echo  Echo or return section classes.
 	 *
 	 * @return string|void
-	 * 
-	 * @since 1.1.2
 	 */
 	function aesthetix_section_classes( $class = '', $echo = true ) {
 
@@ -223,12 +224,12 @@ if ( ! function_exists( 'get_aesthetix_container_classes' ) ) {
 
 	/**
 	 * Get classes for container wrapper.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Additional container classes.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function get_aesthetix_container_classes( $class = '' ) {
 
@@ -262,13 +263,13 @@ if ( ! function_exists( 'aesthetix_container_classes' ) ) {
 
 	/**
 	 * Display classes for container wrapper.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Additional container classes.
 	 * @param bool   $echo  Echo or return container classes.
 	 *
 	 * @return string|void
-	 * 
-	 * @since 1.0.0
 	 */
 	function aesthetix_container_classes( $class = '', $echo = true ) {
 
@@ -286,12 +287,12 @@ if ( ! function_exists( 'get_aesthetix_content_area_classes' ) ) {
 
 	/**
 	 * Get classes for main content area wrapper.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Additional content area classes.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function get_aesthetix_content_area_classes( $class = '' ) {
 
@@ -345,13 +346,13 @@ if ( ! function_exists( 'aesthetix_content_area_classes' ) ) {
 
 	/**
 	 * Display classes for main content area wrapper.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Additional content area classes.
 	 * @param bool   $echo  Echo or return content area classes.
 	 *
 	 * @return string|void
-	 * 
-	 * @since 1.0.0
 	 */
 	function aesthetix_content_area_classes( $class = '', $echo = true ) {
 
@@ -369,12 +370,12 @@ if ( ! function_exists( 'get_aesthetix_widget_area_classes' ) ) {
 
 	/**
 	 * Get classes for sidebar widget area wrapper.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Additional widget area classes.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function get_aesthetix_widget_area_classes( $class = '' ) {
 
@@ -412,13 +413,13 @@ if ( ! function_exists( 'aesthetix_widget_area_classes' ) ) {
 
 	/**
 	 * Display classes for sidebar widget area wrapper.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Additional widget area classes.
 	 * @param bool   $echo  Echo or return widget area classes.
 	 *
 	 * @return string|void
-	 * 
-	 * @since 1.0.0
 	 */
 	function aesthetix_widget_area_classes( $class = '', $echo = true ) {
 
@@ -436,12 +437,12 @@ if ( ! function_exists( 'get_aesthetix_header_classes' ) ) {
 
 	/**
 	 * Get classes for header container.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Additional header classes.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function get_aesthetix_header_classes( $class = '' ) {
 
@@ -496,13 +497,13 @@ if ( ! function_exists( 'aesthetix_header_classes' ) ) {
 
 	/**
 	 * Display classes for header container.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Additional header classes.
 	 * @param bool   $echo  Echo or return header classes.
 	 *
 	 * @return string|void
-	 * 
-	 * @since 1.0.0
 	 */
 	function aesthetix_header_classes( $class = '', $echo = true ) {
 
@@ -520,12 +521,12 @@ if ( ! function_exists( 'get_aesthetix_footer_classes' ) ) {
 
 	/**
 	 * Get classes for footer container.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Additional footer classes.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function get_aesthetix_footer_classes( $class = '' ) {
 
@@ -570,13 +571,13 @@ if ( ! function_exists( 'aesthetix_footer_classes' ) ) {
 
 	/**
 	 * Display classes for footer container.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Additional footer classes.
 	 * @param bool   $echo  Echo or return footer classes.
 	 *
 	 * @return string|void
-	 * 
-	 * @since 1.0.0
 	 */
 	function aesthetix_footer_classes( $class = '', $echo = true ) {
 
@@ -594,12 +595,12 @@ if ( ! function_exists( 'get_aesthetix_main_menu_classes' ) ) {
 
 	/**
 	 * Get classes for main menu.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Additional main menu classes.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function get_aesthetix_main_menu_classes( $class = '' ) {
 
@@ -646,13 +647,13 @@ if ( ! function_exists( 'aesthetix_main_menu_classes' ) ) {
 
 	/**
 	 * Display classes for main menu.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Additional main menu classes.
 	 * @param bool   $echo  Echo or return main menu classes.
 	 *
 	 * @return string|void
-	 * 
-	 * @since 1.0.0
 	 */
 	function aesthetix_main_menu_classes( $class = '', $echo = true ) {
 
@@ -670,12 +671,12 @@ if ( ! function_exists( 'get_aesthetix_meta_display_classes' ) ) {
 
 	/**
 	 * Get classes for meta display single template TWO.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Additional meta display classes.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function get_aesthetix_meta_display_classes( $class = '' ) {
 
@@ -716,14 +717,14 @@ if ( ! function_exists( 'aesthetix_meta_display_classes' ) ) {
 
 	/**
 	 * Display classes for meta display single template TWO.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param array  $args   Array with params for function:
 	 * @param string $class Additional meta display classes.
 	 * @param bool   $echo  Echo or return meta display classes.
 	 *
 	 * @return string|void
-	 * 
-	 * @since 1.0.0
 	 */
 	function aesthetix_meta_display_classes( $class = '', $echo = true ) {
 
@@ -741,12 +742,12 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_wrapper_classes' ) )
 
 	/**
 	 * Get classes for archive page wrapper columns.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Additional archive page columns wrapper classes.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function get_aesthetix_archive_page_columns_wrapper_classes( $class = '' ) {
 
@@ -784,13 +785,13 @@ if ( ! function_exists( 'aesthetix_archive_page_columns_wrapper_classes' ) ) {
 
 	/**
 	 * Display classes for archive page wrapper columns.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Additional archive page columns wrapper classes.
 	 * @param bool   $echo  Echo or return archive page columns wrapper classes.
 	 *
 	 * @return string|void
-	 * 
-	 * @since 1.0.0
 	 */
 	function aesthetix_archive_page_columns_wrapper_classes( $class = '', $echo = true ) {
 
@@ -808,13 +809,13 @@ if ( ! function_exists( 'get_aesthetix_count_columns' ) ) {
 
 	/**
 	 * Get int count archive page columns.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $control Text count columns.
 	 * @param bool   $int     Need return int or not.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function get_aesthetix_count_columns( $control = null, $int = true ) {
 
@@ -847,14 +848,14 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_classes' ) ) {
 
 	/**
 	 * Get classes for archive page columns.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param int    $counter       Сolumn counter in loop.
 	 * @param string $class         Additional archive page columns classes.
 	 * @param string $columns_count Return classes with specified columns.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function get_aesthetix_archive_page_columns_classes( $counter = null, $class = '', $columns_count = null ) {
 
@@ -927,6 +928,8 @@ if ( ! function_exists( 'aesthetix_archive_page_columns_classes' ) ) {
 
 	/**
 	 * Display classes for archive page columns.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param int    $counter       Сolumn counter in loop.
 	 * @param string $class         Additional archive page columns classes.
@@ -934,8 +937,6 @@ if ( ! function_exists( 'aesthetix_archive_page_columns_classes' ) ) {
 	 * @param bool   $echo          Echo or return archive page columns classes.
 	 *
 	 * @return string|void
-	 * 
-	 * @since 1.0.0
 	 */
 	function aesthetix_archive_page_columns_classes( $counter = null, $class = '', $columns_count = null, $echo = true ) {
 
@@ -953,6 +954,8 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 
 	/**
 	 * Get classes for buttons.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string       $class Additional button classes.
 	 * @param array|string $args {
@@ -967,8 +970,6 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 	 * }
 	 * 
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function get_button_classes( $class = '', $args = array() ) {
 
@@ -1086,6 +1087,8 @@ if ( ! function_exists( 'button_classes' ) ) {
 
 	/**
 	 * Display classes for buttons.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string       $class Additional button classes.
 	 * @param array|string $args {
@@ -1101,8 +1104,6 @@ if ( ! function_exists( 'button_classes' ) ) {
 	 * @param bool         $echo Echo or return button classes.
 	 *
 	 * @return string|void
-	 * 
-	 * @since 1.0.0
 	 */
 	function button_classes( $class = '', $args = array(), $echo = true ) {
 
@@ -1120,12 +1121,12 @@ if ( ! function_exists( 'get_link_classes' ) ) {
 
 	/**
 	 * Get classes for links.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Link classes.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function get_link_classes( $class = '' ) {
 
@@ -1159,13 +1160,13 @@ if ( ! function_exists( 'link_classes' ) ) {
 
 	/**
 	 * Display classes for links.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Additional link classes.
 	 * @param bool   $echo  Echo or return link classes.
 	 *
 	 * @return string|void
-	 * 
-	 * @since 1.0.0
 	 */
 	function link_classes( $class = '', $echo = true ) {
 
@@ -1183,13 +1184,13 @@ if ( ! function_exists( 'get_aesthetix_link_more_classes' ) ) {
 
 	/**
 	 * Get link more classes.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Link more classes.
 	 * @param string $color Link more color (primary, secondary, gray, default). Default 'primary'.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function get_aesthetix_link_more_classes( $class = '', $color = 'primary' ) {
 
@@ -1234,14 +1235,14 @@ if ( ! function_exists( 'aesthetix_link_more_classes' ) ) {
 
 	/**
 	 * Display link more classes.
+	 * 
+	 * @since 1.0.0
 	 *
 	 * @param string $class Additional link more classes.
 	 * @param string $color Link more color (primary, secondary, gray, default). Default 'primary'.
 	 * @param bool   $echo  Echo or return link more classes.
 	 *
 	 * @return string|void
-	 * 
-	 * @since 1.0.0
 	 */
 	function aesthetix_link_more_classes( $class = '', $color = 'primary', $echo = true ) {
 
@@ -1259,13 +1260,13 @@ if ( ! function_exists( 'get_input_classes' ) ) {
 
 	/**
 	 * Get classes for inputs.
+	 * 
+	 * @since 1.2.2
 	 *
 	 * @param string $class       Input classes. Default ''.
 	 * @param string $button_size Input size (xs, sm, md, lg, xl). Default null.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.2.2
 	 */
 	function get_input_classes( $class = '', $button_size = null ) {
 
@@ -1313,13 +1314,13 @@ if ( ! function_exists( 'input_classes' ) ) {
 
 	/**
 	 * Display classes for inputs.
+	 * 
+	 * @since 1.2.2
 	 *
 	 * @param string $class Additional input classes.
 	 * @param bool   $echo  Echo or return input classes.
 	 *
 	 * @return string|void
-	 * 
-	 * @since 1.2.2
 	 */
 	function input_classes( $class = '', $echo = true ) {
 

@@ -7,10 +7,11 @@
  * It is used to disdisplay a page when nothing more specific matches a query.
  * E.g., it puts together the home page when no home.php file exists.
  *
+ * @since 1.0.0
+ *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Aesthetix
- * @since 1.0.0
  */
 
 get_header(); ?>

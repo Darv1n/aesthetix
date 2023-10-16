@@ -2,8 +2,9 @@
 /**
  * Customizer controls array.
  *
- * @package Aesthetix
  * @since 1.0.0
+ *
+ * @package Aesthetix
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,12 +15,12 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 
 	/**
 	 * Return array with customizer controls.
-	 *
-	 * @param string $control array key to get one value.
-	 *
-	 * @return array
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $control Array key to get one value.
+	 *
+	 * @return array
 	 */
 	function get_aesthetix_customizer_controls( $control = null ) {
 

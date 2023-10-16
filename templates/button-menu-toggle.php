@@ -2,10 +2,11 @@
 /**
  * Template part for displaying button menu.
  *
+ * @since 1.0.0
+ *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Aesthetix
- * @since 1.0.0
  */
 
 $args['button_color']   = $args['button_color'] ?? get_aesthetix_options( 'general_scroll_top_button_color' );

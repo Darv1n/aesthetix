@@ -1,9 +1,10 @@
 <?php
 /**
  * Search Popup Form Widget.
+ * 
+ * @since 1.2.0
  *
  * @package Aesthetix
- * @since 1.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -71,6 +72,7 @@ class Search_Popup_Form_Widget extends WC_Widget {
 	 * Output widget.
 	 *
 	 * @see WP_Widget
+	 * 
 	 * @param array $args     Widget arguments.
 	 * @param array $instance Widget instance.
 	 */

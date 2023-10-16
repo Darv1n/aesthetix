@@ -1,11 +1,12 @@
 <?php
 /**
  * Template part for displaying first screen.
+ * 
+ * @since 1.1.1
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Aesthetix
- * @since 1.1.1
  */
 
 if ( ( is_front_page() || is_home() ) && get_aesthetix_options( 'front_page_slider_display' ) ) {

@@ -1,11 +1,12 @@
 <?php
 /**
- * Gutenberg
+ * Gutenberg.
+ * 
+ * @since 1.0.0
  *
  * @link https://wordpress.org/gutenberg/
  *
  * @package Aesthetix
- * @since 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

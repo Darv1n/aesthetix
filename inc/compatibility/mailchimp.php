@@ -1,12 +1,13 @@
 <?php
 /**
- * Mailchimp
+ * Mailchimp.
+ * 
+ * @since 1.1.3
  *
  * @link https://mailchimp.com/
  * @link https://wordpress.org/plugins/mailchimp-for-wp/
  *
  * @package Aesthetix
- * @since 1.1.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -18,11 +19,11 @@ if ( ! function_exists( 'get_mailchimp_aesthetix_subscribe_form_type' ) ) {
 	/**
 	 * Function for 'get_aesthetix_customizer_subscribe_form_type' filter-hook.
 	 * 
+	 * @since 1.1.3
+	 * 
 	 * @param array $converter Array with subscribation forms in customizer options.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.1.3
 	 */
 	function get_mailchimp_aesthetix_subscribe_form_type( $converter ) {
 
@@ -38,11 +39,11 @@ if ( ! function_exists( 'get_mailchimp_aesthetix_options' ) ) {
 	/**
 	 * Function for 'get_aesthetix_options' filter-hook.
 	 * 
+	 * @since 1.1.3
+	 * 
 	 * @param array $aesthetix_defaults Array with default aesthetix options.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.1.3
 	 */
 	function get_mailchimp_aesthetix_options( $aesthetix_defaults ) {
 
@@ -58,9 +59,13 @@ add_filter( 'get_aesthetix_options', 'get_mailchimp_aesthetix_options' );
 if ( ! function_exists( 'wp_enqueue_mailchimp_styles' ) ) {
 
 	/**
-	 * Function for 'wp_enqueue_scripts' filter-hook.
+	 * Function for wp_enqueue_scripts action-hook.
 	 * 
 	 * @since 1.1.3
+	 * 
+	 * @link https://developer.wordpress.org/reference/hooks/wp_enqueue_scripts/
+	 * 
+	 * @return void
 	 */
 	function wp_enqueue_mailchimp_styles() {
 

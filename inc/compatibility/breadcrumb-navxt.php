@@ -1,12 +1,13 @@
 <?php
 /**
- * Breadcrumb NavXT Compatibility File
+ * Breadcrumb NavXT Compatibility File.
  *
- * @link Plugin        https://wordpress.org/plugins/breadcrumb-navxt/
- * @link Documentation https://mtekk.us/code/breadcrumb-navxt/breadcrumb-navxt-doc/
- *
- * @package Aesthetix
  * @since 1.0.0
+ *
+ * @link plugin        https://wordpress.org/plugins/breadcrumb-navxt/
+ * @link documentation https://mtekk.us/code/breadcrumb-navxt/breadcrumb-navxt-doc/
+ * 
+ * @package Aesthetix
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -57,6 +58,16 @@ if ( ! function_exists( 'bcn_display_attributes_callback' ) ) {
 add_filter( 'bcn_display_attributes', 'bcn_display_attributes_callback', 10, 3 );
 
 if ( ! function_exists( 'wp_enqueue_navxt_breadcrumb_styles' ) ) {
+
+	/**
+	 * Function for wp_enqueue_scripts action-hook.
+	 * 
+	 * @since 1.0.0
+	 * 
+	 * @link https://developer.wordpress.org/reference/hooks/wp_enqueue_scripts/
+	 * 
+	 * @return void
+	 */
 	function wp_enqueue_navxt_breadcrumb_styles() {
 		$css = '
 			.breadcrumbs_navxt .breadcrumbs-item:not(:last-child) {

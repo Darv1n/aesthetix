@@ -1,9 +1,10 @@
 <?php
 /**
  * Ajax handlers.
+ * 
+ * @since 1.1.7
  *
  * @package Aesthetix
- * @since 1.1.7
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -20,9 +21,9 @@ if ( ! function_exists( 'ajax_loadmore_handler_callback' ) ) {
 	 * Form php handler - /inc/handlers.php
 	 * Html             - /templates/archive/archive-pagination.php
 	 * 
-	 * @return json
-	 * 
 	 * @since 1.1.4
+	 * 
+	 * @return json
 	 */
 	function ajax_loadmore_handler_callback() {
 
@@ -92,9 +93,9 @@ if ( ! function_exists( 'ajax_subscribe_form_callback' ) ) {
 	 * Form php handler - /inc/handlers.php
 	 * Form html        - /templates/subscribe-form.php
 	 * 
-	 * @return json
-	 * 
 	 * @since 1.1.2
+	 * 
+	 * @return json
 	 */
 	function ajax_subscribe_form_callback() {
 

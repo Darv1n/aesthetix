@@ -1,9 +1,10 @@
 <?php
 /**
  * Widgets Init.
+ * 
+ * @since 1.2.0
  *
  * @package Aesthetix
- * @since 1.2.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -29,10 +30,10 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 
 	/**
 	 * Register widget area.
-	 *
-	 * @return void
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @return void
 	 */
 	function aesthetix_register_sidebar() {
 

@@ -1,11 +1,12 @@
 <?php
 /**
  * Template part for displaying subscribe popup toggle.
+ * 
+ * @since 1.1.8
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Aesthetix
- * @since 1.1.8
  */
 
 $args['button_color']   = $args['button_color'] ?? get_aesthetix_options( 'general_subscribe_popup_form_button_color' );

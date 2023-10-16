@@ -2,8 +2,9 @@
 /**
  * Template filters.
  *
- * @package Aesthetix
  * @since 1.0.0
+ *
+ * @package Aesthetix
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -20,7 +21,7 @@ if ( ! function_exists( 'ajax_localize_params' ) ) {
 			'url'   => admin_url( 'admin-ajax.php' ),
 			'query' => $wp_query->query,
 			'lang'  => determine_locale(),
-			'nonce' => wp_create_nonce( 'ajax-nonce' ), // Создаем nonce.
+			'nonce' => wp_create_nonce( 'ajax-nonce' ),
 		);
 
 		if ( isset( $wp_query->query_vars ) ) {
@@ -55,12 +56,12 @@ if ( ! function_exists( 'aesthetix_privacy_policy_url' ) ) {
 	/**
 	 * Function for 'privacy_policy_url' filter-hook.
 	 * 
-	 * @param string $url         The URL to the privacy policy page. Empty string if it doesn't exist.
-	 * @param int $policy_page_id The ID of privacy policy page.
+	 * @since 1.0.0
+	 * 
+	 * @param string $url            The URL to the privacy policy page. Empty string if it doesn't exist.
+	 * @param int    $policy_page_id The ID of privacy policy page.
 	 *
 	 * @return string
-	 * 
-	 * @since 1.0.0
 	 */
 	function aesthetix_privacy_policy_url( $url ) {
 
@@ -84,11 +85,11 @@ if ( ! function_exists( 'aesthetix_robots' ) ) {
 	/**
 	 * Function for 'wp_robots' filter-hook. Prints noindex, nofollow tags on archive pages, if there are no posts in this archive page.
 	 *
+	 * @since 1.0.0
+	 * 
 	 * @param array $robots Parameter for filter.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function aesthetix_robots( $robots ) {
 
@@ -115,13 +116,13 @@ if ( ! function_exists( 'aesthetix_robots_txt' ) ) {
 
 	/**
 	 * Function for 'robots_txt' filter-hook.
-	 *
-	 * @param string $output the robots.txt output.
-	 * @param bool   $public whether the site is considered 'public'.
-	 *
-	 * @return string
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $output The robots.txt output.
+	 * @param bool   $public Whether the site is considered 'public'.
+	 *
+	 * @return string
 	 */
 	function aesthetix_robots_txt( $output, $public ) {
 
@@ -139,11 +140,11 @@ if ( ! function_exists( 'unset_intermediate_image_sizes' ) ) {
 	/**
 	 * Function for 'intermediate_image_sizes' filter-hook.
 	 * 
-	 * @param array $default_sizes An array of intermediate image size names.
+	 * @since 1.0.0
+	 * 
+	 * @param array $default_sizes Array of intermediate image size names.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function unset_intermediate_image_sizes( $sizes ) {
 
@@ -165,11 +166,11 @@ if ( ! function_exists( 'aesthetix_nav_menu_args' ) ) {
 	/**
 	 * Filters the arguments used to display a navigation menu. Replace tag div with nav.
 	 *
+	 * @since 1.0.0
+	 * 
 	 * @param array $args Parameter for filter.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function aesthetix_nav_menu_args( $args = '' ) {
 		if ( $args['container'] === 'div' ) {
@@ -185,14 +186,14 @@ if ( ! function_exists( 'remove_nav_menu_item_id' ) ) {
 	/**
 	 * Function for 'nav_menu_item_id' filter-hook.
 	 * 
+	 * @since 1.0.0
+	 * 
 	 * @param string   $menu_id   The ID that is applied to the menu item's `<li>` element.
 	 * @param WP_Post  $menu_item The current menu item.
-	 * @param stdClass $args      An object of wp_nav_menu() arguments.
+	 * @param stdClass $args      Object of wp_nav_menu() arguments.
 	 * @param int      $depth     Depth of menu item. Used for padding.
 	 *
 	 * @return string
-	 * 
-	 * @since 1.0.0
 	 */
 	function remove_nav_menu_item_id( $id, $item, $args ) {
 		return '';
@@ -205,12 +206,12 @@ if ( ! function_exists( 'level_nav_menu_item_class' ) ) {
 	/**
 	 * Function for 'wp_nav_menu_objects' filter-hook.
 	 * 
+	 * @since 1.0.0
+	 * 
 	 * @param array    $sorted_menu_items The menu items, sorted by each menu item's menu order.
-	 * @param stdClass $args              An object containing wp_nav_menu() arguments.
+	 * @param stdClass $args              Object containing wp_nav_menu() arguments.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function level_nav_menu_item_class( $sorted_menu_items, $args ) {
 		$level = 1;
@@ -234,14 +235,14 @@ if ( ! function_exists( 'remove_nav_menu_item_class' ) ) {
 	/**
 	 * Function for 'nav_menu_css_class' filter-hook.
 	 * 
-	 * @param array $classes   Array of the CSS classes that are applied to the menu item's `<li>` element.
+	 * @since 1.0.0
+	 * 
+	 * @param array    $classes   Array of the CSS classes that are applied to the menu item's `<li>` element.
 	 * @param WP_Post  $menu_item The current menu item object.
-	 * @param stdClass $args      An object of wp_nav_menu() arguments.
+	 * @param stdClass $args      Object of wp_nav_menu() arguments.
 	 * @param int      $depth     Depth of menu item. Used for padding.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function remove_nav_menu_item_class( $classes, $item, $args ) {
 
@@ -260,12 +261,12 @@ if ( ! function_exists( 'aesthetix_search_highlight' ) ) {
 
 	/**
 	 * Highlight search results.
-	 *
-	 * @param string $text is text for highlight.
-	 *
-	 * @return string
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $text Text for highlight.
+	 *
+	 * @return string
 	 */
 	function aesthetix_search_highlight( $text ) {
 

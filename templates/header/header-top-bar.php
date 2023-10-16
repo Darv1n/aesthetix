@@ -1,11 +1,12 @@
 <?php
 /**
- * Template header top bar
+ * Template header top bar.
+ *
+ * @since 1.0.0
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Aesthetix
- * @since 1.0.0
  */
  ?>
 

@@ -1,11 +1,12 @@
 <?php
 /**
- * Rate my Post
+ * Rate my Post.
+ * 
+ * @since 1.0.2
  *
  * @link https://wordpress.org/plugins/rate-my-post/
  *
  * @package Aesthetix
- * @since 1.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -15,15 +16,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! function_exists( 'rmp_save_post' ) ) {
 
 	/**
-	 * Function for 'save_post' action hook.
+	 * Function for 'save_post' action-hook.
 	 *
+	 * @since 1.0.2
+	 * 
+	 * @link https://developer.wordpress.org/reference/hooks/save_post/
+	 * 
 	 * @param int $post_id Post ID.
 	 *
-	 * @link https://developer.wordpress.org/reference/hooks/save_post/
-	 *
 	 * @return void
-	 * 
-	 * @since 1.0.0
 	 */
 	function rmp_save_post( $post_id ) {
 
@@ -37,14 +38,14 @@ add_action( 'save_post', 'rmp_save_post' );
 if ( ! function_exists( 'get_rmp_result_customizer_post_meta_structure' ) ) {
 
 	/**
-	 * Function for 'get_aesthetix_customizer_post_meta_structure' action hook.
+	 * Function for 'get_aesthetix_customizer_post_meta_structure' action-hook.
+	 * 
+	 * @since 1.0.2
 	 *
-	 * @param string $control   array key to get one value.
-	 * @param string $post_type current post type
+	 * @param string $control   Array key to get one value.
+	 * @param string $post_type Current post type
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function get_rmp_result_customizer_post_meta_structure( $converter, $post_type ) {
 
@@ -59,13 +60,13 @@ add_filter( 'get_aesthetix_customizer_post_meta_structure', 'get_rmp_result_cust
 if ( ! function_exists( 'get_rmp_result_options' ) ) {
 
 	/**
-	 * Function for 'get_aesthetix_options' action hook.
+	 * Function for 'get_aesthetix_options' action-hook.
+	 * 
+	 * @since 1.0.2
 	 *
-	 * @param string $aesthetix_defaults array with default theme options.
+	 * @param string $aesthetix_defaults Array with default theme options.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function get_rmp_result_options( $aesthetix_defaults ) {
 
@@ -96,15 +97,13 @@ add_filter( 'get_aesthetix_options', 'get_rmp_result_options' );
 if ( ! function_exists( 'rmp_result_archive_entry_post_meta_loop' ) ) {
 
 	/**
-	 * Function for 'aesthetix_archive_entry_post_meta_loop' action hook.
+	 * Function for 'aesthetix_archive_entry_post_meta_loop' action-hook.
+	 * 
+	 * @since 1.0.2
 	 *
 	 * @param WP_Object $post Post Object.
 	 *
-	 * @link https://developer.wordpress.org/reference/hooks/save_post/
-	 *
 	 * @return void
-	 * 
-	 * @since 1.0.0
 	 */
 	function rmp_result_archive_entry_post_meta_loop( $post ) {  ?>
 
@@ -120,14 +119,14 @@ add_action( 'aesthetix_single_entry_post_meta_loop_views', 'rmp_result_archive_e
 if ( ! function_exists( 'get_rmp_customizer_single_post_footer_structure' ) ) {
 
 	/**
-	 * Function for 'get_aesthetix_customizer_single_post_footer_structure' action hook.
+	 * Function for 'get_aesthetix_customizer_single_post_footer_structure' action-hook.
+	 * 
+	 * @since 1.0.2
 	 *
-	 * @param string $control   array key to get one value.
-	 * @param string $post_type current post type
+	 * @param string $control   Array key to get one value.
+	 * @param string $post_type Current post type.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function get_rmp_customizer_single_post_footer_structure( $converter, $post_type ) {
 
@@ -142,13 +141,13 @@ add_filter( 'get_aesthetix_customizer_single_post_footer_structure', 'get_rmp_cu
 if ( ! function_exists( 'get_rmp_options' ) ) {
 
 	/**
-	 * Function for 'get_aesthetix_options' action hook.
+	 * Function for 'get_aesthetix_options' action-hook.
+	 * 
+	 * @since 1.0.2
 	 *
-	 * @param string $aesthetix_defaults array with default theme options.
+	 * @param string $aesthetix_defaults Array with default theme options.
 	 *
 	 * @return array
-	 * 
-	 * @since 1.0.0
 	 */
 	function get_rmp_options( $aesthetix_defaults ) {
 
@@ -173,15 +172,13 @@ add_filter( 'get_aesthetix_options', 'get_rmp_options' );
 if ( ! function_exists( 'rmp_single_entry_post_footer_loop_rmp' ) ) {
 
 	/**
-	 * Function for 'aesthetix_single_entry_post_footer_loop_rmp' action hook.
+	 * Function for 'aesthetix_single_entry_post_footer_loop_rmp' action-hook.
+	 * 
+	 * @since 1.0.2
 	 *
 	 * @param WP_Object $post Post Object.
 	 *
-	 * @link https://developer.wordpress.org/reference/hooks/save_post/
-	 *
 	 * @return void
-	 * 
-	 * @since 1.0.0
 	 */
 	function rmp_single_entry_post_footer_loop_rmp( $post ) {  ?>
 
@@ -194,9 +191,13 @@ add_action( 'aesthetix_single_entry_post_footer_loop_rmp', 'rmp_single_entry_pos
 if ( ! function_exists( 'wp_enqueue_rmp_styles' ) ) {
 
 	/**
-	 * Enqueue rmp styles.
+	 * Function for wp_enqueue_scripts action-hook.
 	 * 
-	 * @since 1.0.0
+	 * @since 1.0.2
+	 * 
+	 * @link https://developer.wordpress.org/reference/hooks/wp_enqueue_scripts/
+	 * 
+	 * @return void
 	 */
 	function wp_enqueue_rmp_styles() {
 

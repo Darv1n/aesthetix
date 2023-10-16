@@ -2,8 +2,9 @@
 /**
  * Main setup options.
  *
- * @package Aesthetix
  * @since 1.0.0
+ *
+ * @package Aesthetix
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,10 +15,10 @@ if ( ! function_exists( 'aesthetix_setup_theme' ) ) {
 
 	/**
 	 * Default theme setup on after_setup_theme hook.
-	 *
-	 * @return void
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @return void
 	 */
 	function aesthetix_setup_theme() {
 
@@ -144,10 +145,10 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 
 	/**
 	 * Enqueue scripts and styles.
-	 *
-	 * @return void
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @return void
 	 */
 	function aesthetix_enqueue_scripts() {
 
@@ -319,17 +320,6 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 
 			wp_add_inline_script( 'slick-scripts', minify_js( $slick_init ) );
 		}
-
-		// Register comment form scripts.
-/*		wp_register_script( 'comments-handler', get_theme_file_uri( '/assets/js/comments-handler.min.js' ), array( 'jquery' ), filemtime( get_theme_file_path( '/assets/js/comments-handler.min.js' ) ), true );
-		wp_localize_script( 
-			'comments-handler',
-			'comments_handler_obj',
-			array(
-				'url'   => admin_url( 'admin-ajax.php' ),
-				'nonce' => wp_create_nonce( 'comments-handler-nonce' ),
-			)
-		);*/
 
 		if ( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) === 'loadmore' && ( is_archive() || is_search() || is_home() ) ) {
 			wp_enqueue_script( 'loadmore-scripts', get_theme_file_uri( '/assets/js/loadmore.min.js' ), array( 'jquery', 'common-scripts' ), filemtime( get_theme_file_path( '/assets/js/loadmore.min.js' ) ), true );

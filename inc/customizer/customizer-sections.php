@@ -2,8 +2,9 @@
 /**
  * Customizer sections.
  *
- * @package Aesthetix
  * @since 1.0.0
+ *
+ * @package Aesthetix
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,12 +15,12 @@ if ( ! function_exists( 'get_aesthetix_customizer_sections' ) ) {
 
 	/**
 	 * Return array with the customizer fonts.
-	 *
-	 * @param string $control array key to get one value.
-	 *
-	 * @return string|array|false
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $control Array key to get one value.
+	 *
+	 * @return string|array|false
 	 */
 	function get_aesthetix_customizer_sections( $control = null ) {
 

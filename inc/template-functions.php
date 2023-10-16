@@ -2,8 +2,9 @@
 /**
  * Template functions.
  *
- * @package Aesthetix
  * @since 1.0.0
+ *
+ * @package Aesthetix
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,10 +15,10 @@ if ( ! function_exists( 'vardump' ) ) {
 
 	/**
 	 * Dump code var.
-	 *
-	 * @param string $var parameter for dumping.
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $var parameter for dumping.
 	 */
 	function vardump( $var = '' ) {
 		if ( current_user_can( 'manage_options' ) ) {
@@ -33,9 +34,9 @@ if ( ! function_exists( 'is_subscribe_form_theme_active' ) ) {
 	/**
 	 * Adds conditions for subscribe form theme script activation.
 	 * 
-	 * @return bool
-	 * 
 	 * @since 1.2.1
+	 * 
+	 * @return bool
 	 */
 	function is_subscribe_form_theme_active() {
 
@@ -77,9 +78,9 @@ if ( ! function_exists( 'is_magnific_popup_active' ) ) {
 	/**
 	 * Adds conditions for magnific popup script activation.
 	 * 
-	 * @return bool
-	 * 
 	 * @since 1.2.1
+	 * 
+	 * @return bool
 	 */
 	function is_magnific_popup_active() {
 
@@ -112,12 +113,12 @@ if ( ! function_exists( 'array_key_first' ) ) {
 
 	/**
 	 * Callback function array_key_first(), if none exists.
-	 *
-	 * @param array $array array to search for the first key.
-	 *
-	 * @return int
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param array $array Array to search for the first key.
+	 *
+	 * @return int
 	 */
 	function array_key_first( $array = array() ) {
 
@@ -137,12 +138,12 @@ if ( ! function_exists( 'array_key_last' ) ) {
 
 	/**
 	 * Callback function array_key_last(), if none exists.
-	 *
-	 * @param array $array array to search for the last key.
-	 *
-	 * @return int
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param array $array Array to search for the last key.
+	 *
+	 * @return int
 	 */
 	function array_key_last( $array = array() ) {
 
@@ -158,12 +159,12 @@ if ( ! function_exists( 'sanitize_form_field' ) ) {
 
 	/**
 	 * Form field sanitize function.
-	 *
-	 * @param string $string sanitize and unslash string.
-	 *
-	 * @return string
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $string Sanitize and unslash string.
+	 *
+	 * @return string
 	 */
 	function sanitize_form_field( $string = '' ) {
 		return sanitize_text_field( wp_unslash( $string ) );
@@ -174,12 +175,12 @@ if ( ! function_exists( 'is_int_even' ) ) {
 
 	/**
 	 * Whether the number transmitted is an even number.
-	 *
-	 * @param int $var source int.
-	 *
-	 * @return int
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param int $var Source int.
+	 *
+	 * @return int
 	 */
 	function is_int_even( $var = 0 ) {
 		return ! ( (int) $var & 1 );
@@ -190,12 +191,12 @@ if ( ! function_exists( 'shuffle_assoc' ) ) {
 
 	/**
 	 * Shuffle the array with the keys intact.
-	 *
-	 * @param array $array source array.
-	 *
-	 * @return array
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param array $array Source array.
+	 *
+	 * @return array
 	 */
 	function shuffle_assoc( $array = array() ) {
 
@@ -218,10 +219,10 @@ if ( ! function_exists( 'kses_available_tags' ) ) {
 
 	/**
 	 * Available tags for wp_kses() function.
-	 *
-	 * @return array
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @return array
 	 */
 	function kses_available_tags() {
 
@@ -259,15 +260,15 @@ if ( ! function_exists( 'array_insert_after' ) ) {
 	/**
 	 * Insert a value or key/value pair after a specific key in an array. If key doesn't exist, value is appended to the end of the array.
 	 * 
+	 * @since 1.1.3
+	 * 
 	 * @link https://gist.github.com/wpscholar/0deadce1bbfa4adb4e4c
 	 *
-	 * @param array $array
+	 * @param array  $array
 	 * @param string $key
-	 * @param array $new
+	 * @param array  $new
 	 *
 	 * @return array
-	 * 
-	 * @since 1.1.3
 	 */
 	function array_insert_after( array $array, $key, array $new ) {
 		$keys = array_keys( $array );
@@ -282,13 +283,13 @@ if ( ! function_exists( 'get_curl_content' ) ) {
 
 	/**
 	 * Retrieves content via curl and writes an acknowledgement/error in the log file.
-	 *
-	 * @param string $url   source url for parsing.
-	 * @param string $proxy proxy server.
-	 *
-	 * @return string
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $url   Source url for parsing.
+	 * @param string $proxy Proxy server.
+	 *
+	 * @return string
 	 */
 	function get_curl_content( $url, $proxy = '' ) {
 
@@ -322,15 +323,15 @@ if ( ! function_exists( 'save_remote_file' ) ) {
 
 	/**
 	 * Retrieves content via curl and writes an acknowledgement/error in the log file.
-	 *
-	 * @param string $file_link   External file link.
-	 * @param string $file_name   File name.
-	 * @param string $file_path   Path on the server to save the file.
-	 * @param string $sleep       Delay after receiving a file. Default: 0.1 sec
-	 *
-	 * @return string
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $file_link External file link.
+	 * @param string $file_name File name.
+	 * @param string $file_path Path on the server to save the file.
+	 * @param string $sleep     Delay after receiving a file. Default: 0.1 sec
+	 *
+	 * @return string
 	 */
 	function save_remote_file( $file_link = null, $file_name = null, $file_path = null, $sleep = 100000 ) {
 
@@ -385,12 +386,12 @@ if ( ! function_exists( 'get_escape_title' ) ) {
 
 	/**
 	 * Escapes and beautifies title.
-	 *
-	 * @param string $string source title.
-	 *
-	 * @return string
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $string Source title.
+	 *
+	 * @return string
 	 */
 	function get_escape_title( $string = null ) {
 
@@ -413,12 +414,12 @@ if ( ! function_exists( 'get_title_slug' ) ) {
 
 	/**
 	 * Convert title string to slug.
-	 *
-	 * @param string $string source title.
-	 *
-	 * @return string
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $string Source title.
+	 *
+	 * @return string
 	 */
 	function get_title_slug( $string = null ) {
 
@@ -442,14 +443,14 @@ if ( ! function_exists( 'get_random_date' ) ) {
 
 	/**
 	 * Gets a random date between two specified dates.
-	 *
-	 * @param string $start_date starting date.
-	 * @param string $end_date   final date.
-	 * @param string $format     format date for output.
-	 *
-	 * @return string
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $start_date Starting date.
+	 * @param string $end_date   Final date.
+	 * @param string $format     Format date for output.
+	 *
+	 * @return string
 	 */
 	function get_random_date( $start_date, $end_date, $format = 'Y-m-d H:i:s' ) {
 
@@ -464,14 +465,14 @@ if ( ! function_exists( 'get_explode_part' ) ) {
 
 	/**
 	 * Gets the specified value from a string divided by the specified separator.
-	 *
-	 * @param string $string    source input string.
-	 * @param int    $num       array key.
-	 * @param string $separator separator for explode string.
-	 *
-	 * @return string
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $string    Source input string.
+	 * @param int    $num       Array key.
+	 * @param string $separator Separator for explode string.
+	 *
+	 * @return string
 	 */
 	function get_explode_part( $string = null, $num = 0, $separator = ',' ) {
 
@@ -499,13 +500,13 @@ if ( ! function_exists( 'get_first_value_from_string' ) ) {
 
 	/**
 	 * Gets the first value from the string divided by the specified separator.
-	 *
-	 * @param string $string    source input string.
-	 * @param string $separator separator for explode string.
-	 *
-	 * @return string
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $string    Source input string.
+	 * @param string $separator Separator for explode string.
+	 *
+	 * @return string
 	 */
 	function get_first_value_from_string( $string = null, $separator = ',' ) {
 
@@ -523,13 +524,13 @@ if ( ! function_exists( 'get_last_value_from_string' ) ) {
 
 	/**
 	 * Gets the last value from the string divided by the specified separator.
-	 *
-	 * @param string $string    source input string.
-	 * @param string $separator separator for explode string.
-	 *
-	 * @return string
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $string    Source input string.
+	 * @param string $separator Separator for explode string.
+	 *
+	 * @return string
 	 */
 	function get_last_value_from_string( $string = null, $separator = ',' ) {
 
@@ -548,12 +549,12 @@ if ( ! function_exists( 'get_first_post_img' ) ) {
 
 	/**
 	 * Gets the first image in the content.
-	 *
-	 * @param object $post object for search image.
-	 *
-	 * @return string
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param object $post Object for search image.
+	 *
+	 * @return string
 	 */
 	function get_first_post_img( $post = null ) {
 
@@ -577,13 +578,13 @@ if ( ! function_exists( 'format_bytes' ) ) {
 
 	/**
 	 * Formats bytes into a human-readable representation.
-	 *
-	 * @param int $bytes     number of bytes.
-	 * @param int $precision number of characters for rounding.
-	 *
-	 * @return string
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param int $bytes     Number of bytes.
+	 * @param int $precision Number of characters for rounding.
+	 *
+	 * @return string
 	 */
 	function format_bytes( $bytes, $precision = 2 ) {
 
@@ -605,12 +606,12 @@ if ( ! function_exists( 'str_word_count_utf8' ) ) {
 
 	/**
 	 * Counts the number of words in the utf string.
-	 *
-	 * @param string $string source string.
-	 *
-	 * @return int
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $string Source string.
+	 *
+	 * @return int
 	 */
 	function str_word_count_utf8( $string ) {
 		$array = preg_split( '/\W+/u', $string, -1, PREG_SPLIT_NO_EMPTY );
@@ -622,12 +623,12 @@ if ( ! function_exists( 'read_time_estimate' ) ) {
 
 	/**
 	 * Returns the approximate reading time of the article to the line.
-	 *
-	 * @param string $content source content.
-	 *
-	 * @return string
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $content Source content.
+	 *
+	 * @return string
 	 */
 	function read_time_estimate( $content = null ) {
 
@@ -662,13 +663,13 @@ if ( ! function_exists( 'mb_ucfirst' ) && extension_loaded( 'mbstring' ) ) {
 
 	/**
 	 * Returns the string with the first capital letter.
-	 *
-	 * @param string $str      source string.
-	 * @param string $encoding the default encoding is UTF-8.
-	 *
-	 * @return string
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $str      Source string.
+	 * @param string $encoding The default encoding is UTF-8.
+	 *
+	 * @return string
 	 */
 	function mb_ucfirst( $str, $encoding = 'UTF-8' ) {
 		$str = mb_ereg_replace( '^[\ ]+', '', $str );
@@ -681,12 +682,12 @@ if ( ! function_exists( 'RGBtoHEX' ) ) {
 
 	/**
 	 * RGB to HEX color conversion function.
-	 *
-	 * @param string $string source string for converting.
-	 *
-	 * @return string
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $string Source string for converting.
+	 *
+	 * @return string
 	 */
 	function RGBtoHEX( $string = null ) {
 
@@ -723,12 +724,12 @@ if ( ! function_exists( 'remove_emoji' ) ) {
 
 	/**
 	 * Returns string with remove emojies.
-	 *
-	 * @param string $string source string.
-	 *
-	 * @return string
 	 * 
 	 * @since 1.0.0
+	 *
+	 * @param string $string Source string.
+	 *
+	 * @return string
 	 */
 	function remove_emoji( $string = null ) {
 

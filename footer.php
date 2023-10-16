@@ -3,14 +3,14 @@
  * The template for displaying the footer
  *
  * Contains the closing of the #content div and all content after.
+ * 
+ * @since 1.0.0
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package Aesthetix
- * @since 1.0.0
  */
-
-?>
+ ?>
 
 <?php
 	/**
