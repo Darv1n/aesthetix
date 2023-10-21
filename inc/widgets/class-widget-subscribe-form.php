@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * 
  * @since 1.2.0
  */
-class Subscribe_Form_Widget extends WC_Widget {
+class Subscribe_Form_WPA_Widget extends WPA_Widget {
 
 	/**
 	 * Constructor.

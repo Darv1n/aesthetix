@@ -23,8 +23,8 @@
 <div <?php aesthetix_archive_page_columns_wrapper_classes( 'align-items-center' ); ?>>
 	<div class="<?php echo esc_attr( implode( ' ', $first_col_classes ) ); ?>">
 		<?php
-			if ( is_active_sidebar( 'sidebar-footer-top-left' ) ) {
-				dynamic_sidebar( 'sidebar-footer-top-left' );
+			if ( is_active_sidebar( 'footer-top-left' ) ) {
+				dynamic_sidebar( 'footer-top-left' );
 			} else { 
 				get_template_part( 'templates/logo' );
 			}
@@ -32,15 +32,15 @@
 	</div>
 	<div class="<?php echo esc_attr( implode( ' ', $last_col_classes ) ); ?>">
 		<?php
-			if ( is_active_sidebar( 'sidebar-footer-top-right' ) ) {
-				dynamic_sidebar( 'sidebar-footer-top-right' );
+			if ( is_active_sidebar( 'footer-top-right' ) ) {
+				dynamic_sidebar( 'footer-top-right' );
 			} else { ?>
 				<div class="main-menu">
-					<nav id="footer-navigation" class="footer-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Site main menu', 'aesthetix' ); ?>">
+					<nav class="footer-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Site main menu', 'aesthetix' ); ?>">
 						<?php
 							$args = array(
 								'theme_location' => 'primary',
-								'menu_id'        => 'primary-navigation',
+								// 'menu_id'        => 'primary-navigation',
 								'container'      => '',
 								'fallback_cb'    => 'primary_menu_fallback',
 							);

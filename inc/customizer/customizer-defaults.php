@@ -30,86 +30,92 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 		}
 
 		$aesthetix_defaults = array(
-			'general_container_width'                      => 'average',
-			'general_content_width'                        => 'wide',
+			'general_demo_var'                          => 'demo-1',
+			'general_container_width'                   => 'average',
+			'general_content_width'                     => 'wide',
 
-			'general_header_top_bar_display'               => false,
-			'general_header_type'                          => 'header-simple',
+			'general_header_top_bar_display'            => false,
+			'general_header_type'                       => 'default',
+			'general_header_mobile_type'                => 'default',
 
-			'general_menu_type'                            => 'menu-open',
-			'general_menu_position'                        => 'fixed',
-			'general_menu_align'                           => 'right',
-			'general_menu_button_alignment'                => 'right',
-			'general_menu_button_color'                    => 'primary',
-			'general_menu_button_type'                     => 'common',
-			'general_menu_button_content'                  => 'button-icon-text',
-			'general_menu_button_rounded'                  => false,
+			'general_menu_align'                        => 'left',
 
-			'general_mobile_menu_structure'                => 'search,subscribe,menu',
+			'general_footer_type'                       => 'footer-four-columns',
+			'general_footer_top_bar_display'            => false,
+			'general_footer_bottom_bar_display'         => false,
 
-			'general_footer_type'                          => 'footer-four-columns',
-			'general_footer_top_bar_display'               => false,
-			'general_footer_bottom_bar_display'            => false,
+			'general_breadcrumbs_display'               => true,
+			'general_breadcrumbs_type'                  => 'woocommerce',
+			'general_breadcrumbs_separator'             => '/',
 
-			'general_breadcrumbs_display'                  => true,
-			'general_breadcrumbs_type'                     => 'woocommerce',
-			'general_breadcrumbs_separator'                => '/',
+			'general_subscribe_form_display'            => true,
+			'general_subscribe_form_type'               => 'theme',
+			'general_subscribe_form_title'              => apply_filters( 'get_aesthetix_general_subscribe_form_title', esc_html__( 'Subscribe to our newsletter for all the latest updates', 'aesthetix' ) ),
+			'general_subscribe_form_bg'                 => '',
+			'general_subscribe_form_shortcode'          => '',
 
-			'general_subscribe_form_display'               => true,
-			'general_subscribe_form_type'                  => 'theme',
-			'general_subscribe_form_title'                 => apply_filters( 'get_aesthetix_general_subscribe_form_title', esc_html__( 'Subscribe to our newsletter for all the latest updates', 'aesthetix' ) ),
-			'general_subscribe_form_bg'                    => '',
-			'general_subscribe_form_shortcode'             => '',
-			'general_subscribe_popup_form_button_color'    => 'secondary',
-			'general_subscribe_popup_form_button_type'     => 'common',
-			'general_subscribe_popup_form_button_content'  => 'button-icon-text',
-			'general_subscribe_popup_form_button_rounded'  => true,
+			'general_cookie_display'                    => true,
 
-			'general_scroll_top_button_display'            => false,
-			'general_scroll_top_button_color'              => 'primary',
-			'general_scroll_top_button_type'               => 'common',
-			'general_scroll_top_button_content'            => 'button-icon',
-			'general_scroll_top_button_rounded'            => false,
+			'front_page_slider_display'                 => true,
+			'front_page_slider_post_type'               => 'post',
+			'front_page_slider_slides_count'            => 'six',
+			'front_page_slider_slides_to_show'          => 'four',
+			'front_page_slider_slides_template_type'    => 'tils',
 
-			'general_searchform_form_button_color'         => 'primary',
-			'general_searchform_form_button_type'          => 'common',
-			'general_searchform_form_button_content'       => 'button-icon',
-			'general_searchform_form_button_rounded'       => false,
-			'general_searchform_popup_form_button_color'   => 'primary',
-			'general_searchform_popup_form_button_type'    => 'common',
-			'general_searchform_popup_form_button_content' => 'button-icon',
-			'general_searchform_popup_form_button_rounded' => true,
+			'root_primary_font'                         => 'playfair-display',
+			'root_secondary_font'                       => 'open-sans',
+			'root_color_scheme'                         => 'white',
+			'root_primary_color'                        => 'blue',
+			'root_secondary_color'                      => 'red',
+			'root_gray_color'                           => 'slate',
+			'root_link_color'                           => 'primary',
 
-			'general_cookie_display'                       => true,
+			'root_button_type'                          => 'common',
+			'root_button_icon'                          => true,
+			'root_button_icon_position'                 => 'before',
+			'root_button_size'                          => 'md',
+			'root_button_border_width'                  => 'border-2',
+			'root_button_border_radius'                 => 'rounded-md',
 
-			'front_page_slider_display'                    => true,
-			'front_page_slider_post_type'                  => 'post',
-			'front_page_slider_slides_count'               => 'six',
-			'front_page_slider_slides_to_show'             => 'four',
-			'front_page_slider_slides_template_type'       => 'tils',
+			'root_menu_button_color'                    => 'primary',
+			'root_menu_button_type'                     => 'common',
+			'root_menu_button_content'                  => 'button-icon-text',
+			'root_menu_button_rounded'                  => true,
 
-			'root_primary_font'                            => 'playfair-display',
-			'root_secondary_font'                          => 'open-sans',
-			'root_color_scheme'                            => 'white',
-			'root_primary_color'                           => 'sky',
-			'root_secondary_color'                         => 'orange',
-			'root_gray_color'                              => 'slate',
-			'root_link_color'                              => 'primary',
+			'root_home_button_color'                    => 'primary',
+			'root_home_button_display'                  => 'none',
+			'root_home_button_type'                     => 'common',
+			'root_home_button_content'                  => 'button-icon',
+			'root_home_button_rounded'                  => true,
 
-			'root_button_type'                             => 'common',
-			'root_button_icon'                             => true,
-			'root_button_icon_position'                    => 'before',
-			'root_button_size'                             => 'md',
-			'root_button_border_width'                     => 'border-2',
-			'root_button_border_radius'                    => 'rounded-md',
+			'root_scroll_top_button_display'            => false,
+			'root_scroll_top_button_color'              => 'secondary',
+			'root_scroll_top_button_type'               => 'common',
+			'root_scroll_top_button_content'            => 'button-icon',
+			'root_scroll_top_button_rounded'            => false,
 
-			'root_input_size'                              => 'md',
-			'root_input_border_width'                      => 'border-2',
-			'root_input_border_radius'                     => 'rounded-md',
+			'root_subscribe_popup_form_button_color'    => 'secondary',
+			'root_subscribe_popup_form_button_type'     => 'common',
+			'root_subscribe_popup_form_button_content'  => 'button-icon-text',
+			'root_subscribe_popup_form_button_rounded'  => true,
 
-			'root_box_shadow'                              => 'shadow-md',
-			'root_border_width'                            => 'border-2',
-			'root_border_radius'                           => 'rounded-md',
+			'root_searchform_form_button_color'         => 'primary',
+			'root_searchform_form_button_type'          => 'common',
+			'root_searchform_form_button_content'       => 'button-icon',
+			'root_searchform_form_button_rounded'       => false,
+
+			'root_searchform_popup_form_button_color'   => 'primary',
+			'root_searchform_popup_form_button_type'    => 'common',
+			'root_searchform_popup_form_button_content' => 'button-icon',
+			'root_searchform_popup_form_button_rounded' => true,
+
+			'root_input_size'                           => 'md',
+			'root_input_border_width'                   => 'border-2',
+			'root_input_border_radius'                  => 'rounded-md',
+
+			'root_box_shadow'                           => 'shadow-md',
+			'root_border_width'                         => 'border-2',
+			'root_border_radius'                        => 'rounded-md',
 		);
 
 		foreach ( get_post_types() as $key => $post_type ) {
@@ -184,11 +190,31 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'other_email'              => '',
 		) );
 
+		$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
+			'default_thumbnail'   => get_theme_file_uri( '/assets/img/default-thumbnail.jpg' ),
+			'default_adv_desktop' => get_theme_file_uri( '/assets/img/header-promo.png' ),
+			'default_adv_mobile'  => get_theme_file_uri( '/assets/img/header-promo.png' ),
+			'default_adv_link'    => 'https://www.3forty.media/zosia/demo-2/',
+			'default_adv_alt'     => __( 'Advertising banner', 'aesthetix' ),
+		) );
+
+		$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
+			'title_tagline_logo_size' => 'md',
+		) );
+
+		if ( $aesthetix_defaults['general_header_type'] === 'mid-2-bot-2' ) {
+			$aesthetix_defaults['root_home_button_display'] = 'menu-start';
+		}
+
+		if ( $aesthetix_defaults['general_header_type'] === 'mid-2-bot-3' ) {
+			$aesthetix_defaults['root_home_button_display'] = 'menu-center';
+		}
+
 		// Merge child and parent default options.
 		$aesthetix_defaults = apply_filters( 'get_aesthetix_options', $aesthetix_defaults );
 
 		// Merge defaults and theme options.
-		$aesthetix_defaults = wp_parse_args( get_option( 'aesthetix_options' ), $aesthetix_defaults );
+		$aesthetix_defaults = wp_parse_args( get_option( 'aesthetix_options', array() ), $aesthetix_defaults );
 
 		// Return controls.
 		if ( is_null( $control ) ) {

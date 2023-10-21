@@ -32,24 +32,13 @@
 
 		<?php do_action( 'wp_header_open' ); ?>
 
-		<?php if ( get_aesthetix_options( 'general_header_top_bar_display' ) ) { ?>
-			<div class="header__top-bar">
-				<div <?php aesthetix_container_classes( 'container-header' ); ?>>
-
-					<?php get_template_part( 'templates/header/header', 'top-bar' ); ?>
-
-				</div>
-			</div>
-		<?php } ?>
+		<?php if ( get_aesthetix_options( 'general_header_top_bar_display' ) ) {
+			get_template_part( 'templates/header/header', 'top-bar' );
+		} ?>
 
 		<?php
-			if ( get_aesthetix_options( 'general_header_type' ) === 'header-content' ) {
-				get_template_part( 'templates/header/header-content-type-', 'content' );
-			} elseif ( get_aesthetix_options( 'general_header_type' ) === 'header-logo-center' ) {
-				get_template_part( 'templates/header/header-content-type-', 'logo-center' );
-			} else {
-				get_template_part( 'templates/header/header-content-type', 'simple' );
-			}
+			get_template_part( 'templates/header/header-mobile', get_aesthetix_options( 'general_header_mobile_type' ) );
+			get_template_part( 'templates/header/header-desktop', get_aesthetix_options( 'general_header_type' ) );
 		?>
 
 		<?php do_action( 'wp_header_close' ); ?>

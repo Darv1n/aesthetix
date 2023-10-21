@@ -10,7 +10,11 @@
  */
  ?>
 
-<div class="row align-items-center">
-	<div class="col-12 col-xs-12 col-md-6 header-column"><?php dynamic_sidebar( 'sidebar-top-left' ); ?></div>
-	<div class="col-12 col-xs-12 col-md-6 header-column"><?php dynamic_sidebar( 'sidebar-top-right' ); ?></div>
+<div class="header-top-bar">
+	<div <?php aesthetix_container_classes( 'container-header' ); ?>>
+		<div <?php aesthetix_archive_page_columns_wrapper_classes( 'align-items-center' ); ?>>
+			<div class="col-12 col-xs-12 col-md-6"><?php dynamic_sidebar( 'header-top-left' ); ?></div>
+			<div class="col-12 col-xs-12 col-md-6"><?php dynamic_sidebar( 'header-top-right' ); ?></div>
+		</div>
+	</div>
 </div>

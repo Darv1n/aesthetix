@@ -154,17 +154,14 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 
 		// Enqueue only one font if they are the same.
 		if ( get_aesthetix_options( 'root_primary_font' ) === get_aesthetix_options( 'root_secondary_font' ) ) {
-			wp_enqueue_style( 'primary-font', '//fonts.googleapis.com/css2?family=' . str_replace( '\'', '', str_replace( ' ', '+', get_aesthetix_customizer_fonts( get_aesthetix_options( 'root_primary_font' ) ) ) ) . ':wght@400;700&display=swap', array(), '1.0.0' );
+			wp_enqueue_style( 'primary-font', '//fonts.googleapis.com/css2?family=' . str_replace( '\'', '', str_replace( ' ', '+', get_aesthetix_customizer_fonts( get_aesthetix_options( 'root_primary_font' ) ) ) ) . ':wght@400;500;700&display=swap', array(), '1.0.0' );
 		} else {
-			wp_enqueue_style( 'primary-font', '//fonts.googleapis.com/css2?family=' . str_replace( '\'', '', str_replace( ' ', '+', get_aesthetix_customizer_fonts( get_aesthetix_options( 'root_primary_font' ) ) ) ) . ':wght@400;700&display=swap', array(), '1.0.0' );
-			wp_enqueue_style( 'secondary-font', '//fonts.googleapis.com/css2?family=' . str_replace( '\'', '', str_replace( ' ', '+', get_aesthetix_customizer_fonts( get_aesthetix_options( 'root_secondary_font' ) ) ) ) . ':wght@400;700&display=swap', array(), '1.0.0' );
+			wp_enqueue_style( 'primary-font', '//fonts.googleapis.com/css2?family=' . str_replace( '\'', '', str_replace( ' ', '+', get_aesthetix_customizer_fonts( get_aesthetix_options( 'root_primary_font' ) ) ) ) . ':wght@400;500;700&display=swap', array(), '1.0.0' );
+			wp_enqueue_style( 'secondary-font', '//fonts.googleapis.com/css2?family=' . str_replace( '\'', '', str_replace( ' ', '+', get_aesthetix_customizer_fonts( get_aesthetix_options( 'root_secondary_font' ) ) ) ) . ':wght@400;500;700&display=swap', array(), '1.0.0' );
 		}
 
 		// Bootstrap grid.
 		wp_enqueue_style( 'bootstrap-grid', get_theme_file_uri( '/assets/css/bootstrap-grid.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/bootstrap-grid.min.css' ) ) );
-
-		// Icons.
-		wp_enqueue_style( 'icons', get_theme_file_uri( '/assets/css/icons.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/icons.min.css' ) ) );
 
 		// Основные стили. Компиляция галпом. Могут быть переопределены в дочерней.
 		wp_enqueue_style( 'common-styles', get_theme_file_uri( '/assets/css/common.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/common.min.css' ) ) );
@@ -175,6 +172,12 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 		}
 
 		wp_add_inline_style( 'common-styles', ':root {' . esc_attr( $root_string ) . '}' );
+
+		// Layout.
+		// wp_enqueue_style( 'layout', get_theme_file_uri( '/assets/css/layout-flex.min.css' ), array( 'common-styles' ), filemtime( get_theme_file_path( '/assets/css/layout-flex.min.css' ) ) );
+
+		// Icons.
+		wp_enqueue_style( 'icons', get_theme_file_uri( '/assets/css/icons.min.css' ), array( 'common-styles' ), filemtime( get_theme_file_path( '/assets/css/icons.min.css' ) ) );
 
 		// Основные скрипты. Компиляция галпом. Могут быть переопределены в дочерней.
 		wp_enqueue_script( 'common-scripts', get_theme_file_uri( '/assets/js/common.min.js' ), array( 'jquery' ), filemtime( get_theme_file_path( '/assets/js/common.min.js' ) ), true );

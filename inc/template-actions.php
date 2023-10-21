@@ -58,31 +58,6 @@ if ( ! function_exists( 'aesthetix_pre_get_posts' ) ) {
 }
 add_action( 'pre_get_posts', 'aesthetix_pre_get_posts', 1 );
 
-if ( ! function_exists( 'admin_bar_init_callback' ) ) {
-
-	/**
-	 * Function for `admin_bar_init` action-hook.
-	 * 
-	 * @since 1.1.1
-	 * 
-	 * @return void
-	 */
-	function admin_bar_init_callback() {
-		remove_action( 'wp_head', '_admin_bar_bump_cb' );
-
-		add_action( 'wp_head', static function() {
-			$type_attr = current_theme_supports( 'html5', 'style' ) ? '' : ' type="text/css"'; ?>
-				<style<?php echo $type_attr; ?> media="screen">
-					header { margin-top: 32px !important; }
-					@media screen and ( max-width: 782px ) {
-						header { margin-top: 46px !important; }
-					}
-				</style>
-		<?php } );
-	}
-}
-add_action( 'admin_bar_init', 'admin_bar_init_callback');
-
 if ( ! function_exists( 'before_site_content_structure' ) ) {
 
 	/**
@@ -92,26 +67,14 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 	 */
 	function before_site_content_structure() {
 
-		$structure             = array();
-		$mobile_menu_structure = get_aesthetix_options( 'general_mobile_menu_structure' );
-
-		if ( is_string( $mobile_menu_structure ) && ! empty( $mobile_menu_structure ) ) {
-			$mobile_menu_structure = array_map( 'trim', explode( ',', $mobile_menu_structure ) );
-		}
-
-		if ( in_array( 'search', $mobile_menu_structure, true ) || is_active_widget( 0, 0, 'aesthetix_search_popup_form_widget' ) ) {
-			$structure[] = 'search-popup';
-		}
-
-		if ( in_array( 'subscribe', $mobile_menu_structure, true ) || is_active_widget( 0, 0, 'aesthetix_subscribe_popup_form_widget' ) ) {
-			$structure[] = 'subscribe-popup';
-		}
-
-		$structure = array_merge( $structure, array(
+		$structure = array(
+			'aside-menu',
+			'search-popup', // TODO: Load by condition.
+			'subscribe-popup', // TODO: Load by condition.
 			'first-screen',
 			'breadcrumbs',
 			'content-wrapper-start',
-		) );
+		);
 
 		$structure = apply_filters( 'before_site_content_structure', $structure );
 
@@ -120,11 +83,14 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 				case has_action( 'before_site_content_structure_loop_' . $value ):
 					do_action( 'before_site_content_structure_loop_' . $value );
 					break;
+				case 'aside-menu':
+					get_template_part( 'templates/aside', 'menu' );
+					break;
 				case 'search-popup':
-					get_template_part( 'templates/search-popup' );
+					get_template_part( 'templates/aside', 'search' );
 					break;
 				case 'subscribe-popup':
-					get_template_part( 'templates/subscribe-popup' );
+					get_template_part( 'templates/aside', 'subscribe' );
 					break;
 				case 'first-screen':
 					get_template_part( 'templates/first-screen' );
@@ -215,40 +181,3 @@ if ( ! function_exists( 'wp_footer_close_structure' ) ) {
 	}
 }
 add_action( 'wp_footer_close', 'wp_footer_close_structure' );
-
-if ( ! function_exists( 'aesthetix_after_main_navigation_structure' ) ) {
-
-	/**
-	 * Display mobile menu structure in templates/header-content-*.php.
-	 * 
-	 * @since 1.1.1
-	 */
-	function aesthetix_after_main_navigation_structure() {
-
-		$structure = get_aesthetix_options( 'general_mobile_menu_structure' );
-
-		if ( is_string( $structure ) && ! empty( $structure ) ) {
-			$structure = array_map( 'trim', explode( ',', $structure ) );
-
-			foreach ( $structure as $key => $value ) {
-				switch ( $value ) {
-					case has_action( 'aesthetix_after_main_navigation_structure_loop_' . $value ):
-						do_action( 'aesthetix_after_main_navigation_structure_loop_' . $value );
-						break;
-					case 'menu':
-						get_template_part( 'templates/button', 'menu-toggle' );
-						break;
-					case 'search':
-						get_template_part( 'templates/search-popup', 'toggle' );
-						break;
-					case 'subscribe':
-						get_template_part( 'templates/subscribe-popup', 'toggle' );
-						break;
-					default:
-						break;
-				}
-			}
-		}
-	}
-}
-add_action( 'aesthetix_after_main_navigation', 'aesthetix_after_main_navigation_structure' );

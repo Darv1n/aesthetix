@@ -95,6 +95,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 		$roots['link-color']           = get_aesthetix_customizer_converter_colors( $link_color . '-500' );
 		$roots['link-color-light']     = get_aesthetix_customizer_converter_colors( $link_color . '-400' );
 
+		// $roots['post-margin']          = '1rem';
+		// $roots['post-padding']         = '1rem';
+
 		$roots['button-padding-top']   = get_first_value_from_string( get_aesthetix_customizer_converter_sizes( get_aesthetix_options( 'root_button_size' ) ), ' ' );
 		$roots['button-padding-side']  = get_last_value_from_string( get_aesthetix_customizer_converter_sizes( get_aesthetix_options( 'root_button_size' ) ), ' ' );
 		$roots['button-border-width']  = get_aesthetix_customizer_converter_borders( get_aesthetix_options( 'root_button_border_width' ) );
@@ -153,3 +156,84 @@ function prefix_filter_theme_json_theme( $theme_json ) {
 	return $theme_json;
 }
 add_filter( 'wp_theme_json_data_default', 'prefix_filter_theme_json_theme' );
+
+if ( ! function_exists( 'set_aesthetix_customizer_demo_var' ) ) {
+
+	/**
+	 * Function for 'admin_bar_init' action-hook.
+	 * 
+	 * @since 1.2.4
+	 * 
+	 * @link https://developer.wordpress.org/reference/hooks/admin_bar_init/
+	 *
+	 * @return void
+	 */
+	function set_aesthetix_customizer_demo_var() {
+
+		$demo_var = get_aesthetix_options( 'general_demo_var' );
+
+		$demo_var = apply_filters( 'set_aesthetix_customizer_demo_var', $demo_var );
+
+		if ( $demo_var ) {
+			set_query_var( 'demo_var', $demo_var );
+		}
+	}
+}
+// add_action( 'admin_bar_init', 'set_aesthetix_customizer_demo_var' );
+// add_action( 'wp_loaded', 'set_aesthetix_customizer_demo_var' );
+// add_action( '_admin_menu', 'set_aesthetix_customizer_demo_var' );
+
+if ( ! function_exists( 'get_aesthetix_options_with_demo_var' ) ) {
+
+	/**
+	 * Function for 'get_aesthetix_options' action-hook.
+	 * 
+	 * @since 1.0.2
+	 *
+	 * @param string $aesthetix_defaults Array with default theme options.
+	 *
+	 * @return array
+	 */
+	function get_aesthetix_options_with_demo_var( $aesthetix_defaults ) {
+
+		$aesthetix_options = get_option( 'aesthetix_options', array() );
+
+		if ( get_query_var( 'demo', false ) ) {
+			$demo_var = get_query_var( 'demo', false );
+		} else if ( isset( $aesthetix_options['general_demo_var'] ) ) {
+			$demo_var = $aesthetix_options['general_demo_var'];
+		} else {
+			$demo_var = $aesthetix_defaults['general_demo_var'];
+		}
+
+		if ( $demo_var === 'demo-1' ) {
+			$demo_defaults = array(
+				'root_color_scheme'       => 'black',
+				'general_container_width' => 'fluid',
+			);
+		}
+
+		if ( isset( $demo_defaults ) && is_array( $demo_defaults ) && ! empty( $demo_defaults ) ) {
+			$aesthetix_defaults = wp_parse_args( $demo_defaults, $aesthetix_defaults );
+		}
+
+		return $aesthetix_defaults;
+	}
+}
+// add_filter( 'get_aesthetix_options', 'get_aesthetix_options_with_demo_var' );
+
+if ( ! function_exists( 'add_demo_query_vars' ) ) {
+
+	/**
+	 * Function for 'query_vars' filter-hook.
+	 * 
+	 * @param string[] $public_query_vars The array of allowed query variable names.
+	 *
+	 * @return string[]
+	 */
+	function add_demo_query_vars( $qvars ) {
+		$qvars[] = 'demo';
+		return $qvars;
+	}
+}
+add_filter( 'query_vars', 'add_demo_query_vars' );

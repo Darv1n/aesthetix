@@ -13,8 +13,8 @@
 <div <?php aesthetix_archive_page_columns_wrapper_classes(); ?>>
 	<div class="col-12 col-sm-6 col-md-3 footer-column">
 		<?php
-			if ( is_active_sidebar( 'sidebar-footer-one' ) ) {
-				dynamic_sidebar( 'sidebar-footer-one' );
+			if ( is_active_sidebar( 'footer-main-first' ) ) {
+				dynamic_sidebar( 'footer-main-first' );
 			} else { ?>
 				<div class="widget widget_branding">
 					<?php get_template_part( 'templates/logo' ); ?>
@@ -27,22 +27,22 @@
 	</div>
 	<div class="col-12 col-sm-6 col-md-3 footer-column">
 		<?php
-			if ( is_active_sidebar( 'sidebar-footer-two' ) ) {
-				dynamic_sidebar( 'sidebar-footer-two' );
+			if ( is_active_sidebar( 'footer-main-second' ) ) {
+				dynamic_sidebar( 'footer-main-second' );
 			}
 		?>
 	</div>
 	<div class="col-12 col-sm-6 col-md-3 footer-column">
 		<?php
-			if ( is_active_sidebar( 'sidebar-footer-three' ) ) {
-				dynamic_sidebar( 'sidebar-footer-three' );
+			if ( is_active_sidebar( 'footer-main-third' ) ) {
+				dynamic_sidebar( 'footer-main-third' );
 			}
 		?>
 	</div>
 	<div class="col-12 col-sm-6 col-md-3 footer-column">
 		<?php
-			if ( is_active_sidebar( 'sidebar-footer-four' ) ) {
-				dynamic_sidebar( 'sidebar-footer-four' );
+			if ( is_active_sidebar( 'footer-main-fourth' ) ) {
+				dynamic_sidebar( 'footer-main-fourth' );
 			} else { ?>
 				<div class="widget widget_footer_contacts">
 					<h3 class="widget-title"><?php esc_html_e( 'Contacts', 'aesthetix' ); ?></h3>

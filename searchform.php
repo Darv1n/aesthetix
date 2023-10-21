@@ -13,10 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $args['input_size']     = $args['input_size'] ?? get_aesthetix_options( 'root_input_size' );
 $args['button_size']    = $args['button_size'] ?? get_aesthetix_options( 'root_input_size' );
-$args['button_color']   = $args['button_color'] ?? get_aesthetix_options( 'general_searchform_form_button_color' );
-$args['button_type']    = $args['button_type'] ?? get_aesthetix_options( 'general_searchform_form_button_type' );
-$args['button_content'] = $args['button_content'] ?? get_aesthetix_options( 'general_searchform_form_button_content' );
-$args['button_rounded'] = $args['button_rounded'] ?? get_aesthetix_options( 'general_searchform_form_button_rounded' );
+$args['button_color']   = $args['button_color'] ?? get_aesthetix_options( 'root_searchform_form_button_color' );
+$args['button_type']    = $args['button_type'] ?? get_aesthetix_options( 'root_searchform_form_button_type' );
+$args['button_content'] = $args['button_content'] ?? get_aesthetix_options( 'root_searchform_form_button_content' );
+$args['button_rounded'] = $args['button_rounded'] ?? get_aesthetix_options( 'root_searchform_form_button_rounded' );
 
 ?>
 

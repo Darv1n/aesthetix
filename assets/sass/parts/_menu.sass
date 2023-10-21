@@ -1,183 +1,159 @@
-// #Menu Toggle
-@media (min-width: 992px)
-	.main-menu_type-open
-		.menu-toggle
-			display: none
+// .header-desktop
+// 	display: none
 
-.menu-toggle
-	position: relative
-	display: block
-	z-index: 12
-	&_left
-		text-align: left
+// @media (min-width: 768px)
+// 	.header-mobile
+// 		display: none
+// 	.header-desktop
+// 		display: block
+
+// #Menu aside
+.aside-menu
+	position: fixed
+	top: 0
+	right: 0
+	height: 100%
+	width: 100%
+	max-width: 380px
+	overflow-x: auto
+	overflow-x: hidden
+	background: $primary-bg-color
+	transition: $transition
+	z-index: 2000
+	box-shadow: $box-shadow
+	transform: translateX( 100% )
+	&.on
+		transform: translateX( 0 )
+	&.has_wpadminbar
+		top: 32px
+	> *
+		margin: 0 1.875rem
+		display: block
+		width: auto
+		max-width: 100%
+		&:first-child
+			margin-top: 1.875rem
+		&:not(:last-child)
+			margin-bottom: 1.875rem
+	&-toggle
+		text-align: right
+
+@media screen and (max-width: 782px)
+	.aside-menu
+		&.has_wpadminbar
+			top: 46px
+
+.menu-wrap
+	display: inline-block
 	&_right
 		text-align: right
-		margin-left: auto
-		margin-right: 0
-	&_center
-		text-align: center
-		margin: auto
 
 // #Menu
-.main-menu
-	padding: 1rem 0
-	> *
-		display: inline-block
-		vertical-align: middle
-	&_left
-		text-align: left
-	&_right
-		text-align: right
-	.menu
-		padding: 0
-		margin-bottom: 0
-		&-item
-			position: relative
-			display: block
-			a
-				display: inline-block
-				padding: $padding/2 0
-				color: $primary-text-color
-				text-decoration: none
-				> *
-					display: inline-block
-				&:hover, &:focus, &:active
-					text-decoration: none
-					color: $link-color-dark
-		.current-menu-item a
+.menu
+	text-align: left
+	padding: 0
+	margin-bottom: 0
+	&-title
+		> *
+			display: inline-block
+			vertical-align: middle
+		&-lvl-1
+			font-family: $primary-font
+			font-weight: 500
+	&-description
+		font-size: $small-font-size
+		color: $primary-gray-color
+	&-item
+		display: block
+		a
+			display: inline-block
+			padding: $padding/2 0
+			color: $primary-text-color
 			text-decoration: none
-			color: $link-color-dark
-
-.main-menu_burgered
-	position: relative
-	width: 100%
-	.menu
-		padding: .25rem .5rem
-		overflow-y: auto
-	.main-navigation
-		position: absolute
-		top: 100%
-		left: 0
-		z-index: 10
-		width: 100%
-		visibility: hidden
-		opacity: 0
-		&.on
-			visibility: visible
-			opacity: 1
-	&.main-menu_right
-		.main-navigation
-			left: auto
-			right: 0
-	// .menu-toggle_left ~ .main-navigation
-	// 	.menu-item
-	// 		text-align: left
-	// .menu-toggle_center ~ .main-navigation
-	// 	.menu-item
-	// 		text-align: center
-	// .menu-toggle_right ~ .main-navigation
-	// 	.menu-item
-	// 		text-align: right
-
-
-// .header_menu_absolute, .header_menu_fixed
-// 	&.header_simple
-// 		.main-menu_burgered
-// 			.main-navigation
-// 				left: auto
-// 				right: 0 // в простом меню кнопка всегда справа и меню открывается справа
-// 	&:not(.header_simple)
-// 		&.main-menu_center
-// 			.main-navigation
-// 				text-align: center
-// 				left: 50%
-// 				transform: translateX(-50%)
-// 		&.main-menu_right
-// 			.main-navigation
-// 				text-align: right
-// 				left: auto
-// 				right: 0
-
-// Sub menu.
-.sub-menu
-	position: relative
-	display: none
-	padding-left: $padding
-	padding-right: $padding
-	background: $primary-bg-color
-
-// Dropdown.
-.menu-item-has-children
-	.sub-menu-toggle
-		cursor: pointer
+			vertical-align: middle
+			&:hover, &:focus, &:active
+				text-decoration: none
+				color: $link-color-dark
+			> *
+				display: block
+		&-has-children
+			position: relative
+			margin-right: 0
+			> *:not(.sub-menu)
+				display: inline-block
+				vertical-align: middle
+			&:hover, &:focus, &:active
+				> .sub-menu
+					opacity: 1
+					visibility: visible
+		&.current-menu-item
+			a
+				text-decoration: none
+				color: $link-color-dark
+	.sub-menu
+		display: none
 		transition: $transition
-	.sub-menu-toggle, > a
-		display: inline-block
-		vertical-align: middle
+		&.on
+			display: block
+		&-toggle
+			padding: calc( .125rem * 1.25 + .825rem / 2 ) calc( .125rem * 1.25 + .825rem / 2 )
+		.menu-item
+			display: block
+	&-desktop
+		padding: .5rem 0
+		.menu-item
+			display: inline-block
+			vertical-align: middle
+			margin: 0 .75rem
+		.sub-menu
+			position: absolute
+			left: 0
+			top: calc( 100% + 1rem )
+			z-index: 11
+			min-width: 220px
+			background: $primary-bg-color
+			border-radius: $border-radius
+			border-top-left-radius: 0
+			border-top-right-radius: 0
+			opacity: 0
+			visibility: hidden
+			text-align: left
+			box-shadow: 0 10px 10px rgba( 0, 0, 0, 0.1 )
+			&.on
+				opacity: 1
+				visibility: visible
+			.sub-menu
+				top: 0
+				left: calc( 100% + 1rem )
+				&-toggle.icon
+					&::before
+						transform: translate( -50%, -50% ) rotate( -90deg )
+			.menu-item
+				margin: 0 1rem
+				border-bottom: 1px solid $primary-bd-color
 
-// .header_logo-center
-// 	.menu-toggle
-// 		margin: auto
-// 	.main-menu
-// 		.menu-item
-// 			text-align: center
 
-// .header_content
-// 	.main-menu
-// 		.menu-item
-// 			text-align: left
+
+
+
+
+
+
+
 
 .header_menu_absolute
 	.main-menu_burgered
 		.main-navigation
-			max-width: 540px
-			background: $primary-bg-color
-			max-height: 400px
-			overflow-x: auto
+			// max-width: 540px
+			// background: $primary-bg-color
+			// max-height: 400px
+			// overflow-x: auto
 
 .header_menu_fixed
 	&.header_expanded
-		position: fixed
-		top: 0
-		z-index: 9999
-		height: 100vh
-		width: 100%
-		background: $primary-bg-color
-	.main-menu_burgered
-		// position: absolute
-		// left: 0
-		// padding: .25rem .5rem
-	.main-menu_right
-		.menu-toggle
-			// margin-left: auto
-	&.header_simple
-		.main-menu
-			// left: auto // если хедер простой, то меню фиксируем справа
-			// right: 0
-
-@media (min-width: 992px)
-	.main-menu_type-open
-		.menu > .menu-item
-			display: inline-block
-			margin: 0 1rem
-		.menu-item-has-children.level-1
-			position: relative
-			> .sub-menu
-				position: absolute
-				left: 0
-				z-index: 11
-				padding: .5rem 1.5rem
-				min-width: 290px
-				background: $primary-bg-color
-				border-radius: $elem-bd-radius
-				border: $elem-bd-width solid $primary-bg-color-hover
-				.menu-item
-					//display: block
-					//margin: 0
-					a
-						//padding: .5rem 0
-		&.main-menu_right
-			.menu-item-has-children.level-1
-				> .sub-menu
-					left: auto
-					right: 0
+		// position: fixed
+		// top: 0
+		// z-index: 9999
+		// height: 100vh
+		// width: 100%
+		// background: $primary-bg-color

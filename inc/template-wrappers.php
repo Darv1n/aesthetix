@@ -137,7 +137,7 @@ if ( ! function_exists( 'get_aesthetix_section_classes' ) ) {
 	 * 
 	 * @since 1.1.2
 	 *
-	 * @param string $class Additional section classes.
+	 * @param string $class Additional section classes. Default ''.
 	 *
 	 * @return array
 	 */
@@ -163,6 +163,10 @@ if ( ! function_exists( 'get_aesthetix_section_classes' ) ) {
 
 			$classes[] = 'container';
 
+			if ( in_array( 'container-narrow', get_aesthetix_container_classes(), true ) ) {
+				$classes[] = 'container-general';
+			}
+
 			if ( in_array( 'container-general', get_aesthetix_container_classes(), true ) ) {
 				$classes[] = 'container-average';
 			}
@@ -172,6 +176,10 @@ if ( ! function_exists( 'get_aesthetix_section_classes' ) ) {
 			}
 
 			if ( in_array( 'container-wide', get_aesthetix_container_classes(), true ) ) {
+				$classes[] = 'container-fluid';
+			}
+
+			if ( in_array( 'container-fluid', get_aesthetix_container_classes(), true ) ) {
 				$classes[] = 'container-fluid';
 			}
 
@@ -203,8 +211,8 @@ if ( ! function_exists( 'aesthetix_section_classes' ) ) {
 	 * 
 	 * @since 1.1.2
 	 *
-	 * @param string $class Additional section classes.
-	 * @param bool   $echo  Echo or return section classes.
+	 * @param string $class Additional section classes. Default ''.
+	 * @param bool   $echo  Echo or return section classes. Default true.
 	 *
 	 * @return string|void
 	 */
@@ -227,7 +235,7 @@ if ( ! function_exists( 'get_aesthetix_container_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Additional container classes.
+	 * @param string $class Additional container classes. Default ''.
 	 *
 	 * @return array
 	 */
@@ -266,8 +274,8 @@ if ( ! function_exists( 'aesthetix_container_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Additional container classes.
-	 * @param bool   $echo  Echo or return container classes.
+	 * @param string $class Additional container classes. Default ''.
+	 * @param bool   $echo  Echo or return container classes. Default true.
 	 *
 	 * @return string|void
 	 */
@@ -290,7 +298,7 @@ if ( ! function_exists( 'get_aesthetix_content_area_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Additional content area classes.
+	 * @param string $class Additional content area classes. Default ''.
 	 *
 	 * @return array
 	 */
@@ -349,8 +357,8 @@ if ( ! function_exists( 'aesthetix_content_area_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Additional content area classes.
-	 * @param bool   $echo  Echo or return content area classes.
+	 * @param string $class Additional content area classes. Default ''.
+	 * @param bool   $echo  Echo or return content area classes. Default true.
 	 *
 	 * @return string|void
 	 */
@@ -373,7 +381,7 @@ if ( ! function_exists( 'get_aesthetix_widget_area_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Additional widget area classes.
+	 * @param string $class Additional widget area classes. Default ''.
 	 *
 	 * @return array
 	 */
@@ -416,8 +424,8 @@ if ( ! function_exists( 'aesthetix_widget_area_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Additional widget area classes.
-	 * @param bool   $echo  Echo or return widget area classes.
+	 * @param string $class Additional widget area classes. Default ''.
+	 * @param bool   $echo  Echo or return widget area classes. Default true.
 	 *
 	 * @return string|void
 	 */
@@ -440,7 +448,7 @@ if ( ! function_exists( 'get_aesthetix_header_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Additional header classes.
+	 * @param string $class Additional header classes. Default ''.
 	 *
 	 * @return array
 	 */
@@ -478,12 +486,6 @@ if ( ! function_exists( 'get_aesthetix_header_classes' ) ) {
 			$classes[] = 'header_simple';
 		}
 
-		if ( is_admin_bar_showing() ) {
-			$classes[] = 'is_wpadminbar';
-		}
-
-		$classes[] = 'header_menu_' . get_aesthetix_options( 'general_menu_position' );
-
 		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_header_classes', $classes );
 		$classes = array_unique( (array) $classes );
@@ -500,8 +502,8 @@ if ( ! function_exists( 'aesthetix_header_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Additional header classes.
-	 * @param bool   $echo  Echo or return header classes.
+	 * @param string $class Additional header classes. Default ''.
+	 * @param bool   $echo  Echo or return header classes. Default true.
 	 *
 	 * @return string|void
 	 */
@@ -524,7 +526,7 @@ if ( ! function_exists( 'get_aesthetix_footer_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Additional footer classes.
+	 * @param string $class Additional footer classes. Default ''.
 	 *
 	 * @return array
 	 */
@@ -574,8 +576,8 @@ if ( ! function_exists( 'aesthetix_footer_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Additional footer classes.
-	 * @param bool   $echo  Echo or return footer classes.
+	 * @param string $class Additional footer classes. Default ''.
+	 * @param bool   $echo  Echo or return footer classes. Default true.
 	 *
 	 * @return string|void
 	 */
@@ -598,7 +600,7 @@ if ( ! function_exists( 'get_aesthetix_main_menu_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Additional main menu classes.
+	 * @param string $class Additional main menu classes. Default ''.
 	 *
 	 * @return array
 	 */
@@ -618,21 +620,8 @@ if ( ! function_exists( 'get_aesthetix_main_menu_classes' ) ) {
 		}
 
 		// Add elements to array.
-		$classes[] = 'main-menu';
-
-		if ( get_aesthetix_options( 'general_menu_type' ) === 'menu-open' ) {
-			$classes[] = 'main-menu_type-open';
-		} elseif ( get_aesthetix_options( 'general_menu_type' ) === 'menu-close' ) {
-			$classes[] = 'main-menu_type-close';
-		}
-
-		if ( get_aesthetix_options( 'general_header_type' ) === 'header-simple' ) {
-			$classes[] = 'main-menu_right';
-		} else {
-			$classes[] = 'main-menu_' . get_aesthetix_options( 'general_menu_align' );
-		}
-
-		$classes[] = 'main-menu_' . get_aesthetix_options( 'general_menu_position' );
+		$classes[] = 'menu-wrap';
+		$classes[] = 'menu-wrap_' . get_aesthetix_options( 'general_menu_align' );
 
 		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_main_menu_classes', $classes );
@@ -650,8 +639,8 @@ if ( ! function_exists( 'aesthetix_main_menu_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Additional main menu classes.
-	 * @param bool   $echo  Echo or return main menu classes.
+	 * @param string $class Additional main menu classes. Default ''.
+	 * @param bool   $echo  Echo or return main menu classes. Default true.
 	 *
 	 * @return string|void
 	 */
@@ -674,7 +663,7 @@ if ( ! function_exists( 'get_aesthetix_meta_display_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Additional meta display classes.
+	 * @param string $class Additional meta display classes. Default ''.
 	 *
 	 * @return array
 	 */
@@ -720,9 +709,8 @@ if ( ! function_exists( 'aesthetix_meta_display_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param array  $args   Array with params for function:
-	 * @param string $class Additional meta display classes.
-	 * @param bool   $echo  Echo or return meta display classes.
+	 * @param string $class  Additional meta display classes. Default ''.
+	 * @param bool   $echo   Echo or return meta display classes. Default true.
 	 *
 	 * @return string|void
 	 */
@@ -745,7 +733,7 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_wrapper_classes' ) )
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Additional archive page columns wrapper classes.
+	 * @param string $class Additional archive page columns wrapper classes. Default ''.
 	 *
 	 * @return array
 	 */
@@ -766,9 +754,9 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_wrapper_classes' ) )
 
 		// Add elements to array.
 		$classes[] = 'row';
-		$classes[] = 'row-' . get_aesthetix_count_columns( get_aesthetix_options( 'archive_post_columns' ) ) . '-col';
 
 		if ( in_array( 'loop', $classes, true ) && get_aesthetix_options( 'archive_' . get_post_type() . '_masonry' ) ) {
+			$classes[] = 'row-' . get_aesthetix_count_columns( get_aesthetix_options( 'archive_post_columns' ) ) . '-col';
 			$classes[] = 'masonry-gallery';
 		}
 
@@ -788,8 +776,8 @@ if ( ! function_exists( 'aesthetix_archive_page_columns_wrapper_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Additional archive page columns wrapper classes.
-	 * @param bool   $echo  Echo or return archive page columns wrapper classes.
+	 * @param string $class Additional archive page columns wrapper classes. Default ''.
+	 * @param bool   $echo  Echo or return archive page columns wrapper classes. Default true.
 	 *
 	 * @return string|void
 	 */
@@ -812,8 +800,8 @@ if ( ! function_exists( 'get_aesthetix_count_columns' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $control Text count columns.
-	 * @param bool   $int     Need return int or not.
+	 * @param string $control Text count columns. Default null.
+	 * @param bool   $int     Need return int or not. Default null.
 	 *
 	 * @return array
 	 */
@@ -851,9 +839,9 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param int    $counter       Сolumn counter in loop.
-	 * @param string $class         Additional archive page columns classes.
-	 * @param string $columns_count Return classes with specified columns.
+	 * @param int    $counter       Сolumn counter in loop. Default null.
+	 * @param string $class         Additional archive page columns classes. Default ''.
+	 * @param string $columns_count Return classes with specified columns. Default null.
 	 *
 	 * @return array
 	 */
@@ -931,10 +919,10 @@ if ( ! function_exists( 'aesthetix_archive_page_columns_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param int    $counter       Сolumn counter in loop.
-	 * @param string $class         Additional archive page columns classes.
-	 * @param string $columns_count Return classes with specified columns.
-	 * @param bool   $echo          Echo or return archive page columns classes.
+	 * @param int    $counter       Сolumn counter in loop. Default null.
+	 * @param string $class         Additional archive page columns classes. Default ''.
+	 * @param string $columns_count Return classes with specified columns. Default null.
+	 * @param bool   $echo          Echo or return archive page columns classes. Default true.
 	 *
 	 * @return string|void
 	 */
@@ -957,7 +945,7 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string       $class Additional button classes.
+	 * @param string       $class Additional button classes. Default ''.
 	 * @param array|string $args {
 	 *     Optional. Array or string of arguments to button classes.
 	 *
@@ -1008,7 +996,7 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 		}
 
 		if ( ! $size_exists ) {
-			$classes[]  = 'button-' . $args['button_size'];
+			$classes[] = 'button-' . $args['button_size'];
 		}
 
 		if ( $args['button_rounded'] ) {
@@ -1042,8 +1030,6 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 					$classes[] = 'icon_' . $args['icon_position'];
 				}
 			}
-
-
 		}
 
 		if ( ! in_array( 'button-reset', $classes, true ) && ! in_array( 'button-none', $classes, true ) ) {
@@ -1090,7 +1076,7 @@ if ( ! function_exists( 'button_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string       $class Additional button classes.
+	 * @param string       $class Additional button classes. Default ''.
 	 * @param array|string $args {
 	 *     Optional. Array or string of arguments to button classes.
 	 *
@@ -1101,7 +1087,7 @@ if ( ! function_exists( 'button_classes' ) ) {
 	 *     @type bool   $button_rounded Button rounded. Default false.
 	 *     @type string $icon_position  Icon position (before, after). Default 'root_button_icon_position'.
 	 * }
-	 * @param bool         $echo Echo or return button classes.
+	 * @param bool         $echo Echo or return button classes. Default true.
 	 *
 	 * @return string|void
 	 */
@@ -1124,7 +1110,7 @@ if ( ! function_exists( 'get_link_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Link classes.
+	 * @param string $class Link classes. Default ''.
 	 *
 	 * @return array
 	 */
@@ -1163,8 +1149,8 @@ if ( ! function_exists( 'link_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Additional link classes.
-	 * @param bool   $echo  Echo or return link classes.
+	 * @param string $class Additional link classes. Default ''.
+	 * @param bool   $echo  Echo or return link classes. Default true.
 	 *
 	 * @return string|void
 	 */
@@ -1187,7 +1173,7 @@ if ( ! function_exists( 'get_aesthetix_link_more_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Link more classes.
+	 * @param string $class Link more classes. Default ''.
 	 * @param string $color Link more color (primary, secondary, gray, default). Default 'primary'.
 	 *
 	 * @return array
@@ -1238,9 +1224,9 @@ if ( ! function_exists( 'aesthetix_link_more_classes' ) ) {
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $class Additional link more classes.
+	 * @param string $class Additional link more classes. Default ''.
 	 * @param string $color Link more color (primary, secondary, gray, default). Default 'primary'.
-	 * @param bool   $echo  Echo or return link more classes.
+	 * @param bool   $echo  Echo or return link more classes. Default true.
 	 *
 	 * @return string|void
 	 */
@@ -1317,14 +1303,157 @@ if ( ! function_exists( 'input_classes' ) ) {
 	 * 
 	 * @since 1.2.2
 	 *
-	 * @param string $class Additional input classes.
-	 * @param bool   $echo  Echo or return input classes.
+	 * @param string $class Additional input classes. Default ''.
+	 * @param bool   $echo  Echo or return input classes. Default true.
 	 *
 	 * @return string|void
 	 */
 	function input_classes( $class = '', $echo = true ) {
 
 		$classes = get_input_classes( $class );
+
+		if ( $echo ) {
+			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
+		} else {
+			return 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
+		}
+	}
+}
+
+if ( ! function_exists( 'get_widgets_classes' ) ) {
+
+	/**
+	 * Get classes for widgets.
+	 * 
+	 * @since 1.2.4
+	 *
+	 * @param string $class Widgets classes. Default ''.
+	 * @param string $id    Widgets id. Default null.
+	 *
+	 * @return array
+	 */
+	function get_widgets_classes( $class = '', $id = null ) {
+
+		// Check the function has accepted any classes.
+		if ( isset( $class ) && ! empty( $class ) ) {
+			if ( is_array( $class ) ) {
+				$classes = $class;
+			} elseif ( is_string( $class ) ) {
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
+			}
+		} else {
+			$classes = array();
+		}
+
+		// Add elements to array.
+		$classes[] = 'widgets';
+
+		if ( ! is_null( $id ) ) {
+
+			if ( in_array( $id, array( 'header-mobile-left', 'header-mobile-center', 'header-mobile-right', 'header-main-left', 'header-top-left', 'header-top-right', 'header-main-left', 'header-main-center', 'header-main-right', 'header-bottom-left', 'header-bottom-center', 'header-bottom-right', 'footer-top-left', 'footer-top-right', 'footer-bottom-left', 'footer-bottom-right' ), true ) ) {
+				$classes[] = 'widgets-inline';
+			}
+
+			if ( str_contains( $id, 'left' ) ) {
+				$classes[] = 'widgets-left';
+			} else if ( str_contains( $id, 'right' ) ) {
+				$classes[] = 'widgets-right';
+			} else if ( str_contains( $id, 'center' ) ) {
+				$classes[] = 'widgets-center';
+			}
+		}
+
+		// Add filter to array.
+		$classes = apply_filters( 'get_widgets_classes', $classes );
+		$classes = array_unique( (array) $classes );
+		sort( $classes );
+
+		return $classes;
+	}
+}
+
+if ( ! function_exists( 'widgets_classes' ) ) {
+
+	/**
+	 * Display classes for widgets.
+	 * 
+	 * @since 1.2.4
+	 *
+	 * @param string $class Additional widgets classes. Default ''.
+	 * @param string $id    Widgets id. Default null.
+	 * @param bool   $echo  Echo or return widgets classes.
+	 *
+	 * @return string|void
+	 */
+	function widgets_classes( $class = '', $id = null, $echo = true ) {
+
+		$classes = get_widgets_classes( $class, $id );
+
+		if ( $echo ) {
+			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
+		} else {
+			return 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
+		}
+	}
+}
+
+if ( ! function_exists( 'get_widget_classes' ) ) {
+
+	/**
+	 * Get classes for widgets.
+	 * 
+	 * @since 1.2.4
+	 *
+	 * @param string $class Widget classes. Default ''.
+	 * @param string $id    Widget id. Default null.
+	 *
+	 * @return array
+	 */
+	function get_widget_classes( $class = '', $id = null ) {
+
+		// Check the function has accepted any classes.
+		if ( isset( $class ) && ! empty( $class ) ) {
+			if ( is_array( $class ) ) {
+				$classes = $class;
+			} elseif ( is_string( $class ) ) {
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
+			}
+		} else {
+			$classes = array();
+		}
+
+		// Add elements to array.
+		$classes[] = 'widget';
+
+		// Add filter to array.
+		$classes = apply_filters( 'get_widget_classes', $classes );
+		$classes = array_unique( (array) $classes );
+		sort( $classes );
+
+		return $classes;
+	}
+}
+
+if ( ! function_exists( 'widget_classes' ) ) {
+
+	/**
+	 * Display classes for widgets.
+	 * 
+	 * @since 1.2.4
+	 *
+	 * @param string $class Additional widget classes. Default ''.
+	 * @param string $id    Widget id. Default null.
+	 * @param bool   $echo  Echo or return widget classes.
+	 *
+	 * @return string|void
+	 */
+	function widget_classes( $class = '', $id = null, $echo = true ) {
+
+		$classes = get_widget_classes( $class, $id );
 
 		if ( $echo ) {
 			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';

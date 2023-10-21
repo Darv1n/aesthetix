@@ -99,7 +99,7 @@ input[type="color"],
 	border: $input-bd-width solid $primary-bd-color
 	border-radius: $input-bd-radius
 	box-shadow: $input-shadow
-	font-size: $medium-font-size
+	font-size: .875rem
 	line-height: 1.125rem
 	&:focus, &:focus-visible
 		border: $input-bd-width solid $secondary-bd-color
@@ -107,7 +107,7 @@ input[type="color"],
 		outline: none
 	&.input-xs, &.input-sm
 		line-height: .825rem
-		font-size: $small-font-size
+		font-size: .675rem
 
 .input
 	&-xs
@@ -319,6 +319,16 @@ input[type="submit"]
 				padding: calc( .75rem + 1.125rem / 2 ) calc( .75rem * 2 + 1.125rem / 2 )
 		&.button-num
 			padding: .75rem calc( .75rem * 1.5 )
+	&-primary
+		background: $primary-color-500
+		border: $button-bd-width solid $primary-color-500
+		box-shadow: $box-shadow
+		&:hover, &:focus, &:active, &.active
+			background: $primary-color-400
+			border: $button-bd-width solid $primary-color-400
+		&:focus, &:active, &.active
+			border: $button-bd-width solid $primary-color-500
+			box-shadow: $box-shadow-hover
 	&-secondary
 		background: $secondary-color-500
 		border: $button-bd-width solid $secondary-color-500

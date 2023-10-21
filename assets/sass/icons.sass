@@ -3,7 +3,6 @@
 
 .icon
 	position: relative
-	display: block
 	transition: $transition
 	&::before
 		content: ''
@@ -16,8 +15,6 @@
 		transition: $transition
 		filter: $svg-filter
 	&_before, &_after
-		width: auto
-		height: auto
 		&::before
 			transform: translateY( -50% )
 	&_before

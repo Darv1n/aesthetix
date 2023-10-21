@@ -23,8 +23,8 @@
 <div <?php aesthetix_archive_page_columns_wrapper_classes(); ?>>
 	<div class="<?php echo esc_attr( implode( ' ', $first_col_classes ) ); ?>">
 		<?php
-			if ( is_active_sidebar( 'sidebar-footer-one' ) ) {
-				dynamic_sidebar( 'sidebar-footer-one' );
+			if ( is_active_sidebar( 'footer-main-first' ) ) {
+				dynamic_sidebar( 'footer-main-first' );
 			} else { ?>
 				<div class="widget widget_branding">
 					<?php get_template_part( 'templates/logo' ); ?>
@@ -36,8 +36,8 @@
 		?>
 	</div>
 	<div class="<?php echo esc_attr( implode( ' ', $last_col_classes ) ); ?>">
-		<?php if ( is_active_sidebar( 'sidebar-footer-two' ) ) {
-			dynamic_sidebar( 'sidebar-footer-two' );
+		<?php if ( is_active_sidebar( 'footer-main-second' ) ) {
+			dynamic_sidebar( 'footer-main-second' );
 		} ?>
 	</div>
 </div>

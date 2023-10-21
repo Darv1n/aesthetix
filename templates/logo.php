@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying site logo
+ * Template part for displaying site logo.
  *
  * @since 1.0.0
  *
@@ -9,20 +9,24 @@
  * @package Aesthetix
  */
 
+$args['logo_size'] = $args['logo_size'] ?? get_aesthetix_options( 'title_tagline_logo_size' );
+
 // Check if the image is set in the customizer settings or display the text.
-if ( has_custom_logo() ) {
-	the_custom_logo();
-} else {
+if ( has_custom_logo() ) { ?>
+	<div class="logo logo-<?php echo esc_attr( $args['logo_size'] ); ?>">
+		<?php the_custom_logo(); ?>
+	</div>
+<?php } else {
 	// For all pages except the main page, display a link to it.
 	if ( ( is_front_page() || is_home() ) && ! is_paged() ) { ?>
-		<div class="logo">
-			<strong class="logo__title"><?php bloginfo( 'name' ); ?></strong>
-			<p class="logo__description"><?php bloginfo( 'description' ); ?></p>
+		<div class="logo logo-<?php echo esc_attr( $args['logo_size'] ); ?>">
+			<strong class="logo-title"><?php bloginfo( 'name' ); ?></strong>
+			<p class="logo-description"><?php bloginfo( 'description' ); ?></p>
 		</div>
 	<?php } else { ?>
-		<a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-			<strong class="logo__title"><?php bloginfo( 'name' ); ?></strong>
-			<p class="logo__description"><?php bloginfo( 'description' ); ?></p>
+		<a class="logo logo-<?php echo esc_attr( $args['logo_size'] ); ?>" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+			<strong class="logo-title"><?php bloginfo( 'name' ); ?></strong>
+			<p class="logo-description"><?php bloginfo( 'description' ); ?></p>
 		</a>
 	<?php }
 }

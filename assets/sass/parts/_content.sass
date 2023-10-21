@@ -3,16 +3,33 @@
 	display: block
 	> *
 		display: block
-	&__title
+	&-title
 		margin-bottom: $gutter
 		font-family: $primary-font
-		font-size: $h1
-		line-height: $h1
-	&__description
+		font-size: $h3
+		line-height: $h3
+	&-description
 		margin-bottom: 0 !important
-		font-size: $medium-font-size
-		line-height: $medium-font-size
+		font-size: $small-font-size
+		line-height: $small-font-size
 		color: $primary-gray-color
+	&-image
+		width: auto
+	&-xs
+		.logo-image
+			max-height: calc( ( .25rem * 2 + .825rem ) * .825 )
+	&-sm
+		.logo-image
+			max-height: calc( ( .375rem * 2 + .825rem ) * .825 )
+	&-md
+		.logo-image
+			max-height: calc( ( .5rem * 2 + 1.125rem ) * 1.125 )
+	&-lg
+		.logo-image
+			max-height: calc( ( .625rem * 2 + 1.125rem ) * 1.125 )
+	&-xl
+		.logo-image
+			max-height: calc( ( .75rem * 2 + 1.125rem ) * 1.125 )
 
 a.logo
 	color: $primary-text-color
@@ -20,9 +37,29 @@ a.logo
 	&:hover, &:focus, &:active
 		color: $primary-text-color
 
-.custom-logo
-	width: auto
-	max-height: 86px
+@media ( min-width: 768px )
+	.logo
+		&-title
+			font-size: $h1
+			line-height: $h1
+		&-description
+			font-size: $medium-font-size
+			line-height: $medium-font-size
+		&-xs
+			.logo-image
+				max-height: calc( ( .25rem * 1.25 * 2 + .825rem ) * .825 )
+		&-sm
+			.logo-image
+				max-height: calc( ( .375rem * 1.25 * 2 + .825rem ) * .825 )
+		&-md
+			.logo-image
+				max-height: calc( ( .5rem * 1.25 * 2 + 1.125rem ) * 1.125 )
+		&-lg
+			.logo-image
+				max-height: calc( ( .625rem * 1.25 * 2 + 1.125rem ) * 1.125 )
+		&-xl
+			.logo-image
+				max-height: calc( ( .75rem * 1.25 * 2 + 1.125rem ) * 1.125 )
 
 .section, .content-area, .widget-area
 	padding-top: 1rem
@@ -39,6 +76,9 @@ a.logo
 	&-title
 		@extend .mb
 	&-xs
+		padding-top: .5rem
+		padding-bottom: .5rem
+	&-sm
 		padding-top: 1rem
 		padding-bottom: 1rem
 	&-md
@@ -65,38 +105,19 @@ a.logo
 		hyphens: none
 	h1, h2, h3, h4, h5, h6, p
 		margin-bottom: $margin/2
-	&__item
-		display: block
-		margin-bottom: $margin/2
-		vertical-align: middle
+
+.container-header
+	padding-top: $margin/2
+	padding-bottom: $margin/2
 
 .header
-	ul, ol
-		&:last-child
-			margin-bottom: 0
-	&__top-bar
+	&-top-bar
 		font-size: $small-font-size
-	&__top-bar, &__middle-bar, &__bottom-bar
-		padding: $margin/2 0
-	&_background-image
-		.header__middle-bar
-			min-height: 320px
-	&_simple
-		.logo
-			margin-right: $margin
-	&_logo-center
-		.logo
-			text-align: center
-		.custom-logo-link
-			display: inline-block
-	&_top-bar-active
-		.header__middle-bar
-			padding-top: $margin/2
 
 .footer
 	padding-top: $margin-section
-	.btn, .button, .widget, .footer-column, .social-list, .contacts-list, .copyright
-		@extend .mb
+	// .button, .widget, .footer-column, .social-list, .contacts-list, .copyright
+	// 	@extend .mb
 	&__middle-bar
 		padding-top: $margin*2
 		padding-bottom: $margin
@@ -104,15 +125,15 @@ a.logo
 		padding-top: $margin
 		background-color: $primary-bg-color-hover
 		.widget
-			margin-bottom: $margin/2
+			// margin-bottom: $margin/2
 	&_bottom-bar-active 
 		.footer__middle-bar
 			@extend .mb
 
 @media (min-width: 768px)
-	.header__top-bar .header-column, .footer__bottom-bar .footer-column
-		&:last-child
-			text-align: right
+	// .header__top-bar .header-column, .footer__bottom-bar .footer-column
+	// 	&:last-child
+	// 		text-align: right
 
 .avatar
 	border-radius: 50%
@@ -122,13 +143,11 @@ a.logo
 	display: block
 	width: 100%
 	@extend .mb
-	&-header
+	&-header, &-footer, &-content
 		> *
 			margin-bottom: $gutter
 			&:last-child
 				margin-bottom: 0
-	&-header, &-footer, &-thumbnail, &-content, &-meta
-		max-width: 960px
 	&-content
 		> *
 			margin-bottom: $margin
@@ -152,7 +171,7 @@ a.logo
 		ul, ol
 			ul, ol
 				margin-bottom: 0
-		.btn, .button
+		.button
 			@extend .mb
 	&-meta
 		@extend .list-inline
@@ -173,7 +192,6 @@ a.logo
 				margin-bottom: $gutter*2
 		&__list, &__tags, &__cats
 			@extend .list-inline
-
 	&-taxonomies
 		@extend .list-inline
 		> li
@@ -192,9 +210,6 @@ a.logo
 			bottom: $gutter*2
 			left: $gutter*2
 			margin-bottom: 0 !important
-	&-formats
-		.button-small
-			border-radius: 1rem
 	&-author
 		&-avatar
 			float: left

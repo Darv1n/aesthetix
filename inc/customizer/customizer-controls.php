@@ -44,28 +44,26 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 		);
 
 		$general_header_type_select = array(
-			'header-simple'      => __( 'Header Simple', 'aesthetix' ),
-			'header-logo-center' => __( 'Header Logo Center', 'aesthetix' ),
-			'header-content'     => __( 'Header Content', 'aesthetix' ),
+			'default'     => __( 'Header desktop default', 'aesthetix' ),
+			'mid-3'       => __( 'Header desktop 3 + 0 columns', 'aesthetix' ),
+			'mid-2-bot-2' => __( 'Header desktop 2 + 2 columns', 'aesthetix' ),
+			'mid-2-bot-3' => __( 'Header desktop 2 + 3 columns', 'aesthetix' ),
+			'mid-3-bot-2' => __( 'Header desktop 3 + 2 columns', 'aesthetix' ),
+			'mid-3-bot-3' => __( 'Header desktop 3 + 3 columns', 'aesthetix' ),
 		);
 
-		$general_menu_type_select = array(
-			'menu-open'  => __( 'Open', 'aesthetix' ),
-			'menu-close' => __( 'Close', 'aesthetix' ),
+		$general_header_mobile_type_select = array(
+			'default' => __( 'Header mobile default', 'aesthetix' ),
+			'mid-3'   => __( 'Header mobile three columns', 'aesthetix' ),
 		);
 
-		$general_menu_position_select = array(
-			'absolute' => __( 'Absolute', 'aesthetix' ),
-			'fixed'    => __( 'Fixed', 'aesthetix' ),
+		$general_footer_type_select = array(
+			'footer-simple'        => __( 'Footer simple', 'aesthetix' ),
+			'footer-three-columns' => __( 'Footer three columns', 'aesthetix' ),
+			'footer-four-columns'  => __( 'Footer four columns', 'aesthetix' ),
 		);
 
 		$general_menu_align_select = array(
-			'right'  => __( 'Right', 'aesthetix' ),
-			'left'   => __( 'Left', 'aesthetix' ),
-			'center' => __( 'Center', 'aesthetix' ),
-		);
-
-		$general_menu_button_align_select = array(
 			'right'  => __( 'Right', 'aesthetix' ),
 			'left'   => __( 'Left', 'aesthetix' ),
 			'center' => __( 'Center', 'aesthetix' ),
@@ -79,15 +77,16 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'seopress'    => __( 'SEOPress (Must be enabled in the plugin)', 'aesthetix' ),
 		);
 
-		$general_footer_type_select = array(
-			'footer-simple'        => __( 'Footer Simple', 'aesthetix' ),
-			'footer-three-columns' => __( 'Footer Three Columns', 'aesthetix' ),
-			'footer-four-columns'  => __( 'Footer Four Columns', 'aesthetix' ),
-		);
-
 		$alignment_pseudo_select = array(
 			'before' => __( 'Before', 'aesthetix' ),
 			'after'  => __( 'After', 'aesthetix' ),
+		);
+
+		$home_button_display_select = array(
+			'none'        => __( 'None', 'aesthetix' ),
+			'menu-start'  => __( 'Menu start', 'aesthetix' ),
+			'menu-center' => __( 'Menu center', 'aesthetix' ),
+			'menu-end'    => __( 'Menu end', 'aesthetix' ),
 		);
 
 		$single_post_template_type_select = array(
@@ -151,71 +150,40 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 
 		// General common options.
 		$aesthetix_controls['general'] = array(
-			'content_tab_title'                     => array( 'tab_title', __( 'Content', 'aesthetix' ), '' ),
-			'container_width'                       => array( 'select_control', __( 'Select container width', 'aesthetix' ), __( 'Here you can change the width of the site', 'aesthetix' ), $general_container_width_select ),
-			'content_width'                         => array( 'select_control', __( 'Select content width', 'aesthetix' ), __( 'Note: its work if sidebar dont show', 'aesthetix' ), $general_content_width_select ),
+			'demo_tab_title'            => array( 'tab_title', __( 'Demo', 'aesthetix' ), '' ),
+			'demo_var'                  => array( 'select_control', __( 'Select demo variant', 'aesthetix' ), '', get_aesthetix_customizer_demo_variant() ),
 
-			'header_tab_title'                      => array( 'tab_title', __( 'Header', 'aesthetix' ), '' ),
-			'header_top_bar_display'                => array( 'checkbox_control', __( 'Top bar display', 'aesthetix' ), __( 'This checkbox displays two sidebars before the header of the site. They are adds in the widget section options', 'aesthetix' ) ),
-			'header_type'                           => array( 'select_control', __( 'Select header type', 'aesthetix' ), '', $general_header_type_select ),
+			'content_tab_title'         => array( 'tab_title', __( 'Content', 'aesthetix' ), '' ),
+			'container_width'           => array( 'select_control', __( 'Select container width', 'aesthetix' ), __( 'Here you can change the width of the site', 'aesthetix' ), $general_container_width_select ),
+			'content_width'             => array( 'select_control', __( 'Select content width', 'aesthetix' ), __( 'Note: its work if sidebar dont show', 'aesthetix' ), $general_content_width_select ),
 
-			'menu_tab_title'                        => array( 'tab_title', __( 'Menu', 'aesthetix' ), '' ),
-			'menu_type'                             => array( 'select_control', __( 'Select menu type', 'aesthetix' ), '', $general_menu_type_select ),
-			'menu_position'                         => array( 'select_control', __( 'Select menu position', 'aesthetix' ), __( 'Position of the menu container when opened', 'aesthetix' ), $general_menu_position_select ),
-			'menu_align'                            => array( 'select_control', __( 'Select menu alignment', 'aesthetix' ), __( 'Alignment of the menu container', 'aesthetix' ), $general_menu_align_select ),
-			'menu_button_alignment'                 => array( 'select_control', __( 'Select menu button alignment', 'aesthetix' ), '', $general_menu_button_align_select ),
-			'menu_button_color'                     => array( 'select_control', __( 'Select menu button color', 'aesthetix' ), '', get_aesthetix_customizer_button_color() ),
-			'menu_button_type'                      => array( 'select_control', __( 'Select menu button type', 'aesthetix' ), '', get_aesthetix_customizer_button_type() ),
-			'menu_button_content'                   => array( 'select_control', __( 'Select menu button content', 'aesthetix' ), '', get_aesthetix_customizer_button_content() ),
-			'menu_button_rounded'                   => array( 'checkbox_control', __( 'Rounded button', 'aesthetix' ), '' ),
+			'header_tab_title'          => array( 'tab_title', __( 'Header', 'aesthetix' ), '' ),
+			'header_top_bar_display'    => array( 'checkbox_control', __( 'Top bar display', 'aesthetix' ), __( 'This checkbox displays two sidebars before the header of the site. They are adds in the widget section options', 'aesthetix' ) ),
+			'header_type'               => array( 'select_control', __( 'Select header type', 'aesthetix' ), __( 'You can change parts of the header on the widgets page', 'aesthetix' ), $general_header_type_select ),
+			'header_mobile_type'        => array( 'select_control', __( 'Select header mobile type', 'aesthetix' ), '', $general_header_mobile_type_select ),
 
-			'mobile_menu_tab_title'                 => array( 'tab_title', __( 'Mobile Menu', 'aesthetix' ), '' ),
-			'mobile_menu_structure'                 => array( 'sortable_control', '', '', get_aesthetix_customizer_mobile_menu_structure() ),
+			'menu_tab_title'            => array( 'tab_title', __( 'Menu', 'aesthetix' ), '' ),
+			'menu_align'                => array( 'select_control', __( 'Select menu alignment', 'aesthetix' ), __( 'Alignment of the menu container', 'aesthetix' ), $general_menu_align_select ),
 
-			'footer_tab_title'                      => array( 'tab_title', __( 'Footer', 'aesthetix' ), '' ),
-			'footer_top_bar_display'                => array( 'checkbox_control', __( 'Top bar display', 'aesthetix' ), __( 'This checkbox displays two sidebars before the footer of the site. They are adds in the widget section options', 'aesthetix' ) ),
-			'footer_bottom_bar_display'             => array( 'checkbox_control', __( 'Bottom bar display', 'aesthetix' ), __( 'This checkbox displays two sidebars after the footer of the site. They are adds in the widget section options', 'aesthetix' ) ),
-			'footer_type'                           => array( 'select_control', __( 'Select footer type', 'aesthetix' ), '', $general_footer_type_select ),
+			'footer_tab_title'          => array( 'tab_title', __( 'Footer', 'aesthetix' ), '' ),
+			'footer_top_bar_display'    => array( 'checkbox_control', __( 'Top bar display', 'aesthetix' ), __( 'This checkbox displays two sidebars before the footer of the site. They are adds in the widget section options', 'aesthetix' ) ),
+			'footer_bottom_bar_display' => array( 'checkbox_control', __( 'Bottom bar display', 'aesthetix' ), __( 'This checkbox displays two sidebars after the footer of the site. They are adds in the widget section options', 'aesthetix' ) ),
+			'footer_type'               => array( 'select_control', __( 'Select footer type', 'aesthetix' ), '', $general_footer_type_select ),
 
-			'breadcrumbs_tab_title'                 => array( 'tab_title', __( 'Breadcrumbs', 'aesthetix' ), '' ),
-			'breadcrumbs_display'                   => array( 'checkbox_control', __( 'Breadcrumbs display', 'aesthetix' ), '' ),
-			'breadcrumbs_type'                      => array( 'select_control', __( 'Select breadcrumbs type', 'aesthetix' ), '', $general_breadcrumbs_select ),
-			'breadcrumbs_separator'                 => array( 'text_control', __( 'Breadcrumbs separator', 'aesthetix' ), '' ),
+			'breadcrumbs_tab_title'     => array( 'tab_title', __( 'Breadcrumbs', 'aesthetix' ), '' ),
+			'breadcrumbs_display'       => array( 'checkbox_control', __( 'Breadcrumbs display', 'aesthetix' ), '' ),
+			'breadcrumbs_type'          => array( 'select_control', __( 'Select breadcrumbs type', 'aesthetix' ), '', $general_breadcrumbs_select ),
+			'breadcrumbs_separator'     => array( 'text_control', __( 'Breadcrumbs separator', 'aesthetix' ), '' ),
 
-			'subscribe_form_tab_title'              => array( 'tab_title', __( 'Subscribe form', 'aesthetix' ), '' ),
-			'subscribe_form_display'                => array( 'checkbox_control', __( 'Subscribe form before footer display', 'aesthetix' ), '' ),
-			'subscribe_form_type'                   => array( 'select_control', __( 'Subscribe form type', 'aesthetix' ), '', get_aesthetix_customizer_subscribe_form_type() ),
-			'subscribe_form_title'                  => array( 'text_control', __( 'Subscribe form title', 'aesthetix' ), '' ),
-			'subscribe_form_bg'                     => array( 'image_control', __( 'Subscribe form background image', 'aesthetix' ), '', '' ),
-			'subscribe_form_shortcode'              => array( 'text_control', __( 'Subscribe form shortcode', 'aesthetix' ), __( 'Use this field if you chose Mailchimp', 'aesthetix' ) ),
+			'subscribe_form_tab_title'  => array( 'tab_title', __( 'Subscribe form', 'aesthetix' ), '' ),
+			'subscribe_form_display'    => array( 'checkbox_control', __( 'Subscribe form before footer display', 'aesthetix' ), '' ),
+			'subscribe_form_type'       => array( 'select_control', __( 'Subscribe form type', 'aesthetix' ), '', get_aesthetix_customizer_subscribe_form_type() ),
+			'subscribe_form_title'      => array( 'text_control', __( 'Subscribe form title', 'aesthetix' ), '' ),
+			'subscribe_form_bg'         => array( 'image_control', __( 'Subscribe form background image', 'aesthetix' ), '', '' ),
+			'subscribe_form_shortcode'  => array( 'text_control', __( 'Subscribe form shortcode', 'aesthetix' ), __( 'Use this field if you chose Mailchimp', 'aesthetix' ) ),
 
-			'subscribe_popup_form_button_tab_title' => array( 'tab_title', __( 'Subscribe popup form button', 'aesthetix' ), '' ),
-			'subscribe_popup_form_button_color'     => array( 'select_control', __( 'Select subscribe popup form button color', 'aesthetix' ), '', get_aesthetix_customizer_button_color() ),
-			'subscribe_popup_form_button_type'      => array( 'select_control', __( 'Select subscribe popup form button type', 'aesthetix' ), '', get_aesthetix_customizer_button_type() ),
-			'subscribe_popup_form_button_content'   => array( 'select_control', __( 'Select subscribe popup form button content', 'aesthetix' ), '', get_aesthetix_customizer_button_content() ),
-			'subscribe_popup_form_button_rounded'   => array( 'checkbox_control', __( 'Rounded button', 'aesthetix' ), '' ),
-
-			'scroll_top_tab_title'                  => array( 'tab_title', __( 'Scroll top', 'aesthetix' ), '' ),
-			'scroll_top_button_display'             => array( 'checkbox_control', __( 'Scroll to top button display', 'aesthetix' ), '' ),
-			'scroll_top_button_color'               => array( 'select_control', __( 'Select scroll top button color', 'aesthetix' ), '', get_aesthetix_customizer_button_color() ),
-			'scroll_top_button_type'                => array( 'select_control', __( 'Select scroll top button type', 'aesthetix' ), '', get_aesthetix_customizer_button_type() ),
-			'scroll_top_button_content'             => array( 'select_control', __( 'Select scroll top button content', 'aesthetix' ), '', get_aesthetix_customizer_button_content() ),
-			'scroll_top_button_rounded'             => array( 'checkbox_control', __( 'Rounded button', 'aesthetix' ), '' ),
-
-			'searchform_form_tab_title'             => array( 'tab_title', __( 'Search form', 'aesthetix' ), '' ),
-			'searchform_form_button_color'          => array( 'select_control', __( 'Select search form button color', 'aesthetix' ), '', get_aesthetix_customizer_button_color() ),
-			'searchform_form_button_type'           => array( 'select_control', __( 'Select search form button type', 'aesthetix' ), '', get_aesthetix_customizer_button_type() ),
-			'searchform_form_button_content'        => array( 'select_control', __( 'Select search form button content', 'aesthetix' ), '', get_aesthetix_customizer_button_content() ),
-			'searchform_form_button_rounded'        => array( 'checkbox_control', __( 'Rounded button', 'aesthetix' ), '' ),
-
-			'searchform_popup_form_tab_title'       => array( 'tab_title', __( 'Search popup form', 'aesthetix' ), '' ),
-			'searchform_popup_form_button_color'    => array( 'select_control', __( 'Select search popup form button color', 'aesthetix' ), '', get_aesthetix_customizer_button_color() ),
-			'searchform_popup_form_button_type'     => array( 'select_control', __( 'Select search popup form button type', 'aesthetix' ), '', get_aesthetix_customizer_button_type() ),
-			'searchform_popup_form_button_content'  => array( 'select_control', __( 'Select search popup form button content', 'aesthetix' ), '', get_aesthetix_customizer_button_content() ),
-			'searchform_popup_form_button_rounded'  => array( 'checkbox_control', __( 'Rounded button', 'aesthetix' ), '' ),
-
-			'other_tab_title'                       => array( 'tab_title', __( 'Other', 'aesthetix' ), '' ),
-			'cookie_display'                        => array( 'checkbox_control', __( 'Cookie display', 'aesthetix' ), __( 'Displays a notification about the use of cookies on the site', 'aesthetix' ) ),
+			'other_tab_title'           => array( 'tab_title', __( 'Other', 'aesthetix' ), '' ),
+			'cookie_display'            => array( 'checkbox_control', __( 'Cookie display', 'aesthetix' ), __( 'Displays a notification about the use of cookies on the site', 'aesthetix' ) ),
 		);
 
 		$aesthetix_controls['front_page'] = array(
@@ -229,33 +197,72 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 
 		// Sidebar options.
 		$aesthetix_controls['root'] = array(
-			'fonts_tab_title'      => array( 'tab_title', __( 'Fonts', 'aesthetix' ), '' ),
-			'primary_font'         => array( 'select_control', __( 'Select primary font', 'aesthetix' ), '', get_aesthetix_customizer_fonts() ),
-			'secondary_font'       => array( 'select_control', __( 'Select secondary font', 'aesthetix' ), '', get_aesthetix_customizer_fonts() ),
-			'colors_tab_title'     => array( 'tab_title', __( 'Colors', 'aesthetix' ), '' ),
-			'color_scheme'         => array( 'select_control', __( 'Select color scheme', 'aesthetix' ), '', $root_color_scheme_select ),
-			'primary_color'        => array( 'select_control', __( 'Select primary color', 'aesthetix' ), '', get_aesthetix_customizer_colors() ),
-			'secondary_color'      => array( 'select_control', __( 'Select secondary color', 'aesthetix' ), '', get_aesthetix_customizer_colors() ),
-			'gray_color'           => array( 'select_control', __( 'Select gray color', 'aesthetix' ), '', get_aesthetix_customizer_gray_colors() ),
-			'link_color'           => array( 'select_control', __( 'Select link color', 'aesthetix' ), '', get_aesthetix_customizer_link_colors() ),
+			'fonts_tab_title'                       => array( 'tab_title', __( 'Fonts', 'aesthetix' ), '' ),
+			'primary_font'                          => array( 'select_control', __( 'Select primary font', 'aesthetix' ), '', get_aesthetix_customizer_fonts() ),
+			'secondary_font'                        => array( 'select_control', __( 'Select secondary font', 'aesthetix' ), '', get_aesthetix_customizer_fonts() ),
 
-			'button_tab_title'     => array( 'tab_title', __( 'Buttons', 'aesthetix' ), '' ),
-			'button_type'          => array( 'select_control', __( 'Select button type', 'aesthetix' ), '', get_aesthetix_customizer_button_type() ),
-			'button_icon'          => array( 'checkbox_control', __( 'Display button icons', 'aesthetix' ), '', '' ),
-			'button_icon_position' => array( 'select_control', __( 'Select button icon position', 'aesthetix' ), '', $alignment_pseudo_select ),
-			'button_size'          => array( 'select_control', __( 'Select button size', 'aesthetix' ), '', get_aesthetix_customizer_sizes() ),
-			'button_border_width'  => array( 'select_control', __( 'Select button border width', 'aesthetix' ), '', get_aesthetix_customizer_button_border_widths() ),
-			'button_border_radius' => array( 'select_control', __( 'Select button border radius', 'aesthetix' ), '', get_aesthetix_customizer_button_border_radiuses() ),
+			'colors_tab_title'                      => array( 'tab_title', __( 'Colors', 'aesthetix' ), '' ),
+			'color_scheme'                          => array( 'select_control', __( 'Select color scheme', 'aesthetix' ), '', $root_color_scheme_select ),
+			'primary_color'                         => array( 'select_control', __( 'Select primary color', 'aesthetix' ), '', get_aesthetix_customizer_colors() ),
+			'secondary_color'                       => array( 'select_control', __( 'Select secondary color', 'aesthetix' ), '', get_aesthetix_customizer_colors() ),
+			'gray_color'                            => array( 'select_control', __( 'Select gray color', 'aesthetix' ), '', get_aesthetix_customizer_gray_colors() ),
+			'link_color'                            => array( 'select_control', __( 'Select link color', 'aesthetix' ), '', get_aesthetix_customizer_link_colors() ),
+
+			'button_tab_title'                      => array( 'tab_title', __( 'Buttons', 'aesthetix' ), '' ),
+			'button_type'                           => array( 'select_control', __( 'Select button type', 'aesthetix' ), '', get_aesthetix_customizer_button_type() ),
+			'button_icon'                           => array( 'checkbox_control', __( 'Display button icons', 'aesthetix' ), '', '' ),
+			'button_icon_position'                  => array( 'select_control', __( 'Select button icon position', 'aesthetix' ), '', $alignment_pseudo_select ),
+			'button_size'                           => array( 'select_control', __( 'Select button size', 'aesthetix' ), '', get_aesthetix_customizer_sizes() ),
+			'button_border_width'                   => array( 'select_control', __( 'Select button border width', 'aesthetix' ), '', get_aesthetix_customizer_button_border_widths() ),
+			'button_border_radius'                  => array( 'select_control', __( 'Select button border radius', 'aesthetix' ), '', get_aesthetix_customizer_button_border_radiuses() ),
 			
-			'input_tab_title'      => array( 'tab_title', __( 'Inputs', 'aesthetix' ), '' ),
-			'input_size'           => array( 'select_control', __( 'Select input size', 'aesthetix' ), '', get_aesthetix_customizer_sizes() ),
-			'input_border_width'   => array( 'select_control', __( 'Select input border width', 'aesthetix' ), '', get_aesthetix_customizer_button_border_widths() ),
-			'input_border_radius'  => array( 'select_control', __( 'Select input border radius', 'aesthetix' ), '', get_aesthetix_customizer_button_border_radiuses() ),
+			'menu_button_tab_title'                 => array( 'tab_title', __( 'Menu button', 'aesthetix' ), '' ),
+			'menu_button_color'                     => array( 'select_control', __( 'Select menu button color', 'aesthetix' ), '', get_aesthetix_customizer_button_color() ),
+			'menu_button_type'                      => array( 'select_control', __( 'Select menu button type', 'aesthetix' ), '', get_aesthetix_customizer_button_type() ),
+			'menu_button_content'                   => array( 'select_control', __( 'Select menu button content', 'aesthetix' ), '', get_aesthetix_customizer_button_content() ),
+			'menu_button_rounded'                   => array( 'checkbox_control', __( 'Rounded button', 'aesthetix' ), '' ),
 
-			'other_tab_title'      => array( 'tab_title', __( 'Other', 'aesthetix' ), '' ),
-			'box_shadow'           => array( 'select_control', __( 'Select element shadow', 'aesthetix' ), '', get_aesthetix_customizer_box_shadows() ),
-			'border_width'         => array( 'select_control', __( 'Select element border width', 'aesthetix' ), '', get_aesthetix_customizer_button_border_widths() ),
-			'border_radius'        => array( 'select_control', __( 'Select element border radius', 'aesthetix' ), '', get_aesthetix_customizer_button_border_radiuses() ),
+			'home_button_tab_title'                 => array( 'tab_title', __( 'Home button', 'aesthetix' ), '' ),
+			'home_button_display'                   => array( 'select_control', __( 'Select home button display', 'aesthetix' ), '', $home_button_display_select ),
+			'home_button_color'                     => array( 'select_control', __( 'Select home button color', 'aesthetix' ), '', get_aesthetix_customizer_button_color() ),
+			'home_button_type'                      => array( 'select_control', __( 'Select home button type', 'aesthetix' ), '', get_aesthetix_customizer_button_type() ),
+			'home_button_content'                   => array( 'select_control', __( 'Select home button content', 'aesthetix' ), '', get_aesthetix_customizer_button_content() ),
+			'home_button_rounded'                   => array( 'checkbox_control', __( 'Rounded button', 'aesthetix' ), '' ),
+
+			'scroll_top_tab_title'                  => array( 'tab_title', __( 'Scroll top button', 'aesthetix' ), '' ),
+			'scroll_top_button_display'             => array( 'checkbox_control', __( 'Scroll to top button display', 'aesthetix' ), '' ),
+			'scroll_top_button_color'               => array( 'select_control', __( 'Select scroll top button color', 'aesthetix' ), '', get_aesthetix_customizer_button_color() ),
+			'scroll_top_button_type'                => array( 'select_control', __( 'Select scroll top button type', 'aesthetix' ), '', get_aesthetix_customizer_button_type() ),
+			'scroll_top_button_content'             => array( 'select_control', __( 'Select scroll top button content', 'aesthetix' ), '', get_aesthetix_customizer_button_content() ),
+			'scroll_top_button_rounded'             => array( 'checkbox_control', __( 'Rounded button', 'aesthetix' ), '' ),
+
+			'subscribe_popup_form_button_tab_title' => array( 'tab_title', __( 'Subscribe popup form button', 'aesthetix' ), '' ),
+			'subscribe_popup_form_button_color'     => array( 'select_control', __( 'Select subscribe popup form button color', 'aesthetix' ), '', get_aesthetix_customizer_button_color() ),
+			'subscribe_popup_form_button_type'      => array( 'select_control', __( 'Select subscribe popup form button type', 'aesthetix' ), '', get_aesthetix_customizer_button_type() ),
+			'subscribe_popup_form_button_content'   => array( 'select_control', __( 'Select subscribe popup form button content', 'aesthetix' ), '', get_aesthetix_customizer_button_content() ),
+			'subscribe_popup_form_button_rounded'   => array( 'checkbox_control', __( 'Rounded button', 'aesthetix' ), '' ),
+
+			'searchform_form_tab_title'             => array( 'tab_title', __( 'Search form button', 'aesthetix' ), '' ),
+			'searchform_form_button_color'          => array( 'select_control', __( 'Select search form button color', 'aesthetix' ), '', get_aesthetix_customizer_button_color() ),
+			'searchform_form_button_type'           => array( 'select_control', __( 'Select search form button type', 'aesthetix' ), '', get_aesthetix_customizer_button_type() ),
+			'searchform_form_button_content'        => array( 'select_control', __( 'Select search form button content', 'aesthetix' ), '', get_aesthetix_customizer_button_content() ),
+			'searchform_form_button_rounded'        => array( 'checkbox_control', __( 'Rounded button', 'aesthetix' ), '' ),
+
+			'searchform_popup_form_tab_title'       => array( 'tab_title', __( 'Search popup form button', 'aesthetix' ), '' ),
+			'searchform_popup_form_button_color'    => array( 'select_control', __( 'Select search popup form button color', 'aesthetix' ), '', get_aesthetix_customizer_button_color() ),
+			'searchform_popup_form_button_type'     => array( 'select_control', __( 'Select search popup form button type', 'aesthetix' ), '', get_aesthetix_customizer_button_type() ),
+			'searchform_popup_form_button_content'  => array( 'select_control', __( 'Select search popup form button content', 'aesthetix' ), '', get_aesthetix_customizer_button_content() ),
+			'searchform_popup_form_button_rounded'  => array( 'checkbox_control', __( 'Rounded button', 'aesthetix' ), '' ),
+
+			'input_tab_title'                       => array( 'tab_title', __( 'Inputs', 'aesthetix' ), '' ),
+			'input_size'                            => array( 'select_control', __( 'Select input size', 'aesthetix' ), '', get_aesthetix_customizer_sizes() ),
+			'input_border_width'                    => array( 'select_control', __( 'Select input border width', 'aesthetix' ), '', get_aesthetix_customizer_button_border_widths() ),
+			'input_border_radius'                   => array( 'select_control', __( 'Select input border radius', 'aesthetix' ), '', get_aesthetix_customizer_button_border_radiuses() ),
+
+			'other_tab_title'                       => array( 'tab_title', __( 'Other', 'aesthetix' ), '' ),
+			'box_shadow'                            => array( 'select_control', __( 'Select element shadow', 'aesthetix' ), '', get_aesthetix_customizer_box_shadows() ),
+			'border_width'                          => array( 'select_control', __( 'Select element border width', 'aesthetix' ), '', get_aesthetix_customizer_button_border_widths() ),
+			'border_radius'                         => array( 'select_control', __( 'Select element border radius', 'aesthetix' ), '', get_aesthetix_customizer_button_border_radiuses() ),
 		);
 
 		$post_types = get_aesthetix_customizer_post_types();
@@ -357,13 +364,13 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'email'               => array( 'text_control', __( 'Email', 'aesthetix' ), '' ),
 			'whatsapp_phone'      => array( 'text_control', __( 'Whatsapp phone', 'aesthetix' ), __( 'Enter data in the format 7999XXXXXXX without "+"', 'aesthetix' ) ),
 			'telegram_chat_link'  => array( 'text_control', __( 'Telegram chat link', 'aesthetix' ), __( 'Enter you telegram chet link for contact with you', 'aesthetix' ) ),
-
-			'tab_verification'    => array( 'tab_title', __( 'Verifications and counters', 'aesthetix' ), '' ),
-			'google_verification' => array( 'text_control', __( 'Google', 'aesthetix' ), __( 'Get your google verification code in the Google Search Console', 'aesthetix' ) ),
-			'yandex_verification' => array( 'text_control', __( 'Yandex', 'aesthetix' ), __( 'Get your yandex verification code in the Yandex Webmaster Tools', 'aesthetix' ) ),
-			'google_counter'      => array( 'text_control', __( 'Google', 'aesthetix' ), __( 'Get google counter ID like a UA-********-*', 'aesthetix' ) ),
-			'yandex_counter'      => array( 'text_control', __( 'Yandex', 'aesthetix' ), __( 'Get yandex counter ID like a ********', 'aesthetix' ) ),
 		);
+
+		// Site Identity options.
+		$aesthetix_controls['title_tagline'] = array(
+			'logo_size' => array( 'select_control', __( 'Select logo size', 'aesthetix' ), '', get_aesthetix_customizer_sizes() ),
+		);
+
 
 		// Merge child and parent controls.
 		$aesthetix_controls = apply_filters( 'get_aesthetix_customizer_controls', $aesthetix_controls );
@@ -378,3 +385,4 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 		}
 	}
 }
+

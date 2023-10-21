@@ -91,11 +91,12 @@
 .slick-prev, .slick-next
 	position: absolute
 	top: 50%
-	padding: 1rem
+	padding: calc( var( --button-padding-top ) + 1.125rem / 2 ) calc( var( --button-padding-top ) + 1.125rem / 2 )
 	margin-bottom: .5rem
 	font-size: 0
 	overflow: hidden
 	border-radius: 50%
+	line-height: 0
 	&:before
 		content: ''
 		position: absolute
@@ -105,6 +106,10 @@
 		height: 14px
 		background: url( ../img/icons/sets/set-default.svg#arrow-down )
 		filter: invert(100%)
+
+@media( min-width: 576px )
+	.slick-prev, .slick-next
+		padding: calc( var( --button-padding-top ) * 1.25 + 1.125rem / 2 ) calc( var( --button-padding-top ) * 1.25 + 1.125rem / 2 )
 
 .slick-prev::before
 	transform: translate( -50%, -50% ) rotate( 90deg )

@@ -11,44 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! function_exists( 'get_aesthetix_customizer_mobile_menu_structure' ) ) {
-
-	/**
-	 * Return array with the customizer mobile menu structure.
-	 * 
-	 * @since 1.1.1
-	 *
-	 * @param string $control Array key to get one value.
-	 *
-	 * @return string|array|false
-	 */
-	function get_aesthetix_customizer_mobile_menu_structure( $control = null ) {
-
-		// Sanitize string (just to be safe).
-		if ( ! is_null( $control ) ) {
-			$control = get_title_slug( $control );
-		}
-
-		$converter = array(
-			'menu'      => __( 'Menu Button', 'aesthetix' ),
-			'search'    => __( 'Search Button', 'aesthetix' ),
-			'subscribe' => __( 'Subscribe Button', 'aesthetix' ),
-		);
-
-		// Merge child and parent default options.
-		$converter = apply_filters( 'get_aesthetix_customizer_mobile_menu_structure', $converter );
-
-		// Return controls.
-		if ( is_null( $control ) ) {
-			return $converter;
-		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
-			return false;
-		} else {
-			return $converter[ $control ];
-		}
-	}
-}
-
 if ( ! function_exists( 'get_aesthetix_customizer_archive_post_structure' ) ) {
 
 	/**
@@ -174,44 +136,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_single_post_footer_structure' 
 	}
 }
 
-if ( ! function_exists( 'get_aesthetix_customizer_post_thumbnail_structure' ) ) {
-
-	/**
-	 * Return array with the customizer post thumbnail structure.
-	 * 
-	 * @since 1.1.6
-	 *
-	 * @param string $control   Array key to get one value.
-	 * @param string $post_type Current post type.
-	 *
-	 * @return string|array|false
-	 */
-	function get_aesthetix_customizer_post_thumbnail_structure( $control = null, $post_type = null ) {
-
-		// Sanitize string (just to be safe).
-		if ( ! is_null( $control ) ) {
-			$control = get_title_slug( $control );
-		}
-
-		$converter = array(
-			'taxonomies' => __( 'Post Taxonomies', 'aesthetix' ),
-			'formats'     => __( 'Post Sticky & Formats', 'aesthetix' ),
-		);
-
-		// Merge child and parent default options.
-		$converter = apply_filters( 'get_aesthetix_customizer_post_thumbnail_structure', $converter, $post_type );
-
-		// Return controls.
-		if ( is_null( $control ) ) {
-			return $converter;
-		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
-			return false;
-		} else {
-			return $converter[ $control ];
-		}
-	}
-}
-
 if ( ! function_exists( 'get_aesthetix_customizer_post_meta_structure' ) ) {
 
 	/**
@@ -246,83 +170,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_meta_structure' ) ) {
 
 		// Merge child and parent default options.
 		$converter = apply_filters( 'get_aesthetix_customizer_post_meta_structure', $converter, $post_type );
-
-		// Return controls.
-		if ( is_null( $control ) ) {
-			return $converter;
-		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
-			return false;
-		} else {
-			return $converter[ $control ];
-		}
-	}
-}
-
-if ( ! function_exists( 'get_aesthetix_customizer_subscribe_form_type' ) ) {
-
-	/**
-	 * Return array with the customizer subscribe form type.
-	 * 
-	 * @since 1.1.2
-	 *
-	 * @param string $control Array key to get one value.
-	 *
-	 * @return string|array|false
-	 */
-	function get_aesthetix_customizer_subscribe_form_type( $control = null ) {
-
-		// Sanitize string (just to be safe).
-		if ( ! is_null( $control ) ) {
-			$control = get_title_slug( $control );
-		}
-
-		$converter = array(
-			'theme' => __( 'Theme (Messages will be sent to email)', 'aesthetix' ),
-		);
-
-		// Merge child and parent default options.
-		$converter = apply_filters( 'get_aesthetix_customizer_subscribe_form_type', $converter );
-
-		// Return controls.
-		if ( is_null( $control ) ) {
-			return $converter;
-		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
-			return false;
-		} else {
-			return $converter[ $control ];
-		}
-	}
-}
-
-if ( ! function_exists( 'get_aesthetix_customizer_button_content' ) ) {
-
-	/**
-	 * Return array with the customizer button type.
-	 * 
-	 * @since 1.1.9
-	 *
-	 * @param string $control Array key to get one value.
-	 *
-	 * @return string|array|false
-	 */
-	function get_aesthetix_customizer_button_content( $control = null ) {
-
-		// Sanitize string (just to be safe).
-		if ( ! is_null( $control ) ) {
-			$control = get_title_slug( $control );
-		}
-
-		$converter = array(
-			'button-icon-text' => __( 'Button + Icon + Text', 'aesthetix' ),
-			'button-icon'      => __( 'Button + Icon', 'aesthetix' ),
-			'button-text'      => __( 'Button + Text', 'aesthetix' ),
-			'icon'             => __( 'Icon', 'aesthetix' ),
-			'icon-text'        => __( 'Icon + Text', 'aesthetix' ),
-			'text'             => __( 'Text', 'aesthetix' ),
-		);
-
-		// Merge child and parent default options.
-		$converter = apply_filters( 'get_aesthetix_customizer_button_content', $converter );
 
 		// Return controls.
 		if ( is_null( $control ) ) {
@@ -512,44 +359,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_link_colors' ) ) {
 
 		// Merge child and parent default options.
 		$converter = apply_filters( 'get_aesthetix_customizer_link_colors', $converter );
-
-		// Return controls.
-		if ( is_null( $control ) ) {
-			return $converter;
-		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
-			return false;
-		} else {
-			return $converter[ $control ];
-		}
-	}
-}
-
-if ( ! function_exists( 'get_aesthetix_customizer_button_color' ) ) {
-
-	/**
-	 * Return array with the customizer button colors.
-	 * 
-	 * @since 1.1.9
-	 *
-	 * @param string $control Array key to get one value.
-	 *
-	 * @return string|array|false
-	 */
-	function get_aesthetix_customizer_button_color( $control = null ) {
-
-		// Sanitize string (just to be safe).
-		if ( ! is_null( $control ) ) {
-			$control = get_title_slug( $control );
-		}
-
-		$converter = array(
-			'primary'   => __( 'Primary', 'aesthetix' ),
-			'secondary' => __( 'Secondary', 'aesthetix' ),
-			'gray'      => __( 'Gray', 'aesthetix' ),
-		);
-
-		// Merge child and parent default options.
-		$converter = apply_filters( 'get_aesthetix_customizer_button_color', $converter );
 
 		// Return controls.
 		if ( is_null( $control ) ) {
@@ -758,6 +567,198 @@ if ( ! function_exists( 'get_aesthetix_customizer_box_shadows' ) ) {
 
 		// Merge child and parent default options.
 		$converter = apply_filters( 'get_aesthetix_customizer_box_shadows', $converter );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+if ( ! function_exists( 'get_aesthetix_customizer_subscribe_form_type' ) ) {
+
+	/**
+	 * Return array with the customizer subscribe form type.
+	 * 
+	 * @since 1.1.2
+	 *
+	 * @param string $control Array key to get one value.
+	 *
+	 * @return string|array|false
+	 */
+	function get_aesthetix_customizer_subscribe_form_type( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'theme' => __( 'Theme (Messages will be sent to email)', 'aesthetix' ),
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_subscribe_form_type', $converter );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+if ( ! function_exists( 'get_aesthetix_customizer_post_thumbnail_structure' ) ) {
+
+	/**
+	 * Return array with the customizer post thumbnail structure.
+	 * 
+	 * @since 1.1.6
+	 *
+	 * @param string $control   Array key to get one value.
+	 * @param string $post_type Current post type.
+	 *
+	 * @return string|array|false
+	 */
+	function get_aesthetix_customizer_post_thumbnail_structure( $control = null, $post_type = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'taxonomies' => __( 'Post Taxonomies', 'aesthetix' ),
+			'formats'     => __( 'Post Sticky & Formats', 'aesthetix' ),
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_post_thumbnail_structure', $converter, $post_type );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+if ( ! function_exists( 'get_aesthetix_customizer_button_color' ) ) {
+
+	/**
+	 * Return array with the customizer button colors.
+	 * 
+	 * @since 1.1.9
+	 *
+	 * @param string $control Array key to get one value.
+	 *
+	 * @return string|array|false
+	 */
+	function get_aesthetix_customizer_button_color( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'primary'   => __( 'Primary', 'aesthetix' ),
+			'secondary' => __( 'Secondary', 'aesthetix' ),
+			'gray'      => __( 'Gray', 'aesthetix' ),
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_button_color', $converter );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+if ( ! function_exists( 'get_aesthetix_customizer_button_content' ) ) {
+
+	/**
+	 * Return array with the customizer button type.
+	 * 
+	 * @since 1.1.9
+	 *
+	 * @param string $control Array key to get one value.
+	 *
+	 * @return string|array|false
+	 */
+	function get_aesthetix_customizer_button_content( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'button-icon-text' => __( 'Button + Icon + Text', 'aesthetix' ),
+			'button-icon'      => __( 'Button + Icon', 'aesthetix' ),
+			'button-text'      => __( 'Button + Text', 'aesthetix' ),
+			'icon'             => __( 'Icon', 'aesthetix' ),
+			'icon-text'        => __( 'Icon + Text', 'aesthetix' ),
+			'text'             => __( 'Text', 'aesthetix' ),
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_button_content', $converter );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+if ( ! function_exists( 'get_aesthetix_customizer_demo_variant' ) ) {
+
+	/**
+	 * Return array with the customizer demo variant
+	 * 
+	 * @since 1.2.4
+	 *
+	 * @param string $control Array key to get one value.
+	 *
+	 * @return string|array|false
+	 */
+	function get_aesthetix_customizer_demo_variant( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'default' => __( 'Default', 'aesthetix' ),
+			'demo-1'  => 'Demo 1',
+			'demo-2'  => 'Demo 2',
+			'demo-3'  => 'Demo 3',
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_demo_variant', $converter );
 
 		// Return controls.
 		if ( is_null( $control ) ) {

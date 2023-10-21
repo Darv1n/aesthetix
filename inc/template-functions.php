@@ -29,86 +29,6 @@ if ( ! function_exists( 'vardump' ) ) {
 	}
 }
 
-if ( ! function_exists( 'is_subscribe_form_theme_active' ) ) {
-
-	/**
-	 * Adds conditions for subscribe form theme script activation.
-	 * 
-	 * @since 1.2.1
-	 * 
-	 * @return bool
-	 */
-	function is_subscribe_form_theme_active() {
-
-		$active = false;
-
-		$widgets = array( 'aesthetix_subscribe_form_widget', 'aesthetix_subscribe_popup_form_widget' );
-		foreach ( $widgets as $key => $widget ) {
-			if ( is_active_widget( 0, 0, $widget ) ) {
-				$active = true;
-			}
-		}
-
-		if ( get_aesthetix_options( 'general_subscribe_form_display' ) ) {
-			$active = true;
-		}
-
-		$mobile_menu_structure = get_aesthetix_options( 'general_mobile_menu_structure' );
-
-		if ( is_string( $mobile_menu_structure ) && ! empty( $mobile_menu_structure ) ) {
-			$mobile_menu_structure = array_map( 'trim', explode( ',', $mobile_menu_structure ) );
-		}
-
-		if ( in_array( 'subscribe', $mobile_menu_structure, true ) ) {
-			$active = true;
-		}
-
-		if ( get_aesthetix_options( 'general_subscribe_form_type' ) !== 'theme' ) {
-			$active = false;
-		}
-		
-		$active = apply_filters( 'is_subscribe_form_theme_active', $active );
-
-		return $active;
-	}
-}
-
-if ( ! function_exists( 'is_magnific_popup_active' ) ) {
-
-	/**
-	 * Adds conditions for magnific popup script activation.
-	 * 
-	 * @since 1.2.1
-	 * 
-	 * @return bool
-	 */
-	function is_magnific_popup_active() {
-
-		$active = false;
-
-		$widgets = array( 'aesthetix_search_popup_form_widget', 'aesthetix_subscribe_popup_form_widget' );
-		foreach ( $widgets as $key => $widget ) {
-			if ( is_active_widget( 0, 0, $widget ) ) {
-				$active = true;
-			}
-		}
-
-		$mobile_menu_structure = get_aesthetix_options( 'general_mobile_menu_structure' );
-
-		if ( is_string( $mobile_menu_structure ) && ! empty( $mobile_menu_structure ) ) {
-			$mobile_menu_structure = array_map( 'trim', explode( ',', $mobile_menu_structure ) );
-		}
-
-		if ( in_array( 'search', $mobile_menu_structure, true ) || in_array( 'subscribe', $mobile_menu_structure, true ) ) {
-			$active = true;
-		}
-		
-		$active = apply_filters( 'is_magnific_popup_active', $active );
-
-		return $active;
-	}
-}
-
 if ( ! function_exists( 'array_key_first' ) ) {
 
 	/**
@@ -252,30 +172,6 @@ if ( ! function_exists( 'kses_available_tags' ) ) {
 		);
 
 		return apply_filters( 'kses_available_tags', $available_tags );
-	}
-}
-
-if ( ! function_exists( 'array_insert_after' ) ) {
-
-	/**
-	 * Insert a value or key/value pair after a specific key in an array. If key doesn't exist, value is appended to the end of the array.
-	 * 
-	 * @since 1.1.3
-	 * 
-	 * @link https://gist.github.com/wpscholar/0deadce1bbfa4adb4e4c
-	 *
-	 * @param array  $array
-	 * @param string $key
-	 * @param array  $new
-	 *
-	 * @return array
-	 */
-	function array_insert_after( array $array, $key, array $new ) {
-		$keys = array_keys( $array );
-		$index = array_search( $key, $keys );
-		$pos = false === $index ? count( $array ) : $index + 1;
-
-		return array_merge( array_slice( $array, 0, $pos ), $new, array_slice( $array, $pos ) );
 	}
 }
 
@@ -753,5 +649,301 @@ if ( ! function_exists( 'remove_emoji' ) ) {
 		$clear_string = preg_replace( '/[\x{2700}-\x{27BF}]/u', '', $clear_string );
 
 		return $clear_string;
+	}
+}
+
+if ( ! function_exists( 'array_insert_after' ) ) {
+
+	/**
+	 * Insert a value or key/value pair after a specific key in an array. If key doesn't exist, value is appended to the end of the array.
+	 * 
+	 * @since 1.1.3
+	 * 
+	 * @link https://gist.github.com/wpscholar/0deadce1bbfa4adb4e4c
+	 *
+	 * @param array  $array
+	 * @param string $key
+	 * @param array  $new
+	 *
+	 * @return array
+	 */
+	function array_insert_after( array $array, $key, array $new ) {
+		$keys = array_keys( $array );
+		$index = array_search( $key, $keys );
+		$pos = false === $index ? count( $array ) : $index + 1;
+
+		return array_merge( array_slice( $array, 0, $pos ), $new, array_slice( $array, $pos ) );
+	}
+}
+
+if ( ! function_exists( 'is_subscribe_form_theme_active' ) ) {
+
+	/**
+	 * Adds conditions for subscribe form theme script activation.
+	 * 
+	 * @since 1.2.1
+	 * 
+	 * @return bool
+	 */
+	function is_subscribe_form_theme_active() {
+
+		$active = true; // TODO: Load by condition.
+
+		$widgets = array( 'aesthetix_subscribe_form_widget', 'aesthetix_subscribe_popup_form_widget' );
+		foreach ( $widgets as $key => $widget ) {
+			if ( is_active_widget( 0, 0, $widget ) ) {
+				$active = true;
+			}
+		}
+
+		if ( get_aesthetix_options( 'general_subscribe_form_display' ) ) {
+			$active = true;
+		}
+
+		if ( get_aesthetix_options( 'general_subscribe_form_type' ) !== 'theme' ) {
+			$active = false;
+		}
+		
+		$active = apply_filters( 'is_subscribe_form_theme_active', $active );
+
+		return $active;
+	}
+}
+
+if ( ! function_exists( 'is_magnific_popup_active' ) ) {
+
+	/**
+	 * Adds conditions for magnific popup script activation.
+	 * 
+	 * @since 1.2.1
+	 * 
+	 * @return bool
+	 */
+	function is_magnific_popup_active() {
+
+		$active = true; // TODO: Load by condition.
+
+		$widgets = array( 'aesthetix_search_popup_form_widget', 'aesthetix_subscribe_popup_form_widget' );
+		foreach ( $widgets as $key => $widget ) {
+			if ( is_active_widget( 0, 0, $widget ) ) {
+				$active = true;
+			}
+		}
+		
+		$active = apply_filters( 'is_magnific_popup_active', $active );
+
+		return $active;
+	}
+}
+
+if ( ! function_exists( 'return_template_part' ) ) {
+
+	/**
+	 * Return content from get_template_part() function.
+	 *
+	 * @since 1.2.4
+	 *
+	 * @param string      $slug The slug name for the generic template.
+	 * @param string|null $name The name of the specialized template or null if
+	 *                          there is none.
+	 * @param array       $args Additional arguments passed to the template.
+	 */
+	function return_template_part( $slug, $name = null, $args = array() ) {
+		ob_start();
+		get_template_part( $slug, $name, $args );
+		$output = ob_get_contents();
+		ob_end_clean();
+		return $output;
+	}
+}
+
+if ( ! function_exists( 'default_sidebar' ) ) {
+
+	/**
+	 * Insert a value or key/value pair after a specific key in an array. If key doesn't exist, value is appended to the end of the array.
+	 * 
+	 * @since 1.2.4
+	 *
+	 * @param array  $array
+	 * @param string $key
+	 * @param array  $new
+	 *
+	 * @return array
+	 */
+	function default_sidebar( $id = null ) {
+
+		if ( is_null( $id ) ) {
+			return false;
+		}
+
+		if ( in_array( $id, array( 'header-mobile-left', 'header-mobile-center', 'header-mobile-right' ), true ) ) {
+			$button_size = get_aesthetix_options( 'root_button_size' );
+
+			if ( in_array( $button_size, array( 'lg', 'xl' ), true ) ) {
+				$button_size = 'md';
+			}
+
+			$button_content['search']    = get_aesthetix_options( 'root_searchform_popup_form_button_content' );
+			$button_content['subscribe'] = get_aesthetix_options( 'root_subscribe_popup_form_button_content' );
+
+			foreach ( $button_content as $key => $value ) {
+				if ( in_array( $value, array( 'button-icon-text', 'button-text', 'button-icon' ), true ) ) {
+					$button_content[ $key ] = 'button-icon';
+				} else {
+					$button_content[ $key ] = 'icon';
+				}
+			}
+		} ?>
+
+		<?php if ( get_aesthetix_options( 'general_header_mobile_type' ) === 'mid-3' ) { ?>
+			
+		<?php } else { ?>
+
+		<?php } ?>
+
+		<?php switch ( $id ) {
+			case has_action( 'aesthetix_default_sidebar_loop_' . $id ):
+				do_action( 'aesthetix_default_sidebar_loop_' . $id );
+				break;
+			case 'header-mobile-left': ?>
+
+				<?php if ( get_aesthetix_options( 'general_header_mobile_type' ) === 'mid-3' ) { ?>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/aside', 'subscribe-toggle', array( 'button_content' => $button_content['subscribe'], 'button_size' => $button_size ) ); ?>
+					</div>
+				<?php } else { ?>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/logo' ); ?>
+					</div>
+				<?php } ?>
+
+				<?php break;
+			case 'header-mobile-center': ?>
+
+				<div <?php widget_classes( '', $id ) ?>>
+					<?php get_template_part( 'templates/logo' ); ?>
+				</div>
+
+				<?php break;
+			case 'header-mobile-right': ?>
+
+				<?php if ( get_aesthetix_options( 'general_header_mobile_type' ) === 'mid-3' ) { ?>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/aside', 'search-toggle', array( 'button_content' => $button_content['search'], 'button_size' => $button_size ) ); ?>
+					</div>
+				<?php } else { ?>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/aside', 'search-toggle', array( 'button_content' => $button_content['search'], 'button_size' => $button_size ) ); ?>
+					</div>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/aside', 'subscribe-toggle', array( 'button_content' => $button_content['subscribe'], 'button_size' => $button_size ) ); ?>
+					</div>
+				<?php } ?>
+
+				<?php break;
+			case 'header-main-left': ?>
+
+				<?php if ( get_aesthetix_options( 'general_header_type' ) === 'mid-3-bot-3' ) { ?>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/aside', 'subscribe-toggle' ); ?>
+					</div>
+				<?php } else if ( get_aesthetix_options( 'general_header_type' ) === 'mid-3-bot-2' ) { ?>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/aside', 'subscribe-toggle' ); ?>
+					</div>
+				<?php } else if ( get_aesthetix_options( 'general_header_type' ) === 'mid-3' ) { ?>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/aside', 'subscribe-toggle' ); ?>
+					</div>
+				<?php } else if ( get_aesthetix_options( 'general_header_type' ) === 'mid-2-bot-3' ) { ?>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/logo' ); ?>
+					</div>
+				<?php } else if ( get_aesthetix_options( 'general_header_type' ) === 'mid-2-bot-2' ) { ?>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/logo' ); ?>
+					</div>
+				<?php } else { ?>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/logo' ); ?>
+					</div>
+				<?php } ?>
+
+				<?php break;
+			case 'header-main-center': ?>
+
+				<div <?php widget_classes( '', $id ) ?>>
+					<?php get_template_part( 'templates/logo' ); ?>
+				</div>
+
+				<?php break;
+			case 'header-main-right': ?>
+
+				<?php if ( get_aesthetix_options( 'general_header_type' ) === 'mid-3-bot-3' ) { ?>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/adv-banner' ); ?>
+					</div>
+				<?php } else if ( get_aesthetix_options( 'general_header_type' ) === 'mid-3-bot-2' ) { ?>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/adv-banner' ); ?>
+					</div>
+				<?php } else if ( get_aesthetix_options( 'general_header_type' ) === 'mid-3' ) { ?>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/aside', 'search-toggle' ); ?>
+					</div>
+				<?php } else if ( get_aesthetix_options( 'general_header_type' ) === 'mid-2-bot-3' ) { ?>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/adv-banner' ); ?>
+					</div>
+				<?php } else if ( get_aesthetix_options( 'general_header_type' ) === 'mid-2-bot-2' ) { ?>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/adv-banner' ); ?>
+					</div>
+				<?php } else { ?>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/aside', 'search-toggle' ); ?>
+					</div>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/aside', 'subscribe-toggle' ); ?>
+					</div>
+				<?php } ?>
+
+				<?php break;
+
+			case 'header-bottom-left': ?>
+
+				<div <?php widget_classes( '', $id ) ?>>
+					<?php get_template_part( 'templates/aside', 'search-toggle' ); ?>
+				</div>
+
+				<?php break;
+			case 'header-bottom-center': ?>
+
+				<div <?php widget_classes( '', $id ) ?>>
+					<?php get_template_part( 'templates/main-menu' ); ?>
+				</div>
+
+				<?php break;
+			case 'header-bottom-right': ?>
+
+				<?php if ( get_aesthetix_options( 'general_header_type' ) === 'mid-2-bot-3' ) { ?>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/aside', 'subscribe-toggle' ); ?>
+					</div>
+				<?php } else { ?>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/aside', 'search-toggle' ); ?>
+					</div>
+					<div <?php widget_classes( '', $id ) ?>>
+						<?php get_template_part( 'templates/aside', 'subscribe-toggle' ); ?>
+					</div>
+				<?php } ?>
+
+				<?php break;
+			default:
+				break;
+		}
+
+		return false;
 	}
 }

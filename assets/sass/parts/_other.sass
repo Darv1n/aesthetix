@@ -122,3 +122,21 @@
 		*
 			display: inline-block
 			font-size: $small-font-size
+
+// #Advertising banners
+.ab
+	display: inline-block
+	vertical-align: middle
+	&.has_mobile
+		.ab-desktop
+			display: none
+		.ab-mobile
+			display: block
+
+@media (min-width: 768px)
+	.ab
+		&.has_mobile
+			.ab-desktop
+				display: block
+			.ab-mobile
+				display: none

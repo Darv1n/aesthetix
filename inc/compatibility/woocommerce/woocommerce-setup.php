@@ -128,7 +128,7 @@ if ( ! function_exists( 'aesthetix_woo_scripts' ) ) {
 
 		if ( is_product_archive() || is_product() ) {
 			$add_button_classes = 'jQuery(function($) {
-				$( \'.button\' ).each(function() {
+				$( \'.add_to_cart_button\' ).each(function() {
 					$(this).addClass( \'' . esc_attr( implode( ' ', $button_classes ) ) . '\' );
 				});
 			});';

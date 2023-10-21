@@ -14,11 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Search popup form widget class.
  *
- * @extends WC_Widget
+ * @extends WP_Widget
  * 
  * @since 1.2.0
  */
-class Search_Popup_Form_Widget extends WC_Widget {
+class Search_Popup_Form_WPA_Widget extends WPA_Widget {
 
 	/**
 	 * Constructor.
@@ -42,25 +42,25 @@ class Search_Popup_Form_Widget extends WC_Widget {
 			),
 			'button_color'   => array(
 				'type'    => 'select',
-				'std'     => get_aesthetix_options( 'general_searchform_popup_form_button_color' ),
+				'std'     => get_aesthetix_options( 'root_searchform_popup_form_button_color' ),
 				'label'   => __( 'Select search popup form button color', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_button_color(),
 			),
 			'button_type'    => array(
 				'type'    => 'select',
-				'std'     => get_aesthetix_options( 'general_searchform_popup_form_button_type' ),
+				'std'     => get_aesthetix_options( 'root_searchform_popup_form_button_type' ),
 				'label'   => __( 'Select search popup form button type', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_button_type(),
 			),
 			'button_content' => array(
 				'type'    => 'select',
-				'std'     => get_aesthetix_options( 'general_searchform_popup_form_button_content' ),
+				'std'     => get_aesthetix_options( 'root_searchform_popup_form_button_content' ),
 				'label'   => __( 'Select search popup form button content', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_button_content(),
 			),
 			'button_rounded' => array(
 				'type'  => 'checkbox',
-				'std'   => get_aesthetix_options( 'general_searchform_popup_form_button_rounded' ),
+				'std'   => get_aesthetix_options( 'root_searchform_popup_form_button_rounded' ),
 				'label' => __( 'Rounded button', 'aesthetix' ),
 			),
 		);
@@ -81,12 +81,12 @@ class Search_Popup_Form_Widget extends WC_Widget {
 
 		$template_args                   = array();
 		$template_args['input_size']     = isset( $instance['input_size'] ) ? $instance['input_size'] : $this->settings['input_size']['std'];
-		$template_args['button_size']    = isset( $instance['button_size'] ) ? $instance['button_size'] : $this->settings['button_size']['std'];
+		$template_args['button_size']    = isset( $instance['input_size'] ) ? $instance['input_size'] : $this->settings['input_size']['std'];
 		$template_args['button_color']   = isset( $instance['button_color'] ) ? $instance['button_color'] : $this->settings['button_color']['std'];
 		$template_args['button_type']    = isset( $instance['button_type'] ) ? $instance['button_type'] : $this->settings['button_type']['std'];
 		$template_args['button_content'] = isset( $instance['button_content'] ) ? $instance['button_content'] : $this->settings['button_content']['std'];
 
-		get_template_part( 'templates/search-popup', 'toggle', $template_args );
+		get_template_part( 'templates/aside', 'search-toggle', $template_args );
 
 		$this->widget_end( $args, $instance );
 	}

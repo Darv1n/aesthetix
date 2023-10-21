@@ -70,6 +70,11 @@ if ( ! function_exists( 'get_aesthetix_customizer_sections' ) ) {
 			'type'  => 'section',
 		);
 
+		$sections['adv'] = array(
+			'title' => __( 'Advertising banners', 'aesthetix' ),
+			'type'  => 'section',
+		);
+
 		// Merge child and parent default options.
 		$sections = apply_filters( 'get_aesthetix_customizer_sections', $sections );
 

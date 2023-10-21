@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * 
  * @since 1.2.0
  */
-class Subscribe_Popup_Form_Widget extends WC_Widget {
+class Subscribe_Popup_Form_WPA_Widget extends WPA_Widget {
 
 	/**
 	 * Constructor.
@@ -36,25 +36,25 @@ class Subscribe_Popup_Form_Widget extends WC_Widget {
 			),
 			'button_color' => array(
 				'type'    => 'select',
-				'std'     => get_aesthetix_options( 'general_subscribe_popup_form_button_color' ),
+				'std'     => get_aesthetix_options( 'root_subscribe_popup_form_button_color' ),
 				'label'   => __( 'Select subscribe popup form button color', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_button_color(),
 			),
 			'button_type' => array(
 				'type'    => 'select',
-				'std'     => get_aesthetix_options( 'general_subscribe_popup_form_button_type' ),
+				'std'     => get_aesthetix_options( 'root_subscribe_popup_form_button_type' ),
 				'label'   => __( 'Select subscribe popup form button type', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_button_type(),
 			),
 			'button_content' => array(
 				'type'    => 'select',
-				'std'     => get_aesthetix_options( 'general_subscribe_popup_form_button_content' ),
+				'std'     => get_aesthetix_options( 'root_subscribe_popup_form_button_content' ),
 				'label'   => __( 'Select subscribe popup form button content', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_button_content(),
 			),
 			'button_rounded' => array(
 				'type'  => 'checkbox',
-				'std'   => get_aesthetix_options( 'general_subscribe_popup_form_button_content' ),
+				'std'   => get_aesthetix_options( 'root_subscribe_popup_form_button_content' ),
 				'label' => __( 'Rounded button', 'aesthetix' ),
 			),
 		);
@@ -78,7 +78,7 @@ class Subscribe_Popup_Form_Widget extends WC_Widget {
 		$template_args['button_type']    = isset( $instance['button_type'] ) ? $instance['button_type'] : $this->settings['button_type']['std'];
 		$template_args['button_content'] = isset( $instance['button_content'] ) ? $instance['button_content'] : $this->settings['button_content']['std'];
 
-		get_template_part( 'templates/subscribe-popup', 'toggle', $template_args );
+		get_template_part( 'templates/aside', 'subscribe-toggle', $template_args );
 
 		$this->widget_end( $args, $instance );
 	}

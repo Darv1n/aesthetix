@@ -201,35 +201,6 @@ if ( ! function_exists( 'remove_nav_menu_item_id' ) ) {
 }
 add_filter( 'nav_menu_item_id', 'remove_nav_menu_item_id', 10, 3 );
 
-if ( ! function_exists( 'level_nav_menu_item_class' ) ) {
-
-	/**
-	 * Function for 'wp_nav_menu_objects' filter-hook.
-	 * 
-	 * @since 1.0.0
-	 * 
-	 * @param array    $sorted_menu_items The menu items, sorted by each menu item's menu order.
-	 * @param stdClass $args              Object containing wp_nav_menu() arguments.
-	 *
-	 * @return array
-	 */
-	function level_nav_menu_item_class( $sorted_menu_items, $args ) {
-		$level = 1;
-		$stack = array('0');
-		foreach ( $sorted_menu_items as $key => $item ) {
-			while ( $item->menu_item_parent != array_pop( $stack ) ) {
-				$level--;
-			}
-			$level++;
-			$stack[] = $item->menu_item_parent;
-			$stack[] = $item->ID;
-			$sorted_menu_items[ $key ]->classes[] = 'level-'. ( $level - 1 );
-		}
-		return $sorted_menu_items;
-	}
-}
-add_filter( 'wp_nav_menu_objects', 'level_nav_menu_item_class', 10, 2 );
-
 if ( ! function_exists( 'remove_nav_menu_item_class' ) ) {
 
 	/**
@@ -246,9 +217,11 @@ if ( ! function_exists( 'remove_nav_menu_item_class' ) ) {
 	 */
 	function remove_nav_menu_item_class( $classes, $item, $args ) {
 
-		foreach ( $classes as $key => $class ) {
-			if ( ! in_array( $class, array( 'menu-item', 'current-menu-item', 'menu-item-has-children' ), true ) ) {
-				unset( $classes[ $key ] ); 
+		foreach ( $classes as $key_class => $class ) {
+			if ( str_contains( $class, 'menu-item-' ) && ! in_array( $class, array( 'menu-item-has-children', 'menu-item-logo' ), true ) ) {
+				unset( $classes[ $key_class ] ); 
+			} else if ( str_contains( $class, 'current_page' ) ) {
+				unset( $classes[ $key_class ] ); 
 			}
 		}
 
@@ -302,3 +275,190 @@ if ( ! function_exists( 'aesthetix_search_highlight' ) ) {
 add_filter( 'the_title', 'aesthetix_search_highlight' );
 add_filter( 'the_content', 'aesthetix_search_highlight' );
 add_filter( 'the_excerpt', 'aesthetix_search_highlight' );
+
+if ( ! function_exists( 'aesthetix_nav_menu_item_args' ) ) {
+
+	/**
+	 * Function for 'nav_menu_item_args' filter-hook.
+	 * 
+	 * @since 1.2.4
+	 * 
+	 * @param stdClass $args      An object of wp_nav_menu() arguments.
+	 * @param WP_Post  $menu_item Menu item data object.
+	 * @param int      $depth     Depth of menu item. Used for padding.
+	 *
+	 * @return stdClass
+	 */
+	function aesthetix_nav_menu_item_args( $args, $menu_item, $depth ) {
+
+		if ( (int) $menu_item->menu_item_parent === 0 ) {
+			$args->link_before = '<span class="menu-title menu-title-lvl-1">';
+		} else {
+			$args->link_before = '<span class="menu-title">';
+		}
+
+		$args->link_after  = '</span>';
+
+		if ( in_array( 'menu-item-has-children', $menu_item->classes, true ) ) {
+
+			$button_args = array(
+				'button_size'    => 'xs',
+				'button_content' => 'icon',
+			);
+
+			$args->link_after = '<button ' . button_classes( 'sub-menu-toggle toggle-icon icon icon_center icon_angle-up', $button_args, false ) . ' data-icon-on="icon_angle-up" data-icon-off="icon_angle-down"></button>';
+			$args->link_after .= '</span>';
+		}
+
+		if ( $menu_item->description ) {
+			$args->link_after .= '<span class="menu-description">' . $menu_item->description . '</span>';
+		}
+
+		return $args;
+	}
+}
+add_filter( 'nav_menu_item_args', 'aesthetix_nav_menu_item_args', 10, 3 );
+
+if ( ! function_exists( 'aesthetix_wp_nav_menu_objects' ) ) {
+
+	/**
+	 * Function for 'wp_nav_menu_objects' filter-hook.
+	 * 
+	 * @since 1.2.4
+	 * 
+	 * @param array    $sorted_menu_items The menu items, sorted by each menu item's menu order.
+	 * @param stdClass $args              An object containing wp_nav_menu() arguments.
+	 *
+	 * @return array
+	 */
+	function aesthetix_wp_nav_menu_objects( $sorted_menu_items, $args ) {
+
+		if ( ( get_aesthetix_options( 'general_header_type' ) === 'mid-3' || get_aesthetix_options( 'root_home_button_display' ) !== 'none' ) && $args->theme_location === 'primary' ) {
+
+			$logo_obj = (object) array(
+				'ID'               => 'logo',
+				'post_author'      => 1,
+				'post_content'     => '',
+				'post_title'       => 'Logo',
+				'post_status'      => 'publish',
+				'post_name'        => 'logo',
+				'post_parent'      => 0,
+				'post_type'        => 'nav_menu_item',
+				'menu_order'       => 1,
+				'menu_item_parent' => 0,
+				'object'           => 'custom',
+				'type'             => 'custom',
+				'type_label'       => 'Custom Link',
+				'title'            => 'Logo',
+				'description'      => '',
+				'url'              => get_home_url( '/' ),
+				'classes'          => array( 'menu-item' ),
+				'db_id'            => 1,
+				'target'           => '',
+				'xfn'              => '',
+				'current'          => false,
+			);
+
+			$first_level_items = array();
+
+			foreach ( $sorted_menu_items as $key => $sorted_menu_item ) {
+				if ( (int) $sorted_menu_item->menu_item_parent === 0 ) {
+					$first_level_items[] = $sorted_menu_item;
+				}
+			}
+
+			$i        = floor( count( $first_level_items ) / 2 );
+			$item     = $first_level_items[ $i ];
+			$move_key = false;
+
+			foreach ( $sorted_menu_items as $key => $sorted_menu_item ) {
+
+				if ( get_aesthetix_options( 'root_home_button_display' ) === 'menu-start' ) {
+					$menu_items[0] = $logo_obj;
+					$menu_items[ intval( $key + 1 ) ] = $sorted_menu_item;
+				} else if ( get_aesthetix_options( 'root_home_button_display' ) === 'menu-end' ) {
+					$menu_items[ $key ] = $sorted_menu_item;
+					if ( (int) $key === count( $sorted_menu_items ) ) {
+						$menu_items[ intval( $key + 1 ) ] = $logo_obj;
+					}
+				} else {
+					if ( $item->ID === $sorted_menu_item->ID ) {
+						$move_key   = true;
+						$needed_key = $sorted_menu_item->ID;
+						$menu_items[ $key ] = $logo_obj;
+					}
+
+					if ( $move_key === false ) {
+						$menu_items[ $key ] = $sorted_menu_item;
+					} else {
+						$sorted_menu_item->menu_order = intval( $sorted_menu_item->menu_order + 1 );
+						$menu_items[ intval( $key + 1 ) ] = $sorted_menu_item;
+					}
+				}
+			}
+
+			return $menu_items;
+		}
+
+		return $sorted_menu_items;
+	}
+}
+add_filter( 'wp_nav_menu_objects', 'aesthetix_wp_nav_menu_objects', 10, 2 );
+
+if ( ! function_exists( 'aesthetix_wp_nav_menu_items' ) ) {
+
+	/**
+	 * Function for 'wp_nav_menu_items' filter-hook.
+	 * 
+	 * @since 1.2.4
+	 * 
+	 * @param string   $items The HTML list content for the menu items.
+	 * @param stdClass $args  An object containing wp_nav_menu() arguments.
+	 *
+	 * @return string
+	 */
+	function aesthetix_wp_nav_menu_items( $items, $args ) {
+
+		if ( ( get_aesthetix_options( 'general_header_type' ) === 'mid-3' || get_aesthetix_options( 'root_home_button_display' ) !== 'none' ) && $args->theme_location === 'primary' ) {
+
+			preg_match_all( '/<li class="([^"]+)">(.*)?<\/li>/', $items, $matches );
+
+			if ( $matches && is_array( $matches ) && ! empty( $matches ) && isset( $matches[1] ) && isset( $matches[2] ) && count( $matches[1] ) === count( $matches[2] ) ) {
+				foreach ( $matches[1] as $key => $classes ) {
+					if ( in_array( 'menu-item-logo', explode( ' ', $classes ), true ) ) {
+						if ( get_aesthetix_options( 'general_header_type' ) === 'mid-3' ) {
+							$items = str_replace( $matches[2][ $key ], return_template_part( 'templates/logo' ), $items );
+						} else {
+							$items = str_replace( $matches[2][ $key ], return_template_part( 'templates/button', 'home' ), $items );
+						}
+					}
+				}
+			}
+		}
+
+		return $items;
+	}
+}
+add_filter( 'wp_nav_menu_items', 'aesthetix_wp_nav_menu_items', 10, 2 );
+
+if ( ! function_exists( 'get_aesthetix_custom_logo_image_attributes' ) ) {
+
+	/**
+	 * Function for 'get_custom_logo_image_attributes' filter-hook.
+	 * 
+	 * @since 1.2.4
+	 * 
+	 * @param array $custom_logo_attr Custom logo image attributes.
+	 * @param int   $custom_logo_id   Custom logo attachment ID.
+	 * @param int   $blog_id          ID of the blog to get the custom logo for.
+	 *
+	 * @return array
+	 */
+	function get_aesthetix_custom_logo_image_attributes( $custom_logo_attr, $custom_logo_id, $blog_id ) {
+
+		$custom_logo_attr['class'] = 'logo-image';
+
+		return $custom_logo_attr;
+	}
+}
+add_filter( 'get_custom_logo_image_attributes', 'get_aesthetix_custom_logo_image_attributes', 10, 3 );

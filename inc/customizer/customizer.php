@@ -118,34 +118,6 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 			return $sanitized_input;
 		}
 
-		// Sanitize textarea.
-		function aesthetix_sanitize_textarea( $input ) {
-
-			$allowedtags = array(
-				'a'      => array(
-					'href'   => array(),
-					'title'  => array(),
-					'_blank' => array(),
-				),
-				'img'    => array(
-					'src'    => array(),
-					'alt'    => array(),
-					'width'  => array(),
-					'height' => array(),
-					'style'  => array(),
-					'class'  => array(),
-					'id'     => array(),
-				),
-				'br'     => array(),
-				'em'     => array(),
-				'strong' => array(),
-				'script' => array(),
-			);
-
-			// Return filtered html.
-			return esc_html( $input );
-		}
-
 		// Common functions for reusable options.
 		// Title tab.
 		function aesthetix_tab_title( $section, $id, $name, $description, $priority ) {
@@ -157,9 +129,9 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 			) );
 			$wp_customize->add_control( 'aesthetix_options[' . $section . '_' . $id . ']', array(
 				'label'       => $name,
+				'description' => wp_kses_post( $description ),
 				'section'     => apply_filters( 'aesthetix_customizer_section_control', 'aesthetix_' . $section, $id ),
 				'type'        => 'hidden',
-				'description' => $description,
 				'priority'    => $priority,
 			) );
 		}
@@ -446,3 +418,37 @@ if ( ! function_exists( 'aesthetix_customize_panels_js' ) ) {
 	}
 }
 add_action( 'customize_controls_enqueue_scripts', 'aesthetix_customize_panels_js' );
+
+if ( ! function_exists( 'aesthetix_customizer_section_control_default_replacements' ) ) {
+
+	/**
+	 * Function for 'aesthetix_customizer_section_control' filter-hook.
+	 * 
+	 * @since 1.2.4
+	 * 
+	 * @param string $section Replacement section for default customizer section.
+	 * @param string $id      ID for filter.
+	 *
+	 * @return string
+	 */
+	function aesthetix_customizer_section_control_default_replacements( $section, $id ) {
+
+		$replacements = array( 
+			'aesthetix_title_tagline'     => 'title_tagline',
+			'aesthetix_colors'            => 'colors',
+			'aesthetix_header_image'      => 'header_image',
+			'aesthetix_background_image'  => 'background_image',
+			'aesthetix_static_front_page' => 'static_front_page',
+			'aesthetix_custom_css'        => 'custom_css',
+		);
+
+		foreach ( $replacements as $key => $replacement ) {
+			if ( str_contains( $section, $key ) ) {
+				$section = str_replace( $key, $replacement, $section );
+			}
+		}
+
+		return $section;
+	}
+}
+add_filter( 'aesthetix_customizer_section_control', 'aesthetix_customizer_section_control_default_replacements', 10, 2 );

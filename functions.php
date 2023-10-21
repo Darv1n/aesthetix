@@ -28,6 +28,7 @@ require_once get_template_directory() . '/inc/shortcodes.php';
 
 // Widgets.
 require_once get_template_directory() . '/inc/widgets/widgets-init.php';
+require_once get_template_directory() . '/inc/widgets/abstract-widget.php';
 require_once get_template_directory() . '/inc/widgets/class-widget-subscribe-form.php';
 require_once get_template_directory() . '/inc/widgets/class-widget-subscribe-popup-form.php';
 require_once get_template_directory() . '/inc/widgets/class-widget-search-popup-form.php';
@@ -85,8 +86,8 @@ if ( is_plugin_active( 'mailchimp-for-wp/mailchimp-for-wp.php' ) ) {
 	require_once get_template_directory() . '/inc/compatibility/mailchimp.php';
 }
 
-
-require_once get_template_directory() . '/inc/libs/minifier.php'; // html/css/js minifier functions.
+// Libs.
+require_once get_template_directory() . '/inc/libs/minifier.php';
 require_once get_template_directory() . '/inc/libs/kama-breadcrumb.php';
 
 // Lib for DOM parsing https://simplehtmldom.sourceforge.io/

@@ -1,18 +1,31 @@
-.widget-area
-	margin-bottom: $margin
-	.widget:not(:last-child)
-		margin-bottom: $margin*2
-
+.widgets
+	> *
+		&:not(:last-child)
+			margin-bottom: 1rem
+	&-left
+		text-align: left
+	&-center
+		text-align: center
+	&-right
+		text-align: right
+	&-inline
+		> *
+			margin-bottom: .125rem
+			display: inline-block
+			vertical-align: middle
+			&:not(:last-child)
+				margin-right: .125rem
+				margin-bottom: .125rem
 .widget
 	position: relative
 	&-title
-		margin-bottom: $margin/2
+		margin-bottom: .5rem
 		font-size: $h4
 	ul, ol, dl
-		list-style-type: none
-		padding-left: 0
-		li:not(:last-child)
-			margin-bottom: .375rem
+		// list-style-type: none
+		// padding-left: 0
+		// li:not(:last-child)
+		// 	margin-bottom: .375rem
 	&.widget_recent_entries
 		.post-date
 			display: block
