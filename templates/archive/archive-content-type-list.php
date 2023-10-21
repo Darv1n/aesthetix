@@ -17,7 +17,7 @@
 
 			<?php
 				// Post thumbnail part.
-				get_template_part( 'templates/archive/archive-entry', 'post-thumbnail' );
+				get_template_part( 'templates/archive/archive-entry-post-thumbnail' );
 			?>
 
 		</div>
@@ -27,20 +27,20 @@
 
 				// Post meta part.
 				if ( get_aesthetix_options( 'archive_' . get_post_type() . '_meta_display' ) ) {
-					get_template_part( 'templates/archive/archive-entry', 'post-meta' );
+					get_template_part( 'templates/archive/archive-entry-post-meta' );
 				}
 
 				// Post title part.
-				get_template_part( 'templates/archive/archive-entry', 'post-title' ); 
+				get_template_part( 'templates/archive/archive-entry-post-title' ); 
 
 				// Post content part.
 				if ( get_aesthetix_options( 'archive_' . get_post_type() . '_detail_description' ) !== 'nothing' ) {
-					get_template_part( 'templates/archive/archive-entry', 'post-content' );
+					get_template_part( 'templates/archive/archive-entry-post-content' );
 				}
 
 				// Post footer part.
 				if ( get_aesthetix_options( 'archive_' . get_post_type() . '_detail_button' ) !== 'nothing' ) {
-					get_template_part( 'templates/archive/archive-entry', 'post-detail-button' );
+					get_template_part( 'templates/archive/archive-entry-post-detail-button' );
 				}
 
 			?>

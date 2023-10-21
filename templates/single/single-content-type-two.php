@@ -14,7 +14,7 @@
 
 	<?php
 		// Post header part.
-		get_template_part( 'templates/single/single-entry', 'post-header' ); 
+		get_template_part( 'templates/single/single-entry-post-header' ); 
 	?>
 
 	<div class="row">
@@ -24,7 +24,7 @@
 			<?php
 				// Post meta part.
 				if ( get_aesthetix_options( 'single_' . get_post_type() . '_meta_display' ) ) {
-					get_template_part( 'templates/single/single-entry', 'post-meta' );
+					get_template_part( 'templates/single/single-entry-post-meta' );
 				}
 			?>
 
@@ -39,11 +39,11 @@
 				}
 
 				// Post content part.
-				get_template_part( 'templates/single/single-entry', 'post-content' );
+				get_template_part( 'templates/single/single-entry-post-content' );
 
 				// Post footer part.
 				if ( get_aesthetix_options( 'single_' . get_post_type() . '_entry_footer_display' ) ) {
-					get_template_part( 'templates/single/single-entry', 'post-footer' );
+					get_template_part( 'templates/single/single-entry-post-footer' );
 				}
 			?>
 

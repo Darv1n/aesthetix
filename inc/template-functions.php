@@ -809,7 +809,7 @@ if ( ! function_exists( 'default_sidebar' ) ) {
 
 				<?php if ( get_aesthetix_options( 'general_header_mobile_type' ) === 'mid-3' ) { ?>
 					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/aside', 'subscribe-toggle', array( 'button_content' => $button_content['subscribe'], 'button_size' => $button_size ) ); ?>
+						<?php get_template_part( 'templates/aside-subscribe-toggle', '', array( 'button_content' => $button_content['subscribe'], 'button_size' => $button_size ) ); ?>
 					</div>
 				<?php } else { ?>
 					<div <?php widget_classes( '', $id ) ?>>
@@ -829,14 +829,14 @@ if ( ! function_exists( 'default_sidebar' ) ) {
 
 				<?php if ( get_aesthetix_options( 'general_header_mobile_type' ) === 'mid-3' ) { ?>
 					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/aside', 'search-toggle', array( 'button_content' => $button_content['search'], 'button_size' => $button_size ) ); ?>
+						<?php get_template_part( 'templates/aside-search-toggle', '', array( 'button_content' => $button_content['search'], 'button_size' => $button_size ) ); ?>
 					</div>
 				<?php } else { ?>
 					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/aside', 'search-toggle', array( 'button_content' => $button_content['search'], 'button_size' => $button_size ) ); ?>
+						<?php get_template_part( 'templates/aside-search-toggle', '', array( 'button_content' => $button_content['search'], 'button_size' => $button_size ) ); ?>
 					</div>
 					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/aside', 'subscribe-toggle', array( 'button_content' => $button_content['subscribe'], 'button_size' => $button_size ) ); ?>
+						<?php get_template_part( 'templates/aside-subscribe-toggle', '', array( 'button_content' => $button_content['subscribe'], 'button_size' => $button_size ) ); ?>
 					</div>
 				<?php } ?>
 
@@ -845,21 +845,21 @@ if ( ! function_exists( 'default_sidebar' ) ) {
 
 				<?php if ( get_aesthetix_options( 'general_header_type' ) === 'mid-3-bot-3' ) { ?>
 					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/aside', 'subscribe-toggle' ); ?>
+						<?php get_template_part( 'templates/aside-subscribe-toggle' ); ?>
 					</div>
-				<?php } else if ( get_aesthetix_options( 'general_header_type' ) === 'mid-3-bot-2' ) { ?>
+				<?php } elseif ( get_aesthetix_options( 'general_header_type' ) === 'mid-3-bot-2' ) { ?>
 					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/aside', 'subscribe-toggle' ); ?>
+						<?php get_template_part( 'templates/aside-subscribe-toggle' ); ?>
 					</div>
-				<?php } else if ( get_aesthetix_options( 'general_header_type' ) === 'mid-3' ) { ?>
+				<?php } elseif ( get_aesthetix_options( 'general_header_type' ) === 'mid-3' ) { ?>
 					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/aside', 'subscribe-toggle' ); ?>
+						<?php get_template_part( 'templates/aside-subscribe-toggle' ); ?>
 					</div>
-				<?php } else if ( get_aesthetix_options( 'general_header_type' ) === 'mid-2-bot-3' ) { ?>
+				<?php } elseif ( get_aesthetix_options( 'general_header_type' ) === 'mid-2-bot-3' ) { ?>
 					<div <?php widget_classes( '', $id ) ?>>
 						<?php get_template_part( 'templates/logo' ); ?>
 					</div>
-				<?php } else if ( get_aesthetix_options( 'general_header_type' ) === 'mid-2-bot-2' ) { ?>
+				<?php } elseif ( get_aesthetix_options( 'general_header_type' ) === 'mid-2-bot-2' ) { ?>
 					<div <?php widget_classes( '', $id ) ?>>
 						<?php get_template_part( 'templates/logo' ); ?>
 					</div>
@@ -883,28 +883,28 @@ if ( ! function_exists( 'default_sidebar' ) ) {
 					<div <?php widget_classes( '', $id ) ?>>
 						<?php get_template_part( 'templates/adv-banner' ); ?>
 					</div>
-				<?php } else if ( get_aesthetix_options( 'general_header_type' ) === 'mid-3-bot-2' ) { ?>
+				<?php } elseif ( get_aesthetix_options( 'general_header_type' ) === 'mid-3-bot-2' ) { ?>
 					<div <?php widget_classes( '', $id ) ?>>
 						<?php get_template_part( 'templates/adv-banner' ); ?>
 					</div>
-				<?php } else if ( get_aesthetix_options( 'general_header_type' ) === 'mid-3' ) { ?>
+				<?php } elseif ( get_aesthetix_options( 'general_header_type' ) === 'mid-3' ) { ?>
 					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/aside', 'search-toggle' ); ?>
+						<?php get_template_part( 'templates/aside-search-toggle' ); ?>
 					</div>
-				<?php } else if ( get_aesthetix_options( 'general_header_type' ) === 'mid-2-bot-3' ) { ?>
+				<?php } elseif ( get_aesthetix_options( 'general_header_type' ) === 'mid-2-bot-3' ) { ?>
 					<div <?php widget_classes( '', $id ) ?>>
 						<?php get_template_part( 'templates/adv-banner' ); ?>
 					</div>
-				<?php } else if ( get_aesthetix_options( 'general_header_type' ) === 'mid-2-bot-2' ) { ?>
+				<?php } elseif ( get_aesthetix_options( 'general_header_type' ) === 'mid-2-bot-2' ) { ?>
 					<div <?php widget_classes( '', $id ) ?>>
 						<?php get_template_part( 'templates/adv-banner' ); ?>
 					</div>
 				<?php } else { ?>
 					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/aside', 'search-toggle' ); ?>
+						<?php get_template_part( 'templates/aside-search-toggle' ); ?>
 					</div>
 					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/aside', 'subscribe-toggle' ); ?>
+						<?php get_template_part( 'templates/aside-subscribe-toggle' ); ?>
 					</div>
 				<?php } ?>
 
@@ -913,7 +913,7 @@ if ( ! function_exists( 'default_sidebar' ) ) {
 			case 'header-bottom-left': ?>
 
 				<div <?php widget_classes( '', $id ) ?>>
-					<?php get_template_part( 'templates/aside', 'search-toggle' ); ?>
+					<?php get_template_part( 'templates/aside-search-toggle' ); ?>
 				</div>
 
 				<?php break;
@@ -928,14 +928,14 @@ if ( ! function_exists( 'default_sidebar' ) ) {
 
 				<?php if ( get_aesthetix_options( 'general_header_type' ) === 'mid-2-bot-3' ) { ?>
 					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/aside', 'subscribe-toggle' ); ?>
+						<?php get_template_part( 'templates/aside-subscribe-toggle' ); ?>
 					</div>
 				<?php } else { ?>
 					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/aside', 'search-toggle' ); ?>
+						<?php get_template_part( 'templates/aside-search-toggle' ); ?>
 					</div>
 					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/aside', 'subscribe-toggle' ); ?>
+						<?php get_template_part( 'templates/aside-subscribe-toggle' ); ?>
 					</div>
 				<?php } ?>
 

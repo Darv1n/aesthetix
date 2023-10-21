@@ -200,7 +200,7 @@ if ( ! function_exists( 'get_aesthetix_options_with_demo_var' ) ) {
 
 		if ( get_query_var( 'demo', false ) ) {
 			$demo_var = get_query_var( 'demo', false );
-		} else if ( isset( $aesthetix_options['general_demo_var'] ) ) {
+		} elseif ( isset( $aesthetix_options['general_demo_var'] ) ) {
 			$demo_var = $aesthetix_options['general_demo_var'];
 		} else {
 			$demo_var = $aesthetix_defaults['general_demo_var'];

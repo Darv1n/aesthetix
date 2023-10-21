@@ -10,7 +10,7 @@
  */
 
 if ( is_sticky() || has_post_format() ) { ?>
-	<ul class="post-formats" aria-label="<?php esc_attr_e( 'Post Formats', 'aesthetix' ); ?>">
+	<ul class="post-formats" aria-label="<?php esc_attr_e( 'Post formats', 'aesthetix' ); ?>">
 		<?php if ( is_sticky() ) { ?>
 			<li <?php button_classes( 'button-xs button-disabled post-sticky icon icon_thumbtack', 'gray' ) ?>>
 				<?php esc_html_e( 'Sticky', 'aesthetix' ); ?>

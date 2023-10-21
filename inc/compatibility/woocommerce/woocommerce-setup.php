@@ -166,9 +166,9 @@ if ( ! function_exists( 'aesthetix_woo_widgets_init' ) ) {
 			apply_filters(
 				'aesthetix_woo_sidebar_shop_init',
 				array(
-					'name'          => esc_html__( 'WooCommerce Sidebar', 'aesthetix' ),
+					'name'          => esc_html__( 'WooCommerce sidebar', 'aesthetix' ),
 					'id'            => 'shop-sidebar',
-					'description'   => __( 'This sidebar will be used on Product archive, Cart, Checkout and My Account pages', 'aesthetix' ),
+					'description'   => __( 'This sidebar will be used on product archive, cart, checkout and my account pages', 'aesthetix' ),
 					'before_widget' => '<div id="%1$s" class="widget %2$s">',
 					'after_widget'  => '</div>',
 					'before_title'  => '<h2 class="widget-title">',
@@ -180,9 +180,9 @@ if ( ! function_exists( 'aesthetix_woo_widgets_init' ) ) {
 			apply_filters(
 				'aesthetix_woo_sidebar_single_product_init',
 				array(
-					'name'          => esc_html__( 'Product Sidebar', 'aesthetix' ),
+					'name'          => esc_html__( 'Product sidebar', 'aesthetix' ),
 					'id'            => 'single-product-sidebar',
-					'description'   => __( 'This sidebar will be used on Single Product page', 'aesthetix' ),
+					'description'   => __( 'This sidebar will be used on single product page', 'aesthetix' ),
 					'before_widget' => '<div id="%1$s" class="widget %2$s">',
 					'after_widget'  => '</div>',
 					'before_title'  => '<h2 class="widget-title">',

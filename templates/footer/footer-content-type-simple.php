@@ -22,22 +22,26 @@
 
 <div <?php aesthetix_archive_page_columns_wrapper_classes(); ?>>
 	<div class="<?php echo esc_attr( implode( ' ', $first_col_classes ) ); ?>">
-		<?php
-			if ( is_active_sidebar( 'footer-main-first' ) ) {
-				dynamic_sidebar( 'footer-main-first' );
-			} else { ?>
-				<div class="widget widget_branding">
-					<?php get_template_part( 'templates/logo' ); ?>
-				</div>
-				<div class="widget widget_search">
-					<?php get_search_form(); ?>
-				</div>
-			<?php }
-		?>
+		<div <?php widgets_classes( '', 'footer-main-first' ); ?>>
+			<?php
+				if ( is_active_sidebar( 'footer-main-first' ) ) {
+					dynamic_sidebar( 'footer-main-first' );
+				} else { ?>
+					<div class="widget widget_branding">
+						<?php get_template_part( 'templates/logo' ); ?>
+					</div>
+					<div class="widget widget_search">
+						<?php get_search_form(); ?>
+					</div>
+				<?php }
+			?>
+		</div>
 	</div>
 	<div class="<?php echo esc_attr( implode( ' ', $last_col_classes ) ); ?>">
-		<?php if ( is_active_sidebar( 'footer-main-second' ) ) {
-			dynamic_sidebar( 'footer-main-second' );
-		} ?>
+		<div <?php widgets_classes( '', 'footer-main-second' ); ?>>
+			<?php if ( is_active_sidebar( 'footer-main-second' ) ) {
+				dynamic_sidebar( 'footer-main-second' );
+			} ?>
+		</div>
 	</div>
 </div>

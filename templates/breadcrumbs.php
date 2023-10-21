@@ -11,24 +11,25 @@
 
 if ( ! is_front_page() && ! is_home() && get_aesthetix_options( 'general_breadcrumbs_display' ) ) {
 
-	$before = '<section id="section-breadcrumbs" class="' . esc_attr( implode( ' ', get_aesthetix_section_classes( 'section_breadcrumbs' ) ) ) . '">';
-		$before .= '<div class="' . esc_attr( implode( ' ', get_aesthetix_container_classes() ) ) . '">';
-			$before .= '<div class="row">';
-				$before .= '<div class="col-12 align-items-center">';
+	$before = '<section id="section-breadcrumbs" ' . aesthetix_section_classes( 'section-breadcrumbs', false ) . '>';
+		$before .= '<div ' . aesthetix_container_classes( 'container-outer', false ) . '>';
+			$before .= '<div ' . aesthetix_container_classes( 'container-inner', false ) . '>';
+				$before .= '<div class="row">';
+					$before .= '<div class="col-12 align-items-center">';
 
-				$after = '</div>';
+					$after = '</div>';
+				$after .= '</div>';
 			$after .= '</div>';
 		$after .= '</div>';
 	$after .= '</section>';
 
 	if ( get_aesthetix_options( 'general_breadcrumbs_type' ) === 'navxt' && is_plugin_active( 'breadcrumb-navxt/breadcrumb-navxt.php' ) ) {
-
-		$before .= '<nav id="breadcrumbs" class="breadcrumbs breadcrumbs_' . esc_attr( get_aesthetix_options( 'general_breadcrumbs_type' ) ) . '" typeof="BreadcrumbList" vocab="https://schema.org/" aria-label="breadcrumb">';
+		$before .= '<nav id="breadcrumbs" class="breadcrumbs breadcrumbs-' . esc_attr( get_aesthetix_options( 'general_breadcrumbs_type' ) ) . '" typeof="BreadcrumbList" vocab="https://schema.org/" aria-label="breadcrumb">';
 			$before .= '<ol class="list-inline list-unstyled">';
 			$after  .= '</ol>';
 		$after  .= '</nav>';
 	} else {
-		$before .= '<div id="breadcrumbs" class="breadcrumbs breadcrumbs_' . esc_attr( get_aesthetix_options( 'general_breadcrumbs_type' ) ) . '">';
+		$before .= '<div id="breadcrumbs" class="breadcrumbs breadcrumbs-' . esc_attr( get_aesthetix_options( 'general_breadcrumbs_type' ) ) . '">';
 		$after  .= '</div>';
 	}
 

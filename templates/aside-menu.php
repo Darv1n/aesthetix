@@ -25,7 +25,7 @@ if ( is_admin_bar_showing() ) {
 			</div>
 			<div class="col-6">
 				<div class="aside-menu-toggle">
-					<?php get_template_part( 'templates/aside', 'menu-toggle', array( 'button_classes' => 'menu-close' ) ); ?>
+					<?php get_template_part( 'templates/aside-menu-toggle', '', array( 'button_classes' => 'menu-close' ) ); ?>
 				</div>
 			</div>
 		</div>

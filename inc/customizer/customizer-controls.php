@@ -138,7 +138,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 		$archive_page_pagination_select = array(
 			'default'  => __( 'Default', 'aesthetix' ),
 			'numeric'  => __( 'Numeric', 'aesthetix' ),
-			'loadmore' => __( 'Load More', 'aesthetix' ),
+			'loadmore' => __( 'Load more', 'aesthetix' ),
 		);
 
 		$archive_page_detail_button_select = array(
@@ -289,11 +289,11 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 
 			// Single $post_type options.
 			$aesthetix_controls['single_' . $post_type] = array(
-				'structure_title'           => array( 'tab_title', __( 'Post Structure', 'aesthetix' ), '' ),
+				'structure_title'           => array( 'tab_title', __( 'Post structure', 'aesthetix' ), '' ),
 				'structure'                 => array( 'sortable_control', '', '', get_aesthetix_customizer_single_post_structure( null, $post_type ) ),
-				'meta_structure_title'      => array( 'tab_title', __( 'Post Meta Structure', 'aesthetix' ), '' ),
+				'meta_structure_title'      => array( 'tab_title', __( 'Post meta structure', 'aesthetix' ), '' ),
 				'meta_structure'            => array( 'sortable_control', '', '', get_aesthetix_customizer_post_meta_structure( null, $post_type ) ),
-				'footer_structure_title'    => array( 'tab_title', __( 'Post Footer Structure', 'aesthetix' ), '' ),
+				'footer_structure_title'    => array( 'tab_title', __( 'Post footer structure', 'aesthetix' ), '' ),
 				'footer_structure'          => array( 'sortable_control', '', '', get_aesthetix_customizer_single_post_footer_structure( null, $post_type ) ),
 				'options_title'             => array( 'tab_title', __( 'Main options', 'aesthetix' ), '' ),
 				'template_type'             => array( 'select_control', __( 'Select template type', 'aesthetix' ), __( 'This field displays template of the post', 'aesthetix' ), $single_post_template_type_select ),
@@ -315,20 +315,20 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			// Archive $post_type options.
 			if ( $post_type_object->has_archive || ! empty( $object_taxonomies ) ) {
 				$aesthetix_controls['archive_' . $post_type] = array(
-					'options_title'             => array( 'tab_title', __( 'Main Options', 'aesthetix' ), '' ),
+					'options_title'             => array( 'tab_title', __( 'Main options', 'aesthetix' ), '' ),
 					'masonry'                   => array( 'checkbox_control', __( 'Masonry blog style', 'aesthetix' ), '' ),
 					'columns'                   => array( 'select_control', __( 'Select columns of posts', 'aesthetix' ), __( 'Choose how many columns to display posts', 'aesthetix' ), $archive_page_columns_select ),
 					'template_type'             => array( 'select_control', __( 'Select template type', 'aesthetix' ), __( 'This field displays template of posts', 'aesthetix' ), $archive_page_template_type_select ),
 					'posts_per_page'            => array( 'number_control', __( 'Select posts per page', 'aesthetix' ), array( 'step' => '1', 'min' => '1', 'max' => '100' ) ),
 					'posts_order'               => array( 'select_control', __( 'Select posts order', 'aesthetix' ), '', $archive_page_order_select ),
 					'posts_orderby'             => array( 'select_control', __( 'Select posts orderby', 'aesthetix' ), '', $archive_page_orderby_select ),
-					'pagination'                => array( 'select_control', __( 'Post Pagination', 'aesthetix' ), '', $archive_page_pagination_select ),
+					'pagination'                => array( 'select_control', __( 'Post pagination', 'aesthetix' ), '', $archive_page_pagination_select ),
 					'detail_button'             => array( 'select_control', __( 'Read more button type', 'aesthetix' ), '', $archive_page_detail_button_select ),
-					'structure_title'           => array( 'tab_title', __( 'Post Structure', 'aesthetix' ), '' ),
+					'structure_title'           => array( 'tab_title', __( 'Post structure', 'aesthetix' ), '' ),
 					'structure'                 => array( 'sortable_control', '', '', get_aesthetix_customizer_archive_post_structure( null, $post_type ) ),
-					'thumbnail_structure_title' => array( 'tab_title', __( 'Post Thumbnail Structure', 'aesthetix' ), '' ),
+					'thumbnail_structure_title' => array( 'tab_title', __( 'Post thumbnail structure', 'aesthetix' ), '' ),
 					'thumbnail_structure'       => array( 'sortable_control', '', '', get_aesthetix_customizer_post_thumbnail_structure( null, $post_type ) ),
-					'meta_structure_title'      => array( 'tab_title', __( 'Post Meta Structure', 'aesthetix' ), '' ),
+					'meta_structure_title'      => array( 'tab_title', __( 'Post meta structure', 'aesthetix' ), '' ),
 					'meta_structure'            => array( 'sortable_control', '', '', get_aesthetix_customizer_post_meta_structure( null, $post_type ) ),
 				);
 
@@ -341,7 +341,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 				}
 
 				$aesthetix_controls['archive_' . $post_type] = array_merge( $aesthetix_controls['archive_' . $post_type], array(
-					'taxonomies_title'   => array( 'tab_title', __( 'Taxonomy Options', 'aesthetix' ), '' ),
+					'taxonomies_title'   => array( 'tab_title', __( 'Taxonomy options', 'aesthetix' ), '' ),
 					'taxonomies_display' => array( 'select_control', __( 'Select taxomy for display', 'aesthetix' ), '', $archive_page_taxonomies_display ),
 				) );
 			}
@@ -349,7 +349,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 
 		// Other options.
 		$aesthetix_controls['other'] = array(
-			'tab_social_list'     => array( 'tab_title', __( 'Social List', 'aesthetix' ), __( 'Add a link to social-list networks using a shortcode <strong>[aesthetix-social-list]</strong>', 'aesthetix' ) ),
+			'tab_social_list'     => array( 'tab_title', __( 'Social list', 'aesthetix' ), __( 'Add a link to social-list networks using a shortcode <strong>[aesthetix-social-list]</strong>', 'aesthetix' ) ),
 			'facebook'            => array( 'url_control', __( 'Facebook link', 'aesthetix' ), '' ),
 			'instagram'           => array( 'url_control', __( 'Instagram link', 'aesthetix' ), '' ),
 			'youtube'             => array( 'url_control', __( 'Youtube link', 'aesthetix' ), '' ),
@@ -358,7 +358,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'linkedin'            => array( 'url_control', __( 'Linkedin link', 'aesthetix' ), '' ),
 			'vkontakte'           => array( 'url_control', __( 'Vkontakte link', 'aesthetix' ), '' ),
 
-			'tab_contacts_list'   => array( 'tab_title', __( 'Contacts List', 'aesthetix' ), __( 'Add a link to contacts-list using a shortcode <strong>[aesthetix-contacts-list]</strong> or single <strong>[aesthetix-email]</strong>, <strong>[aesthetix-phone]</strong>, <strong>[aesthetix-address]</strong>', 'aesthetix' ) ),
+			'tab_contacts_list'   => array( 'tab_title', __( 'Contacts list', 'aesthetix' ), __( 'Add a link to contacts-list using a shortcode <strong>[aesthetix-contacts-list]</strong> or single <strong>[aesthetix-email]</strong>, <strong>[aesthetix-phone]</strong>, <strong>[aesthetix-address]</strong>', 'aesthetix' ) ),
 			'address'             => array( 'text_control', __( 'Address', 'aesthetix' ), '' ),
 			'phone'               => array( 'text_control', __( 'Phone', 'aesthetix' ), '' ),
 			'email'               => array( 'text_control', __( 'Email', 'aesthetix' ), '' ),

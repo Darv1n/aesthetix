@@ -16,7 +16,7 @@ jQuery( document ).ready( function( $ ) {
 
 		if ( $( this ).hasClass( off ) ) {
 			$( this ).removeClass( off ).addClass( on );
-		} else if ( $( this ).hasClass( on ) ) {
+		} elseif ( $( this ).hasClass( on ) ) {
 			$( this ).removeClass( on ).addClass( off );
 		}
 

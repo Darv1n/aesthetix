@@ -18,11 +18,11 @@ get_header(); ?>
 
 		<header class="content-area-header" aria-label="<?php esc_attr_e( 'Search page header', 'aesthetix' ); ?>">
 			<h1 class="content-area-title">
-				<?php printf( __( 'Search Results for: %s', 'aesthetix' ), '<span class="search-query">' . get_search_query() . '</span>' ); ?>
+				<?php printf( __( 'Search results for: %s', 'aesthetix' ), '<span class="search-query">' . get_search_query() . '</span>' ); ?>
 			</h1>
 		</header>
 
-		<section <?php aesthetix_section_classes( 'content-area-content' ); ?> aria-label="<?php esc_attr_e( 'Search page content', 'aesthetix' ); ?>">
+		<section class="content-area-content" aria-label="<?php esc_attr_e( 'Search page content', 'aesthetix' ); ?>">
 
 			<div <?php aesthetix_archive_page_columns_wrapper_classes(); ?>>
 
@@ -33,7 +33,7 @@ get_header(); ?>
 
 					<?php if ( ! isset( $post_type_current ) ) : ?>
 						<div <?php aesthetix_archive_page_columns_classes( '', 1 ); ?>>
-							<h2 class="post-type-title h4"><?php _e( 'Post type:' ) ?> <?php echo esc_html( $post_type_object->name ); ?></h2>
+							<h2 class="post-type-title h4"><?php _e( 'Post type', 'aesthetix' ) ?>: <?php echo esc_html( $post_type_object->name ); ?></h2>
 						</div>
 					<?php endif; ?>
 
@@ -41,7 +41,7 @@ get_header(); ?>
 						</div>
 						<div <?php aesthetix_archive_page_columns_wrapper_classes(); ?>>
 							<div <?php aesthetix_archive_page_columns_classes( '', 1 ); ?>>
-								<h2 class="post-type-title h4"><?php esc_html_e( 'Post type' ) ?>: <?php echo esc_html( $post_type_object->name ); ?></h2>
+								<h2 class="post-type-title h4"><?php esc_html_e( 'Post type', 'aesthetix' ) ?>: <?php echo esc_html( $post_type_object->name ); ?></h2>
 							</div>
 					<?php endif; ?>
 
@@ -69,12 +69,12 @@ get_header(); ?>
 		</section>
 
 		<footer class="content-area-footer" aria-label="<?php esc_attr_e( 'Search page footer', 'aesthetix' ); ?>">
-			<?php get_template_part( 'templates/archive/archive', 'pagination' ); ?>
+			<?php get_template_part( 'templates/archive/archive-pagination' ); ?>
 		</footer>
 
 	<?php else : ?>
 
-		<?php get_template_part( 'templates/archive/archive-content', 'none' ); ?>
+		<?php get_template_part( 'templates/archive/archive-content-none' ); ?>
 
 	<?php endif; ?>
 

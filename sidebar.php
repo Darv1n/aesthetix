@@ -19,15 +19,11 @@ if ( is_active_sidebar( $sidebar ) ) { ?>
 
 	<aside id="aside" <?php aesthetix_widget_area_classes( 'order-3 order-lg-3' ); ?> role="complementary">
 
-		<section <?php widgets_classes( '', $sidebar ); ?>>
+		<?php do_action( 'aesthetix_before_sidebar' ); ?>
 
-			<?php do_action( 'aesthetix_before_sidebar' ); ?>
+			<?php dynamic_sidebar( $sidebar ); ?>
 
-				<?php dynamic_sidebar( $sidebar ); ?>
-
-			<?php do_action( 'aesthetix_after_sidebar' ); ?>
-
-		</section>
+		<?php do_action( 'aesthetix_after_sidebar' ); ?>
 
 	</aside>
 

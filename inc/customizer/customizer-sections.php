@@ -56,11 +56,11 @@ if ( ! function_exists( 'get_aesthetix_customizer_sections' ) ) {
 			}
 
 			$sections[ 'single_' . $post_type ] = array(
-				'title' => __( 'Single ' . $post_type . ' options', 'aesthetix' ),
+				'title' => sprintf( __( 'Single %s options', 'aesthetix' ), $post_type ),
 				'type'  => 'section',
 			);
 			$sections[ 'archive_' . $post_type ] = array(
-				'title' => __( 'Archive ' . $post_type . ' options', 'aesthetix' ),
+				'title' => sprintf( __( 'Archive %s options', 'aesthetix' ), $post_type ),
 				'type'  => 'section',
 			);
 		}

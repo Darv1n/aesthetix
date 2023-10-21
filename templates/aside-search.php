@@ -10,6 +10,6 @@
  */
  ?>
 
-<aside id="aside-search" class="search-popup popup mfp-hide" aria-label="<?php esc_attr_e( 'Search Popup', 'aesthetix' ); ?>">
+<aside id="aside-search" class="search-popup popup mfp-hide" aria-label="<?php esc_attr_e( 'Search popup', 'aesthetix' ); ?>">
 	<?php get_search_form(); ?>
 </aside>

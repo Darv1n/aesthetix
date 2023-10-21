@@ -447,7 +447,7 @@ class SimpleXLSX {
 										$this->sheets[ str_replace( 'rId', '', (string) $workbookRelation['Id'] ) ] = $sheet;
 									}
 
-								} else if ( $wrel_type === self::SCHEMA_REL_SHAREDSTRINGS ) {
+								} elseif ( $wrel_type === self::SCHEMA_REL_SHAREDSTRINGS ) {
 
 									if ( $sharedStrings = $this->getEntryXML( $wrel_path ) ) {
 										foreach ( $sharedStrings->si as $val ) {
@@ -458,7 +458,7 @@ class SimpleXLSX {
 											}
 										}
 									}
-								} else if ( $wrel_type === self::SCHEMA_REL_STYLES ) {
+								} elseif ( $wrel_type === self::SCHEMA_REL_STYLES ) {
 
 									$this->styles = $this->getEntryXML( $wrel_path );
 
@@ -478,7 +478,7 @@ class SimpleXLSX {
 												$v = $v['@attributes'];
 												if ( isset( self::$CF[ $v['numFmtId'] ] ) ) {
 													$v['format'] = self::$CF[ $v['numFmtId'] ];
-												} else if ( isset( $nf[ $v['numFmtId'] ] ) ) {
+												} elseif ( isset( $nf[ $v['numFmtId'] ] ) ) {
 													$v['format'] = $nf[ $v['numFmtId'] ];
 												}
 											}
@@ -699,7 +699,7 @@ class SimpleXLSX {
 				$value = (string) $cell->v;
 				if ( $value === '0' ) {
 					$value = false;
-				} else if ( $value === '1' ) {
+				} elseif ( $value === '1' ) {
 					$value = true;
 				} else {
 					$value = (bool) $cell->v;

@@ -84,13 +84,13 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 					do_action( 'before_site_content_structure_loop_' . $value );
 					break;
 				case 'aside-menu':
-					get_template_part( 'templates/aside', 'menu' );
+					get_template_part( 'templates/aside-menu' );
 					break;
 				case 'search-popup':
-					get_template_part( 'templates/aside', 'search' );
+					get_template_part( 'templates/aside-search' );
 					break;
 				case 'subscribe-popup':
-					get_template_part( 'templates/aside', 'subscribe' );
+					get_template_part( 'templates/aside-subscribe' );
 					break;
 				case 'first-screen':
 					get_template_part( 'templates/first-screen' );
@@ -99,7 +99,7 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 					get_template_part( 'templates/breadcrumbs' );
 					break;
 				case 'content-wrapper-start':
-					get_template_part( 'templates/content-wrapper', 'start' );
+					get_template_part( 'templates/content-wrapper-start' );
 					break;
 				default:
 					break;
@@ -137,7 +137,7 @@ if ( ! function_exists( 'after_site_content_structure' ) ) {
 					get_template_part( 'templates/subscribe-form', '', array( 'section' => true, 'title' => get_aesthetix_options( 'general_subscribe_form_title' ) ) );
 					break;
 				case 'content-wrapper-end':
-					get_template_part( 'templates/content-wrapper', 'end' );
+					get_template_part( 'templates/content-wrapper-end' );
 					break;
 				default:
 					break;
@@ -169,7 +169,7 @@ if ( ! function_exists( 'wp_footer_close_structure' ) ) {
 					do_action( 'wp_footer_close_structure_loop_' . $value );
 					break;
 				case 'scroll-top':
-					get_template_part( 'templates/button', 'scroll-top' );
+					get_template_part( 'templates/button-scroll-top' );
 					break;
 				case 'cookie':
 					get_template_part( 'templates/cookie' );

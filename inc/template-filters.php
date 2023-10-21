@@ -44,7 +44,7 @@ if ( ! function_exists( 'primary_menu_fallback' ) ) {
 		if ( current_user_can( 'edit_theme_options' ) ) {
 			echo '<ul id="top-menu">';
 				echo '<li>';
-					echo '<a ' . link_classes( '', false ) . ' href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '">' . esc_html__( 'Setup Menu', 'aesthetix' ) .'</a>';
+					echo '<a ' . link_classes( '', false ) . ' href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '">' . esc_html__( 'Setup menu', 'aesthetix' ) .'</a>';
 				echo '</li>';
 			echo '</ul>';
 		}
@@ -220,7 +220,7 @@ if ( ! function_exists( 'remove_nav_menu_item_class' ) ) {
 		foreach ( $classes as $key_class => $class ) {
 			if ( str_contains( $class, 'menu-item-' ) && ! in_array( $class, array( 'menu-item-has-children', 'menu-item-logo' ), true ) ) {
 				unset( $classes[ $key_class ] ); 
-			} else if ( str_contains( $class, 'current_page' ) ) {
+			} elseif ( str_contains( $class, 'current_page' ) ) {
 				unset( $classes[ $key_class ] ); 
 			}
 		}
@@ -376,7 +376,7 @@ if ( ! function_exists( 'aesthetix_wp_nav_menu_objects' ) ) {
 				if ( get_aesthetix_options( 'root_home_button_display' ) === 'menu-start' ) {
 					$menu_items[0] = $logo_obj;
 					$menu_items[ intval( $key + 1 ) ] = $sorted_menu_item;
-				} else if ( get_aesthetix_options( 'root_home_button_display' ) === 'menu-end' ) {
+				} elseif ( get_aesthetix_options( 'root_home_button_display' ) === 'menu-end' ) {
 					$menu_items[ $key ] = $sorted_menu_item;
 					if ( (int) $key === count( $sorted_menu_items ) ) {
 						$menu_items[ intval( $key + 1 ) ] = $logo_obj;

@@ -27,7 +27,7 @@ if ( (int) $pages === 1 ) {
 	return;
 } ?>
 
-<nav class="navigation posts-navigation posts-navigation_<?php echo esc_attr( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) ); ?>" data-max-pages="<?php echo esc_attr( $pages ); ?>" role="navigation" aria-label="<?php esc_attr_e( 'Site Post Pagination', 'aesthetix' ); ?>">
+<nav class="navigation posts-navigation posts-navigation_<?php echo esc_attr( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) ); ?>" data-max-pages="<?php echo esc_attr( $pages ); ?>" role="navigation" aria-label="<?php esc_attr_e( 'Site post pagination', 'aesthetix' ); ?>">
 
 	<?php if ( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) === 'numeric' ) {
 
@@ -70,7 +70,7 @@ if ( (int) $pages === 1 ) {
 		<?php }
 
 	} elseif ( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) === 'loadmore' ) { ?>
-		<button <?php button_classes( 'loadmore icon icon_download' ); ?> type="button" data-default-icon="icon_download" data-loading-icon="icon_spinner" data-default-text="<?php esc_attr_e( 'Load More', 'aesthetix' ); ?>" data-loading-text="<?php esc_attr_e( 'Loading...', 'aesthetix' ); ?>" data-disabled-text="<?php esc_attr_e( 'All posts have been uploaded', 'aesthetix' ); ?>" data-current-page="1" data-max-pages="<?php echo esc_attr( $wp_query->max_num_pages ); ?>"><?php esc_html_e( 'Load More', 'aesthetix' ); ?></button>
+		<button <?php button_classes( 'loadmore icon icon_download' ); ?> type="button" data-default-icon="icon_download" data-loading-icon="icon_spinner" data-default-text="<?php esc_attr_e( 'Load more', 'aesthetix' ); ?>" data-loading-text="<?php esc_attr_e( 'Loading...', 'aesthetix' ); ?>" data-disabled-text="<?php esc_attr_e( 'All posts have been uploaded', 'aesthetix' ); ?>" data-current-page="1" data-max-pages="<?php echo esc_attr( $wp_query->max_num_pages ); ?>"><?php esc_html_e( 'Load more', 'aesthetix' ); ?></button>
 	<?php } else { ?>
 
 		<div class="row">
@@ -78,7 +78,7 @@ if ( (int) $pages === 1 ) {
 			<?php if ( get_next_posts_link() ) { ?>
 				<div class="col-12 col-md-6">
 					<div class="posts-navigation__item_prev">
-						<?php next_posts_link( esc_html__( 'Older Posts', 'aesthetix' ) ); ?>
+						<?php next_posts_link( esc_html__( 'Next posts', 'aesthetix' ) ); ?>
 					</div>
 				</div>
 			<?php } ?>
@@ -86,7 +86,7 @@ if ( (int) $pages === 1 ) {
 			<?php if ( get_previous_posts_link() ) { ?>
 				<div class="col-12 col-md-6">
 					<div class="posts-navigation__item_next">
-						<?php previous_posts_link( esc_html__( 'Newer Posts', 'aesthetix' ) ); ?>
+						<?php previous_posts_link( esc_html__( 'Previous posts', 'aesthetix' ) ); ?>
 					</div>
 				</div>
 			<?php } ?>

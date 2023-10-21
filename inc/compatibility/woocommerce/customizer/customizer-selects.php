@@ -31,10 +31,10 @@ if ( ! function_exists( 'get_woocommerce_customizer_product_catalog_structure' )
 		}
 
 		$converter = array(
-			'title'    => __( 'Product Title', 'aesthetix' ),
+			'title'    => __( 'Product title', 'aesthetix' ),
 			'rating'   => __( 'Rating', 'aesthetix' ),
 			'price'    => __( 'Price', 'aesthetix' ),
-			'add_cart' => __( 'Add to Cart Button', 'aesthetix' ),
+			'add_cart' => __( 'Add to cart button', 'aesthetix' ),
 		);
 
 		// Merge child and parent default options.

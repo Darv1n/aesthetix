@@ -10,7 +10,7 @@
  */
  ?>
 
-<ul class="post-meta" aria-label="<?php esc_attr_e( 'Post Meta Information', 'aesthetix' ); ?>">
+<ul class="post-meta" aria-label="<?php esc_attr_e( 'Post meta information', 'aesthetix' ); ?>">
 
 	<?php do_action( 'aesthetix_before_archive_entry_post_meta' ); ?>
 

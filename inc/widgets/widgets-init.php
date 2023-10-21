@@ -57,7 +57,7 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 		);
 
 		// Header mobile center sidebars.
-		if ( get_aesthetix_options( 'general_header_mobile_type' ) === 'header-mobile-columns-3' ) {
+		if ( get_aesthetix_options( 'general_header_mobile_type' ) === 'header-mobile-mid-3' ) {
 			$header_mobile_center['header-mobile-center'] = array(
 				'name'        => __( 'Header mobile center', 'aesthetix' ),
 				'description' => __( 'Add widgets in header mobile center sidebar', 'aesthetix' ),
@@ -86,13 +86,14 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 			'description' => __( 'Add widgets in header main left sidebar', 'aesthetix' ),
 			'title_tag'   => 'h3',
 		);
+
 		$sidebars['header-main-right'] = array(
 			'name'        => __( 'Header main right', 'aesthetix' ),
 			'description' => __( 'Add widgets in header main right sidebar', 'aesthetix' ),
 			'title_tag'   => 'h3',
 		);
 
-		if ( get_aesthetix_options( 'general_header_type' ) === 'header-desktop-columns-3-3' ) {
+		if ( in_array( get_aesthetix_options( 'general_header_type' ), array( 'mid-3-bot-3', 'mid-3-bot-2' ), true ) ) {
 			$header_main_center['header-main-center'] = array(
 				'name'        => __( 'Header main center', 'aesthetix' ),
 				'description' => __( 'Add widgets in header main center sidebar', 'aesthetix' ),
@@ -102,16 +103,15 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 			$sidebars = array_insert_after( $sidebars, 'header-main-left', $header_main_center );
 		}
 
-		if ( in_array( get_aesthetix_options( 'general_header_type' ), array( 'header-desktop-columns-3-3', 'header-desktop-columns-2-2' ), true ) ) {
-			
-			if ( get_aesthetix_options( 'general_header_type' ) !== 'header-desktop-columns-2-2' ) {
-				$sidebars['header-bottom-left'] = array(
-					'name'        => __( 'Header bottom left', 'aesthetix' ),
-					'description' => __( 'Add widgets in header bottom left sidebar', 'aesthetix' ),
-					'title_tag'   => 'h3',
-				);
-			}
+		if ( in_array( get_aesthetix_options( 'general_header_type' ), array( 'mid-3-bot-3', 'mid-3-bot-2', 'mid-2-bot-3' ), true ) ) {
+			$sidebars['header-bottom-left'] = array(
+				'name'        => __( 'Header bottom left', 'aesthetix' ),
+				'description' => __( 'Add widgets in header bottom left sidebar', 'aesthetix' ),
+				'title_tag'   => 'h3',
+			);
+		}
 
+		if ( in_array( get_aesthetix_options( 'general_header_type' ), array( 'mid-3-bot-3', 'mid-3-bot-2', 'mid-2-bot-3', 'mid-2-bot-2' ), true ) ) {
 			$sidebars['header-bottom-right'] = array(
 				'name'        => __( 'Header bottom right', 'aesthetix' ),
 				'description' => __( 'Add widgets in header bottom right sidebar', 'aesthetix' ),
@@ -121,16 +121,19 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 
 		// Footer top bar sidebars.
 		if ( get_aesthetix_options( 'general_footer_top_bar_display' ) ) {
+
 			$sidebars['footer-top-left'] = array(
 				'name'        => __( 'Footer top bar left', 'aesthetix' ),
 				'description' => __( 'Add widgets in footer top bar left sidebar', 'aesthetix' ),
 				'title_tag'   => 'h3',
 			);
+
 			$sidebars['footer-top-right'] = array(
 				'name'        => __( 'Footer top bar right', 'aesthetix' ),
 				'description' => __( 'Add widgets in footer top bar right sidebar', 'aesthetix' ),
 				'title_tag'   => 'h3',
 			);
+
 		}
 
 		// Footer main sidebars.
@@ -139,11 +142,13 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 			'description' => __( 'Add widgets in footer main first sidebar', 'aesthetix' ),
 			'title_tag'   => 'h3',
 		);
+
 		$sidebars['footer-main-second'] = array(
 			'name'        => __( 'Footer main second right', 'aesthetix' ),
 			'description' => __( 'Add widgets in footer main second sidebar', 'aesthetix' ),
 			'title_tag'   => 'h3',
 		);
+
 		$sidebars['footer-main-third'] = array(
 			'name'        => __( 'Footer main third right', 'aesthetix' ),
 			'description' => __( 'Add widgets in footer main third sidebar', 'aesthetix' ),
@@ -160,16 +165,19 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 
 		// Footer bottom bar sidebars.
 		if ( get_aesthetix_options( 'general_footer_bottom_bar_display' ) ) {
+
 			$sidebars['footer-bottom-left'] = array(
 				'name'        => __( 'Footer bottom bar left', 'aesthetix' ),
 				'description' => __( 'Add widgets in footer bottom bar left sidebar', 'aesthetix' ),
 				'title_tag'   => 'h3',
 			);
+
 			$sidebars['footer-bottom-right'] = array(
 				'name'        => __( 'Footer bottom bar right', 'aesthetix' ),
 				'description' => __( 'Add widgets in footer bottom bar right sidebar', 'aesthetix' ),
 				'title_tag'   => 'h3',
 			);
+
 		}
 
 		// Merge child and parent default options.

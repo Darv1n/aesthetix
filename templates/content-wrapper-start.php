@@ -10,6 +10,7 @@
  */
  ?>
 
-<section id="section-content" <?php aesthetix_section_classes( 'section_content' ); ?> aria-label="<?php esc_attr_e( 'Site Content', 'aesthetix' ); ?>">
-	<div <?php aesthetix_container_classes(); ?>>
-		<div class="row">
+<section id="section-content" <?php aesthetix_section_classes( 'section-content' ); ?> aria-label="<?php esc_attr_e( 'Site content', 'aesthetix' ); ?>">
+	<div <?php aesthetix_container_classes( 'container-outer' ); ?>>
+		<div <?php aesthetix_container_classes( 'container-inner' ); ?>>
+			<div class="row">

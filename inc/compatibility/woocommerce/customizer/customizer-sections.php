@@ -27,7 +27,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_sections_woo_callback' ) ) {
 	function get_aesthetix_customizer_sections_woo_callback( $sections ) {
 
 		$sections['single_product'] = array(
-			'title'    => __( 'Single Product', 'aesthetix' ),
+			'title'    => __( 'Single product', 'aesthetix' ),
 			'type'     => 'section',
 			'priority' => 10,
 			'panel'    => 'woocommerce',

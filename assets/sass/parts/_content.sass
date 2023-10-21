@@ -61,20 +61,20 @@ a.logo
 			.logo-image
 				max-height: calc( ( .75rem * 1.25 * 2 + 1.125rem ) * 1.125 )
 
-.section, .content-area, .widget-area
-	padding-top: 1rem
-	padding-bottom: 1rem
 
-.content-area, .content-area-header, .content-area-content, .content-area-footer
-	> * 
-		padding: 0
+.content-area, .widget-area, .content-area-header, .content-area-content, .content-area-footer
+	> *
 		&:not(:last-child)
 			@extend .mb
 
-.section
-	position: relative
-	&-title
-		@extend .mb
+.section, .container-outer, .container-inner
+	border-radius: $border-radius
+
+.container-inner
+	padding-top: .5rem
+	padding-bottom: .5rem
+
+.section-padding, .container-padding
 	&-xs
 		padding-top: .5rem
 		padding-bottom: .5rem
@@ -90,45 +90,55 @@ a.logo
 	&-xl
 		padding-top: 6rem
 		padding-bottom: 6rem
-	&-rounded
-		border-radius: $border-radius
+
+.section
+	position: relative
+	padding-top: 1.5rem
+	padding-bottom: 1.5rem
+	&-title
+		@extend .mb
+	&-background, &-primary, &-secondary
+		.container-outer
+			padding-top: 1rem
+			padding-bottom: 1rem
 	&-primary
-		background: $primary-bg-color
-		border: $border-width solid $primary-bd-color
+		.container-outer
+			background: $primary-bg-color
+			border: $border-width solid $primary-bd-color
 	&-secondary
-		background: $secondary-bg-color
-		border: $border-width solid $secondary-bd-color
+		.container-outer
+			background: $secondary-bg-color
+			border: $border-width solid $secondary-bd-color
 
 .header, .footer
 	position: relative
 	*
 		hyphens: none
-	h1, h2, h3, h4, h5, h6, p
-		margin-bottom: $margin/2
-
-.container-header
-	padding-top: $margin/2
-	padding-bottom: $margin/2
+	.container-outer
+		padding-top: 0
+		padding-bottom: 0
 
 .header
+	padding-top: 0
+	padding-bottom: 0
 	&-top-bar
 		font-size: $small-font-size
 
 .footer
-	padding-top: $margin-section
+	padding-bottom: 0
 	// .button, .widget, .footer-column, .social-list, .contacts-list, .copyright
 	// 	@extend .mb
 	&__middle-bar
-		padding-top: $margin*2
-		padding-bottom: $margin
+		// padding-top: $margin*2
+		// padding-bottom: $margin
 	&__bottom-bar
-		padding-top: $margin
+		//padding-top: $margin
 		background-color: $primary-bg-color-hover
 		.widget
 			// margin-bottom: $margin/2
 	&_bottom-bar-active 
 		.footer__middle-bar
-			@extend .mb
+			// @extend .mb
 
 @media (min-width: 768px)
 	// .header__top-bar .header-column, .footer__bottom-bar .footer-column
@@ -142,7 +152,7 @@ a.logo
 	position: relative
 	display: block
 	width: 100%
-	@extend .mb
+	margin-bottom: $bootstrap-gutter*2
 	&-header, &-footer, &-content
 		> *
 			margin-bottom: $gutter

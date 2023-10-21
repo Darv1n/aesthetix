@@ -32,7 +32,7 @@ get_header(); ?>
 		<?php do_action( 'aesthetix_after_single_content_part' ); ?>
 
 		<?php if ( get_aesthetix_options( 'single_' . get_post_type() . '_post_nav_display' ) && get_previous_post_link() && get_next_post_link() ) {?>
-			<?php get_template_part( 'templates/single', 'pagination' ); ?>
+			<?php get_template_part( 'templates/single-pagination' ); ?>
 		<?php } ?>
 
 		<?php do_action( 'aesthetix_before_comment_form' ); ?>
@@ -44,7 +44,7 @@ get_header(); ?>
 
 		<?php do_action( 'aesthetix_after_comment_form' ); ?>
 
-		<?php get_template_part( 'templates/single', 'similar-posts' ); ?>
+		<?php get_template_part( 'templates/single-similar-posts' ); ?>
 
 	<?php endwhile; ?>
 

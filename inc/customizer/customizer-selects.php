@@ -31,12 +31,12 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_structure' ) ) {
 		}
 
 		$converter = array(
-			'title'      => __( 'Post Title', 'aesthetix' ),
-			'thumbnail'  => __( 'Post Thumbnail', 'aesthetix' ),
-			'meta'       => __( 'Post Meta Data', 'aesthetix' ),
-			'excerpt'    => __( 'Post Excerpt', 'aesthetix' ),
-			'author'     => __( 'Post Author Widget', 'aesthetix' ),
-			'more'       => __( 'Post Read More', 'aesthetix' ),
+			'title'      => __( 'Post title', 'aesthetix' ),
+			'thumbnail'  => __( 'Post thumbnail', 'aesthetix' ),
+			'meta'       => __( 'Post meta data', 'aesthetix' ),
+			'excerpt'    => __( 'Post excerpt', 'aesthetix' ),
+			'author'     => __( 'Post author widget', 'aesthetix' ),
+			'more'       => __( 'Post read more', 'aesthetix' ),
 		);
 
 		// Merge child and parent default options.
@@ -73,11 +73,11 @@ if ( ! function_exists( 'get_aesthetix_customizer_single_post_structure' ) ) {
 		}
 
 		$converter = array(
-			'header'    => __( 'Post Header', 'aesthetix' ),
-			'thumbnail' => __( 'Post Thumbnail', 'aesthetix' ),
-			'meta'      => __( 'Post Meta Data', 'aesthetix' ),
-			'content'   => __( 'Post Content', 'aesthetix' ),
-			'footer'    => __( 'Post Footer', 'aesthetix' ),
+			'header'    => __( 'Post header', 'aesthetix' ),
+			'thumbnail' => __( 'Post thumbnail', 'aesthetix' ),
+			'meta'      => __( 'Post meta data', 'aesthetix' ),
+			'content'   => __( 'Post content', 'aesthetix' ),
+			'footer'    => __( 'Post footer', 'aesthetix' ),
 		);
 
 		// Merge child and parent default options.
@@ -433,7 +433,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_sizes' ) ) {
 			'sm' => __( 'Small', 'aesthetix' ),
 			'md' => __( 'Medium', 'aesthetix' ),
 			'lg' => __( 'Large', 'aesthetix' ),
-			'xl' => __( 'Extra Large', 'aesthetix' ),
+			'xl' => __( 'Extra large', 'aesthetix' ),
 		);
 
 		// Merge child and parent default options.
@@ -635,8 +635,8 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_thumbnail_structure' ) ) 
 		}
 
 		$converter = array(
-			'taxonomies' => __( 'Post Taxonomies', 'aesthetix' ),
-			'formats'     => __( 'Post Sticky & Formats', 'aesthetix' ),
+			'taxonomies' => __( 'Post taxonomies', 'aesthetix' ),
+			'formats'     => __( 'Post sticky & formats', 'aesthetix' ),
 		);
 
 		// Merge child and parent default options.
@@ -710,11 +710,11 @@ if ( ! function_exists( 'get_aesthetix_customizer_button_content' ) ) {
 		}
 
 		$converter = array(
-			'button-icon-text' => __( 'Button + Icon + Text', 'aesthetix' ),
-			'button-icon'      => __( 'Button + Icon', 'aesthetix' ),
-			'button-text'      => __( 'Button + Text', 'aesthetix' ),
+			'button-icon-text' => __( 'Button + icon + text', 'aesthetix' ),
+			'button-icon'      => __( 'Button + icon', 'aesthetix' ),
+			'button-text'      => __( 'Button + text', 'aesthetix' ),
 			'icon'             => __( 'Icon', 'aesthetix' ),
-			'icon-text'        => __( 'Icon + Text', 'aesthetix' ),
+			'icon-text'        => __( 'Icon + text', 'aesthetix' ),
 			'text'             => __( 'Text', 'aesthetix' ),
 		);
 

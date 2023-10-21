@@ -9,7 +9,7 @@ html
 	&::before, &::after
 		box-sizing: inherit
 
-.container, .container-fluid
+.container
 	width: 100%
 	padding-right: $bootstrap-gutter
 	padding-left: $bootstrap-gutter
@@ -29,14 +29,15 @@ html
 		max-width: 960px
 
 @media (min-width: 1200px)
-	.container-general
-		max-width: 1140px
-	.container-average
-		max-width: 1360px
-	.container-wide
-		max-width: 1520px
-	.container-fluid
-		max-width: 1860px
+	.container
+		&-general
+			max-width: 1140px
+		&-average
+			max-width: 1360px
+		&-wide
+			max-width: 1520px
+		&-fluid
+			max-width: 1860px
 
 .row
 	display: -webkit-box

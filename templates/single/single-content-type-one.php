@@ -28,19 +28,19 @@
 						do_action( 'aesthetix_single_entry_post_loop_' . $value, $post );
 						break;
 					case 'header':
-						get_template_part( 'templates/single/single-entry', 'post-header' );
+						get_template_part( 'templates/single/single-entry-post-header' );
 						break;
 					case 'thumbnail':
-						get_template_part( 'templates/single/single-entry', 'post-thumbnail' );
+						get_template_part( 'templates/single/single-entry-post-thumbnail' );
 						break;
 					case 'meta':
-						get_template_part( 'templates/single/single-entry', 'post-meta' );
+						get_template_part( 'templates/single/single-entry-post-meta' );
 						break;
 					case 'content':
-						get_template_part( 'templates/single/single-entry', 'post-content' );
+						get_template_part( 'templates/single/single-entry-post-content' );
 						break;
 					case 'footer':
-						get_template_part( 'templates/single/single-entry', 'post-footer' );
+						get_template_part( 'templates/single/single-entry-post-footer' );
 						break;
 					default:
 						break;

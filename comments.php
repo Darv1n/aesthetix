@@ -68,7 +68,7 @@ if ( ! function_exists( 'aesthetix_comments_list' ) ) {
 
 					<ul class="comment-meta__list">
 						<li>
-							<time class="comment-date data-title" datetime="<?php echo get_comment_date( 'Y-m-d\TH:i:sP' ); ?>" data-title="<?php esc_attr_e( 'Published Date', 'aesthetix' ) ?>"><?php echo get_comment_date( 'j M, Y' ) ?></time>
+							<time class="comment-date data-title" datetime="<?php echo get_comment_date( 'Y-m-d\TH:i:sP' ); ?>" data-title="<?php esc_attr_e( 'Published date', 'aesthetix' ) ?>"><?php echo get_comment_date( 'j M, Y' ) ?></time>
 						</li>
 						<?php if ( $edit_link = get_edit_comment_link( $comment->comment_ID ) ) : ?>
 							<li>
@@ -109,7 +109,7 @@ if ( ! function_exists( 'aesthetix_comments_list' ) ) {
 
 ?>
 
-<section id="comments" <?php aesthetix_section_classes( 'section_comments comments-area' ); ?>>
+<section id="comments" <?php aesthetix_section_classes( 'section-comments comments-area' ); ?>>
 
 	<?php if ( have_comments() ) { ?>
 
@@ -129,7 +129,7 @@ if ( ! function_exists( 'aesthetix_comments_list' ) ) {
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) { ?>
 			<div class="row no-gutters justify-content-between comment-navigation">
 				<div class="nav-previous"><?php previous_comments_link( esc_html__( 'Previous comments', 'aesthetix' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( esc_html__( 'New comments', 'aesthetix' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( esc_html__( 'Next comments', 'aesthetix' ) ); ?></div>
 			</div>
 		<?php } ?>
 
@@ -180,8 +180,8 @@ if ( ! function_exists( 'aesthetix_comments_list' ) ) {
 			</div>',
 			'submit_field'         => '<div class="col-12 form-submit">%1$s %2$s</div>',
 			'class_submit'         => 'submit icon icon_envelope',
-			'title_reply'          => esc_html__( 'Leave a Reply', 'aesthetix' ),
-			'label_submit'         => esc_html__( 'Post Comment', 'aesthetix' )
+			'title_reply'          => esc_html__( 'Leave a reply', 'aesthetix' ),
+			'label_submit'         => esc_html__( 'Post comment', 'aesthetix' )
 		);
 
 		comment_form( $args );

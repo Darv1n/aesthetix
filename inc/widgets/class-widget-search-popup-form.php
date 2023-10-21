@@ -25,7 +25,7 @@ class Search_Popup_Form_WPA_Widget extends WPA_Widget {
 	 */
 	public function __construct() {
 		$this->widget_cssclass    = 'widget_search_popup_form_button';
-		$this->widget_description = __( 'The global settings for this button can be found in the Customizer', 'aesthetix' );
+		$this->widget_description = __( 'The global settings for this button can be found in the сustomizer', 'aesthetix' );
 		$this->widget_id          = 'aesthetix_search_popup_form_widget';
 		$this->widget_name        = __( 'Search button', 'aesthetix' );
 		$this->settings           = array(
@@ -86,7 +86,7 @@ class Search_Popup_Form_WPA_Widget extends WPA_Widget {
 		$template_args['button_type']    = isset( $instance['button_type'] ) ? $instance['button_type'] : $this->settings['button_type']['std'];
 		$template_args['button_content'] = isset( $instance['button_content'] ) ? $instance['button_content'] : $this->settings['button_content']['std'];
 
-		get_template_part( 'templates/aside', 'search-toggle', $template_args );
+		get_template_part( 'templates/aside-search-toggle', '', $template_args );
 
 		$this->widget_end( $args, $instance );
 	}

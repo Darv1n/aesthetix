@@ -159,40 +159,8 @@ if ( ! function_exists( 'get_aesthetix_section_classes' ) ) {
 		// Add elements to array.
 		$classes[] = 'section';
 
-		if ( in_array( 'section_fisrt-screen', $classes, true ) || in_array( 'section_subscribe-form', $classes, true ) ) {
-
-			$classes[] = 'container';
-
-			if ( in_array( 'container-narrow', get_aesthetix_container_classes(), true ) ) {
-				$classes[] = 'container-general';
-			}
-
-			if ( in_array( 'container-general', get_aesthetix_container_classes(), true ) ) {
-				$classes[] = 'container-average';
-			}
-
-			if ( in_array( 'container-average', get_aesthetix_container_classes(), true ) ) {
-				$classes[] = 'container-wide';
-			}
-
-			if ( in_array( 'container-wide', get_aesthetix_container_classes(), true ) ) {
-				$classes[] = 'container-fluid';
-			}
-
-			if ( in_array( 'container-fluid', get_aesthetix_container_classes(), true ) ) {
-				$classes[] = 'container-fluid';
-			}
-
-			$classes[] = 'section-rounded';
-		}
-
-		if ( in_array( 'section_subscribe-form', $classes, true ) ) {
-
-			$classes[] = 'section-lg';
-
-			if ( ! in_array( 'has_background', $classes, true ) ) {
-				$classes[] = 'section-secondary';
-			}
+		if ( in_array( 'header', $classes, true ) && has_custom_header() ) {
+			$classes[] = 'header_background-image';
 		}
 
 		// Add filter to array.
@@ -256,7 +224,35 @@ if ( ! function_exists( 'get_aesthetix_container_classes' ) ) {
 
 		// Add elements to array.
 		$classes[] = 'container';
-		$classes[] = 'container-' . get_aesthetix_options( 'general_container_width' );
+
+		if ( in_array( 'container-outer', $classes, true ) ) {
+
+			$classes[] = 'container';
+
+			if ( in_array( 'container-narrow', get_aesthetix_container_classes(), true ) ) {
+				$classes[] = 'container-general';
+			}
+
+			if ( in_array( 'container-general', get_aesthetix_container_classes(), true ) ) {
+				$classes[] = 'container-average';
+			}
+
+			if ( in_array( 'container-average', get_aesthetix_container_classes(), true ) ) {
+				$classes[] = 'container-wide';
+			}
+
+			if ( in_array( 'container-wide', get_aesthetix_container_classes(), true ) ) {
+				$classes[] = 'container-fluid';
+			}
+
+			if ( in_array( 'container-fluid', get_aesthetix_container_classes(), true ) ) {
+				$classes[] = 'container-fluid';
+			}
+
+			$classes[] = 'container-rounded';
+		} else {
+			$classes[] = 'container-' . get_aesthetix_options( 'general_container_width' );
+		}
 
 		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_container_classes', $classes );
@@ -407,6 +403,7 @@ if ( ! function_exists( 'get_aesthetix_widget_area_classes' ) ) {
 		$classes[] = 'col-xl-3';
 
 		$classes[] = 'widget-area';
+		$classes   = array_merge( $classes, get_widgets_classes() );
 
 		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_widget_area_classes', $classes );
@@ -432,158 +429,6 @@ if ( ! function_exists( 'aesthetix_widget_area_classes' ) ) {
 	function aesthetix_widget_area_classes( $class = '', $echo = true ) {
 
 		$classes = get_aesthetix_widget_area_classes( $class );
-
-		if ( $echo ) {
-			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
-		} else {
-			return 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
-		}
-	}
-}
-
-if ( ! function_exists( 'get_aesthetix_header_classes' ) ) {
-
-	/**
-	 * Get classes for header container.
-	 * 
-	 * @since 1.0.0
-	 *
-	 * @param string $class Additional header classes. Default ''.
-	 *
-	 * @return array
-	 */
-	function get_aesthetix_header_classes( $class = '' ) {
-
-		// Check the function has accepted any classes.
-		if ( isset( $class ) && ! empty( $class ) ) {
-			if ( is_array( $class ) ) {
-				$classes = $class;
-			} elseif ( is_string( $class ) ) {
-				$classes = explode( ' ', $class );
-			} else {
-				$classes = array();
-			}
-		} else {
-			$classes = array();
-		}
-
-		// Add elements to array.
-		$classes[] = 'header';
-
-		if ( has_custom_header() ) {
-			$classes[] = 'header_background-image';
-		}
-
-		if ( get_aesthetix_options( 'general_header_top_bar_display' ) ) {
-			$classes[] = 'header_top-bar-active';
-		}
-
-		if ( get_aesthetix_options( 'general_header_type' ) === 'header-content' ) {
-			$classes[] = 'header_content';
-		} elseif ( get_aesthetix_options( 'general_header_type' ) === 'header-logo-center' ) {
-			$classes[] = 'header_logo-center';
-		} elseif ( get_aesthetix_options( 'general_header_type' ) === 'header-simple' ) {
-			$classes[] = 'header_simple';
-		}
-
-		// Add filter to array.
-		$classes = apply_filters( 'get_aesthetix_header_classes', $classes );
-		$classes = array_unique( (array) $classes );
-		sort( $classes );
-
-		return $classes;
-	}
-}
-
-if ( ! function_exists( 'aesthetix_header_classes' ) ) {
-
-	/**
-	 * Display classes for header container.
-	 * 
-	 * @since 1.0.0
-	 *
-	 * @param string $class Additional header classes. Default ''.
-	 * @param bool   $echo  Echo or return header classes. Default true.
-	 *
-	 * @return string|void
-	 */
-	function aesthetix_header_classes( $class = '', $echo = true ) {
-
-		$classes = get_aesthetix_header_classes( $class );
-
-		if ( $echo ) {
-			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
-		} else {
-			return 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
-		}
-	}
-}
-
-if ( ! function_exists( 'get_aesthetix_footer_classes' ) ) {
-
-	/**
-	 * Get classes for footer container.
-	 * 
-	 * @since 1.0.0
-	 *
-	 * @param string $class Additional footer classes. Default ''.
-	 *
-	 * @return array
-	 */
-	function get_aesthetix_footer_classes( $class = '' ) {
-
-		// Check the function has accepted any classes.
-		if ( isset( $class ) && ! empty( $class ) ) {
-			if ( is_array( $class ) ) {
-				$classes = $class;
-			} elseif ( is_string( $class ) ) {
-				$classes = explode( ' ', $class );
-			} else {
-				$classes = array();
-			}
-		} else {
-			$classes = array();
-		}
-
-		// Add elements to array.
-		$classes[] = 'footer';
-
-		if ( get_aesthetix_options( 'general_footer_bottom_bar_display' ) ) {
-			$classes[] = 'footer_bottom-bar-active';
-		}
-
-		if ( get_aesthetix_options( 'general_footer_type' ) === 'footer-simple' ) {
-			$classes[] = 'footer_simple';
-		} elseif ( get_aesthetix_options( 'general_footer_type' ) === 'footer-three-columns' ) {
-			$classes[] = 'footer_three-columns';
-		} elseif ( get_aesthetix_options( 'general_footer_type' ) === 'footer-four-columns' ) {
-			$classes[] = 'footer_four-columns';
-		}
-
-		// Add filter to array.
-		$classes = apply_filters( 'get_aesthetix_footer_classes', $classes );
-		$classes = array_unique( (array) $classes );
-		sort( $classes );
-
-		return $classes;
-	}
-}
-
-if ( ! function_exists( 'aesthetix_footer_classes' ) ) {
-
-	/**
-	 * Display classes for footer container.
-	 * 
-	 * @since 1.0.0
-	 *
-	 * @param string $class Additional footer classes. Default ''.
-	 * @param bool   $echo  Echo or return footer classes. Default true.
-	 *
-	 * @return string|void
-	 */
-	function aesthetix_footer_classes( $class = '', $echo = true ) {
-
-		$classes = get_aesthetix_footer_classes( $class );
 
 		if ( $echo ) {
 			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
@@ -1358,9 +1203,9 @@ if ( ! function_exists( 'get_widgets_classes' ) ) {
 
 			if ( str_contains( $id, 'left' ) ) {
 				$classes[] = 'widgets-left';
-			} else if ( str_contains( $id, 'right' ) ) {
+			} elseif ( str_contains( $id, 'right' ) ) {
 				$classes[] = 'widgets-right';
-			} else if ( str_contains( $id, 'center' ) ) {
+			} elseif ( str_contains( $id, 'center' ) ) {
 				$classes[] = 'widgets-center';
 			}
 		}

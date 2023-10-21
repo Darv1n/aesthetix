@@ -18,7 +18,7 @@
 
 if ( isset( $background_image ) ) { ?>
 	<div class="post-thumbnail-wrap">
-		<a class="post-thumbnail" href="<?php the_permalink(); ?>" style="background: url( <?php echo esc_url( $background_image ); ?> ) center/cover no-repeat" aria-hidden="true" tabindex="-1" role="img" aria-label="<?php esc_attr_e( 'Post Thumbnail', 'aesthetix' ); ?>"></a>
+		<a class="post-thumbnail" href="<?php the_permalink(); ?>" style="background: url( <?php echo esc_url( $background_image ); ?> ) center/cover no-repeat" aria-hidden="true" tabindex="-1" role="img" aria-label="<?php esc_attr_e( 'Post thumbnail', 'aesthetix' ); ?>"></a>
 	
 	<?php
 

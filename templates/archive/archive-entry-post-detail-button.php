@@ -10,6 +10,6 @@
  */
  ?>
 
-<div class="post-link-more" aria-label="<?php esc_attr_e( 'Post Continue Reading', 'aesthetix' ); ?>">
-	<a <?php aesthetix_link_more_classes(); ?> href="<?php the_permalink(); ?>"><?php esc_html_e( 'Continue Reading', 'aesthetix' ); ?></a>
+<div class="post-link-more" aria-label="<?php esc_attr_e( 'Post continue reading', 'aesthetix' ); ?>">
+	<a <?php aesthetix_link_more_classes(); ?> href="<?php the_permalink(); ?>"><?php esc_html_e( 'Continue reading', 'aesthetix' ); ?></a>
 </div>

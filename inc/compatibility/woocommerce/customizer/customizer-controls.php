@@ -22,9 +22,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls_woo_callback' ) ) {
 
 		// Woo options.
 		$aesthetix_controls['woocommerce_product_catalog'] = array(
-			'structure_title' => array( 'tab_title', __( 'Post Structure', 'aesthetix' ), '' ),
+			'structure_title' => array( 'tab_title', __( 'Post structure', 'aesthetix' ), '' ),
 			'structure'       => array( 'sortable_control', '', '', get_woocommerce_customizer_product_catalog_structure( null, 'product' ) ),
-			'shop_title'      => array( 'tab_title', __( 'Shop Display Options', 'aesthetix' ), '' ),
+			'shop_title'      => array( 'tab_title', __( 'Shop display options', 'aesthetix' ), '' ),
 		);
 
 		return $aesthetix_controls;

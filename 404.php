@@ -19,7 +19,7 @@ get_header(); ?>
 		<h1 class="content-area-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found', 'aesthetix' ); ?></h1>
 	</header>
 
-	<section <?php aesthetix_section_classes( 'content-area-content' ); ?> aria-label="<?php esc_attr_e( '404 page content', 'aesthetix' ); ?>">
+	<section class="content-area-content" aria-label="<?php esc_attr_e( '404 page content', 'aesthetix' ); ?>">
 		<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'aesthetix' ); ?></p>
 
 		<?php get_search_form(); ?>
