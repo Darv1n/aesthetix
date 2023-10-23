@@ -275,7 +275,7 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 				'adaptiveHeight' => true,
 			);
 
-			$slides_to_show = (int) get_aesthetix_count_columns( get_aesthetix_options( 'front_page_slider_slides_to_show' ) ); 
+			$slides_to_show = (int) get_aesthetix_options( 'front_page_slider_slides_to_show' ); 
 
 			foreach ( $breakpoints as $key => $breakpoint ) {
 

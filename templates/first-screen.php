@@ -15,7 +15,7 @@ if ( ( is_front_page() || is_home() ) && get_aesthetix_options( 'front_page_slid
 	$post_type = get_aesthetix_options( 'front_page_slider_post_type' );
 
 	$args = array(
-		'posts_per_page' => (int) get_aesthetix_count_columns( get_aesthetix_options( 'front_page_slider_slides_count' ) ),
+		'posts_per_page' => (int) get_aesthetix_options( 'front_page_slider_slides_count' ),
 		'post_type'      => $post_type,
 	);
 

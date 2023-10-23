@@ -599,7 +599,7 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_wrapper_classes' ) )
 		$classes[] = 'row';
 
 		if ( in_array( 'loop', $classes, true ) && get_aesthetix_options( 'archive_' . get_post_type() . '_masonry' ) ) {
-			$classes[] = 'row-' . get_aesthetix_count_columns( get_aesthetix_options( 'archive_post_columns' ) ) . '-col';
+			$classes[] = 'row-' . (int) get_aesthetix_options( 'archive_post_columns' ) . '-col';
 			$classes[] = 'masonry-gallery';
 		}
 
@@ -632,45 +632,6 @@ if ( ! function_exists( 'aesthetix_archive_page_columns_wrapper_classes' ) ) {
 			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
 		} else {
 			return 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
-		}
-	}
-}
-
-if ( ! function_exists( 'get_aesthetix_count_columns' ) ) {
-
-	/**
-	 * Get int count archive page columns.
-	 * 
-	 * @since 1.0.0
-	 *
-	 * @param string $control Text count columns. Default null.
-	 * @param bool   $int     Need return int or not. Default null.
-	 *
-	 * @return array
-	 */
-	function get_aesthetix_count_columns( $control = null, $int = true ) {
-
-		if ( is_null( $control ) || empty( $control ) ) {
-			$control = get_aesthetix_options( 'archive_' . get_post_type() . '_columns' );
-		}
-
-		$converter = array(
-			'one'   => 1,
-			'two'   => 2,
-			'three' => 3,
-			'four'  => 4,
-			'five'  => 5,
-			'six'   => 6,
-			'seven' => 7,
-			'eight' => 8,
-			'nine'  => 9,
-			'ten'   => 10,
-		);
-
-		if ( $int || ( $control && array_key_exists( $control, $converter ) ) ) {
-			return strtr( $control, $converter );
-		} else {
-			return strtr( intval( $control ), array_flip( $converter ) );
 		}
 	}
 }
@@ -716,26 +677,22 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_classes' ) ) {
 			$columns_count = get_aesthetix_options( 'archive_' . $post_type . '_columns' );
 		}
 
-		if ( is_int( intval( $columns_count ) ) && intval( $columns_count ) > 0 && intval( $columns_count ) <= 6 ) {
-			$columns_count = get_aesthetix_count_columns( $columns_count, false );
-		}
-
 		// Default else is three columns.
-		if ( $columns_count === 'six' ) {
+		if ( (int) $columns_count === 6 ) {
 			$classes[] = 'col-sm-6';
 			$classes[] = 'col-lg-3';
 			$classes[] = 'col-xl-2';
-		} elseif ( $columns_count === 'five' ) {
+		} elseif ( (int) $columns_count === 5 ) {
 			$classes[] = 'col-sm-6';
 			$classes[] = 'col-lg-3';
 			$classes[] = 'col-xl-5th';
-		} elseif ( $columns_count === 'four' ) {
+		} elseif ( (int) $columns_count === 4 ) {
 			$classes[] = 'col-sm-6';
 			$classes[] = 'col-lg-4';
 			$classes[] = 'col-xl-3';
-		} elseif ( $columns_count === 'two' ) {
+		} elseif ( (int) $columns_count === 2 ) {
 			$classes[] = 'col-sm-6';
-		} elseif ( $columns_count === 'one' ) {
+		} elseif ( (int) $columns_count === 1 ) {
 			$classes[] = 'col-sm-12';
 		} else {
 			$classes[] = 'col-sm-6';

@@ -92,25 +92,25 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 		);
 
 		$archive_page_columns_select = array(
-			'one'   => __( 'One', 'aesthetix' ),
-			'two'   => __( 'Two', 'aesthetix' ),
-			'three' => __( 'Three', 'aesthetix' ),
-			'four'  => __( 'Four', 'aesthetix' ),
-			'five'  => __( 'Five', 'aesthetix' ),
-			'six'   => __( 'Six', 'aesthetix' ),
+			1 => __( 'One', 'aesthetix' ),
+			2 => __( 'Two', 'aesthetix' ),
+			3 => __( 'Three', 'aesthetix' ),
+			4 => __( 'Four', 'aesthetix' ),
+			5 => __( 'Five', 'aesthetix' ),
+			6 => __( 'Six', 'aesthetix' ),
 		);
 
 		$archive_page_slides_count_select = array(
-			'one'   => __( 'One', 'aesthetix' ),
-			'two'   => __( 'Two', 'aesthetix' ),
-			'three' => __( 'Three', 'aesthetix' ),
-			'four'  => __( 'Four', 'aesthetix' ),
-			'five'  => __( 'Five', 'aesthetix' ),
-			'six'   => __( 'Six', 'aesthetix' ),
-			'seven' => __( 'Seven', 'aesthetix' ),
-			'eight' => __( 'Eight', 'aesthetix' ),
-			'nine'  => __( 'Nine', 'aesthetix' ),
-			'Ten'   => __( 'Ten', 'aesthetix' ),
+			1  => __( 'One', 'aesthetix' ),
+			2  => __( 'Two', 'aesthetix' ),
+			3  => __( 'Three', 'aesthetix' ),
+			4  => __( 'Four', 'aesthetix' ),
+			5  => __( 'Five', 'aesthetix' ),
+			6  => __( 'Six', 'aesthetix' ),
+			7  => __( 'Seven', 'aesthetix' ),
+			8  => __( 'Eight', 'aesthetix' ),
+			9  => __( 'Nine', 'aesthetix' ),
+			10 => __( 'Ten', 'aesthetix' ),
 		);
 
 		$archive_page_slides_to_show_select = array(

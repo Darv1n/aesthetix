@@ -58,8 +58,8 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 			'front_page_slider_display'                 => true,
 			'front_page_slider_post_type'               => 'post',
-			'front_page_slider_slides_count'            => 'six',
-			'front_page_slider_slides_to_show'          => 'four',
+			'front_page_slider_slides_count'            => 6,
+			'front_page_slider_slides_to_show'          => 4,
 			'front_page_slider_slides_template_type'    => 'tils',
 
 			'root_primary_font'                         => 'playfair-display',
@@ -121,7 +121,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 		foreach ( get_post_types() as $key => $post_type ) {
 			$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
 				'single_' . $post_type . '_template_type'  => 'one',
-				'archive_' . $post_type . '_columns'       => 'three',
+				'archive_' . $post_type . '_columns'       => 3,
 				'archive_' . $post_type . '_masonry'       => false,
 				'archive_' . $post_type . '_template_type' => 'tils',
 			) );
