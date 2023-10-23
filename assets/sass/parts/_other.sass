@@ -125,8 +125,20 @@
 
 // #Advertising banners
 .ab
+	position: relative
 	display: inline-block
 	vertical-align: middle
+	&-description
+		position: absolute
+		bottom: 0
+		left: 0
+		background: linear-gradient( 180deg, rgba( 2, 0, 36, 0 ) 0%, $black-color 45%, $black-color 100% )
+		&-inner
+			padding: 1rem
+			color: $white-color
+			transition: $transition
+			&:hover
+				opacity: .8
 	&.has_mobile
 		.ab-desktop
 			display: none

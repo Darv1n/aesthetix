@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * 
  * @since 1.2.0
  */
-class Search_Popup_Form_WPA_Widget extends WPA_Widget {
+class WP_Widget_Search_Popup_Form extends WPA_Widget {
 
 	/**
 	 * Constructor.

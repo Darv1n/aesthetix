@@ -191,14 +191,6 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 		) );
 
 		$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
-			'default_thumbnail'   => get_theme_file_uri( '/assets/img/default-thumbnail.jpg' ),
-			'default_adv_desktop' => get_theme_file_uri( '/assets/img/header-promo.png' ),
-			'default_adv_mobile'  => get_theme_file_uri( '/assets/img/header-promo.png' ),
-			'default_adv_link'    => 'https://www.3forty.media/zosia/demo-2/',
-			'default_adv_alt'     => __( 'Advertising banner', 'aesthetix' ),
-		) );
-
-		$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
 			'title_tagline_logo_size' => 'md',
 		) );
 

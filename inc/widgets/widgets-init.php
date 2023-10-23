@@ -19,9 +19,10 @@ if ( ! function_exists( 'WPA_Widgets_init' ) ) {
 	 * @since 1.2.0
 	 */
 	function WPA_Widgets_init() {
-		register_widget( 'Subscribe_Form_WPA_Widget' );
-		register_widget( 'Subscribe_Popup_Form_WPA_Widget' );
-		register_widget( 'Search_Popup_Form_WPA_Widget' );
+		register_widget( 'WP_Widget_Search_Popup_Form' );
+		register_widget( 'WP_Widget_Subscribe_Form' );
+		register_widget( 'WP_Widget_Subscribe_Popup_Form' );
+		register_widget( 'WP_Widget_Adv_Banner' );
 	}
 }
 add_action( 'widgets_init', 'WPA_Widgets_init' );

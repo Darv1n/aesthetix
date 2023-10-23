@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * 
  * @since 1.2.0
  */
-class Subscribe_Popup_Form_WPA_Widget extends WPA_Widget {
+class WP_Widget_Subscribe_Popup_Form extends WPA_Widget {
 
 	/**
 	 * Constructor.

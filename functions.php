@@ -26,13 +26,6 @@ require_once get_template_directory() . '/inc/template-wrappers.php';
 require_once get_template_directory() . '/inc/handlers.php';
 require_once get_template_directory() . '/inc/shortcodes.php';
 
-// Widgets.
-require_once get_template_directory() . '/inc/widgets/widgets-init.php';
-require_once get_template_directory() . '/inc/widgets/abstract-widget.php';
-require_once get_template_directory() . '/inc/widgets/class-widget-subscribe-form.php';
-require_once get_template_directory() . '/inc/widgets/class-widget-subscribe-popup-form.php';
-require_once get_template_directory() . '/inc/widgets/class-widget-search-popup-form.php';
-
 // Customizer.
 require_once get_template_directory() . '/inc/customizer/customizer.php';
 require_once get_template_directory() . '/inc/customizer/customizer-sections.php';
@@ -41,6 +34,14 @@ require_once get_template_directory() . '/inc/customizer/customizer-defaults.php
 require_once get_template_directory() . '/inc/customizer/customizer-functions.php';
 require_once get_template_directory() . '/inc/customizer/customizer-selects.php';
 require_once get_template_directory() . '/inc/customizer/customizer-converters.php';
+
+// Widgets.
+require_once get_template_directory() . '/inc/widgets/widgets-init.php';
+require_once get_template_directory() . '/inc/widgets/abstract-widget.php';
+require_once get_template_directory() . '/inc/widgets/class-widget-search-popup-form.php';
+require_once get_template_directory() . '/inc/widgets/class-widget-subscribe-form.php';
+require_once get_template_directory() . '/inc/widgets/class-widget-subscribe-popup-form.php';
+require_once get_template_directory() . '/inc/widgets/class-widget-adv-banner.php';
 
 // TGM Plugin Activation.
 require_once get_template_directory() . '/inc/addons/tgm/class-tgm-plugin-activation.php';

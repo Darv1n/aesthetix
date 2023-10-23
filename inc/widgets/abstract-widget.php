@@ -76,69 +76,6 @@ abstract class WPA_Widget extends WP_Widget {
 	}
 
 	/**
-	 * Get cached widget.
-	 *
-	 * @param array $args Arguments.
-	 * 
-	 * @return bool
-	 */
-	public function get_cached_widget( $args ) {
-		// Don't get cache if widget_id doesn't exists.
-		if ( empty( $args['widget_id'] ) ) {
-			return false;
-		}
-
-		$cache = wp_cache_get( $this->get_widget_id_for_cache( $this->widget_id ), 'widget' );
-
-		if ( ! is_array( $cache ) ) {
-			$cache = array();
-		}
-
-		if ( isset( $cache[ $this->get_widget_id_for_cache( $args['widget_id'] ) ] ) ) {
-			echo $cache[ $this->get_widget_id_for_cache( $args['widget_id'] ) ]; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Cache the widget.
-	 *
-	 * @param array  $args    Arguments.
-	 * @param string $content Content.
-	 * 
-	 * @return string
-	 */
-	public function cache_widget( $args, $content ) {
-		// Don't set any cache if widget_id doesn't exist.
-		if ( empty( $args['widget_id'] ) ) {
-			return $content;
-		}
-
-		$cache = wp_cache_get( $this->get_widget_id_for_cache( $this->widget_id ), 'widget' );
-
-		if ( ! is_array( $cache ) ) {
-			$cache = array();
-		}
-
-		$cache[ $this->get_widget_id_for_cache( $args['widget_id'] ) ] = $content;
-
-		wp_cache_set( $this->get_widget_id_for_cache( $this->widget_id ), $cache, 'widget' );
-
-		return $content;
-	}
-
-	/**
-	 * Flush the cache.
-	 */
-	public function flush_widget_cache() {
-		foreach ( array( 'https', 'http' ) as $scheme ) {
-			wp_cache_delete( $this->get_widget_id_for_cache( $this->widget_id, $scheme ), 'widget' );
-		}
-	}
-
-	/**
 	 * Get this widgets title.
 	 *
 	 * @param array $instance Array of instance options.
@@ -225,6 +162,12 @@ abstract class WPA_Widget extends WP_Widget {
 				case 'checkbox':
 					$instance[ $key ] = empty( $new_instance[ $key ] ) ? 0 : 1;
 					break;
+				case 'url':
+					$instance[ $key ] = isset( $new_instance[ $key ] ) && wp_http_validate_url( $new_instance[ $key ] ) ? sanitize_url( $new_instance[ $key ] ) : $setting['std'];
+					break;
+				case 'image':
+					$instance[ $key ] = isset( $new_instance[ $key ] ) ? sanitize_url( $new_instance[ $key ] ) : $setting['std'];
+					break;
 				default:
 					$instance[ $key ] = isset( $new_instance[ $key ] ) ? sanitize_text_field( $new_instance[ $key ] ) : $setting['std'];
 					break;
@@ -262,6 +205,15 @@ abstract class WPA_Widget extends WP_Widget {
 			switch ( $setting['type'] ) {
 
 				case 'text':
+					?>
+					<p>
+						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo wp_kses_post( $setting['label'] ); ?></label><?php // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>
+						<input class="widefat <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="text" value="<?php echo esc_attr( $value ); ?>" />
+					</p>
+					<?php
+					break;
+
+				case 'description':
 					?>
 					<p>
 						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo wp_kses_post( $setting['label'] ); ?></label><?php // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>
@@ -313,11 +265,158 @@ abstract class WPA_Widget extends WP_Widget {
 					<?php
 					break;
 
+				case 'url':
+					?>
+					<p>
+						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo wp_kses_post( $setting['label'] ); ?></label><?php // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>
+						<input class="widefat <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="url" value="<?php echo esc_attr( $value ); ?>" />
+					</p>
+					<?php
+					break;
+
+				case 'image':
+					?>
+					<div class="media-widget-control">
+						<p>
+							<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo wp_kses_post( $setting['label'] ); ?></label><?php // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>
+							<input class="widefat image-upload <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="hidden" value="<?php echo esc_attr( $value ); ?>" />
+						</p>
+
+						<div class="media-widget-preview">
+							<div class="media-image-container">
+								<?php if ( ! empty( $value ) ) : ?>
+									<img src="<?php echo esc_url( $value ) ; ?>" alt="Image Preview" style="max-width:100%;margin-bottom:10px" />
+								<?php endif; ?>
+							</div>
+
+							<div class="attachment-media-view">
+								<button type="button" class="select-media button-add-media button-add-adv-media not-selected"><?php esc_html_e( 'Add Image' ); ?></button>
+							</div>
+						</div>
+					</div>
+					<script>
+						// JavaScript to handle image upload button
+						jQuery(document).ready(function($) {
+
+							function mediaUploader( buttonClass ) {
+
+								// Trigger the Media Uploader dialog
+								$( document ).on( 'click', buttonClass, function( e ) {
+
+									var mediaUploader;
+										form = $( buttonClass ).closest( 'form' )
+
+									// If the uploader object has already been created, reopen the dialog.
+									if ( mediaUploader ) {
+										mediaUploader.open();
+										return;
+									}
+
+									 // Extend the wp.media object.
+									var mediaUploader = wp.media.frames.file_frame = wp.media({
+										title: 'Select Image',
+										button: {
+											text: 'Select Image'
+										},
+										multiple: false,
+										library: {
+											type: 'image'
+										},
+									});
+
+									// When a file is selected, grab the URL and set it as the text field's value.
+									mediaUploader.on( 'select', function () {
+										var attachment = mediaUploader.state().get( 'selection' ).first().toJSON();
+
+										form.find( '.image-upload' ).val( attachment.url );
+										form.find( '.media-image-container' ).empty();
+										form.find( '.media-image-container' ).append( '<img src="' + attachment.url + '" class="media-image" alt="Image Preview" style="max-width:100%;margin-bottom:10px" />' );
+
+										$( '.media-modal:visible' ).find( '.media-modal-close' ).trigger( 'click' );
+
+										form.find( '.widget-control-save' ).prop( 'disabled', false );
+									});
+
+									// Open the uploader dialog.
+									mediaUploader.open();
+								});
+							}
+
+							// Initialize media uploader
+							mediaUploader( '.button-add-adv-media' );
+						});
+					</script>
+					<?php
+					break;
+
 				// Default: run an action.
 				default:
 					do_action( 'WPA_Widget_field_' . $setting['type'], $key, $value, $setting, $instance );
 					break;
 			}
+		}
+	}
+
+	/**
+	 * Get cached widget.
+	 *
+	 * @param array $args Arguments.
+	 * 
+	 * @return bool
+	 */
+	public function get_cached_widget( $args ) {
+		// Don't get cache if widget_id doesn't exists.
+		if ( empty( $args['widget_id'] ) ) {
+			return false;
+		}
+
+		$cache = wp_cache_get( $this->get_widget_id_for_cache( $this->widget_id ), 'widget' );
+
+		if ( ! is_array( $cache ) ) {
+			$cache = array();
+		}
+
+		if ( isset( $cache[ $this->get_widget_id_for_cache( $args['widget_id'] ) ] ) ) {
+			echo $cache[ $this->get_widget_id_for_cache( $args['widget_id'] ) ]; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Cache the widget.
+	 *
+	 * @param array  $args    Arguments.
+	 * @param string $content Content.
+	 * 
+	 * @return string
+	 */
+	public function cache_widget( $args, $content ) {
+		// Don't set any cache if widget_id doesn't exist.
+		if ( empty( $args['widget_id'] ) ) {
+			return $content;
+		}
+
+		$cache = wp_cache_get( $this->get_widget_id_for_cache( $this->widget_id ), 'widget' );
+
+		if ( ! is_array( $cache ) ) {
+			$cache = array();
+		}
+
+		$cache[ $this->get_widget_id_for_cache( $args['widget_id'] ) ] = $content;
+
+		wp_cache_set( $this->get_widget_id_for_cache( $this->widget_id ), $cache, 'widget' );
+
+		return $content;
+	}
+
+	/**
+	 * Flush the cache.
+	 */
+	public function flush_widget_cache() {
+		foreach ( array( 'https', 'http' ) as $scheme ) {
+			wp_cache_delete( $this->get_widget_id_for_cache( $this->widget_id, $scheme ), 'widget' );
 		}
 	}
 
