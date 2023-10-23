@@ -227,26 +227,24 @@ if ( ! function_exists( 'get_aesthetix_container_classes' ) ) {
 
 		if ( in_array( 'container-outer', $classes, true ) ) {
 
-			$classes[] = 'container';
-
-			if ( in_array( 'container-narrow', get_aesthetix_container_classes(), true ) ) {
-				$classes[] = 'container-general';
+			if ( get_aesthetix_options( 'general_container_width' ) === 'xs' ) {
+				$classes[] = 'container-sm';
 			}
 
-			if ( in_array( 'container-general', get_aesthetix_container_classes(), true ) ) {
-				$classes[] = 'container-average';
+			if ( get_aesthetix_options( 'general_container_width' ) === 'sm' ) {
+				$classes[] = 'container-md';
 			}
 
-			if ( in_array( 'container-average', get_aesthetix_container_classes(), true ) ) {
-				$classes[] = 'container-wide';
+			if ( get_aesthetix_options( 'general_container_width' ) === 'md' ) {
+				$classes[] = 'container-lg';
 			}
 
-			if ( in_array( 'container-wide', get_aesthetix_container_classes(), true ) ) {
-				$classes[] = 'container-fluid';
+			if ( get_aesthetix_options( 'general_container_width' ) === 'lg' ) {
+				$classes[] = 'container-xl';
 			}
 
-			if ( in_array( 'container-fluid', get_aesthetix_container_classes(), true ) ) {
-				$classes[] = 'container-fluid';
+			if ( get_aesthetix_options( 'general_container_width' ) === 'xl' ) {
+				$classes[] = 'container-xl';
 			}
 
 			$classes[] = 'container-rounded';

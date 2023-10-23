@@ -31,7 +31,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 		$aesthetix_defaults = array(
 			'general_demo_var'                          => 'demo-1',
-			'general_container_width'                   => 'average',
+			'general_container_width'                   => 'md',
 			'general_content_width'                     => 'wide',
 
 			'general_header_top_bar_display'            => false,

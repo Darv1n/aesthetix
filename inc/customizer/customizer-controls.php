@@ -30,14 +30,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'black' => __( 'Black', 'aesthetix' ),
 		);
 
-		$general_container_width_select = array(
-			'narrow'  => __( 'Narrow', 'aesthetix' ),
-			'general' => __( 'General', 'aesthetix' ),
-			'average' => __( 'Average', 'aesthetix' ),
-			'wide'    => __( 'Wide', 'aesthetix' ),
-			'fluid'   => __( 'Fluid', 'aesthetix' ),
-		);
-
 		$general_content_width_select = array(
 			'narrow' => __( 'Narrow', 'aesthetix' ),
 			'wide'   => __( 'Wide', 'aesthetix' ),
@@ -154,7 +146,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'demo_var'                  => array( 'select_control', __( 'Select demo variant', 'aesthetix' ), '', get_aesthetix_customizer_demo_variant() ),
 
 			'content_tab_title'         => array( 'tab_title', __( 'Content', 'aesthetix' ), '' ),
-			'container_width'           => array( 'select_control', __( 'Select container width', 'aesthetix' ), __( 'Here you can change the width of the site', 'aesthetix' ), $general_container_width_select ),
+			'container_width'           => array( 'select_control', __( 'Select container width', 'aesthetix' ), __( 'Here you can change the container width of the site', 'aesthetix' ), get_aesthetix_customizer_sizes() ),
 			'content_width'             => array( 'select_control', __( 'Select content width', 'aesthetix' ), __( 'Note: its work if sidebar dont show', 'aesthetix' ), $general_content_width_select ),
 
 			'header_tab_title'          => array( 'tab_title', __( 'Header', 'aesthetix' ), '' ),
