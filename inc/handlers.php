@@ -107,7 +107,8 @@ if ( ! function_exists( 'ajax_subscribe_form_callback' ) ) {
 		$home_url = preg_replace( '/^(http[s]?):\/\//', '', get_home_url() );
 
 		// Check nonce & spam. If hidden field is full or the check is cleared, block sending.
-		if ( ! wp_verify_nonce( sanitize_text_field( $_POST['nonce'] ), 'ajax-nonce' ) || ! (bool) sanitize_text_field( $data['form-anticheck'] ) || ! empty( sanitize_text_field( $data['form-submitted'] ) ) ) {
+		// ! wp_verify_nonce( sanitize_text_field( $_POST['nonce'] ), 'ajax-nonce' )
+		if ( ! (bool) sanitize_text_field( $data['form-anticheck'] ) || ! empty( sanitize_text_field( $data['form-submitted'] ) ) ) {
 			$errors['form-submit'] = __( 'Your message does not pass the spam filter. If an error occurs, please write to <a href="mailto:team@zolin.digital">team@zolin.digital</a>', 'aesthetix' );
 			wp_send_json_error( $errors );
 			wp_die( __( 'There was an error submitting the form', 'aesthetix' ) );

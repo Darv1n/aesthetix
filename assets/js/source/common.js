@@ -16,7 +16,7 @@ jQuery( document ).ready( function( $ ) {
 
 		if ( $( this ).hasClass( off ) ) {
 			$( this ).removeClass( off ).addClass( on );
-		} elseif ( $( this ).hasClass( on ) ) {
+		} else if ( $( this ).hasClass( on ) ) {
 			$( this ).removeClass( on ).addClass( off );
 		}
 
@@ -38,13 +38,13 @@ jQuery( document ).ready( function( $ ) {
 
 	$( window ).on( 'scroll', function() {
 		if ( $( this ).scrollTop() >= 800 ) {
-			$( '.scroll-top' ).fadeIn( 350 );
+			$( '.scroll-top-wrap' ).fadeIn( 350 );
 		} else {
-			$( '.scroll-top' ).fadeOut( 350 );
+			$( '.scroll-top-wrap' ).fadeOut( 350 );
 		}
 	});
 
-	$( 'body' ).on( 'click', '.notification-button', function( e ) {
+	$( 'body' ).on( 'click', '.notification-button-wrap', function( e ) {
 		$( this ).parent().remove();
 	} );
 
@@ -52,7 +52,7 @@ jQuery( document ).ready( function( $ ) {
 		var notification = $( '.notification' );
 		if ( notification.length > 0 ) {
 			notification.each( function() {
-				$( this ).prepend( '<button class="button button-icon button-none button-sm notification-button icon icon_center icon_xmark" type="button"></button>' );
+				$( this ).prepend( '<span class="notification-button-wrap"><button class="button button-icon button-none button-sm notification-button icon icon_center icon_xmark" type="button"></button></span>' );
 			});
 		}
 	}

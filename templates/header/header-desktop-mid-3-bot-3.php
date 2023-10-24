@@ -14,31 +14,34 @@
 	<div <?php aesthetix_container_classes( 'container-outer' ); ?>>
 		<div <?php aesthetix_container_classes( 'container-inner' ); ?>>
 			<div <?php aesthetix_archive_page_columns_wrapper_classes( 'align-items-center' ); ?>>
-				<div class="col-12 col-md-3">
+				<div class="col-12 col-md-4">
 					<div <?php widgets_classes( '', 'header-main-left' ); ?>>
-						<?php if ( is_active_sidebar( 'header-main-left' ) ) { ?>
-							<?php dynamic_sidebar( 'header-main-left' ); ?>
-						<?php } else { ?>
-							<?php default_sidebar( 'header-main-left' ); ?>
-						<?php } ?>
+
+						<?php if ( is_active_sidebar( 'header-main-left' ) ) {
+							dynamic_sidebar( 'header-main-left' );
+						} else {
+							the_default_sidebar( apply_filters( 'header_desktop_mid_3_bot_3_sidebar_main_left', array( 'adv-banner' ) ), 'header-main-left' );
+						} ?>
+
 					</div>
 				</div>
-				<div class="col-12 col-md-6">
+				<div class="col-12 col-md-4">
 					<div <?php widgets_classes( '', 'header-main-center' ); ?>>
-						<?php if ( is_active_sidebar( 'header-main-center' ) ) { ?>
-							<?php dynamic_sidebar( 'header-main-center' ); ?>
-						<?php } else { ?>
-							<?php default_sidebar( 'header-main-center' ); ?>
-						<?php } ?>
+						<?php if ( is_active_sidebar( 'header-main-center' ) ) {
+							dynamic_sidebar( 'header-main-center' );
+						} else {
+							the_default_sidebar( apply_filters( 'header_desktop_mid_3_bot_3_sidebar_main_center', array( 'logo' ) ), 'header-main-center' );
+						} ?>
 					</div>
 				</div>
-				<div class="col-12 col-md-3">
+				<div class="col-12 col-md-4">
 					<div <?php widgets_classes( '', 'header-main-right' ); ?>>
-						<?php if ( is_active_sidebar( 'header-main-right' ) ) { ?>
-							<?php dynamic_sidebar( 'header-main-right' ); ?>
-						<?php } else { ?>
-							<?php default_sidebar( 'header-main-right' ); ?>
-						<?php } ?>
+						<?php if ( is_active_sidebar( 'header-main-right' ) ) {
+							ynamic_sidebar( 'header-main-right' );
+						} else {
+							the_default_sidebar( apply_filters( 'header_desktop_mid_3_bot_3_sidebar_main_right', array( 'adv-banner' ) ), 'header-main-right' );
+						} ?>
+
 					</div>
 				</div>
 			</div>
@@ -53,11 +56,11 @@
 				<div class="col-12 col-md-2">
 					<div <?php widgets_classes( '', 'header-bottom-left' ); ?>>
 
-						<?php if ( is_active_sidebar( 'header-bottom-left' ) ) { ?>
-							<?php dynamic_sidebar( 'header-bottom-left' ); ?>
-						<?php } else { ?>
-							<?php default_sidebar( 'header-bottom-left' ); ?>
-						<?php } ?>
+						<?php if ( is_active_sidebar( 'header-bottom-left' ) ) {
+							dynamic_sidebar( 'header-bottom-left' );
+						} else {
+							the_default_sidebar( apply_filters( 'header_desktop_mid_3_bot_3_sidebar_bottom_left', array( 'aside-subscribe-toggle' ) ), 'header-bottom-left' );
+						} ?>
 
 					</div>
 				</div>
@@ -73,11 +76,11 @@
 				<div class="col-12 col-md-2">
 					<div <?php widgets_classes( '', 'header-bottom-right' ); ?>>
 
-						<?php if ( is_active_sidebar( 'header-bottom-right' ) ) { ?>
-							<?php dynamic_sidebar( 'header-bottom-right' ); ?>
-						<?php } else { ?>
-							<?php default_sidebar( 'header-bottom-right' ); ?>
-						<?php } ?>
+						<?php if ( is_active_sidebar( 'header-bottom-right' ) ) {
+							dynamic_sidebar( 'header-bottom-right' );
+						} else {
+							the_default_sidebar( apply_filters( 'header_desktop_mid_3_bot_3_sidebar_bottom_right', array( 'aside-search-toggle' ) ), 'header-bottom-right' );
+						} ?>
 
 					</div>
 				</div>

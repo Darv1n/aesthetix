@@ -1,19 +1,25 @@
-.scroll-top
+.scroll-top-wrap
 	display: none
 	position: fixed
 	z-index: 9
 	bottom: $margin
 	right: $margin
+
+.scroll-top
 	margin-bottom: 0 !important
 
 @media (min-width: 992px)
-	.scroll-top
+	.scroll-top-wrap
 		bottom: $margin*2
 		right: $margin*2
 
 .breadcrumbs
 	*
 		font-size: $small-font-size
+	li
+		display: inline-block
+		&:not(:last-child)
+			margin-right: .25rem
 
 .cookie
 	position: fixed
@@ -24,17 +30,17 @@
 	background-color: $primary-bg-color
 	padding: $margin/2 0
 	border-top: 2px solid $primary-bd-color
-	.container
+	.container-inner
 		position: relative
 	&-text
 		font-size: $small-font-size
 		margin-bottom: 0 !important
-	&-button
+	&-button-wrap
 		position: absolute
-		top: 50%
+		top: 0
 		right: 0
+	&-button
 		margin-bottom: 0 !important
-		transform: translateY( -50% )
 
 // #notifications
 .notification
@@ -55,12 +61,12 @@
 		background-color: $warning-color
 	&_accept
 		background-color: $accept-color
-	&-button
+	&-button-wrap
 		position: absolute
-		top: 50%
+		top: 0
 		right: 0
+	&-button
 		margin-bottom: 0 !important
-		transform: translateY( -50% )
 
 // #social-list
 .social-list

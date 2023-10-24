@@ -316,21 +316,12 @@ if ( ! function_exists( 'get_aesthetix_content_area_classes' ) ) {
 		$classes[] = 'order-1';
 		$classes[] = 'col-sm-12';
 
-		$sidebar = apply_filters( 'get_aesthetix_sidebar', 'sidebar' );
+		$sidebar = apply_filters( 'get_aesthetix_sidebar', 'main' );
 
 		if ( is_active_sidebar( $sidebar ) ) {
 			$classes[] = 'col-lg-8';
 			$classes[] = 'order-lg-2';
 			$classes[] = 'col-xl-9';
-		} else {
-			if ( get_aesthetix_options( 'general_content_width' ) === 'narrow' ) {
-				$classes[] = 'col-md-10';
-				$classes[] = 'offset-md-1';
-				$classes[] = 'col-lg-8';
-				$classes[] = 'offset-lg-2';
-			} else {
-				$classes[] = 'col-md-12';
-			}
 		}
 
 		$classes[] = 'content-area';
@@ -931,7 +922,10 @@ if ( ! function_exists( 'get_link_classes' ) ) {
 
 		// Add elements to array.
 		$classes[] = 'link';
-		$classes[] = 'link-color-unborder';
+
+		if ( ! in_array( 'link-color-border', $classes, true ) ) {
+			$classes[] = 'link-color-unborder';
+		}
 
 		// Add filter to array.
 		$classes = apply_filters( 'get_link_classes', $classes );

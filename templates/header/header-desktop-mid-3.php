@@ -17,11 +17,11 @@
 				<div class="col-12 col-md-2">
 					<div <?php widgets_classes( '', 'header-main-left' ); ?>>
 
-						<?php if ( is_active_sidebar( 'header-main-left' ) ) { ?>
-							<?php dynamic_sidebar( 'header-main-left' ); ?>
-						<?php } else { ?>
-							<?php default_sidebar( 'header-main-left' ); ?>
-						<?php } ?>
+						<?php if ( is_active_sidebar( 'header-main-left' ) ) {
+							dynamic_sidebar( 'header-main-left' );
+						} else {
+							the_default_sidebar( apply_filters( 'header_desktop_mid_3_sidebar_main_left', array( 'aside-subscribe-toggle' ) ), 'header-main-left' );
+						} ?>
 
 					</div>
 				</div>
@@ -37,11 +37,11 @@
 				<div class="col-12 col-md-2">
 					<div <?php widgets_classes( '', 'header-main-right' ); ?>>
 
-						<?php if ( is_active_sidebar( 'header-main-right' ) ) { ?>
-							<?php dynamic_sidebar( 'header-main-right' ); ?>
-						<?php } else { ?>
-							<?php default_sidebar( 'header-main-right' ); ?>
-						<?php } ?>
+						<?php if ( is_active_sidebar( 'header-main-right' ) ) {
+							dynamic_sidebar( 'header-main-right' );
+						} else {
+							the_default_sidebar( apply_filters( 'header_desktop_mid_3_sidebar_main_right', array( 'aside-search-toggle' ) ), 'header-main-right' );
+						} ?>
 
 					</div>
 				</div>

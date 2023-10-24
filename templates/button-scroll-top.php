@@ -18,9 +18,11 @@
 	$args['button_content'] = $args['button_content'] ?? get_aesthetix_options( 'root_scroll_top_button_content' );
 	$args['button_rounded'] = $args['button_rounded'] ?? get_aesthetix_options( 'root_scroll_top_button_rounded' ); ?>
 
-	<button id="scroll-top" <?php button_classes( 'scroll-top icon icon_arrow-up', $args ); ?> aria-label="<?php esc_attr_e( 'Scroll top button', 'aesthetix' ) ?>">
-		<?php if ( ! in_array( $args['button_content'], array( 'icon', 'button-icon' ), true ) ) {
-			esc_html_e( 'Scroll up', 'aesthetix' );
-		} ?>
-	</button>
+	<div class="scroll-top-wrap">
+		<button id="scroll-top" <?php button_classes( 'scroll-top icon icon_arrow-up', $args ); ?> aria-label="<?php esc_attr_e( 'Scroll top button', 'aesthetix' ) ?>">
+			<?php if ( ! in_array( $args['button_content'], array( 'icon', 'button-icon' ), true ) ) {
+				esc_html_e( 'Scroll up', 'aesthetix' );
+			} ?>
+		</button>
+	</div>
 <?php }

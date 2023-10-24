@@ -17,23 +17,24 @@
 $section_wrapper = isset( $args['section'] ) ?? false;
 $form_title      = $args['title'] ?? false;
 $classes[]       = 'section-subscribe-form';
-$classes[]       = 'section-primary';
 
 if ( get_aesthetix_options( 'general_subscribe_form_bg' ) ) {
 	$background_image = get_aesthetix_options( 'general_subscribe_form_bg' );
-	$classes[] = 'has_background';
+	$classes[] = 'section-background';
+} else {
+	$classes[] = 'section-primary';
 } ?>
 
 <?php if ( $section_wrapper ) { ?>
-	<section id="section-subscribe-from" <?php aesthetix_section_classes( $classes ); ?><?php echo isset( $background_image ) ? ' style="background: url( ' . esc_url( $background_image ) . ' ) center bottom/cover no-repeat"' : ''; ?> aria-label="<?php esc_attr_e( 'Subscribe form', 'aesthetix' ); ?>">
-		<div <?php aesthetix_container_classes( 'container-outer' ); ?>>
+	<section id="section-subscribe-from" <?php aesthetix_section_classes( $classes ); ?> aria-label="<?php esc_attr_e( 'Subscribe form', 'aesthetix' ); ?>">
+		<div <?php aesthetix_container_classes( 'container-outer' ); ?><?php echo isset( $background_image ) ? ' style="background: url( ' . esc_url( $background_image ) . ' ) center bottom/cover no-repeat"' : ''; ?>>
 			<div <?php aesthetix_container_classes( 'container-inner' ); ?>>
 <?php } ?>
 
 	<?php if ( get_aesthetix_options( 'general_subscribe_form_type' ) !== 'theme' && ! empty( get_aesthetix_options( 'general_subscribe_form_shortcode' ) ) ) { ?>
 		<?php echo do_shortcode( esc_html( get_aesthetix_options( 'general_subscribe_form_shortcode' ) ) ); ?>
 	<?php } else { ?>
-		<form id="subscribe-from" class="form subscribe-from">
+		<form class="form subscribe-from">
 			<?php if ( $form_title ) { ?>
 				<h2 class="form-title h3"><?php echo esc_html( $form_title ); ?></h2>
 			<?php } ?>

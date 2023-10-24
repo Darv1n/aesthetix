@@ -17,50 +17,48 @@
 				<div class="col-3">
 					<div <?php widgets_classes( '', 'header-mobile-left' ); ?>>
 
-						<?php if ( is_active_sidebar( 'header-mobile-left' ) ) { ?>
-							<?php dynamic_sidebar( 'header-mobile-left' ); ?>
-						<?php } else { ?>
-							<?php default_sidebar( 'header-mobile-left' ); ?>
-						<?php } ?>
+						<?php if ( is_active_sidebar( 'header-mobile-left' ) ) {
+							dynamic_sidebar( 'header-mobile-left' );
+						} else {
+							the_default_sidebar( apply_filters( 'header_mobile_mid_3_sidebar_mobile_left', array( 'aside-subscribe-toggle' ) ), 'header-mobile-left' );
+						} ?>
 
 					</div>
 				</div>
 				<div class="col-6">
 					<div <?php widgets_classes( '', 'header-mobile-center' ); ?>>
 
-						<?php if ( is_active_sidebar( 'header-mobile-center' ) ) { ?>
-							<?php dynamic_sidebar( 'header-mobile-center' ); ?>
-						<?php } else { ?>
-							<?php default_sidebar( 'header-mobile-center' ); ?>
-						<?php } ?>
+						<?php if ( is_active_sidebar( 'header-mobile-center' ) ) {
+							dynamic_sidebar( 'header-mobile-center' );
+						} else {
+							the_default_sidebar( apply_filters( 'header_mobile_mid_3_sidebar_mobile_center', array( 'logo' ) ), 'header-mobile-center' );
+						} ?>
 
 					</div>
 				</div>
 				<div class="col-3">
 					<div <?php widgets_classes( '', 'header-mobile-right' ); ?>>
 
-						<?php if ( is_active_sidebar( 'header-mobile-right' ) ) { ?>
-							<?php dynamic_sidebar( 'header-mobile-right' ); ?>
-						<?php } else { ?>
-							<?php default_sidebar( 'header-mobile-right' ); ?>
-						<?php } ?>
+						<?php if ( is_active_sidebar( 'header-mobile-right' ) ) {
+							dynamic_sidebar( 'header-mobile-right' );
+						} else {
+							the_default_sidebar( apply_filters( 'header_mobile_mid_3_sidebar_mobile_right', array( 'aside-search-toggle' ) ), 'header-mobile-right' );
+						} ?>
 
 						<?php
-							$button_size = get_aesthetix_options( 'root_button_size' );
-							if ( in_array( $button_size, array( 'lg', 'xl' ), true ) ) {
-								$button_size = 'md';
+							if ( in_array( get_aesthetix_options( 'root_button_size' ), array( 'lg', 'xl' ), true ) ) {
+								$args['button_size'] = 'md';
 							}
 
-							$button_content = get_aesthetix_options( 'root_menu_button_content' );
-							if ( in_array( $button_content, array( 'button-icon-text', 'button-text' ), true ) ) {
-								$button_content = 'button-icon';
+							if ( in_array( get_aesthetix_options( 'root_menu_button_content' ), array( 'button-icon-text', 'button-text', 'button-icon' ), true ) ) {
+								$args['button_content'] = 'button-icon';
 							} else {
-								$button_content = 'icon';
+								$args['button_content'] = 'icon';
 							}
 						?>
 
 						<div <?php widget_classes( '', 'header-mobile-right' ) ?>>
-							<?php get_template_part( 'templates/aside-menu-toggle', '', array( 'button_content' => $button_content, 'button_size' => $button_size ) ); ?>
+							<?php get_template_part( 'templates/aside-menu-toggle', '', $args ); ?>
 						</div>
 
 					</div>

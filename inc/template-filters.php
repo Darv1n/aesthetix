@@ -54,7 +54,7 @@ if ( ! function_exists( 'primary_menu_fallback' ) ) {
 if ( ! function_exists( 'aesthetix_privacy_policy_url' ) ) {
 
 	/**
-	 * Function for 'privacy_policy_url' filter-hook.
+	 * Add a privacy policy link if it doesn't exist.
 	 * 
 	 * @since 1.0.0
 	 * 
@@ -78,7 +78,7 @@ if ( ! function_exists( 'aesthetix_privacy_policy_url' ) ) {
 		return trailingslashit( $url );
 	}
 }
-add_filter( 'privacy_policy_url', 'aesthetix_privacy_policy_url', 10 ); // Add a privacy policy link if it doesn't exist.
+add_filter( 'privacy_policy_url', 'aesthetix_privacy_policy_url', 10 );
 
 if ( ! function_exists( 'aesthetix_robots' ) ) {
 
@@ -306,7 +306,7 @@ if ( ! function_exists( 'aesthetix_nav_menu_item_args' ) ) {
 				'button_content' => 'icon',
 			);
 
-			$args->link_after = '<button ' . button_classes( 'sub-menu-toggle toggle-icon icon icon_center icon_angle-up', $button_args, false ) . ' data-icon-on="icon_angle-up" data-icon-off="icon_angle-down"></button>';
+			$args->link_after = '<button ' . button_classes( 'sub-menu-toggle toggle-icon icon icon_center icon_angle-down', $button_args, false ) . ' data-icon-on="icon_angle-up" data-icon-off="icon_angle-down"></button>';
 			$args->link_after .= '</span>';
 		}
 
@@ -441,24 +441,29 @@ if ( ! function_exists( 'aesthetix_wp_nav_menu_items' ) ) {
 }
 add_filter( 'wp_nav_menu_items', 'aesthetix_wp_nav_menu_items', 10, 2 );
 
-if ( ! function_exists( 'get_aesthetix_custom_logo_image_attributes' ) ) {
+if ( ! function_exists( 'aesthetix_nav_menu_link_attributes' ) ) {
 
 	/**
-	 * Function for 'get_custom_logo_image_attributes' filter-hook.
+	 * Function for 'nav_menu_link_attributes' filter-hook.
 	 * 
-	 * @since 1.2.4
+	 * @since 1.2.9
 	 * 
-	 * @param array $custom_logo_attr Custom logo image attributes.
-	 * @param int   $custom_logo_id   Custom logo attachment ID.
-	 * @param int   $blog_id          ID of the blog to get the custom logo for.
+	 * @param array    $atts      The HTML attributes applied to the menu item's `<a>` element, empty strings are ignored.
+	 * @param WP_Post  $menu_item The current menu item object.
+	 * @param stdClass $args      An object of wp_nav_menu() arguments.
+	 * @param int      $depth     Depth of menu item. Used for padding.
 	 *
 	 * @return array
 	 */
-	function get_aesthetix_custom_logo_image_attributes( $custom_logo_attr, $custom_logo_id, $blog_id ) {
+	function aesthetix_nav_menu_link_attributes( $atts, $item, $args, $depth ) {
 
-		$custom_logo_attr['class'] = 'logo-image';
+		if ( in_array( 'current-menu-item', $item->classes, true ) ) {
+			$atts['class'] = implode( ' ', get_link_classes() );
+		} else {
+			$atts['class'] = implode( ' ', get_link_classes( 'link-color-border' ) );
+		}
 
-		return $custom_logo_attr;
+		return $atts;
 	}
 }
-add_filter( 'get_custom_logo_image_attributes', 'get_aesthetix_custom_logo_image_attributes', 10, 3 );
+add_filter( 'nav_menu_link_attributes', 'aesthetix_nav_menu_link_attributes', 1, 4 );

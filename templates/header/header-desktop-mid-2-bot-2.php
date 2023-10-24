@@ -17,22 +17,22 @@
 				<div class="col-12 col-md-3">
 					<div <?php widgets_classes( '', 'header-main-left' ); ?>>
 
-						<?php if ( is_active_sidebar( 'header-main-left' ) ) { ?>
-							<?php dynamic_sidebar( 'header-main-left' ); ?>
-						<?php } else { ?>
-							<?php default_sidebar( 'header-main-left' ); ?>
-						<?php } ?>
+						<?php if ( is_active_sidebar( 'header-main-left' ) ) {
+							dynamic_sidebar( 'header-main-left' );
+						} else {
+							the_default_sidebar( apply_filters( 'header_desktop_mid_2_bot_2_sidebar_main_left', array( 'logo' ) ), 'header-main-left' );
+						} ?>
 
 					</div>
 				</div>
 				<div class="col-12 col-md-9">
 					<div <?php widgets_classes( '', 'header-main-right' ); ?>>
 
-						<?php if ( is_active_sidebar( 'header-main-right' ) ) { ?>
-							<?php dynamic_sidebar( 'header-main-right' ); ?>
-						<?php } else { ?>
-							<?php default_sidebar( 'header-main-right' ); ?>
-						<?php } ?>
+						<?php if ( is_active_sidebar( 'header-main-right' ) ) {
+							dynamic_sidebar( 'header-main-right' );
+						} else {
+							the_default_sidebar( apply_filters( 'header_desktop_mid_2_bot_2_sidebar_main_right', array( 'adv-banner' ) ), 'header-main-right' );
+						} ?>
 
 					</div>
 				</div>
@@ -57,11 +57,11 @@
 				<div class="col-12 col-md-3">
 					<div <?php widgets_classes( '', 'header-bottom-right' ); ?>>
 
-						<?php if ( is_active_sidebar( 'header-bottom-right' ) ) { ?>
-							<?php dynamic_sidebar( 'header-bottom-right' ); ?>
-						<?php } else { ?>
-							<?php default_sidebar( 'header-bottom-right' ); ?>
-						<?php } ?>
+						<?php if ( is_active_sidebar( 'header-bottom-right' ) ) {
+							dynamic_sidebar( 'header-bottom-right' );
+						} else {
+							the_default_sidebar( apply_filters( 'header_desktop_mid_2_bot_2_sidebar_bottom_right', array( 'aside-search-toggle', 'aside-subscribe-toggle' ) ), 'header-bottom-right' );
+						} ?>
 
 					</div>
 				</div>

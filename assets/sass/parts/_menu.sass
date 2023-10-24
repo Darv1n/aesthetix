@@ -67,13 +67,8 @@
 		display: block
 		a
 			display: inline-block
-			padding: $padding/2 0
-			color: $primary-text-color
-			text-decoration: none
+			padding: .5rem 0
 			vertical-align: middle
-			&:hover, &:focus, &:active
-				text-decoration: none
-				color: $link-color-dark
 			> *
 				display: block
 		&-has-children
@@ -86,13 +81,10 @@
 				> .sub-menu
 					opacity: 1
 					visibility: visible
-		&.current-menu-item
-			a
-				text-decoration: none
-				color: $link-color-dark
 	.sub-menu
 		display: none
 		transition: $transition
+		padding-bottom: .75rem
 		&.on
 			display: block
 		&-toggle

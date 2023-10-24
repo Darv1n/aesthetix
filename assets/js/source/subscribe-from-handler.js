@@ -7,14 +7,14 @@
  * Form html        - /templates/subscribe-form.php
  */
 
-jQuery( document ).ready( function($) {
+jQuery( document ).ready( function( $ ) {
 
 	$( '.subscribe-from' ).on( 'submit', function( e ) {
 
-		var form   = $( this );
-			submit = form.find( '.form-submit' );
-			defaultText  = submit.data( 'default-text' );
-			processText  = submit.data( 'process-text' );
+		var form        = $( this );
+			submit      = form.find( '.form-submit' );
+			defaultText = submit.data( 'default-text' );
+			processText = submit.data( 'process-text' );
 
 		// Ajax request.
 		if ( ! form.hasClass( 'processing' ) ) {
@@ -41,6 +41,13 @@ jQuery( document ).ready( function($) {
 					// console.log( response.data );
 					if ( response.success ) {
 						form.append( '<div class="notification notification_accept">' + response.data + '</div>' );
+
+						if ( $( '.mfp-ready' ).length > 0 ) {
+							setTimeout( function () {
+								$.magnificPopup.close();
+							}, 2500 );
+						}
+
 					} else {
 						$.each( response.data, function( key, val ) {
 							form.find( '#' + key ).addClass( 'error' );
