@@ -52,7 +52,7 @@ jQuery( document ).ready( function( $ ) {
 		var notification = $( '.notification' );
 		if ( notification.length > 0 ) {
 			notification.each( function() {
-				$( this ).prepend( '<span class="notification-button-wrap"><button class="button button-icon button-none button-sm notification-button icon icon_center icon_xmark" type="button"></button></span>' );
+				$( this ).prepend( '<span class="notification-button-wrap"><button class="button button-icon button-none button-sm notification-button icon icon-center icon_xmark" type="button"></button></span>' );
 			});
 		}
 	}
@@ -71,10 +71,10 @@ jQuery( document ).ready( function( $ ) {
 
 		// Init dropdown toggle for sub menu.
 		var dropdownToggle = $( '<button />', {
-			'class': 'sub-menu-toggle toggle-icon button button-icon button-none button-xs icon icon_center icon_angle-down',
+			'class': 'sub-menu-toggle toggle-icon button button-icon button-none button-xs icon icon-center icon-angle-down',
 			'aria-expanded': false,
-			'data-icon-on': 'icon_angle-up',
-			'data-icon-off': 'icon_angle-down',
+			'data-icon-on': 'icon-angle-up',
+			'data-icon-off': 'icon-angle-down',
 		} );
 
 		var subMenu = menuContainer.find( '.sub-menu' );

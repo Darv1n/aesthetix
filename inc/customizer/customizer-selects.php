@@ -32,7 +32,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_structure' ) ) {
 
 		$converter = array(
 			'title'      => __( 'Post title', 'aesthetix' ),
-			'thumbnail'  => __( 'Post thumbnail', 'aesthetix' ),
 			'meta'       => __( 'Post meta data', 'aesthetix' ),
 			'excerpt'    => __( 'Post excerpt', 'aesthetix' ),
 			'author'     => __( 'Post author widget', 'aesthetix' ),
@@ -155,6 +154,14 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_meta_structure' ) ) {
 			$control = get_title_slug( $control );
 		}
 
+		if ( is_null( $post_type ) ) {
+			if ( get_post_type() ) {
+				$post_type = get_post_type();
+			} else {
+				$post_type = 'post';
+			}
+		}
+
 		$converter = array(
 			'author'   => __( 'Author', 'aesthetix' ),
 			'date'     => __( 'Publication date', 'aesthetix' ),
@@ -163,9 +170,11 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_meta_structure' ) ) {
 			'edit'     => __( 'Edit', 'aesthetix' ),
 		);
 
-		if ( $post_type === 'post' ) {
-			$converter['cats'] = __( 'Categories', 'aesthetix' );
-			$converter['tags'] = __( 'Tags', 'aesthetix' );
+		$object_taxonomies = get_object_taxonomies( $post_type );
+
+		foreach ( $object_taxonomies as $key => $object_taxonomy ) {
+			$taxonomy = get_taxonomy( $object_taxonomy );
+			$converter[ $taxonomy->name ] = $taxonomy->label;
 		}
 
 		// Merge child and parent default options.
@@ -634,10 +643,24 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_thumbnail_structure' ) ) 
 			$control = get_title_slug( $control );
 		}
 
+		if ( is_null( $post_type ) ) {
+			if ( get_post_type() ) {
+				$post_type = get_post_type();
+			} else {
+				$post_type = 'post';
+			}
+		}
+
 		$converter = array(
-			'taxonomies' => __( 'Post taxonomies', 'aesthetix' ),
-			'formats'     => __( 'Post sticky & formats', 'aesthetix' ),
+			'sticky'  => __( 'Sticky', 'aesthetix' ),
 		);
+
+		$object_taxonomies = get_object_taxonomies( $post_type );
+
+		foreach ( $object_taxonomies as $key => $object_taxonomy ) {
+			$taxonomy = get_taxonomy( $object_taxonomy );
+			$converter[ $taxonomy->name ] = $taxonomy->label;
+		}
 
 		// Merge child and parent default options.
 		$converter = apply_filters( 'get_aesthetix_customizer_post_thumbnail_structure', $converter, $post_type );
@@ -759,6 +782,47 @@ if ( ! function_exists( 'get_aesthetix_customizer_demo_variant' ) ) {
 
 		// Merge child and parent default options.
 		$converter = apply_filters( 'get_aesthetix_customizer_demo_variant', $converter );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+if ( ! function_exists( 'get_aesthetix_customizer_background_colors' ) ) {
+
+	/**
+	 * Return array with the customizer background colors.
+	 * 
+	 * @since 1.3.0
+	 *
+	 * @param string $control Array key to get one value.
+	 *
+	 * @return string|array|false
+	 */
+	function get_aesthetix_customizer_background_colors( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'theme'     => __( 'Theme', 'aesthetix' ),
+			'white'     => __( 'White', 'aesthetix' ),
+			'black'     => __( 'Black', 'aesthetix' ),
+			'gray'      => __( 'Gray', 'aesthetix' ),
+			'primary'   => __( 'Primary', 'aesthetix' ),
+			'secondary' => __( 'Secondary', 'aesthetix' ),
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_background_colors', $converter );
 
 		// Return controls.
 		if ( is_null( $control ) ) {

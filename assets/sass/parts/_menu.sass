@@ -57,14 +57,18 @@
 		> *
 			display: inline-block
 			vertical-align: middle
-		&-lvl-1
+		&.has-top-lvl
 			font-family: $primary-font
-			font-weight: 500
+			&.has-description
+				font-weight: bolder
 	&-description
 		font-size: $small-font-size
 		color: $primary-gray-color
 	&-item
 		display: block
+		> *
+			display: inline-block
+			vertical-align: middle
 		a
 			display: inline-block
 			padding: .5rem 0

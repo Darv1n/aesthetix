@@ -70,10 +70,15 @@ if ( ! function_exists( 'aesthetix_post_classes' ) ) {
 	function aesthetix_post_classes( $classes ) {
 
 		$format = get_post_format();
+		$layout = get_aesthetix_options( 'archive_' . get_post_type() . '_layout' );
+
 		if ( ! $format ) {
 			$format = 'standard';
 		}
 
+		if ( in_array( 'sticky', $classes, true ) ) {
+			unset( $classes[ array_search( 'sticky', $classes ) ] );
+		}
 		if ( in_array( 'hentry', $classes, true ) ) {
 			unset( $classes[ array_search( 'hentry', $classes ) ] );
 		}
@@ -112,13 +117,30 @@ if ( ! function_exists( 'aesthetix_post_classes' ) ) {
 		}
 
 		$classes[] = 'post';
-		$classes[] = 'post_' . get_post_type();
-		$classes[] = get_post_type();
+
+		if ( in_array( $layout, array( 'list', 'list-chess' ), true ) ) {
+			$classes[] = 'post-list';
+		}
+
+		if ( get_post_type() !== 'post' ) {
+			$classes[] = 'post-' . get_post_type();
+		}
+
+		if ( has_post_format() ) {
+			$classes[] = 'post-format-' . get_post_format();
+		} elseif ( $layout === 'grid-image' ) {
+			$classes[] = 'post-format-image';
+		} else {
+			$classes[] = 'post-format-standard';
+		}
+
+		if ( is_sticky() ) {
+			$classes[] = 'post-sticky';
+		}
 
 		// Crutch to distinguish single post template from archive template
-		if ( ! in_array( 'post_single', $classes, true ) ) {
-			$classes[] = 'post_archive';
-			$classes[] = 'post_' . get_aesthetix_options( 'archive_' . get_post_type() . '_template_type' );
+		if ( ! in_array( 'post-single', $classes, true ) ) {
+			$classes[] = 'post-archive';
 		}
 
 		$classes = apply_filters( 'aesthetix_post_classes', $classes );
@@ -517,14 +539,13 @@ if ( ! function_exists( 'get_aesthetix_meta_display_classes' ) ) {
 		}
 
 		// Add elements to array.
-		$classes[] = 'post__part';
-		$classes[] = 'post__meta';
 		$classes[] = 'post-meta';
+		$classes[] = 'post-part';
 
 		if ( get_aesthetix_options( 'single_' . get_post_type() . '_template_type' ) === 'two' ) {
-			$classes[] = 'post-meta_block';
+			$classes[] = 'post-meta-block';
 		} else {
-			$classes[] = 'post-meta_inline';
+			$classes[] = 'post-meta-inline';
 		}
 
 		// Add filter to array.
@@ -586,11 +607,17 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_wrapper_classes' ) )
 			$classes = array();
 		}
 
+		if ( get_post_type() ) {
+			$post_type = get_post_type();
+		} else {
+			$post_type = 'post';
+		}
+
 		// Add elements to array.
 		$classes[] = 'row';
+		$classes[] = 'row-' . get_aesthetix_options( 'archive_' . $post_type . '_columns' ) . '-col';
 
 		if ( in_array( 'loop', $classes, true ) && get_aesthetix_options( 'archive_' . get_post_type() . '_masonry' ) ) {
-			$classes[] = 'row-' . (int) get_aesthetix_options( 'archive_post_columns' ) . '-col';
 			$classes[] = 'masonry-gallery';
 		}
 
@@ -816,9 +843,9 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 			// If there is an icon.
 			if ( in_array( 'icon', $classes, true ) ) {
 				if ( in_array( $args['button_content'], array( 'button-icon', 'icon' ), true ) ) {
-					$classes[] = 'icon_center';
+					$classes[] = 'icon-center';
 				} elseif ( in_array( $args['button_type'], array( 'button-icon-text', 'icon-text' ), true ) ) {
-					$classes[] = 'icon_' . $args['icon_position'];
+					$classes[] = 'icon-' . $args['icon_position'];
 				}
 			}
 		}
@@ -836,8 +863,8 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 
 		// Add globalicon position.
 		if ( in_array( 'icon', $classes, true ) ) {
-			if ( ! in_array( 'icon_center', $classes, true ) && ! in_array( 'icon_before', $classes, true ) && ! in_array( 'icon_after', $classes, true ) ) {
-				$classes[] = 'icon_' . $args['icon_position'];
+			if ( ! in_array( 'icon-center', $classes, true ) && ! in_array( 'icon-before', $classes, true ) && ! in_array( 'icon-after', $classes, true ) ) {
+				$classes[] = 'icon-' . $args['icon_position'];
 			}
 		}
 
@@ -995,10 +1022,10 @@ if ( ! function_exists( 'get_aesthetix_link_more_classes' ) ) {
 
 		if ( get_aesthetix_options( 'archive_' . $post_type . '_detail_button' ) === 'button' ) {
 			$classes[] = 'icon';
-			$classes[] = 'icon_arrow-right';
+			$classes[] = 'icon-arrow-right';
 			$classes   = get_button_classes( $classes, $color );
 		} else {
-			$classes[] = 'link_more';
+			$classes[] = 'link-more';
 			$classes   = get_link_classes( $classes );
 		}
 

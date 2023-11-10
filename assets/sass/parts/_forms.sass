@@ -192,14 +192,11 @@ input[type="submit"]
 		padding: calc( var( --button-padding-top ) * 1.25 ) calc( var( --button-padding-side ) * 1.25 )
 
 .button
-	&.icon
-		&::before
-			filter: invert(100%)
-	&.icon_before
+	&.icon-before
 		padding-left: calc( var( --button-padding-side ) + 1.125rem + .25rem )
 		&::before
 			left: calc( var( --button-padding-side ) + .125rem )
-	&.icon_after
+	&.icon-after
 		padding-right: calc( var( --button-padding-side ) + 1.125rem + .25rem )
 		&::before
 			left: auto
@@ -214,28 +211,24 @@ input[type="submit"]
 			padding: calc( var( --button-padding-top ) + 1.125rem / 2 ) calc( var( --button-padding-top ) * 2 + 1.125rem / 2 )
 	&.button-text
 		padding: var( --button-padding-top ) var( --button-padding-top )
-		&.icon_before
+		&.icon-before
 			padding-left: calc( var( --button-padding-top ) + 1.125rem + .25rem )
 			&::before
 				left: var( --button-padding-top )
-		&.icon_after
+		&.icon-after
 			padding-right: calc( var( --button-padding-top ) + 1.125rem + .25rem )
 			&::before
 				right: var( --button-padding-top )
 	&-xs, &-sm
 		font-size: $small-font-size
-		line-height: .825rem
-		&.icon
-			&::before
-				width: .825rem
-				height: .75rem
+		line-height: $small-font-size
 	&-xs
 		padding: .25rem 1rem
-		&.icon_before
+		&.icon-before
 			padding-left: calc( 1rem + .825rem + .25rem )
 			&::before
 				left: 1rem
-		&.icon_after
+		&.icon-after
 			padding-right: calc( 1rem + .825rem + .25rem )
 			&::before
 				right: 1rem
@@ -244,19 +237,19 @@ input[type="submit"]
 			&_long
 				padding: calc( .25rem + .825rem / 2 ) calc( .25rem * 2 + .825rem / 2 )
 		&.button-text
-			&.icon_before
+			&.icon-before
 				padding-left: calc( .25rem + .825rem + .25rem )
-			&.icon_after
+			&.icon-after
 				padding-right: calc( .25rem + .825rem + .25rem )
 		&.button-num
 			padding: .25rem calc( .25rem * 1.5 )
 	&-sm
 		padding: .375rem 1.25rem
-		&.icon_before
+		&.icon-before
 			padding-left: calc( 1.25rem + .825rem + .25rem )
 			&::before
 				left: 1.25rem
-		&.icon_after
+		&.icon-after
 			padding-right: calc( 1.25rem + .825rem + .25rem )
 			&::before
 				right: 1.25rem
@@ -265,19 +258,19 @@ input[type="submit"]
 			&_long
 				padding: calc( .375rem + .825rem / 2 ) calc( .375rem * 2 + .825rem / 2 )
 		&.button-text
-			&.icon_before
+			&.icon-before
 				padding-left: calc( .375rem + .825rem + .25rem )
-			&.icon_after
+			&.icon-after
 				padding-right: calc( .375rem + .825rem + .25rem )
 		&.button-num
 			padding: .375rem calc( .375rem * 1.5 )
 	&-md
 		padding: .5rem 1.375rem
-		&.icon_before
+		&.icon-before
 			padding-left: calc( 1.375rem + 1.125rem + .25rem )
 			&::before
 				left: 1.375rem
-		&.icon_after
+		&.icon-after
 			padding-right: calc( 1.375rem + 1.125rem + .25rem )
 			&::before
 				right: 1.375rem
@@ -289,11 +282,11 @@ input[type="submit"]
 			padding: .5rem calc( .5rem * 1.5 )
 	&-lg
 		padding: .625rem 1.5rem
-		&.icon_before
+		&.icon-before
 			padding-left: calc( 1.5rem + 1.125rem + .25rem )
 			&::before
 				left: 1.5rem
-		&.icon_after
+		&.icon-after
 			padding-right: calc( 1.5rem + 1.125rem + .25rem )
 			&::before
 				right: 1.5rem
@@ -305,11 +298,11 @@ input[type="submit"]
 			padding: .625rem calc( .625rem * 1.5 )
 	&-xl
 		padding: .75rem 1.625rem
-		&.icon_before
+		&.icon-before
 			padding-left: calc( 1.625rem + 1.125rem + .25rem )
 			&::before
 				left: 1.625rem
-		&.icon_after
+		&.icon-after
 			padding-right: calc( 1.625rem + 1.125rem + .25rem )
 			&::before
 				right: 1.625rem
@@ -341,9 +334,6 @@ input[type="submit"]
 		background: $primary-bd-color
 		border: $button-bd-width solid $primary-bd-color
 		color: $primary-text-color
-		&.icon
-			&::before
-				filter: $svg-filter
 		&:hover, &:focus, &:active, &.active
 			background: $secondary-bd-color
 			border: $button-bd-width solid $secondary-bd-color
@@ -354,9 +344,6 @@ input[type="submit"]
 		background: transparent
 		border: $button-bd-width solid $primary-gray-color
 		color: $primary-text-color
-		&.icon
-			&::before
-				filter: $svg-filter
 		&:hover, &:focus, &:active, &.active
 			background: transparent
 			border: $button-bd-width solid $primary-gray-color-hover
@@ -395,9 +382,6 @@ input[type="submit"]
 		&-gray
 			background: $gray-gradient
 			color: $primary-text-color
-			&.icon
-				&::before
-					filter: $svg-filter
 			&::after
 				background: $gray-gradient-reflect
 			&:hover, &:focus, &:active, &.active
@@ -434,9 +418,6 @@ input[type="submit"]
 		&-gray
 			background: $primary-bd-color
 			color: $primary-text-color
-			&.icon
-				&::before
-					filter: $svg-filter
 			&::after
 				background: $secondary-bd-color
 			&:hover, &:focus, &:active, &.active
@@ -445,11 +426,11 @@ input[type="submit"]
 
 @media( min-width: 576px )
 	.button
-		&.icon_before
+		&.icon-before
 			padding-left: calc( ( var( --button-padding-side ) * 1.25 ) + 1.125rem + .25rem )
 			&::before
 				left: calc( var( --button-padding-side ) * 1.25 + .125rem )
-		&.icon_after
+		&.icon-after
 			padding-right: calc( ( var( --button-padding-side ) * 1.25 ) + 1.125rem + .25rem )
 			&::before
 				right: calc( var( --button-padding-side ) * 1.25 + .125rem )
@@ -461,21 +442,21 @@ input[type="submit"]
 				padding: calc( var( --button-padding-top ) * 1.25 + 1.125rem / 2 ) calc( var( --button-padding-top ) * 1.25 * 2 + 1.125rem / 2 )
 		&.button-text
 			padding: calc( var( --button-padding-top ) * 1.25 ) calc( var( --button-padding-top ) * 1.25 )
-			&.icon_before
+			&.icon-before
 				padding-left: calc( var( --button-padding-top ) * 1.25 + 1.125rem + .25rem )
 				&::before
 					left: calc( var( --button-padding-top ) * 1.25 )
-			&.icon_after
+			&.icon-after
 				padding-right: calc( var( --button-padding-top ) * 1.25 + 1.125rem + .25rem )
 				&::before
 					right: calc( var( --button-padding-top ) * 1.25 )
 		&-xs
 			padding: calc( .25rem * 1.25 ) calc( 1rem * 1.25 )
-			&.icon_before
+			&.icon-before
 				padding-left: calc( ( 1rem * 1.25 ) + .825rem + .25rem )
 				&::before
 					left: calc( 1rem * 1.25 )
-			&.icon_after
+			&.icon-after
 				padding-right: calc( ( 1rem * 1.25 ) + .825rem + .25rem )
 				&::before
 					right: calc( 1rem * 1.25 )
@@ -484,19 +465,19 @@ input[type="submit"]
 				&_long
 					padding: calc( .25rem * 1.25 + .825rem / 2 ) calc( .25rem * 1.25 * 2 + .825rem / 2 )
 			&.button-text
-				&.icon_before
+				&.icon-before
 					padding-left: calc( .25rem * 1.25 + .825rem + .25rem )
-				&.icon_after
+				&.icon-after
 					padding-right: calc( .25rem * 1.25 + .825rem + .25rem )
 			&.button-num
 				padding: calc( .25rem * 1.25 ) calc( .25rem * 1.25 * 1.5 )
 		&-sm
 			padding: calc( .375rem * 1.25 ) calc( 1.25rem * 1.25 )
-			&.icon_before
+			&.icon-before
 				padding-left: calc( ( 1.25rem * 1.25 ) + .825rem + .25rem )
 				&::before
 					left: calc( 1.25rem * 1.25 )
-			&.icon_after
+			&.icon-after
 				padding-right: calc( ( 1.25rem * 1.25 ) + .825rem + .25rem )
 				&::before
 					right: calc( 1.25rem * 1.25 )
@@ -505,19 +486,19 @@ input[type="submit"]
 				&_long
 					padding: calc( .375rem * 1.25 + .825rem / 2 ) calc( .375rem * 1.25 * 2 + .825rem / 2 )
 			&.button-text
-				&.icon_before
+				&.icon-before
 					padding-left: calc( .375rem * 1.25 + .825rem + .25rem )
-				&.icon_after
+				&.icon-after
 					padding-right: calc( .375rem * 1.25 + .825rem + .25rem )
 			&.button-num
 				padding: calc( .375rem * 1.25 ) calc( .375rem * 1.25 * 1.5 )
 		&-md
 			padding: calc( .5rem * 1.25 ) calc( 1.375rem * 1.25 )
-			&.icon_before
+			&.icon-before
 				padding-left: calc( ( 1.375rem * 1.25 ) + 1.125rem + .25rem )
 				&::before
 					left: calc( 1.375rem * 1.25 )
-			&.icon_after
+			&.icon-after
 				padding-right: calc( ( 1.375rem * 1.25 ) + 1.125rem + .25rem )
 				&::before
 					right: calc( 1.375rem * 1.25 )
@@ -529,11 +510,11 @@ input[type="submit"]
 				padding: calc( .5rem * 1.25 ) calc( .5rem * 1.25 * 1.5 )
 		&-lg
 			padding: calc( .625rem * 1.25 ) calc( 1.5rem * 1.25 )
-			&.icon_before
+			&.icon-before
 				padding-left: calc( ( 1.5rem * 1.25 ) + 1.125rem + .25rem )
 				&::before
 					left: calc( 1.5rem * 1.25 )
-			&.icon_after
+			&.icon-after
 				padding-right: calc( ( 1.5rem * 1.25 ) + 1.125rem + .25rem )
 				&::before
 					right: calc( 1.5rem * 1.25 )
@@ -545,11 +526,11 @@ input[type="submit"]
 				padding: calc( .625rem * 1.25 ) calc( .625rem * 1.25 * 1.5 )
 		&-xl
 			padding: calc( .75rem * 1.25 ) calc( 1.625rem * 1.25 )
-			&.icon_before
+			&.icon-before
 				padding-left: calc( ( 1.625rem * 1.25 ) + 1.125rem + .25rem )
 				&::before
 					left: calc( 1.625rem * 1.25 )
-			&.icon_after
+			&.icon-after
 				padding-right: calc( ( 1.625rem * 1.25 ) + 1.125rem + .25rem )
 				&::before
 					right: calc( 1.625rem * 1.25 )
@@ -611,10 +592,6 @@ input[type="submit"]
 		box-shadow: none
 
 .button
-	&-disabled, &[disabled], &-none, &-reset
-		&.icon
-			&::before
-				filter: $svg-filter
 	&-disabled, &[disabled]
 		background: $primary-bd-color
 		border: $button-bd-width solid $primary-bd-color
@@ -647,12 +624,6 @@ input[type="submit"]
 			color: $primary-text-color
 			border: $button-bd-width solid transparent
 			box-shadow: none
-	&-none
-		&.button-icon
-			&.icon
-				&:hover, &:focus, &:active
-					&::before
-						filter: invert(50%)
 	&-reset
 		padding: 0
 		border: none

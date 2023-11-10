@@ -33,7 +33,7 @@ if ( (int) $pages === 1 ) {
 
 		// First page.
 		if ( $paged > 3 ) { ?>
-			<a <?php button_classes( 'posts-navigation__item posts-navigation__item_first icon icon_before icon_chevron-left' ); ?> href="<?php echo esc_url( get_pagenum_link( 1 ) ); ?>" role="button"><?php esc_html_e( 'First', 'aesthetix' ); ?></a>
+			<a <?php button_classes( 'posts-navigation__item posts-navigation__item_first icon icon-before icon-chevron-left' ); ?> href="<?php echo esc_url( get_pagenum_link( 1 ) ); ?>" role="button"><?php esc_html_e( 'First', 'aesthetix' ); ?></a>
 		<?php }
 
 		// The main link output loop.
@@ -66,11 +66,11 @@ if ( (int) $pages === 1 ) {
 
 		// Last Page.
 		if ( $pages > 5 && $paged < $pages - 2 ) { ?>
-			<a <?php button_classes( 'posts-navigation__item posts-navigation__item_last icon icon_after icon_chevron-right' ); ?> href="<?php echo esc_url( get_pagenum_link( $pages ) ); ?>" role="button"><?php esc_html_e( 'Last', 'aesthetix' ); ?></a>
+			<a <?php button_classes( 'posts-navigation__item posts-navigation__item_last icon icon-after icon-chevron-right' ); ?> href="<?php echo esc_url( get_pagenum_link( $pages ) ); ?>" role="button"><?php esc_html_e( 'Last', 'aesthetix' ); ?></a>
 		<?php }
 
 	} elseif ( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) === 'loadmore' ) { ?>
-		<button <?php button_classes( 'loadmore icon icon_download' ); ?> type="button" data-default-icon="icon_download" data-loading-icon="icon_spinner" data-default-text="<?php esc_attr_e( 'Load more', 'aesthetix' ); ?>" data-loading-text="<?php esc_attr_e( 'Loading...', 'aesthetix' ); ?>" data-disabled-text="<?php esc_attr_e( 'All posts have been uploaded', 'aesthetix' ); ?>" data-current-page="1" data-max-pages="<?php echo esc_attr( $wp_query->max_num_pages ); ?>"><?php esc_html_e( 'Load more', 'aesthetix' ); ?></button>
+		<button <?php button_classes( 'loadmore icon icon_download' ); ?> type="button" data-default-icon="icon-download" data-loading-icon="icon-spinner" data-default-text="<?php esc_attr_e( 'Load more', 'aesthetix' ); ?>" data-loading-text="<?php esc_attr_e( 'Loading...', 'aesthetix' ); ?>" data-disabled-text="<?php esc_attr_e( 'All posts have been uploaded', 'aesthetix' ); ?>" data-current-page="1" data-max-pages="<?php echo esc_attr( $wp_query->max_num_pages ); ?>"><?php esc_html_e( 'Load more', 'aesthetix' ); ?></button>
 	<?php } else { ?>
 
 		<div class="row">

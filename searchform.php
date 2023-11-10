@@ -23,7 +23,7 @@ $args['button_rounded'] = $args['button_rounded'] ?? get_aesthetix_options( 'roo
 <form class="search-form form" method="get" role="search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 	<label class="screen-reader-text" for="search-field"><?php esc_html_e( 'Search for', 'aesthetix' ); ?>:</label>
 	<input <?php input_classes( 'search-field', $args['input_size'] ); ?> type="search" placeholder="<?php esc_attr_e( 'Search...', 'aesthetix' ); ?>" value="<?php echo get_search_query(); ?>" name="s" title="<?php esc_attr_e( 'Search for', 'aesthetix' ); ?>" />
-	<button <?php button_classes( 'search-submit icon icon_magnifying-glass', $args ); ?> type="submit" value="<?php esc_attr_e( 'Search', 'aesthetix' ); ?>">
+	<button <?php button_classes( 'search-submit icon icon-magnifying-glass', $args ); ?> type="submit" value="<?php esc_attr_e( 'Search', 'aesthetix' ); ?>">
 		<?php if ( ! in_array( $args['button_content'], array( 'icon', 'button-icon' ), true ) ) {
 			esc_html_e( 'Search', 'aesthetix' );
 		} ?>

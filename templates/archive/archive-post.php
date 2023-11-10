@@ -14,13 +14,19 @@
 
 	<?php do_action( 'aesthetix_before_archive_entry_post' ); ?>
 
-	<?php
+	<?php if ( has_post_thumbnail() ) { ?>
+		<div class="post-thumbnail-wrap">
+			<?php get_template_part( 'templates/archive/archive-entry-post-thumbnail' ); ?>
+		</div>
+	<?php } ?>
 
-		$structure = get_aesthetix_options( 'archive_' . get_post_type() . '_structure' );
+	<?php $structure = get_aesthetix_options( 'archive_' . get_post_type() . '_structure' );
 
-		if ( is_string( $structure ) && ! empty( $structure ) ) {
+	if ( is_string( $structure ) && ! empty( $structure ) ) { ?>
 
-			$structure = array_map( 'trim', explode( ',', $structure ) );
+		<div class="post-content-wrap">
+
+			<?php $structure = array_map( 'trim', explode( ',', $structure ) );
 
 			foreach ( $structure as $key => $value ) {
 				switch ( $value ) {
@@ -29,9 +35,6 @@
 						break;
 					case 'title':
 						get_template_part( 'templates/archive/archive-entry-post-title' );
-						break;
-					case 'thumbnail':
-						get_template_part( 'templates/archive/archive-entry-post-thumbnail' );
 						break;
 					case 'meta':
 						get_template_part( 'templates/archive/archive-entry-post-meta' );
@@ -48,10 +51,11 @@
 					default:
 						break;
 				}
-			}
-		}
+			} ?>
 
-	?>
+		</div>
+
+	<?php } ?>
 
 	<?php do_action( 'aesthetix_after_archive_entry_post' ); ?>
 

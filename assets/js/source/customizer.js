@@ -2,30 +2,16 @@
 ** Scripts within the customizer controls window.
 */
 
-(function( $ ) {
+( function( $ ) {
 	wp.customize.bind( 'ready', function() {
 
-/*		function aesthetix_sortable( id ) {
-			console.log( id );
-			var items = [];
-			$('.sortable-list').find( 'li.visible' ).each(function() {
-				items.push( $( this ).text().trim() );
-			});
-			$('.sortable-list').next().val( JSON.stringify( items ) ).trigger( 'change' );
-		}
-
-		$('.sortable-list').sortable({
-			update: aesthetix_sortable( $( this ) ),
-		});
-*/
-
-		$('.sortable-list').sortable({
-			update: function(event, ui) {
+		$( '.sortable-list' ).sortable( {
+			update: function( event, ui ) {
 				var items = [];
-				$(this).find( 'li.visible' ).each(function() {
-					items.push( $(this).data( 'key' ).trim() );
+				$( this ).find( 'li.visible' ).each( function() {
+					items.push( $( this ).data( 'key' ).trim() );
 				});
-				$(this).next().val( items.join(',') ).trigger( 'change' );
+				$( this ).next().val( items.join( ',' ) ).trigger( 'change' );
 			}
 		});
 
@@ -35,7 +21,7 @@
 			_this.toggleClass( 'visible invisible' );
 			_this.parent().toggleClass( 'visible invisible' );
 			_this.closest( '.sortable-list' ).find( 'li.visible' ).each(function() {
-				items.push( $(this).data( 'key' ).trim() );
+				items.push( $( this ).data( 'key' ).trim() );
 			});
 			_this.closest( '.sortable-list' ).next().val( items.join(',') ).trigger( 'change' );
 		} );
@@ -60,10 +46,10 @@
 
 			// On change.
 			$( id ).find( 'input[type="checkbox"]' ).change(function() {
-				if ( $(this).is( ':checked' ) ) {
-					$(this).closest( 'li' ).nextUntil( '.tab-title' ).not( '.section-meta, .tab-title' + id ).find( '.control-lock' ).remove();
+				if ( $( this ).is( ':checked' ) ) {
+					$( this ).closest( 'li' ).nextUntil( '.tab-title' ).not( '.section-meta, .tab-title' + id ).find( '.control-lock' ).remove();
 				} else {
-					$(this).closest( 'li' ).nextUntil( '.tab-title' ).not( '.section-meta, .tab-title' + id ).append( '<div class="control-lock"></div>' );
+					$( this ).closest( 'li' ).nextUntil( '.tab-title' ).not( '.section-meta, .tab-title' + id ).append( '<div class="control-lock"></div>' );
 				}
 			});
 
@@ -81,10 +67,10 @@
 
 			// On change.
 			$( id ).find( 'input[type="checkbox"]' ).change(function() {
-				if ( $(this).is( ':checked' ) ) {
-					$(this).closest( 'li' ).next().not( '.section-meta, .tab-title' + id ).append( '<div class="control-lock"></div>' );
+				if ( $( this ).is( ':checked' ) ) {
+					$( this ).closest( 'li' ).next().not( '.section-meta, .tab-title' + id ).append( '<div class="control-lock"></div>' );
 				} else {
-					$(this).closest( 'li' ).next().not( '.section-meta, .tab-title' + id ).find( '.control-lock' ).remove();
+					$( this ).closest( 'li' ).next().not( '.section-meta, .tab-title' + id ).find( '.control-lock' ).remove();
 				}
 			});
 
@@ -108,10 +94,10 @@
 
 			// On change.
 			$( id ).find( 'input[type="checkbox"]' ).change(function() {
-				if ( $(this).is( ':checked' ) ) {
-					$(this).closest( 'li' ).nextAll().slice( 0, + cnt ).find( '.control-lock' ).remove();
+				if ( $( this ).is( ':checked' ) ) {
+					$( this ).closest( 'li' ).nextAll().slice( 0, + cnt ).find( '.control-lock' ).remove();
 				} else {
-					$(this).closest( 'li' ).nextAll().slice( 0, + cnt ).append( '<div class="control-lock"></div>' );
+					$( this ).closest( 'li' ).nextAll().slice( 0, + cnt ).append( '<div class="control-lock"></div>' );
 				}
 			});
 

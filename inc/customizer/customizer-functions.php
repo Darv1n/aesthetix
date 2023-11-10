@@ -73,7 +73,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 			$roots['secondary-bd-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-700' );
 			$roots['primary-gray-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-300' );
 			$roots['primary-gray-color-hover'] = get_aesthetix_customizer_converter_colors( $gray_color . '-400' );
-			$roots['svg-filter']               = 'invert(100%)';
 		} else {
 			$roots['primary-text-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-800' );
 			$roots['primary-bg-color']         = get_aesthetix_customizer_converter_colors( $gray_color . '-50' );
@@ -82,7 +81,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 			$roots['secondary-bd-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-300' );
 			$roots['primary-gray-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-500' );
 			$roots['primary-gray-color-hover'] = get_aesthetix_customizer_converter_colors( $gray_color . '-600' );
-			$roots['svg-filter']               = 'invert(0%)';
 		}
 
 		if ( get_aesthetix_options( 'root_link_color' ) === 'blue' ) {
@@ -91,27 +89,86 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 			$link_color = get_aesthetix_options( 'root_' . get_aesthetix_options( 'root_link_color' ) . '_color' );
 		}
 
-		$roots['link-color-dark']      = get_aesthetix_customizer_converter_colors( $link_color . '-600' );
-		$roots['link-color']           = get_aesthetix_customizer_converter_colors( $link_color . '-500' );
-		$roots['link-color-light']     = get_aesthetix_customizer_converter_colors( $link_color . '-400' );
+		$roots['link-color-dark']       = get_aesthetix_customizer_converter_colors( $link_color . '-600' );
+		$roots['link-color']            = get_aesthetix_customizer_converter_colors( $link_color . '-500' );
+		$roots['link-color-light']      = get_aesthetix_customizer_converter_colors( $link_color . '-400' );
 
-		// $roots['post-margin']          = '1rem';
-		// $roots['post-padding']         = '1rem';
+		switch ( get_aesthetix_options( 'root_post_background' ) ) {
+			case has_action( 'aesthetix_archive_root_post_background_loop_' . get_aesthetix_options( 'root_post_background' ) ):
+				do_action( 'aesthetix_archive_root_post_background_loop_' . get_aesthetix_options( 'root_post_background' ), $post );
+				break;
+			case 'theme':
+				if ( get_aesthetix_options( 'root_color_scheme' ) === 'black' ) {
+					$roots['post-background']   = get_aesthetix_customizer_converter_colors( $gray_color . '-950' );
+					$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $gray_color . '-900' );
+				} else {
+					$roots['post-background']   = get_aesthetix_customizer_converter_colors( $gray_color . '-50' );
+					$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $gray_color . '-100' );
+				}
+				break;
+			case 'white':
+				$roots['post-background']   = get_aesthetix_customizer_converter_colors( $gray_color . '-50' );
+				$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $gray_color . '-100' );
+				break;
+			case 'black':
+				$roots['post-background']   = get_aesthetix_customizer_converter_colors( $gray_color . '-950' );
+				$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $gray_color . '-900' );
+				break;
+			case 'gray':
+				if ( get_aesthetix_options( 'root_color_scheme' ) === 'black' ) {
+					$roots['post-background']   = get_aesthetix_customizer_converter_colors( $gray_color . '-900' );
+					$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $gray_color . '-800' );
+				} else {
+					$roots['post-background']   = get_aesthetix_customizer_converter_colors( $gray_color . '-100' );
+					$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $gray_color . '-200' );
+				}
+				break;
+			case 'primary':
+				if ( get_aesthetix_options( 'root_color_scheme' ) === 'black' ) {
+					$roots['post-background']   = get_aesthetix_customizer_converter_colors( $primary_color . '-950' );
+					$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $primary_color . '-900' );
+				} else {
+					$roots['post-background']   = get_aesthetix_customizer_converter_colors( $primary_color . '-50' );
+					$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $primary_color . '-100' );
+				}
+				break;
+			case 'secondary':
+				if ( get_aesthetix_options( 'root_color_scheme' ) === 'black' ) {
+					$roots['post-background']   = get_aesthetix_customizer_converter_colors( $secondary_color . '-950' );
+					$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $secondary_color . '-900' );
+				} else {
+					$roots['post-background']   = get_aesthetix_customizer_converter_colors( $secondary_color . '-50' );
+					$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $secondary_color . '-100' );
+				}
+				break;
+			default:
+				$roots['post-background']   = get_aesthetix_customizer_converter_colors( $gray_color . '-50' );
+				$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $gray_color . '-100' );
+				break;
+		}
 
-		$roots['button-padding-top']   = get_first_value_from_string( get_aesthetix_customizer_converter_sizes( get_aesthetix_options( 'root_button_size' ) ), ' ' );
-		$roots['button-padding-side']  = get_last_value_from_string( get_aesthetix_customizer_converter_sizes( get_aesthetix_options( 'root_button_size' ) ), ' ' );
-		$roots['button-border-width']  = get_aesthetix_customizer_converter_borders( get_aesthetix_options( 'root_button_border_width' ) );
-		$roots['button-border-radius'] = get_aesthetix_customizer_converter_radiuses( get_aesthetix_options( 'root_button_border_radius' ) );
+		$roots['post-border-width']      = get_aesthetix_customizer_converter_borders( get_aesthetix_options( 'root_post_border_width' ) );
+		$roots['post-border-radius']     = get_aesthetix_customizer_converter_radiuses( get_aesthetix_options( 'root_post_border_radius' ) );
+		$roots['post-margin']            = '.5rem';
+		$roots['post-thumbnail-padding'] = get_aesthetix_customizer_converter_sizes( get_aesthetix_options( 'root_post_thumbnail_padding' ) );
+		$roots['post-content-padding']   = get_aesthetix_customizer_converter_sizes( get_aesthetix_options( 'root_post_content_padding' ) );
+		$roots['post-shadow']            = get_aesthetix_customizer_converter_shadows( get_aesthetix_options( 'root_post_shadow' ) );
+		$roots['post-shadow-hover']      = str_replace( '0.15', '0.25', get_aesthetix_customizer_converter_shadows( get_aesthetix_options( 'root_post_shadow' ) ) );
 
-		$roots['input-padding-top']    = get_first_value_from_string( get_aesthetix_customizer_converter_sizes( get_aesthetix_options( 'root_input_size' ) ), ' ' );
-		$roots['input-padding-side']   = get_last_value_from_string( get_aesthetix_customizer_converter_sizes( get_aesthetix_options( 'root_input_size' ) ), ' ' );
-		$roots['input-border-width']   = get_aesthetix_customizer_converter_borders( get_aesthetix_options( 'root_input_border_width' ) );
-		$roots['input-border-radius']  = get_aesthetix_customizer_converter_radiuses( get_aesthetix_options( 'root_input_border_radius' ) );
+		$roots['button-padding-top']     = get_first_value_from_string( get_aesthetix_customizer_converter_button_sizes( get_aesthetix_options( 'root_button_size' ) ), ' ' );
+		$roots['button-padding-side']    = get_last_value_from_string( get_aesthetix_customizer_converter_button_sizes( get_aesthetix_options( 'root_button_size' ) ), ' ' );
+		$roots['button-border-width']    = get_aesthetix_customizer_converter_borders( get_aesthetix_options( 'root_button_border_width' ) );
+		$roots['button-border-radius']   = get_aesthetix_customizer_converter_radiuses( get_aesthetix_options( 'root_button_border_radius' ) );
 
-		$roots['box-shadow']           = get_aesthetix_customizer_converter_shadows( get_aesthetix_options( 'root_box_shadow' ) );
-		$roots['box-shadow-hover']     = str_replace( '0.15', '0.25', get_aesthetix_customizer_converter_shadows( get_aesthetix_options( 'root_box_shadow' ) ) );
-		$roots['border-width']         = get_aesthetix_customizer_converter_borders( get_aesthetix_options( 'root_border_width' ) );
-		$roots['border-radius']        = get_aesthetix_customizer_converter_radiuses( get_aesthetix_options( 'root_border_radius' ) );
+		$roots['input-padding-top']      = get_first_value_from_string( get_aesthetix_customizer_converter_button_sizes( get_aesthetix_options( 'root_input_size' ) ), ' ' );
+		$roots['input-padding-side']     = get_last_value_from_string( get_aesthetix_customizer_converter_button_sizes( get_aesthetix_options( 'root_input_size' ) ), ' ' );
+		$roots['input-border-width']     = get_aesthetix_customizer_converter_borders( get_aesthetix_options( 'root_input_border_width' ) );
+		$roots['input-border-radius']    = get_aesthetix_customizer_converter_radiuses( get_aesthetix_options( 'root_input_border_radius' ) );
+
+		$roots['box-shadow']             = get_aesthetix_customizer_converter_shadows( get_aesthetix_options( 'root_box_shadow' ) );
+		$roots['box-shadow-hover']       = str_replace( '0.15', '0.25', get_aesthetix_customizer_converter_shadows( get_aesthetix_options( 'root_box_shadow' ) ) );
+		$roots['border-width']           = get_aesthetix_customizer_converter_borders( get_aesthetix_options( 'root_border_width' ) );
+		$roots['border-radius']          = get_aesthetix_customizer_converter_radiuses( get_aesthetix_options( 'root_border_radius' ) );
 
 		// Merge child and parent default options.
 		$roots = apply_filters( 'get_aesthetix_customizer_roots', $roots );

@@ -296,7 +296,7 @@ abstract class WPA_Widget extends WP_Widget {
 					</div>
 					<script>
 						// JavaScript to handle image upload button
-						jQuery(document).ready(function($) {
+						jQuery( document ).ready( function( $ ) {
 
 							function mediaUploader( buttonClass ) {
 
@@ -333,8 +333,6 @@ abstract class WPA_Widget extends WP_Widget {
 										form.find( '.media-image-container' ).append( '<img src="' + attachment.url + '" class="media-image" alt="Image Preview" style="max-width:100%;margin-bottom:10px" />' );
 
 										$( '.media-modal:visible' ).find( '.media-modal-close' ).trigger( 'click' );
-
-										form.find( '.widget-control-save' ).prop( 'disabled', false );
 									});
 
 									// Open the uploader dialog.

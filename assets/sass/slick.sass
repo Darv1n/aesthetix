@@ -5,9 +5,8 @@
 .slick-slider
 	position: relative
 	display: block
-	margin-right: -$bootstrap-gutter
-	margin-left: -$bootstrap-gutter
-	margin-bottom: -$bootstrap-gutter*2
+	margin-right: calc( var( --post-margin ) * -1 )
+	margin-left: calc( var( --post-margin ) * -1 )
 	box-sizing: border-box
 	-webkit-user-select: none
 	-moz-user-select: none
@@ -40,8 +39,8 @@
 		transform: translate3d(0, 0, 0)
 
 .slick-slide
-	margin-left: $bootstrap-gutter
-	margin-right: $bootstrap-gutter
+	margin-left: var( --post-margin )
+	margin-right: var( --post-margin )
 
 .slick-track
 	position: relative
@@ -96,44 +95,50 @@
 	position: absolute
 	top: 50%
 	padding: calc( var( --button-padding-top ) + 1.125rem / 2 ) calc( var( --button-padding-top ) + 1.125rem / 2 )
-	margin-bottom: .5rem
 	font-size: 0
 	overflow: hidden
 	border-radius: 50%
 	line-height: 0
+	transform: translate( -50%, -50% )
+	z-index: 1
 	&:before
 		content: ''
 		position: absolute
 		top: 50%
 		left: 50%
-		width: 14px
-		height: 14px
-		background: url( ../img/icons/sets/set-default.svg#arrow-down )
-		filter: invert(100%)
+		width: .825rem
+		height: .75rem
+		transform: translate( -50%, -50% )
+		filter: invert( 100% )
+
+.slick-prev::before
+	background: url( ../img/icons/sets/fa-regular.svg#angle-left )
+
+.slick-next::before
+	background: url( ../img/icons/sets/fa-regular.svg#angle-right )
 
 @media( min-width: 576px )
 	.slick-prev, .slick-next
 		padding: calc( var( --button-padding-top ) * 1.25 + 1.125rem / 2 ) calc( var( --button-padding-top ) * 1.25 + 1.125rem / 2 )
-
-.slick-prev::before
-	transform: translate( -50%, -50% ) rotate( 90deg )
-	
-.slick-next::before
-	transform: translate( -50%, -50% ) rotate(-90deg )
+		&:before
+			width: 1.125rem
+			height: 1rem
 
 .slick-prev
-	left: -2.5rem
+	left: .75rem
 
 [dir='rtl'] .slick-prev
-	right: -2.5rem
+	right: .75rem
 	left: auto
+	transform: translate( 50%, -50% )
 
 .slick-next
-	right: -2.5rem
+	right: .75rem
+	transform: translate( 50%, -50% )
 
 [dir='rtl'] .slick-next
 	right: auto
-	left: -2.5rem
+	left: .75rem
 
 .slick-dotted.slick-slider
 	margin-bottom: 1.5rem

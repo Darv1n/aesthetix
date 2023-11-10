@@ -13,7 +13,7 @@
 		font-size: $small-font-size
 		line-height: $small-font-size
 		color: $primary-gray-color
-	&-image
+	img
 		width: auto
 	&-xs
 		img
@@ -148,19 +148,23 @@ a.logo
 .avatar
 	border-radius: 50%
 
+.post, .post-header, .post-footer, .post-content, .post-content-wrap
+	> *
+		margin-bottom: $gutter
+		&:last-child
+			margin-bottom: 0
+
 .post
 	position: relative
-	display: block
+	display: flex
+	flex-direction: column
 	width: 100%
-	margin-bottom: $bootstrap-gutter*2
-	&-header, &-footer, &-content
-		> *
-			margin-bottom: $gutter
-			&:last-child
-				margin-bottom: 0
+	margin-bottom: calc( var( --post-margin ) * 2 )
+	&-content-wrap, &-thumbnail-wrap
+		position: relative
 	&-content
 		> *
-			margin-bottom: $margin
+			max-width: 960px
 		> *:first-child
 			margin-top: 0 !important
 		h2
@@ -175,7 +179,6 @@ a.logo
 			margin-top: $gutter
 		ul, ol
 			li
-				max-width: 960px
 				&:not(:last-child)
 					margin-bottom: $margin/2
 		ul, ol
@@ -183,107 +186,119 @@ a.logo
 				margin-bottom: 0
 		.button
 			@extend .mb
+	&-thumbnail
+		width: 100%
+		object-fit: cover
 	&-meta
 		@extend .list-inline
-		&__item
+		&-item
 			padding-top: .125rem
 			padding-bottom: .125rem
 			font-size: $small-font-size
-		&_block
+		&-block
 			@extend .list-block
 	&-date
 		&-modified
-			padding-left: $gutter
+			padding-left: .25rem
 			color: $primary-gray-color
 	&-footer
-		&__item
+		&-item
 			display: block
 			&:not(:last-child)
-				margin-bottom: $gutter*2
-		&__list, &__tags, &__cats
+				margin-bottom: .5rem
+		&-list, &-tags, &-cats
 			@extend .list-inline
 	&-taxonomies
+		position: absolute
+		top: calc( var( --post-thumbnail-padding ) + .5rem )
+		left: calc( var( --post-thumbnail-padding ) + .5rem )
+		margin-bottom: 0 !important
+		z-index: 1
 		@extend .list-inline
 		> li
 			&:not(:last-child)
 				margin-right: .125rem
-	&-thumbnail-wrap
-		position: relative
-		> :nth-child(2)
-			position: absolute
-			top: $gutter*2
-			left: $gutter*2
-			margin-bottom: 0 !important
-		> :nth-child(3)
-			position: absolute
-			top: auto
-			bottom: $gutter*2
-			left: $gutter*2
-			margin-bottom: 0 !important
 	&-author
 		&-avatar
 			float: left
-			margin-right: $gutter*2
+			margin-right: .5rem
 		&-date
-			padding-bottom: $gutter
+			padding-bottom: .25rem
 			font-size: $small-font-size
 			color: $primary-gray-color
-	&.post_single
-		> *
-			&:not(:last-child)
-				@extend .mb
-	&.post_archive
+	&-archive
+		background: var( --post-background )
+		box-shadow: var( --post-shadow )
+		border-radius: var( --post-border-radius )
+		border: var( --post-border-width ) solid var( --post-border-color )
+		height: calc( 100% - var( --post-margin ) * 2 )
+		&:hover, &:focus, &:active
+			box-shadow: var( --post-shadow-hover )
+		.post-thumbnail-wrap
+			padding: var( --post-thumbnail-padding ) var( --post-thumbnail-padding ) 0
+		.post-content-wrap
+			display: flex
+			flex-direction: column
+			flex-grow: 1
+			padding: 0 var( --post-content-padding ) var( --post-content-padding )
 		.post-title
 			font-size: $h4
-	&.post_tils
-		> *
-			&:not(:last-child)
-				margin-bottom: $gutter*2
-	&.post_list
-		> * > *
-			&:not(:last-child)
-				margin-bottom: $gutter*2
-		> * > * > *
-			&:not(:last-child)
-				margin-bottom: $gutter*2
-	&.post_banner
-		a.post-thumbnail
-			padding-bottom: 140%
-		.post-meta, .post-header
-			position: absolute
-			left: .5rem
-			padding: .5rem
-			margin-bottom: 0
-			background: $white-color
-			max-width: calc( 100% - 1rem )
-		.post-meta
-			top: .5rem
-		.post-header
-			bottom: .5rem
-		.post-title
-			font-size: $h5
+		&.post-format-standard
+			.post-header
+				display: flex
+				flex-direction: column
+				flex-grow: 1
+	&-list
+		.post-taxonomies
+			top: calc( var( --post-margin ) + .5rem )
+			left: calc( var( --post-margin ) + .5rem )
+		.post-thumbnail-wrap
+			padding: var( --post-margin ) 0 0 0
+			margin-bottom: .25rem
+		.post-content-wrap
+			padding: 0 0 var( --post-margin ) 0
+	&-format-gallery
+	&-format-image
+		&:not(.post-list)
+			> *
+				color: $white-color
+			.post-author-date
+				color: var( --white-color )
+			.link
+				@extend .link-white
+			.post-thumbnail-wrap
+				position: absolute
+				padding: var( --post-thumbnail-padding )
+				height: 100%
+				width: 100%
+			.post-content-wrap
+				display: flex
+				flex-direction: column
+				justify-content: flex-end
+				padding: calc( var( --post-thumbnail-padding ) + var( --post-content-padding ) )
+		.post-thumbnail-wrap
+			img
+				height: 100%
+				filter: brightness( 50% )
 
-@media ( min-width: 768px )
-	.post
-		&.post_list
-			> * > *
-				&:not(:last-child)
-					margin-bottom: 0
+
+@media (min-width: 768px)
+	.post-list
+		.post-thumbnail-wrap
+			padding: var( --post-margin ) 0
+			margin-bottom: 0
+		.post-content-wrap
+			padding: var( --post-margin ) 0
 
 @media ( min-width: 992px )
-	.post
-		&-content
-			h2
-				margin-top: $gutter*6
-			h3
-				margin-top: $gutter*5
-			h4
-				margin-top: $gutter*4
-			h5
-				margin-top: $gutter*3
-			h6
-				margin-top: $gutter*2
-
-a.post-thumbnail
-	display: block
-	padding-bottom: 66.66%
+	.post-content
+		h2
+			margin-top: $gutter*6
+		h3
+			margin-top: $gutter*5
+		h4
+			margin-top: $gutter*4
+		h5
+			margin-top: $gutter*3
+		h6
+			margin-top: $gutter*2

@@ -1,4 +1,4 @@
-jQuery(document).ready(function ($) {
+jQuery( document ).ready(function ( $ ) {
 
 	$( '#comment-form' ).on( 'click', '#comment-form-submit', function(e) {
 

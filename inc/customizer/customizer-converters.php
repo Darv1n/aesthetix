@@ -182,7 +182,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_shadows' ) ) {
 	}
 }
 
-if ( ! function_exists( 'get_aesthetix_customizer_converter_sizes' ) ) {
+if ( ! function_exists( 'get_aesthetix_customizer_converter_button_sizes' ) ) {
 
 	/**
 	 * Return string or array with css values.
@@ -193,7 +193,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_sizes' ) ) {
 	 *
 	 * @return string|array|false
 	 */
-	function get_aesthetix_customizer_converter_sizes( $control = null ) {
+	function get_aesthetix_customizer_converter_button_sizes( $control = null ) {
 
 		// Sanitize string (just to be safe).
 		if ( ! is_null( $control ) ) {
@@ -209,7 +209,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_sizes' ) ) {
 			'xl' => '.75rem 1.625rem',
 		);
 
-		$converter = apply_filters( 'get_aesthetix_customizer_converter_sizes', $converter );
+		$converter = apply_filters( 'get_aesthetix_customizer_converter_button_sizes', $converter );
 
 		// Return controls.
 		if ( is_null( $control ) ) {
@@ -525,6 +525,49 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_colors' ) ) {
 			
 			return $array; // Return names array values like rose-100, rose-200, rose-300 etc.
 		} elseif ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+if ( ! function_exists( 'get_aesthetix_customizer_converter_sizes' ) ) {
+
+	/**
+	 * Return string or array with css values.
+	 * 
+	 * @since 1.3.0
+	 *
+	 * @param string $control Key to get one value. Optional. Default null.
+	 *
+	 * @return string|array|false
+	 */
+	function get_aesthetix_customizer_converter_sizes( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		// Main converter array.
+		$converter = array(
+			'none' => '0',
+			'xxs'  => '.25rem',
+			'xs'   => '.5rem',
+			'sm'   => '.75rem',
+			'md'   => '1rem',
+			'lg'   => '1.25rem',
+			'xl'   => '1.5rem',
+			'xxl'  => '1.75rem',
+		);
+
+		$converter = apply_filters( 'get_aesthetix_customizer_converter_sizes', $converter );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
 			return $converter;
 		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
 			return false;

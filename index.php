@@ -21,7 +21,13 @@ get_header(); ?>
 	<?php do_action( 'aesthetix_before_index_page' ); ?>
 
 	<?php if ( have_posts() ) : ?>
-		<?php $i = 0; ?>
+
+		<?php
+			$post_type = get_post_type();
+			$layout    = get_aesthetix_options( 'archive_' . $post_type . '_layout' );
+			$columns   = get_aesthetix_options( 'archive_' . $post_type . '_columns' );
+			$i         = 1;
+		?>
 
 		<?php if ( ! is_home() && ! is_front_page() ) { ?>
 			<header class="content-area-header" aria-label="<?php esc_attr_e( 'Archive page header', 'aesthetix' ); ?>">
@@ -29,8 +35,10 @@ get_header(); ?>
 			</header>
 		<?php } ?>
 
+		<?php do_action( 'aesthetix_before_index_content' ); ?>
+
 		<section class="content-area-content" aria-label="<?php esc_attr_e( 'Archive page content', 'aesthetix' ); ?>">
-			<div <?php aesthetix_archive_page_columns_wrapper_classes( 'loop' ); ?>>
+			<div <?php aesthetix_archive_page_columns_wrapper_classes( 'loop' ); ?> data-columns="<?php echo esc_attr( $columns ); ?>">
 
 				<?php while ( have_posts() ) : ?>
 					<?php the_post(); ?>
@@ -38,14 +46,21 @@ get_header(); ?>
 					<div <?php aesthetix_archive_page_columns_classes( $i ); ?>>
 
 						<?php
-							// Get a template with a post type, if there is one in the theme.
-							if ( file_exists( get_theme_file_path( 'templates/archive/archive-content-type-' . get_post_type() . '.php' ) ) ) {
-								get_template_part( 'templates/archive/archive-content-type', get_post_type(), array( 'counter' => $i ) );
-							} elseif ( get_aesthetix_options( 'archive_' . get_post_type() . '_template_type' ) ) {
-								get_template_part( 'templates/archive/archive-content-type', get_aesthetix_options( 'archive_' . get_post_type() . '_template_type' ), array( 'counter' => $i ) );
+							if ( in_array( $layout, array( 'list', 'list-chess' ), true ) ) {
+								get_template_part( 'templates/archive/archive-post-list', $post_type, array( 'counter' => $i ) );
 							} else {
-								get_template_part( 'templates/archive/archive-content-type', 'tils', array( 'counter' => $i ) );
+								if ( has_post_format() ) {
+									if ( get_theme_file_path( 'templates/archive/archive-post-' . $post_type . '-' . get_post_format() . '.php' ) ) {
+										get_template_part( 'templates/archive/archive-post', $post_type . '-' . get_post_format(), array( 'counter' => $i ) );
+									} else {
+										get_template_part( 'templates/archive/archive-post', get_post_format(), array( 'counter' => $i ) );
+									}
+								} else {
+									get_template_part( 'templates/archive/archive-post', $post_type, array( 'counter' => $i ) );
+								}
 							}
+
+							$i++;
 						?>
 
 					</div>
@@ -54,6 +69,8 @@ get_header(); ?>
 
 			</div>
 		</section>
+
+		<?php do_action( 'aesthetix_after_index_content' ); ?>
 
 		<footer class="content-area-footer" aria-label="<?php esc_attr_e( 'Archive page footer', 'aesthetix' ); ?>">
 			<?php get_template_part( 'templates/archive/archive-pagination' ); ?>

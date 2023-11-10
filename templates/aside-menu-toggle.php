@@ -14,14 +14,14 @@ $args['button_color']   = $args['button_color'] ?? get_aesthetix_options( 'root_
 $args['button_type']    = $args['button_type'] ?? get_aesthetix_options( 'root_menu_button_type' );
 $args['button_content'] = $args['button_content'] ?? get_aesthetix_options( 'root_menu_button_content' );
 $args['button_rounded'] = $args['button_rounded'] ?? get_aesthetix_options( 'root_menu_button_rounded' );
-$args['button_classes'] = $args['button_classes'] ?? 'menu-open icon icon_bars';
+$args['button_classes'] = $args['button_classes'] ?? 'menu-open icon icon-bars';
 
 if ( is_string( $args['button_classes'] ) && ! empty( $args['button_classes'] ) ) {
 	$args['button_classes'] = explode( ' ', $args['button_classes'] );
 }
 
 if ( in_array( 'menu-close', $args['button_classes'], true ) ) {
-	$args['button_classes'] = 'menu-close icon icon_xmark';
+	$args['button_classes'] = 'menu-close icon icon-xmark';
 }
 
 ?>

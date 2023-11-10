@@ -62,13 +62,20 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'front_page_slider_slides_to_show'          => 4,
 			'front_page_slider_slides_template_type'    => 'tils',
 
-			'root_primary_font'                         => 'playfair-display',
+			'root_primary_font'                         => 'open-sans',
 			'root_secondary_font'                       => 'open-sans',
 			'root_color_scheme'                         => 'white',
 			'root_primary_color'                        => 'blue',
 			'root_secondary_color'                      => 'red',
 			'root_gray_color'                           => 'slate',
 			'root_link_color'                           => 'primary',
+
+			'root_post_background'                      => 'theme',
+			'root_post_thumbnail_padding'               => 'sm',
+			'root_post_content_padding'                 => 'lg',
+			'root_post_shadow'                          => 'shadow-md',
+			'root_post_border_width'                    => 'border',
+			'root_post_border_radius'                   => 'rounded-md',
 
 			'root_button_type'                          => 'common',
 			'root_button_icon'                          => true,
@@ -120,11 +127,16 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 		foreach ( get_post_types() as $key => $post_type ) {
 			$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
-				'single_' . $post_type . '_template_type'  => 'one',
-				'archive_' . $post_type . '_columns'       => 3,
-				'archive_' . $post_type . '_masonry'       => false,
-				'archive_' . $post_type . '_template_type' => 'tils',
+				'single_' . $post_type . '_template_type' => 'one',
+				'archive_' . $post_type . '_masonry'      => false,
+				'archive_' . $post_type . '_layout'       => 'grid', // grid, grid-image, list, list-chess
 			) );
+
+			if ( in_array( $aesthetix_defaults['archive_' . $post_type . '_layout'], array( 'list', 'list-chess' ), true ) ) {
+				$aesthetix_defaults['archive_' . $post_type . '_columns'] = 1;
+			} else {
+				$aesthetix_defaults['archive_' . $post_type . '_columns'] = 3;
+			}
 		}
 
 		foreach ( get_aesthetix_customizer_post_types() as $key => $post_type ) {
@@ -150,21 +162,21 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 			if ( $post_type_object->has_archive || ! empty( $object_taxonomies ) ) {
 				$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
-					'archive_' . $post_type . '_structure'           => 'thumbnail,meta,title,excerpt,author,more',
-					'archive_' . $post_type . '_thumbnail_structure' => 'taxonomies,formats',
+					'archive_' . $post_type . '_structure'           => 'meta,title,excerpt,author,more',
+					'archive_' . $post_type . '_thumbnail_structure' => 'post_format,sticky',
 					'archive_' . $post_type . '_meta_structure'      => 'date,time,edit',
 					'archive_' . $post_type . '_posts_per_page'      => get_option( 'posts_per_page' ),
 					'archive_' . $post_type . '_posts_order'         => 'desc',
 					'archive_' . $post_type . '_posts_orderby'       => 'date',
 					'archive_' . $post_type . '_pagination'          => 'numeric',
 					'archive_' . $post_type . '_detail_button'       => 'button',
-					'archive_' . $post_type . '_taxonomies_display'  => 'none',
 				) );
 			}
 
 			if ( $post_type === 'post' ) {
 				$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
-					'archive_post_meta_structure'           => 'date,category,post_tag,time,edit',
+					'archive_post_thumbnail_structure'      => 'category,post_tag,post_format,sticky',
+					'archive_post_meta_structure'           => 'date,category,post_tag,post_format,time,edit',
 					'archive_post_taxonomies_display'       => 'tag',
 					'single_post_meta_structure'            => 'date,category,post_tag,time,edit',
 					'single_post_footer_structure'          => 'category,post_tag,edit',

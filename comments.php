@@ -179,7 +179,7 @@ if ( ! function_exists( 'aesthetix_comments_list' ) ) {
 				<span id="email-notes">' . __( 'Your email address will not be published.' ) . '</span>
 			</div>',
 			'submit_field'         => '<div class="col-12 form-submit">%1$s %2$s</div>',
-			'class_submit'         => 'submit icon icon_envelope',
+			'class_submit'         => 'submit icon icon-envelope',
 			'title_reply'          => esc_html__( 'Leave a reply', 'aesthetix' ),
 			'label_submit'         => esc_html__( 'Post comment', 'aesthetix' )
 		);

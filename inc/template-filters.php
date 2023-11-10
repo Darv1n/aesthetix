@@ -150,7 +150,6 @@ if ( ! function_exists( 'unset_intermediate_image_sizes' ) ) {
 
 		// Sizes to be removed.
 		$unset_sizes = array(
-			'thumbnail',
 			'medium_large',
 			'1536x1536',
 			'2048x2048',
@@ -272,9 +271,9 @@ if ( ! function_exists( 'aesthetix_search_highlight' ) ) {
 		return $text;
 	}
 }
-add_filter( 'the_title', 'aesthetix_search_highlight' );
-add_filter( 'the_content', 'aesthetix_search_highlight' );
-add_filter( 'the_excerpt', 'aesthetix_search_highlight' );
+// add_filter( 'the_title', 'aesthetix_search_highlight' );
+// add_filter( 'the_content', 'aesthetix_search_highlight' );
+// add_filter( 'the_excerpt', 'aesthetix_search_highlight' );
 
 if ( ! function_exists( 'aesthetix_nav_menu_item_args' ) ) {
 
@@ -291,12 +290,17 @@ if ( ! function_exists( 'aesthetix_nav_menu_item_args' ) ) {
 	 */
 	function aesthetix_nav_menu_item_args( $args, $menu_item, $depth ) {
 
+		$title_classes[] = 'menu-title';
+
 		if ( (int) $menu_item->menu_item_parent === 0 ) {
-			$args->link_before = '<span class="menu-title menu-title-lvl-1">';
-		} else {
-			$args->link_before = '<span class="menu-title">';
+			$title_classes[] = 'has-top-lvl';
 		}
 
+		if ( $menu_item->description ) {
+			$title_classes[] = 'has-description';
+		}
+
+		$args->link_before = '<span class="' . esc_attr( implode( ' ', $title_classes ) ) . '">';
 		$args->link_after  = '</span>';
 
 		if ( in_array( 'menu-item-has-children', $menu_item->classes, true ) ) {
@@ -306,7 +310,7 @@ if ( ! function_exists( 'aesthetix_nav_menu_item_args' ) ) {
 				'button_content' => 'icon',
 			);
 
-			$args->link_after = '<button ' . button_classes( 'sub-menu-toggle toggle-icon icon icon_center icon_angle-down', $button_args, false ) . ' data-icon-on="icon_angle-up" data-icon-off="icon_angle-down"></button>';
+			$args->link_after = '<button ' . button_classes( 'sub-menu-toggle toggle-icon icon icon-center icon-angle-down', $button_args, false ) . ' data-icon-on="icon-angle-up" data-icon-off="icon-angle-down"></button>';
 			$args->link_after .= '</span>';
 		}
 

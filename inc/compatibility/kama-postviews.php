@@ -50,7 +50,7 @@ if ( ! function_exists( 'kama_postview_archive_entry_post_meta_loop' ) ) {
 	 */
 	function kama_postview_archive_entry_post_meta_loop( $post ) {  ?>
 
-		<li class="post-meta__item icon icon_before icon_eye data-title" data-title="<?php _e( 'Views', 'aesthetix' ); ?>">
+		<li class="post-meta-item icon icon-before icon-eye data-title" data-title="<?php esc_attr_e( 'Views', 'aesthetix' ); ?>">
 			<?php echo get_fresh_kap_views( get_the_ID(), 'post' ); ?>
 		</li>
 	<?php }
@@ -80,35 +80,6 @@ if ( ! function_exists( 'wp_enqueue_kama_postviews_styles' ) ) {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'wp_enqueue_kama_postviews_styles', 11 );
-
-if ( ! function_exists( 'kama_postviews_wp_head' ) ) {
-
-	/**
-	 * Function for 'wp_head' action-hook.
-	 * 
-	 * @since 1.0.2
-	 * 
-	 * @link https://developer.wordpress.org/reference/hooks/wp_head/
-	 *
-	 * @return void
-	 */
-	function kama_postviews_wp_head() {
-
-		if ( is_single() ) {
-			$views = get_post_meta( get_the_ID(), 'views', true );
-
-			if ( empty( $views ) ) {
-
-				// Add starting number of views for all published pages.
-				$views = random_int( 20, 50 );
-
-				add_post_meta( get_the_ID(), 'views', $views, true );
-				add_post_meta( get_the_ID(), 'views_prev_month', $views, true );
-			}
-		}
-	}
-}
-add_action( 'wp_head', 'kama_postviews_wp_head' );
 
 if ( ! function_exists( 'get_kama_postview_customizer_post_meta_structure' ) ) {
 

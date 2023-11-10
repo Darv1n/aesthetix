@@ -1,5 +1,13 @@
-//@import "components/_mixins"
+// @import "components/_mixins"
 @import "_vars"
+
+@font-face
+	font-family: 'Font Awesome 6 Pro'
+	font-style: normal
+	font-weight: 400
+	src: url( '../fonts/fa/fa-regular-400.woff2' ) format('woff2')
+	src: url( '../fonts/fa/fa-regular-400.woff' ) format('woff')
+	src: url( '../fonts/fa/fa-regular-400.ttf' ) format('truetype')
 
 .icon
 	position: relative
@@ -9,37 +17,32 @@
 		position: absolute
 		top: 50%
 		left: 50%
-		width: 1.125rem
-		height: 1rem
+		font-family: "Font Awesome 6 Pro"
+		-moz-osx-font-smoothing: grayscale
+		-webkit-font-smoothing: antialiased
+		display: inline-block
+		font-style: normal
+		font-variant: normal
+		text-rendering: auto
 		transform: translate( -50%, -50% )
 		transition: $transition
-		filter: $svg-filter
-	&_before, &_after
+	&-before, &-after
 		&::before
 			transform: translateY( -50% )
-	&_before
+	&-before
 		padding-left: calc( 1.125rem + .125rem + .25rem )
 		&::before
 			left: .125rem
-	&_after
+	&-after
 		padding-right: calc( 1.125rem + .125rem + .25rem )
 		&::before
 			left: auto
 			right: .125rem
-	&_top
+	&-top
 		&::before
 			top: .125rem
 			transform: translateY( 0% )
-	&_black
-		&::before
-			filter: invert(0%)
-	&_white
-		&::before
-			filter: invert(100%)
-	&_gray
-		&::before
-			filter: invert(50%)
-	&_squared, &_rounded
+	&-squared, &-rounded
 		padding: .75rem
 		&::after
 			content: ''
@@ -52,8 +55,8 @@
 			border-radius: $border-radius
 			transform: translate( -50%, -50% )
 			transition: $transition
-	&_before, &_after
-		&_squared, &_rounded
+	&-before, &-after
+		&-squared, &-rounded
 			padding-left: calc( 1.125rem + .75rem + .375rem )
 			&::before
 				left: .375rem
@@ -68,417 +71,420 @@
 				border-radius: $border-radius
 				transform: translateY( -50% )
 				transition: $transition
-			&.icon_top
+			&.icon-top
 				&::before
 					top: .4375rem
 				&::after
 					top: 0
 					transform: translateY( 0% )
-	&_rounded
+	&-rounded
 		&::after
 			border-radius: 50%
 
 .icon
-	&_angle-down
+	&-angle-down
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#angle-down ) center/cover no-repeat
-	&_angle-left
+			content: "\f107"
+	&-angle-left
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#angle-left ) center/cover no-repeat
-	&_angle-right
+			content: "\f104"
+	&-angle-right
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#angle-right ) center/cover no-repeat
-	&_angle-up
+			content: "\f105"
+	&-angle-up
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#angle-up ) center/cover no-repeat
-	&_arrow-down
+			content: "\f106"
+	&-arrow-down
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#arrow-down ) center/cover no-repeat
-	&_arrow-left
+			content: "\f063"
+	&-arrow-left
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#arrow-left ) center/cover no-repeat
-	&_arrow-right
+			content: "\f060"
+	&-arrow-right
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#arrow-right ) center/cover no-repeat
-	&_arrow-up
+			content: "\f061"
+	&-arrow-up
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#arrow-up ) center/cover no-repeat
-	&_arrow-down-arrow-up
+			content: "\f062"
+	&-arrow-down-arrow-up
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#arrow-down-arrow-up ) center/cover no-repeat
-	&_arrow-up-arrow-down
+			content: "\f883"
+	&-arrow-up-arrow-down
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#arrow-up-arrow-down ) center/cover no-repeat
-	&_badge
+			content: "\e099"
+	&-badge
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#badge ) center/cover no-repeat
-	&_badge-check
+			content: "\f335"
+	&-badge-check
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#badge-check ) center/cover no-repeat
-	&_badge-percent
+			content: "\f336"
+	&-badge-percent
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#badge-percent ) center/cover no-repeat
-	&_bag-shopping
+			content: "\f646"
+	&-bag-shopping
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#bag-shopping ) center/cover no-repeat
-	&_ban
+			content: "\f290"
+	&-ban
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#ban ) center/cover no-repeat
-	&_bars
+			content: "\f05e"
+	&-bars
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#bars ) center/cover no-repeat
-	&_bars-filter
+			content: "\f0c9"
+	&-bars-filter
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#bars-filter ) center/cover no-repeat
-	&_bars-sort
+			content: "\e0ad"
+	&-bars-sort
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#bars-sort ) center/cover no-repeat
-	&_basket-shopping
+			content: "\e0ae"
+	&-basket-shopping
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#basket-shopping ) center/cover no-repeat
-	&_bell
+			content: "\f291"
+	&-bell
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#bell ) center/cover no-repeat
-	&_bell-slash
+			content: "\f0f3"
+	&-bell-slash
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#bell-slash ) center/cover no-repeat
-	&_bookmark
+			content: "\f1f6"
+	&-bookmark
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#bookmark ) center/cover no-repeat
-	&_bookmark-slash
+			content: "\f02e"
+	&-bookmark-slash
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#bookmark-slash ) center/cover no-repeat
-	&_calendar
+			content: "\e0c2"
+	&-calendar
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#calendar ) center/cover no-repeat
-	&_calendar-lines
+			content: "\f133"
+	&-calendar-lines
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#calendar-lines ) center/cover no-repeat
-	&_camera
+			content: "\e0d5"
+	&-camera
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#camera ) center/cover no-repeat
-	&_caret-down
+			content: "\f030"
+	&-caret-down
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#caret-down ) center/cover no-repeat
-	&_caret-left
+			content: "\f0d7"
+	&-caret-left
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#caret-left ) center/cover no-repeat
-	&_caret-right
+			content: "\f0d9"
+	&-caret-right
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#caret-right ) center/cover no-repeat
-	&_caret-up
+			content: "\f0da"
+	&-caret-up
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#caret-up ) center/cover no-repeat
-	&_cart-arrow-down
+			content: "\f0d8"
+	&-cart-arrow-down
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#cart-arrow-down ) center/cover no-repeat
-	&_cart-minus
+			content: "\f218"
+	&-cart-minus
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#cart-minus ) center/cover no-repeat
-	&_cart-plus
+			content: "\e0db"
+	&-cart-plus
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#cart-plus ) center/cover no-repeat
-	&_cart-shopping
+			content: "\f217"
+	&-cart-shopping
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#cart-shopping ) center/cover no-repeat
-	&_check
+			content: "\f07a"
+	&-check
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#check ) center/cover no-repeat
-	&_chevron-down
+			content: "\f00c"
+	&-chevron-down
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#chevron-down ) center/cover no-repeat
-	&_chevron-left
+			content: "\f078"
+	&-chevron-left
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#chevron-left ) center/cover no-repeat
-	&_chevron-right
+			content: "\f053"
+	&-chevron-right
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#chevron-right ) center/cover no-repeat
-	&_chevron-up
+			content: "\f054"
+	&-chevron-up
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#chevron-up ) center/cover no-repeat
-	&_clock
+			content: "\f077"
+	&-clock
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#clock ) center/cover no-repeat
-	&_clone
+			content: "\f017"
+	&-clone
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#clone ) center/cover no-repeat
-	&_code
+			content: "\f24d"
+	&-code
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#code ) center/cover no-repeat
-	&_comment
+			content: "\f121"
+	&-comment
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#comment ) center/cover no-repeat
-	&_comment-dots
+			content: "\f075"
+	&-comment-dots
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#comment-dots ) center/cover no-repeat
-	&_comment-lines
+			content: "\f4ad"
+	&-comment-lines
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#comment-lines ) center/cover no-repeat
-	&_comment-slash
+			content: "\f4b0"
+	&-comment-slash
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#comment-slash ) center/cover no-repeat
-	&_copy
+			content: "\f4b3"
+	&-copy
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#copy ) center/cover no-repeat
-	&_copyright
+			content: "\f0c5"
+	&-copyright
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#copyright ) center/cover no-repeat
-	&_down
+			content: "\f1f9"
+	&-down
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#down ) center/cover no-repeat
-	&_left
+			content: "\f354"
+	&-left
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#left ) center/cover no-repeat
-	&_right
+			content: "\f355"
+	&-right
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#right ) center/cover no-repeat
-	&_up
+			content: "\f356"
+	&-up
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#up ) center/cover no-repeat
-	&_dollar-sign
+			content: "\f357"
+	&-dollar-sign
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#dollar-sign ) center/cover no-repeat
-	&_download
+			content: "\f155"
+	&-download
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#download ) center/cover no-repeat
-	&_envelope
+			content: "\f019"
+	&-envelope
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#envelope ) center/cover no-repeat
-	&_exclamation
+			content: "\f0e0"
+	&-exclamation
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#exclamation ) center/cover no-repeat
-	&_eye
+			content: "\f12a"
+	&-eye
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#eye ) center/cover no-repeat
-	&_eye-slash
+			content: "\f06e"
+	&-eye-slash
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#eye-slash ) center/cover no-repeat
-	&_folder
+			content: "\f070"
+	&-folder
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#folder ) center/cover no-repeat
-	&_folder-open
+			content: "\f07b"
+	&-folder-open
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#folder-open ) center/cover no-repeat
-	&_globe
+			content: "\f07c"
+	&-globe
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#globe ) center/cover no-repeat
-	&_grid
+			content: "\f0ac"
+	&-grid
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#grid ) center/cover no-repeat
-	&_hands
+			content: "\e195"
+	&-hands
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#hands ) center/cover no-repeat
-	&_handshake
+			content: "\f2a7"
+	&-handshake
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#handshake ) center/cover no-repeat
-	&_hashtag
+			content: "\f2b5"
+	&-hashtag
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#hashtag ) center/cover no-repeat
-	&_headset
+			content: "\f292"
+	&-headset
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#headset ) center/cover no-repeat
-	&_heart
+			content: "\f590"
+	&-heart
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#heart ) center/cover no-repeat
-	&_house
+			content: "\f004"
+	&-house
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#house ) center/cover no-repeat
-	&_image
+			content: "\e00d"
+	&-image
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#image ) center/cover no-repeat
-	&_info
+			content: "\f03e"
+	&-images, &-gallery
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#info ) center/cover no-repeat
-	&_language
+			content: "\f302"
+	&-info
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#language ) center/cover no-repeat
-	&_link
+			content: "\f129"
+	&-language
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#link ) center/cover no-repeat
-	&_link-slash
+			content: "\f1ab"
+	&-link
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#link-slash ) center/cover no-repeat
-	&_list
+			content: "\f0c1"
+	&-link-slash
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#list ) center/cover no-repeat
-	&_loader
+			content: "\f127"
+	&-list
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#loader ) center/cover no-repeat
-	&_location-dot
+			content: "\f03a"
+	&-loader
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#location-dot ) center/cover no-repeat
-	&_location-dot-slash
+			content: "\e1d4"
+	&-location-dot
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#location-dot-slash ) center/cover no-repeat
-	&_lock
+			content: "\f3c5"
+	&-location-dot-slash
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#lock ) center/cover no-repeat
-	&_lock-open
+			content: "\f605"
+	&-lock
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#lock-open ) center/cover no-repeat
-	&_magnifying-glass
+			content: "\f023"
+	&-lock-open
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#magnifying-glass ) center/cover no-repeat
-	&_map-pin
+			content: "\f3c1"
+	&-magnifying-glass
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#map-pin ) center/cover no-repeat
-	&_paper-plane
+			content: "\f002"
+	&-map-pin
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#paper-plane ) center/cover no-repeat		
-	&_pen
+			content: "\f276"
+	&-paper-plane
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#pen ) center/cover no-repeat
-	&_pen-to-square
+			content: "\f1d8"	
+	&-pen
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#pen-to-square ) center/cover no-repeat
-	&_phone
+			content: "\f304"
+	&-pen-to-square
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#phone ) center/cover no-repeat
-	&_phone-slash
+			content: "\f044"
+	&-phone
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#phone-slash ) center/cover no-repeat
-	&_phone-volume
+			content: "\f095"
+	&-phone-slash
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#phone-volume ) center/cover no-repeat
-	&_print
+			content: "\f3dd"
+	&-phone-volume
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#print ) center/cover no-repeat
-	&_question
+			content: "\f2a0"
+	&-print
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#question ) center/cover no-repeat
-	&_quote, &_quote-left
+			content: "\f02f"
+	&-question
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#quote-left ) center/cover no-repeat
-	&_quote-right
+			content: "\f128"
+	&-quote, &-quote-left
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#quote-right ) center/cover no-repeat
-	&_reply
+			content: "\f10d"
+	&-quote-right
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#reply ) center/cover no-repeat
-	&_share
+			content: "\f10e"
+	&-reply
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#share ) center/cover no-repeat
-	&_shuffle
+			content: "\f3e5"
+	&-share
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#shuffle ) center/cover no-repeat
-	&_sidebar, &_aside
+			content: "\f064"
+	&-shuffle
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#sidebar ) center/cover no-repeat
-	&_sort
+			content: "\f074"
+	&-sidebar, &-aside
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#sort ) center/cover no-repeat
-	&_sort-down
+			content: "\e24e"
+	&-sort
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#sort-down ) center/cover no-repeat
-	&_sort-up
+			content: "\f0dc"
+	&-sort-down
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#sort-up ) center/cover no-repeat
-	&_spinner
+			content: "\f0dd"
+	&-sort-up
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#spinner ) center/cover no-repeat
+			content: "\f0de"
+	&-spinner
+		&::before
+			content: "\f110"
 			transform-origin: center
 			animation: icon_rotation 2s infinite linear
-	&_standard-definition
+	&-standard-definition
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#standard-definition ) center/cover no-repeat
-	&_star
+			content: "\e28a"
+	&-star
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#star ) center/cover no-repeat
-	&_star-sharp
+			content: "\f005"
+	&-star-sharp
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#star-sharp ) center/cover no-repeat
-	&_tag
+			content: "\e28b"
+	&-tag
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#tag ) center/cover no-repeat
-	&_tags
+			content: "\f02b"
+	&-tags
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#tags ) center/cover no-repeat
-	&_thumbtack
+			content: "\f02c"
+	&-thumbtack
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#thumbtack ) center/cover no-repeat
-	&_toggle-off
+			content: "\f08d"
+	&-toggle-off
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#toggle-off ) center/cover no-repeat
-	&_toggle-on
+			content: "\f204"
+	&-toggle-on
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#toggle-on ) center/cover no-repeat
-	&_trash
+			content: "\f205"
+	&-trash
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#trash ) center/cover no-repeat
-	&_trash-slash
+			content: "\f1f8"
+	&-trash-slash
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#trash-slash ) center/cover no-repeat
-	&_triangle-exclamation
+			content: "\e2b3"
+	&-triangle-exclamation, &-exclamation-triangle
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#triangle-exclamation ) center/cover no-repeat
-	&_video
+			content: "\f071"
+	&-video
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#video ) center/cover no-repeat
-	&_unlock
+			content: "\f03d"
+	&-unlock
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#unlock ) center/cover no-repeat
-	&_upload
+			content: "\f09c"
+	&-upload
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#upload ) center/cover no-repeat
-	&_user
+			content: "\f093"
+	&-user
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#user ) center/cover no-repeat
-	&_xmark
+			content: "\f007"
+	&-xmark
 		&::before
-			background: url( ../img/icons/sets/fa-regular.svg#xmark ) center/cover no-repeat
+			content: "\f235"
 
 .icon
-	&_behance
+	&-behance
 		&::before
-			background: url( ../img/icons/sets/social.svg#behance ) center/cover no-repeat
-	&_facebook
+			content: "\f1b4"
+	&-facebook
 		&::before
-			background: url( ../img/icons/sets/social.svg#facebook ) center/cover no-repeat
-	&_instagram
+			content: "\f09a"
+	&-instagram
 		&::before
-			background: url( ../img/icons/sets/social.svg#instagram ) center/cover no-repeat
-	&_linkedin
+			content: "\f16d"
+	&-linkedin
 		&::before
-			background: url( ../img/icons/sets/social.svg#linkedin ) center/cover no-repeat
-	&_odnoklassniki
+			content: "\f08c"
+	&-odnoklassniki
 		&::before
-			background: url( ../img/icons/sets/social.svg#odnoklassniki ) center/cover no-repeat
-	&_pinterest
+			content: "\f263"
+	&-pinterest
 		&::before
-			background: url( ../img/icons/sets/social.svg#pinterest ) center/cover no-repeat
-	&_soundcloud
+			content: "\f0d2"
+	&-soundcloud
 		&::before
-			background: url( ../img/icons/sets/social.svg#soundcloud ) center/cover no-repeat
-	&_telegram
+			content: "\f1be"
+	&-telegram
 		&::before
-			background: url( ../img/icons/sets/social.svg#telegram ) center/cover no-repeat
-	&_tiktok
+			content: "\f2c6"
+	&-tiktok
 		&::before
-			background: url( ../img/icons/sets/social.svg#tiktok ) center/cover no-repeat
-	&_twitch
+			content: "\e07b"
+	&-twitch
 		&::before
-			background: url( ../img/icons/sets/social.svg#twitch ) center/cover no-repeat
-	&_twitter
+			content: "\f1e8"
+	&-twitter
 		&::before
-			background: url( ../img/icons/sets/social.svg#twitter ) center/cover no-repeat
-	&_viber
+			content: "\f099"
+	&-viber
 		&::before
-			background: url( ../img/icons/sets/social.svg#viber ) center/cover no-repeat
-	&_vimeo
+			content: "\f409"
+	&-vimeo
 		&::before
-			background: url( ../img/icons/sets/social.svg#vimeo ) center/cover no-repeat
-	&_vkontakte
+			content: "\f40a"
+	&-vkontakte
 		&::before
-			background: url( ../img/icons/sets/social.svg#vkontakte ) center/cover no-repeat
-	&_whatsapp
+			content: "\f189"
+	&-whatsapp
 		&::before
-			background: url( ../img/icons/sets/social.svg#whatsapp ) center/cover no-repeat
-	&_wordpress
+			content: "\f232"
+	&-wordpress
 		&::before
-			background: url( ../img/icons/sets/social.svg#wordpress ) center/cover no-repeat
-	&_youtube
+			content: "\f19a"
+	&-youtube
 		&::before
-			background: url( ../img/icons/sets/social.svg#youtube ) center/cover no-repeat
+			content: "\f167"
 
 @keyframes icon_rotation
 	from

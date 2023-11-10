@@ -390,7 +390,7 @@ if ( ! function_exists( 'aesthetix_customize_preview_js' ) ) {
 	 */
 	function aesthetix_customize_preview_js() {
 		// wp_enqueue_style( 'aesthetix-customizer-ui', get_theme_file_uri( '/assets/css/customizer-ui.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/customizer-ui.min.css' ) ) );
-		// wp_enqueue_script( 'aesthetix-customizer-ui', get_theme_file_uri( '/assets/js/customizer-ui.min.js' ), array( 'customize-preview' ), filemtime( get_theme_file_path( '/assets/js/customizer-ui.min.js' ) ), true );
+		// wp_enqueue_script( 'aesthetix-customizer-ui', get_theme_file_uri( '/assets/js/customizer-ui.min.js' ), array( 'jquery', 'jquery-ui-sortable' ), filemtime( get_theme_file_path( '/assets/js/customizer-ui.min.js' ) ), true );
 	}
 }
 add_action( 'customize_preview_init', 'aesthetix_customize_preview_js' );
@@ -407,7 +407,7 @@ if ( ! function_exists( 'aesthetix_customize_panels_js' ) ) {
 		wp_enqueue_script( 'jquery-ui-sortable' );
 
 		wp_enqueue_style( 'aesthetix-customizer', get_theme_file_uri( '/assets/css/customizer.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/customizer.min.css' ) ) );
-		wp_enqueue_script( 'aesthetix-customizer', get_theme_file_uri( '/assets/js/customizer.min.js' ), array(), filemtime( get_theme_file_path( '/assets/js/customizer.min.js' ) ), true );
+		wp_enqueue_script( 'aesthetix-customizer', get_theme_file_uri( '/assets/js/customizer.min.js' ), array( 'jquery', 'jquery-ui-sortable' ), filemtime( get_theme_file_path( '/assets/js/customizer.min.js' ) ), true );
 
 		$root_string = '';
 		foreach ( get_aesthetix_customizer_roots() as $key => $root_value ) {

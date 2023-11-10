@@ -225,11 +225,11 @@ if ( ! function_exists( 'aesthetix_shortcode_social_list' ) ) {
 				if ( get_aesthetix_options( 'other_' . $social ) ) {
 
 					if ( $atts['type'] === 'icons' ) {
-						$link_classes = 'social-list__link icon icon_' . $social;
+						$link_classes = 'social-list__link icon icon-' . $social;
 					} elseif ( $atts['type'] === 'icons-rounded' ) {
-						$link_classes = 'social-list__link icon icon_rounded icon_' . $social;
+						$link_classes = 'social-list__link icon icon_rounded icon-' . $social;
 					} elseif ( $atts['type'] === 'icons-squared' ) {
-						$link_classes = 'social-list__link icon icon_squared icon_' . $social;
+						$link_classes = 'social-list__link icon icon_squared icon-' . $social;
 					} else {
 						$link_classes = implode( ' ', get_link_classes( 'social-list__link' ) );
 					}

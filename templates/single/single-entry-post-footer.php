@@ -15,7 +15,7 @@
 	<?php do_action( 'aesthetix_before_single_entry_post_footer' ); ?>
 
 	<?php wp_link_pages( array(
-			'before' => '<div class="post-footer__item post-footer__pages">' . esc_html__( 'Pages:', 'aesthetix' ),
+			'before' => '<div class="post-footer-item post-footer-pages">' . esc_html_( 'Pages:', 'aesthetix' ),
 			'after'  => '</div>',
 			'echo'   => 0,
 		) ); ?>
@@ -35,11 +35,11 @@
 						break;
 					case 'category': ?>
 						<?php if ( has_category() ) { ?>
-							<div class="post-footer__item post-footer__cats">
+							<div class="post-footer-item post-footer-cats">
 								<strong><?php esc_html_e( 'Post categories', 'aesthetix' ) ?>:</strong>
-								<ul class="post-footer__list cat-list">
+								<ul class="post-footer-list cat-list">
 									<?php foreach ( get_the_category() as $key => $category ) { ?>
-										<li class="cat-list__item">
+										<li class="cat-list-item">
 											<a <?php link_classes(); ?> href="<?php echo esc_url( get_term_link( $category->term_id, $category->taxonomy ) ); ?>"><?php echo esc_html( $category->name ); ?></a>
 										</li>
 									<?php } ?>
@@ -49,11 +49,11 @@
 						<?php break;
 					case 'post_tag': ?>
 						<?php if ( has_tag() ) { ?>
-							<div class="post-footer__item post-footer__tags">
+							<div class="post-footer-item post-footer-tags">
 								<strong><?php esc_html_e( 'Post tags', 'aesthetix' ); ?>:</strong>
-								<ul class="post-footer__list tag-list">
+								<ul class="post-footer-list tag-list">
 									<?php foreach ( get_the_tags() as $key => $tag ) { ?>
-										<li class="tag-list__item">
+										<li class="tag-list-item">
 											<a <?php link_classes(); ?> href="<?php echo esc_url( get_term_link( $tag->term_id, $tag->taxonomy ) ); ?>">#<?php echo esc_html( $tag->name ); ?></a>
 										</li>
 									<?php } ?>
@@ -63,7 +63,7 @@
 						<?php break;
 					case 'edit': ?>
 						<?php if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) { ?>
-							<div class="post-footer__item post-footer__edit">
+							<div class="post-footer-item post-footer-edit">
 								<a <?php link_classes( 'edit-link' ); ?> href="<?php echo esc_url( get_edit_post_link() ); ?>"><?php esc_html_e( 'Edit', 'aesthetix' ); ?></a>
 							</div>
 						<?php } ?>
