@@ -202,11 +202,13 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_button_sizes' ) ) {
 
 		// Main converter array.
 		$converter = array(
-			'xs' => '.25rem 1rem',
-			'sm' => '.375rem 1.25rem',
-			'md' => '.5rem 1.375rem',
-			'lg' => '.625rem 1.5rem',
-			'xl' => '.75rem 1.625rem',
+			'xxs' => '.125rem 1rem',
+			'xs'  => '.25rem 1.125rem',
+			'sm'  => '.375rem 1.25rem',
+			'md'  => '.5rem 1.375rem',
+			'lg'  => '.625rem 1.5rem',
+			'xl'  => '.75rem 1.625rem',
+			'xxl' => '.875rem 1.75rem',
 		);
 
 		$converter = apply_filters( 'get_aesthetix_customizer_converter_button_sizes', $converter );

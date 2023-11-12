@@ -19,10 +19,11 @@ if ( ! function_exists( 'WPA_Widgets_init' ) ) {
 	 * @since 1.2.0
 	 */
 	function WPA_Widgets_init() {
-		register_widget( 'WP_Widget_Search_Popup_Form' );
-		register_widget( 'WP_Widget_Subscribe_Form' );
-		register_widget( 'WP_Widget_Subscribe_Popup_Form' );
-		register_widget( 'WP_Widget_Adv_Banner' );
+		register_widget( 'WPA_Widget_Recent_Posts' );
+		register_widget( 'WPA_Widget_Search_Popup_Form' );
+		register_widget( 'WPA_Widget_Subscribe_Form' );
+		register_widget( 'WPA_Widget_Subscribe_Popup_Form' );
+		register_widget( 'WPA_Widget_Adv_Banner' );
 	}
 }
 add_action( 'widgets_init', 'WPA_Widgets_init' );
@@ -192,7 +193,7 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 						'name'          => $sidebar['name'],
 						'id'            => $id,
 						'description'   => $sidebar['description'],
-						'before_widget' => '<div ' . widget_classes( '', $id, false ) . '>',
+						'before_widget' => '<div id="%1$s" class="widget %2$s">',
 						'after_widget'  => '</div>',
 						'before_title'  => '<' . $sidebar['title_tag'] . ' class="widget-title">',
 						'after_title'   => '</' . $sidebar['title_tag'] . '>',
@@ -203,3 +204,34 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 	}
 }
 add_action( 'widgets_init', 'aesthetix_register_sidebar' );
+
+if ( ! function_exists( 'admin_enqueue_scripts_widgets_callback' ) ) {
+
+	/**
+	 * Load dynamic logic for the widgets area.
+	 * 
+	 * @since 1.3.1
+	 * 
+	 * @return void
+	 */
+	function admin_enqueue_scripts_widgets_callback( $hook_suffix ) {
+
+		global $post;
+
+		if ( in_array( $hook_suffix, array( 'widgets.php' ), true ) ) {
+			wp_enqueue_style( 'dashicons' );
+			wp_enqueue_script( 'jquery-ui-sortable' );
+
+			wp_enqueue_style( 'aesthetix-widgets', get_theme_file_uri( '/assets/css/admin-widgets.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/admin-widgets.min.css' ) ) );
+			wp_enqueue_script( 'aesthetix-widgets', get_theme_file_uri( '/assets/js/admin-widgets.min.js' ), array( 'jquery', 'jquery-ui-sortable' ), filemtime( get_theme_file_path( '/assets/js/admin-widgets.min.js' ) ), true );
+		
+			$root_string = '';
+			foreach ( get_aesthetix_customizer_roots() as $key => $root_value ) {
+				$root_string .= '--' . $key . ': ' . $root_value . ';';
+			}
+
+			wp_add_inline_style( 'aesthetix-widgets', ':root {' . esc_attr( $root_string ) . '}' );
+		}
+	}
+}
+add_action( 'admin_enqueue_scripts', 'admin_enqueue_scripts_widgets_callback' );

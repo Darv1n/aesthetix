@@ -10,7 +10,7 @@
  */
  ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'post-single post-page' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php aesthetix_post_classes( 'post-single post-page', $args ); ?>>
 
 	<header class="post-header" aria-label="<?php esc_attr_e( 'Page header', 'aesthetix' ); ?>">
 		<?php the_title( '<h1 class="post-title">', '</h1>' ); ?>

@@ -1,8 +1,8 @@
 <?php
 /**
- * Template list for displaying posts.
+ * Template list for displaying widget posts.
  *
- * @since 1.0.0
+ * @since 1.3.1
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -29,9 +29,9 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php aesthetix_post_classes( '', $args ); ?>>
-	<div <?php aesthetix_archive_page_columns_wrapper_classes( 'align-items-center' ); ?>>
-		<div class="col-12 col-xs-12 col-md-5 align-self-stretch <?php echo esc_attr( $order_left ); ?>">
+<article id="post-<?php the_ID(); ?>" <?php aesthetix_post_classes( 'post-aside', $args ); ?>>
+	<div <?php aesthetix_archive_page_columns_wrapper_classes( 'row-xs align-items-center' ); ?>>
+		<div class="col-xs col-12 col-xs-12 col-md-5 align-self-stretch <?php echo esc_attr( $order_left ); ?>">
 
 			<?php if ( has_post_thumbnail() ) { ?>
 				<div class="post-thumbnail-wrap">
@@ -46,7 +46,7 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 			<?php } ?>
 
 		</div>
-		<div class="col-12 col-xs-12 col-md-7 <?php echo esc_attr( $order_right ); ?>">
+		<div class="col-xs col-12 col-xs-12 col-md-7 <?php echo esc_attr( $order_right ); ?>">
 
 			<div class="post-content-wrap">
 

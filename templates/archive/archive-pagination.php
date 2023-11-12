@@ -8,9 +8,6 @@
  *
  * @package Aesthetix
  */
- ?>
-
-<?php
 
 global $paged;
 global $wp_query;
@@ -25,7 +22,9 @@ if ( ! $pages || empty( $paged ) ) {
 
 if ( (int) $pages === 1 ) {
 	return;
-} ?>
+}
+
+?>
 
 <nav class="navigation posts-navigation posts-navigation_<?php echo esc_attr( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) ); ?>" data-max-pages="<?php echo esc_attr( $pages ); ?>" role="navigation" aria-label="<?php esc_attr_e( 'Site post pagination', 'aesthetix' ); ?>">
 
@@ -70,7 +69,7 @@ if ( (int) $pages === 1 ) {
 		<?php }
 
 	} elseif ( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) === 'loadmore' ) { ?>
-		<button <?php button_classes( 'loadmore icon icon_download' ); ?> type="button" data-default-icon="icon-download" data-loading-icon="icon-spinner" data-default-text="<?php esc_attr_e( 'Load more', 'aesthetix' ); ?>" data-loading-text="<?php esc_attr_e( 'Loading...', 'aesthetix' ); ?>" data-disabled-text="<?php esc_attr_e( 'All posts have been uploaded', 'aesthetix' ); ?>" data-current-page="1" data-max-pages="<?php echo esc_attr( $wp_query->max_num_pages ); ?>"><?php esc_html_e( 'Load more', 'aesthetix' ); ?></button>
+		<button <?php button_classes( 'loadmore icon icon-download' ); ?> type="button" data-default-icon="icon-download" data-loading-icon="icon-spinner" data-default-text="<?php esc_attr_e( 'Load more', 'aesthetix' ); ?>" data-loading-text="<?php esc_attr_e( 'Loading...', 'aesthetix' ); ?>" data-disabled-text="<?php esc_attr_e( 'All posts have been uploaded', 'aesthetix' ); ?>" data-current-page="1" data-max-pages="<?php echo esc_attr( $wp_query->max_num_pages ); ?>"><?php esc_html_e( 'Load more', 'aesthetix' ); ?></button>
 	<?php } else { ?>
 
 		<div class="row">

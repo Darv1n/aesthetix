@@ -10,20 +10,20 @@
 				var items = [];
 				$( this ).find( 'li.visible' ).each( function() {
 					items.push( $( this ).data( 'key' ).trim() );
-				});
+				} );
 				$( this ).next().val( items.join( ',' ) ).trigger( 'change' );
 			}
-		});
+		} );
 
 		$( '.dashicons-visibility' ).on( 'click', function( e ) {
 			var items = [];
 				_this = $( this );
 			_this.toggleClass( 'visible invisible' );
 			_this.parent().toggleClass( 'visible invisible' );
-			_this.closest( '.sortable-list' ).find( 'li.visible' ).each(function() {
+			_this.closest( '.sortable-list' ).find( 'li.visible' ).each( function() {
 				items.push( $( this ).data( 'key' ).trim() );
-			});
-			_this.closest( '.sortable-list' ).next().val( items.join(',') ).trigger( 'change' );
+			} );
+			_this.closest( '.sortable-list' ).next().val( items.join( ',' ) ).trigger( 'change' );
 		} );
 
 		// Label.

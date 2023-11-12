@@ -14,11 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Search popup form widget class.
  *
- * @extends WP_Widget
+ * @extends WPA_Widget
  * 
  * @since 1.2.0
  */
-class WP_Widget_Search_Popup_Form extends WPA_Widget {
+class WPA_Widget_Search_Popup_Form extends WPA_Widget {
 
 	/**
 	 * Constructor.
@@ -27,7 +27,7 @@ class WP_Widget_Search_Popup_Form extends WPA_Widget {
 		$this->widget_cssclass    = 'widget_search_popup_form_button';
 		$this->widget_description = __( 'The global settings for this button can be found in the сustomizer', 'aesthetix' );
 		$this->widget_id          = 'aesthetix_search_popup_form_widget';
-		$this->widget_name        = __( 'Search button', 'aesthetix' );
+		$this->widget_name        = __( 'Aesthetix search button', 'aesthetix' );
 		$this->settings           = array(
 			'title'       => array(
 				'type'  => 'text',

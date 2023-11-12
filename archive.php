@@ -34,7 +34,7 @@ get_header(); ?>
 		<?php do_action( 'aesthetix_before_archive_page_content' ); ?>
 
 		<section class="content-area-content" aria-label="<?php esc_attr_e( 'Archive page content', 'aesthetix' ); ?>">
-			<div <?php aesthetix_archive_page_columns_wrapper_classes( 'loop' ); ?>>
+			<div <?php aesthetix_archive_page_columns_wrapper_classes( 'loop' ); ?> data-columns="<?php echo esc_attr( $columns ); ?>">
 
 				<?php while ( have_posts() ) : ?>
 					<?php the_post(); ?>
@@ -46,13 +46,13 @@ get_header(); ?>
 								get_template_part( 'templates/archive/archive-post-list', $post_type, array( 'counter' => $i ) );
 							} else {
 								if ( has_post_format() ) {
-									if ( get_theme_file_path( 'templates/archive/archive-post-' . $post_type . '-' . get_post_format() . '.php' ) ) {
-										get_template_part( 'templates/archive/archive-post', $post_type . '-' . get_post_format(), array( 'counter' => $i ) );
+									if ( get_theme_file_path( 'templates/archive/archive-post-' . get_post_type() . '-' . get_post_format() . '.php' ) ) {
+										get_template_part( 'templates/archive/archive-post', get_post_type() . '-' . get_post_format(), array( 'counter' => $i ) );
 									} else {
 										get_template_part( 'templates/archive/archive-post', get_post_format(), array( 'counter' => $i ) );
 									}
 								} else {
-									get_template_part( 'templates/archive/archive-post', $post_type, array( 'counter' => $i ) );
+									get_template_part( 'templates/archive/archive-post', get_post_type(), array( 'counter' => $i ) );
 								}
 							}
 

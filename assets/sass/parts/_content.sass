@@ -150,7 +150,7 @@ a.logo
 
 .post, .post-header, .post-footer, .post-content, .post-content-wrap
 	> *
-		margin-bottom: $gutter
+		margin-bottom: .25rem
 		&:last-child
 			margin-bottom: 0
 
@@ -160,11 +160,25 @@ a.logo
 	flex-direction: column
 	width: 100%
 	margin-bottom: calc( var( --post-margin ) * 2 )
+	&-single
+		> *
+			margin-bottom: .5rem
+		.post-thumbnail
+			img
+				max-height: 55vh
 	&-content-wrap, &-thumbnail-wrap
 		position: relative
+	&-thumbnail-wrap
+		.post-taxonomies
+			position: absolute
+			top: calc( var( --post-thumbnail-padding ) + .5rem )
+			left: calc( var( --post-thumbnail-padding ) + .5rem )
+			margin-bottom: 0 !important
+			z-index: 1
 	&-content
 		> *
 			max-width: 960px
+			margin-bottom: 1rem
 		> *:first-child
 			margin-top: 0 !important
 		h2
@@ -192,8 +206,6 @@ a.logo
 	&-meta
 		@extend .list-inline
 		&-item
-			padding-top: .125rem
-			padding-bottom: .125rem
 			font-size: $small-font-size
 		&-block
 			@extend .list-block
@@ -209,11 +221,6 @@ a.logo
 		&-list, &-tags, &-cats
 			@extend .list-inline
 	&-taxonomies
-		position: absolute
-		top: calc( var( --post-thumbnail-padding ) + .5rem )
-		left: calc( var( --post-thumbnail-padding ) + .5rem )
-		margin-bottom: 0 !important
-		z-index: 1
 		@extend .list-inline
 		> li
 			&:not(:last-child)
@@ -234,13 +241,18 @@ a.logo
 		height: calc( 100% - var( --post-margin ) * 2 )
 		&:hover, &:focus, &:active
 			box-shadow: var( --post-shadow-hover )
+		.post-meta-item
+			font-size: .75rem
+			&.icon-before
+				padding-left: calc( .875rem + .25rem )
 		.post-thumbnail-wrap
 			padding: var( --post-thumbnail-padding ) var( --post-thumbnail-padding ) 0
+			margin-bottom: 0
 		.post-content-wrap
 			display: flex
 			flex-direction: column
 			flex-grow: 1
-			padding: 0 var( --post-content-padding ) var( --post-content-padding )
+			padding: var( --post-thumbnail-padding ) var( --post-content-padding ) var( --post-content-padding )
 		.post-title
 			font-size: $h4
 		&.post-format-standard
@@ -248,16 +260,19 @@ a.logo
 				display: flex
 				flex-direction: column
 				flex-grow: 1
+	&-aside
+		padding: calc( var( --post-content-padding ) / 2 )
+		.post-title
+			font-size: $h6
 	&-list
-		.post-taxonomies
-			top: calc( var( --post-margin ) + .5rem )
-			left: calc( var( --post-margin ) + .5rem )
 		.post-thumbnail-wrap
-			padding: var( --post-margin ) 0 0 0
-			margin-bottom: .25rem
-		.post-content-wrap
-			padding: 0 0 var( --post-margin ) 0
-	&-format-gallery
+			height: 100%
+			width: 100%
+			.post-taxonomies
+				top: calc( var( --post-margin ) + .5rem )
+				left: calc( var( --post-margin ) + .5rem )
+			img
+				height: 100%
 	&-format-image
 		&:not(.post-list)
 			> *
@@ -266,39 +281,39 @@ a.logo
 				color: var( --white-color )
 			.link
 				@extend .link-white
-			.post-thumbnail-wrap
-				position: absolute
-				padding: var( --post-thumbnail-padding )
-				height: 100%
-				width: 100%
 			.post-content-wrap
 				display: flex
 				flex-direction: column
 				justify-content: flex-end
 				padding: calc( var( --post-thumbnail-padding ) + var( --post-content-padding ) )
-		.post-thumbnail-wrap
-			img
+			.post-thumbnail-wrap
+				position: absolute
+				padding: var( --post-thumbnail-padding )
 				height: 100%
-				filter: brightness( 50% )
-
+				width: 100%
+				img
+					height: 100%
+					filter: brightness( 50% )
 
 @media (min-width: 768px)
-	.post-list
-		.post-thumbnail-wrap
-			padding: var( --post-margin ) 0
-			margin-bottom: 0
-		.post-content-wrap
-			padding: var( --post-margin ) 0
+	.post
+		&-list
+			padding: var( --post-content-padding )
+			.post-thumbnail-wrap, .post-content-wrap
+				padding: 0
+		&-aside
+			padding: calc( var( --post-content-padding ) / 2 )
 
 @media ( min-width: 992px )
-	.post-content
-		h2
-			margin-top: $gutter*6
-		h3
-			margin-top: $gutter*5
-		h4
-			margin-top: $gutter*4
-		h5
-			margin-top: $gutter*3
-		h6
-			margin-top: $gutter*2
+	.post
+		&-content
+			h2
+				margin-top: $gutter*6
+			h3
+				margin-top: $gutter*5
+			h4
+				margin-top: $gutter*4
+			h5
+				margin-top: $gutter*3
+			h6
+				margin-top: $gutter*2

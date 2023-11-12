@@ -14,11 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Subscribe form widget class.
  *
- * @extends WC_Widget
+ * @extends WPA_Widget
  * 
  * @since 1.2.0
  */
-class WP_Widget_Subscribe_Form extends WPA_Widget {
+class WPA_Widget_Subscribe_Form extends WPA_Widget {
 
 	/**
 	 * Constructor.
@@ -27,7 +27,7 @@ class WP_Widget_Subscribe_Form extends WPA_Widget {
 		$this->widget_cssclass    = 'widget_subscribe_form';
 		$this->widget_description = __( 'The global settings for this form can be found in the Customizer', 'aesthetix' );
 		$this->widget_id          = 'aesthetix_subscribe_form_widget';
-		$this->widget_name        = __( 'Subscribe form', 'aesthetix' );
+		$this->widget_name        = __( 'Aesthetix subscribe form', 'aesthetix' );
 		$this->settings           = array(
 			'title'       => array(
 				'type'  => 'text',

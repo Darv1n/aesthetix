@@ -14,11 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Adv banner widget class.
  *
- * @extends WP_Widget
+ * @extends WPA_Widget
  * 
  * @since 1.2.6
  */
-class WP_Widget_Adv_Banner extends WPA_Widget {
+class WPA_Widget_Adv_Banner extends WPA_Widget {
 
 	/**
 	 * Constructor.
@@ -27,7 +27,7 @@ class WP_Widget_Adv_Banner extends WPA_Widget {
 		$this->widget_cssclass    = 'widget_adv_banner';
 		$this->widget_description = __( 'This widget displays an advertising banner', 'aesthetix' );
 		$this->widget_id          = 'aesthetix_widget_adv_banner';
-		$this->widget_name        = __( 'Adv banner', 'aesthetix' );
+		$this->widget_name        = __( 'Aesthetix adv banner', 'aesthetix' );
 		$this->settings           = array(
 			'title'    => array(
 				'type'  => 'text',

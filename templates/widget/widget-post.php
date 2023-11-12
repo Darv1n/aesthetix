@@ -1,8 +1,8 @@
 <?php
 /**
- * Template tils for displaying posts.
+ * Template tils for displaying widget posts.
  *
- * @since 1.0.0
+ * @since 1.3.1
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -21,10 +21,11 @@ if ( is_string( $args['post_structure'] ) && ! empty( $args['post_structure'] ) 
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php aesthetix_post_classes( '', $args ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php aesthetix_post_classes( 'post-aside', $args ); ?>>
 
 	<?php if ( has_post_thumbnail() ) { ?>
 		<div class="post-thumbnail-wrap">
+
 			<?php get_template_part( 'templates/archive/archive-entry-post-thumbnail', '', $args ); ?>
 
 			<?php if ( $args['post_taxonomies_in_thumbnail'] ) { ?>
@@ -67,7 +68,6 @@ if ( is_string( $args['post_structure'] ) && ! empty( $args['post_structure'] ) 
 				}
 			}
 		} ?>
-
 
 	</div>
 

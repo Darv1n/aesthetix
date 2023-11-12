@@ -15,7 +15,7 @@
 	<?php do_action( 'aesthetix_before_single_entry_post_footer' ); ?>
 
 	<?php wp_link_pages( array(
-			'before' => '<div class="post-footer-item post-footer-pages">' . esc_html_( 'Pages:', 'aesthetix' ),
+			'before' => '<div class="post-footer-item post-footer-pages">' . esc_html__( 'Pages:', 'aesthetix' ),
 			'after'  => '</div>',
 			'echo'   => 0,
 		) ); ?>

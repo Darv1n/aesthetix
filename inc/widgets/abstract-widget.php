@@ -101,7 +101,10 @@ abstract class WPA_Widget extends WP_Widget {
 	 * @param array $instance Instance.
 	 */
 	public function widget_start( $args, $instance ) {
-		echo $args['before_widget']; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+
+		if ( isset( $args['before_widget'] ) ) {
+			echo $args['before_widget']; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+		}
 
 		$title = apply_filters( 'widget_title', $this->get_instance_title( $instance ), $instance, $this->id_base );
 
@@ -116,7 +119,9 @@ abstract class WPA_Widget extends WP_Widget {
 	 * @param  array $args Arguments.
 	 */
 	public function widget_end( $args ) {
-		echo $args['after_widget']; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+		if ( isset( $args['after_widget'] ) ) {
+			echo $args['after_widget']; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+		}
 	}
 
 	/**
@@ -222,45 +227,14 @@ abstract class WPA_Widget extends WP_Widget {
 					<?php
 					break;
 
-				case 'number':
-					?>
-					<p>
-						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo $setting['label']; /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?></label>
-						<input class="widefat <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="number" step="<?php echo esc_attr( $setting['step'] ); ?>" min="<?php echo esc_attr( $setting['min'] ); ?>" max="<?php echo esc_attr( $setting['max'] ); ?>" value="<?php echo esc_attr( $value ); ?>" />
-					</p>
-					<?php
-					break;
-
-				case 'select':
-					?>
-					<p>
-						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo $setting['label']; /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?></label>
-						<select class="widefat <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>">
-							<?php foreach ( $setting['options'] as $option_key => $option_value ) : ?>
-								<option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $value ); ?>><?php echo esc_html( $option_value ); ?></option>
-							<?php endforeach; ?>
-						</select>
-					</p>
-					<?php
-					break;
-
 				case 'textarea':
 					?>
 					<p>
-						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo $setting['label']; /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?></label>
+						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo wp_kses_post( $setting['label'] ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?></label>
 						<textarea class="widefat <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" cols="20" rows="3"><?php echo esc_textarea( $value ); ?></textarea>
 						<?php if ( isset( $setting['desc'] ) ) : ?>
 							<small><?php echo esc_html( $setting['desc'] ); ?></small>
 						<?php endif; ?>
-					</p>
-					<?php
-					break;
-
-				case 'checkbox':
-					?>
-					<p>
-						<input class="checkbox <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="checkbox" value="1" <?php checked( $value, 1 ); ?> />
-						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo $setting['label']; /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?></label>
 					</p>
 					<?php
 					break;
@@ -270,6 +244,79 @@ abstract class WPA_Widget extends WP_Widget {
 					<p>
 						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo wp_kses_post( $setting['label'] ); ?></label><?php // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>
 						<input class="widefat <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="url" value="<?php echo esc_attr( $value ); ?>" />
+					</p>
+					<?php
+					break;
+
+				case 'checkbox':
+					?>
+					<p>
+						<input class="checkbox <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="checkbox" value="1" <?php checked( $value, 1 ); ?> />
+						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo wp_kses_post( $setting['label'] ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?></label>
+					</p>
+					<?php
+					break;
+
+				case 'number':
+					?>
+					<p>
+						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo wp_kses_post( $setting['label'] ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?></label>
+						<input class="widefat <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="number" step="<?php echo esc_attr( $setting['step'] ); ?>" min="<?php echo esc_attr( $setting['min'] ); ?>" max="<?php echo esc_attr( $setting['max'] ); ?>" value="<?php echo esc_attr( $value ); ?>" />
+					</p>
+					<?php
+					break;
+
+				case 'select':
+					?>
+					<p>
+						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo wp_kses_post( $setting['label'] ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?></label>
+						<select class="widefat <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>">
+							<?php foreach ( $setting['options'] as $option_key => $option_value ) : ?>
+								<option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $value ); ?>><?php echo esc_html( $option_value ); ?></option>
+							<?php endforeach; ?>
+						</select>
+					</p>
+					<?php
+					break;
+
+				case 'sortable':
+					?>
+					<p>
+
+						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo wp_kses_post( $setting['label'] ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?></label>
+
+						<?php
+
+							$reordered_choices = array();
+							$saved_choices     = explode( ',', esc_attr( $value ) );
+
+							foreach ( $saved_choices as $saved_key => $saved_value ) {
+								if ( isset( $setting['options'][ $saved_value ] ) ) {
+									$reordered_choices[ $saved_value ] = $setting['options'][ $saved_value ];
+								}
+							}
+
+							$reordered_choices = array_merge( $reordered_choices, array_diff_assoc( $setting['options'], $reordered_choices ) );
+
+						?>
+
+						<ul class="sortable-list">
+							<?php foreach ( $setting['options'] as $option_key => $option_value ) {
+
+								if ( in_array( $option_key, $saved_choices, true ) ) {
+									$visible = 'visible';
+								} else {
+									$visible = 'invisible';
+								} ?>
+
+								<li class="sortable-list__item <?php echo esc_attr( $visible ); ?>" data-key="<?php echo esc_attr( trim( $option_key ) ); ?>"><?php echo esc_html( $option_value ); ?>
+									<i class="dashicons dashicons-visibility <?php echo esc_attr( $visible ); ?>"></i>
+								</li>
+							<?php } ?>
+						</ul>
+
+						<input class="widefat sortable-input <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="hidden" value="<?php echo esc_attr( $value ); ?>" />
+
 					</p>
 					<?php
 					break;
@@ -294,56 +341,6 @@ abstract class WPA_Widget extends WP_Widget {
 							</div>
 						</div>
 					</div>
-					<script>
-						// JavaScript to handle image upload button
-						jQuery( document ).ready( function( $ ) {
-
-							function mediaUploader( buttonClass ) {
-
-								// Trigger the Media Uploader dialog
-								$( document ).on( 'click', buttonClass, function( e ) {
-
-									var mediaUploader;
-										form = $( buttonClass ).closest( 'form' )
-
-									// If the uploader object has already been created, reopen the dialog.
-									if ( mediaUploader ) {
-										mediaUploader.open();
-										return;
-									}
-
-									 // Extend the wp.media object.
-									var mediaUploader = wp.media.frames.file_frame = wp.media({
-										title: 'Select Image',
-										button: {
-											text: 'Select Image'
-										},
-										multiple: false,
-										library: {
-											type: 'image'
-										},
-									});
-
-									// When a file is selected, grab the URL and set it as the text field's value.
-									mediaUploader.on( 'select', function () {
-										var attachment = mediaUploader.state().get( 'selection' ).first().toJSON();
-
-										form.find( '.image-upload' ).val( attachment.url );
-										form.find( '.media-image-container' ).empty();
-										form.find( '.media-image-container' ).append( '<img src="' + attachment.url + '" class="media-image" alt="Image Preview" style="max-width:100%;margin-bottom:10px" />' );
-
-										$( '.media-modal:visible' ).find( '.media-modal-close' ).trigger( 'click' );
-									});
-
-									// Open the uploader dialog.
-									mediaUploader.open();
-								});
-							}
-
-							// Initialize media uploader
-							mediaUploader( '.button-add-adv-media' );
-						});
-					</script>
 					<?php
 					break;
 

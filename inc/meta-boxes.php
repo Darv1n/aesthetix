@@ -126,13 +126,24 @@ if ( ! function_exists( 'admin_enqueue_scripts_mata_boxes_callback' ) ) {
 	 * 
 	 * @return void
 	 */
-	function admin_enqueue_scripts_mata_boxes_callback() {
+	function admin_enqueue_scripts_mata_boxes_callback( $hook_suffix ) {
 
-		wp_enqueue_style( 'dashicons' );
-		wp_enqueue_script( 'jquery-ui-sortable' );
+		global $post;
 
-		wp_enqueue_style( 'aesthetix-meta-boxes', get_theme_file_uri( '/assets/css/admin-meta-boxes.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/admin-meta-boxes.min.css' ) ) );
-		wp_enqueue_script( 'aesthetix-meta-boxes', get_theme_file_uri( '/assets/js/admin-meta-boxes.min.js' ), array( 'jquery', 'jquery-ui-sortable' ), filemtime( get_theme_file_path( '/assets/js/admin-meta-boxes.min.js' ) ), true );
+		if ( in_array( $hook_suffix, array( 'post.php', 'post-new.php' ), true ) ) {
+			wp_enqueue_style( 'dashicons' );
+			wp_enqueue_script( 'jquery-ui-sortable' );
+
+			wp_enqueue_style( 'aesthetix-meta-boxes', get_theme_file_uri( '/assets/css/admin-meta-boxes.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/admin-meta-boxes.min.css' ) ) );
+			wp_enqueue_script( 'aesthetix-meta-boxes', get_theme_file_uri( '/assets/js/admin-meta-boxes.min.js' ), array( 'jquery', 'jquery-ui-sortable' ), filemtime( get_theme_file_path( '/assets/js/admin-meta-boxes.min.js' ) ), true );
+		
+			$root_string = '';
+			foreach ( get_aesthetix_customizer_roots() as $key => $root_value ) {
+				$root_string .= '--' . $key . ': ' . $root_value . ';';
+			}
+
+			wp_add_inline_style( 'aesthetix-meta-boxes', ':root {' . esc_attr( $root_string ) . '}' );
+		}
 	}
 }
 add_action( 'admin_enqueue_scripts', 'admin_enqueue_scripts_mata_boxes_callback' );

@@ -14,7 +14,13 @@ get_header(); ?>
 <main id="primary" <?php aesthetix_content_area_classes(); ?> role="main">
 
 	<?php if ( have_posts() ) : ?>
-		<?php $i = 0; ?>
+
+		<?php
+			$post_type = get_post_type();
+			$layout    = get_aesthetix_options( 'archive_' . $post_type . '_layout' );
+			$columns   = get_aesthetix_options( 'archive_' . $post_type . '_columns' );
+			$i         = 1;
+		?>
 
 		<header class="content-area-header" aria-label="<?php esc_attr_e( 'Search page header', 'aesthetix' ); ?>">
 			<h1 class="content-area-title">
@@ -23,46 +29,33 @@ get_header(); ?>
 		</header>
 
 		<section class="content-area-content" aria-label="<?php esc_attr_e( 'Search page content', 'aesthetix' ); ?>">
-
-			<div <?php aesthetix_archive_page_columns_wrapper_classes(); ?>>
+			<div <?php aesthetix_archive_page_columns_wrapper_classes( 'loop' ); ?> data-columns="<?php echo esc_attr( $columns ); ?>">
 
 				<?php while ( have_posts() ) : ?>
 					<?php the_post(); ?>
 
-					<?php $post_type_object = get_post_type_object( get_post_type() ); ?>
-
-					<?php if ( ! isset( $post_type_current ) ) : ?>
-						<div <?php aesthetix_archive_page_columns_classes( '', 1 ); ?>>
-							<h2 class="post-type-title h4"><?php _e( 'Post type', 'aesthetix' ) ?>: <?php echo esc_html( $post_type_object->name ); ?></h2>
-						</div>
-					<?php endif; ?>
-
-					<?php if ( isset( $post_type_current ) && $post_type_current !== get_post_type() ) : ?>
-						</div>
-						<div <?php aesthetix_archive_page_columns_wrapper_classes(); ?>>
-							<div <?php aesthetix_archive_page_columns_classes( '', 1 ); ?>>
-								<h2 class="post-type-title h4"><?php esc_html_e( 'Post type', 'aesthetix' ) ?>: <?php echo esc_html( $post_type_object->name ); ?></h2>
-							</div>
-					<?php endif; ?>
-
-					<?php $post_type_current = get_post_type(); ?>
-
 					<div <?php aesthetix_archive_page_columns_classes( $i ); ?>>
 
 						<?php
-							// Get a template with a post type, if there is one in the theme.
-							if ( file_exists( get_theme_file_path( 'templates/archive/archive-content-type-' . get_post_type() . '.php' ) ) ) {
-								get_template_part( 'templates/archive/archive-content-type', get_post_type(), array( 'counter' => $i ) );
-							} elseif ( get_aesthetix_options( 'archive_' . get_post_type() . '_template_type' ) ) {
-								get_template_part( 'templates/archive/archive-content-type', get_aesthetix_options( 'archive_' . get_post_type() . '_template_type' ), array( 'counter' => $i ) );
+							if ( in_array( $layout, array( 'list', 'list-chess' ), true ) ) {
+								get_template_part( 'templates/archive/archive-post-list', $post_type, array( 'counter' => $i ) );
 							} else {
-								get_template_part( 'templates/archive/archive-content-type', 'tils', array( 'counter' => $i ) );
+								if ( has_post_format() ) {
+									if ( get_theme_file_path( 'templates/archive/archive-post-' . $post_type . '-' . get_post_format() . '.php' ) ) {
+										get_template_part( 'templates/archive/archive-post', $post_type . '-' . get_post_format(), array( 'counter' => $i ) );
+									} else {
+										get_template_part( 'templates/archive/archive-post', get_post_format(), array( 'counter' => $i ) );
+									}
+								} else {
+									get_template_part( 'templates/archive/archive-post', $post_type, array( 'counter' => $i ) );
+								}
 							}
+
+							$i++;
 						?>
 
 					</div>
 
-					<?php $i++; ?>
 				<?php endwhile; ?>
 
 			</div>

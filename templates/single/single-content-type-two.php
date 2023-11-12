@@ -10,7 +10,7 @@
  */
  ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'post-single' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php aesthetix_post_classes( 'post-single', $args ); ?>>
 
 	<?php
 		// Post header part.

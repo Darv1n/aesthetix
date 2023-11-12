@@ -24,7 +24,6 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 
 		// Control Note.
 		class Title_Customize_Control extends WP_Customize_Control {
-
 			public function render_content() {
 				echo '<span>' . get_escape_title( $this->label ) . '</span>';
 			}
@@ -42,7 +41,7 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 				$saved_choices     = explode( ',', esc_attr( $this->value() ) );
 
 				foreach ( $saved_choices as $key => $value ) {
-					if( isset( $this->choices[ $value ] ) ) {
+					if ( isset( $this->choices[ $value ] ) ) {
 						$reordered_choices[ $value ] = $this->choices[ $value ];
 					}
 				}
@@ -52,10 +51,11 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 				?>
 
 				<?php if ( ! empty( $this->label ) ) : ?>
-					<label for="<?php echo esc_attr( $input_id ); ?>" class="customize-control-title"><?php echo esc_html( $this->label ); ?></label>
+					<label for="<?php echo esc_attr( $input_id ); ?>" class="customize-control-title"><?php echo wp_kses_post( $this->label ); ?></label>
 				<?php endif; ?>
+
 				<?php if ( ! empty( $this->description ) ) : ?>
-					<span id="<?php echo esc_attr( $description_id ); ?>" class="description customize-control-description"><?php echo $this->description; ?></span>
+					<span id="<?php echo esc_attr( $description_id ); ?>" class="description customize-control-description"><?php echo wp_kses_post( $this->description ); ?></span>
 				<?php endif; ?>
 
 				<ul class="sortable-list">
@@ -69,8 +69,8 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 
 						?>
 
-						<li class="sortable-list__item <?php echo $visible; ?>" data-key="<?php echo esc_attr( trim( $key ) ); ?>"><?php echo esc_html( $item ); ?>
-							<i class="dashicons dashicons-visibility <?php echo $visible; ?>"></i>
+						<li class="sortable-list__item <?php echo esc_attr( $visible ); ?>" data-key="<?php echo esc_attr( trim( $key ) ); ?>"><?php echo esc_html( $item ); ?>
+							<i class="dashicons dashicons-visibility <?php echo esc_attr( $visible ); ?>"></i>
 						</li>
 					<?php } ?>
 				</ul>
@@ -93,8 +93,10 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 
 		// Sanitize select.
 		function aesthetix_sanitize_select( $input, $setting ) {
+
 			// Get all select options.
 			$controls = $setting->manager->get_control( $setting->id )->choices;
+
 			// Return default if not valid.
 			return ( array_key_exists( $input, $controls ) ? $input : $setting->default );
 		}
@@ -108,14 +110,6 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 			// Return default if not integer.
 			return ( $number ? $number : $setting->default );
 
-		}
-
-		function aesthetix_sanitize_sortable( $input ) {
-			$sanitized_input = array();
-			foreach ( $input as $key => $value ) {
-				$sanitized_input[ $key ] = sanitize_text_field( $value );
-			}
-			return $sanitized_input;
 		}
 
 		// Common functions for reusable options.
@@ -237,7 +231,7 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 		}
 
 		// Select control.
-		function aesthetix_select_control( $section, $id, $name, $description, $atts, $priority ) {
+		function aesthetix_select_control( $section, $id, $name, $description, $choices, $priority ) {
 			global $wp_customize;
 
 			$wp_customize->add_setting( 'aesthetix_options[' . $section . '_' . $id . ']', array(
@@ -252,13 +246,13 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 				'description' => wp_kses_post( $description ),
 				'section'     => apply_filters( 'aesthetix_customizer_section_control', 'aesthetix_' . $section, $id ),
 				'type'        => 'select',
-				'choices'     => $atts,
+				'choices'     => $choices,
 				'priority'    => $priority,
 			) );
 		}
 
 		// Radio control.
-		function aesthetix_radio_control( $section, $id, $name, $description, $atts, $priority ) {
+		function aesthetix_radio_control( $section, $id, $name, $description, $choices, $priority ) {
 			global $wp_customize;
 
 			$wp_customize->add_setting( 'aesthetix_options[' . $section . '_' . $id . ']', array(
@@ -273,13 +267,13 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 				'description' => wp_kses_post( $description ),
 				'section'     => apply_filters( 'aesthetix_customizer_section_control', 'aesthetix_' . $section, $id ),
 				'type'        => 'radio',
-				'choices'     => $atts,
+				'choices'     => $choices,
 				'priority'    => $priority,
 			) );
 		}
 
 		// Sortable control.
-		function aesthetix_sortable_control( $section, $id, $name, $description, $atts, $priority ) {
+		function aesthetix_sortable_control( $section, $id, $name, $description, $choices, $priority ) {
 			global $wp_customize;
 
 			$wp_customize->add_setting( 'aesthetix_options[' . $section . '_' . $id . ']', array(
@@ -294,7 +288,7 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 				'description' => wp_kses_post( $description ),
 				'section'     => apply_filters( 'aesthetix_customizer_section_control', 'aesthetix_' . $section, $id ),
 				'type'        => 'sortable',
-				'choices'     => $atts,
+				'choices'     => $choices,
 				'priority'    => $priority,
 			) ) );
 		}
@@ -381,20 +375,6 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 }
 add_action( 'customize_register', 'aesthetix_customize_register' );
 
-if ( ! function_exists( 'aesthetix_customize_preview_js' ) ) {
-
-	/**
-	 * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
-	 * 
-	 * @since 1.0.0
-	 */
-	function aesthetix_customize_preview_js() {
-		// wp_enqueue_style( 'aesthetix-customizer-ui', get_theme_file_uri( '/assets/css/customizer-ui.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/customizer-ui.min.css' ) ) );
-		// wp_enqueue_script( 'aesthetix-customizer-ui', get_theme_file_uri( '/assets/js/customizer-ui.min.js' ), array( 'jquery', 'jquery-ui-sortable' ), filemtime( get_theme_file_path( '/assets/js/customizer-ui.min.js' ) ), true );
-	}
-}
-add_action( 'customize_preview_init', 'aesthetix_customize_preview_js' );
-
 if ( ! function_exists( 'aesthetix_customize_panels_js' ) ) {
 
 	/**
@@ -404,10 +384,11 @@ if ( ! function_exists( 'aesthetix_customize_panels_js' ) ) {
 	 */
 	function aesthetix_customize_panels_js() {
 
+		wp_enqueue_style( 'dashicons' );
 		wp_enqueue_script( 'jquery-ui-sortable' );
 
-		wp_enqueue_style( 'aesthetix-customizer', get_theme_file_uri( '/assets/css/customizer.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/customizer.min.css' ) ) );
-		wp_enqueue_script( 'aesthetix-customizer', get_theme_file_uri( '/assets/js/customizer.min.js' ), array( 'jquery', 'jquery-ui-sortable' ), filemtime( get_theme_file_path( '/assets/js/customizer.min.js' ) ), true );
+		wp_enqueue_style( 'aesthetix-customizer', get_theme_file_uri( '/assets/css/admin-customizer.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/admin-customizer.min.css' ) ) );
+		wp_enqueue_script( 'aesthetix-customizer', get_theme_file_uri( '/assets/js/admin-customizer.min.js' ), array( 'jquery', 'jquery-ui-sortable' ), filemtime( get_theme_file_path( '/assets/js/admin-customizer.min.js' ) ), true );
 
 		$root_string = '';
 		foreach ( get_aesthetix_customizer_roots() as $key => $root_value ) {

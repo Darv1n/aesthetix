@@ -2,7 +2,7 @@
 ** Scripts within the all post window for custom meta boxes.
 */
 
-jQuery( document ).ready(function ( $ ) {
+jQuery( document ).ready( function ( $ ) {
 
 	function mediaUploader( buttonClass ) {
 
@@ -65,7 +65,7 @@ jQuery( document ).ready(function ( $ ) {
 			});
 			$( this ).next().val( items.join( ',' ) ).trigger( 'change' );
 		}
-	});
+	} );
 
 	$( document ).on( 'click', '.media-remove', function( e ) {
 

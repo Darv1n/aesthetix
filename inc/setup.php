@@ -173,9 +173,6 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 
 		wp_add_inline_style( 'common-styles', ':root {' . esc_attr( $root_string ) . '}' );
 
-		// Layout.
-		// wp_enqueue_style( 'layout', get_theme_file_uri( '/assets/css/layout-flex.min.css' ), array( 'common-styles' ), filemtime( get_theme_file_path( '/assets/css/layout-flex.min.css' ) ) );
-
 		// Icons.
 		wp_enqueue_style( 'icons', get_theme_file_uri( '/assets/css/icons.min.css' ), array( 'common-styles' ), filemtime( get_theme_file_path( '/assets/css/icons.min.css' ) ) );
 

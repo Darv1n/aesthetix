@@ -86,11 +86,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'two' => __( 'Two', 'aesthetix' ),
 		);
 
-		$archive_page_order_select = array(
-			'asc'  => 'ASC',
-			'desc' => 'DESC',
-		);
-
 		$archive_page_columns_select = array(
 			1 => __( 'One', 'aesthetix' ),
 			2 => __( 'Two', 'aesthetix' ),
@@ -118,13 +113,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'two'   => __( 'Two', 'aesthetix' ),
 			'three' => __( 'Three', 'aesthetix' ),
 			'four'  => __( 'Four', 'aesthetix' ),
-		);
-
-		$archive_page_layout_select = array(
-			'grid'          => __( 'Grid', 'aesthetix' ),
-			'grid-image'    => __( 'Grid image', 'aesthetix' ),
-			'list'          => __( 'List', 'aesthetix' ),
-			'list-chess'    => __( 'List chess', 'aesthetix' ),
 		);
 
 		$archive_page_pagination_select = array(
@@ -184,7 +172,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'slider_post_type'            => array( 'select_control', __( 'Slider post type', 'aesthetix' ), '', get_post_types( array( 'publicly_queryable' => 1, ) ) ),
 			'slider_slides_count'         => array( 'select_control', __( 'Slides count', 'aesthetix' ), '', $archive_page_slides_count_select ),
 			'slider_slides_to_show'       => array( 'select_control', __( 'Slides to show', 'aesthetix' ), '', $archive_page_slides_to_show_select ),
-			'slider_slides_template_type' => array( 'select_control', __( 'Select template type', 'aesthetix' ), __( 'This field displays template of posts', 'aesthetix' ), $archive_page_layout_select ),
+			'slider_slides_template_type' => array( 'select_control', __( 'Select template type', 'aesthetix' ), __( 'This field displays template of posts', 'aesthetix' ), get_aesthetix_customizer_archive_post_layout() ),
 		);
 
 		// Sidebar options.
@@ -276,17 +264,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			$post_type_object  = get_post_type_object( $post_type );
 			$object_taxonomies = get_object_taxonomies( $post_type );
 
-			$archive_page_orderby_select = array(
-				'date'     => __( 'By date', 'aesthetix' ),
-				'modified' => __( 'By modified date', 'aesthetix' ),
-				'title'    => __( 'By title', 'aesthetix' ),
-				'rand'     => __( 'By random', 'aesthetix' ),
-			);
-
-			if ( post_type_supports( $post_type, 'page-attributes' ) ) {
-				$archive_page_orderby_select['menu_order'] = __( 'By menu order', 'aesthetix' );
-			}
-
 			// Single $post_type options.
 			$aesthetix_controls['single_' . $post_type] = array(
 				'structure_title'           => array( 'tab_title', __( 'Post structure', 'aesthetix' ), '' ),
@@ -306,8 +283,8 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 					'entry_footer_cats_display' => array( 'checkbox_control', __( 'Entry footer cats display', 'aesthetix' ), '' ),
 					'entry_footer_tags_display' => array( 'checkbox_control', __( 'Entry footer tags display', 'aesthetix' ), '' ),
 					'similar_posts_display'     => array( 'checkbox_control', __( 'Similar posts display', 'aesthetix' ), '' ),
-					'similar_posts_order'       => array( 'select_control', __( 'Select posts order', 'aesthetix' ), '', $archive_page_order_select ),
-					'similar_posts_orderby'     => array( 'select_control', __( 'Select posts orderby', 'aesthetix' ), '', $archive_page_orderby_select ),
+					'similar_posts_order'       => array( 'select_control', __( 'Select posts order', 'aesthetix' ), '', get_aesthetix_customizer_archive_post_order() ),
+					'similar_posts_orderby'     => array( 'select_control', __( 'Select posts orderby', 'aesthetix' ), '', get_aesthetix_customizer_archive_post_orderby( '', $post_type ) ),
 					'similar_posts_count'       => array( 'number_control', __( 'Select posts count', 'aesthetix' ), array( 'step' => '1', 'min' => '1', 'max' => '100' ) ),
 				) );
 			}
@@ -315,35 +292,23 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			// Archive $post_type options.
 			if ( $post_type_object->has_archive || ! empty( $object_taxonomies ) ) {
 				$aesthetix_controls['archive_' . $post_type] = array(
-					'options_title'             => array( 'tab_title', __( 'Main options', 'aesthetix' ), '' ),
-					'masonry'                   => array( 'checkbox_control', __( 'Masonry blog style', 'aesthetix' ), '' ),
-					'columns'                   => array( 'select_control', __( 'Select columns of posts', 'aesthetix' ), __( 'Choose how many columns to display posts', 'aesthetix' ), $archive_page_columns_select ),
-					'layout'                    => array( 'select_control', __( 'Select template type', 'aesthetix' ), __( 'This field displays template of posts', 'aesthetix' ), $archive_page_layout_select ),
-					'posts_per_page'            => array( 'number_control', __( 'Select posts per page', 'aesthetix' ), array( 'step' => '1', 'min' => '1', 'max' => '100' ) ),
-					'posts_order'               => array( 'select_control', __( 'Select posts order', 'aesthetix' ), '', $archive_page_order_select ),
-					'posts_orderby'             => array( 'select_control', __( 'Select posts orderby', 'aesthetix' ), '', $archive_page_orderby_select ),
-					'pagination'                => array( 'select_control', __( 'Post pagination', 'aesthetix' ), '', $archive_page_pagination_select ),
-					'detail_button'             => array( 'select_control', __( 'Read more button type', 'aesthetix' ), '', $archive_page_detail_button_select ),
-					'structure_title'           => array( 'tab_title', __( 'Post structure', 'aesthetix' ), '' ),
-					'structure'                 => array( 'sortable_control', '', '', get_aesthetix_customizer_archive_post_structure( null, $post_type ) ),
-					'thumbnail_structure_title' => array( 'tab_title', __( 'Post thumbnail structure', 'aesthetix' ), '' ),
-					'thumbnail_structure'       => array( 'sortable_control', '', '', get_aesthetix_customizer_post_thumbnail_structure( null, $post_type ) ),
-					'meta_structure_title'      => array( 'tab_title', __( 'Post meta structure', 'aesthetix' ), '' ),
-					'meta_structure'            => array( 'sortable_control', '', '', get_aesthetix_customizer_post_meta_structure( null, $post_type ) ),
+					'options_title'              => array( 'tab_title', __( 'Main options', 'aesthetix' ), '' ),
+					'masonry'                    => array( 'checkbox_control', __( 'Masonry blog style', 'aesthetix' ), '' ),
+					'columns'                    => array( 'select_control', __( 'Select columns of posts', 'aesthetix' ), __( 'Choose how many columns to display posts', 'aesthetix' ), $archive_page_columns_select ),
+					'layout'                     => array( 'select_control', __( 'Select template type', 'aesthetix' ), __( 'This field displays template of posts', 'aesthetix' ), get_aesthetix_customizer_archive_post_layout() ),
+					'posts_per_page'             => array( 'number_control', __( 'Select posts per page', 'aesthetix' ), array( 'step' => '1', 'min' => '1', 'max' => '100' ) ),
+					'posts_order'                => array( 'select_control', __( 'Select posts order', 'aesthetix' ), '', get_aesthetix_customizer_archive_post_order() ),
+					'posts_orderby'              => array( 'select_control', __( 'Select posts orderby', 'aesthetix' ), '', get_aesthetix_customizer_archive_post_orderby( '', $post_type ) ),
+					'pagination'                 => array( 'select_control', __( 'Post pagination', 'aesthetix' ), '', $archive_page_pagination_select ),
+					'detail_button'              => array( 'select_control', __( 'Read more button type', 'aesthetix' ), '', $archive_page_detail_button_select ),
+					'structure_title'            => array( 'tab_title', __( 'Post structure', 'aesthetix' ), '' ),
+					'structure'                  => array( 'sortable_control', '', '', get_aesthetix_customizer_archive_post_structure( null, $post_type ) ),
+					'taxonomies_structure_title' => array( 'tab_title', __( 'Post taxonomies structure', 'aesthetix' ), '' ),
+					'taxonomies_in_thumbnail'    => array( 'checkbox_control', __( 'Display taxonomies in thumbnail', 'aesthetix' ), '' ),
+					'taxonomies_structure'       => array( 'sortable_control', '', '', get_aesthetix_customizer_post_taxonomies_structure( null, $post_type ) ),
+					'meta_structure_title'       => array( 'tab_title', __( 'Post meta structure', 'aesthetix' ), '' ),
+					'meta_structure'             => array( 'sortable_control', '', '', get_aesthetix_customizer_post_meta_structure( null, $post_type ) ),
 				);
-
-				$archive_page_taxonomies_display = array();
-				$archive_page_taxonomies_display['none'] = __( 'None', 'aesthetix' );
-
-				foreach ( $object_taxonomies as $key => $object_taxonomy ) {
-					$taxonomy = get_taxonomy( $object_taxonomy );
-					$archive_page_taxonomies_display[ $taxonomy->name ] = $taxonomy->label;
-				}
-
-				$aesthetix_controls['archive_' . $post_type] = array_merge( $aesthetix_controls['archive_' . $post_type], array(
-					'taxonomies_title'   => array( 'tab_title', __( 'Taxonomy options', 'aesthetix' ), '' ),
-					'taxonomies_display' => array( 'select_control', __( 'Select taxonomy for display', 'aesthetix' ), '', $archive_page_taxonomies_display ),
-				) );
 			}
 		}
 

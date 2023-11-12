@@ -37,14 +37,6 @@ if ( ! function_exists( 'aesthetix_body_classes' ) ) {
 			$classes[] = 'wp-desktop';
 		}
 
-		if ( is_404() ) {
-			$classes[] = 'error-404';
-		}
-
-		if ( is_front_page() ) {
-			$classes[] = 'front-page';
-		}
-
 		// Adds class with themename.
 		$classes[] = 'theme_' . get_aesthetix_options( 'root_color_scheme' );
 		$classes[] = 'theme_' . get_aesthetix_options( 'general_container_width' );
@@ -56,82 +48,73 @@ if ( ! function_exists( 'aesthetix_body_classes' ) ) {
 }
 add_filter( 'body_class', 'aesthetix_body_classes', 10 );
 
-if ( ! function_exists( 'aesthetix_post_classes' ) ) {
+if ( ! function_exists( 'get_aesthetix_post_classes' ) ) {
 
 	/**
-	 * Add custom classes to the array of post classes.
+	 * Get classes for post wrapper.
 	 * 
 	 * @since 1.0.0
 	 *
-	 * @param string $classes post classes.
+	 * @param string $class Additional section classes. Default ''.
+	 * @param array  $args  Additional arguments for construct classes. Default array().
 	 *
 	 * @return array
 	 */
-	function aesthetix_post_classes( $classes ) {
+	function get_aesthetix_post_classes( $class = '', $args = array() ) {
 
-		$format = get_post_format();
-		$layout = get_aesthetix_options( 'archive_' . get_post_type() . '_layout' );
-
-		if ( ! $format ) {
-			$format = 'standard';
-		}
-
-		if ( in_array( 'sticky', $classes, true ) ) {
-			unset( $classes[ array_search( 'sticky', $classes ) ] );
-		}
-		if ( in_array( 'hentry', $classes, true ) ) {
-			unset( $classes[ array_search( 'hentry', $classes ) ] );
-		}
-		if ( in_array( 'post-' . get_the_ID(), $classes, true ) ) {
-			unset( $classes[ array_search( 'post-' . get_the_ID(), $classes ) ] );
-		}
-		if ( in_array( 'type-' . get_post_type(), $classes, true ) ) {
-			unset( $classes[ array_search( 'type-' . get_post_type(), $classes ) ] );
-		}
-		if ( in_array( get_post_type(), $classes, true ) ) {
-			unset( $classes[ array_search( get_post_type(), $classes ) ] );
-		}
-		if ( in_array( 'status-' . get_post_status(), $classes, true ) ) {
-			unset( $classes[ array_search( 'status-' . get_post_status(), $classes ) ] );
-		}
-		if ( in_array( 'format-' . $format, $classes, true ) ) {
-			unset( $classes[ array_search( 'format-' . $format, $classes ) ] );
-		}
-
-		$taxonomy_names = get_object_taxonomies( get_post_type() );
-
-		foreach ( $taxonomy_names as $key => $taxonomy ) {
-			$terms = get_the_terms( get_the_ID(), $taxonomy );
-			if ( $terms ) {
-				foreach ( get_the_terms( get_the_ID(), $taxonomy ) as $key => $term ) {
-
-					if ( $taxonomy === 'post_tag' ) {
-						$taxonomy = 'tag';
-					}
-
-					if ( in_array( $taxonomy . '-' . $term->slug, $classes, true ) ) {
-						unset( $classes[ array_search( $taxonomy . '-' . $term->slug, $classes ) ] );
-					}
-				}
+		// Check the function has accepted any classes.
+		if ( isset( $class ) && ! empty( $class ) ) {
+			if ( is_array( $class ) ) {
+				$classes = $class;
+			} elseif ( is_string( $class ) ) {
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
 			}
+		} else {
+			$classes = array();
 		}
+
+		if ( isset( $args['post_classes'] ) ) {
+			if ( is_string( $args['post_classes'] ) ) {
+				$args['post_classes'] = explode( ' ', $args['post_classes'] );
+			}
+			$classes = array_merge( $classes, $args['post_classes'] );
+		}
+
+		// Merge default args.
+		$defaults = array(
+			'post_layout' => get_aesthetix_options( 'archive_' . get_post_type() . '_layout' ),
+		);
+
+		if ( has_post_format() ) {
+			$defaults['format'] = get_post_format();
+		} else {
+			$defaults['format'] = 'standard';
+		}
+
+		$args = wp_parse_args( $args, $defaults );
 
 		$classes[] = 'post';
 
-		if ( in_array( $layout, array( 'list', 'list-chess' ), true ) ) {
-			$classes[] = 'post-list';
+		if ( has_post_thumbnail() ) {
+			$classes[] = 'has-thumbnail';
 		}
 
 		if ( get_post_type() !== 'post' ) {
 			$classes[] = 'post-' . get_post_type();
 		}
 
-		if ( has_post_format() ) {
-			$classes[] = 'post-format-' . get_post_format();
-		} elseif ( $layout === 'grid-image' ) {
+		if ( in_array( $args['post_layout'], array( 'list', 'list-chess' ), true ) ) {
+			$classes[] = 'post-list';
+		} else {
+			$classes[] = 'post-grid';
+		}
+
+		if ( $args['post_layout'] === 'grid-image' ) {
 			$classes[] = 'post-format-image';
 		} else {
-			$classes[] = 'post-format-standard';
+			$classes[] = 'post-format-' . $args['format'];
 		}
 
 		if ( is_sticky() ) {
@@ -143,14 +126,40 @@ if ( ! function_exists( 'aesthetix_post_classes' ) ) {
 			$classes[] = 'post-archive';
 		}
 
-		$classes = apply_filters( 'aesthetix_post_classes', $classes );
+		// Add filter to array.
+		$classes = apply_filters( 'get_aesthetix_post_classes', $classes );
 		$classes = array_unique( (array) $classes );
 		sort( $classes );
 
 		return $classes;
 	}
 }
-add_filter( 'post_class', 'aesthetix_post_classes', 10 );
+
+if ( ! function_exists( 'aesthetix_post_classes' ) ) {
+
+	/**
+	 * Display classes for post wrapper.
+	 * 
+	 * @since 1.0.0
+	 *
+	 * @param string $class Additional section classes. Default ''.
+	 * @param array  $args Additional arguments for construct classes. Default array().
+	 * @param bool   $echo  Echo or return section classes. Default true.
+	 *
+	 * @return string|void
+	 */
+	function aesthetix_post_classes( $class = '', $args = array(), $echo = true ) {
+
+		$classes = get_aesthetix_post_classes( $class, $args );
+
+		if ( $echo ) {
+			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
+		} else {
+			return 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
+		}
+	}
+}
+// add_filter( 'post_class', 'aesthetix_post_classes', 10 );
 
 if ( ! function_exists( 'get_aesthetix_section_classes' ) ) {
 
@@ -1175,14 +1184,19 @@ if ( ! function_exists( 'get_widgets_classes' ) ) {
 
 			if ( in_array( $id, array( 'header-mobile-left', 'header-mobile-center', 'header-mobile-right', 'header-main-left', 'header-top-left', 'header-top-right', 'header-main-left', 'header-main-center', 'header-main-right', 'header-bottom-left', 'header-bottom-center', 'header-bottom-right', 'footer-top-left', 'footer-top-right', 'footer-bottom-left', 'footer-bottom-right' ), true ) ) {
 				$classes[] = 'widgets-inline';
+				$classes[] = 'd-flex';
+				$classes[] = 'align-items-center';
 			}
 
 			if ( str_contains( $id, 'left' ) ) {
 				$classes[] = 'widgets-left';
+				$classes[] = 'justify-content-start';
 			} elseif ( str_contains( $id, 'right' ) ) {
 				$classes[] = 'widgets-right';
+				$classes[] = 'justify-content-end';
 			} elseif ( str_contains( $id, 'center' ) ) {
 				$classes[] = 'widgets-center';
+				$classes[] = 'justify-content-center';
 			}
 		}
 
@@ -1249,6 +1263,10 @@ if ( ! function_exists( 'get_widget_classes' ) ) {
 
 		// Add elements to array.
 		$classes[] = 'widget';
+
+		if ( in_array( $id, array( 'header-mobile-left', 'header-mobile-center', 'header-mobile-right', 'header-main-left', 'header-top-left', 'header-top-right', 'header-main-left', 'header-main-center', 'header-main-right', 'header-bottom-left', 'header-bottom-center', 'header-bottom-right', 'footer-top-left', 'footer-top-right', 'footer-bottom-left', 'footer-bottom-right' ), true ) ) {
+			$classes[] = 'd-flex';
+		}
 
 		// Add filter to array.
 		$classes = apply_filters( 'get_widget_classes', $classes );

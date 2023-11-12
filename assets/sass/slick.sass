@@ -7,6 +7,7 @@
 	display: block
 	margin-right: calc( var( --post-margin ) * -1 )
 	margin-left: calc( var( --post-margin ) * -1 )
+	height: 100%
 	box-sizing: border-box
 	-webkit-user-select: none
 	-moz-user-select: none
@@ -24,6 +25,7 @@
 	overflow: hidden
 	margin: 0
 	padding: 0
+	height: 100%
 	&:focus
 		outline: none
 	&.dragging
@@ -49,6 +51,7 @@
 	display: block
 	margin-left: auto
 	margin-right: auto
+	height: 100%
 	&:before
 		display: table
 		content: ''
@@ -70,6 +73,8 @@
 	float: right
 
 .slick-slide
+	div, .slick-item
+		height: inherit
 	img
 		display: block
 	&.slick-loading img
@@ -94,7 +99,7 @@
 .slick-prev, .slick-next
 	position: absolute
 	top: 50%
-	padding: calc( var( --button-padding-top ) + 1.125rem / 2 ) calc( var( --button-padding-top ) + 1.125rem / 2 )
+	padding: calc( .5rem + .825rem / 2 ) calc( .5rem + .825rem / 2 )
 	font-size: 0
 	overflow: hidden
 	border-radius: 50%
@@ -106,23 +111,22 @@
 		position: absolute
 		top: 50%
 		left: 50%
-		width: .825rem
-		height: .75rem
 		transform: translate( -50%, -50% )
-		filter: invert( 100% )
+		font-family: "Font Awesome 6 Pro"
+		-moz-osx-font-smoothing: grayscale
+		-webkit-font-smoothing: antialiased
+		display: inline-block
+		font-style: normal
+		font-variant: normal
+		text-rendering: auto
+		font-size: 1rem
+		line-height: 1rem
 
 .slick-prev::before
-	background: url( ../img/icons/sets/fa-regular.svg#angle-left )
+	content: '\f104'
 
 .slick-next::before
-	background: url( ../img/icons/sets/fa-regular.svg#angle-right )
-
-@media( min-width: 576px )
-	.slick-prev, .slick-next
-		padding: calc( var( --button-padding-top ) * 1.25 + 1.125rem / 2 ) calc( var( --button-padding-top ) * 1.25 + 1.125rem / 2 )
-		&:before
-			width: 1.125rem
-			height: 1rem
+	content: '\f105'
 
 .slick-prev
 	left: .75rem

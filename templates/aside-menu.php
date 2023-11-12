@@ -50,7 +50,6 @@ if ( is_admin_bar_showing() ) {
 	</div>
 
 	<div class="aside-footer">
-		
 
 	</div>
 

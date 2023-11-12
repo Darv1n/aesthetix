@@ -1,0 +1,40 @@
+@import "_vars"
+
+.sortable-list
+	&__item
+		padding: 8px 12px
+		border: 1px solid $primary-gray-color
+		color: $black-color
+		background: $white-color
+		cursor: move
+		font-size: 14px
+		margin: 0 0 10px
+		border-radius: 4px
+		transition: $transition
+		&.invisible
+			opacity: .35
+			visibility: visible
+	.dashicons
+		float: right
+		position: relative
+		font-size: 16px
+		line-height: 16px
+		border-left: none
+		&.dashicons-visibility
+			cursor: pointer
+			&::after
+				position: absolute
+				content: ''
+				width: 20px
+				height: 2px
+				top: 7px
+				left: 0
+				background: $black-color
+				border-radius: 4px
+				transform: rotate(-45deg)
+				box-shadow: 0 0 0 1px #fff
+				transition: $transition
+				opacity: 0
+			&.invisible
+				&::after
+					opacity: .35
