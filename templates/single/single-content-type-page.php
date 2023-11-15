@@ -2,8 +2,6 @@
 /**
  * Template part for displaying page content in page.php
  *
- * @since 1.0.0
- *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Aesthetix

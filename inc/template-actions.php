@@ -1,8 +1,6 @@
 <?php
 /**
  * Template actions.
- * 
- * @since 1.0.0
  *
  * @package Aesthetix
  */
@@ -15,8 +13,6 @@ if ( ! function_exists( 'aesthetix_pre_get_posts' ) ) {
 
 	/**
 	 * Function for 'pre_get_posts' action-hook.
-	 * 
-	 * @since 1.0.0
 	 * 
 	 * @link https://developer.wordpress.org/reference/hooks/pre_get_posts/
 	 *
@@ -62,8 +58,6 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 
 	/**
 	 * Display before site content structure in header.php.
-	 * 
-	 * @since 1.1.1
 	 */
 	function before_site_content_structure() {
 
@@ -121,8 +115,6 @@ if ( ! function_exists( 'after_site_content_structure' ) ) {
 
 	/**
 	 * Display after site content structure in footer.php.
-	 * 
-	 * @since 1.1.1
 	 */
 	function after_site_content_structure() {
 
@@ -154,4 +146,3 @@ if ( ! function_exists( 'after_site_content_structure' ) ) {
 	}
 }
 add_action( 'after_site_content', 'after_site_content_structure' );
-

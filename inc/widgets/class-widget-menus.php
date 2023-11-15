@@ -1,8 +1,6 @@
 <?php
 /**
- * Menus Widget.
- * 
- * @since 1.3.2
+ * Widget Menus.
  *
  * @package Aesthetix
  */
@@ -11,13 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * Menus widget class.
- *
- * @extends WPA_Widget
- * 
- * @since 1.3.2
- */
 class WPA_Widget_Menus extends WPA_Widget {
 
 	/**

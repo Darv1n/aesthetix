@@ -1,8 +1,6 @@
 <?php
 /**
  * Rate my Post.
- * 
- * @since 1.0.2
  *
  * @link https://wordpress.org/plugins/rate-my-post/
  *
@@ -17,8 +15,6 @@ if ( ! function_exists( 'rmp_save_post' ) ) {
 
 	/**
 	 * Function for 'save_post' action-hook.
-	 *
-	 * @since 1.0.2
 	 * 
 	 * @link https://developer.wordpress.org/reference/hooks/save_post/
 	 * 
@@ -39,8 +35,6 @@ if ( ! function_exists( 'get_rmp_result_customizer_post_meta_structure' ) ) {
 
 	/**
 	 * Function for 'get_aesthetix_customizer_post_meta_structure' action-hook.
-	 * 
-	 * @since 1.0.2
 	 *
 	 * @param string $control   Array key to get one value.
 	 * @param string $post_type Current post type
@@ -61,8 +55,6 @@ if ( ! function_exists( 'get_rmp_result_options' ) ) {
 
 	/**
 	 * Function for 'get_aesthetix_options' action-hook.
-	 * 
-	 * @since 1.0.2
 	 *
 	 * @param string $aesthetix_defaults Array with default theme options.
 	 *
@@ -98,8 +90,6 @@ if ( ! function_exists( 'rmp_result_archive_entry_post_meta_loop' ) ) {
 
 	/**
 	 * Function for 'aesthetix_archive_entry_post_meta_loop' action-hook.
-	 * 
-	 * @since 1.0.2
 	 *
 	 * @param WP_Object $post Post Object.
 	 *
@@ -120,8 +110,6 @@ if ( ! function_exists( 'get_rmp_customizer_single_post_footer_structure' ) ) {
 
 	/**
 	 * Function for 'get_aesthetix_customizer_single_post_footer_structure' action-hook.
-	 * 
-	 * @since 1.0.2
 	 *
 	 * @param string $control   Array key to get one value.
 	 * @param string $post_type Current post type.
@@ -142,8 +130,6 @@ if ( ! function_exists( 'get_rmp_options' ) ) {
 
 	/**
 	 * Function for 'get_aesthetix_options' action-hook.
-	 * 
-	 * @since 1.0.2
 	 *
 	 * @param string $aesthetix_defaults Array with default theme options.
 	 *
@@ -173,8 +159,6 @@ if ( ! function_exists( 'rmp_single_entry_post_footer_loop_rmp' ) ) {
 
 	/**
 	 * Function for 'aesthetix_single_entry_post_footer_loop_rmp' action-hook.
-	 * 
-	 * @since 1.0.2
 	 *
 	 * @param WP_Object $post Post Object.
 	 *
@@ -192,8 +176,6 @@ if ( ! function_exists( 'wp_enqueue_rmp_styles' ) ) {
 
 	/**
 	 * Function for wp_enqueue_scripts action-hook.
-	 * 
-	 * @since 1.0.2
 	 * 
 	 * @link https://developer.wordpress.org/reference/hooks/wp_enqueue_scripts/
 	 * 

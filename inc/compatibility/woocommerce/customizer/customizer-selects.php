@@ -2,8 +2,6 @@
 /**
  * Customizer selects.
  *
- * @since 1.0.0
- *
  * @package Aesthetix
  */
 
@@ -15,8 +13,6 @@ if ( ! function_exists( 'get_woocommerce_customizer_product_catalog_structure' )
 
 	/**
 	 * Return array with the customizer product catalog structure.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control   Array key to get one value.
 	 * @param string $post_type Current post type

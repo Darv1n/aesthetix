@@ -1,8 +1,6 @@
 <?php
 /**
  * Widget Init.
- * 
- * @since 1.2.0
  *
  * @package Aesthetix
  */
@@ -11,14 +9,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! function_exists( 'WPA_Widgets_init' ) ) {
+if ( ! function_exists( 'aesthetix_widgets_init' ) ) {
 
 	/**
 	 * Register widgets.
-	 *
-	 * @since 1.2.0
 	 */
-	function WPA_Widgets_init() {
+	function aesthetix_widgets_init() {
 		register_widget( 'WPA_Widget_Menus' );
 		register_widget( 'WPA_Widget_Buttons' );
 		register_widget( 'WPA_Widget_Recent_Posts' );
@@ -30,15 +26,12 @@ if ( ! function_exists( 'WPA_Widgets_init' ) ) {
 		register_widget( 'WPA_Widget_Adv_Banner' );
 	}
 }
-add_action( 'widgets_init', 'WPA_Widgets_init' );
+add_action( 'widgets_init', 'aesthetix_widgets_init' );
 
 if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 
 	/**
 	 * Register widget area.
-	 * 
-	 * @since 1.0.0
-	 * @since 1.2.4 Widget registration has been completely reworked.
 	 *
 	 * @return void
 	 */
@@ -213,8 +206,6 @@ if ( ! function_exists( 'admin_enqueue_scripts_widgets_callback' ) ) {
 
 	/**
 	 * Load dynamic logic for the widgets area.
-	 * 
-	 * @since 1.3.1
 	 * 
 	 * @return void
 	 */

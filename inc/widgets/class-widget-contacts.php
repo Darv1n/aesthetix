@@ -1,8 +1,6 @@
 <?php
 /**
- * Contacts Widget.
- * 
- * @since 1.3.2
+ * Widget Contacts.
  *
  * @package Aesthetix
  */
@@ -11,13 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * Contacts widget class.
- *
- * @extends WPA_Widget
- * 
- * @since 1.3.2
- */
 class WPA_Widget_Contacts extends WPA_Widget {
 
 	/**

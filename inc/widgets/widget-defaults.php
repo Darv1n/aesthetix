@@ -1,8 +1,6 @@
 <?php
 /**
  * Widget Default.
- * 
- * @since 1.3.2
  *
  * @package Aesthetix
  */
@@ -15,8 +13,6 @@ if ( ! function_exists( 'aesthetix_widget_default' ) ) {
 
 	/**
 	 * This function outputs the default widgets according to the specified structure as an array.
-	 * 
-	 * @since 1.2.9
 	 *
 	 * @param array  $structure The right widgets structure for output. Default null
 	 * @param string $id        Widget ID. Default null
@@ -180,8 +176,6 @@ if ( ! function_exists( 'get_aesthetix_widget_default' ) ) {
 
 	/**
 	 * Return array with the default widget.
-	 * 
-	 * @since 1.3.2
 	 *
 	 * @param string $control Array key to get one value.
 	 *

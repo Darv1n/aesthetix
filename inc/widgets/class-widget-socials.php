@@ -1,8 +1,6 @@
 <?php
 /**
- * Socials Widget.
- * 
- * @since 1.3.2
+ * Widget Socials.
  *
  * @package Aesthetix
  */
@@ -11,13 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * Socials widget class.
- *
- * @extends WPA_Widget
- * 
- * @since 1.3.2
- */
 class WPA_Widget_Socials extends WPA_Widget {
 
 	/**

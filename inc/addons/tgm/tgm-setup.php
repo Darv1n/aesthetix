@@ -2,8 +2,6 @@
 /**
  * Register recommended plugins.
  *
- * @since 1.0.0
- *
  * @package Aesthetix
  */
 
@@ -15,8 +13,6 @@ if ( ! function_exists( 'aesthetix_register_recommended_plugins' ) ) {
 
 	/**
 	 * Register recommended plugins with TGM Plugin Activation (require class-tgm-plugin-activation.php in functions.php)
-	 * 
-	 * @since 1.0.0
 	 */
 	function aesthetix_register_recommended_plugins() {
 		$plugins = array(

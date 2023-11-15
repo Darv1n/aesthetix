@@ -3,8 +3,6 @@
  * Abstract widget class.
  * 
  * @link https://github.com/woocommerce/woocommerce/blob/trunk/plugins/woocommerce/includes/abstracts/abstract-wc-widget.php
- * 
- * @since 1.2.4
  *
  * @package Aesthetix
  */
@@ -13,13 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * Abstract widget class.
- *
- * @extends WP_Widget
- * 
- * @since 1.2.4
- */
 abstract class WPA_Widget extends WP_Widget {
 
 	/**

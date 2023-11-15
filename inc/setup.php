@@ -2,8 +2,6 @@
 /**
  * Main setup options.
  *
- * @since 1.0.0
- *
  * @package Aesthetix
  */
 
@@ -15,8 +13,6 @@ if ( ! function_exists( 'aesthetix_setup_theme' ) ) {
 
 	/**
 	 * Default theme setup on after_setup_theme hook.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
@@ -151,8 +147,6 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 
 	/**
 	 * Enqueue scripts and styles.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @return void
 	 */

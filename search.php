@@ -1,8 +1,6 @@
 <?php
 /**
  * The template for disdisplaying search results pages.
- * 
- * @since 1.0.0
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *

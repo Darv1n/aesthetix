@@ -2,8 +2,6 @@
 /**
  * Customizer selects.
  *
- * @since 1.0.0
- *
  * @package Aesthetix
  */
 
@@ -15,8 +13,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_structure' ) ) {
 
 	/**
 	 * Return array with the customizer archive post structure.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control   Array key to get one value.
 	 * @param string $post_type Current post type.
@@ -57,8 +53,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_single_post_structure' ) ) {
 
 	/**
 	 * Return array with the customizer single post structure.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control   Array key to get one value.
 	 * @param string $post_type Current post type.
@@ -98,8 +92,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_single_post_footer_structure' 
 
 	/**
 	 * Return array with the customizer single post footer structure.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control   Array key to get one value.
 	 * @param string $post_type Current post type.
@@ -140,8 +132,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_meta_structure' ) ) {
 
 	/**
 	 * Return array with the customizer post meta structure.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control   Array key to get one value.
 	 * @param string $post_type Current post type.
@@ -196,8 +186,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_fonts' ) ) {
 
 	/**
 	 * Return array with the customizer fonts.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Array key to get one value.
 	 *
@@ -254,8 +242,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_colors' ) ) {
 
 	/**
 	 * Return array with the customizer colors.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Array key to get one value.
 	 *
@@ -306,8 +292,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_gray_colors' ) ) {
 
 	/**
 	 * Return array with the customizer gray colors.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Array key to get one value.
 	 *
@@ -346,8 +330,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_link_colors' ) ) {
 
 	/**
 	 * Return array with the customizer link colors.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Array key to get one value.
 	 *
@@ -385,8 +367,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_button_type' ) ) {
 
 	/**
 	 * Return array with the customizer button types.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Array key to get one value.
 	 *
@@ -424,8 +404,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_sizes' ) ) {
 
 	/**
 	 * Return array with the customizer button sizes.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Array key to get one value.
 	 *
@@ -466,8 +444,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_button_border_widths' ) ) {
 
 	/**
 	 * Return array with the customizer button widths.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Array key to get one value.
 	 *
@@ -506,8 +482,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_button_border_radiuses' ) ) {
 
 	/**
 	 * Return array with the customizer button radius.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Array key to get one value.
 	 *
@@ -551,8 +525,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_box_shadows' ) ) {
 
 	/**
 	 * Return array with the customizer box shadows.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Array key to get one value.
 	 *
@@ -595,8 +567,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_subscribe_form_type' ) ) {
 
 	/**
 	 * Return array with the customizer subscribe form type.
-	 * 
-	 * @since 1.1.2
 	 *
 	 * @param string $control Array key to get one value.
 	 *
@@ -631,8 +601,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_taxonomies_structure' ) )
 
 	/**
 	 * Return array with the customizer post thumbnail structure.
-	 * 
-	 * @since 1.1.6
 	 *
 	 * @param string $control   Array key to get one value.
 	 * @param string $post_type Current post type.
@@ -683,8 +651,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_button_color' ) ) {
 
 	/**
 	 * Return array with the customizer button colors.
-	 * 
-	 * @since 1.1.9
 	 *
 	 * @param string $control Array key to get one value.
 	 *
@@ -721,8 +687,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_button_content' ) ) {
 
 	/**
 	 * Return array with the customizer button type.
-	 * 
-	 * @since 1.1.9
 	 *
 	 * @param string $control Array key to get one value.
 	 *
@@ -764,8 +728,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_demo_variant' ) ) {
 
 	/**
 	 * Return array with the customizer demo variant
-	 * 
-	 * @since 1.2.4
 	 *
 	 * @param string $control Array key to get one value.
 	 *
@@ -803,8 +765,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_background_colors' ) ) {
 
 	/**
 	 * Return array with the customizer background colors.
-	 * 
-	 * @since 1.3.0
 	 *
 	 * @param string $control Array key to get one value.
 	 *
@@ -844,8 +804,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_order' ) ) {
 
 	/**
 	 * Return array with the customizer archive post order.
-	 * 
-	 * @since 1.3.1
 	 *
 	 * @param string $control   Array key to get one value.
 	 * @param string $post_type Current post type.
@@ -882,8 +840,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_orderby' ) ) {
 
 	/**
 	 * Return array with the customizer archive post orderby.
-	 * 
-	 * @since 1.3.1
 	 *
 	 * @param string $control   Array key to get one value.
 	 * @param string $post_type Current post type.
@@ -934,8 +890,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_layout' ) ) {
 
 	/**
 	 * Return array with the customizer archive post layout.
-	 * 
-	 * @since 1.3.1
 	 *
 	 * @param string $control   Array key to get one value.
 	 * @param string $post_type Current post type.
@@ -982,8 +936,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_socials' ) ) {
 
 	/**
 	 * Return array with the social.
-	 * 
-	 * @since 1.3.2
 	 *
 	 * @param string $control Array key to get one value.
 	 *
@@ -1023,8 +975,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_scroll_top_structure' ) ) {
 
 	/**
 	 * Return array with the customizer scroll top structure.
-	 * 
-	 * @since 1.3.2
 	 *
 	 * @param string $control Array key to get one value.
 	 *

@@ -1,8 +1,6 @@
 <?php
 /**
  * Gutenberg.
- * 
- * @since 1.0.0
  *
  * @link https://wordpress.org/gutenberg/
  *

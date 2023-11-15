@@ -2,8 +2,6 @@
 /**
  * Template header desktop 3 + 3 (six) columns.
  *
- * @since 1.2.4
- *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Aesthetix

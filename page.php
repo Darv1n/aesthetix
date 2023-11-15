@@ -1,13 +1,11 @@
 <?php
 /**
- * The template for disdisdisplaying all pages
+ * The template for disdisdisplaying all pages.
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
  * and that other 'pages' on your WordPress site may use a
  * different template.
- *
- * @since 1.0.0
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

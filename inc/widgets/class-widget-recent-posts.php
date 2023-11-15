@@ -1,8 +1,6 @@
 <?php
 /**
- * Aesthetix Posts Widget.
- * 
- * @since 1.3.1
+ * Widget Recent Posts.
  *
  * @package Aesthetix
  */
@@ -11,13 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * Aesthetix Posts Widget class.
- *
- * @extends WPA_Widget
- * 
- * @since 1.3.1
- */
 class WPA_Widget_Recent_Posts extends WPA_Widget {
 
 	/**

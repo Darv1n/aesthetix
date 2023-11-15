@@ -2,8 +2,6 @@
 /**
  * Template part for displaying site logo.
  *
- * @since 1.0.0
- *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Aesthetix

@@ -2,8 +2,6 @@
 /**
  * Customizer sections.
  *
- * @since 1.0.0
- *
  * @package Aesthetix
  */
 
@@ -15,8 +13,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_sections' ) ) {
 
 	/**
 	 * Return array with the customizer fonts.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Array key to get one value.
 	 *

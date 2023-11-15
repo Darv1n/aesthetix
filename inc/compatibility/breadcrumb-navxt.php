@@ -2,8 +2,6 @@
 /**
  * Breadcrumb NavXT Compatibility File.
  *
- * @since 1.0.0
- *
  * @link plugin        https://wordpress.org/plugins/breadcrumb-navxt/
  * @link documentation https://mtekk.us/code/breadcrumb-navxt/breadcrumb-navxt-doc/
  * 
@@ -61,8 +59,6 @@ if ( ! function_exists( 'wp_enqueue_navxt_breadcrumb_styles' ) ) {
 
 	/**
 	 * Function for wp_enqueue_scripts action-hook.
-	 * 
-	 * @since 1.0.0
 	 * 
 	 * @link https://developer.wordpress.org/reference/hooks/wp_enqueue_scripts/
 	 * 

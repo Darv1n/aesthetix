@@ -1,8 +1,6 @@
 <?php
 /**
- * Buttons Widget.
- * 
- * @since 1.3.2
+ * Widget Buttons.
  *
  * @package Aesthetix
  */
@@ -11,13 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * Buttons widget class.
- *
- * @extends WPA_Widget
- * 
- * @since 1.3.2
- */
 class WPA_Widget_Buttons extends WPA_Widget {
 
 	/**

@@ -2,8 +2,6 @@
 /**
  * Template tils for displaying widget posts.
  *
- * @since 1.3.1
- *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Aesthetix

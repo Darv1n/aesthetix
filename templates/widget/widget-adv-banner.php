@@ -1,8 +1,6 @@
 <?php
 /**
  * Template part for displaying advertising banner.
- * 
- * @since 1.2.4
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

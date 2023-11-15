@@ -2,8 +2,6 @@
 /**
  * Customizer default options.
  *
- * @since 1.0.0
- *
  * @package Aesthetix
  */
 

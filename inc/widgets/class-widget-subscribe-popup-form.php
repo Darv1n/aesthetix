@@ -1,8 +1,6 @@
 <?php
 /**
- * Subscribe Popup Form Widget.
- * 
- * @since 1.2.0
+ * Widget Subscribe Popup Form.
  *
  * @package Aesthetix
  */
@@ -11,13 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * Subscribe popup form widget class.
- *
- * @extends WPA_Widget
- * 
- * @since 1.2.0
- */
 class WPA_Widget_Subscribe_Popup_Form extends WPA_Widget {
 
 	/**

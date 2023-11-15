@@ -1,8 +1,6 @@
 <?php
 /**
- * Adv banner Widget.
- * 
- * @since 1.2.6
+ * Widget Adv Banner.
  *
  * @package Aesthetix
  */
@@ -11,13 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/**
- * Adv banner widget class.
- *
- * @extends WPA_Widget
- * 
- * @since 1.2.6
- */
 class WPA_Widget_Adv_Banner extends WPA_Widget {
 
 	/**

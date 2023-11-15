@@ -2,8 +2,6 @@
 /**
  * Template wrappers.
  *
- * @since 1.0.0
- *
  * @package Aesthetix
  */
 
@@ -15,8 +13,6 @@ if ( ! function_exists( 'aesthetix_body_classes' ) ) {
 
 	/**
 	 * Add custom classes to the array of body classes.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $classes Body classes.
 	 *
@@ -52,8 +48,6 @@ if ( ! function_exists( 'get_aesthetix_post_classes' ) ) {
 
 	/**
 	 * Get classes for post wrapper.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $class Additional section classes. Default ''.
 	 * @param array  $args  Additional arguments for construct classes. Default array().
@@ -139,8 +133,6 @@ if ( ! function_exists( 'aesthetix_post_classes' ) ) {
 
 	/**
 	 * Display classes for post wrapper.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $class Additional section classes. Default ''.
 	 * @param array  $args Additional arguments for construct classes. Default array().
@@ -159,14 +151,11 @@ if ( ! function_exists( 'aesthetix_post_classes' ) ) {
 		}
 	}
 }
-// add_filter( 'post_class', 'aesthetix_post_classes', 10 );
 
 if ( ! function_exists( 'get_aesthetix_section_classes' ) ) {
 
 	/**
 	 * Get classes for section wrapper.
-	 * 
-	 * @since 1.1.2
 	 *
 	 * @param string $class Additional section classes. Default ''.
 	 *
@@ -207,8 +196,6 @@ if ( ! function_exists( 'aesthetix_section_classes' ) ) {
 
 	/**
 	 * Display classes for section wrapper.
-	 * 
-	 * @since 1.1.2
 	 *
 	 * @param string $class Additional section classes. Default ''.
 	 * @param bool   $echo  Echo or return section classes. Default true.
@@ -231,8 +218,6 @@ if ( ! function_exists( 'get_aesthetix_container_classes' ) ) {
 
 	/**
 	 * Get classes for container wrapper.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $class Additional container classes. Default ''.
 	 *
@@ -296,8 +281,6 @@ if ( ! function_exists( 'aesthetix_container_classes' ) ) {
 
 	/**
 	 * Display classes for container wrapper.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $class Additional container classes. Default ''.
 	 * @param bool   $echo  Echo or return container classes. Default true.
@@ -320,8 +303,6 @@ if ( ! function_exists( 'get_aesthetix_content_area_classes' ) ) {
 
 	/**
 	 * Get classes for main content area wrapper.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $class Additional content area classes. Default ''.
 	 *
@@ -370,8 +351,6 @@ if ( ! function_exists( 'aesthetix_content_area_classes' ) ) {
 
 	/**
 	 * Display classes for main content area wrapper.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $class Additional content area classes. Default ''.
 	 * @param bool   $echo  Echo or return content area classes. Default true.
@@ -394,8 +373,6 @@ if ( ! function_exists( 'get_aesthetix_widget_area_classes' ) ) {
 
 	/**
 	 * Get classes for sidebar widget area wrapper.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $class Additional widget area classes. Default ''.
 	 *
@@ -438,8 +415,6 @@ if ( ! function_exists( 'aesthetix_widget_area_classes' ) ) {
 
 	/**
 	 * Display classes for sidebar widget area wrapper.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $class Additional widget area classes. Default ''.
 	 * @param bool   $echo  Echo or return widget area classes. Default true.
@@ -462,8 +437,6 @@ if ( ! function_exists( 'get_aesthetix_menu_wrapper_classes' ) ) {
 
 	/**
 	 * Get classes for main menu.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $class Additional main menu classes. Default ''.
 	 *
@@ -504,8 +477,6 @@ if ( ! function_exists( 'aesthetix_menu_wrapper_classes' ) ) {
 
 	/**
 	 * Display classes for main menu.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $class Additional main menu classes. Default ''.
 	 * @param bool   $echo  Echo or return main menu classes. Default true.
@@ -528,8 +499,6 @@ if ( ! function_exists( 'get_aesthetix_meta_display_classes' ) ) {
 
 	/**
 	 * Get classes for meta display single template TWO.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $class Additional meta display classes. Default ''.
 	 *
@@ -573,8 +542,6 @@ if ( ! function_exists( 'aesthetix_meta_display_classes' ) ) {
 
 	/**
 	 * Display classes for meta display single template TWO.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $class  Additional meta display classes. Default ''.
 	 * @param bool   $echo   Echo or return meta display classes. Default true.
@@ -597,8 +564,6 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_wrapper_classes' ) )
 
 	/**
 	 * Get classes for archive page wrapper columns.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $class Additional archive page columns wrapper classes. Default ''.
 	 *
@@ -646,8 +611,6 @@ if ( ! function_exists( 'aesthetix_archive_page_columns_wrapper_classes' ) ) {
 
 	/**
 	 * Display classes for archive page wrapper columns.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $class Additional archive page columns wrapper classes. Default ''.
 	 * @param bool   $echo  Echo or return archive page columns wrapper classes. Default true.
@@ -670,8 +633,6 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_classes' ) ) {
 
 	/**
 	 * Get classes for archive page columns.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param int    $counter       Сolumn counter in loop. Default null.
 	 * @param string $class         Additional archive page columns classes. Default ''.
@@ -746,8 +707,6 @@ if ( ! function_exists( 'aesthetix_archive_page_columns_classes' ) ) {
 
 	/**
 	 * Display classes for archive page columns.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param int    $counter       Сolumn counter in loop. Default null.
 	 * @param string $class         Additional archive page columns classes. Default ''.
@@ -772,8 +731,6 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 
 	/**
 	 * Get classes for buttons.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string       $class Additional button classes. Default ''.
 	 * @param array|string $args {
@@ -873,8 +830,6 @@ if ( ! function_exists( 'button_classes' ) ) {
 
 	/**
 	 * Display classes for buttons.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string       $class Additional button classes. Default ''.
 	 * @param array|string $args {
@@ -906,8 +861,6 @@ if ( ! function_exists( 'get_link_classes' ) ) {
 
 	/**
 	 * Get classes for links.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string       $class Link classes. Default ''.
 	 * @param array|string $args {
@@ -979,8 +932,6 @@ if ( ! function_exists( 'link_classes' ) ) {
 
 	/**
 	 * Display classes for links.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string       $class Additional link classes. Default ''.
 	 * @param array|string $args {
@@ -1010,8 +961,6 @@ if ( ! function_exists( 'get_input_classes' ) ) {
 
 	/**
 	 * Get classes for inputs.
-	 * 
-	 * @since 1.2.2
 	 *
 	 * @param string $class       Input classes. Default ''.
 	 * @param string $button_size Input size (xs, sm, md, lg, xl). Default null.
@@ -1064,8 +1013,6 @@ if ( ! function_exists( 'input_classes' ) ) {
 
 	/**
 	 * Display classes for inputs.
-	 * 
-	 * @since 1.2.2
 	 *
 	 * @param string $class Additional input classes. Default ''.
 	 * @param bool   $echo  Echo or return input classes. Default true.
@@ -1088,8 +1035,6 @@ if ( ! function_exists( 'get_widgets_classes' ) ) {
 
 	/**
 	 * Get classes for widgets.
-	 * 
-	 * @since 1.2.4
 	 *
 	 * @param string $class Widgets classes. Default ''.
 	 * @param string $id    Widgets id. Default null.
@@ -1147,8 +1092,6 @@ if ( ! function_exists( 'widgets_classes' ) ) {
 
 	/**
 	 * Display classes for widgets.
-	 * 
-	 * @since 1.2.4
 	 *
 	 * @param string $class Additional widgets classes. Default ''.
 	 * @param string $id    Widgets id. Default null.
@@ -1172,8 +1115,6 @@ if ( ! function_exists( 'get_widget_classes' ) ) {
 
 	/**
 	 * Get classes for widgets.
-	 * 
-	 * @since 1.2.4
 	 *
 	 * @param string $class Widget classes. Default ''.
 	 * @param string $id    Widget id. Default null.
@@ -1215,8 +1156,6 @@ if ( ! function_exists( 'widget_classes' ) ) {
 
 	/**
 	 * Display classes for widgets.
-	 * 
-	 * @since 1.2.4
 	 *
 	 * @param string $class Additional widget classes. Default ''.
 	 * @param string $id    Widget id. Default null.
@@ -1240,8 +1179,6 @@ if ( ! function_exists( 'get_icon_classes' ) ) {
 
 	/**
 	 * Get classes for icons.
-	 * 
-	 * @since 1.3.2
 	 *
 	 * @param string       $class Additional icon classes. Default ''.
 	 * @param array|string $args {
@@ -1327,8 +1264,6 @@ if ( ! function_exists( 'icon_classes' ) ) {
 
 	/**
 	 * Display classes for icons.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string       $class Additional icon classes. Default ''.
 	 * @param array|string $args {

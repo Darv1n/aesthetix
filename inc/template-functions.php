@@ -2,8 +2,6 @@
 /**
  * Template functions.
  *
- * @since 1.0.0
- *
  * @package Aesthetix
  */
 
@@ -15,8 +13,6 @@ if ( ! function_exists( 'vardump' ) ) {
 
 	/**
 	 * Dump code var.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $var parameter for dumping.
 	 */
@@ -33,8 +29,6 @@ if ( ! function_exists( 'array_key_first' ) ) {
 
 	/**
 	 * Callback function array_key_first(), if none exists.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param array $array Array to search for the first key.
 	 *
@@ -58,8 +52,6 @@ if ( ! function_exists( 'array_key_last' ) ) {
 
 	/**
 	 * Callback function array_key_last(), if none exists.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param array $array Array to search for the last key.
 	 *
@@ -79,8 +71,6 @@ if ( ! function_exists( 'sanitize_form_field' ) ) {
 
 	/**
 	 * Form field sanitize function.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $string Sanitize and unslash string.
 	 *
@@ -95,8 +85,6 @@ if ( ! function_exists( 'is_int_even' ) ) {
 
 	/**
 	 * Whether the number transmitted is an even number.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param int $var Source int.
 	 *
@@ -111,8 +99,6 @@ if ( ! function_exists( 'shuffle_assoc' ) ) {
 
 	/**
 	 * Shuffle the array with the keys intact.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param array $array Source array.
 	 *
@@ -139,8 +125,6 @@ if ( ! function_exists( 'kses_available_tags' ) ) {
 
 	/**
 	 * Available tags for wp_kses() function.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @return array
 	 */
@@ -179,8 +163,6 @@ if ( ! function_exists( 'get_curl_content' ) ) {
 
 	/**
 	 * Retrieves content via curl and writes an acknowledgement/error in the log file.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $url   Source url for parsing.
 	 * @param string $proxy Proxy server.
@@ -219,8 +201,6 @@ if ( ! function_exists( 'save_remote_file' ) ) {
 
 	/**
 	 * Retrieves content via curl and writes an acknowledgement/error in the log file.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $file_link External file link.
 	 * @param string $file_name File name.
@@ -282,8 +262,6 @@ if ( ! function_exists( 'get_escape_title' ) ) {
 
 	/**
 	 * Escapes and beautifies title.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $string Source title.
 	 *
@@ -310,8 +288,6 @@ if ( ! function_exists( 'get_title_slug' ) ) {
 
 	/**
 	 * Convert title string to slug.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $string Source title.
 	 *
@@ -339,8 +315,6 @@ if ( ! function_exists( 'get_random_date' ) ) {
 
 	/**
 	 * Gets a random date between two specified dates.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $start_date Starting date.
 	 * @param string $end_date   Final date.
@@ -361,8 +335,6 @@ if ( ! function_exists( 'get_explode_part' ) ) {
 
 	/**
 	 * Gets the specified value from a string divided by the specified separator.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $string    Source input string.
 	 * @param int    $num       Array key.
@@ -396,8 +368,6 @@ if ( ! function_exists( 'get_first_value_from_string' ) ) {
 
 	/**
 	 * Gets the first value from the string divided by the specified separator.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $string    Source input string.
 	 * @param string $separator Separator for explode string.
@@ -420,8 +390,6 @@ if ( ! function_exists( 'get_last_value_from_string' ) ) {
 
 	/**
 	 * Gets the last value from the string divided by the specified separator.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $string    Source input string.
 	 * @param string $separator Separator for explode string.
@@ -445,8 +413,6 @@ if ( ! function_exists( 'get_first_post_img' ) ) {
 
 	/**
 	 * Gets the first image in the content.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param object $post Object for search image.
 	 *
@@ -474,8 +440,6 @@ if ( ! function_exists( 'format_bytes' ) ) {
 
 	/**
 	 * Formats bytes into a human-readable representation.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param int $bytes     Number of bytes.
 	 * @param int $precision Number of characters for rounding.
@@ -502,8 +466,6 @@ if ( ! function_exists( 'str_word_count_utf8' ) ) {
 
 	/**
 	 * Counts the number of words in the utf string.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $string Source string.
 	 *
@@ -519,8 +481,6 @@ if ( ! function_exists( 'read_time_estimate' ) ) {
 
 	/**
 	 * Returns the approximate reading time of the article to the line.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $content Source content.
 	 *
@@ -559,8 +519,6 @@ if ( ! function_exists( 'mb_ucfirst' ) && extension_loaded( 'mbstring' ) ) {
 
 	/**
 	 * Returns the string with the first capital letter.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $str      Source string.
 	 * @param string $encoding The default encoding is UTF-8.
@@ -578,8 +536,6 @@ if ( ! function_exists( 'RGBtoHEX' ) ) {
 
 	/**
 	 * RGB to HEX color conversion function.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $string Source string for converting.
 	 *
@@ -620,8 +576,6 @@ if ( ! function_exists( 'remove_emoji' ) ) {
 
 	/**
 	 * Returns string with remove emojies.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $string Source string.
 	 *
@@ -657,8 +611,6 @@ if ( ! function_exists( 'array_insert_after' ) ) {
 	/**
 	 * Insert a value or key/value pair after a specific key in an array. If key doesn't exist, value is appended to the end of the array.
 	 * 
-	 * @since 1.1.3
-	 * 
 	 * @link https://gist.github.com/wpscholar/0deadce1bbfa4adb4e4c
 	 *
 	 * @param array  $array
@@ -680,8 +632,6 @@ if ( ! function_exists( 'is_subscribe_form_theme_active' ) ) {
 
 	/**
 	 * Adds conditions for subscribe form theme script activation.
-	 * 
-	 * @since 1.2.1
 	 * 
 	 * @return bool
 	 */
@@ -715,8 +665,6 @@ if ( ! function_exists( 'is_magnific_popup_active' ) ) {
 	/**
 	 * Adds conditions for magnific popup script activation.
 	 * 
-	 * @since 1.2.1
-	 * 
 	 * @return bool
 	 */
 	function is_magnific_popup_active() {
@@ -741,8 +689,6 @@ if ( ! function_exists( 'return_template_part' ) ) {
 	/**
 	 * Return content from get_template_part() function.
 	 *
-	 * @since 1.2.4
-	 *
 	 * @param string      $slug The slug name for the generic template.
 	 * @param string|null $name The name of the specialized template or null if
 	 *                          there is none.
@@ -761,8 +707,6 @@ if ( ! function_exists( 'has_menu_items' ) ) {
 
 	/**
 	 * Check if a WordPress navigation menu has items.
-	 * 
-	 * @since 1.3.2
 	 *
 	 * @param string $menu_name The name of the menu location to check.
 	 * 

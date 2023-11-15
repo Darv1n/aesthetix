@@ -1,8 +1,6 @@
 <?php
 /**
  * Template part for displaying widget title (for default widgets).
- * 
- * @since 1.3.2
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

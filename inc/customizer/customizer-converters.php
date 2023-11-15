@@ -2,8 +2,6 @@
 /**
  * Customizer converters.
  *
- * @since 1.0.0
- *
  * @package Aesthetix
  */
 
@@ -15,8 +13,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_borders' ) ) {
 
 	/**
 	 * Return string or array with css values.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Key to get one value. Optional. Default null.
 	 *
@@ -56,8 +52,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_radiuses' ) ) {
 
 	/**
 	 * Return string or array with css values.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Key to get one value. Optional. Default null.
 	 *
@@ -101,8 +95,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_paddings' ) ) {
 
 	/**
 	 * Return string or array with css values.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Key to get one value. Optional. Default null.
 	 *
@@ -143,8 +135,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_shadows' ) ) {
 
 	/**
 	 * Return string or array with css values.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Key to get one value. Optional. Default null.
 	 *
@@ -186,8 +176,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_button_sizes' ) ) {
 
 	/**
 	 * Return string or array with css values.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Key to get one value. Optional. Default null.
 	 *
@@ -228,8 +216,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_colors' ) ) {
 
 	/**
 	 * Return string or array with css values.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Key to get one value. Optional. Default null.
 	 * @param string $name    If exists return array with this substring (example border). Optional. Default null.
@@ -540,8 +526,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_sizes' ) ) {
 
 	/**
 	 * Return string or array with css values.
-	 * 
-	 * @since 1.3.0
 	 *
 	 * @param string $control Key to get one value. Optional. Default null.
 	 *

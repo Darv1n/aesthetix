@@ -1,8 +1,6 @@
 <?php
 /**
  * WooCommerce setup.
- * 
- * @since 1.0.0
  *
  * @link https://woocommerce.com/
  * @link https://docs.woocommerce.com/document/third-party-custom-theme-compatibility/
@@ -19,8 +17,6 @@ if ( ! function_exists( 'aesthetix_woo_setup' ) ) {
 
 	/**
 	 * WooCommerce setup function.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
@@ -59,8 +55,6 @@ if ( ! function_exists( 'aesthetix_woo_enqueue_styles' ) ) {
 
 	/**
 	 * Function for 'woocommerce_enqueue_styles' filter-hook.
-	 * 
-	 * @since 1.0.0
 	 * 
 	 * @param array $array List of default WooCommerce styles.
 	 *
@@ -101,8 +95,6 @@ if ( ! function_exists( 'aesthetix_woo_scripts' ) ) {
 
 	/**
 	 * WooCommerce specific scripts & stylesheets.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
@@ -156,8 +148,6 @@ if ( ! function_exists( 'aesthetix_woo_widgets_init' ) ) {
 
 	/**
 	 * Register widget area.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @return void
 	 */

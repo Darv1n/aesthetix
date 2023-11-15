@@ -2,8 +2,6 @@
 /**
  * Template header simple desktop.
  *
- * @since 1.2.4
- *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Aesthetix

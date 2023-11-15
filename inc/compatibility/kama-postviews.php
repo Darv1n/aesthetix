@@ -1,8 +1,6 @@
 <?php
 /**
  * Kama Postviews.
- * 
- * @since 1.0.0
  *
  * @link https://wp-kama.ru/plugin/kama-postviews
  *
@@ -17,8 +15,6 @@ if ( ! function_exists( 'kama_postviews_save_post' ) ) {
 
 	/**
 	 * Function for 'save_post' action-hook.
-	 * 
-	 * @since 1.0.0
 	 * 
 	 * @link https://developer.wordpress.org/reference/hooks/save_post/
 	 *
@@ -41,8 +37,6 @@ if ( ! function_exists( 'kama_postview_archive_entry_post_meta_loop' ) ) {
 
 	/**
 	 * Function for 'aesthetix_archive_entry_post_meta_loop' action-hook.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param WP_Object $post Post object.
 	 *
@@ -62,8 +56,6 @@ if ( ! function_exists( 'wp_enqueue_kama_postviews_styles' ) ) {
 
 	/**
 	 * Function for wp_enqueue_scripts action-hook.
-	 * 
-	 * @since 1.0.0
 	 * 
 	 * @link https://developer.wordpress.org/reference/hooks/wp_enqueue_scripts/
 	 * 
@@ -85,8 +77,6 @@ if ( ! function_exists( 'get_kama_postview_customizer_post_meta_structure' ) ) {
 
 	/**
 	 * Function for 'get_aesthetix_customizer_post_meta_structure' action-hook.
-	 *
-	 * @since 1.0.2
 	 * 
 	 * @param string $control   Array key to get one value.
 	 * @param string $post_type Current post type.
@@ -107,8 +97,6 @@ if ( ! function_exists( 'get_kama_postview_options' ) ) {
 
 	/**
 	 * Function for 'get_aesthetix_options' action-hook.
-	 * 
-	 * @since 1.0.2
 	 *
 	 * @param string $aesthetix_defaults Array with default theme options.
 	 *
@@ -139,4 +127,3 @@ if ( ! function_exists( 'get_kama_postview_options' ) ) {
 	}
 }
 add_filter( 'get_aesthetix_options', 'get_kama_postview_options' );
-

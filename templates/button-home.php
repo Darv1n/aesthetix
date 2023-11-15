@@ -2,8 +2,6 @@
 /**
  * Template part for displaying button home.
  *
- * @since 1.2.4
- *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Aesthetix

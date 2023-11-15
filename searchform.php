@@ -2,8 +2,6 @@
 /**
  * The template for disdisplaying searchform.
  *
- * @since 1.0.0
- *
  * @package Aesthetix
  */
 

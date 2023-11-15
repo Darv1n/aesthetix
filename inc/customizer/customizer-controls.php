@@ -2,8 +2,6 @@
 /**
  * Customizer controls array.
  *
- * @since 1.0.0
- *
  * @package Aesthetix
  */
 
@@ -15,8 +13,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 
 	/**
 	 * Return array with customizer controls.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Array key to get one value.
 	 *

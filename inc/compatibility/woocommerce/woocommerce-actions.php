@@ -1,8 +1,6 @@
 <?php
 /**
  * WooCommerce actions.
- * 
- * @since 1.0.0
  *
  * @link https://woocommerce.com/
  *
@@ -21,8 +19,6 @@ if ( ! function_exists( 'aesthetix_woo_wrapper_before' ) ) {
 	 * Wraps all WooCommerce content in wrappers which match the theme markup.
 	 *
 	 * @hooked woocommerce_before_main_content - 10
-	 * 
-	 * @since 1.0.6
 	 */
 	function aesthetix_woo_wrapper_before() { ?>
 
@@ -37,8 +33,6 @@ if ( ! function_exists( 'aesthetix_woo_wrapper_after' ) ) {
 	 * Closes the wrapping div.
 	 *
 	 * @hooked woocommerce_after_main_content - 10
-	 * 
-	 * @since 1.0.6
 	 */
 	function aesthetix_woo_wrapper_after() { ?>
 
@@ -53,8 +47,6 @@ if ( ! function_exists( 'aesthetix_woo_shop_thumbnail_wrap_start' ) ) {
 	 * Thumbnail wrap start.
 	 * 
 	 * @hooked woocommerce_before_shop_loop_item - 6
-	 * 
-	 * @since 1.0.6
 	 */
 	function aesthetix_woo_shop_thumbnail_wrap_start() {
 
@@ -69,8 +61,6 @@ if ( ! function_exists( 'aesthetix_woo_shop_thumbnail_wrap_end' ) ) {
 	 * Thumbnail wrap end.
 	 * 
 	 * @hooked woocommerce_after_shop_loop_item - 8
-	 * 
-	 * @since 1.0.6
 	 */
 	function aesthetix_woo_shop_thumbnail_wrap_end() {
 
@@ -85,8 +75,6 @@ if ( ! function_exists( 'aesthetix_woo_shop_out_of_stock' ) ) {
 	 * Add Out of Stock to the Shop page
 	 *
 	 * @hooked woocommerce_shop_loop_item_title - 10
-	 *
-	 * @since 1.0.6
 	 */
 	function aesthetix_woo_shop_out_of_stock() {
 		$stock_status        = get_post_meta( get_the_ID(), '_stock_status', true );
@@ -116,8 +104,6 @@ if ( ! function_exists( 'aesthetix_woo_shop_product_content' ) ) {
 	 * Show the product title in the product loop. By default this is an H2.
 	 * 
 	 * @hooked woocommerce_after_shop_loop_item - 10
-	 * 
-	 * @since 1.0.6
 	 */
 	function aesthetix_woo_shop_product_content() {
 

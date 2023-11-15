@@ -2,8 +2,6 @@
 /**
  * Customizer default options.
  *
- * @since 1.0.0
- *
  * @package Aesthetix
  */
 
@@ -15,8 +13,6 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 	/**
 	 * Return array with the default customizer options.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Array key to get one value.
 	 *

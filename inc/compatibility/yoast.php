@@ -1,8 +1,6 @@
 <?php
 /**
  * Yoast SEO Compatibility File.
- * 
- * @since 1.0.0
  *
  * @link https://yoast.com/
  *
@@ -76,8 +74,6 @@ if ( function_exists( 'yoast_breadcrumb' ) ) {
 
 		/**
 		 * Function for wp_enqueue_scripts action-hook.
-		 * 
-		 * @since 1.0.0
 		 * 
 		 * @link https://developer.wordpress.org/reference/hooks/wp_enqueue_scripts/
 		 * 

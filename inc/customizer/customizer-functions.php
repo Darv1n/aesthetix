@@ -2,8 +2,6 @@
 /**
  * Customizer functions.
  *
- * @since 1.0.0
- *
  * @package Aesthetix
  */
 
@@ -15,8 +13,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_types' ) ) {
 
 	/**
 	 * Get customizer post types for constract section and fields.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @return array
 	 */
@@ -34,8 +30,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 
 	/**
 	 * Get roots array for enque inline script.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $control Array key to get one value.
 	 *
@@ -225,8 +219,6 @@ if ( ! function_exists( 'set_aesthetix_customizer_demo_var' ) ) {
 	/**
 	 * Function for 'admin_bar_init' action-hook.
 	 * 
-	 * @since 1.2.4
-	 * 
 	 * @link https://developer.wordpress.org/reference/hooks/admin_bar_init/
 	 *
 	 * @return void
@@ -250,8 +242,6 @@ if ( ! function_exists( 'get_aesthetix_options_with_demo_var' ) ) {
 
 	/**
 	 * Function for 'get_aesthetix_options' action-hook.
-	 * 
-	 * @since 1.0.2
 	 *
 	 * @param string $aesthetix_defaults Array with default theme options.
 	 *
@@ -305,8 +295,6 @@ if ( ! function_exists( 'has_aesthetix_customizer_social' ) ) {
 
 	/**
 	 * Return true/false if has social links.
-	 * 
-	 * @since 1.3.2
 	 *
 	 * @return bool
 	 */

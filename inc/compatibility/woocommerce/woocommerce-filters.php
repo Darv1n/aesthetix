@@ -1,8 +1,6 @@
 <?php
 /**
  * WooCommerce filters.
- * 
- * @since 1.0.0
  *
  * @link https://woocommerce.com/
  *
@@ -13,8 +11,6 @@ if ( ! function_exists( 'aesthetix_woo_active_body_class' ) ) {
 
 	/**
 	 * Add 'woocommerce-active' class to the body tag.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param array $classes CSS classes applied to the body tag.
 	 * 
@@ -32,8 +28,6 @@ if ( ! function_exists( 'get_aesthetix_woo_sidebar' ) ) {
 
 	/**
 	 * Assign shop sidebar for store page.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $sidebar Sidebar.
 	 *
@@ -56,8 +50,6 @@ if ( ! function_exists( 'aesthetix_woo_rating_markup' ) ) {
 
 	/**
 	 * Rating Markup.
-	 * 
-	 * @since 1.0.6
 	 *
 	 * @param string $html   Rating Markup.
 	 * @param float  $rating Rating being shown.

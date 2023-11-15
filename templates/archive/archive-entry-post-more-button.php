@@ -2,8 +2,6 @@
 /**
  * Template part for displaying archive entry post detail button.
  *
- * @since 1.0.0
- *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Aesthetix

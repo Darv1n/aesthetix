@@ -1,8 +1,6 @@
 <?php
 /**
  * Template part for displaying content wrapper start.
- * 
- * @since 1.1.1
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

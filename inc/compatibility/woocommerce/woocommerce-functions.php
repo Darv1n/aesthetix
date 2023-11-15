@@ -1,8 +1,6 @@
 <?php
 /**
  * WooCommerce functions.
- * 
- * @since 1.0.0
  *
  * @link https://woocommerce.com/
  *
@@ -17,8 +15,6 @@ if ( ! function_exists( 'is_woocommerce_activated' ) ) {
 
 	/**
 	 * Query WooCommerce activation.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
@@ -31,8 +27,6 @@ if ( ! function_exists( 'is_product_archive' ) ) {
 
 	/**
 	 * Checks if the current page is a product archive.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @return void
 	 */
@@ -49,8 +43,6 @@ if ( ! function_exists( 'is_product_subcategory' ) ) {
 
 	/**
 	 * Check if the current page is a Product Subcategory page or not.
-	 * 
-	 * @since 1.0.6
 	 *
 	 * @param integer $category_id Current page category ID.
 	 * 

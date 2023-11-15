@@ -1,8 +1,6 @@
 <?php
 /**
  * Add meta boxes.
- * 
- * @since 1.3.0
  *
  * @package Aesthetix
  */
@@ -15,8 +13,6 @@ if ( ! function_exists( 'add_meta_boxes_callback' ) ) {
 
 	/**
 	 * Function for 'add_meta_boxes' action-hook.
-	 * 
-	 * @since 1.3.0
 	 * 
 	 * @param string  $post_type Post type.
 	 * @param WP_Post $post      Post object.
@@ -33,8 +29,6 @@ if ( ! function_exists( 'post_gallery_meta_box_callback' ) ) {
 
 	/**
 	 * Callabck for 'add_meta_boxes' action-hook add_meta_box() function.
-	 * 
-	 * @since 1.3.0
 	 * 
 	 * @param string $post This object containing the data of the global array $_POST.
 	 * @param string $meta This array with the following elements: metabox_id, title, callback.
@@ -121,8 +115,6 @@ if ( ! function_exists( 'admin_enqueue_scripts_mata_boxes_callback' ) ) {
 
 	/**
 	 * Load dynamic logic for the meta boxes area.
-	 * 
-	 * @since 1.3.0
 	 * 
 	 * @return void
 	 */

@@ -6,8 +6,6 @@
  * Setup js scripts - /inc/setup.php
  * Form php handler - /inc/handlers.php
  * Form html        - /templates/subscribe-form.php
- *
- * @since 1.1.2
  * 
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

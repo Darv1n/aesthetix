@@ -1,8 +1,6 @@
 <?php
 /**
  * Template part for displaying archive entry post author widget.
- * 
- * @since 1.0.9
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

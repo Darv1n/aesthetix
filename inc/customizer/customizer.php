@@ -2,8 +2,6 @@
 /**
  * Customizer main setup.
  *
- * @since 1.0.0
- *
  * @package Aesthetix
  */
 
@@ -15,8 +13,6 @@ if ( ! function_exists( 'aesthetix_customize_register' ) ) {
 
 	/**
 	 * Add postMessage support for site title and description for the Theme Customizer.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param WP_Customize_Manager $wp_customize Theme Customizer object.
 	 */
@@ -379,8 +375,6 @@ if ( ! function_exists( 'aesthetix_customize_panels_js' ) ) {
 
 	/**
 	 * Load dynamic logic for the customizer controls area.
-	 * 
-	 * @since 1.0.0
 	 */
 	function aesthetix_customize_panels_js() {
 
@@ -404,8 +398,6 @@ if ( ! function_exists( 'aesthetix_customizer_section_control_default_replacemen
 
 	/**
 	 * Function for 'aesthetix_customizer_section_control' filter-hook.
-	 * 
-	 * @since 1.2.4
 	 * 
 	 * @param string $section Replacement section for default customizer section.
 	 * @param string $id      ID for filter.

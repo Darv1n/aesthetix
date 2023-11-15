@@ -1,8 +1,6 @@
 <?php
 /**
  * Ajax handlers.
- * 
- * @since 1.1.7
  *
  * @package Aesthetix
  */
@@ -20,8 +18,6 @@ if ( ! function_exists( 'ajax_loadmore_handler_callback' ) ) {
 	 * Setup js scripts - /inc/setup.php
 	 * Form php handler - /inc/handlers.php
 	 * Html             - /templates/archive/archive-pagination.php
-	 * 
-	 * @since 1.1.4
 	 * 
 	 * @return json
 	 */
@@ -92,8 +88,6 @@ if ( ! function_exists( 'ajax_subscribe_form_callback' ) ) {
 	 * Setup js scripts - /inc/setup.php
 	 * Form php handler - /inc/handlers.php
 	 * Form html        - /templates/subscribe-form.php
-	 * 
-	 * @since 1.1.2
 	 * 
 	 * @return json
 	 */

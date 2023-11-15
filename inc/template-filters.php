@@ -2,8 +2,6 @@
 /**
  * Template filters.
  *
- * @since 1.0.0
- *
  * @package Aesthetix
  */
 
@@ -56,8 +54,6 @@ if ( ! function_exists( 'aesthetix_privacy_policy_url' ) ) {
 	/**
 	 * Add a privacy policy link if it doesn't exist.
 	 * 
-	 * @since 1.0.0
-	 * 
 	 * @param string $url            The URL to the privacy policy page. Empty string if it doesn't exist.
 	 * @param int    $policy_page_id The ID of privacy policy page.
 	 *
@@ -84,8 +80,6 @@ if ( ! function_exists( 'aesthetix_robots' ) ) {
 
 	/**
 	 * Function for 'wp_robots' filter-hook. Prints noindex, nofollow tags on archive pages, if there are no posts in this archive page.
-	 *
-	 * @since 1.0.0
 	 * 
 	 * @param array $robots Parameter for filter.
 	 *
@@ -116,8 +110,6 @@ if ( ! function_exists( 'aesthetix_robots_txt' ) ) {
 
 	/**
 	 * Function for 'robots_txt' filter-hook.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $output The robots.txt output.
 	 * @param bool   $public Whether the site is considered 'public'.
@@ -139,8 +131,6 @@ if ( ! function_exists( 'unset_intermediate_image_sizes' ) ) {
 
 	/**
 	 * Function for 'intermediate_image_sizes' filter-hook.
-	 * 
-	 * @since 1.0.0
 	 * 
 	 * @param array $default_sizes Array of intermediate image size names.
 	 *
@@ -164,8 +154,6 @@ if ( ! function_exists( 'aesthetix_nav_menu_args' ) ) {
 
 	/**
 	 * Filters the arguments used to display a navigation menu. Replace tag div with nav.
-	 *
-	 * @since 1.0.0
 	 * 
 	 * @param array $args Parameter for filter.
 	 *
@@ -185,8 +173,6 @@ if ( ! function_exists( 'remove_nav_menu_item_id' ) ) {
 	/**
 	 * Function for 'nav_menu_item_id' filter-hook.
 	 * 
-	 * @since 1.0.0
-	 * 
 	 * @param string   $menu_id   The ID that is applied to the menu item's `<li>` element.
 	 * @param WP_Post  $menu_item The current menu item.
 	 * @param stdClass $args      Object of wp_nav_menu() arguments.
@@ -204,8 +190,6 @@ if ( ! function_exists( 'remove_nav_menu_item_class' ) ) {
 
 	/**
 	 * Function for 'nav_menu_css_class' filter-hook.
-	 * 
-	 * @since 1.0.0
 	 * 
 	 * @param array    $classes   Array of the CSS classes that are applied to the menu item's `<li>` element.
 	 * @param WP_Post  $menu_item The current menu item object.
@@ -233,8 +217,6 @@ if ( ! function_exists( 'aesthetix_search_highlight' ) ) {
 
 	/**
 	 * Highlight search results.
-	 * 
-	 * @since 1.0.0
 	 *
 	 * @param string $text Text for highlight.
 	 *
@@ -280,8 +262,6 @@ if ( ! function_exists( 'aesthetix_nav_menu_item_args' ) ) {
 	/**
 	 * Function for 'nav_menu_item_args' filter-hook.
 	 * 
-	 * @since 1.2.4
-	 * 
 	 * @param stdClass $args      An object of wp_nav_menu() arguments.
 	 * @param WP_Post  $menu_item Menu item data object.
 	 * @param int      $depth     Depth of menu item. Used for padding.
@@ -289,8 +269,6 @@ if ( ! function_exists( 'aesthetix_nav_menu_item_args' ) ) {
 	 * @return stdClass
 	 */
 	function aesthetix_nav_menu_item_args( $args, $menu_item, $depth ) {
-
-		// vardump( $args );
 
 		$title_classes[] = 'menu-title';
 
@@ -339,8 +317,6 @@ if ( ! function_exists( 'aesthetix_wp_nav_menu_objects' ) ) {
 
 	/**
 	 * Function for 'wp_nav_menu_objects' filter-hook.
-	 * 
-	 * @since 1.2.4
 	 * 
 	 * @param array    $sorted_menu_items The menu items, sorted by each menu item's menu order.
 	 * @param stdClass $args              An object containing wp_nav_menu() arguments.
@@ -426,8 +402,6 @@ if ( ! function_exists( 'aesthetix_wp_nav_menu_items' ) ) {
 	/**
 	 * Function for 'wp_nav_menu_items' filter-hook.
 	 * 
-	 * @since 1.2.4
-	 * 
 	 * @param string   $items The HTML list content for the menu items.
 	 * @param stdClass $args  An object containing wp_nav_menu() arguments.
 	 *
@@ -461,8 +435,6 @@ if ( ! function_exists( 'aesthetix_nav_menu_link_attributes' ) ) {
 
 	/**
 	 * Function for 'nav_menu_link_attributes' filter-hook.
-	 * 
-	 * @since 1.2.9
 	 * 
 	 * @param array    $atts      The HTML attributes applied to the menu item's `<a>` element, empty strings are ignored.
 	 * @param WP_Post  $menu_item The current menu item object.

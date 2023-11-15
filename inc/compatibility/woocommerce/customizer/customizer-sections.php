@@ -2,8 +2,6 @@
 /**
  * Customizer sections.
  *
- * @since 1.0.0
- *
  * @package Aesthetix
  */
 
@@ -37,5 +35,3 @@ if ( ! function_exists( 'get_aesthetix_customizer_sections_woo_callback' ) ) {
 	}
 }
 add_filter( 'get_aesthetix_customizer_sections', 'get_aesthetix_customizer_sections_woo_callback' );
-
-
