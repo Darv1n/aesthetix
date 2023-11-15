@@ -227,9 +227,9 @@ if ( ! function_exists( 'aesthetix_shortcode_social_list' ) ) {
 					if ( $atts['type'] === 'icons' ) {
 						$link_classes = 'social-list__link icon icon-' . $social;
 					} elseif ( $atts['type'] === 'icons-rounded' ) {
-						$link_classes = 'social-list__link icon icon_rounded icon-' . $social;
+						$link_classes = 'social-list__link icon icon-rounded icon-' . $social;
 					} elseif ( $atts['type'] === 'icons-squared' ) {
-						$link_classes = 'social-list__link icon icon_squared icon-' . $social;
+						$link_classes = 'social-list__link icon icon-squared icon-' . $social;
 					} else {
 						$link_classes = implode( ' ', get_link_classes( 'social-list__link' ) );
 					}

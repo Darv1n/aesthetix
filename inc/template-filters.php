@@ -39,12 +39,12 @@ if ( ! function_exists( 'ajax_localize_params' ) ) {
 	}
 }
 
-if ( ! function_exists( 'primary_menu_fallback' ) ) {
-	function primary_menu_fallback() {
+if ( ! function_exists( 'setup_menu_fallback' ) ) {
+	function setup_menu_fallback() {
 		if ( current_user_can( 'edit_theme_options' ) ) {
-			echo '<ul id="top-menu">';
+			echo '<ul class="setup-menu">';
 				echo '<li>';
-					echo '<a ' . link_classes( '', false ) . ' href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '">' . esc_html__( 'Setup menu', 'aesthetix' ) .'</a>';
+					echo '<a ' . link_classes( 'setup-link', array(), false ) . ' href="' . esc_url( admin_url( 'nav-menus.php' ) ) . '" target="_blank">' . esc_html__( 'Setup menu', 'aesthetix' ) .'</a>';
 				echo '</li>';
 			echo '</ul>';
 		}
@@ -290,6 +290,8 @@ if ( ! function_exists( 'aesthetix_nav_menu_item_args' ) ) {
 	 */
 	function aesthetix_nav_menu_item_args( $args, $menu_item, $depth ) {
 
+		// vardump( $args );
+
 		$title_classes[] = 'menu-title';
 
 		if ( (int) $menu_item->menu_item_parent === 0 ) {
@@ -301,21 +303,31 @@ if ( ! function_exists( 'aesthetix_nav_menu_item_args' ) ) {
 		}
 
 		$args->link_before = '<span class="' . esc_attr( implode( ' ', $title_classes ) ) . '">';
-		$args->link_after  = '</span>';
+		$args->link_after  = '';
+		$args->after       = '';
 
 		if ( in_array( 'menu-item-has-children', $menu_item->classes, true ) ) {
 
 			$button_args = array(
 				'button_size'    => 'xs',
-				'button_content' => 'icon',
 			);
 
-			$args->link_after = '<button ' . button_classes( 'sub-menu-toggle toggle-icon icon icon-center icon-angle-down', $button_args, false ) . ' data-icon-on="icon-angle-up" data-icon-off="icon-angle-down"></button>';
-			$args->link_after .= '</span>';
+			$args->link_after .= '<button ' . icon_classes( 'sub-menu-toggle toggle-icon icon icon-angle-down', $button_args, false ) . ' data-icon-on="icon-angle-up" data-icon-off="icon-angle-down" type="button"></button>';
 		}
+
+		$args->link_after .= '</span>';
 
 		if ( $menu_item->description ) {
 			$args->link_after .= '<span class="menu-description">' . $menu_item->description . '</span>';
+		}
+
+		if ( isset( $args->count_items_display ) && $args->count_items_display && $menu_item->type === 'taxonomy' ) {
+			$term = get_term( $menu_item->object_id, $menu_item->object );
+			if ( $term && isset( $term->count ) && (int) $term->count > 0 ) {
+				$args->after .= '<span ' . icon_classes( 'menu-count-button button-disabled', array( 'button_content' => 'button-text', 'button_size' => 'xxs' ), false ) . '>';
+					$args->after .= esc_html( $term->count );
+				$args->after .= '</span>';
+			}
 		}
 
 		return $args;

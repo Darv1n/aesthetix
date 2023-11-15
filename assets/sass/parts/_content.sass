@@ -4,10 +4,9 @@
 	> *
 		display: block
 	&-title
+		@extend .h2
 		margin-bottom: $gutter
 		font-family: $primary-font
-		font-size: $h3
-		line-height: $h3
 	&-description
 		margin-bottom: 0 !important
 		font-size: $small-font-size
@@ -39,9 +38,6 @@ a.logo
 
 @media ( min-width: 768px )
 	.logo
-		&-title
-			font-size: $h1
-			line-height: $h1
 		&-description
 			font-size: $medium-font-size
 			line-height: $medium-font-size
@@ -164,8 +160,7 @@ a.logo
 		> *
 			margin-bottom: .5rem
 		.post-thumbnail
-			img
-				max-height: 55vh
+			max-height: 65vh
 	&-content-wrap, &-thumbnail-wrap
 		position: relative
 	&-thumbnail-wrap
@@ -254,7 +249,7 @@ a.logo
 			flex-grow: 1
 			padding: var( --post-thumbnail-padding ) var( --post-content-padding ) var( --post-content-padding )
 		.post-title
-			font-size: $h4
+			@extend .h4
 		&.post-format-standard
 			.post-header
 				display: flex
@@ -262,8 +257,10 @@ a.logo
 				flex-grow: 1
 	&-aside
 		padding: calc( var( --post-content-padding ) / 2 )
+		.post-thumbnail-wrap, .post-content-wrap
+			padding: 0
 		.post-title
-			font-size: $h6
+			@extend .h6
 	&-list
 		.post-thumbnail-wrap
 			height: 100%

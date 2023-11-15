@@ -1,6 +1,6 @@
 <?php
 /**
- * Widgets Init.
+ * Widget Init.
  * 
  * @since 1.2.0
  *
@@ -19,7 +19,11 @@ if ( ! function_exists( 'WPA_Widgets_init' ) ) {
 	 * @since 1.2.0
 	 */
 	function WPA_Widgets_init() {
+		register_widget( 'WPA_Widget_Menus' );
+		register_widget( 'WPA_Widget_Buttons' );
 		register_widget( 'WPA_Widget_Recent_Posts' );
+		register_widget( 'WPA_Widget_Socials' );
+		register_widget( 'WPA_Widget_Contacts' );
 		register_widget( 'WPA_Widget_Search_Popup_Form' );
 		register_widget( 'WPA_Widget_Subscribe_Form' );
 		register_widget( 'WPA_Widget_Subscribe_Popup_Form' );
@@ -190,13 +194,13 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 				apply_filters(
 					'aesthetix_sidebar_' . $id . '_init',
 					array(
-						'name'          => $sidebar['name'],
-						'id'            => $id,
-						'description'   => $sidebar['description'],
-						'before_widget' => '<div id="%1$s" class="widget %2$s">',
-						'after_widget'  => '</div>',
-						'before_title'  => '<' . $sidebar['title_tag'] . ' class="widget-title">',
-						'after_title'   => '</' . $sidebar['title_tag'] . '>',
+						'name'            => $sidebar['name'],
+						'id'              => $id,
+						'description'     => $sidebar['description'],
+						'before_widget'   => '<div id="%1$s" class="widget %2$s">',
+						'after_widget'    => '</div>',
+						'before_title'    => '<' . $sidebar['title_tag'] . ' class="widget-title">',
+						'after_title'     => '</' . $sidebar['title_tag'] . '>',
 					)
 				)
 			);

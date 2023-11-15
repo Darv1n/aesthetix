@@ -27,19 +27,22 @@ class WPA_Widget_Recent_Posts extends WPA_Widget {
 		$this->widget_cssclass    = 'widget_posts';
 		$this->widget_description = __( 'This widget displays recent posts with aesthetix style', 'aesthetix' );
 		$this->widget_id          = 'aesthetix_widget_posts';
-		$this->widget_name        = __( 'Aesthetix posts', 'aesthetix' );
+		$this->widget_name        = 'Aesthetix ' . mb_strtolower( __( 'Recent posts', 'aesthetix' ) );
 		$this->settings           = array(
-			'title'                        => array(
+			'title'            => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Title', 'aesthetix' ),
 			),
-			'posts_layout'                 => array(
-				'type'    => 'select',
-				'std'     => get_aesthetix_options( 'archive_post_layout' ),
-				// 'std'     => 'list',
-				'label'   => __( 'Select posts layout', 'aesthetix' ),
-				'options' => get_aesthetix_customizer_archive_post_layout(),
+			'subtitle'         => array(
+				'type'  => 'text',
+				'std'   => '',
+				'label' => __( 'Subtitle', 'aesthetix' ) . ' (' . mb_strtolower( __( 'Before title', 'aesthetix' ) ) . ')',
+			),
+			'description'      => array(
+				'type'  => 'textarea',
+				'std'   => '',
+				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
 			'posts_order'                  => array(
 				'type'    => 'select',
@@ -60,6 +63,12 @@ class WPA_Widget_Recent_Posts extends WPA_Widget {
 				'step'  => 1,
 				'std'   => 4,
 				'label' => __( 'Select posts count', 'aesthetix' ),
+			),
+			'post_layout'                  => array(
+				'type'    => 'select',
+				'std'     => 'list',
+				'label'   => __( 'Select posts layout', 'aesthetix' ),
+				'options' => get_aesthetix_customizer_archive_post_layout(),
 			),
 			'post_structure'               => array(
 				'type'    => 'sortable',
@@ -103,7 +112,7 @@ class WPA_Widget_Recent_Posts extends WPA_Widget {
 		$post_args['order']                        = isset( $instance['posts_order'] ) ? $instance['posts_order'] : $this->settings['posts_order']['std'];
 		$post_args['orderby']                      = isset( $instance['posts_orderby'] ) ? $instance['posts_orderby'] : $this->settings['posts_orderby']['std'];
 		$post_args['posts_per_page']               = isset( $instance['posts_count'] ) ? $instance['posts_count'] : $this->settings['posts_count']['std'];
-		$post_args['post_layout']                  = isset( $instance['posts_layout'] ) ? $instance['posts_layout'] : $this->settings['posts_layout']['std'];
+		$post_args['post_layout']                  = isset( $instance['post_layout'] ) ? $instance['post_layout'] : $this->settings['post_layout']['std'];
 		$post_args['post_structure']               = isset( $instance['post_structure'] ) ? $instance['post_structure'] : $this->settings['post_structure']['std'];
 		$post_args['post_meta_structure']          = isset( $instance['post_meta_structure'] ) ? $instance['post_meta_structure'] : $this->settings['post_meta_structure']['std'];
 		$post_args['post_taxonomies_structure']    = isset( $instance['post_taxonomies_structure'] ) ? $instance['post_taxonomies_structure'] : $this->settings['post_taxonomies_structure']['std'];

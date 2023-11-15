@@ -120,9 +120,6 @@ body
 	font-size: 90%
 	text-transform: uppercase
 
-.center-text
-	text-align: center
-
 .list
 	&-unstyled, &-inline, &-block
 		padding-left: 0
@@ -139,7 +136,7 @@ body
 		> *
 			display: block
 			&:not(:last-child)
-				margin-bottom: .5rem
+				margin-bottom: .25rem
 
 article, main, aside, section, header, footer, menu, nav, details, figcaption, figure, hgroup, pre, audio, video
 	display: block
@@ -157,34 +154,54 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
 
 h1, .h1
 	font-size: $h3
+	line-height: $h2
 h2, .h2
 	font-size: $h4
+	line-height: $h3
 h3, .h3
 	font-size: $h5
+	line-height: $h4
 h4, .h4, h5, .h5, h6, .h6
 	font-size: $h6
+	line-height: $h5
+
 
 @media (min-width: 576px)
 	h1, .h1
 		font-size: $h2
+		line-height: $h1
 	h2, .h2
 		font-size: $h3
+		line-height: $h2
 	h3, .h3
 		font-size: $h4
+		line-height: $h3
 	h4, .h4
 		font-size: $h5
+		line-height: $h4
+	h5, .h5, h6, .h6
+		font-size: $h6
+		line-height: $h5
 
 @media (min-width: 992px)
 	h1, .h1
 		font-size: $h1
+		line-height: 2.5rem
 	h2, .h2
 		font-size: $h2
+		line-height: $h1
 	h3, .h3
 		font-size: $h3
+		line-height: $h2
 	h4, .h4
 		font-size: $h4
+		line-height: $h3
 	h5, .h5
 		font-size: $h5
+		line-height: $h4
+	h6, .h6
+		font-size: $h6
+		line-height: $h5
 
 b, strong, optgroup, dl dt
 	@extend .bold
@@ -197,6 +214,9 @@ small
 
 big, .big
 	@extend .large
+
+p
+	line-height: $line-height
 
 p, dd, dl, figure, optgroup, fieldset, blockquote
 	margin: 0

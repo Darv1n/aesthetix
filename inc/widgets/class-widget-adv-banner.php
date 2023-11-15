@@ -27,12 +27,22 @@ class WPA_Widget_Adv_Banner extends WPA_Widget {
 		$this->widget_cssclass    = 'widget_adv_banner';
 		$this->widget_description = __( 'This widget displays an advertising banner', 'aesthetix' );
 		$this->widget_id          = 'aesthetix_widget_adv_banner';
-		$this->widget_name        = __( 'Aesthetix adv banner', 'aesthetix' );
+		$this->widget_name        = 'Aesthetix ' . mb_strtolower( __( 'Adv banner', 'aesthetix' ) );
 		$this->settings           = array(
-			'title'    => array(
+			'title'            => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Title', 'aesthetix' ),
+			),
+			'subtitle'         => array(
+				'type'  => 'text',
+				'std'   => '',
+				'label' => __( 'Subtitle', 'aesthetix' ) . ' (' . mb_strtolower( __( 'Before title', 'aesthetix' ) ) . ')',
+			),
+			'description'      => array(
+				'type'  => 'textarea',
+				'std'   => '',
+				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
 			'adv_desktop' => array(
 				'type'  => 'image',
@@ -70,7 +80,7 @@ class WPA_Widget_Adv_Banner extends WPA_Widget {
 		$template_args['adv_link']        = isset( $instance['adv_link'] ) && wp_http_validate_url( $instance['adv_link'] ) ? $instance['adv_link'] : $this->settings['adv_link']['std'];
 		$template_args['adv_description'] = isset( $instance['adv_description'] ) ? $instance['adv_description'] : $this->settings['adv_description']['std'];
 
-		get_template_part( 'templates/adv-banner', '', $template_args );
+		get_template_part( 'templates/widget/widget-adv-banner', '', $template_args );
 
 		$this->widget_end( $args, $instance );
 	}

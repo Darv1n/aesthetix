@@ -20,7 +20,7 @@
 						<?php if ( is_active_sidebar( 'header-main-left' ) ) {
 							dynamic_sidebar( 'header-main-left' );
 						} else {
-							the_default_sidebar( apply_filters( 'header_desktop_default_sidebar_main_left', array( 'logo' ) ), 'header-main-left' );
+							aesthetix_widget_default( 'header-main-left' );
 						} ?>
 
 					</div>
@@ -29,13 +29,13 @@
 					<div <?php widgets_classes( '', 'header-main-right' ); ?>>
 
 						<div <?php widget_classes( '', 'header-main-right' ) ?>>
-							<?php get_template_part( 'templates/main-menu' ); ?>
+							<?php get_template_part( 'templates/widget/widget-menu', '', array( 'theme_location' => 'primary' ) ); ?>
 						</div>
 
 						<?php if ( is_active_sidebar( 'header-main-right' ) ) {
 							dynamic_sidebar( 'header-main-right' );
 						} else {
-							the_default_sidebar( apply_filters( 'header_desktop_default_sidebar_main_right', array( 'aside-search-toggle', 'aside-subscribe-toggle' ) ), 'header-main-right' );
+							aesthetix_widget_default( 'header-main-right' );
 						} ?>
 
 					</div>

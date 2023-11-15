@@ -27,12 +27,22 @@ class WPA_Widget_Subscribe_Form extends WPA_Widget {
 		$this->widget_cssclass    = 'widget_subscribe_form';
 		$this->widget_description = __( 'The global settings for this form can be found in the Customizer', 'aesthetix' );
 		$this->widget_id          = 'aesthetix_subscribe_form_widget';
-		$this->widget_name        = __( 'Aesthetix subscribe form', 'aesthetix' );
+		$this->widget_name        = 'Aesthetix ' . mb_strtolower( __( 'Subscribe form', 'aesthetix' ) );
 		$this->settings           = array(
-			'title'       => array(
+			'title'            => array(
 				'type'  => 'text',
-				'std'   => get_aesthetix_options( 'general_subscribe_form_title' ),
+				'std'   => '',
 				'label' => __( 'Title', 'aesthetix' ),
+			),
+			'subtitle'         => array(
+				'type'  => 'text',
+				'std'   => '',
+				'label' => __( 'Subtitle', 'aesthetix' ) . ' (' . mb_strtolower( __( 'Before title', 'aesthetix' ) ) . ')',
+			),
+			'description'      => array(
+				'type'  => 'textarea',
+				'std'   => '',
+				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
 		);
 

@@ -10,38 +10,27 @@
  */
  ?>
 
-<?php
-	if ( get_aesthetix_options( 'general_footer_type' ) === 'footer-four-columns' ) {
-		$first_col_classes = array( 'col-12', 'col-sm-6', 'col-md-3' );
-		$last_col_classes  = array( 'col-12', 'col-sm-6', 'col-md-7' );
-	} else {
-		$first_col_classes = array( 'col-12', 'col-sm-6', 'col-md-4' );
-		$last_col_classes  = array( 'col-12', 'col-sm-6', 'col-md-8' );
-	}
-?>
-
 <div <?php aesthetix_archive_page_columns_wrapper_classes(); ?>>
-	<div class="<?php echo esc_attr( implode( ' ', $first_col_classes ) ); ?>">
+	<div class="col-12 col-md-3">
 		<div <?php widgets_classes( '', 'footer-main-first' ); ?>>
-			<?php
-				if ( is_active_sidebar( 'footer-main-first' ) ) {
-					dynamic_sidebar( 'footer-main-first' );
-				} else { ?>
-					<div class="widget widget_branding">
-						<?php get_template_part( 'templates/logo' ); ?>
-					</div>
-					<div class="widget widget_search">
-						<?php get_search_form(); ?>
-					</div>
-				<?php }
-			?>
+
+			<?php if ( is_active_sidebar( 'footer-main-first' ) ) {
+				dynamic_sidebar( 'footer-main-first' );
+			} else {
+				aesthetix_widget_default( 'footer-main-first' );
+			} ?>
+
 		</div>
 	</div>
-	<div class="<?php echo esc_attr( implode( ' ', $last_col_classes ) ); ?>">
+	<div class="col-12 col-md-9">
 		<div <?php widgets_classes( '', 'footer-main-second' ); ?>>
+
 			<?php if ( is_active_sidebar( 'footer-main-second' ) ) {
 				dynamic_sidebar( 'footer-main-second' );
+			} else {
+				aesthetix_widget_default( 'footer-main-second' );
 			} ?>
+
 		</div>
 	</div>
 </div>

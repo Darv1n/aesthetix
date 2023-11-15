@@ -1,7 +1,7 @@
 .widgets
 	> *
 		&:not(:last-child)
-			margin-bottom: 1rem
+			margin-bottom: 1.5rem
 	&-left
 		text-align: left
 	&-center
@@ -14,7 +14,7 @@
 			display: inline-block
 			vertical-align: middle
 			&:not(:last-child)
-				margin-right: .125rem
+				margin-right: .25rem
 				margin-bottom: .125rem
 
 .footer
@@ -23,9 +23,18 @@
 
 .widget
 	position: relative
-	&-title
+	&-title-wrap
 		margin-bottom: .5rem
-		font-size: $h4
+		> *:not(:last-child)
+			margin-bottom: .25rem
+	&-title
+		@extend .h4
+	&-subtitle, &-description
+		font-size: $small-font-size
+		color: $primary-gray-color
+	&-menu-title
+		@extend .h6
+		margin: .25rem 0
 	ul, ol, dl
 		// list-style-type: none
 		// padding-left: 0

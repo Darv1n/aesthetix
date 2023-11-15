@@ -20,7 +20,7 @@
 						<?php if ( is_active_sidebar( 'header-main-left' ) ) {
 							dynamic_sidebar( 'header-main-left' );
 						} else {
-							the_default_sidebar( apply_filters( 'header_desktop_mid_3_bot_3_sidebar_main_left', array( 'adv-banner' ) ), 'header-main-left' );
+							aesthetix_widget_default( 'header-main-left' );
 						} ?>
 
 					</div>
@@ -30,7 +30,7 @@
 						<?php if ( is_active_sidebar( 'header-main-center' ) ) {
 							dynamic_sidebar( 'header-main-center' );
 						} else {
-							the_default_sidebar( apply_filters( 'header_desktop_mid_3_bot_3_sidebar_main_center', array( 'logo' ) ), 'header-main-center' );
+							aesthetix_widget_default( 'header-main-center' );
 						} ?>
 					</div>
 				</div>
@@ -39,7 +39,7 @@
 						<?php if ( is_active_sidebar( 'header-main-right' ) ) {
 							ynamic_sidebar( 'header-main-right' );
 						} else {
-							the_default_sidebar( apply_filters( 'header_desktop_mid_3_bot_3_sidebar_main_right', array( 'adv-banner' ) ), 'header-main-right' );
+							aesthetix_widget_default( 'header-main-right' );
 						} ?>
 
 					</div>
@@ -59,7 +59,7 @@
 						<?php if ( is_active_sidebar( 'header-bottom-left' ) ) {
 							dynamic_sidebar( 'header-bottom-left' );
 						} else {
-							the_default_sidebar( apply_filters( 'header_desktop_mid_3_bot_3_sidebar_bottom_left', array( 'aside-subscribe-toggle' ) ), 'header-bottom-left' );
+							aesthetix_widget_default( 'header-bottom-left' );
 						} ?>
 
 					</div>
@@ -68,7 +68,7 @@
 					<div <?php widgets_classes( '', 'header-bottom-center' ); ?>>
 
 						<div <?php widget_classes( '', 'header-bottom-center' ) ?>>
-							<?php get_template_part( 'templates/main-menu' ); ?>
+							<?php get_template_part( 'templates/widget/widget-menu', '', array( 'theme_location' => 'primary' ) ); ?>
 						</div>
 
 					</div>
@@ -79,7 +79,7 @@
 						<?php if ( is_active_sidebar( 'header-bottom-right' ) ) {
 							dynamic_sidebar( 'header-bottom-right' );
 						} else {
-							the_default_sidebar( apply_filters( 'header_desktop_mid_3_bot_3_sidebar_bottom_right', array( 'aside-search-toggle' ) ), 'header-bottom-right' );
+							aesthetix_widget_default( 'header-bottom-right' );
 						} ?>
 
 					</div>

@@ -92,16 +92,6 @@ jQuery( document ).ready( function( $ ) {
 			$( this ).attr( 'aria-expanded', $( this ).closest( '.menu-item-has-children' ).find( '.sub-menu'  ).attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
 		} );
 
-		function onResizeMainMenu() {
-			if ( $( window ).width() < 992 || menuContainer.hasClass( 'main-menu_type-close' )) {
-				// menuToggle.attr( 'aria-expanded', 'false' );
-				// menuContainer.addClass( 'main-menu_burgered' );
-			} else {
-				// menuToggle.attr( 'aria-expanded', 'true' );
-				// menuContainer.removeClass( 'main-menu_burgered' );
-			}
-		}
-
 		// Initial state.
 		onResizeMainMenu();
 

@@ -69,8 +69,10 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 
 		$structure = array(
 			'aside-menu',
-			'search-popup', // TODO: Load by condition.
-			'subscribe-popup', // TODO: Load by condition.
+			'aside-search', // TODO: Load by condition.
+			'aside-subscribe', // TODO: Load by condition.
+			'aside-cookie',
+			'aside-scroll-top',
 			'first-screen',
 			'breadcrumbs',
 			'content-wrapper-start',
@@ -84,13 +86,19 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 					do_action( 'before_site_content_structure_loop_' . $value );
 					break;
 				case 'aside-menu':
-					get_template_part( 'templates/aside-menu' );
+					get_template_part( 'templates/aside/aside-menu' );
 					break;
-				case 'search-popup':
-					get_template_part( 'templates/aside-search' );
+				case 'aside-search':
+					get_template_part( 'templates/aside/aside-search' );
 					break;
-				case 'subscribe-popup':
-					get_template_part( 'templates/aside-subscribe' );
+				case 'aside-subscribe':
+					get_template_part( 'templates/aside/aside-subscribe' );
+					break;
+				case 'aside-cookie':
+					get_template_part( 'templates/aside/aside-cookie' );
+					break;
+				case 'aside-scroll-top':
+					get_template_part( 'templates/aside/aside-scroll-top' );
 					break;
 				case 'first-screen':
 					get_template_part( 'templates/first-screen' );
@@ -147,37 +155,3 @@ if ( ! function_exists( 'after_site_content_structure' ) ) {
 }
 add_action( 'after_site_content', 'after_site_content_structure' );
 
-if ( ! function_exists( 'wp_footer_close_structure' ) ) {
-
-	/**
-	 * Display mobile menu structure in footer.php.
-	 * 
-	 * @since 1.1.1
-	 */
-	function wp_footer_close_structure() {
-
-		$structure = array(
-			'scroll-top',
-			'cookie',
-		);
-
-		$structure = apply_filters( 'wp_footer_close_structure', $structure );
-
-		foreach ( $structure as $key => $value ) {
-			switch ( $value ) {
-				case has_action( 'wp_footer_close_structure_loop_' . $value ):
-					do_action( 'wp_footer_close_structure_loop_' . $value );
-					break;
-				case 'scroll-top':
-					get_template_part( 'templates/button-scroll-top' );
-					break;
-				case 'cookie':
-					get_template_part( 'templates/cookie' );
-					break;
-				default:
-					break;
-			}
-		}
-	}
-}
-add_action( 'wp_footer_close', 'wp_footer_close_structure' );

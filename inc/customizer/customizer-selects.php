@@ -739,9 +739,11 @@ if ( ! function_exists( 'get_aesthetix_customizer_button_content' ) ) {
 			'button-icon-text' => __( 'Button + icon + text', 'aesthetix' ),
 			'button-icon'      => __( 'Button + icon', 'aesthetix' ),
 			'button-text'      => __( 'Button + text', 'aesthetix' ),
-			'icon'             => __( 'Icon', 'aesthetix' ),
-			'icon-text'        => __( 'Icon + text', 'aesthetix' ),
+			'link-icon-text'   => __( 'Link + icon + text', 'aesthetix' ),
+			'link-text'        => __( 'Link + text', 'aesthetix' ),
+			'text-icon'        => __( 'Text + icon', 'aesthetix' ),
 			'text'             => __( 'Text', 'aesthetix' ),
+			'icon'             => __( 'Icon', 'aesthetix' ),
 		);
 
 		// Merge child and parent default options.
@@ -964,6 +966,85 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_layout' ) ) {
 
 		// Merge child and parent default options.
 		$converter = apply_filters( 'get_aesthetix_customizer_archive_post_layout', $converter, $post_type );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+if ( ! function_exists( 'get_aesthetix_customizer_socials' ) ) {
+
+	/**
+	 * Return array with the social.
+	 * 
+	 * @since 1.3.2
+	 *
+	 * @param string $control Array key to get one value.
+	 *
+	 * @return string|array|false
+	 */
+	function get_aesthetix_customizer_socials( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'instagram' => __( 'Instagram', 'aesthetix' ),
+			'facebook'  => __( 'Facebook', 'aesthetix' ),
+			'youtube'   => __( 'YouTube', 'aesthetix' ),
+			'twitter'   => __( 'Twitter', 'aesthetix' ),
+			'linkedin'  => __( 'LinkedIn', 'aesthetix' ),
+			'telegram'  => __( 'Telegram', 'aesthetix' ),
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_socials', $converter );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+if ( ! function_exists( 'get_aesthetix_customizer_scroll_top_structure' ) ) {
+
+	/**
+	 * Return array with the customizer scroll top structure.
+	 * 
+	 * @since 1.3.2
+	 *
+	 * @param string $control Array key to get one value.
+	 *
+	 * @return string|array|false
+	 */
+	function get_aesthetix_customizer_scroll_top_structure( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'telegram'   => __( 'Telegram button', 'aesthetix' ),
+			'whatsapp'   => __( 'WhatsApp button', 'aesthetix' ),
+			'scroll-top' => __( 'Scroll top button', 'aesthetix' ),
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_scroll_top_structure', $converter );
 
 		// Return controls.
 		if ( is_null( $control ) ) {

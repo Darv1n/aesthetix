@@ -89,9 +89,15 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 			$link_color = get_aesthetix_options( 'root_' . get_aesthetix_options( 'root_link_color' ) . '_color' );
 		}
 
-		$roots['link-color-dark']       = get_aesthetix_customizer_converter_colors( $link_color . '-600' );
-		$roots['link-color']            = get_aesthetix_customizer_converter_colors( $link_color . '-500' );
-		$roots['link-color-light']      = get_aesthetix_customizer_converter_colors( $link_color . '-400' );
+		$roots['link-color-dark']  = get_aesthetix_customizer_converter_colors( $link_color . '-600' );
+		$roots['link-color']       = get_aesthetix_customizer_converter_colors( $link_color . '-500' );
+		$roots['link-color-light'] = get_aesthetix_customizer_converter_colors( $link_color . '-400' );
+
+		$roots['font-size-xs']     = '.75rem';
+		$roots['font-size-sm']     = '.875rem';
+		$roots['font-size-md']     = '1rem';
+		$roots['font-size-lg']     = '1.25rem';
+		$roots['font-size-xl']     = '1.5rem';
 
 		switch ( get_aesthetix_options( 'root_post_background' ) ) {
 			case has_action( 'aesthetix_archive_root_post_background_loop_' . get_aesthetix_options( 'root_post_background' ) ):
@@ -294,3 +300,24 @@ if ( ! function_exists( 'add_demo_query_vars' ) ) {
 	}
 }
 add_filter( 'query_vars', 'add_demo_query_vars' );
+
+if ( ! function_exists( 'has_aesthetix_customizer_social' ) ) {
+
+	/**
+	 * Return true/false if has social links.
+	 * 
+	 * @since 1.3.2
+	 *
+	 * @return bool
+	 */
+	function has_aesthetix_customizer_social() {
+
+		foreach ( get_aesthetix_customizer_socials() as $key => $value ) {
+			if ( wp_http_validate_url( get_aesthetix_options( 'other_' . $key ) ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+}

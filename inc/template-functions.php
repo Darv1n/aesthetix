@@ -757,86 +757,29 @@ if ( ! function_exists( 'return_template_part' ) ) {
 	}
 }
 
-if ( ! function_exists( 'the_default_sidebar' ) ) {
+if ( ! function_exists( 'has_menu_items' ) ) {
 
 	/**
-	 * This function outputs the default widgets according to the specified structure as an array.
+	 * Check if a WordPress navigation menu has items.
 	 * 
-	 * @since 1.2.9
+	 * @since 1.3.2
 	 *
-	 * @param array  $structure The right widgets structure for output. Default null
-	 * @param string $id        Widget ID. Default null
-	 *
-	 * @return array
+	 * @param string $menu_name The name of the menu location to check.
+	 * 
+	 * @return bool Whether the menu has items (true) or is empty (false).
 	 */
-	function the_default_sidebar( $structure = null, $id = null ) {
-
-		if ( is_null( $structure ) ) {
-			return false;
-		} elseif ( is_string( $structure ) ) {
-			$structure = array_map( 'trim', explode( ',', $structure ) );
-		}
-
-		if ( is_null( $id ) ) {
-			return false;
-		}
-
-		$args = array();
-
-		foreach ( $structure as $key => $value ) {
-
-			if ( in_array( $id, array( 'header-mobile-left', 'header-mobile-center', 'header-mobile-right' ), true ) && in_array( $value, array( 'aside-search-toggle', 'aside-subscribe-toggle' ), true ) ) {
-
-				if ( in_array( get_aesthetix_options( 'root_button_size' ), array( 'lg', 'xl' ), true ) ) {
-					$args['button_size'] = 'md';
-				}
-
-				if ( $value === 'aside-search-toggle' ) {
-					$button_content = get_aesthetix_options( 'root_searchform_popup_form_button_content' );
-				} elseif ( $value === 'aside-subscribe-toggle' ) {
-					$button_content = get_aesthetix_options( 'root_subscribe_popup_form_button_content' );
-				}
-
-				if ( isset( $button_content ) ) {
-					if ( in_array( $button_content, array( 'button-icon-text', 'button-text', 'button-icon' ), true ) ) {
-						$args['button_content'] = 'button-icon';
-					} else {
-						$args['button_content'] = 'icon';
-					}
-				}
-			}
-
-			switch ( $value ) {
-				case has_action( 'aesthetix_the_default_sidebar_loop_' . $value ):
-					do_action( 'aesthetix_the_default_sidebar_loop_' . $value );
-					break;
-				case 'logo': ?>
-					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/logo', '', $args ); ?>
-					</div>
-					<?php break;
-				case 'main-menu': ?>
-					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/main-menu', '', $args ); ?>
-					</div>
-					<?php break;
-				case 'aside-search-toggle': ?>
-					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/aside-search-toggle', '', $args ); ?>
-					</div>
-					<?php break;
-				case 'aside-subscribe-toggle': ?>
-					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/aside-subscribe-toggle', '', $args ); ?>
-					</div>
-					<?php break;
-				case 'adv-banner': ?>
-					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/adv-banner', '', $args ); ?>
-					</div>
-					<?php break;
-				default:
-					break;
+	function has_menu_items( $menu_name ) {
+		// Get all registered menu locations and their assigned menus.
+		$locations = get_nav_menu_locations();
+		
+		// Check if the menu location exists.
+		if ( isset( $locations[ $menu_name] ) ) {
+			// Get the menu object based on the menu location.
+			$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+			
+			// Check if the menu has items
+			if ( $menu && ! empty( wp_get_nav_menu_items( $menu->term_id ) ) ) {
+				return true;
 			}
 		}
 

@@ -20,7 +20,7 @@
 						<?php if ( is_active_sidebar( 'header-mobile-left' ) ) {
 							dynamic_sidebar( 'header-mobile-left' );
 						} else {
-							the_default_sidebar( apply_filters( 'header_mobile_default_sidebar_mobile_left', array( 'logo' ) ), 'header-mobile-left' );
+							aesthetix_widget_default( 'header-mobile-left' );
 						} ?>
 
 					</div>
@@ -31,7 +31,7 @@
 						<?php if ( is_active_sidebar( 'header-mobile-right' ) ) {
 							dynamic_sidebar( 'header-mobile-right' );
 						} else {
-							the_default_sidebar( apply_filters( 'header_mobile_default_sidebar_mobile_right', array( 'aside-search-toggle', 'aside-subscribe-toggle' ) ), 'header-mobile-right' );
+							aesthetix_widget_default( 'header-mobile-right' );
 						} ?>
 
 						<?php
@@ -47,7 +47,7 @@
 						?>
 
 						<div <?php widget_classes( '', 'header-mobile-right' ) ?>>
-							<?php get_template_part( 'templates/aside-menu-toggle', '', $args ); ?>
+							<?php get_template_part( 'templates/widget/widget-menu-toggle', '', $args ); ?>
 						</div>
 
 					</div>

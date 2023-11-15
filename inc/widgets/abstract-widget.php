@@ -95,6 +95,44 @@ abstract class WPA_Widget extends WP_Widget {
 	}
 
 	/**
+	 * Get this widgets subtitle.
+	 *
+	 * @param array $instance Array of instance options.
+	 * 
+	 * @return string
+	 */
+	protected function get_instance_subtitle( $instance ) {
+		if ( isset( $instance['subtitle'] ) ) {
+			return $instance['subtitle'];
+		}
+
+		if ( isset( $this->settings, $this->settings['subtitle'], $this->settings['subtitle']['std'] ) ) {
+			return $this->settings['subtitle']['std'];
+		}
+
+		return '';
+	}
+
+	/**
+	 * Get this widgets description.
+	 *
+	 * @param array $instance Array of instance options.
+	 * 
+	 * @return string
+	 */
+	protected function get_instance_description( $instance ) {
+		if ( isset( $instance['description'] ) ) {
+			return $instance['description'];
+		}
+
+		if ( isset( $this->settings, $this->settings['description'], $this->settings['description']['std'] ) ) {
+			return $this->settings['description']['std'];
+		}
+
+		return '';
+	}
+
+	/**
 	 * Output the html at the start of a widget.
 	 *
 	 * @param array $args     Arguments.
@@ -106,11 +144,25 @@ abstract class WPA_Widget extends WP_Widget {
 			echo $args['before_widget']; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 		}
 
-		$title = apply_filters( 'widget_title', $this->get_instance_title( $instance ), $instance, $this->id_base );
+		$title       = apply_filters( 'widget_title', $this->get_instance_title( $instance ), $instance, $this->id_base );
+		$subtitle    = apply_filters( 'widget_subtitle', $this->get_instance_subtitle( $instance ), $instance, $this->id_base );
+		$description = apply_filters( 'widget_description', $this->get_instance_description( $instance ), $instance, $this->id_base );
 
-		if ( $title ) {
-			echo $args['before_title'] . $title . $args['after_title']; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
-		}
+		if ( $title ) { ?>
+			<div class="widget-title-wrap">
+
+				<?php if ( $subtitle ) {
+					echo '<span class="widget-subtitle">' . $subtitle . '</span>'; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+				} ?>
+
+				<?php echo $args['before_title'] . $title . $args['after_title']; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>
+
+				<?php if ( $description ) {
+					echo '<div class="widget-description">' . $description . '</div>'; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+				} ?>
+
+			</div>
+		<?php }
 	}
 
 	/**
@@ -162,13 +214,16 @@ abstract class WPA_Widget extends WP_Widget {
 					}
 					break;
 				case 'textarea':
-					$instance[ $key ] = wp_kses( trim( wp_unslash( $new_instance[ $key ] ) ), wp_kses_allowed_html( 'post' ) );
+					$instance[ $key ] = isset( $new_instance[ $key ] ) ? wp_kses( trim( wp_unslash( $new_instance[ $key ] ) ), wp_kses_allowed_html( 'post' ) ) : $setting['std'];
 					break;
 				case 'checkbox':
 					$instance[ $key ] = empty( $new_instance[ $key ] ) ? 0 : 1;
 					break;
 				case 'url':
 					$instance[ $key ] = isset( $new_instance[ $key ] ) && wp_http_validate_url( $new_instance[ $key ] ) ? sanitize_url( $new_instance[ $key ] ) : $setting['std'];
+					break;
+				case 'email':
+					$instance[ $key ] = isset( $new_instance[ $key ] ) && is_email( $new_instance[ $key ] ) ? sanitize_email( $new_instance[ $key ] ) : $setting['std'];
 					break;
 				case 'image':
 					$instance[ $key ] = isset( $new_instance[ $key ] ) ? sanitize_url( $new_instance[ $key ] ) : $setting['std'];
@@ -214,15 +269,9 @@ abstract class WPA_Widget extends WP_Widget {
 					<p>
 						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo wp_kses_post( $setting['label'] ); ?></label><?php // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>
 						<input class="widefat <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="text" value="<?php echo esc_attr( $value ); ?>" />
-					</p>
-					<?php
-					break;
-
-				case 'description':
-					?>
-					<p>
-						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo wp_kses_post( $setting['label'] ); ?></label><?php // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>
-						<input class="widefat <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="text" value="<?php echo esc_attr( $value ); ?>" />
+						<?php if ( isset( $setting['desc'] ) ) : ?>
+							<small><?php echo esc_html( $setting['desc'] ); ?></small>
+						<?php endif; ?>
 					</p>
 					<?php
 					break;
@@ -244,6 +293,21 @@ abstract class WPA_Widget extends WP_Widget {
 					<p>
 						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo wp_kses_post( $setting['label'] ); ?></label><?php // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>
 						<input class="widefat <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="url" value="<?php echo esc_attr( $value ); ?>" />
+						<?php if ( isset( $setting['desc'] ) ) : ?>
+							<small><?php echo esc_html( $setting['desc'] ); ?></small>
+						<?php endif; ?>
+					</p>
+					<?php
+					break;
+
+				case 'email':
+					?>
+					<p>
+						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo wp_kses_post( $setting['label'] ); ?></label><?php // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>
+						<input class="widefat <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="email" value="<?php echo esc_attr( $value ); ?>" />
+						<?php if ( isset( $setting['desc'] ) ) : ?>
+							<small><?php echo esc_html( $setting['desc'] ); ?></small>
+						<?php endif; ?>
 					</p>
 					<?php
 					break;
@@ -253,6 +317,9 @@ abstract class WPA_Widget extends WP_Widget {
 					<p>
 						<input class="checkbox <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="checkbox" value="1" <?php checked( $value, 1 ); ?> />
 						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo wp_kses_post( $setting['label'] ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?></label>
+						<?php if ( isset( $setting['desc'] ) ) : ?>
+							<small><?php echo esc_html( $setting['desc'] ); ?></small>
+						<?php endif; ?>
 					</p>
 					<?php
 					break;
@@ -262,6 +329,9 @@ abstract class WPA_Widget extends WP_Widget {
 					<p>
 						<label for="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>"><?php echo wp_kses_post( $setting['label'] ); /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */ ?></label>
 						<input class="widefat <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="number" step="<?php echo esc_attr( $setting['step'] ); ?>" min="<?php echo esc_attr( $setting['min'] ); ?>" max="<?php echo esc_attr( $setting['max'] ); ?>" value="<?php echo esc_attr( $value ); ?>" />
+						<?php if ( isset( $setting['desc'] ) ) : ?>
+							<small><?php echo esc_html( $setting['desc'] ); ?></small>
+						<?php endif; ?>
 					</p>
 					<?php
 					break;
@@ -275,6 +345,9 @@ abstract class WPA_Widget extends WP_Widget {
 								<option value="<?php echo esc_attr( $option_key ); ?>" <?php selected( $option_key, $value ); ?>><?php echo esc_html( $option_value ); ?></option>
 							<?php endforeach; ?>
 						</select>
+						<?php if ( isset( $setting['desc'] ) ) : ?>
+							<small><?php echo esc_html( $setting['desc'] ); ?></small>
+						<?php endif; ?>
 					</p>
 					<?php
 					break;
@@ -317,6 +390,9 @@ abstract class WPA_Widget extends WP_Widget {
 
 						<input class="widefat sortable-input <?php echo esc_attr( $class ); ?>" id="<?php echo esc_attr( $this->get_field_id( $key ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( $key ) ); ?>" type="hidden" value="<?php echo esc_attr( $value ); ?>" />
 
+						<?php if ( isset( $setting['desc'] ) ) : ?>
+							<small><?php echo esc_html( $setting['desc'] ); ?></small>
+						<?php endif; ?>
 					</p>
 					<?php
 					break;
@@ -340,6 +416,11 @@ abstract class WPA_Widget extends WP_Widget {
 								<button type="button" class="select-media button-add-media button-add-adv-media not-selected"><?php esc_html_e( 'Add Image' ); ?></button>
 							</div>
 						</div>
+
+						<?php if ( isset( $setting['desc'] ) ) : ?>
+							<small><?php echo esc_html( $setting['desc'] ); ?></small>
+						<?php endif; ?>
+
 					</div>
 					<?php
 					break;

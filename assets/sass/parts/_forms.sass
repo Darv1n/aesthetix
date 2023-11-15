@@ -439,13 +439,6 @@ input[type="submit"]
 				background: $primary-bd-color
 				color: $primary-text-color
 
-.button-set
-	> *
-		display: inline-block
-		margin-bottom: $margin/2
-	> *:not(:last-child)
-		margin-right: $margin
-
 .button-telegram
 	background: #0088CC
 	border: $button-bd-width solid #0088CC
@@ -455,6 +448,10 @@ input[type="submit"]
 	&:focus, &:active
 		background: darken( #0088CC, 10% )
 		border: $button-bd-width solid darken( #0088CC, 10% )
+	&.button-gradient, &.button-slide
+		border: none
+		&:hover, &:focus, &:active
+			border: none
 
 .button-whatsapp
 	background: #4FCE5D
@@ -465,6 +462,10 @@ input[type="submit"]
 	&:focus, &:active
 		background: darken( #4FCE5D, 10% )
 		border: $button-bd-width solid darken( #4FCE5D, 10% )
+	&.button-gradient, &.button-slide
+		border: none
+		&:hover, &:focus, &:active
+			border: none
 
 .form
 	margin-bottom: 0

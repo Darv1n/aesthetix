@@ -74,7 +74,7 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 								get_template_part( 'templates/archive/archive-entry-post-author', '', $args );
 								break;
 							case 'more':
-								get_template_part( 'templates/archive/archive-entry-post-detail-button', '', $args );
+								get_template_part( 'templates/archive/archive-entry-post-more-button', '', $args );
 								break;
 							default:
 								break;

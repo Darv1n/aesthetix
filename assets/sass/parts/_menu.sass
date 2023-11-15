@@ -44,8 +44,8 @@
 			top: 46px
 
 .menu-wrap
-	display: inline-block
-	&_right
+	display: block
+	&-right
 		text-align: right
 
 // #Menu
@@ -57,6 +57,7 @@
 		> *
 			display: inline-block
 			vertical-align: middle
+			margin-left: .25rem
 		&.has-top-lvl
 			font-family: $primary-font
 			&.has-description
@@ -66,12 +67,13 @@
 		color: $primary-gray-color
 	&-item
 		display: block
+		font-size: $small-font-size
 		> *
 			display: inline-block
 			vertical-align: middle
 		a
 			display: inline-block
-			padding: .5rem 0
+			padding: .25rem 0
 			vertical-align: middle
 			> *
 				display: block
@@ -85,6 +87,10 @@
 				> .sub-menu
 					opacity: 1
 					visibility: visible
+	&-count-button
+		margin-top: .25rem
+		margin-left: .25rem
+		float: right
 	.sub-menu
 		display: none
 		transition: $transition
@@ -95,11 +101,18 @@
 			padding: calc( .125rem * 1.25 + .825rem / 2 ) calc( .125rem * 1.25 + .825rem / 2 )
 		.menu-item
 			display: block
-	&-desktop
+	&-primary
+		.menu-count-button
+			margin-top: .375rem
 		.menu-item
 			display: inline-block
 			vertical-align: middle
+			font-size: $medium-font-size
 			margin: 0 .75rem
+			&:first-child
+				margin-left: 0
+			&:last-child
+				margin-right: 0
 		.sub-menu
 			position: absolute
 			left: 0

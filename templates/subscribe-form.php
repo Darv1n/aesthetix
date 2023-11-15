@@ -44,7 +44,7 @@ if ( get_aesthetix_options( 'general_subscribe_form_bg' ) ) {
 			<input id="form-anticheck" class="form-anticheck" type="checkbox" name="form-anticheck" style="display: none !important;" value="true" checked="checked">
 			<input id="form-submitted" type="text" name="form-submitted" value="" style="display: none !important;">
 			<p class="form-confirm-text"><?php echo sprintf( wp_kses( __( 'By submitting this form, you confirm that you agree to the storage and processing of your personal data described in our <a class="%s" href="%s" target="_blank">Privacy Policy</a>', 'aesthetix' ), kses_available_tags() ), esc_attr( implode( ' ', get_link_classes() ) ), esc_url( get_privacy_policy_url() ) ) ?></p>
-			<button id="form-submit" <?php button_classes( 'form-submit icon icon-envelope' ); ?> type="submit" data-process-text="<?php esc_attr_e( 'Sending...', 'aesthetix' ); ?>" data-default-text="<?php esc_attr_e( 'Subscribe', 'aesthetix' ); ?>"><?php esc_html_e( 'Subscribe', 'aesthetix' ); ?></button>
+			<button id="form-submit" <?php icon_classes( 'form-submit icon icon-envelope', array( 'button_content' => 'button-icon-text' ) ); ?> type="submit" data-process-text="<?php esc_attr_e( 'Sending...', 'aesthetix' ); ?>" data-default-text="<?php esc_attr_e( 'Subscribe', 'aesthetix' ); ?>"><?php esc_html_e( 'Subscribe', 'aesthetix' ); ?></button>
 		</form>
 	<?php } ?>
 

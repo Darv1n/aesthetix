@@ -31,18 +31,19 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 		$aesthetix_defaults = array(
 			'general_demo_var'                          => 'demo-1',
-			'general_container_width'                   => 'md',
+			'general_container_width'                   => 'lg',
 			'general_content_width'                     => 'wide',
 
 			'general_header_top_bar_display'            => false,
-			'general_header_type'                       => 'default',
+			'general_header_type'                       => 'mid-2-bot-2',
 			'general_header_mobile_type'                => 'default',
 
 			'general_menu_align'                        => 'left',
+			'general_menu_count_items_display'          => true,
 
 			'general_footer_type'                       => 'footer-four-columns',
-			'general_footer_top_bar_display'            => false,
-			'general_footer_bottom_bar_display'         => false,
+			'general_footer_top_bar_display'            => true,
+			'general_footer_bottom_bar_display'         => true,
 
 			'general_breadcrumbs_display'               => true,
 			'general_breadcrumbs_type'                  => 'woocommerce',
@@ -54,6 +55,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'general_subscribe_form_bg'                 => '',
 			'general_subscribe_form_shortcode'          => '',
 
+			'general_scroll_top_structure'              => 'telegram,whatsapp,scroll-top',
 			'general_cookie_display'                    => true,
 
 			'front_page_slider_display'                 => true,
@@ -78,7 +80,6 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'root_post_border_radius'                   => 'rounded-md',
 
 			'root_button_type'                          => 'common',
-			'root_button_icon'                          => true,
 			'root_button_icon_position'                 => 'before',
 			'root_button_size'                          => 'lg',
 			'root_button_border_width'                  => 'border-2',
@@ -86,35 +87,28 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 			'root_menu_button_color'                    => 'primary',
 			'root_menu_button_type'                     => 'common',
-			'root_menu_button_content'                  => 'button-icon-text',
-			'root_menu_button_rounded'                  => false,
+			'root_menu_button_content'                  => 'button-icon-text', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon
 
 			'root_home_button_color'                    => 'primary',
 			'root_home_button_display'                  => 'none',
 			'root_home_button_type'                     => 'common',
-			'root_home_button_content'                  => 'button-icon',
-			'root_home_button_rounded'                  => false,
+			'root_home_button_content'                  => 'button-icon', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon
 
-			'root_scroll_top_button_display'            => true,
 			'root_scroll_top_button_color'              => 'primary',
 			'root_scroll_top_button_type'               => 'common',
-			'root_scroll_top_button_content'            => 'button-icon',
-			'root_scroll_top_button_rounded'            => false,
+			'root_scroll_top_button_content'            => 'button-icon', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon
 
 			'root_subscribe_popup_form_button_color'    => 'primary',
 			'root_subscribe_popup_form_button_type'     => 'common',
-			'root_subscribe_popup_form_button_content'  => 'button-icon-text',
-			'root_subscribe_popup_form_button_rounded'  => false,
+			'root_subscribe_popup_form_button_content'  => 'button-icon-text', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon
 
 			'root_searchform_form_button_color'         => 'primary',
 			'root_searchform_form_button_type'          => 'common',
-			'root_searchform_form_button_content'       => 'button-icon',
-			'root_searchform_form_button_rounded'       => false,
+			'root_searchform_form_button_content'       => 'button-icon', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon
 
 			'root_searchform_popup_form_button_color'   => 'primary',
 			'root_searchform_popup_form_button_type'    => 'common',
-			'root_searchform_popup_form_button_content' => 'button-icon',
-			'root_searchform_popup_form_button_rounded' => false,
+			'root_searchform_popup_form_button_content' => 'icon',
 
 			'root_input_size'                           => 'md',
 			'root_input_border_width'                   => 'border-2',
@@ -133,9 +127,9 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			) );
 
 			if ( in_array( $aesthetix_defaults['archive_' . $post_type . '_layout'], array( 'list', 'list-chess' ), true ) ) {
-				$aesthetix_defaults['archive_' . $post_type . '_columns'] = 1;
+				$aesthetix_defaults[ 'archive_' . $post_type . '_columns' ] = 1;
 			} else {
-				$aesthetix_defaults['archive_' . $post_type . '_columns'] = 3;
+				$aesthetix_defaults[ 'archive_' . $post_type . '_columns' ] = 3;
 			}
 		}
 
@@ -170,7 +164,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 					'archive_' . $post_type . '_posts_order'             => 'desc',
 					'archive_' . $post_type . '_posts_orderby'           => 'date',
 					'archive_' . $post_type . '_pagination'              => 'numeric',
-					'archive_' . $post_type . '_detail_button'           => 'button',
+					'archive_' . $post_type . '_more_button_content'     => 'link-icon-text', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon
 				) );
 			}
 
@@ -187,20 +181,16 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 		}
 
 		$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
-			'other_vkontakte'          => '',
-			'other_facebook'           => '',
-			'other_instagram'          => '',
-			'other_youtube'            => '',
-			'other_twitter'            => '',
-			'other_telegram'           => '',
-			'other_linkedin'           => '',
-
-			'other_whatsapp_phone'     => '',
-			'other_telegram_chat_link' => '',
-			'other_address'            => '',
-			'other_phone'              => '',
-			'other_email'              => '',
+			'other_address'       => '30th floor, Maakri 19/1, Tallinn, Estonia, 10145',
+			'other_phone'         => '+372 532 39 944',
+			'other_email'         => 'info@orderofmalta.ee',
+			'other_whatsapp'      => '+79500463854',
+			'other_telegram_chat' => 'https://telegram.me/artzolin',
 		) );
+
+		foreach ( get_aesthetix_customizer_socials() as $key => $value ) {
+			$aesthetix_defaults[ 'other_' . $key ] = 'https://qna.habr.com/curator/latest';
+		}
 
 		$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
 			'title_tagline_logo_size' => 'md',

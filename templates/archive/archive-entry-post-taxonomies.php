@@ -10,6 +10,8 @@
  */
 
 $args['button_size']               = $args['button_size'] ?? 'xs';
+$args['button_content']            = $args['button_content'] ?? 'button-icon-text';
+$args['button_border_radius']      = $args['button_border_radius'] ?? 'rounded-full';
 $args['post_taxonomies_structure'] = $args['post_taxonomies_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_taxonomies_structure' );
 
 if ( is_string( $args['post_taxonomies_structure'] ) && ! empty( $args['post_taxonomies_structure'] ) ) {
@@ -28,7 +30,7 @@ if ( is_array( $args['post_taxonomies_structure'] ) && ! empty( $args['post_taxo
 			case 'sticky':
 				if ( is_sticky() ) { ?>
 					<li class="post-taxonomies-item">
-						<button <?php button_classes( 'post-taxonomies-button button-disabled icon icon-thumbtack', array( 'button_size' => $args['button_size'], 'button_rounded' => true ) ); ?> type="button" disabled>
+						<button <?php icon_classes( 'post-taxonomies-button button-disabled icon icon-thumbtack', $args ); ?> type="button" disabled>
 							<?php esc_html_e( 'Sticky', 'aesthetix' ); ?>
 						</button>
 					</li>
@@ -37,7 +39,7 @@ if ( is_array( $args['post_taxonomies_structure'] ) && ! empty( $args['post_taxo
 			case 'post_format':
 				if ( has_post_format() ) { ?>
 					<li class="post-taxonomies-item">
-						<button <?php button_classes( 'post-taxonomies-button button-disabled icon icon-' . get_post_format(), array( 'button_size' => $args['button_size'], 'button_rounded' => true ) ); ?> type="button" disabled>
+						<button <?php icon_classes( 'post-taxonomies-button button-disabled icon icon-' . get_post_format(), $args ); ?> type="button" disabled>
 							<?php echo ucfirst( get_post_format() ); ?>
 						</button>
 					</li>
@@ -47,7 +49,7 @@ if ( is_array( $args['post_taxonomies_structure'] ) && ! empty( $args['post_taxo
 				if ( has_term( '', $value ) ) {
 					foreach ( get_the_terms( get_the_ID(), $value ) as $key => $taxonomy ) { ?>
 						<li class="post-taxonomies-item">
-							<a <?php button_classes( 'post-taxonomies-button', array( 'button_size' => $args['button_size'], 'button_color' => 'secondary', 'button_rounded' => true ) ); ?> href="<?php echo esc_url( get_term_link( $taxonomy->term_id, $taxonomy->taxonomy ) ); ?>"><?php echo esc_html( $taxonomy->name ); ?></a>
+							<a <?php icon_classes( 'post-taxonomies-button', array_merge( $args, array( 'button_color' => 'secondary', 'button_content' => 'button-text' ) ) ); ?> href="<?php echo esc_url( get_term_link( $taxonomy->term_id, $taxonomy->taxonomy ) ); ?>"><?php echo esc_html( $taxonomy->name ); ?></a>
 						</li>
 					<?php }
 				}

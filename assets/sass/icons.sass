@@ -5,27 +5,72 @@
 	font-family: 'Font Awesome 6 Pro'
 	font-style: normal
 	font-weight: 400
-	src: url( '../fonts/fa/fa-regular-400.woff2' ) format('woff2')
-	src: url( '../fonts/fa/fa-regular-400.woff' ) format('woff')
-	src: url( '../fonts/fa/fa-regular-400.ttf' ) format('truetype')
+	src: url( '../fonts/fa/fa-regular-400.woff2' ) format( 'woff2' )
+	src: url( '../fonts/fa/fa-regular-400.woff' ) format( 'woff' )
+	src: url( '../fonts/fa/fa-regular-400.ttf' ) format( 'truetype' )
+
+@font-face
+	font-family: 'Font Awesome 6 Brands'
+	font-style: normal
+	font-weight: 400
+	font-display: block
+	src: url( '../fonts/fa/fa-brands-400.woff2' ) format( 'woff2' )
+	src: url( '../fonts/fa/fa-brands-400.woff' ) format( 'woff' )
+	src: url( '../fonts/fa/fa-brands-400.ttf' ) format('truetype' )
 
 .icon
 	position: relative
 	transition: $transition
+	display: inline-block
 	&::before
 		content: ''
 		position: absolute
 		top: 50%
 		left: 50%
-		font-family: 'Font Awesome 6 Pro'
-		-moz-osx-font-smoothing: grayscale
-		-webkit-font-smoothing: antialiased
 		display: inline-block
 		font-style: normal
 		font-variant: normal
 		text-rendering: auto
+		font-family: 'Font Awesome 6 Pro'
+		-moz-osx-font-smoothing: grayscale
+		-webkit-font-smoothing: antialiased
 		transform: translate( -50%, -50% )
 		transition: $transition
+	&-xs
+		padding: calc( var( --font-size-xs ) / 2 ) calc( var( --font-size-xs ) / 2 )
+		&::before
+			font-size: var( --font-size-xs )
+			line-height: var( --font-size-xs )
+			width: var( --font-size-xs )
+			height: var( --font-size-xs )
+	&-sm
+		padding: calc( var( --font-size-sm ) / 2 ) calc( var( --font-size-sm ) / 2 )
+		&::before
+			font-size: var( --font-size-sm )
+			line-height: var( --font-size-sm )
+			width: var( --font-size-sm )
+			height: var( --font-size-sm )
+	&-md
+		padding: calc( var( --font-size-md ) / 2 ) calc( var( --font-size-md ) / 2 )
+		&::before
+			font-size: var( --font-size-md )
+			line-height: var( --font-size-md )
+			width: var( --font-size-md )
+			height: var( --font-size-md )
+	&-lg
+		padding: calc( var( --font-size-lg ) / 2 ) calc( var( --font-size-lg ) / 2 )
+		&::before
+			font-size: var( --font-size-lg )
+			line-height: var( --font-size-lg )
+			width: var( --font-size-lg )
+			height: var( --font-size-lg )
+	&-xl
+		padding: calc( var( --font-size-xl ) / 2 ) calc( var( --font-size-xl ) / 2 )
+		&::before
+			font-size: var( --font-size-xl )
+			line-height: var( --font-size-xl )
+			width: var( --font-size-xl )
+			height: var( --font-size-xl )
 	&-before, &-after
 		&::before
 			transform: translateY( -50% )
@@ -80,6 +125,18 @@
 	&-rounded
 		&::after
 			border-radius: 50%
+
+a, button
+	&.icon-reset
+		background: transparent
+		color: $primary-text-color
+		border: $button-bd-width solid transparent
+		box-shadow: none
+		&:hover, &:focus, &:active
+			background: transparent
+			color: $link-color
+			border: $button-bd-width solid transparent
+			box-shadow: none
 
 .icon
 	&-angle-down
@@ -434,6 +491,9 @@
 			content: '\f00d'
 
 .icon
+	&-brand
+		&::before
+			font-family: 'Font Awesome 6 Brands'
 	&-behance
 		&::before
 			content: '\f1b4'

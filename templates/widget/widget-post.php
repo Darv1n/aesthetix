@@ -40,8 +40,8 @@ if ( is_string( $args['post_structure'] ) && ! empty( $args['post_structure'] ) 
 		<?php if ( is_array( $args['post_structure'] ) && ! empty( $args['post_structure'] ) ) {
 			foreach ( $args['post_structure'] as $key => $value ) {
 				switch ( $value ) {
-					case has_action( 'aesthetix_archive_entry_post_loop_' . $value ):
-						do_action( 'aesthetix_archive_entry_post_loop_' . $value, $post, $args );
+					case has_action( 'aesthetix_widget_entry_post_loop_' . $value ):
+						do_action( 'aesthetix_widget_entry_post_loop_' . $value, $post, $args );
 						break;
 					case 'title':
 						get_template_part( 'templates/archive/archive-entry-post-title', '', $args );
@@ -61,7 +61,7 @@ if ( is_string( $args['post_structure'] ) && ! empty( $args['post_structure'] ) 
 						get_template_part( 'templates/archive/archive-entry-post-author', '', $args );
 						break;
 					case 'more':
-						get_template_part( 'templates/archive/archive-entry-post-detail-button', '', $args );
+						get_template_part( 'templates/archive/archive-entry-post-more-button', '', $args );
 						break;
 					default:
 						break;

@@ -31,7 +31,7 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 
 <article id="post-<?php the_ID(); ?>" <?php aesthetix_post_classes( 'post-aside', $args ); ?>>
 	<div <?php aesthetix_archive_page_columns_wrapper_classes( 'row-xs align-items-center' ); ?>>
-		<div class="col-xs col-12 col-xs-12 col-md-5 align-self-stretch <?php echo esc_attr( $order_left ); ?>">
+		<div class="col-xs col-5 align-self-stretch <?php echo esc_attr( $order_left ); ?>">
 
 			<?php if ( has_post_thumbnail() ) { ?>
 				<div class="post-thumbnail-wrap">
@@ -46,15 +46,15 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 			<?php } ?>
 
 		</div>
-		<div class="col-xs col-12 col-xs-12 col-md-7 <?php echo esc_attr( $order_right ); ?>">
+		<div class="col-xs col-7 <?php echo esc_attr( $order_right ); ?>">
 
 			<div class="post-content-wrap">
 
 				<?php if ( is_array( $args['post_structure'] ) && ! empty( $args['post_structure'] ) ) {
 					foreach ( $args['post_structure'] as $key => $value ) {
 						switch ( $value ) {
-							case has_action( 'aesthetix_archive_entry_post_loop_' . $value ):
-								do_action( 'aesthetix_archive_entry_post_loop_' . $value, $post, $args );
+							case has_action( 'aesthetix_widget_entry_post_loop_' . $value ):
+								do_action( 'aesthetix_widget_entry_post_loop_' . $value, $post, $args );
 								break;
 							case 'title':
 								get_template_part( 'templates/archive/archive-entry-post-title', '', $args );
@@ -74,7 +74,7 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 								get_template_part( 'templates/archive/archive-entry-post-author', '', $args );
 								break;
 							case 'more':
-								get_template_part( 'templates/archive/archive-entry-post-detail-button', '', $args );
+								get_template_part( 'templates/archive/archive-entry-post-more-button', '', $args );
 								break;
 							default:
 								break;

@@ -37,9 +37,14 @@ require_once get_template_directory() . '/inc/customizer/customizer-selects.php'
 require_once get_template_directory() . '/inc/customizer/customizer-converters.php';
 
 // Widgets.
-require_once get_template_directory() . '/inc/widgets/widgets-init.php';
+require_once get_template_directory() . '/inc/widgets/widget-init.php';
+require_once get_template_directory() . '/inc/widgets/widget-defaults.php';
 require_once get_template_directory() . '/inc/widgets/abstract-widget.php';
+require_once get_template_directory() . '/inc/widgets/class-widget-menus.php';
+require_once get_template_directory() . '/inc/widgets/class-widget-buttons.php';
 require_once get_template_directory() . '/inc/widgets/class-widget-recent-posts.php';
+require_once get_template_directory() . '/inc/widgets/class-widget-socials.php';
+require_once get_template_directory() . '/inc/widgets/class-widget-contacts.php';
 require_once get_template_directory() . '/inc/widgets/class-widget-search-popup-form.php';
 require_once get_template_directory() . '/inc/widgets/class-widget-subscribe-form.php';
 require_once get_template_directory() . '/inc/widgets/class-widget-subscribe-popup-form.php';

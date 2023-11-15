@@ -26,9 +26,15 @@ if ( ! function_exists( 'aesthetix_setup_theme' ) ) {
 		load_theme_textdomain( 'aesthetix', get_template_directory() . '/languages' );
 
 		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus( array(
-			'primary' => __( 'Primary menu', 'aesthetix' ),
-		) );
+		register_nav_menus( apply_filters( 'aesthetix_nav_menus', array(
+			'primary'    => __( 'Primary menu', 'aesthetix' ),
+			'secondary'  => __( 'Secondary menu', 'aesthetix' ),
+			'mobile'     => __( 'Mobile menu', 'aesthetix' ),
+			'categories' => __( 'Categories menu', 'aesthetix' ),
+			'tags'       => __( 'Tags menu', 'aesthetix' ),
+			'about'      => __( 'About us menu', 'aesthetix' ),
+			'info'       => __( 'Info menu', 'aesthetix' ),
+		) ) );
 
 		// Set the content width in pixels, based on the theme's design and stylesheet.
 		$GLOBALS['content_width'] = apply_filters( 'aesthetix_content_width', 960 );
@@ -163,8 +169,12 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 		// Bootstrap grid.
 		wp_enqueue_style( 'bootstrap-grid', get_theme_file_uri( '/assets/css/bootstrap-grid.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/bootstrap-grid.min.css' ) ) );
 
+
+		// Icons.
+		wp_enqueue_style( 'icons', get_theme_file_uri( '/assets/css/icons.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/icons.min.css' ) ) );
+
 		// Основные стили. Компиляция галпом. Могут быть переопределены в дочерней.
-		wp_enqueue_style( 'common-styles', get_theme_file_uri( '/assets/css/common.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/common.min.css' ) ) );
+		wp_enqueue_style( 'common-styles', get_theme_file_uri( '/assets/css/common.min.css' ), array( 'icons' ), filemtime( get_theme_file_path( '/assets/css/common.min.css' ) ) );
 
 		$root_string = '';
 		foreach ( get_aesthetix_customizer_roots() as $key => $root_value ) {
@@ -172,9 +182,6 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 		}
 
 		wp_add_inline_style( 'common-styles', ':root {' . esc_attr( $root_string ) . '}' );
-
-		// Icons.
-		wp_enqueue_style( 'icons', get_theme_file_uri( '/assets/css/icons.min.css' ), array( 'common-styles' ), filemtime( get_theme_file_path( '/assets/css/icons.min.css' ) ) );
 
 		// Основные скрипты. Компиляция галпом. Могут быть переопределены в дочерней.
 		wp_enqueue_script( 'common-scripts', get_theme_file_uri( '/assets/js/common.min.js' ), array( 'jquery' ), filemtime( get_theme_file_path( '/assets/js/common.min.js' ) ), true );

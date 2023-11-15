@@ -11,7 +11,7 @@
 
 $args['order']                        = $args['order'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_posts_order' );
 $args['orderby']                      = $args['orderby'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_posts_orderby' );
-$args['posts_per_page']               = $args['posts_per_page'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_posts_per_page' );
+$args['posts_per_page']               = $args['posts_per_page'] ?? 4;
 $args['post_type']                    = $args['post_type'] ?? 'post';
 $args['post_status']                  = $args['post_status'] ?? 'publish';
 $args['post_layout']                  = $args['post_layout'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_layout' );

@@ -4,9 +4,11 @@
 	z-index: 9
 	bottom: $margin
 	right: $margin
-
-.scroll-top
-	margin-bottom: 0 !important
+	> *
+		display: block
+		margin-bottom: .5rem
+		&:last-child
+			margin-bottom: 0 !important
 
 @media (min-width: 992px)
 	.scroll-top-wrap
@@ -69,13 +71,17 @@
 		margin-bottom: 0 !important
 
 // #social-list
-.social-list
-	&_block
+.social-list, .contact-list, .button-list
+	&-block
 		@extend .list-block
-	&_inline
+	&-inline
 		@extend .list-inline
 		> *:not(:last-child)
-			margin-right: .75rem
+			margin-right: .25rem
+
+.social-list
+	&-icons
+		line-height: 1rem
 
 .aspect-ratio
 	position: relative
