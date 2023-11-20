@@ -39,7 +39,7 @@ class WPA_Widget_Search_Popup_Form extends WPA_Widget {
 				'type'    => 'select',
 				'std'     => get_aesthetix_options( 'root_input_size' ),
 				'label'   => __( 'Select input size', 'aesthetix' ),
-				'options' => get_aesthetix_customizer_sizes(),
+				'options' => get_aesthetix_customizer_button_sizes(),
 			),
 			'button_color'   => array(
 				'type'    => 'select',

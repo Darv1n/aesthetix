@@ -54,10 +54,10 @@ body
 	min-width: 320px
 	font-family: $secondary-font
 	font-weight: normal
-	font-size: $medium-font-size
+	font-size: $font-size-md
 	line-height: $line-height
-	background: $primary-bg-color
-	color: $primary-text-color
+	background: $gray-color-50
+	color: $text-color
 	overflow-x: hidden
 	direction: ltr
 
@@ -84,13 +84,13 @@ body
 	color: $secondary-color-500
 
 .gray-color
-	color: $primary-gray-color
+	color: $gray-color-500
 
 .white-color
 	color: $white-color
 
 .text-color
-	color: $primary-text-color
+	color: $text-color
 
 .allert-color
 	color: $allert-color
@@ -111,10 +111,10 @@ body
 	font-style: italic
 
 .small
-	font-size: $small-font-size
+	font-size: $font-size-sm
 
 .large
-	font-size: $large-font-size
+	font-size: $font-size-lg
 
 .initialism
 	font-size: 90%
@@ -230,7 +230,7 @@ hr
 	box-sizing: content-box
 	height: 1px
 	overflow: visible
-	background: $primary-bd-color
+	background: $gray-color-200
 	margin: 1.5rem 0
 
 img, iframe, embed
@@ -264,10 +264,10 @@ pre, code, kbd, samp
 	font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
 
 fieldset, legend, mark, code, kbd
-	background: $primary-bg-color
-	border: $border-width solid $primary-bd-color
+	background: $gray-color-50
+	border: $border-width solid $gray-color-200
 	border-radius: $border-radius
-	color: $primary-text-color
+	color: $text-color
 
 pre, mark, code, kbd, legend, samp
 	font-size: .875rem
@@ -346,7 +346,7 @@ blockquote
 caption, cite
 	@extend .italic
 	padding-top: 0.5rem
-	color: $primary-gray-color
+	color: $gray-color-500
 	text-align: right
 	caption-side: bottom
 
@@ -362,7 +362,7 @@ table
 	td, th
 		padding: .375rem .75rem
 		vertical-align: middle
-		border-bottom: 1px solid $primary-bd-color
+		border-bottom: 1px solid $gray-color-200
 	th
 		font-weight: bold
 

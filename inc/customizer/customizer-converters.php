@@ -9,6 +9,87 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if ( ! function_exists( 'get_aesthetix_customizer_converter_sizes' ) ) {
+
+	/**
+	 * Return string or array with css values.
+	 *
+	 * @param string $control Key to get one value. Optional. Default null.
+	 *
+	 * @return string|array|false
+	 */
+	function get_aesthetix_customizer_converter_sizes( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		// Main converter array.
+		$converter = array(
+			'none' => '0',
+			'xxs'  => '.25rem',
+			'xs'   => '.5rem',
+			'sm'   => '.75rem',
+			'md'   => '1rem',
+			'lg'   => '1.25rem',
+			'xl'   => '1.5rem',
+			'xxl'  => '1.75rem',
+		);
+
+		$converter = apply_filters( 'get_aesthetix_customizer_converter_sizes', $converter );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+if ( ! function_exists( 'get_aesthetix_customizer_converter_button_sizes' ) ) {
+
+	/**
+	 * Return string or array with css values.
+	 *
+	 * @param string $control Key to get one value. Optional. Default null.
+	 *
+	 * @return string|array|false
+	 */
+	function get_aesthetix_customizer_converter_button_sizes( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		// Main converter array.
+		$converter = array(
+			'xxs' => '.125rem 1rem',
+			'xs'  => '.25rem 1.125rem',
+			'sm'  => '.375rem 1.25rem',
+			'md'  => '.5rem 1.375rem',
+			'lg'  => '.625rem 1.5rem',
+			'xl'  => '.75rem 1.625rem',
+			'xxl' => '.875rem 1.75rem',
+		);
+
+		$converter = apply_filters( 'get_aesthetix_customizer_converter_button_sizes', $converter );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
 if ( ! function_exists( 'get_aesthetix_customizer_converter_borders' ) ) {
 
 	/**
@@ -27,12 +108,12 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_borders' ) ) {
 
 		// Main converter array.
 		$converter = array(
-			'border-none' => '0px',
-			'border'      => '1px',
-			'border-2'    => '2px',
-			'border-3'    => '3px',
-			'border-4'    => '4px',
-			'border-6'    => '6px',
+			'none' => '0px',
+			'xs'   => '1px',
+			'sm'   => '2px',
+			'md'   => '3px',
+			'lg'   => '4px',
+			'xl'   => '6px',
 		);
 
 		$converter = apply_filters( 'get_aesthetix_customizer_converter_borders', $converter );
@@ -66,16 +147,17 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_radiuses' ) ) {
 
 		// Main converter array.
 		$converter = array(
-			'rounded-none' => '0px',
-			'rounded-xs'   => '.125rem',
-			'rounded-sm'   => '.25rem',
-			'rounded-md'   => '.375rem',
-			'rounded-lg'   => '.5rem',
-			'rounded-xl'   => '.75rem',
-			'rounded-2xl'  => '1rem',
-			'rounded-3xl'  => '1.25rem',
-			'rounded-4xl'  => '1.5rem',
-			'rounded-full' => '1.625rem',
+			'none' => '0px',
+			'xxs'  => '.125rem',
+			'xs'   => '.25rem',
+			'sm'   => '.375rem',
+			'md'   => '.5rem',
+			'lg'   => '.75rem',
+			'xl'   => '1rem',
+			'2xl'  => '1.25rem',
+			'3xl'  => '1.5rem',
+			'4xl'  => '1.75rem',
+			'full' => '2rem',
 		);
 
 		$converter = apply_filters( 'get_aesthetix_customizer_converter_radiuses', $converter );
@@ -149,57 +231,17 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_shadows' ) ) {
 
 		// Main converter array.
 		$converter = array(
-			'shadow-none'  => '0 0 #0000',
-			'shadow-sm'    => '0 1px 2px 0 rgba( 0, 0, 0, .15 )',
-			'shadow'       => '0 1px 3px 0 rgba( 0, 0, 0, .15 ), 0 1px 2px -1px rgba( 0, 0, 0, .15 )',
-			'shadow-md'    => '0 4px 6px -1px rgba( 0, 0, 0, .15 ), 0 2px 4px -2px rgba( 0, 0, 0, .15 )',
-			'shadow-lg'    => '0 10px 15px -3px rgba( 0, 0, 0, .15 ), 0 4px 6px -4px rgba( 0, 0, 0, .15 )',
-			'shadow-xl'    => '0 20px 25px -5px rgba( 0, 0, 0, .15 ), 0 8px 10px -6px rgba( 0, 0, 0, .15 )',
-			'shadow-2xl'   => '0 25px 50px -12px rgba( 0, 0, 0, .15 )',
-			'shadow-inner' => 'inset 0 2px 4px 0 rgba( 0, 0, 0, .15 )',
+			'none'  => '0 0 #0000',
+			'xs'    => '0 1px 2px 0 rgba( 0, 0, 0, .15 )',
+			'sm'    => '0 1px 3px 0 rgba( 0, 0, 0, .15 ), 0 1px 2px -1px rgba( 0, 0, 0, .15 )',
+			'md'    => '0 4px 6px -1px rgba( 0, 0, 0, .15 ), 0 2px 4px -2px rgba( 0, 0, 0, .15 )',
+			'lg'    => '0 10px 15px -3px rgba( 0, 0, 0, .15 ), 0 4px 6px -4px rgba( 0, 0, 0, .15 )',
+			'xl'    => '0 20px 25px -5px rgba( 0, 0, 0, .15 ), 0 8px 10px -6px rgba( 0, 0, 0, .15 )',
+			'xxl'   => '0 25px 50px -12px rgba( 0, 0, 0, .15 )',
+			'inner' => 'inset 0 2px 4px 0 rgba( 0, 0, 0, .15 )',
 		);
 
 		$converter = apply_filters( 'get_aesthetix_customizer_converter_shadows', $converter );
-
-		// Return controls.
-		if ( is_null( $control ) ) {
-			return $converter;
-		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
-			return false;
-		} else {
-			return $converter[ $control ];
-		}
-	}
-}
-
-if ( ! function_exists( 'get_aesthetix_customizer_converter_button_sizes' ) ) {
-
-	/**
-	 * Return string or array with css values.
-	 *
-	 * @param string $control Key to get one value. Optional. Default null.
-	 *
-	 * @return string|array|false
-	 */
-	function get_aesthetix_customizer_converter_button_sizes( $control = null ) {
-
-		// Sanitize string (just to be safe).
-		if ( ! is_null( $control ) ) {
-			$control = get_title_slug( $control );
-		}
-
-		// Main converter array.
-		$converter = array(
-			'xxs' => '.125rem 1rem',
-			'xs'  => '.25rem 1.125rem',
-			'sm'  => '.375rem 1.25rem',
-			'md'  => '.5rem 1.375rem',
-			'lg'  => '.625rem 1.5rem',
-			'xl'  => '.75rem 1.625rem',
-			'xxl' => '.875rem 1.75rem',
-		);
-
-		$converter = apply_filters( 'get_aesthetix_customizer_converter_button_sizes', $converter );
 
 		// Return controls.
 		if ( is_null( $control ) ) {
@@ -522,43 +564,3 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_colors' ) ) {
 	}
 }
 
-if ( ! function_exists( 'get_aesthetix_customizer_converter_sizes' ) ) {
-
-	/**
-	 * Return string or array with css values.
-	 *
-	 * @param string $control Key to get one value. Optional. Default null.
-	 *
-	 * @return string|array|false
-	 */
-	function get_aesthetix_customizer_converter_sizes( $control = null ) {
-
-		// Sanitize string (just to be safe).
-		if ( ! is_null( $control ) ) {
-			$control = get_title_slug( $control );
-		}
-
-		// Main converter array.
-		$converter = array(
-			'none' => '0',
-			'xxs'  => '.25rem',
-			'xs'   => '.5rem',
-			'sm'   => '.75rem',
-			'md'   => '1rem',
-			'lg'   => '1.25rem',
-			'xl'   => '1.5rem',
-			'xxl'  => '1.75rem',
-		);
-
-		$converter = apply_filters( 'get_aesthetix_customizer_converter_sizes', $converter );
-
-		// Return controls.
-		if ( is_null( $control ) ) {
-			return $converter;
-		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
-			return false;
-		} else {
-			return $converter[ $control ];
-		}
-	}
-}

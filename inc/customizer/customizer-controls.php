@@ -188,15 +188,15 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'post_thumbnail_padding'                => array( 'select_control', __( 'Select post thumbnail padding', 'aesthetix' ), '', get_aesthetix_customizer_sizes() ),
 			'post_content_padding'                  => array( 'select_control', __( 'Select post content padding', 'aesthetix' ), '', get_aesthetix_customizer_sizes() ),
 			'post_shadow'                           => array( 'select_control', __( 'Select post shadow', 'aesthetix' ), '', get_aesthetix_customizer_box_shadows() ),
-			'post_border_width'                     => array( 'select_control', __( 'Select post border width', 'aesthetix' ), '', get_aesthetix_customizer_button_border_widths() ),
-			'post_border_radius'                    => array( 'select_control', __( 'Select post border radius', 'aesthetix' ), '', get_aesthetix_customizer_button_border_radiuses() ),
+			'post_border_width'                     => array( 'select_control', __( 'Select post border width', 'aesthetix' ), '', get_aesthetix_customizer_border_widths() ),
+			'post_border_radius'                    => array( 'select_control', __( 'Select post border radius', 'aesthetix' ), '', get_aesthetix_customizer_border_radiuses() ),
 
 			'button_tab_title'                      => array( 'tab_title', __( 'Buttons', 'aesthetix' ), '' ),
 			'button_type'                           => array( 'select_control', __( 'Select button type', 'aesthetix' ), '', get_aesthetix_customizer_button_type() ),
 			'button_icon_position'                  => array( 'select_control', __( 'Select button icon position', 'aesthetix' ), '', $alignment_pseudo_select ),
-			'button_size'                           => array( 'select_control', __( 'Select button size', 'aesthetix' ), '', get_aesthetix_customizer_sizes() ),
-			'button_border_width'                   => array( 'select_control', __( 'Select button border width', 'aesthetix' ), '', get_aesthetix_customizer_button_border_widths() ),
-			'button_border_radius'                  => array( 'select_control', __( 'Select button border radius', 'aesthetix' ), '', get_aesthetix_customizer_button_border_radiuses() ),
+			'button_size'                           => array( 'select_control', __( 'Select button size', 'aesthetix' ), '', get_aesthetix_customizer_button_sizes() ),
+			'button_border_width'                   => array( 'select_control', __( 'Select button border width', 'aesthetix' ), '', get_aesthetix_customizer_border_widths() ),
+			'button_border_radius'                  => array( 'select_control', __( 'Select button border radius', 'aesthetix' ), '', get_aesthetix_customizer_border_radiuses() ),
 
 			'menu_button_tab_title'                 => array( 'tab_title', __( 'Menu button', 'aesthetix' ), '' ),
 			'menu_button_color'                     => array( 'select_control', __( 'Select menu button color', 'aesthetix' ), '', get_aesthetix_customizer_button_color() ),
@@ -230,14 +230,14 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'searchform_popup_form_button_content'  => array( 'select_control', __( 'Select search popup form button content', 'aesthetix' ), '', get_aesthetix_customizer_button_content() ),
 
 			'input_tab_title'                       => array( 'tab_title', __( 'Inputs', 'aesthetix' ), '' ),
-			'input_size'                            => array( 'select_control', __( 'Select input size', 'aesthetix' ), '', get_aesthetix_customizer_sizes() ),
-			'input_border_width'                    => array( 'select_control', __( 'Select input border width', 'aesthetix' ), '', get_aesthetix_customizer_button_border_widths() ),
-			'input_border_radius'                   => array( 'select_control', __( 'Select input border radius', 'aesthetix' ), '', get_aesthetix_customizer_button_border_radiuses() ),
+			'input_size'                            => array( 'select_control', __( 'Select input size', 'aesthetix' ), '', get_aesthetix_customizer_button_sizes() ),
+			'input_border_width'                    => array( 'select_control', __( 'Select input border width', 'aesthetix' ), '', get_aesthetix_customizer_border_widths() ),
+			'input_border_radius'                   => array( 'select_control', __( 'Select input border radius', 'aesthetix' ), '', get_aesthetix_customizer_border_radiuses() ),
 
 			'other_tab_title'                       => array( 'tab_title', __( 'Other', 'aesthetix' ), '' ),
 			'box_shadow'                            => array( 'select_control', __( 'Select element shadow', 'aesthetix' ), '', get_aesthetix_customizer_box_shadows() ),
-			'border_width'                          => array( 'select_control', __( 'Select element border width', 'aesthetix' ), '', get_aesthetix_customizer_button_border_widths() ),
-			'border_radius'                         => array( 'select_control', __( 'Select element border radius', 'aesthetix' ), '', get_aesthetix_customizer_button_border_radiuses() ),
+			'border_width'                          => array( 'select_control', __( 'Select element border width', 'aesthetix' ), '', get_aesthetix_customizer_border_widths() ),
+			'border_radius'                         => array( 'select_control', __( 'Select element border radius', 'aesthetix' ), '', get_aesthetix_customizer_border_radiuses() ),
 		);
 
 		$post_types = get_aesthetix_customizer_post_types();

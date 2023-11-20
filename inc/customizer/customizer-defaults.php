@@ -67,19 +67,22 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'root_secondary_color'                      => 'red',
 			'root_gray_color'                           => 'slate',
 			'root_link_color'                           => 'primary',
+			'root_box_shadow'                           => 'md',
+			'root_border_width'                         => 'sm',
+			'root_border_radius'                        => 'md',
 
 			'root_post_background'                      => 'theme',
 			'root_post_thumbnail_padding'               => 'xs',
 			'root_post_content_padding'                 => 'xl',
-			'root_post_shadow'                          => 'shadow-md',
-			'root_post_border_width'                    => 'border',
-			'root_post_border_radius'                   => 'rounded-md',
+			'root_post_shadow'                          => 'md',
+			'root_post_border_width'                    => 'xs',
+			'root_post_border_radius'                   => 'md',
 
 			'root_button_type'                          => 'common',
 			'root_button_icon_position'                 => 'before',
 			'root_button_size'                          => 'lg',
-			'root_button_border_width'                  => 'border-2',
-			'root_button_border_radius'                 => 'rounded-md',
+			'root_button_border_width'                  => 'sm',
+			'root_button_border_radius'                 => 'md',
 
 			'root_menu_button_color'                    => 'primary',
 			'root_menu_button_type'                     => 'common',
@@ -107,12 +110,8 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'root_searchform_popup_form_button_content' => 'button-icon',
 
 			'root_input_size'                           => 'md',
-			'root_input_border_width'                   => 'border-2',
-			'root_input_border_radius'                  => 'rounded-md',
-
-			'root_box_shadow'                           => 'shadow-md',
-			'root_border_width'                         => 'border-2',
-			'root_border_radius'                        => 'rounded-md',
+			'root_input_border_width'                   => 'sm',
+			'root_input_border_radius'                  => 'md',
 		);
 
 		foreach ( get_post_types() as $key => $post_type ) {

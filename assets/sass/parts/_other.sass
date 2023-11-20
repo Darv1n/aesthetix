@@ -17,7 +17,7 @@
 
 .breadcrumbs
 	*
-		font-size: $small-font-size
+		font-size: $font-size-sm
 	li
 		display: inline-block
 		&:not(:last-child)
@@ -29,13 +29,13 @@
 	left: 0
 	right: 0
 	z-index: 1000
-	background-color: $primary-bg-color
+	background-color: $gray-color-50
 	padding: $margin/2 0
-	border-top: 2px solid $primary-bd-color
+	border-top: 2px solid $gray-color-200
 	.container-inner
 		position: relative
 	&-text
-		font-size: $small-font-size
+		font-size: $font-size-sm
 		margin-bottom: 0 !important
 	&-button-wrap
 		position: absolute
@@ -52,8 +52,8 @@
 	padding: $gutter*2 $gutter*4
 	max-width: inherit
 	border-radius: $border-radius
-	background-color: $primary-bg-color
-	font-size: $small-font-size
+	background-color: $gray-color-50
+	font-size: $font-size-sm
 	hyphens: none
 	> *:last-child
 		margin-bottom: 0
@@ -120,7 +120,7 @@
 		max-width: calc( 480px + 4rem )
 	&-inside
 		padding: 2rem
-		background: $primary-bg-color
+		background: $gray-color-50
 	button[type="button"]
 		color: $white-color
 
@@ -137,13 +137,13 @@
 			bottom: 0
 			left: $gutter
 			padding: $padding/2
-			color: $primary-text-color
+			color: $text-color
 			transition: $transition
 	.masonry-caption
 		text-align: right
 		*
 			display: inline-block
-			font-size: $small-font-size
+			font-size: $font-size-sm
 
 // #Advertising banners
 .ab

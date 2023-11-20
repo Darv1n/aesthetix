@@ -776,7 +776,7 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 		$classes[] = 'button';
 
 		$size_exists = false;
-		foreach ( get_aesthetix_customizer_sizes() as $key => $size ) {
+		foreach ( get_aesthetix_customizer_button_sizes() as $key => $size ) {
 			if ( in_array( 'button-' . $key, $classes, true ) ) {
 				$size_exists = true;
 			}
@@ -1119,7 +1119,7 @@ if ( ! function_exists( 'get_input_classes' ) ) {
 
 		if ( is_null( $button_size ) ) {
 			$size_exists = false;
-			foreach ( get_aesthetix_customizer_sizes() as $key => $size ) {
+			foreach ( get_aesthetix_customizer_button_sizes() as $key => $size ) {
 				if ( in_array( 'button-' . $key, $classes, true ) ) {
 					$size_exists = true;
 				}

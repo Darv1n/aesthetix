@@ -39,28 +39,45 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 
 		$converter_colors = get_aesthetix_customizer_converter_colors();
 
-		$roots            = array();
-		$saturate_array   = array( 50, 100, 200, 300, 400, 500, 600, 700, 800, 900 );
+		$roots                   = array();
+		$saturate_array          = array( 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950 );
+		$reversed_saturate_array = array_reverse( $saturate_array );
 
 		$roots['primary-font']   = get_aesthetix_customizer_fonts( get_aesthetix_options( 'root_primary_font' ) ) . ', Arial, sans-serif';
 		$roots['secondary-font'] = get_aesthetix_customizer_fonts( get_aesthetix_options( 'root_secondary_font' ) ) . ', Arial, sans-serif';
 
-		$primary_color    = get_aesthetix_options( 'root_primary_color' );
-		$secondary_color  = get_aesthetix_options( 'root_secondary_color' );
-		$gray_color       = get_aesthetix_options( 'root_gray_color' );
+		$primary_color   = get_aesthetix_options( 'root_primary_color' );
+		$secondary_color = get_aesthetix_options( 'root_secondary_color' );
+		$gray_color      = get_aesthetix_options( 'root_gray_color' );
 
 		foreach ( $saturate_array as $key => $saturate_value ) {
-			$roots = array_merge( $roots, array(
+
+			if ( in_array( get_aesthetix_options( 'root_color_scheme' ), array( 'dark', 'black' ), true ) ) {
+				$roots = array_merge( $roots, array(
+					'primary-color-' . $saturate_value   => get_aesthetix_customizer_converter_colors( $primary_color . '-' . $reversed_saturate_array[ $key ] ),
+					'secondary-color-' . $saturate_value => get_aesthetix_customizer_converter_colors( $secondary_color . '-' . $reversed_saturate_array[ $key ] ),
+					'gray-color-' . $saturate_value      => get_aesthetix_customizer_converter_colors( $gray_color . '-' . $reversed_saturate_array[ $key ] ),
+				) );
+			} else {
+				$roots = array_merge( $roots, array(
 					'primary-color-' . $saturate_value   => get_aesthetix_customizer_converter_colors( $primary_color . '-' . $saturate_value ),
 					'secondary-color-' . $saturate_value => get_aesthetix_customizer_converter_colors( $secondary_color . '-' . $saturate_value ),
-			) );
+					'gray-color-' . $saturate_value      => get_aesthetix_customizer_converter_colors( $gray_color . '-' . $saturate_value ),
+				) );
+			}
+		}
+
+		if ( in_array( get_aesthetix_options( 'root_color_scheme' ), array( 'dark', 'black' ), true ) ) {
+			$roots['text-color']  = get_aesthetix_customizer_converter_colors( $gray_color . '-200' );
+		} else {
+			$roots['text-color']  = get_aesthetix_customizer_converter_colors( $gray_color . '-800' );
 		}
 
 		$roots['white-color'] = get_aesthetix_customizer_converter_colors( $gray_color . '-50' );
 		$roots['black-color'] = get_aesthetix_customizer_converter_colors( $gray_color . '-950' );
 
 		if ( get_aesthetix_options( 'root_color_scheme' ) === 'black' ) {
-			$roots['primary-text-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-200' );
+			// $roots['primary-text-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-200' );
 			$roots['primary-bg-color']         = get_aesthetix_customizer_converter_colors( $gray_color . '-950' );
 			$roots['primary-bd-color']         = get_aesthetix_customizer_converter_colors( $gray_color . '-800' );
 			$roots['secondary-bg-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-900' );
@@ -68,7 +85,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 			$roots['primary-gray-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-300' );
 			$roots['primary-gray-color-hover'] = get_aesthetix_customizer_converter_colors( $gray_color . '-400' );
 		} else {
-			$roots['primary-text-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-800' );
+			// $roots['primary-text-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-800' );
 			$roots['primary-bg-color']         = get_aesthetix_customizer_converter_colors( $gray_color . '-50' );
 			$roots['primary-bd-color']         = get_aesthetix_customizer_converter_colors( $gray_color . '-200' );
 			$roots['secondary-bg-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-100' );
@@ -169,6 +186,12 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 		$roots['box-shadow-hover']       = str_replace( '0.15', '0.25', get_aesthetix_customizer_converter_shadows( get_aesthetix_options( 'root_box_shadow' ) ) );
 		$roots['border-width']           = get_aesthetix_customizer_converter_borders( get_aesthetix_options( 'root_border_width' ) );
 		$roots['border-radius']          = get_aesthetix_customizer_converter_radiuses( get_aesthetix_options( 'root_border_radius' ) );
+
+		foreach ( $roots as $key => $value ) {
+			if ( $value === false || $value === null ) {
+				vardump( $key . ': ' . $value  );
+			}
+		}
 
 		// Merge child and parent default options.
 		$roots = apply_filters( 'get_aesthetix_customizer_roots', $roots );

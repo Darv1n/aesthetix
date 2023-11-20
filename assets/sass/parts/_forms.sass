@@ -96,13 +96,13 @@ input[type="datetime-local"],
 input[type="color"],
 	padding: var( --input-padding-top ) var( --input-padding-top )
 	width: 100%
-	border: $input-bd-width solid $primary-bd-color
+	border: $input-bd-width solid $gray-color-200
 	border-radius: $input-bd-radius
 	box-shadow: $input-shadow
 	font-size: 1rem
 	line-height: 1.125rem
 	&:focus, &:focus-visible
-		border: $input-bd-width solid $secondary-bd-color
+		border: $input-bd-width solid $gray-color-300
 		box-shadow: $input-shadow-focus
 		outline: none
 	&.input-xxs, &.input-xs
@@ -135,7 +135,7 @@ input[type="reset"],
 input[type="submit"]
 	display: inline-block
 	padding: var( --button-padding-top ) var( --button-padding-side )
-	font-size: $medium-font-size
+	font-size: $font-size-md
 	font-family: inherit
 	color: $button-text-color
 	background: $primary-color-500
@@ -346,25 +346,25 @@ input[type="submit"]
 		&:focus, &:active, &.active
 			border: $button-bd-width solid $secondary-color-500
 	&-gray
-		background: $primary-bd-color
-		border: $button-bd-width solid $primary-bd-color
-		color: $primary-text-color
+		background: $gray-color-200
+		border: $button-bd-width solid $gray-color-200
+		color: $text-color
 		&:hover, &:focus, &:active, &.active
-			background: $secondary-bd-color
-			border: $button-bd-width solid $secondary-bd-color
-			color: $primary-text-color
+			background: $gray-color-300
+			border: $button-bd-width solid $gray-color-300
+			color: $text-color
 		&:focus, &:active, &.active
-			border: $button-bd-width solid $secondary-bd-color
+			border: $button-bd-width solid $gray-color-300
 	&-empty
 		background: transparent
-		border: $button-bd-width solid $primary-gray-color
-		color: $primary-text-color
+		border: $button-bd-width solid $gray-color-500
+		color: $text-color
 		&:hover, &:focus, &:active, &.active
 			background: transparent
-			border: $button-bd-width solid $primary-gray-color-hover
-			color: $primary-text-color
+			border: $button-bd-width solid $gray-color-600
+			color: $text-color
 		&:focus, &:active, &.active
-			border: $button-bd-width solid $primary-gray-color
+			border: $button-bd-width solid $gray-color-500
 	&-gradient
 		position: relative
 		z-index: 1
@@ -379,7 +379,7 @@ input[type="submit"]
 			width: 100%
 			height: 100%
 			background: $primary-gradient-reflect
-			transform: translateX(-100%)
+			transform: translateX( -100% )
 			transition: $transition
 			z-index: -1
 		&:hover, &:focus, &:active, &.active
@@ -387,7 +387,7 @@ input[type="submit"]
 			border: none
 		&:hover
 			&::after
-				transform: translateX(0)
+				transform: translateX( 0 )
 		&-secondary
 			background: $secondary-gradient
 			&::after
@@ -396,12 +396,12 @@ input[type="submit"]
 				background: $secondary-gradient
 		&-gray
 			background: $gray-gradient
-			color: $primary-text-color
+			color: $text-color
 			&::after
 				background: $gray-gradient-reflect
 			&:hover, &:focus, &:active, &.active
 				background: $gray-gradient
-				color: $primary-text-color
+				color: $text-color
 	&-slide
 		position: relative
 		z-index: 1
@@ -416,7 +416,7 @@ input[type="submit"]
 			width: 100%
 			height: 100%
 			background: $secondary-color-500
-			transform: translateX(-100%)
+			transform: translateX( -100% )
 			transition: $transition
 			z-index: -1
 		&:hover, &:focus, &:active, &.active
@@ -431,13 +431,13 @@ input[type="submit"]
 			&:hover, &:focus, &:active, &.active
 				background: $secondary-color-500
 		&-gray
-			background: $primary-bd-color
-			color: $primary-text-color
+			background: $gray-color-200
+			color: $text-color
 			&::after
-				background: $secondary-bd-color
+				background: $gray-color-300
 			&:hover, &:focus, &:active, &.active
-				background: $primary-bd-color
-				color: $primary-text-color
+				background: $gray-color-200
+				color: $text-color
 
 .button-telegram
 	background: #0088CC
@@ -474,7 +474,7 @@ input[type="submit"]
 	.notification
 		max-width: 480px
 	&-confirm-text
-		font-size: $small-font-size
+		font-size: $font-size-sm
 
 .search-form
 	position: relative
@@ -519,10 +519,10 @@ input[type="submit"]
 		&:not(.icon-before):not(.icon-after):not(.icon-xs):not(.icon-sm):not(.icon-md):not(.icon-lg):not(.icon-xl)
 			padding: 0
 	&-text-reset, &-icon-reset
-		color: $primary-text-color
+		color: $text-color
 		border: none
 		&:hover, &:focus, &:active
-			color: $primary-text-color
+			color: $text-color
 			border: none
 			opacity: .8
 	&-icon-reset
@@ -530,15 +530,15 @@ input[type="submit"]
 		font-size: 0
 		line-height: 0
 	&-disabled, &[disabled]
-		background: $primary-bd-color
-		border: $button-bd-width solid $primary-bd-color
-		color: $primary-text-color
+		background: $gray-color-200
+		border: $button-bd-width solid $gray-color-200
+		color: $text-color
 		cursor: auto
 		box-shadow: none
 		&:hover, &:focus, &:active
-			background: $primary-bd-color
-			border: $button-bd-width solid $primary-bd-color
-			color: $primary-text-color
+			background: $gray-color-200
+			border: $button-bd-width solid $gray-color-200
+			color: $text-color
 			box-shadow: none
 		&.button-gradient
 			background: $gray-gradient
@@ -547,6 +547,6 @@ input[type="submit"]
 				border: none
 		&.button-empty
 			background: transparent
-			color: $primary-text-color
+			color: $text-color
 	&[disabled]
 		cursor: not-allowed

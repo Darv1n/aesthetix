@@ -17,7 +17,7 @@
 	max-width: 380px
 	overflow-x: auto
 	overflow-x: hidden
-	background: $primary-bg-color
+	background: $gray-color-50
 	transition: $transition
 	z-index: 2000
 	box-shadow: $box-shadow
@@ -63,11 +63,11 @@
 			&.has-description
 				font-weight: bolder
 	&-description
-		font-size: $small-font-size
-		color: $primary-gray-color
+		font-size: $font-size-sm
+		color: $gray-color-500
 	&-item
 		display: block
-		font-size: $small-font-size
+		font-size: $font-size-sm
 		> *
 			display: inline-block
 			vertical-align: middle
@@ -86,7 +86,7 @@
 		.menu-count-button
 			margin-top: .375rem
 		.menu-item
-			font-size: $medium-font-size
+			font-size: $font-size-md
 			margin: 0 .5rem
 		> .menu-item
 			display: inline-block
@@ -114,7 +114,7 @@
 			z-index: 11
 			min-width: 220px
 			padding: .5rem
-			background: $primary-bg-color
+			background: $gray-color-50
 			border-radius: $border-radius
 			border-top-left-radius: 0
 			border-top-right-radius: 0
@@ -128,4 +128,4 @@
 				left: 100%
 				border-radius: $border-radius
 			.menu-item
-				border-bottom: 1px solid $primary-bd-color
+				border-bottom: 1px solid $gray-color-200

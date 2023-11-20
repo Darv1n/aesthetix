@@ -15,7 +15,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls_woo_callback' ) ) {
 		// Woo options.
 		$aesthetix_controls['single_product'] = array(
 			'tab_title'     => array( 'tab_title', __( 'Which pages display sidebar', 'aesthetix' ), '' ),
-			'border_radius' => array( 'select_control', __( 'Select element border radius', 'aesthetix' ), '', get_aesthetix_customizer_button_border_radiuses() ),
+			'border_radius' => array( 'select_control', __( 'Select element border radius', 'aesthetix' ), '', get_aesthetix_customizer_border_radiuses() ),
 		);
 
 		// Woo options.

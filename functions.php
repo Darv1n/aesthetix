@@ -32,6 +32,7 @@ require_once get_template_directory() . '/inc/customizer/customizer-controls.php
 require_once get_template_directory() . '/inc/customizer/customizer-defaults.php';
 require_once get_template_directory() . '/inc/customizer/customizer-functions.php';
 require_once get_template_directory() . '/inc/customizer/customizer-selects.php';
+require_once get_template_directory() . '/inc/customizer/customizer-sortable.php';
 require_once get_template_directory() . '/inc/customizer/customizer-converters.php';
 
 // Widgets.

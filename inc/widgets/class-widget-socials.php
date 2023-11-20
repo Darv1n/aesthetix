@@ -51,7 +51,7 @@ class WPA_Widget_Socials extends WPA_Widget {
 				'type'    => 'select',
 				'std'     => get_aesthetix_options( 'root_button_size' ),
 				'label'   => __( 'Select button size', 'aesthetix' ),
-				'options' => get_aesthetix_customizer_sizes(),
+				'options' => get_aesthetix_customizer_button_sizes(),
 			),
 			'button_color' => array(
 				'type'    => 'select',
