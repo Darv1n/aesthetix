@@ -14,7 +14,7 @@ $args['button_content']       = $args['button_content'] ?? get_aesthetix_options
 $args['button_border_radius'] = $args['button_border_radius'] ?? get_aesthetix_options( 'root_button_border_radius' ); ?>
 
 <div class="post-link-more" aria-label="<?php esc_attr_e( 'Post continue reading', 'aesthetix' ); ?>">
-	<a <?php icon_classes( 'icon icon-after icon-arrow-right', $args ); ?> href="<?php the_permalink(); ?>">
+	<a <?php button_classes( 'icon icon-after icon-arrow-right', $args ); ?> href="<?php the_permalink(); ?>">
 		<?php if ( ! in_array( $args['button_content'], array( 'icon', 'button-icon' ), true ) ) {
 			esc_html_e( 'Continue reading', 'aesthetix' );
 		} ?>

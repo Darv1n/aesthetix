@@ -15,6 +15,7 @@ if ( ! function_exists( 'aesthetix_widgets_init' ) ) {
 	 * Register widgets.
 	 */
 	function aesthetix_widgets_init() {
+		register_widget( 'WPA_Widget_Logo' );
 		register_widget( 'WPA_Widget_Menus' );
 		register_widget( 'WPA_Widget_Buttons' );
 		register_widget( 'WPA_Widget_Recent_Posts' );
@@ -42,6 +43,11 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 				'name'        => __( 'Main sidebar', 'aesthetix' ),
 				'description' => __( 'Add widgets in main sidebar', 'aesthetix' ),
 				'title_tag'   => 'h2',
+			),
+			'aside-menu' => array(
+				'name'        => __( 'Aside menu sidebar', 'aesthetix' ),
+				'description' => __( 'Add widgets in aside menu sidebar', 'aesthetix' ),
+				'title_tag'   => 'h3',
 			),
 			'header-mobile-left' => array(
 				'name'        => __( 'Header mobile left', 'aesthetix' ),
@@ -143,20 +149,20 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 		);
 
 		$sidebars['footer-main-second'] = array(
-			'name'        => __( 'Footer main second right', 'aesthetix' ),
+			'name'        => __( 'Footer main second sidebar', 'aesthetix' ),
 			'description' => __( 'Add widgets in footer main second sidebar', 'aesthetix' ),
 			'title_tag'   => 'h3',
 		);
 
 		$sidebars['footer-main-third'] = array(
-			'name'        => __( 'Footer main third right', 'aesthetix' ),
+			'name'        => __( 'Footer main third sidebar', 'aesthetix' ),
 			'description' => __( 'Add widgets in footer main third sidebar', 'aesthetix' ),
 			'title_tag'   => 'h3',
 		);
 
 		if ( get_aesthetix_options( 'general_footer_type' ) === 'footer-four-columns' ) {
 			$sidebars['footer-main-fourth'] = array(
-				'name'        => __( 'Footer main fourth right', 'aesthetix' ),
+				'name'        => __( 'Footer main fourth sidebar', 'aesthetix' ),
 				'description' => __( 'Add widgets in footer main fourth sidebar', 'aesthetix' ),
 				'title_tag'   => 'h3',
 			);
@@ -183,6 +189,18 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 		$sidebars = apply_filters( 'aesthetix_register_sidebar', $sidebars );
 
 		foreach ( $sidebars as $id => $sidebar ) {
+
+			$widget_default = get_aesthetix_widget_default( $id );
+			$description    = $sidebar['description'];
+
+			if ( $widget_default && is_array( $widget_default ) && ! empty( $widget_default ) ) {
+				$widget_names = array();
+				foreach ( $widget_default as $key => $value ) {
+					$widget_names[ $value ] = get_widget_name( $value );
+				}
+				$description .= '. ' . __( 'If the sidebar is empty, widgets are displayed by default', 'aesthetix' ) . ': ' . implode( ', ', $widget_names );
+			}
+
 			register_sidebar(
 				apply_filters(
 					'aesthetix_sidebar_' . $id . '_init',
@@ -201,6 +219,50 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 	}
 }
 add_action( 'widgets_init', 'aesthetix_register_sidebar' );
+
+if ( ! function_exists( 'get_widget_name' ) ) {
+
+	/**
+	 * Return array with the widget names.
+	 *
+	 * @param string $control Array key to get one value.
+	 *
+	 * @return string|array|false
+	 */
+	function get_widget_name( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'widget-logo'              => 'Aesthetix ' . mb_strtolower( __( 'Logo', 'aesthetix' ) ),
+			'widget-menus'             => 'Aesthetix ' . mb_strtolower( __( 'Menus', 'aesthetix' ) ),
+			'widget-buttons'           => 'Aesthetix ' . mb_strtolower( __( 'Buttons', 'aesthetix' ) ),
+			'widget-recent-posts'      => 'Aesthetix ' . mb_strtolower( __( 'Recent posts', 'aesthetix' ) ),
+			'widget-socials'           => 'Aesthetix ' . mb_strtolower( __( 'Socials', 'aesthetix' ) ),
+			'widget-contacts'          => 'Aesthetix ' . mb_strtolower( __( 'Contacts', 'aesthetix' ) ),
+			'widget-search-toggle'     => 'Aesthetix ' . mb_strtolower( __( 'Search button', 'aesthetix' ) ),
+			'widget-subscribe-form'    => 'Aesthetix ' . mb_strtolower( __( 'Subscribe form', 'aesthetix' ) ),
+			'widget-subscribe-toggle'  => 'Aesthetix ' . mb_strtolower( __( 'Subscribe button', 'aesthetix' ) ),
+			'widget-adv-banner'        => 'Aesthetix ' . mb_strtolower( __( 'Adv banner', 'aesthetix' ) ),
+			'widget-language-switcher' => 'Aesthetix ' . mb_strtolower( __( 'Language switcher', 'aesthetix' ) ),
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_widget_name', $converter );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
 
 if ( ! function_exists( 'admin_enqueue_scripts_widgets_callback' ) ) {
 

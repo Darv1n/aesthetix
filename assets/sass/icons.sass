@@ -21,7 +21,6 @@
 .icon
 	position: relative
 	transition: $transition
-	display: inline-block
 	&::before
 		content: ''
 		position: absolute
@@ -37,35 +36,35 @@
 		transform: translate( -50%, -50% )
 		transition: $transition
 	&-xs
-		padding: calc( var( --font-size-xs ) / 2 ) calc( var( --font-size-xs ) / 2 )
+		padding: calc( var( --font-size-xs ) / 2 + .125rem ) calc( var( --font-size-xs ) / 2 + .125rem )
 		&::before
 			font-size: var( --font-size-xs )
 			line-height: var( --font-size-xs )
 			width: var( --font-size-xs )
 			height: var( --font-size-xs )
 	&-sm
-		padding: calc( var( --font-size-sm ) / 2 ) calc( var( --font-size-sm ) / 2 )
+		padding: calc( var( --font-size-sm ) / 2 + .125rem ) calc( var( --font-size-sm ) / 2 + .125rem )
 		&::before
 			font-size: var( --font-size-sm )
 			line-height: var( --font-size-sm )
 			width: var( --font-size-sm )
 			height: var( --font-size-sm )
 	&-md
-		padding: calc( var( --font-size-md ) / 2 ) calc( var( --font-size-md ) / 2 )
+		padding: calc( var( --font-size-md ) / 2 + .125rem ) calc( var( --font-size-md ) / 2 + .125rem )
 		&::before
 			font-size: var( --font-size-md )
 			line-height: var( --font-size-md )
 			width: var( --font-size-md )
 			height: var( --font-size-md )
 	&-lg
-		padding: calc( var( --font-size-lg ) / 2 ) calc( var( --font-size-lg ) / 2 )
+		padding: calc( var( --font-size-lg ) / 2 + .125rem ) calc( var( --font-size-lg ) / 2 + .125rem )
 		&::before
 			font-size: var( --font-size-lg )
 			line-height: var( --font-size-lg )
 			width: var( --font-size-lg )
 			height: var( --font-size-lg )
 	&-xl
-		padding: calc( var( --font-size-xl ) / 2 ) calc( var( --font-size-xl ) / 2 )
+		padding: calc( var( --font-size-xl ) / 2 + .125rem ) calc( var( --font-size-xl ) / 2 + .125rem )
 		&::before
 			font-size: var( --font-size-xl )
 			line-height: var( --font-size-xl )
@@ -126,17 +125,17 @@
 		&::after
 			border-radius: 50%
 
-a, button
-	&.icon-reset
-		background: transparent
-		color: $primary-text-color
-		border: $button-bd-width solid transparent
-		box-shadow: none
-		&:hover, &:focus, &:active
-			background: transparent
-			color: $link-color
-			border: $button-bd-width solid transparent
-			box-shadow: none
+// a, button
+// 	&.icon-reset
+// 		background: transparent
+// 		color: $primary-text-color
+// 		border: $button-bd-width solid transparent
+// 		box-shadow: none
+// 		&:hover, &:focus, &:active
+// 			background: transparent
+// 			color: $link-color
+// 			border: $button-bd-width solid transparent
+// 			box-shadow: none
 
 .icon
 	&-angle-down

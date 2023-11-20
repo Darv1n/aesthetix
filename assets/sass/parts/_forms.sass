@@ -490,14 +490,51 @@ input[type="submit"]
 		height: 100%
 		box-shadow: none
 
+// Resets.
 .button
+	&-reset
+		background: transparent
+		box-shadow: none
+		border-top: none
+		border-right: none
+		border-left: none
+		border-radius: unset
+		&::after
+			display: none
+		&:hover, &:focus, &:active
+			background: transparent
+			box-shadow: none
+			border-top: none
+			border-right: none
+			border-left: none
+			border-radius: unset
+		&.icon-before
+			padding-top: 0
+			padding-right: 0
+			padding-bottom: 0
+		&.icon-after
+			padding-top: 0
+			padding-left: 0
+			padding-bottom: 0
+		&:not(.icon-before):not(.icon-after):not(.icon-xs):not(.icon-sm):not(.icon-md):not(.icon-lg):not(.icon-xl)
+			padding: 0
+	&-text-reset, &-icon-reset
+		color: $primary-text-color
+		border: none
+		&:hover, &:focus, &:active
+			color: $primary-text-color
+			border: none
+			opacity: .8
+	&-icon-reset
+		display: inline-block
+		font-size: 0
+		line-height: 0
 	&-disabled, &[disabled]
 		background: $primary-bd-color
 		border: $button-bd-width solid $primary-bd-color
 		color: $primary-text-color
+		cursor: auto
 		box-shadow: none
-		&::after
-			display: none
 		&:hover, &:focus, &:active
 			background: $primary-bd-color
 			border: $button-bd-width solid $primary-bd-color
@@ -513,18 +550,3 @@ input[type="submit"]
 			color: $primary-text-color
 	&[disabled]
 		cursor: not-allowed
-	&-none, &-reset
-		background: transparent
-		color: $primary-text-color
-		border: $button-bd-width solid transparent
-		box-shadow: none
-		&:hover, &:focus, &:active
-			background: transparent
-			color: $primary-text-color
-			border: $button-bd-width solid transparent
-			box-shadow: none
-	&-reset
-		padding: 0
-		border: none
-		&:hover, &:focus, &:active
-			border: none

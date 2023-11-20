@@ -765,7 +765,7 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 			'button_size'          => get_aesthetix_options( 'root_button_size' ),
 			'button_color'         => 'primary',
 			'button_type'          => get_aesthetix_options( 'root_button_type' ),
-			'button_content'       => null,
+			'button_content'       => 'button-icon-text',
 			'button_border_width'  => get_aesthetix_options( 'root_button_border_width' ),
 			'button_border_radius' => get_aesthetix_options( 'root_button_border_radius' ),
 			'icon_position'        => get_aesthetix_options( 'root_button_icon_position' ),
@@ -786,26 +786,6 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 			$classes[] = 'button-' . $args['button_size'];
 		}
 
-		if ( ! is_null( $args['button_content'] ) ) {
-
-			if ( in_array( $args['button_content'], array( 'button-icon', 'icon' ), true ) ) {
-				$classes[] = 'button-icon';
-
-				if ( in_array( 'search-submit', $classes, true ) ) {
-					$classes[] = 'button-icon_long';
-				}
-			}
-
-			if ( in_array( $args['button_content'], array( 'text-icon', 'text' ), true ) ) {
-				$classes[] = 'button-text';
-			}
-
-			// If it's not a button.
-			if ( ! in_array( $args['button_content'], array( 'button-icon-text', 'button-icon', 'button-text' ), true ) ) {
-				$classes[] = 'button-none';
-			}
-		}
-
 		if ( ! in_array( 'button-reset', $classes, true ) && ! in_array( 'button-none', $classes, true ) ) {
 			if ( $args['button_type'] === 'common' ) {
 				$classes[] = 'button-' . $args['button_color'];
@@ -815,6 +795,46 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 				$classes[] = 'button-' . $args['button_type'];
 				$classes[] = 'button-' . $args['button_type'] . '-' . $args['button_color'];
 			}
+		}
+
+		if ( in_array( $args['button_content'], array( 'button-icon' ), true ) ) {
+			$classes[] = 'button-icon';
+
+			if ( in_array( 'search-submit', $classes, true ) ) {
+				$classes[] = 'button-icon_long';
+			}
+		}
+
+		if ( in_array( 'icon', $classes, true ) || in_array( $args['button_content'], array( 'button-icon-text', 'button-icon', 'link-icon-text', 'text-icon', 'icon' ) ) ) {
+			$classes = get_icon_classes( $classes, $args );
+		}
+
+		if ( in_array( 'link', $classes, true ) || in_array( $args['button_content'], array( 'link-icon-text', 'link-text' ) ) ) {
+			$classes = get_link_classes( $classes, $args );
+		}
+
+		// Add buton resets classes.
+		if ( in_array( $args['button_content'], array( 'link-icon-text', 'link-text', 'text-icon', 'text', 'icon' ) ) ) {
+			foreach ( $classes as $key => $class ) {
+				if ( stripos( $class, 'button' ) !== false && ! in_array( $class, array( 'popup-button', 'dropdown-button' ), true ) ) {
+					unset( $classes[ $key ] );
+				}
+			}
+		}
+
+		if ( in_array( $args['button_content'], array( 'link-icon-text', 'link-text' ) ) ) {
+			$classes[] = 'button-reset';
+			$classes[] = 'button-link-reset';
+		}
+
+		if ( in_array( $args['button_content'], array( 'text-icon', 'text' ) ) ) {
+			$classes[] = 'button-reset';
+			$classes[] = 'button-text-reset';
+		}
+
+		if ( in_array( $args['button_content'], array( 'icon' ) ) ) {
+			$classes[] = 'button-reset';
+			$classes[] = 'button-icon-reset';
 		}
 
 		// Add filter to array.
@@ -848,6 +868,118 @@ if ( ! function_exists( 'button_classes' ) ) {
 	function button_classes( $class = '', $args = array(), $echo = true ) {
 
 		$classes = get_button_classes( $class, $args );
+
+		if ( $echo ) {
+			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
+		} else {
+			return 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
+		}
+	}
+}
+
+if ( ! function_exists( 'get_icon_classes' ) ) {
+
+	/**
+	 * Get classes for icons.
+	 *
+	 * @param string       $class Additional icon classes. Default ''.
+	 * @param array|string $args {
+	 *     Optional. Array or string of arguments to icon classes.
+	 *
+	 *     @type string $button_size    Button type (xs, sm, md, lg, xl). Default 'root_button_size'.
+	 *     @type string $button_color   Button color (primary, secondary, gray, default). Default 'primary'.
+	 *     @type string $button_type    Button type (common, empty, gradient, slide). Default 'root_button_type'.
+	 *     @type string $button_content Button content (common, empty, gradient, slide). Default null.
+	 *     @type string $icon_position  Icon position (before, after). Default 'root_button_icon_position'.
+	 * }
+	 * 
+	 * @return array
+	 */
+	function get_icon_classes( $class = '', $args = array() ) {
+
+		// Check the function has accepted any classes.
+		if ( isset( $class ) && ! empty( $class ) ) {
+			if ( is_array( $class ) ) {
+				$classes = $class;
+			} elseif ( is_string( $class ) ) {
+				$classes = explode( ' ', $class );
+			} else {
+				$classes = array();
+			}
+		} else {
+			$classes = array();
+		}
+
+		// Merge default args.
+		$defaults = array(
+			'icon_size'      => 'md',
+			'button_content' => 'icon',
+			'icon_position'  => get_aesthetix_options( 'root_button_icon_position' ),
+		);
+
+		$args = wp_parse_args( $args, $defaults );
+
+		$classes[] = 'icon';
+
+		if ( in_array( $args['button_content'], array( 'icon' ), true ) ) {
+			$classes[] = 'icon-' . $args['icon_size'];
+			$classes[] = 'icon-reset';
+		}
+
+		// Add globalicon position.
+		if ( in_array( $args['button_content'], array( 'button-icon-text', 'link-icon-text', 'text-icon' ), true ) && ! in_array( 'icon-before', $classes, true ) && ! in_array( 'icon-after', $classes, true ) ) {
+			$classes[] = 'icon-' . $args['icon_position'];
+		}
+
+		if ( in_array( $args['button_content'], array( 'button-icon', 'icon' ), true ) ) {
+			if ( array_search ( 'icon-before', $classes ) ) {
+				unset( $classes[ array_search ( 'icon-before', $classes ) ] );
+			}
+			if ( array_search ( 'icon-after', $classes ) ) {
+				unset( $classes[ array_search ( 'icon-after', $classes ) ] );
+			}
+		}
+
+		// Remove all icon classes if the content does not imply the presence of an icon
+		if ( in_array( $args['button_content'], array( 'button-text', 'link-text', 'text' ), true ) ) {
+			foreach ( $classes as $key => $class ) {
+				if ( stripos( $class, 'icon' ) !== false ) {
+					unset( $classes[ $key ] );
+				}
+			}
+		}
+
+		// Add filter to array.
+		$classes = apply_filters( 'get_icon_classes', $classes, $args );
+		$classes = array_unique( (array) $classes );
+		sort( $classes );
+
+		return $classes;
+	}
+}
+
+if ( ! function_exists( 'icon_classes' ) ) {
+
+	/**
+	 * Display classes for icons.
+	 *
+	 * @param string       $class Additional icon classes. Default ''.
+	 * @param array|string $args {
+	 *     Optional. Array or string of arguments to icon classes.
+	 *
+	 *     @type string $button_size    Button type (xs, sm, md, lg, xl). Default 'root_button_size'.
+	 *     @type string $button_color   Button color (primary, secondary, gray, default). Default 'primary'.
+	 *     @type string $button_type    Button type (common, empty, gradient, slide). Default 'root_button_type'.
+	 *     @type string $button_content Button content (common, empty, gradient, slide). Default null.
+	 *     @type string $icon_position  Icon position (before, after). Default 'root_button_icon_position'.
+	 * }
+	 * @param bool         $echo Echo or return icon classes. Default true.
+	 *
+	 * @return string|void
+	 */
+	function icon_classes( $class = '', $args = array(), $echo = true ) {
+
+		$classes = get_icon_classes( $class, $args );
 
 		if ( $echo ) {
 			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
@@ -1166,122 +1298,6 @@ if ( ! function_exists( 'widget_classes' ) ) {
 	function widget_classes( $class = '', $id = null, $echo = true ) {
 
 		$classes = get_widget_classes( $class, $id );
-
-		if ( $echo ) {
-			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
-		} else {
-			return 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
-		}
-	}
-}
-
-if ( ! function_exists( 'get_icon_classes' ) ) {
-
-	/**
-	 * Get classes for icons.
-	 *
-	 * @param string       $class Additional icon classes. Default ''.
-	 * @param array|string $args {
-	 *     Optional. Array or string of arguments to icon classes.
-	 *
-	 *     @type string $button_size    Button type (xs, sm, md, lg, xl). Default 'root_button_size'.
-	 *     @type string $button_color   Button color (primary, secondary, gray, default). Default 'primary'.
-	 *     @type string $button_type    Button type (common, empty, gradient, slide). Default 'root_button_type'.
-	 *     @type string $button_content Button content (common, empty, gradient, slide). Default null.
-	 *     @type string $icon_position  Icon position (before, after). Default 'root_button_icon_position'.
-	 * }
-	 * 
-	 * @return array
-	 */
-	function get_icon_classes( $class = '', $args = array() ) {
-
-		// Check the function has accepted any classes.
-		if ( isset( $class ) && ! empty( $class ) ) {
-			if ( is_array( $class ) ) {
-				$classes = $class;
-			} elseif ( is_string( $class ) ) {
-				$classes = explode( ' ', $class );
-			} else {
-				$classes = array();
-			}
-		} else {
-			$classes = array();
-		}
-
-		// Merge default args.
-		$defaults = array(
-			'icon_size'      => 'md',
-			'button_content' => 'icon',
-			'icon_position'  => get_aesthetix_options( 'root_button_icon_position' ),
-		);
-
-		$args = wp_parse_args( $args, $defaults );
-
-		$classes[] = 'icon';
-
-		if ( in_array( $args['button_content'], array( 'button-icon-text', 'button-icon', 'button-text' ), true ) ) {
-			$classes = get_button_classes( $classes, $args );
-		} elseif ( in_array( $args['button_content'], array( 'link-icon-text', 'link-text' ), true ) ) {
-			$classes = get_link_classes( $classes, $args );
-		} elseif ( in_array( $args['button_content'], array( 'icon' ), true ) ) {
-			$classes[] = 'icon-' . $args['icon_size'];
-			$classes[] = 'icon-reset';
-		}
-
-		// Add globalicon position.
-		if ( in_array( $args['button_content'], array( 'button-icon-text', 'link-icon-text', 'text-icon' ), true ) && ! in_array( 'icon-before', $classes, true ) && ! in_array( 'icon-after', $classes, true ) ) {
-			$classes[] = 'icon-' . $args['icon_position'];
-		}
-
-		if ( in_array( $args['button_content'], array( 'button-icon', 'icon' ), true ) ) {
-			if ( array_search ( 'icon-before', $classes ) ) {
-				unset( $classes[ array_search ( 'icon-before', $classes ) ] );
-			}
-			if ( array_search ( 'icon-after', $classes ) ) {
-				unset( $classes[ array_search ( 'icon-after', $classes ) ] );
-			}
-		}
-
-		// Remove all icon classes if the content does not imply the presence of an icon
-		if ( in_array( $args['button_content'], array( 'button-text', 'link-text', 'text' ), true ) ) {
-			foreach ( $classes as $key => $class ) {
-				if ( stripos( $class, 'icon' ) !== false ) {
-					unset( $classes[ $key ] );
-				}
-			}
-		}
-
-		// Add filter to array.
-		$classes = apply_filters( 'get_icon_classes', $classes, $args );
-		$classes = array_unique( (array) $classes );
-		sort( $classes );
-
-		return $classes;
-	}
-}
-
-if ( ! function_exists( 'icon_classes' ) ) {
-
-	/**
-	 * Display classes for icons.
-	 *
-	 * @param string       $class Additional icon classes. Default ''.
-	 * @param array|string $args {
-	 *     Optional. Array or string of arguments to icon classes.
-	 *
-	 *     @type string $button_size    Button type (xs, sm, md, lg, xl). Default 'root_button_size'.
-	 *     @type string $button_color   Button color (primary, secondary, gray, default). Default 'primary'.
-	 *     @type string $button_type    Button type (common, empty, gradient, slide). Default 'root_button_type'.
-	 *     @type string $button_content Button content (common, empty, gradient, slide). Default null.
-	 *     @type string $icon_position  Icon position (before, after). Default 'root_button_icon_position'.
-	 * }
-	 * @param bool         $echo Echo or return icon classes. Default true.
-	 *
-	 * @return string|void
-	 */
-	function icon_classes( $class = '', $args = array(), $echo = true ) {
-
-		$classes = get_icon_classes( $class, $args );
 
 		if ( $echo ) {
 			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';

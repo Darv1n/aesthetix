@@ -22,8 +22,8 @@ class WPA_Widget_Menus extends WPA_Widget {
 
 		$this->widget_cssclass    = 'widget_menus';
 		$this->widget_description = __( 'The global settings for this form can be found in the Customizer', 'aesthetix' );
-		$this->widget_id          = 'aesthetix_menus_widget';
-		$this->widget_name        = 'Aesthetix ' . mb_strtolower( __( 'Menus', 'aesthetix' ) );
+		$this->widget_id          = 'aesthetix-widget-menus';
+		$this->widget_name        = get_widget_name( 'widget-menus' );
 		$this->settings           = array(
 			'title'            => array(
 				'type'  => 'text',

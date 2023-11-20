@@ -160,15 +160,27 @@ if ( ! function_exists( 'aesthetix_nav_menu_args' ) ) {
 	 * @return array
 	 */
 	function aesthetix_nav_menu_args( $args = '' ) {
+
 		if ( $args['container'] === 'div' ) {
 			$args['container'] = 'nav';
 		}
+
+		$menu_class[] = 'menu';
+		$menu_class[] = 'menu-' . $args['theme_location'];
+
+		if ( $args['theme_location'] === 'primary' ) {
+			$menu_class[] = 'menu-inline';
+		}
+
+		sort( $menu_class );
+		$args['menu_class'] = implode( ' ', $menu_class );
+
 		return $args;
 	}
 }
 add_filter( 'wp_nav_menu_args', 'aesthetix_nav_menu_args' );
 
-if ( ! function_exists( 'remove_nav_menu_item_id' ) ) {
+if ( ! function_exists( 'aesthetix_nav_menu_item_id' ) ) {
 
 	/**
 	 * Function for 'nav_menu_item_id' filter-hook.
@@ -180,13 +192,13 @@ if ( ! function_exists( 'remove_nav_menu_item_id' ) ) {
 	 *
 	 * @return string
 	 */
-	function remove_nav_menu_item_id( $id, $item, $args ) {
+	function aesthetix_nav_menu_item_id( $id, $item, $args ) {
 		return '';
 	}
 }
-add_filter( 'nav_menu_item_id', 'remove_nav_menu_item_id', 10, 3 );
+add_filter( 'nav_menu_item_id', 'aesthetix_nav_menu_item_id', 10, 3 );
 
-if ( ! function_exists( 'remove_nav_menu_item_class' ) ) {
+if ( ! function_exists( 'aesthetix_nav_menu_css_class' ) ) {
 
 	/**
 	 * Function for 'nav_menu_css_class' filter-hook.
@@ -198,7 +210,7 @@ if ( ! function_exists( 'remove_nav_menu_item_class' ) ) {
 	 *
 	 * @return array
 	 */
-	function remove_nav_menu_item_class( $classes, $item, $args ) {
+	function aesthetix_nav_menu_css_class( $classes, $item, $args ) {
 
 		foreach ( $classes as $key_class => $class ) {
 			if ( str_contains( $class, 'menu-item-' ) && ! in_array( $class, array( 'menu-item-has-children', 'menu-item-logo' ), true ) ) {
@@ -208,54 +220,14 @@ if ( ! function_exists( 'remove_nav_menu_item_class' ) ) {
 			}
 		}
 
+		if ( in_array( 'menu-item-has-children', $classes, true ) ) {
+			$classes[] = 'dropdown-container';
+		}
+
 		return $classes;
 	}
 }
-add_filter( 'nav_menu_css_class', 'remove_nav_menu_item_class', 10, 3 );
-
-if ( ! function_exists( 'aesthetix_search_highlight' ) ) {
-
-	/**
-	 * Highlight search results.
-	 *
-	 * @param string $text Text for highlight.
-	 *
-	 * @return string
-	 */
-	function aesthetix_search_highlight( $text ) {
-
-		$s = get_query_var( 's' );
-
-		if ( is_search() && in_the_loop() && ! empty( $s ) ) {
-
-			$style       = 'background-color:#307FE2;color:#fff;font-weight:bold;';
-			$query_terms = get_query_var( 'search_terms' );
-
-			if ( ! empty( $query_terms ) ) {
-				$query_terms = explode( ' ', $s );
-			}
-
-			if ( empty( $query_terms ) ) {
-				return $text;
-			}
-
-			foreach ( $query_terms as $term ) {
-				$term  = preg_quote( $term, '/' ); // Like in search string.
-				$term1 = mb_strtolower( $term ); // Lowercase.
-				$term2 = mb_strtoupper( $term ); // Uppercase.
-				$term3 = mb_convert_case( $term, MB_CASE_TITLE, 'UTF-8' ); // Capitalise.
-				$term4 = mb_strtolower( mb_substr( $term, 0, 1 ) ) . mb_substr( $term2, 1 ); // First lowercase.
-				$text  = preg_replace( "@(?<!<|</)($term|$term1|$term2|$term3|$term4)@i", "<span style=\"{$style}\">$1</span>", $text );
-			}
-
-		} // is_search.
-
-		return $text;
-	}
-}
-// add_filter( 'the_title', 'aesthetix_search_highlight' );
-// add_filter( 'the_content', 'aesthetix_search_highlight' );
-// add_filter( 'the_excerpt', 'aesthetix_search_highlight' );
+add_filter( 'nav_menu_css_class', 'aesthetix_nav_menu_css_class', 10, 3 );
 
 if ( ! function_exists( 'aesthetix_nav_menu_item_args' ) ) {
 
@@ -280,31 +252,23 @@ if ( ! function_exists( 'aesthetix_nav_menu_item_args' ) ) {
 			$title_classes[] = 'has-description';
 		}
 
-		$args->link_before = '<span class="' . esc_attr( implode( ' ', $title_classes ) ) . '">';
-		$args->link_after  = '';
+		$args->link_before = '<span class="' . esc_attr( implode( ' ', $title_classes ) ) . '"></span>';
 		$args->after       = '';
 
-		if ( in_array( 'menu-item-has-children', $menu_item->classes, true ) ) {
-
-			$button_args = array(
-				'button_size'    => 'xs',
-			);
-
-			$args->link_after .= '<button ' . icon_classes( 'sub-menu-toggle toggle-icon icon icon-angle-down', $button_args, false ) . ' data-icon-on="icon-angle-up" data-icon-off="icon-angle-down" type="button"></button>';
+		if ( $menu_item->description ) {
+			$args->link_after = '<span class="menu-description">' . $menu_item->description . '</span>';
 		}
 
-		$args->link_after .= '</span>';
-
-		if ( $menu_item->description ) {
-			$args->link_after .= '<span class="menu-description">' . $menu_item->description . '</span>';
+		if ( in_array( 'menu-item-has-children', $menu_item->classes, true ) ) {
+			$args->after .= '<button ' . button_classes( 'dropdown-button toggle-icon icon icon-angle-down', array( 'button_content' => 'icon', 'button_size' => 'xxs' ), false ) . ' data-icon-on="icon-angle-up" data-icon-off="icon-angle-down" type="button"></button>';
 		}
 
 		if ( isset( $args->count_items_display ) && $args->count_items_display && $menu_item->type === 'taxonomy' ) {
 			$term = get_term( $menu_item->object_id, $menu_item->object );
 			if ( $term && isset( $term->count ) && (int) $term->count > 0 ) {
-				$args->after .= '<span ' . icon_classes( 'menu-count-button button-disabled', array( 'button_content' => 'button-text', 'button_size' => 'xxs' ), false ) . '>';
+				$args->after .= '<button ' . button_classes( 'menu-count-button button-disabled', array( 'button_content' => 'button-text', 'button_size' => 'xxs' ), false ) . ' type="button">';
 					$args->after .= esc_html( $term->count );
-				$args->after .= '</span>';
+				$args->after .= '</button>';
 			}
 		}
 
@@ -455,3 +419,71 @@ if ( ! function_exists( 'aesthetix_nav_menu_link_attributes' ) ) {
 	}
 }
 add_filter( 'nav_menu_link_attributes', 'aesthetix_nav_menu_link_attributes', 1, 4 );
+
+if ( ! function_exists( 'aesthetix_nav_menu_submenu_css_class' ) ) {
+
+	/**
+	 * Function for 'nav_menu_submenu_css_class' filter-hook.
+	 * 
+	 * @param string[] $classes Array of the CSS classes that are applied to the menu <ul> element.
+	 * @param stdClass $args    An object of `wp_nav_menu()` arguments.
+	 * @param int      $depth   Depth of menu item. Used for padding.
+	 *
+	 * @return string[]
+	 */
+	function aesthetix_nav_menu_submenu_css_class( $classes, $args, $depth ) {
+
+		$classes[] = 'dropdown-content';
+
+		if ( $args->theme_location == 'primary' ) {
+			$classes[] = 'dropdown-content-absolute';
+		}
+
+		return $classes;
+	}
+}
+add_filter( 'nav_menu_submenu_css_class', 'aesthetix_nav_menu_submenu_css_class', 10, 3 );
+
+if ( ! function_exists( 'aesthetix_search_highlight' ) ) {
+
+	/**
+	 * Highlight search results.
+	 *
+	 * @param string $text Text for highlight.
+	 *
+	 * @return string
+	 */
+	function aesthetix_search_highlight( $text ) {
+
+		$s = get_query_var( 's' );
+
+		if ( is_search() && in_the_loop() && ! empty( $s ) ) {
+
+			$style       = 'background-color:#307FE2;color:#fff;font-weight:bold;';
+			$query_terms = get_query_var( 'search_terms' );
+
+			if ( ! empty( $query_terms ) ) {
+				$query_terms = explode( ' ', $s );
+			}
+
+			if ( empty( $query_terms ) ) {
+				return $text;
+			}
+
+			foreach ( $query_terms as $term ) {
+				$term  = preg_quote( $term, '/' ); // Like in search string.
+				$term1 = mb_strtolower( $term ); // Lowercase.
+				$term2 = mb_strtoupper( $term ); // Uppercase.
+				$term3 = mb_convert_case( $term, MB_CASE_TITLE, 'UTF-8' ); // Capitalise.
+				$term4 = mb_strtolower( mb_substr( $term, 0, 1 ) ) . mb_substr( $term2, 1 ); // First lowercase.
+				$text  = preg_replace( "@(?<!<|</)($term|$term1|$term2|$term3|$term4)@i", "<span style=\"{$style}\">$1</span>", $text );
+			}
+
+		} // is_search.
+
+		return $text;
+	}
+}
+// add_filter( 'the_title', 'aesthetix_search_highlight' );
+// add_filter( 'the_content', 'aesthetix_search_highlight' );
+// add_filter( 'the_excerpt', 'aesthetix_search_highlight' );

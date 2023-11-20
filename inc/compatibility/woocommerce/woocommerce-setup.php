@@ -116,7 +116,7 @@ if ( ! function_exists( 'aesthetix_woo_scripts' ) ) {
 
 		// wp_add_inline_style( 'woocommerce', $wc_inline_font );
 
-		$button_classes = get_icon_classes( 'icon icon-cart-shopping', array( 'button_content' => 'button-icon-text' ) );
+		$button_classes = get_button_classes( 'icon icon-cart-shopping', array( 'button_content' => 'button-icon-text' ) );
 
 		if ( is_product_archive() || is_product() ) {
 			$add_button_classes = 'jQuery(function($) {

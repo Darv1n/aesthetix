@@ -15,61 +15,65 @@ if ( ! function_exists( 'aesthetix_widget_default' ) ) {
 	 * This function outputs the default widgets according to the specified structure as an array.
 	 *
 	 * @param array  $structure The right widgets structure for output. Default null
-	 * @param string $id        Widget ID. Default null
+	 * @param string $widget_id Widget ID. Default null
 	 *
 	 * @return array
 	 */
-	function aesthetix_widget_default( $id = null, $structure = null ) {
+	function aesthetix_widget_default( $widget_id = null, $structure = null ) {
 
-		if ( is_null( $id ) ) {
+		if ( is_null( $widget_id ) ) {
 			return false;
 		}
 
 		if ( is_null( $structure ) ) {
-			$structure = get_aesthetix_widget_default( $id );
+			$structure = get_aesthetix_widget_default( $widget_id );
 		}
 
 		if ( ! is_array( $structure ) || empty( $structure ) ) {
 			return false;
 		}
 
-		$args = array();
+		foreach ( $structure as $key => $widget_name ) {
 
-		foreach ( $structure as $key => $value ) {
+			$args = array();
 
-			if ( in_array( $id, array( 'header-mobile-left', 'header-mobile-center', 'header-mobile-right' ), true ) && in_array( $value, array( 'widget-search-toggle', 'widget-subscribe-toggle' ), true ) ) {
+			if ( in_array( $widget_id, array( 'header-mobile-left', 'header-mobile-center', 'header-mobile-right' ), true ) ) {
 
 				if ( in_array( get_aesthetix_options( 'root_button_size' ), array( 'lg', 'xl' ), true ) ) {
 					$args['button_size'] = 'md';
 				}
 
-				if ( $value === 'widget-search-toggle' ) {
-					$button_content = get_aesthetix_options( 'root_searchform_popup_form_button_content' );
-				} elseif ( $value === 'widget-subscribe-toggle' ) {
-					$button_content = get_aesthetix_options( 'root_subscribe_popup_form_button_content' );
+				if ( $widget_name === 'widget-search-toggle' ) {
+					$args['button_content'] = get_aesthetix_options( 'root_searchform_popup_form_button_content' );
+				} elseif ( $widget_name === 'widget-subscribe-toggle' ) {
+					$args['button_content'] = get_aesthetix_options( 'root_subscribe_popup_form_button_content' );
+				} else {
+					$args['button_content'] = get_aesthetix_options( 'root_menu_button_content' );
 				}
 
-				if ( isset( $button_content ) ) {
-					if ( in_array( $button_content, array( 'button-icon-text', 'button-text', 'button-icon' ), true ) ) {
-						$args['button_content'] = 'button-icon';
+				if ( in_array( $args['button_content'], array( 'button-icon-text', 'button-text', 'button-icon' ), true ) ) {
+					$args['button_content'] = 'button-icon';
+				} else {
+					if ( $widget_name === 'widget-language-switcher' ) {
+						$args['button_content'] = 'text-icon';
 					} else {
 						$args['button_content'] = 'icon';
 					}
 				}
 			}
 
-			if ( in_array( $id, array( 'footer-main-first', 'footer-main-second', 'footer-main-third', 'footer-main-fourth' ), true ) ) {
-				if ( $value === 'widget-socials' ) {
+			if ( in_array( $widget_id, array( 'footer-main-first', 'footer-main-second', 'footer-main-third', 'footer-main-fourth' ), true ) ) {
+				if ( $widget_name === 'widget-socials' ) {
 					$args['widget_title']    = __( 'Follow us', 'aesthetix' );
 					$args['widget_subtitle'] = __( 'Socials', 'aesthetix' );
 				}
 
-				if ( $value === 'widget-contacts' ) {
+				if ( $widget_name === 'widget-contacts' ) {
 					$args['widget_title']    = __( 'Contact us', 'aesthetix' );
 					$args['widget_subtitle'] = __( 'Feel free', 'aesthetix' );
 				}
 
-				if ( $value === 'widget-menus' ) {
+				if ( $widget_name === 'widget-menus' ) {
 					$menus = get_registered_nav_menus();
 					unset( $menus['primary'] );
 					unset( $menus['mobile'] );
@@ -79,12 +83,23 @@ if ( ! function_exists( 'aesthetix_widget_default' ) ) {
 				}
 			}
 
-			if ( $value === 'widget-menus' ) {
+			if ( $widget_id === 'aside-menu' && $widget_name === 'widget-socials' ) {
+				$args['widget_title']    = __( 'Follow us', 'aesthetix' );
+				$args['widget_subtitle'] = __( 'Socials', 'aesthetix' );
+			}
+
+			if ( in_array( $widget_id, array( 'header-mobile-left', 'header-mobile-center', 'header-mobile-right', 'header-main-left', 'header-main-center', 'header-main-right', 'header-bottom-left', 'header-bottom-right' ), true ) ) {
+				if ( $widget_name === 'widget-language-switcher' ) {
+					$args['style'] = 'dropdown';
+				}
+			}
+
+			if ( $widget_name === 'widget-menus' ) {
 				$args['menu_titles']         = get_registered_nav_menus();
 				$args['count_items_display'] = true;
 			}
 
-			if ( $value === 'widget-recent-posts' ) {
+			if ( $widget_name === 'widget-recent-posts' ) {
 				$args['posts_per_page']               = 2;
 				$args['post_layout']                  = 'list';
 				$args['post_structure']               = 'taxonomies,title,meta';
@@ -93,74 +108,83 @@ if ( ! function_exists( 'aesthetix_widget_default' ) ) {
 				$args['post_taxonomies_in_thumbnail'] = false;
 			}
 
-			switch ( $value ) {
-				case has_action( 'aesthetix_aesthetix_widget_default_loop_' . $value ):
-					do_action( 'aesthetix_aesthetix_widget_default_loop_' . $value );
+			// Merge child and parent default options.
+			$args = apply_filters( 'get_aesthetix_widget_default_args', $args, $widget_id, $widget_name );
+
+			switch ( $widget_name ) {
+				case has_action( 'aesthetix_aesthetix_widget_default_loop_' . $widget_name ):
+					do_action( 'aesthetix_aesthetix_widget_default_loop_' . $widget_name, $args, $widget_id, $widget_name );
 					break;
+				case 'search-form': ?>
+					<div <?php widget_classes( '', $widget_id ) ?>>
+						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
+						<?php get_search_form(); ?>
+					</div>
+					<?php break;
 				case 'widget-logo': ?>
-					<div <?php widget_classes( '', $id ) ?>>
+					<div <?php widget_classes( '', $widget_id ) ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_template_part( 'templates/widget/widget-logo', '', $args ); ?>
 					</div>
 					<?php break;
-				case 'widget-search-toggle': ?>
-					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
-						<?php get_template_part( 'templates/widget/widget-search-toggle', '', $args ); ?>
-					</div>
-					<?php break;
-				case 'widget-subscribe-toggle': ?>
-					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
-						<?php get_template_part( 'templates/widget/widget-subscribe-toggle', '', $args ); ?>
-					</div>
-					<?php break;
 				case 'widget-socials': ?>
-					<div <?php widget_classes( '', $id ) ?>>
+					<div <?php widget_classes( '', $widget_id ) ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_template_part( 'templates/widget/widget-socials', '', $args ); ?>
 					</div>
 					<?php break;
 				case 'widget-contacts': ?>
-					<div <?php widget_classes( '', $id ) ?>>
+					<div <?php widget_classes( '', $widget_id ) ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_template_part( 'templates/widget/widget-contacts', '', $args ); ?>
 					</div>
 					<?php break;
-				case 'widget-adv-banner': ?>
-					<div <?php widget_classes( '', $id ) ?>>
-						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
-						<?php get_template_part( 'templates/widget/widget-adv-banner', '', $args ); ?>
-					</div>
-					<?php break;
 				case 'widget-recent-posts': ?>
-					<div <?php widget_classes( '', $id ) ?>>
+					<div <?php widget_classes( '', $widget_id ) ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_template_part( 'templates/widget/widget-recent-posts', '', $args ); ?>
 					</div>
 					<?php break;
 				case 'widget-menus': ?>
-					<div <?php widget_classes( '', $id ) ?>>
+					<div <?php widget_classes( '', $widget_id ) ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_template_part( 'templates/widget/widget-menus', '', $args ); ?>
 					</div>
 					<?php break;
 				case 'widget-menu': ?>
-					<div <?php widget_classes( '', $id ) ?>>
+					<div <?php widget_classes( '', $widget_id ) ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_template_part( 'templates/widget/widget-menu', '', $args ); ?>
 					</div>
 					<?php break;
 				case 'widget-menu-primary': ?>
-					<div <?php widget_classes( '', $id ) ?>>
+					<div <?php widget_classes( '', $widget_id ) ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_template_part( 'templates/widget/widget-menu', '', array( 'theme_location' => 'primary' ) ); ?>
 					</div>
 					<?php break;
-				case 'search-form': ?>
-					<div <?php widget_classes( '', $id ) ?>>
+				case 'widget-search-toggle': ?>
+					<div <?php widget_classes( '', $widget_id ) ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
-						<?php get_search_form(); ?>
+						<?php get_template_part( 'templates/widget/widget-search-toggle', '', $args ); ?>
+					</div>
+					<?php break;
+				case 'widget-subscribe-toggle': ?>
+					<div <?php widget_classes( '', $widget_id ) ?>>
+						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
+						<?php get_template_part( 'templates/widget/widget-subscribe-toggle', '', $args ); ?>
+					</div>
+					<?php break;
+				case 'widget-adv-banner': ?>
+					<div <?php widget_classes( '', $widget_id ) ?>>
+						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
+						<?php get_template_part( 'templates/widget/widget-adv-banner', '', $args ); ?>
+					</div>
+					<?php break;
+				case 'widget-language-switcher': ?>
+					<div <?php widget_classes( '', $widget_id ) ?>>
+						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
+						<?php get_template_part( 'templates/widget/widget-language-switcher', '', $args ); ?>
 					</div>
 					<?php break;
 				default:
@@ -190,6 +214,7 @@ if ( ! function_exists( 'get_aesthetix_widget_default' ) ) {
 
 		$converter = array(
 			'main'                 => array(),
+			'aside-menu'           => array( 'widget-socials', 'widget-language-switcher' ),
 			'header-mobile-left'   => array( 'widget-logo' ),
 			'header-mobile-center' => array( 'widget-logo' ),
 			'header-mobile-right'  => array( 'widget-search-toggle', 'widget-subscribe-toggle' ),
@@ -202,7 +227,7 @@ if ( ! function_exists( 'get_aesthetix_widget_default' ) ) {
 			'header-bottom-right'  => array( 'widget-search-toggle', 'widget-subscribe-toggle' ),
 			'footer-top-left'      => array( 'widget-logo' ),
 			'footer-top-right'     => array( 'widget-menu-primary' ),
-			'footer-main-first'    => array( 'widget-recent-posts' ),
+			'footer-main-first'    => array( 'widget-logo', 'search-form', 'widget-language-switcher' ),
 			'footer-main-second'   => array( 'widget-menus' ),
 			'footer-main-third'    => array( 'widget-contacts', 'widget-socials' ),
 			'footer-main-fourth'   => array( 'widget-contacts', 'widget-socials' ),
@@ -230,12 +255,20 @@ if ( ! function_exists( 'get_aesthetix_widget_default' ) ) {
 			$converter['header-main-left']  = array( 'widget-search-toggle' );
 			$converter['header-main-right'] = array( 'widget-subscribe-toggle' );
 		} else {
-			$converter['header-main-right'] = array( 'widget-search-toggle', 'widget-subscribe-toggle' );
+			$converter['header-main-right'] = array( 'widget-language-switcher', 'widget-search-toggle', 'widget-subscribe-toggle' );
 		}
 
-		if ( get_aesthetix_options( 'general_footer_type' ) === 'footer-four-columns' ) {
-			$converter['footer-main-second'] = array( 'widget-recent-posts' );
-			$converter['footer-main-third']  = array( 'widget-menus' );
+		if ( get_aesthetix_options( 'general_footer_top_bar_display' ) === true ) {
+
+			$converter['footer-main-first']  = array( 'widget-recent-posts' );
+			$converter['footer-main-second'] = array( 'widget-menus' );
+			$converter['footer-main-third']  = array( 'widget-contacts', 'widget-socials' );
+			$converter['footer-main-fourth'] = array( 'widget-contacts', 'widget-socials' );
+
+			if ( get_aesthetix_options( 'general_footer_type' ) === 'footer-four-columns' ) {
+				$converter['footer-main-second'] = array( 'widget-recent-posts' );
+				$converter['footer-main-third']  = array( 'widget-menus' );
+			}
 		}
 
 		// Merge child and parent default options.

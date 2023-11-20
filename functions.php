@@ -38,6 +38,7 @@ require_once get_template_directory() . '/inc/customizer/customizer-converters.p
 require_once get_template_directory() . '/inc/widgets/widget-init.php';
 require_once get_template_directory() . '/inc/widgets/widget-defaults.php';
 require_once get_template_directory() . '/inc/widgets/abstract-widget.php';
+require_once get_template_directory() . '/inc/widgets/class-widget-logo.php';
 require_once get_template_directory() . '/inc/widgets/class-widget-menus.php';
 require_once get_template_directory() . '/inc/widgets/class-widget-buttons.php';
 require_once get_template_directory() . '/inc/widgets/class-widget-recent-posts.php';
@@ -47,6 +48,7 @@ require_once get_template_directory() . '/inc/widgets/class-widget-search-popup-
 require_once get_template_directory() . '/inc/widgets/class-widget-subscribe-form.php';
 require_once get_template_directory() . '/inc/widgets/class-widget-subscribe-popup-form.php';
 require_once get_template_directory() . '/inc/widgets/class-widget-adv-banner.php';
+require_once get_template_directory() . '/inc/widgets/class-widget-language-switcher.php';
 
 // TGM Plugin Activation.
 require_once get_template_directory() . '/inc/addons/tgm/class-tgm-plugin-activation.php';
@@ -90,6 +92,11 @@ if ( is_plugin_active( 'rate-my-post/rate-my-post.php' ) ) {
 // Load Mailchimp compatibility file.
 if ( is_plugin_active( 'mailchimp-for-wp/mailchimp-for-wp.php' ) ) {
 	require_once get_template_directory() . '/inc/compatibility/mailchimp.php';
+}
+
+// Load Polylang compatibility file.
+if ( is_plugin_active( 'polylang/polylang.php' ) ) {
+	require_once get_template_directory() . '/inc/compatibility/polylang.php';
 }
 
 // Libs.

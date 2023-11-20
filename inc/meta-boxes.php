@@ -67,7 +67,7 @@ if ( ! function_exists( 'post_gallery_meta_box_callback' ) ) {
 		echo '</div>';
 
 		echo '<p class="add_post_images hide-if-no-js">';
-			echo '<button class="components-button is-secondary button button-add-post-images" data-action-text="' . esc_html__( 'Select Image', 'aesthetix' ) . '" type="button">' . esc_html__( 'Add post gallery images', 'aesthetix' ) . '</button>';
+			echo '<button class="components-button is-secondary button button-add-post-images" data-action-text="' . esc_html__( 'Select image', 'aesthetix' ) . '" type="button">' . esc_html__( 'Add post gallery images', 'aesthetix' ) . '</button>';
 		echo '</p>';
 	}
 }

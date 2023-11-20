@@ -24,7 +24,7 @@ if ( in_array( 'menu-close', $args['button_classes'], true ) ) {
 
 ?>
 
-<button <?php icon_classes( $args['button_classes'], $args ); ?> aria-label="<?php esc_attr_e( 'Open menu button', 'aesthetix' ); ?>" aria-haspopup="true" aria-controls="aside-menu" type="button">
+<button <?php button_classes( $args['button_classes'], $args ); ?> aria-label="<?php esc_attr_e( 'Open menu button', 'aesthetix' ); ?>" aria-haspopup="true" aria-controls="aside-menu" type="button">
 	<?php if ( ! in_array( $args['button_content'], array( 'icon', 'button-icon' ), true ) ) {
 		esc_html_e( 'Menu', 'aesthetix' );
 	} ?>

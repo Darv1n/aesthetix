@@ -16,7 +16,7 @@ if ( is_admin_bar_showing() ) {
 
 <aside id="aside-menu" class="<?php echo esc_attr( implode( ' ', $classes ) ) ?>" aria-label="<?php esc_attr_e( 'Menu aside', 'aesthetix' ); ?>">
 
-	<div class="aside-header">
+	<div class="aside-menu-header">
 		<div <?php aesthetix_archive_page_columns_wrapper_classes( 'align-items-center' ); ?>>
 			<div class="col-6">
 				<?php get_template_part( 'templates/widget/widget-logo' ); ?>
@@ -29,11 +29,17 @@ if ( is_admin_bar_showing() ) {
 		</div>
 	</div>
 
-	<div class="aside-content">
+	<div class="aside-menu-content">
 		<?php get_template_part( 'templates/widget/widget-menu', '', array( 'theme_location' => 'mobile' ) ); ?>
 	</div>
 
-	<div class="aside-footer hidden">
+	<div <?php widgets_classes( 'aside-menu-footer', 'aside-menu' ); ?>>
+
+		<?php if ( is_active_sidebar( 'aside-menu' ) ) {
+			dynamic_sidebar( 'aside-menu' );
+		} else {
+			aesthetix_widget_default( 'aside-menu' );
+		} ?>
 
 	</div>
 

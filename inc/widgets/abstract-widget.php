@@ -404,7 +404,7 @@ abstract class WPA_Widget extends WP_Widget {
 							</div>
 
 							<div class="attachment-media-view">
-								<button type="button" class="select-media button-add-media button-add-adv-media not-selected"><?php esc_html_e( 'Add Image' ); ?></button>
+								<button type="button" class="select-media button-add-media button-add-adv-media not-selected"><?php esc_html_e( 'Add image', 'aesthetix' ); ?></button>
 							</div>
 						</div>
 

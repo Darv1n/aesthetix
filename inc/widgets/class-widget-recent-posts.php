@@ -17,8 +17,8 @@ class WPA_Widget_Recent_Posts extends WPA_Widget {
 	public function __construct() {
 		$this->widget_cssclass    = 'widget_posts';
 		$this->widget_description = __( 'This widget displays recent posts with aesthetix style', 'aesthetix' );
-		$this->widget_id          = 'aesthetix_widget_posts';
-		$this->widget_name        = 'Aesthetix ' . mb_strtolower( __( 'Recent posts', 'aesthetix' ) );
+		$this->widget_id          = 'aesthetix-widget-recent-posts';
+		$this->widget_name        = get_widget_name( 'widget-recent-posts' );
 		$this->settings           = array(
 			'title'            => array(
 				'type'  => 'text',

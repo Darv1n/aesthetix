@@ -9,13 +9,17 @@
 	&-right
 		text-align: right
 	&-inline
+		.widget-primary-menu
+			margin-right: 1rem
 		> *
 			margin-bottom: .125rem
+			margin-right: .5rem
 			display: inline-block
 			vertical-align: middle
 			&:not(:last-child)
-				margin-right: .25rem
 				margin-bottom: .125rem
+			&:last-child
+				margin-right: 0 !important
 
 .footer
 	.widgets
@@ -40,20 +44,20 @@
 		// padding-left: 0
 		// li:not(:last-child)
 		// 	margin-bottom: .375rem
-	&.widget_recent_entries
+	&_recent_entries
 		.post-date
 			display: block
 			margin-top: $gutter
 			font-size: $small-font-size
 			color: $primary-gray-color
-	&.widget_rss
+	&_rss
 		.rss-date, .rssSummary, cite, img
 			display: block
 			margin-top: $gutter
 		.rss-date, cite
 			font-size: $small-font-size
 			color: $primary-gray-color
-	&.widget_recent_comments
+	&_recent_comments
 		span.comment-author-link
 			display: block
 			font-size: $small-font-size

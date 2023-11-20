@@ -17,8 +17,8 @@ class WPA_Widget_Socials extends WPA_Widget {
 	public function __construct() {
 		$this->widget_cssclass    = 'widget_socials';
 		$this->widget_description = __( 'The global settings for this form can be found in the Customizer', 'aesthetix' );
-		$this->widget_id          = 'aesthetix_socials_widget';
-		$this->widget_name        = 'Aesthetix ' . mb_strtolower( __( 'Socials', 'aesthetix' ) );
+		$this->widget_id          = 'aesthetix-widget-socials';
+		$this->widget_name        = get_widget_name( 'widget-socials' );
 		$this->settings           = array(
 			'title'            => array(
 				'type'  => 'text',
@@ -96,6 +96,7 @@ class WPA_Widget_Socials extends WPA_Widget {
 		$this->widget_start( $args, $instance );
 
 		$template_args                   = array();
+		$template_args['style']          = isset( $instance['style'] ) ? $instance['style'] : $this->settings['style']['std'];
 		$template_args['icon_size']      = isset( $instance['icon_size'] ) ? $instance['icon_size'] : $this->settings['icon_size']['std'];
 		$template_args['button_size']    = isset( $instance['button_size'] ) ? $instance['button_size'] : $this->settings['button_size']['std'];
 		$template_args['button_color']   = isset( $instance['button_color'] ) ? $instance['button_color'] : $this->settings['button_color']['std'];

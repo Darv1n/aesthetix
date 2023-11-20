@@ -35,10 +35,10 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'general_header_mobile_type'                => 'default',
 
 			'general_menu_align'                        => 'left',
-			'general_menu_count_items_display'          => true,
+			'general_menu_count_items_display'          => false,
 
 			'general_footer_type'                       => 'footer-four-columns',
-			'general_footer_top_bar_display'            => true,
+			'general_footer_top_bar_display'            => false,
 			'general_footer_bottom_bar_display'         => true,
 
 			'general_breadcrumbs_display'               => true,
@@ -104,7 +104,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 			'root_searchform_popup_form_button_color'   => 'primary',
 			'root_searchform_popup_form_button_type'    => 'common',
-			'root_searchform_popup_form_button_content' => 'icon',
+			'root_searchform_popup_form_button_content' => 'button-icon',
 
 			'root_input_size'                           => 'md',
 			'root_input_border_width'                   => 'border-2',
@@ -178,10 +178,10 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 		$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
 			'other_address'       => '30th floor, Maakri 19/1, Tallinn, Estonia, 10145',
-			'other_phone'         => '+372 532 39 944',
-			'other_email'         => 'info@orderofmalta.ee',
+			'other_phone'         => '+79500463854',
+			'other_email'         => 'artem@artzolin.ru',
 			'other_whatsapp'      => '+79500463854',
-			'other_telegram_chat' => 'https://telegram.me/artzolin',
+			'other_telegram_chat' => 'https://qna.habr.com/curator/latest',
 		) );
 
 		foreach ( get_aesthetix_customizer_socials() as $key => $value ) {

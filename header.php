@@ -43,7 +43,7 @@
 
 	</header>
 
-	<?php 
+	<?php
 		/**
 		 * Hook: before_site_content.
 		 *

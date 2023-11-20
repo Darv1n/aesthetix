@@ -30,7 +30,7 @@ if ( (int) $pages === 1 ) {
 
 		// First page.
 		if ( $paged > 3 ) { ?>
-			<a <?php icon_classes( 'posts-navigation-item icon icon-before icon-chevron-left', array( 'button_content' => 'button-icon-text' ) ); ?> href="<?php echo esc_url( get_pagenum_link( 1 ) ); ?>" role="button"><?php esc_html_e( 'First', 'aesthetix' ); ?></a>
+			<a <?php button_classes( 'posts-navigation-item icon icon-before icon-chevron-left', array( 'button_content' => 'button-icon-text' ) ); ?> href="<?php echo esc_url( get_pagenum_link( 1 ) ); ?>" role="button"><?php esc_html_e( 'First', 'aesthetix' ); ?></a>
 		<?php }
 
 		// The main link output loop.
@@ -38,7 +38,7 @@ if ( (int) $pages === 1 ) {
 			if ( 1 !== $pages && ( ! ( $i >= $paged + $range + 1 || $i <= $paged - $range - 1 ) || $pages <= $showitems ) ) {
 
 				if ( $paged === $i ) { ?>
-					<span <?php icon_classes( 'posts-navigation-item posts-navigation-item-first posts-navigation-item-current button-num button-disabled', array( 'button_content' => 'button-icon-text' ) ); ?>><?php esc_html_e( $i ); ?></span>
+					<span <?php button_classes( 'posts-navigation-item posts-navigation-item-first posts-navigation-item-current button-num button-disabled', array( 'button_content' => 'button-icon-text' ) ); ?>><?php esc_html_e( $i ); ?></span>
 				<?php } else {
 
 					if ( $paged === $i ) {
@@ -55,7 +55,7 @@ if ( (int) $pages === 1 ) {
 						$classes = 'posts-navigation-item button-num';
 					} ?>
 
-					<a <?php icon_classes( $classes, array( 'button_content' => 'button-icon-text' ) ); ?> href="<?php echo esc_url( get_pagenum_link( $i ) ); ?>" role="button"<?php echo esc_attr( $rel ); ?>><?php esc_html_e( $i ); ?></a>
+					<a <?php button_classes( $classes, array( 'button_content' => 'button-icon-text' ) ); ?> href="<?php echo esc_url( get_pagenum_link( $i ) ); ?>" role="button"<?php echo esc_attr( $rel ); ?>><?php esc_html_e( $i ); ?></a>
 
 				<?php }
 			}
@@ -63,11 +63,11 @@ if ( (int) $pages === 1 ) {
 
 		// Last Page.
 		if ( $pages > 5 && $paged < $pages - 2 ) { ?>
-			<a <?php icon_classes( 'posts-navigation-item posts-navigation-item-last icon icon-after icon-chevron-right', array( 'button_content' => 'button-icon-text' ) ); ?> href="<?php echo esc_url( get_pagenum_link( $pages ) ); ?>" role="button"><?php esc_html_e( 'Last', 'aesthetix' ); ?></a>
+			<a <?php button_classes( 'posts-navigation-item posts-navigation-item-last icon icon-after icon-chevron-right', array( 'button_content' => 'button-icon-text' ) ); ?> href="<?php echo esc_url( get_pagenum_link( $pages ) ); ?>" role="button"><?php esc_html_e( 'Last', 'aesthetix' ); ?></a>
 		<?php }
 
 	} elseif ( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) === 'loadmore' ) { ?>
-		<button <?php icon_classes( 'loadmore icon icon-download' ); ?> type="button" data-default-icon="icon-download" data-loading-icon="icon-spinner" data-default-text="<?php esc_attr_e( 'Load more', 'aesthetix' ); ?>" data-loading-text="<?php esc_attr_e( 'Loading...', 'aesthetix' ); ?>" data-disabled-text="<?php esc_attr_e( 'All posts have been uploaded', 'aesthetix' ); ?>" data-current-page="1" data-max-pages="<?php echo esc_attr( $wp_query->max_num_pages ); ?>"><?php esc_html_e( 'Load more', 'aesthetix' ); ?></button>
+		<button <?php button_classes( 'loadmore icon icon-download' ); ?> type="button" data-default-icon="icon-download" data-loading-icon="icon-spinner" data-default-text="<?php esc_attr_e( 'Load more', 'aesthetix' ); ?>" data-loading-text="<?php esc_attr_e( 'Loading...', 'aesthetix' ); ?>" data-disabled-text="<?php esc_attr_e( 'All posts have been uploaded', 'aesthetix' ); ?>" data-current-page="1" data-max-pages="<?php echo esc_attr( $wp_query->max_num_pages ); ?>"><?php esc_html_e( 'Load more', 'aesthetix' ); ?></button>
 	<?php } else { ?>
 
 		<div class="row">

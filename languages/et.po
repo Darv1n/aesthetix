@@ -1,32 +1,24 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2023-08-31 23:55+0400\n"
-"PO-Revision-Date: 2023-09-05 18:57+0400\n"
+"POT-Creation-Date: 2023-11-20 12:13+0400\n"
+"PO-Revision-Date: 2023-11-20 12:14+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;_x;_ex\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: 404.php:20
-msgid "404 page header"
-msgstr "404 lehekülje päis"
-
-#: 404.php:21
+#: 404.php:17
 msgid "Oops! That page can&rsquo;t be found"
 msgstr "Oih! Seda lehte ei leitud"
 
-#: 404.php:24
-msgid "404 page content"
-msgstr "404 lehekülje sisu"
-
-#: 404.php:25
+#: 404.php:21
 msgid ""
 "It looks like nothing was found at this location. Maybe try one of the links "
 "below or a search?"
@@ -34,29 +26,9 @@ msgstr ""
 "Näib, et sellest asukohast ei leitud midagi. Võib-olla proovige mõnda "
 "allolevatest linkidest või otsingut?"
 
-#: 404.php:30
-msgid "404 page footer"
-msgstr "404 lehekülje jalus"
-
-#: archive.php:23 index.php:29
-msgid "Archive page header"
-msgstr "Arhiivi lehe päis"
-
-#: archive.php:30 index.php:34
-msgid "Archive page content"
-msgstr "Arhiveeri lehe sisu"
-
-#: archive.php:59 index.php:60
-msgid "Archive page footer"
-msgstr "Arhiivi lehe jalus"
-
-#: comments.php:69
-msgid "Published Date"
-msgstr "Avaldamise kuupäev"
-
-#: comments.php:73 inc/customizer/customizer-selects.php:108
-#: inc/customizer/customizer-selects.php:152
-#: templates/archive/archive-entry-post-meta.php:69
+#: comments.php:73 inc/customizer/customizer-selects.php:109
+#: inc/customizer/customizer-selects.php:161
+#: templates/archive/archive-entry-post-meta.php:68
 #: templates/single/single-content-type-page.php:37
 #: templates/single/single-entry-post-footer.php:65
 #: templates/single/single-entry-post-meta.php:69
@@ -76,14 +48,15 @@ msgid "Previous comments"
 msgstr "Eelmised kommentaarid"
 
 #: comments.php:130
-msgid "New comments"
-msgstr "Uued kommentaarid"
+msgid "Next comments"
+msgstr "Järgmised kommentaarid"
 
 #: comments.php:152
 msgid "Name"
 msgstr "Nimi"
 
-#: comments.php:156 inc/customizer/customizer-controls.php:298
+#: comments.php:156 inc/customizer/customizer-controls.php:307
+#: inc/widgets/class-widget-contacts.php:57
 msgid "Email"
 msgstr "E-mail"
 
@@ -118,24 +91,16 @@ msgid "Your email address will not be published."
 msgstr "Teie e-posti aadressi ei avaldata."
 
 #: comments.php:181
-msgid "Leave a Reply"
+msgid "Leave a reply"
 msgstr "Jäta vastus"
 
 #: comments.php:182
-msgid "Post Comment"
+msgid "Post comment"
 msgstr "Postita kommentaar"
 
 #: comments.php:188
 msgid "Comments are closed"
 msgstr "Kommentaarid on suletud"
-
-#: footer.php:23
-msgid "Site footer"
-msgstr "Saidi jalus"
-
-#: header.php:29
-msgid "Site header"
-msgstr "Saidi päis"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:334
 msgid "Install Required Plugins"
@@ -468,266 +433,310 @@ msgstr "Kõik paigaldused on lõpetatud."
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr "Plugina %1$s installimine (%2$d/%3$d)"
 
-#: inc/compatibility/breadcrumb-navxt.php:18
+#: inc/compatibility/breadcrumb-navxt.php:18 templates/button-home.php:17
 msgid "Home"
 msgstr "Kodu"
 
-#: inc/compatibility/kama-postviews.php:74
-#: inc/compatibility/kama-postviews.php:129
+#: inc/compatibility/kama-postviews.php:89
 msgid "Views"
 msgstr "Vaated"
 
-#: inc/compatibility/rate-my-post.php:47 inc/compatibility/rate-my-post.php:102
-#: inc/compatibility/rate-my-post.php:124
+#: inc/compatibility/rate-my-post.php:47 inc/compatibility/rate-my-post.php:100
+#: inc/compatibility/rate-my-post.php:122
+#: inc/compatibility/woocommerce/customizer/customizer-selects.php:31
 msgid "Rating"
 msgstr "Hinnang"
 
-#: inc/compatibility/woocommerce/customizer/customizer-controls.php:18
-#: inc/customizer/customizer-controls.php:212
+#: inc/compatibility/woocommerce/customizer/customizer-controls.php:17
 msgid "Which pages display sidebar"
 msgstr "Millistel lehtedel külgriba kuvatakse"
 
-#: inc/compatibility/woocommerce/customizer/customizer-controls.php:19
-#: inc/customizer/customizer-controls.php:207
+#: inc/compatibility/woocommerce/customizer/customizer-controls.php:18
+#: inc/customizer/customizer-controls.php:240
 msgid "Select element border radius"
 msgstr "Valige elemendi äärise raadius"
 
-#: inc/compatibility/woocommerce/customizer/customizer-sections.php:17
-#: inc/customizer/customizer-controls.php:31
-msgid "General"
-msgstr "Üldine"
+#: inc/compatibility/woocommerce/customizer/customizer-controls.php:23
+#: inc/customizer/customizer-controls.php:256
+#: inc/customizer/customizer-controls.php:291
+#: inc/widgets/class-widget-recent-posts.php:67
+msgid "Post structure"
+msgstr "Postituse struktuur"
+
+#: inc/compatibility/woocommerce/customizer/customizer-controls.php:25
+msgid "Shop display options"
+msgstr "Poe kuvamisvalikud"
+
+#: inc/compatibility/woocommerce/customizer/customizer-sections.php:28
+msgid "Single product"
+msgstr "Üksik toode"
+
+#: inc/compatibility/woocommerce/customizer/customizer-selects.php:30
+msgid "Product title"
+msgstr "Toote pealkiri"
+
+#: inc/compatibility/woocommerce/customizer/customizer-selects.php:32
+msgid "Price"
+msgstr "Hind"
+
+#: inc/compatibility/woocommerce/customizer/customizer-selects.php:33
+msgid "Add to cart button"
+msgstr "Lisa ostukorvi nupp"
+
+#: inc/compatibility/woocommerce/woocommerce-actions.php:81
+msgid "Out of stock"
+msgstr "Läbimüüdud"
+
+#: inc/compatibility/woocommerce/woocommerce-actions.php:82
+msgid "On backorder"
+msgstr "Järeltellimusel"
+
+#: inc/compatibility/woocommerce/woocommerce-setup.php:159
+msgid "WooCommerce sidebar"
+msgstr "WooCommerce'i külgriba"
+
+#: inc/compatibility/woocommerce/woocommerce-setup.php:161
+msgid ""
+"This sidebar will be used on product archive, cart, checkout and my account "
+"pages"
+msgstr ""
+"Seda külgriba kasutatakse tootearhiivis, ostukorvis, kassas ja minu konto "
+"lehtedel"
+
+#: inc/compatibility/woocommerce/woocommerce-setup.php:173
+msgid "Product sidebar"
+msgstr "Toote külgriba"
+
+#: inc/compatibility/woocommerce/woocommerce-setup.php:175
+msgid "This sidebar will be used on single product page"
+msgstr "Seda külgriba kasutatakse ühe toote lehel"
 
 #: inc/customizer/customizer-controls.php:25
+#: inc/customizer/customizer-selects.php:782
 msgid "White"
 msgstr "Valge"
 
 #: inc/customizer/customizer-controls.php:26
+#: inc/customizer/customizer-selects.php:783
 msgid "Black"
 msgstr "Must"
 
 #: inc/customizer/customizer-controls.php:30
-#: inc/customizer/customizer-controls.php:38
 msgid "Narrow"
 msgstr "Kitsas"
 
-#: inc/customizer/customizer-controls.php:32
-msgid "Average"
-msgstr "Keskmine"
-
-#: inc/customizer/customizer-controls.php:33
-#: inc/customizer/customizer-controls.php:39
+#: inc/customizer/customizer-controls.php:31
 msgid "Wide"
 msgstr "Lai"
 
-#: inc/customizer/customizer-controls.php:34
-msgid "Fluid"
-msgstr "Vedelik"
+#: inc/customizer/customizer-controls.php:35
+msgid "Header desktop default"
+msgstr "Päise töölaua vaikeseade"
 
-#: inc/customizer/customizer-controls.php:43
-msgid "Header Simple"
-msgstr "Päis Lihtne"
+#: inc/customizer/customizer-controls.php:36
+msgid "Header desktop 3 + 0 columns"
+msgstr ""
+
+#: inc/customizer/customizer-controls.php:37
+msgid "Header desktop 2 + 2 columns"
+msgstr ""
+
+#: inc/customizer/customizer-controls.php:38
+msgid "Header desktop 2 + 3 columns"
+msgstr ""
+
+#: inc/customizer/customizer-controls.php:39
+msgid "Header desktop 3 + 2 columns"
+msgstr ""
+
+#: inc/customizer/customizer-controls.php:40
+msgid "Header desktop 3 + 3 columns"
+msgstr ""
 
 #: inc/customizer/customizer-controls.php:44
-msgid "Header Logo Center"
-msgstr "Päise logokeskus"
+msgid "Header mobile default"
+msgstr "Päise mobiilne vaikeseade"
 
 #: inc/customizer/customizer-controls.php:45
-msgid "Header Content"
-msgstr "Päise sisu"
+msgid "Header mobile three columns"
+msgstr "Päis mobiili kolm veergu"
 
 #: inc/customizer/customizer-controls.php:49
-msgid "Open"
-msgstr "Avatud"
+msgid "Footer simple"
+msgstr "Jalus lihtne"
 
 #: inc/customizer/customizer-controls.php:50
-msgid "Close"
-msgstr "Sulge"
+msgid "Footer three columns"
+msgstr "Jalus kolm veergu"
 
-#: inc/customizer/customizer-controls.php:54
-msgid "Absolute"
-msgstr "Absoluutne"
+#: inc/customizer/customizer-controls.php:51
+msgid "Footer four columns"
+msgstr "Jalus neli veergu"
 
 #: inc/customizer/customizer-controls.php:55
-msgid "Fixed"
-msgstr "Parandatud"
-
-#: inc/customizer/customizer-controls.php:59
-#: inc/customizer/customizer-controls.php:65
-#: inc/customizer/customizer-controls.php:94
 msgid "Right"
 msgstr "Parem"
 
-#: inc/customizer/customizer-controls.php:60
-#: inc/customizer/customizer-controls.php:66
-#: inc/customizer/customizer-controls.php:95
+#: inc/customizer/customizer-controls.php:56
 msgid "Left"
 msgstr "Vasak"
 
-#: inc/customizer/customizer-controls.php:61
-#: inc/customizer/customizer-controls.php:67
+#: inc/customizer/customizer-controls.php:57
 msgid "Center"
 msgstr "Keskel"
 
-#: inc/customizer/customizer-controls.php:71
-msgid "Button + Icon + Text"
-msgstr "Nupp + ikoon + tekst"
-
-#: inc/customizer/customizer-controls.php:72
-msgid "Button + Icon"
-msgstr "Nupp + ikoon"
-
-#: inc/customizer/customizer-controls.php:73
-msgid "Button + Text"
-msgstr "Nupp + tekst"
-
-#: inc/customizer/customizer-controls.php:74
-msgid "Icon"
-msgstr "Ikoon"
-
-#: inc/customizer/customizer-controls.php:75
-msgid "Icon + Text"
-msgstr "Ikoon + tekst"
-
-#: inc/customizer/customizer-controls.php:76
-msgid "Text"
-msgstr "Tekst"
-
-#: inc/customizer/customizer-controls.php:80
+#: inc/customizer/customizer-controls.php:61
 msgid "WooCommerce (Plugin must be activated)"
 msgstr "WooCommerce (plugin peab olema aktiveeritud)"
 
-#: inc/customizer/customizer-controls.php:81
+#: inc/customizer/customizer-controls.php:62
 msgid "Breadcrumb NavXT plugin"
 msgstr "Breadcrumb NavXT-plugin"
 
-#: inc/customizer/customizer-controls.php:82
+#: inc/customizer/customizer-controls.php:63
 msgid "Yoast (Must be enabled in the plugin)"
 msgstr "Yoast (plugin peab olema lubatud)"
 
-#: inc/customizer/customizer-controls.php:83
+#: inc/customizer/customizer-controls.php:64
 msgid "RankMath (Must be enabled in the plugin)"
 msgstr "RankMath (plugin peab olema lubatud)"
 
-#: inc/customizer/customizer-controls.php:84
+#: inc/customizer/customizer-controls.php:65
 msgid "SEOPress (Must be enabled in the plugin)"
 msgstr "SEOPress (plugin peab olema lubatud)"
 
-#: inc/customizer/customizer-controls.php:88
-msgid "Footer Simple"
-msgstr "Jalus Lihtne"
-
-#: inc/customizer/customizer-controls.php:89
-msgid "Footer Three Columns"
-msgstr "Jalus kolm veergu"
-
-#: inc/customizer/customizer-controls.php:90
-msgid "Footer Four Columns"
-msgstr "Jalus neli veergu"
-
-#: inc/customizer/customizer-controls.php:99
+#: inc/customizer/customizer-controls.php:69
 msgid "Before"
 msgstr "Enne"
 
-#: inc/customizer/customizer-controls.php:100
+#: inc/customizer/customizer-controls.php:70
 msgid "After"
 msgstr "Pärast"
 
-#: inc/customizer/customizer-controls.php:104
-#: inc/customizer/customizer-controls.php:114
+#: inc/customizer/customizer-controls.php:74
+msgid "None"
+msgstr "Mitte ühtegi"
+
+#: inc/customizer/customizer-controls.php:75
+msgid "Menu start"
+msgstr "Menüü algus"
+
+#: inc/customizer/customizer-controls.php:76
+msgid "Menu center"
+msgstr "Menüükeskus"
+
+#: inc/customizer/customizer-controls.php:77
+msgid "Menu end"
+msgstr "Menüü lõpp"
+
+#: inc/customizer/customizer-controls.php:81
+#: inc/customizer/customizer-controls.php:86
+#: inc/customizer/customizer-controls.php:95
+#: inc/customizer/customizer-controls.php:108
+#: inc/widgets/class-widget-menus.php:48
 msgid "One"
 msgstr "Üks"
 
-#: inc/customizer/customizer-controls.php:105
-#: inc/customizer/customizer-controls.php:115
+#: inc/customizer/customizer-controls.php:82
+#: inc/customizer/customizer-controls.php:87
+#: inc/customizer/customizer-controls.php:96
+#: inc/customizer/customizer-controls.php:109
+#: inc/widgets/class-widget-menus.php:49
 msgid "Two"
 msgstr "Kaks"
 
-#: inc/customizer/customizer-controls.php:116
+#: inc/customizer/customizer-controls.php:88
+#: inc/customizer/customizer-controls.php:97
+#: inc/customizer/customizer-controls.php:110
+#: inc/widgets/class-widget-menus.php:50
 msgid "Three"
 msgstr "Kolm"
 
-#: inc/customizer/customizer-controls.php:117
+#: inc/customizer/customizer-controls.php:89
+#: inc/customizer/customizer-controls.php:98
+#: inc/customizer/customizer-controls.php:111
+#: inc/widgets/class-widget-menus.php:51
 msgid "Four"
 msgstr "Neli"
 
-#: inc/customizer/customizer-controls.php:118
+#: inc/customizer/customizer-controls.php:90
+#: inc/customizer/customizer-controls.php:99
 msgid "Five"
 msgstr "Viis"
 
-#: inc/customizer/customizer-controls.php:119
+#: inc/customizer/customizer-controls.php:91
+#: inc/customizer/customizer-controls.php:100
 msgid "Six"
 msgstr "Kuus"
 
-#: inc/customizer/customizer-controls.php:123
-msgid "List"
-msgstr "Nimekiri"
+#: inc/customizer/customizer-controls.php:101
+msgid "Seven"
+msgstr "Seitse"
 
-#: inc/customizer/customizer-controls.php:124
-msgid "Tils"
-msgstr "Tils"
+#: inc/customizer/customizer-controls.php:102
+msgid "Eight"
+msgstr "Kaheksa"
 
-#: inc/customizer/customizer-controls.php:125
-msgid "Banner"
-msgstr "Bänner"
+#: inc/customizer/customizer-controls.php:103
+msgid "Nine"
+msgstr "Üheksa"
 
-#: inc/customizer/customizer-controls.php:126
-msgid "Simple"
-msgstr "Lihtne"
+#: inc/customizer/customizer-controls.php:104
+msgid "Ten"
+msgstr "Kümme"
 
-#: inc/customizer/customizer-controls.php:130
+#: inc/customizer/customizer-controls.php:115
+#: inc/customizer/customizer-selects.php:744
 msgid "Default"
 msgstr "Vaikimisi"
 
-#: inc/customizer/customizer-controls.php:131
+#: inc/customizer/customizer-controls.php:116
 msgid "Numeric"
 msgstr "Numbriline"
 
-#: inc/customizer/customizer-controls.php:135
-msgid "Button"
-msgstr "Nupp"
+#: inc/customizer/customizer-controls.php:117
+#: templates/archive/archive-pagination.php:70
+msgid "Load more"
+msgstr "Lae rohkem"
 
-#: inc/customizer/customizer-controls.php:136
-msgid "Link"
-msgstr "Link"
+#: inc/customizer/customizer-controls.php:124
+msgid "Demo"
+msgstr "Demo"
 
-#: inc/customizer/customizer-controls.php:140
-msgid "Cover"
-msgstr "Kaas"
+#: inc/customizer/customizer-controls.php:125
+msgid "Select demo variant"
+msgstr "Valige demovariant"
 
-#: inc/customizer/customizer-controls.php:141
-msgid "Pattern"
-msgstr "Muster"
-
-#: inc/customizer/customizer-controls.php:148
+#: inc/customizer/customizer-controls.php:127
 msgid "Content"
 msgstr "Sisu"
 
-#: inc/customizer/customizer-controls.php:149
+#: inc/customizer/customizer-controls.php:128
 msgid "Select container width"
 msgstr "Valige mahuti laius"
 
-#: inc/customizer/customizer-controls.php:149
-msgid "Here you can change the width of the site"
-msgstr "Siin saate muuta saidi laiust"
+#: inc/customizer/customizer-controls.php:128
+msgid "Here you can change the container width of the site"
+msgstr "Siin saate muuta saidi konteineri laiust"
 
-#: inc/customizer/customizer-controls.php:150
+#: inc/customizer/customizer-controls.php:129
 msgid "Select content width"
 msgstr "Valige sisu laius"
 
-#: inc/customizer/customizer-controls.php:150
+#: inc/customizer/customizer-controls.php:129
 msgid "Note: its work if sidebar dont show"
 msgstr "Märkus: see töötab, kui külgriba ei kuvata"
 
-#: inc/customizer/customizer-controls.php:152
+#: inc/customizer/customizer-controls.php:131
 msgid "Header"
 msgstr "Päis"
 
-#: inc/customizer/customizer-controls.php:153
-#: inc/customizer/customizer-controls.php:165
+#: inc/customizer/customizer-controls.php:132
+#: inc/customizer/customizer-controls.php:141
 msgid "Top bar display"
 msgstr "Ülemise riba kuva"
 
-#: inc/customizer/customizer-controls.php:153
+#: inc/customizer/customizer-controls.php:132
 msgid ""
 "This checkbox displays two sidebars before the header of the site. They are "
 "adds in the widget section options"
@@ -735,53 +744,45 @@ msgstr ""
 "See märkeruut kuvab saidi päise ees kaks külgriba. Need lisatakse vidinate "
 "jaotise valikutes"
 
-#: inc/customizer/customizer-controls.php:154
+#: inc/customizer/customizer-controls.php:133
 msgid "Select header type"
 msgstr "Valige päise tüüp"
 
-#: inc/customizer/customizer-controls.php:156
-#: templates/button-menu-toggle.php:23
-#: templates/footer/footer-content-type-three-columns.php:31
+#: inc/customizer/customizer-controls.php:133
+msgid "You can change parts of the header on the widgets page"
+msgstr "Saate vidinate lehel päise osi muuta"
+
+#: inc/customizer/customizer-controls.php:134
+msgid "Select header mobile type"
+msgstr "Valige päise mobiilitüüp"
+
+#: inc/customizer/customizer-controls.php:136
+#: templates/widget/widget-menu-toggle.php:29
 msgid "Menu"
 msgstr "Menüü"
 
-#: inc/customizer/customizer-controls.php:157
-msgid "Select menu type"
-msgstr "Valige menüü tüüp"
-
-#: inc/customizer/customizer-controls.php:158
-msgid "Select menu position"
-msgstr "Valige menüü asukoht"
-
-#: inc/customizer/customizer-controls.php:158
-msgid "Position of the menu container when opened"
-msgstr "Menüü asukoht avamisel"
-
-#: inc/customizer/customizer-controls.php:159
+#: inc/customizer/customizer-controls.php:137
 msgid "Select menu alignment"
 msgstr "Valige menüü joondus"
 
-#: inc/customizer/customizer-controls.php:159
+#: inc/customizer/customizer-controls.php:137
 msgid "Alignment of the menu container"
 msgstr "Menüü joondamine"
 
-#: inc/customizer/customizer-controls.php:160
-msgid "Select menu button alignment"
-msgstr "Valige menüünuppude joondus"
+#: inc/customizer/customizer-controls.php:138
+#: inc/widgets/class-widget-menus.php:63
+msgid "Count category items display"
+msgstr "Kuvatakse loenduskategooria üksused"
 
-#: inc/customizer/customizer-controls.php:161
-msgid "Select menu button type"
-msgstr "Valige menüünupu tüüp"
+#: inc/customizer/customizer-controls.php:138
+msgid "This checkbox displays count posts in taxonomies"
+msgstr "See märkeruut kuvab taksonoomiate arvu postitusi"
 
-#: inc/customizer/customizer-controls.php:162
-msgid "Select menu button icon position"
-msgstr "Valige menüünupu ikooni asukoht"
-
-#: inc/customizer/customizer-controls.php:164
+#: inc/customizer/customizer-controls.php:140
 msgid "Footer"
 msgstr "Jalus"
 
-#: inc/customizer/customizer-controls.php:165
+#: inc/customizer/customizer-controls.php:141
 msgid ""
 "This checkbox displays two sidebars before the footer of the site. They are "
 "adds in the widget section options"
@@ -789,11 +790,11 @@ msgstr ""
 "See märkeruut kuvab saidi jaluse ees kaks külgriba. Need lisatakse vidinate "
 "jaotise valikutes"
 
-#: inc/customizer/customizer-controls.php:166
+#: inc/customizer/customizer-controls.php:142
 msgid "Bottom bar display"
 msgstr "Alumise riba ekraan"
 
-#: inc/customizer/customizer-controls.php:166
+#: inc/customizer/customizer-controls.php:142
 msgid ""
 "This checkbox displays two sidebars after the footer of the site. They are "
 "adds in the widget section options"
@@ -801,306 +802,417 @@ msgstr ""
 "See märkeruut kuvab saidi jaluse järel kaks külgriba. Need lisatakse "
 "vidinate jaotise valikutes"
 
-#: inc/customizer/customizer-controls.php:167
+#: inc/customizer/customizer-controls.php:143
 msgid "Select footer type"
 msgstr "Valige jaluse tüüp"
 
-#: inc/customizer/customizer-controls.php:169
+#: inc/customizer/customizer-controls.php:145
 msgid "Breadcrumbs"
 msgstr "Järjestus"
 
-#: inc/customizer/customizer-controls.php:170
+#: inc/customizer/customizer-controls.php:146
 msgid "Breadcrumbs display"
 msgstr "Järjestuse väljapanek"
 
-#: inc/customizer/customizer-controls.php:171
+#: inc/customizer/customizer-controls.php:147
 msgid "Select breadcrumbs type"
 msgstr "Valige järjestuse tüüp"
 
-#: inc/customizer/customizer-controls.php:172
+#: inc/customizer/customizer-controls.php:148
 msgid "Breadcrumbs separator"
 msgstr "Järjestuse eraldaja"
 
-#: inc/customizer/customizer-controls.php:174
-msgid "Scroll top"
-msgstr "Kerige üles"
+#: inc/customizer/customizer-controls.php:150 inc/widgets/widget-init.php:247
+msgid "Subscribe form"
+msgstr "Telli vorm"
 
-#: inc/customizer/customizer-controls.php:175
-msgid "Scroll to top button display"
-msgstr "Kerige ülemise nupu kuvani"
+#: inc/customizer/customizer-controls.php:151
+msgid "Subscribe form before footer display"
+msgstr "Telli vorm enne jaluse kuvamist"
 
-#: inc/customizer/customizer-controls.php:176
-msgid "Select scroll top button alignment"
-msgstr "Valige kerimisnupu joondus"
+#: inc/customizer/customizer-controls.php:152
+msgid "Subscribe form type"
+msgstr "Telli vormi tüüp"
 
-#: inc/customizer/customizer-controls.php:177
-msgid "Select scroll top button type"
-msgstr "Valige kerimisnupu tüüp"
+#: inc/customizer/customizer-controls.php:153
+msgid "Subscribe form title"
+msgstr "Telli vormi pealkiri"
 
-#: inc/customizer/customizer-controls.php:178
-msgid "Select scroll top button icon position"
-msgstr "Valige kerimisnupu ikooni asukoht"
+#: inc/customizer/customizer-controls.php:154
+msgid "Subscribe form background image"
+msgstr "Telli vormi taustapilt"
 
-#: inc/customizer/customizer-controls.php:180
-#: inc/customizer/customizer-controls.php:204
+#: inc/customizer/customizer-controls.php:155
+msgid "Subscribe form shortcode"
+msgstr "Telli vormi lühikood"
+
+#: inc/customizer/customizer-controls.php:155
+msgid "Use this field if you chose Mailchimp"
+msgstr "Kasutage seda välja, kui valisite Mailchimp"
+
+#: inc/customizer/customizer-controls.php:157
+msgid "Scroll top structure"
+msgstr "Kerige üles struktuur"
+
+#: inc/customizer/customizer-controls.php:160
+#: inc/customizer/customizer-controls.php:237
 msgid "Other"
 msgstr "Muud"
 
-#: inc/customizer/customizer-controls.php:181
-msgid "Comments display"
-msgstr "Kommentaaride kuvamine"
-
-#: inc/customizer/customizer-controls.php:181
-msgid "Comments block hide/display"
-msgstr "Kommentaarid blokeerivad peitmise/kuvamise"
-
-#: inc/customizer/customizer-controls.php:182
+#: inc/customizer/customizer-controls.php:161
 msgid "Cookie display"
 msgstr "Küpsiste kuvamine"
 
-#: inc/customizer/customizer-controls.php:182
+#: inc/customizer/customizer-controls.php:161
 msgid "Displays a notification about the use of cookies on the site"
 msgstr "Kuvab teatise küpsiste kasutamise kohta saidil"
 
-#: inc/customizer/customizer-controls.php:183
-msgid "External UTM Links"
-msgstr "Välised UTM-i lingid"
+#: inc/customizer/customizer-controls.php:165
+msgid "Slider"
+msgstr "Liugur"
 
-#: inc/customizer/customizer-controls.php:183
-msgid "Adds utm tags to all external links"
-msgstr "Lisab utm-sildid kõikidele välistele linkidele"
+#: inc/customizer/customizer-controls.php:166
+msgid "Slider display"
+msgstr "Liugurekraan"
 
-#: inc/customizer/customizer-controls.php:188
-msgid "Fonts"
-msgstr "Fondid"
+#: inc/customizer/customizer-controls.php:167
+msgid "Slider post type"
+msgstr "Liugurposti tüüp"
 
-#: inc/customizer/customizer-controls.php:189
-msgid "Select primary font"
-msgstr "Valige esmane font"
+#: inc/customizer/customizer-controls.php:168
+msgid "Slides count"
+msgstr "Slaidid loevad"
 
-#: inc/customizer/customizer-controls.php:190
-msgid "Select secondary font"
-msgstr "Valige teine font"
+#: inc/customizer/customizer-controls.php:169
+msgid "Slides to show"
+msgstr "Esitatavad slaidid"
 
-#: inc/customizer/customizer-controls.php:191
-msgid "Colors"
-msgstr "Värvid"
-
-#: inc/customizer/customizer-controls.php:192
-msgid "Select color scheme"
-msgstr "Valige värviskeem"
-
-#: inc/customizer/customizer-controls.php:193
-msgid "Select primary color"
-msgstr "Valige põhivärv"
-
-#: inc/customizer/customizer-controls.php:194
-msgid "Select secondary color"
-msgstr "Valige teisene värv"
-
-#: inc/customizer/customizer-controls.php:195
-msgid "Select gray color"
-msgstr "Valige hall värv"
-
-#: inc/customizer/customizer-controls.php:196
-msgid "Select link color"
-msgstr "Valige lingi värv"
-
-#: inc/customizer/customizer-controls.php:197
-msgid "Buttons"
-msgstr "Nupud"
-
-#: inc/customizer/customizer-controls.php:198
-#: inc/customizer/customizer-controls.php:275
-msgid "Select button type"
-msgstr "Valige nupu tüüp"
-
-#: inc/customizer/customizer-controls.php:199
-msgid "Display button icons"
-msgstr "Kuva nuppude ikoonid"
-
-#: inc/customizer/customizer-controls.php:200
-msgid "Select button icon position"
-msgstr "Valige nupu ikooni asukoht"
-
-#: inc/customizer/customizer-controls.php:201
-msgid "Select button size"
-msgstr "Valige nupu suurus"
-
-#: inc/customizer/customizer-controls.php:202
-msgid "Select button border width"
-msgstr "Valige nupu äärise laius"
-
-#: inc/customizer/customizer-controls.php:203
-msgid "Select button border radius"
-msgstr "Valige nupu äärise raadius"
-
-#: inc/customizer/customizer-controls.php:205
-msgid "Select element shadow"
-msgstr "Valige elemendi vari"
-
-#: inc/customizer/customizer-controls.php:206
-msgid "Select element border width"
-msgstr "Valige elemendi äärise laius"
-
-#: inc/customizer/customizer-controls.php:213
-msgid "Left Sidebar Display"
-msgstr "Vasaku külgriba ekraan"
-
-#: inc/customizer/customizer-controls.php:214
-msgid "Right Sidebar Display"
-msgstr "Parema külgriba ekraan"
-
-#: inc/customizer/customizer-controls.php:229
-msgid "By date"
-msgstr "Kuupäeva järgi"
-
-#: inc/customizer/customizer-controls.php:230
-msgid "By modified date"
-msgstr "Muudetud kuupäeva järgi"
-
-#: inc/customizer/customizer-controls.php:231
-msgid "By title"
-msgstr "Pealkirja järgi"
-
-#: inc/customizer/customizer-controls.php:232
-msgid "By random"
-msgstr "Juhuslikult"
-
-#: inc/customizer/customizer-controls.php:236
-msgid "By menu order"
-msgstr "Menüü järjekorras"
-
-#: inc/customizer/customizer-controls.php:241
-#: inc/customizer/customizer-controls.php:276
-msgid "Post Structure"
-msgstr "Postituse struktuur"
-
-#: inc/customizer/customizer-controls.php:243
-#: inc/customizer/customizer-controls.php:278
-msgid "Post Meta Structure"
-msgstr "Postituse meta struktuur"
-
-#: inc/customizer/customizer-controls.php:245
-msgid "Post Footer Structure"
-msgstr "Postituse jaluse struktuur"
-
-#: inc/customizer/customizer-controls.php:248
-msgid "Main options"
-msgstr "Peamised valikud"
-
-#: inc/customizer/customizer-controls.php:249
-#: inc/customizer/customizer-controls.php:270
+#: inc/customizer/customizer-controls.php:170
+#: inc/customizer/customizer-controls.php:263
+#: inc/customizer/customizer-controls.php:285
 msgid "Select template type"
 msgstr "Valige malli tüüp"
 
-#: inc/customizer/customizer-controls.php:249
-msgid "This field displays template of the post"
-msgstr "Sellel väljal kuvatakse postituse mall"
-
-#: inc/customizer/customizer-controls.php:250
-msgid "Prev/next post navigation display"
-msgstr "Eelmise/järgmise postituse navigeerimiskuva"
-
-#: inc/customizer/customizer-controls.php:251
-msgid "Entry footer display"
-msgstr "Kirje jaluse kuva"
-
-#: inc/customizer/customizer-controls.php:256
-msgid "Entry footer cats display"
-msgstr "Sisendjaluse kasside ekraan"
-
-#: inc/customizer/customizer-controls.php:257
-msgid "Entry footer tags display"
-msgstr "Kuvatakse kirje jaluse sildid"
-
-#: inc/customizer/customizer-controls.php:258
-msgid "Similar posts display"
-msgstr "Sarnaste postituste kuvamine"
-
-#: inc/customizer/customizer-controls.php:259
-#: inc/customizer/customizer-controls.php:272
-msgid "Select posts order"
-msgstr "Valige postituste järjekord"
-
-#: inc/customizer/customizer-controls.php:260
-#: inc/customizer/customizer-controls.php:273
-msgid "Select posts orderby"
-msgstr "Valige postitused järjekorras"
-
-#: inc/customizer/customizer-controls.php:261
-msgid "Select posts count"
-msgstr "Valige postituste arv"
-
-#: inc/customizer/customizer-controls.php:268
-msgid "Main Options"
-msgstr "Peamised valikud"
-
-#: inc/customizer/customizer-controls.php:269
-msgid "Select columns of posts"
-msgstr "Valige postituste veerud"
-
-#: inc/customizer/customizer-controls.php:269
-msgid "Choose how many columns to display posts"
-msgstr "Valige, mitu veergu postitusi kuvada"
-
-#: inc/customizer/customizer-controls.php:270
+#: inc/customizer/customizer-controls.php:170
+#: inc/customizer/customizer-controls.php:285
 msgid "This field displays template of posts"
 msgstr "Sellel väljal kuvatakse postituste mall"
 
+#: inc/customizer/customizer-controls.php:175
+msgid "Fonts"
+msgstr "Fondid"
+
+#: inc/customizer/customizer-controls.php:176
+msgid "Select primary font"
+msgstr "Valige esmane font"
+
+#: inc/customizer/customizer-controls.php:177
+msgid "Select secondary font"
+msgstr "Valige teine font"
+
+#: inc/customizer/customizer-controls.php:179
+msgid "Colors"
+msgstr "Värvid"
+
+#: inc/customizer/customizer-controls.php:180
+msgid "Select color scheme"
+msgstr "Valige värviskeem"
+
+#: inc/customizer/customizer-controls.php:181
+msgid "Select primary color"
+msgstr "Valige põhivärv"
+
+#: inc/customizer/customizer-controls.php:182
+msgid "Select secondary color"
+msgstr "Valige teisene värv"
+
+#: inc/customizer/customizer-controls.php:183
+msgid "Select gray color"
+msgstr "Valige hall värv"
+
+#: inc/customizer/customizer-controls.php:184
+msgid "Select link color"
+msgstr "Valige lingi värv"
+
+#: inc/customizer/customizer-controls.php:186
+msgid "Post"
+msgstr "Postita"
+
+#: inc/customizer/customizer-controls.php:187
+msgid "Select post background"
+msgstr "Valige postituse taust"
+
+#: inc/customizer/customizer-controls.php:188
+msgid "Select post thumbnail padding"
+msgstr "Valige postituse pisipiltide täidis"
+
+#: inc/customizer/customizer-controls.php:189
+msgid "Select post content padding"
+msgstr "Valige postituse sisu täidis"
+
+#: inc/customizer/customizer-controls.php:190
+msgid "Select post shadow"
+msgstr "Valige postituse vari"
+
+#: inc/customizer/customizer-controls.php:191
+msgid "Select post border width"
+msgstr "Valige postituse äärise laius"
+
+#: inc/customizer/customizer-controls.php:192
+msgid "Select post border radius"
+msgstr "Valige postiäärise raadius"
+
+#: inc/customizer/customizer-controls.php:194 inc/widgets/widget-init.php:242
+msgid "Buttons"
+msgstr "Nupud"
+
+#: inc/customizer/customizer-controls.php:195
+#: inc/widgets/class-widget-buttons.php:58
+#: inc/widgets/class-widget-language-switcher.php:53
+#: inc/widgets/class-widget-search-popup-form.php:53
+#: inc/widgets/class-widget-socials.php:65
+#: inc/widgets/class-widget-subscribe-popup-form.php:47
+msgid "Select button type"
+msgstr "Valige nupu tüüp"
+
+#: inc/customizer/customizer-controls.php:196
+msgid "Select button icon position"
+msgstr "Valige nupu ikooni asukoht"
+
+#: inc/customizer/customizer-controls.php:197
+#: inc/widgets/class-widget-socials.php:53
+msgid "Select button size"
+msgstr "Valige nupu suurus"
+
+#: inc/customizer/customizer-controls.php:198
+msgid "Select button border width"
+msgstr "Valige nupu äärise laius"
+
+#: inc/customizer/customizer-controls.php:199
+msgid "Select button border radius"
+msgstr "Valige nupu äärise raadius"
+
+#: inc/customizer/customizer-controls.php:201
+msgid "Menu button"
+msgstr "Menüünupp"
+
+#: inc/customizer/customizer-controls.php:202
+msgid "Select menu button color"
+msgstr "Valige menüünupu värv"
+
+#: inc/customizer/customizer-controls.php:203
+msgid "Select menu button type"
+msgstr "Valige menüünupu tüüp"
+
+#: inc/customizer/customizer-controls.php:204
+msgid "Select menu button content"
+msgstr "Valige menüünupu sisu"
+
+#: inc/customizer/customizer-controls.php:206
+msgid "Home button"
+msgstr "Kodu"
+
+#: inc/customizer/customizer-controls.php:207
+msgid "Select home button display"
+msgstr "Valige kodunupu ekraan"
+
+#: inc/customizer/customizer-controls.php:208
+msgid "Select home button color"
+msgstr "Valige kodunupu värv"
+
+#: inc/customizer/customizer-controls.php:209
+msgid "Select home button type"
+msgstr "Valige kodunupu tüüp"
+
+#: inc/customizer/customizer-controls.php:210
+msgid "Select home button content"
+msgstr "Valige kodunupu sisu"
+
+#: inc/customizer/customizer-controls.php:212
+#: inc/customizer/customizer-selects.php:993
+msgid "Scroll top button"
+msgstr "Kerimise ülemine nupp"
+
+#: inc/customizer/customizer-controls.php:213
+msgid "Select scroll top button color"
+msgstr "Valige kerimisnupu värv"
+
+#: inc/customizer/customizer-controls.php:214
+msgid "Select scroll top button type"
+msgstr "Valige kerimisnupu tüüp"
+
+#: inc/customizer/customizer-controls.php:215
+msgid "Select scroll top button content"
+msgstr "Valige kerimisnupu sisu"
+
+#: inc/customizer/customizer-controls.php:217
+msgid "Subscribe popup form button"
+msgstr "Telli hüpikakna nupp"
+
+#: inc/customizer/customizer-controls.php:218
+msgid "Select subscribe popup form button color"
+msgstr "Valige tellimisvormi hüpikakna nupu värv"
+
+#: inc/customizer/customizer-controls.php:219
+msgid "Select subscribe popup form button type"
+msgstr "Valige tellimisvormi hüpikakna nupu tüüp"
+
+#: inc/customizer/customizer-controls.php:220
+msgid "Select subscribe popup form button content"
+msgstr "Valige tellimisvormi hüpikakna nupu sisu"
+
+#: inc/customizer/customizer-controls.php:222
+msgid "Search form button"
+msgstr "Otsi vormi nupp"
+
+#: inc/customizer/customizer-controls.php:223
+msgid "Select search form button color"
+msgstr "Valige otsinguvormi nupu värv"
+
+#: inc/customizer/customizer-controls.php:224
+msgid "Select search form button type"
+msgstr "Valige otsinguvormi nupu tüüp"
+
+#: inc/customizer/customizer-controls.php:225
+msgid "Select search form button content"
+msgstr "Valige otsinguvormi nupu sisu"
+
+#: inc/customizer/customizer-controls.php:227
+msgid "Search popup form button"
+msgstr "Otsi hüpikakna vormi nupp"
+
+#: inc/customizer/customizer-controls.php:228
+msgid "Select search popup form button color"
+msgstr "Valige otsingu hüpikakna nupu värv"
+
+#: inc/customizer/customizer-controls.php:229
+msgid "Select search popup form button type"
+msgstr "Valige otsingu hüpikakna nupu tüüp"
+
+#: inc/customizer/customizer-controls.php:230
+msgid "Select search popup form button content"
+msgstr "Valige otsingu hüpikakna nupu sisu"
+
+#: inc/customizer/customizer-controls.php:232
+msgid "Inputs"
+msgstr "Sisendid"
+
+#: inc/customizer/customizer-controls.php:233
+#: inc/widgets/class-widget-search-popup-form.php:41
+msgid "Select input size"
+msgstr "Valige sisendi suurus"
+
+#: inc/customizer/customizer-controls.php:234
+msgid "Select input border width"
+msgstr "Valige sisendi piiri laius"
+
+#: inc/customizer/customizer-controls.php:235
+msgid "Select input border radius"
+msgstr "Valige sisendi piiri raadius"
+
+#: inc/customizer/customizer-controls.php:238
+msgid "Select element shadow"
+msgstr "Valige elemendi vari"
+
+#: inc/customizer/customizer-controls.php:239
+msgid "Select element border width"
+msgstr "Valige elemendi äärise laius"
+
+#: inc/customizer/customizer-controls.php:258
+#: inc/customizer/customizer-controls.php:296
+#: inc/widgets/class-widget-recent-posts.php:73
+msgid "Post meta structure"
+msgstr "Postituse meta struktuur"
+
+#: inc/customizer/customizer-controls.php:260
+msgid "Post footer structure"
+msgstr "Postituse jaluse struktuur"
+
+#: inc/customizer/customizer-controls.php:262
+#: inc/customizer/customizer-controls.php:282
+msgid "Main options"
+msgstr "Peamised valikud"
+
+#: inc/customizer/customizer-controls.php:263
+msgid "This field displays template of the post"
+msgstr "Sellel väljal kuvatakse postituse mall"
+
+#: inc/customizer/customizer-controls.php:264
+msgid "Prev/next post navigation display"
+msgstr "Eelmise/järgmise postituse navigeerimiskuva"
+
+#: inc/customizer/customizer-controls.php:265
+msgid "Entry footer display"
+msgstr "Kirje jaluse kuva"
+
+#: inc/customizer/customizer-controls.php:270
+msgid "Entry footer cats display"
+msgstr "Sisendjaluse kasside ekraan"
+
 #: inc/customizer/customizer-controls.php:271
+msgid "Entry footer tags display"
+msgstr "Kuvatakse kirje jaluse sildid"
+
+#: inc/customizer/customizer-controls.php:272
+msgid "Similar posts display"
+msgstr "Sarnaste postituste kuvamine"
+
+#: inc/customizer/customizer-controls.php:273
+#: inc/customizer/customizer-controls.php:287
+#: inc/widgets/class-widget-recent-posts.php:41
+msgid "Select posts order"
+msgstr "Valige postituste järjekord"
+
+#: inc/customizer/customizer-controls.php:274
+#: inc/customizer/customizer-controls.php:288
+#: inc/widgets/class-widget-recent-posts.php:47
+msgid "Select posts orderby"
+msgstr "Valige postitused järjekorras"
+
+#: inc/customizer/customizer-controls.php:275
+#: inc/widgets/class-widget-recent-posts.php:56
+msgid "Select posts count"
+msgstr "Valige postituste arv"
+
+#: inc/customizer/customizer-controls.php:283
+msgid "Masonry blog style"
+msgstr "Müürsepa ajaveebi stiil"
+
+#: inc/customizer/customizer-controls.php:284
+msgid "Select columns of posts"
+msgstr "Valige postituste veerud"
+
+#: inc/customizer/customizer-controls.php:284
+msgid "Choose how many columns to display posts"
+msgstr "Valige, mitu veergu postitusi kuvada"
+
+#: inc/customizer/customizer-controls.php:286
 msgid "Select posts per page"
 msgstr "Valige postitused lehel"
 
-#: inc/customizer/customizer-controls.php:274
-msgid "Post Pagination"
-msgstr "Postituse leheküljed"
-
-#: inc/customizer/customizer-controls.php:286
-msgid "Social List"
-msgstr "Sotsiaalne nimekiri"
-
-#: inc/customizer/customizer-controls.php:286
-msgid ""
-"Add a link to social-list networks using a shortcode <strong>[aesthetix-"
-"social-list]</strong>"
-msgstr ""
-"Lisage link sotsiaalloendi võrkudele, kasutades lühikoodi <strong>[aesthetix-"
-"social-list]</strong>"
-
-#: inc/customizer/customizer-controls.php:287
-msgid "Facebook link"
-msgstr ""
-
-#: inc/customizer/customizer-controls.php:288
-msgid "Instagram link"
-msgstr ""
-
 #: inc/customizer/customizer-controls.php:289
-msgid "Youtube link"
-msgstr ""
+msgid "Post pagination"
+msgstr "Postituste lehitsemine"
 
 #: inc/customizer/customizer-controls.php:290
-msgid "Twitter link"
-msgstr ""
-
-#: inc/customizer/customizer-controls.php:291
-msgid "Telegram link"
-msgstr ""
-
-#: inc/customizer/customizer-controls.php:292
-msgid "Linkedin link"
-msgstr ""
+msgid "Read more button content"
+msgstr "Loe edasi nupu sisu"
 
 #: inc/customizer/customizer-controls.php:293
-msgid "Vkontakte link"
-msgstr ""
+#: inc/widgets/class-widget-recent-posts.php:79
+msgid "Post taxonomies structure"
+msgstr "Posttaksonoomia struktuur"
 
-#: inc/customizer/customizer-controls.php:295
-msgid "Contacts List"
+#: inc/customizer/customizer-controls.php:294
+#: inc/widgets/class-widget-recent-posts.php:85
+msgid "Display taxonomies in thumbnail"
+msgstr "Kuva taksonoomiad pisipiltidena"
+
+#: inc/customizer/customizer-controls.php:304
+msgid "Contacts list"
 msgstr "Kontaktide loend"
 
-#: inc/customizer/customizer-controls.php:295
+#: inc/customizer/customizer-controls.php:304
 msgid ""
 "Add a link to contacts-list using a shortcode <strong>[aesthetix-contacts-"
 "list]</strong> or single <strong>[aesthetix-email]</strong>, "
@@ -1110,59 +1222,65 @@ msgstr ""
 "contacts-list]</strong> või üksikut <strong>[aesthetix-email]</strong>, "
 "<strong>[aesthetix-phone]</strong> >, <strong>[esthetixi aadress]</strong>"
 
-#: inc/customizer/customizer-controls.php:296
+#: inc/customizer/customizer-controls.php:305
+#: inc/widgets/class-widget-contacts.php:47
 msgid "Address"
 msgstr "Aadress"
 
-#: inc/customizer/customizer-controls.php:297
+#: inc/customizer/customizer-controls.php:306
+#: inc/widgets/class-widget-contacts.php:52
 msgid "Phone"
 msgstr "Telefon"
 
-#: inc/customizer/customizer-controls.php:299
-msgid "Whatsapp phone"
-msgstr "Whatsapp telefon"
+#: inc/customizer/customizer-controls.php:308
+#: inc/widgets/class-widget-buttons.php:50
+#: inc/widgets/class-widget-contacts.php:62
+#: templates/aside/aside-scroll-top.php:42
+#: templates/widget/widget-buttons.php:54
+msgid "WhatsApp"
+msgstr "WhatsApp"
 
-#: inc/customizer/customizer-controls.php:299
-msgid "Enter data in the format 7999XXXXXXX without \"+\""
+#: inc/customizer/customizer-controls.php:308
+msgid "Enter your WhatsApp phone for contact with you"
+msgstr "Teiega ühenduse võtmiseks sisestage oma WhatsAppi telefon"
+
+#: inc/customizer/customizer-controls.php:309
+#: inc/customizer/customizer-selects.php:957
+#: inc/widgets/class-widget-buttons.php:49
+#: inc/widgets/class-widget-contacts.php:67
+#: templates/aside/aside-scroll-top.php:33
+#: templates/widget/widget-buttons.php:45
+msgid "Telegram"
+msgstr "Telegram"
+
+#: inc/customizer/customizer-controls.php:309
+msgid "Enter your personal/bot Telegram link for contact with you"
+msgstr "Teiega ühenduse võtmiseks sisestage oma isiklik / robot Telegrami link"
+
+#: inc/customizer/customizer-controls.php:310
+msgid "Social list"
+msgstr "Sotsiaalne nimekiri"
+
+#: inc/customizer/customizer-controls.php:310
+msgid ""
+"Add a link to social-list networks using a shortcode <strong>[aesthetix-"
+"social-list]</strong>"
 msgstr ""
+"Lisage link sotsiaalloendi võrkudele, kasutades lühikoodi <strong>[aesthetix-"
+"social-list]</strong>"
 
-#: inc/customizer/customizer-controls.php:300
-msgid "Telegram chat link"
-msgstr "Telegrami vestluse link"
+#: inc/customizer/customizer-controls.php:319
+#: inc/widgets/class-widget-logo.php:41
+msgid "Select logo size"
+msgstr "Valige logo suurus"
 
-#: inc/customizer/customizer-controls.php:300
-msgid "Enter you telegram chet link for contact with you"
-msgstr "Teiega ühenduse võtmiseks sisestage oma telegrammi link"
+#: inc/customizer/customizer-defaults.php:50
+msgid "Subscribe to our newsletter for all the latest updates"
+msgstr "Liituge meie uudiskirjaga, et saada uusimaid uuendusi"
 
-#: inc/customizer/customizer-controls.php:302
-msgid "Verifications and counters"
-msgstr "Kontrollid ja loendurid"
-
-#: inc/customizer/customizer-controls.php:303
-#: inc/customizer/customizer-controls.php:305
-msgid "Google"
-msgstr ""
-
-#: inc/customizer/customizer-controls.php:303
-msgid "Get your google verification code in the Google Search Console"
-msgstr "Hankige oma Google'i kinnituskood Google'i otsingukonsoolist"
-
-#: inc/customizer/customizer-controls.php:304
-#: inc/customizer/customizer-controls.php:306
-msgid "Yandex"
-msgstr ""
-
-#: inc/customizer/customizer-controls.php:304
-msgid "Get your yandex verification code in the Yandex Webmaster Tools"
-msgstr ""
-
-#: inc/customizer/customizer-controls.php:305
-msgid "Get google counter ID like a UA-********-*"
-msgstr ""
-
-#: inc/customizer/customizer-controls.php:306
-msgid "Get yandex counter ID like a ********"
-msgstr ""
+#: inc/customizer/customizer-functions.php:202
+msgid "Base"
+msgstr "Alus"
 
 #: inc/customizer/customizer-sections.php:31
 msgid "General options"
@@ -1173,257 +1291,751 @@ msgid "Root style options"
 msgstr "Juurestiili valikud"
 
 #: inc/customizer/customizer-sections.php:39
-msgid "Sidebar options"
-msgstr "Külgriba valikud"
-
-#: inc/customizer/customizer-sections.php:43
 msgid "Front page options"
 msgstr "Esilehe valikud"
 
-#: inc/customizer/customizer-sections.php:47
+#: inc/customizer/customizer-sections.php:43
 msgid "Archive options"
 msgstr "Arhiivi valikud"
 
+#: inc/customizer/customizer-sections.php:55
+#, php-format
+msgid "Single %s options"
+msgstr "Üksik %s valikud"
+
 #: inc/customizer/customizer-sections.php:59
-msgid "Single "
-msgstr "Üksik"
+#, php-format
+msgid "Archive %s options"
+msgstr "Arhiivi %s valikud"
 
-#: inc/customizer/customizer-sections.php:63
-msgid "Archive "
-msgstr "Arhiiv"
-
-#: inc/customizer/customizer-sections.php:69
+#: inc/customizer/customizer-sections.php:65
 msgid "Other options"
 msgstr "Muud võimalused"
 
+#: inc/customizer/customizer-sections.php:70
+msgid "Advertising banners"
+msgstr "Reklaambännerid"
+
 #: inc/customizer/customizer-selects.php:30
-msgid "Post Title"
-msgstr "Postituse pealkiri"
+msgid "Post taxonomies"
+msgstr "Postitaksonoomiad"
 
 #: inc/customizer/customizer-selects.php:31
-#: inc/customizer/customizer-selects.php:70
-msgid "Post Thumbnail"
-msgstr "Postituse pisipilt"
+msgid "Post title"
+msgstr "Postituse pealkiri"
 
 #: inc/customizer/customizer-selects.php:32
-#: inc/customizer/customizer-selects.php:71
-msgid "Post Meta Data"
+#: inc/customizer/customizer-selects.php:72
+msgid "Post meta data"
 msgstr "Postitage metaandmed"
 
 #: inc/customizer/customizer-selects.php:33
-msgid "Post Excerpt"
+msgid "Post excerpt"
 msgstr "Postituse väljavõte"
 
 #: inc/customizer/customizer-selects.php:34
-msgid "Post Read More"
-msgstr "Postitus Loe edasi"
+msgid "Post author"
+msgstr "Postituse autor"
 
-#: inc/customizer/customizer-selects.php:69
-msgid "Post Header"
+#: inc/customizer/customizer-selects.php:35
+msgid "Post read more"
+msgstr "Postita loe lähemalt"
+
+#: inc/customizer/customizer-selects.php:70
+msgid "Post header"
 msgstr "Postituse päis"
 
-#: inc/customizer/customizer-selects.php:72
-msgid "Post Content"
-msgstr "Postituse sisu"
+#: inc/customizer/customizer-selects.php:71
+msgid "Post thumbnail"
+msgstr "Postituse pisipilt"
 
 #: inc/customizer/customizer-selects.php:73
-msgid "Post Footer"
+msgid "Post content"
+msgstr "Postitage sisu"
+
+#: inc/customizer/customizer-selects.php:74
+msgid "Post footer"
 msgstr "Postituse jalus"
 
-#: inc/customizer/customizer-selects.php:112
-#: inc/customizer/customizer-selects.php:156
+#: inc/customizer/customizer-selects.php:113 inc/setup.php:29
 msgid "Categories"
 msgstr "Kategooriad"
 
-#: inc/customizer/customizer-selects.php:113
-#: inc/customizer/customizer-selects.php:157
+#: inc/customizer/customizer-selects.php:114 inc/setup.php:30
 msgid "Tags"
 msgstr "Sildid"
 
-#: inc/customizer/customizer-selects.php:148
+#: inc/customizer/customizer-selects.php:157
 msgid "Author"
 msgstr "Autor"
 
-#: inc/customizer/customizer-selects.php:149
-#: templates/archive/archive-entry-post-meta.php:35
-#: templates/single/single-entry-post-meta.php:35
+#: inc/customizer/customizer-selects.php:158
 msgid "Publication date"
 msgstr "Avaldamise kuupäev"
 
-#: inc/customizer/customizer-selects.php:150
-#: templates/archive/archive-entry-post-meta.php:57
-#: templates/single/single-entry-post-meta.php:57
+#: inc/customizer/customizer-selects.php:159
 msgid "Reading time"
 msgstr "Lugemisaeg"
 
-#: inc/customizer/customizer-selects.php:151
-#: templates/archive/archive-entry-post-meta.php:63
+#: inc/customizer/customizer-selects.php:160
+#: templates/archive/archive-entry-post-meta.php:62
 #: templates/single/single-entry-post-meta.php:63
 msgid "Comments"
 msgstr "Kommentaarid"
+
+#: inc/customizer/customizer-selects.php:346
+#: inc/customizer/customizer-selects.php:667
+#: inc/customizer/customizer-selects.php:785
+msgid "Primary"
+msgstr "Esmane"
+
+#: inc/customizer/customizer-selects.php:347
+#: inc/customizer/customizer-selects.php:668
+#: inc/customizer/customizer-selects.php:786
+msgid "Secondary"
+msgstr "Teisene"
+
+#: inc/customizer/customizer-selects.php:348
+msgid "Blue"
+msgstr "Sinine"
+
+#: inc/customizer/customizer-selects.php:349
+#: inc/customizer/customizer-selects.php:669
+#: inc/customizer/customizer-selects.php:784
+msgid "Gray"
+msgstr "Hall"
+
+#: inc/customizer/customizer-selects.php:383
+msgid "Common"
+msgstr "Levinud"
+
+#: inc/customizer/customizer-selects.php:384
+msgid "Empty"
+msgstr "Tühi"
+
+#: inc/customizer/customizer-selects.php:385
+msgid "Gradient"
+msgstr "Gradient"
+
+#: inc/customizer/customizer-selects.php:386
+msgid "Slide"
+msgstr "Libisema"
+
+#: inc/customizer/customizer-selects.php:583
+msgid "Theme (Messages will be sent to email)"
+msgstr "Teema (Sõnumid saadetakse meilile)"
+
+#: inc/customizer/customizer-selects.php:626
+#: templates/archive/archive-entry-post-taxonomies.php:32
+msgid "Sticky"
+msgstr "Kleepuv"
+
+#: inc/customizer/customizer-selects.php:703
+msgid "Button + icon + text"
+msgstr "Nupp + ikoon + tekst"
+
+#: inc/customizer/customizer-selects.php:704
+msgid "Button + icon"
+msgstr "Nupp + ikoon"
+
+#: inc/customizer/customizer-selects.php:705
+msgid "Button + text"
+msgstr "Nupp + tekst"
+
+#: inc/customizer/customizer-selects.php:706
+msgid "Link + icon + text"
+msgstr "Link + ikoon + tekst"
+
+#: inc/customizer/customizer-selects.php:707
+msgid "Link + text"
+msgstr "Link + tekst"
+
+#: inc/customizer/customizer-selects.php:708
+msgid "Text + icon"
+msgstr "Tekst + ikoon"
+
+#: inc/customizer/customizer-selects.php:709
+msgid "Text"
+msgstr "Tekst"
+
+#: inc/customizer/customizer-selects.php:710
+msgid "Icon"
+msgstr "Ikoon"
+
+#: inc/customizer/customizer-selects.php:781
+msgid "Theme"
+msgstr "Teema"
+
+#: inc/customizer/customizer-selects.php:865
+msgid "By date"
+msgstr "Kuupäeva järgi"
+
+#: inc/customizer/customizer-selects.php:866
+msgid "By modified date"
+msgstr "Muudetud kuupäeva järgi"
+
+#: inc/customizer/customizer-selects.php:867
+msgid "By title"
+msgstr "Pealkirja järgi"
+
+#: inc/customizer/customizer-selects.php:868
+msgid "By random"
+msgstr "Juhuslikult"
+
+#: inc/customizer/customizer-selects.php:872
+msgid "By menu order"
+msgstr "Menüü järjekorras"
+
+#: inc/customizer/customizer-selects.php:915
+msgid "Grid"
+msgstr "Võre"
+
+#: inc/customizer/customizer-selects.php:916
+msgid "Grid image"
+msgstr "Võre kujutis"
+
+#: inc/customizer/customizer-selects.php:917
+msgid "List"
+msgstr "Nimekiri"
+
+#: inc/customizer/customizer-selects.php:918
+msgid "List chess"
+msgstr "Nimekiri male"
+
+#: inc/customizer/customizer-selects.php:952
+msgid "Instagram"
+msgstr "Instagram"
+
+#: inc/customizer/customizer-selects.php:953
+msgid "Facebook"
+msgstr "Facebook"
+
+#: inc/customizer/customizer-selects.php:954
+msgid "YouTube"
+msgstr "YouTube"
+
+#: inc/customizer/customizer-selects.php:955
+msgid "Twitter"
+msgstr "Twitter"
+
+#: inc/customizer/customizer-selects.php:956
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: inc/customizer/customizer-selects.php:991
+msgid "Telegram button"
+msgstr "Telegrami nupp"
+
+#: inc/customizer/customizer-selects.php:992
+msgid "WhatsApp button"
+msgstr "WhatsApp nupp"
+
+#: inc/handlers.php:106
+msgid ""
+"Your message does not pass the spam filter. If an error occurs, please write "
+"to <a href=\"mailto:team@zolin.digital\">team@zolin.digital</a>"
+msgstr ""
+"Teie kiri ei läbi rämpspostifiltrit. Kui ilmneb viga, kirjutage aadressile "
+"<a href=\"mailto:team@zolin.digital\">team@zolin.digital</a>"
+
+#: inc/handlers.php:108
+msgid "There was an error submitting the form"
+msgstr "Vormi esitamisel ilmnes viga"
+
+#: inc/handlers.php:115
+msgid "Email address is incorrect"
+msgstr "E-posti aadress on vale"
+
+#: inc/handlers.php:118
+msgid "Please enter your email address"
+msgstr "Palun sisestage oma e-posti aadress"
+
+#: inc/handlers.php:129
+msgid "New subscriber to"
+msgstr "Uus tellija"
+
+#: inc/handlers.php:142
+msgid "Subscribe completed successfully"
+msgstr "Tellimine on edukalt lõpule viidud"
+
+#: inc/handlers.php:144
+msgid ""
+"An unknown error occurred while submitting the form. Please write to <a "
+"href=\"mailto:team@zolin.digital\">team@zolin.digital</a>"
+msgstr ""
+"Vormi esitamisel ilmnes tundmatu viga. Kirjutage aadressile <a href=\"mailto:"
+"team@zolin.digital\">team@zolin.digital</a>"
+
+#: inc/meta-boxes.php:23
+msgid "Post gallery"
+msgstr "Postituste galerii"
+
+#: inc/meta-boxes.php:70
+msgid "Select image"
+msgstr "Valige pilt"
+
+#: inc/meta-boxes.php:70
+msgid "Add post gallery images"
+msgstr "Lisage postituste galerii pilte"
 
 #: inc/setup.php:26
 msgid "Primary menu"
 msgstr "Esmane menüü"
 
-#: inc/setup.php:254
-msgid "Sidebar left"
-msgstr "Külgriba vasakul"
+#: inc/setup.php:27
+msgid "Mobile menu"
+msgstr "Mobiili menüü"
 
-#: inc/setup.php:256
-msgid "Add widgets in left sidebar"
-msgstr "Lisage vidinad vasakule külgribale"
+#: inc/setup.php:28
+msgid "Footer menu"
+msgstr "Jaluse menüü"
 
-#: inc/setup.php:264
-msgid "Sidebar right"
-msgstr "Külgriba paremal"
+#: inc/setup.php:31
+msgid "About us"
+msgstr "Meist"
 
-#: inc/setup.php:266
-msgid "Add widgets in right sidebar"
-msgstr "Lisage vidinad paremale külgribale"
+#: inc/setup.php:32
+msgid "Info"
+msgstr "Info"
 
-#: inc/setup.php:275
-msgid "Header top bar left"
-msgstr "Päise ülemine riba vasakul"
-
-#: inc/setup.php:277
-msgid "Header top sidebar left"
-msgstr "Päise ülemine külgriba vasakul"
-
-#: inc/setup.php:284
-msgid "Header top bar right"
-msgstr "Päise ülemine riba paremal"
-
-#: inc/setup.php:286
-msgid "Header top sidebar right"
-msgstr "Päise ülemine külgriba paremal"
-
-#: inc/setup.php:296
-msgid "Footer top bar left"
-msgstr "Jaluse ülemine riba vasak"
-
-#: inc/setup.php:298
-msgid "Footer top sidebar left"
-msgstr "Jaluse ülemine külgriba vasak"
-
-#: inc/setup.php:305
-msgid "Footer top bar right"
-msgstr "Jaluse ülemine riba parempoolne"
-
-#: inc/setup.php:307
-msgid "Footer top sidebar right"
-msgstr "Jaluse ülemine külgriba parempoolne"
-
-#: inc/setup.php:317
-msgid "Footer bottom bar left"
-msgstr "Jaluse alumine riba vasak"
-
-#: inc/setup.php:319
-msgid "Footer bottom sidebar left"
-msgstr "Jaluse alumine külgriba vasak"
-
-#: inc/setup.php:326
-msgid "Footer bottom bar right"
-msgstr "Jaluse alumine riba parem"
-
-#: inc/setup.php:328
-msgid "Footer bottom sidebar right"
-msgstr "Jaluse alumine külgriba parempoolne"
-
-#: inc/setup.php:338 inc/setup.php:340
-msgid "First footer sidebar"
-msgstr "Esimene jaluse külgriba"
-
-#: inc/setup.php:347 inc/setup.php:349
-msgid "Second footer sidebar"
-msgstr "Teise jaluse külgriba"
-
-#: inc/setup.php:359 inc/setup.php:361
-msgid "Third footer sidebar"
-msgstr "Kolmas jaluse külgriba"
-
-#: inc/setup.php:371 inc/setup.php:373
-msgid "Fourth footer sidebar"
-msgstr "Neljanda jaluse külgriba"
-
-#: inc/shortcodes.php:89
+#: inc/shortcodes.php:90
 msgid "Created by"
 msgstr "Lõi"
 
-#: inc/shortcodes.php:92
+#: inc/shortcodes.php:93
 msgid "All rights reserved"
 msgstr "Kõik õigused kaitstud"
 
-#: inc/shortcodes.php:160
+#: inc/shortcodes.php:161
 msgid "Privacy policy"
 msgstr "Privaatsuspoliitika"
 
-#: inc/shortcodes.php:256
+#: inc/shortcodes.php:257 templates/widget/widget-contacts.php:53
 msgid "Write to Telegram"
 msgstr "Kirjutage Telegrami"
 
-#: inc/shortcodes.php:279
+#: inc/shortcodes.php:280 templates/widget/widget-contacts.php:47
 msgid "Write to WhatsApp"
 msgstr "Kirjutage WhatsAppi"
 
-#: inc/template-actions.php:83
-#, php-format
-msgid "Page generated in %s seconds"
-msgstr "Leht genereeriti %s sekundiga"
-
-#: inc/template-actions.php:214
-msgid "Content section"
-msgstr "Sisu jaotis"
-
-#: inc/template-filters.php:174
-msgid "Setup Menu"
+#: inc/template-filters.php:45
+msgid "Setup menu"
 msgstr "Seadistusmenüü"
 
-#: search.php:21
-msgid "Search page header"
-msgstr "Otsingulehe päis"
+#: inc/widgets/abstract-widget.php:407
+msgid "Add image"
+msgstr "Lisa pilt"
 
-#: search.php:23
-#, php-format
-msgid "Search Results for: %s"
-msgstr "Otsingutulemused: %s"
+#: inc/widgets/class-widget-adv-banner.php:19
+msgid "This widget displays an advertising banner"
+msgstr "See vidin kuvab reklaambännerit"
 
-#: search.php:27
-msgid "Search page content"
-msgstr "Otsige lehe sisu"
+#: inc/widgets/class-widget-adv-banner.php:26
+#: inc/widgets/class-widget-buttons.php:26
+#: inc/widgets/class-widget-contacts.php:26
+#: inc/widgets/class-widget-language-switcher.php:26
+#: inc/widgets/class-widget-logo.php:26 inc/widgets/class-widget-menus.php:31
+#: inc/widgets/class-widget-menus.php:71
+#: inc/widgets/class-widget-recent-posts.php:26
+#: inc/widgets/class-widget-search-popup-form.php:26
+#: inc/widgets/class-widget-socials.php:26
+#: inc/widgets/class-widget-subscribe-form.php:26
+#: inc/widgets/class-widget-subscribe-popup-form.php:26
+msgid "Title"
+msgstr "Pealkiri"
 
-#: search.php:38 search.php:46
-msgid "Post type:"
-msgstr "Postituse tüüp:"
+#: inc/widgets/class-widget-adv-banner.php:31
+#: inc/widgets/class-widget-buttons.php:31
+#: inc/widgets/class-widget-contacts.php:31
+#: inc/widgets/class-widget-language-switcher.php:31
+#: inc/widgets/class-widget-logo.php:31 inc/widgets/class-widget-menus.php:36
+#: inc/widgets/class-widget-recent-posts.php:31
+#: inc/widgets/class-widget-search-popup-form.php:31
+#: inc/widgets/class-widget-socials.php:31
+#: inc/widgets/class-widget-subscribe-form.php:31
+#: inc/widgets/class-widget-subscribe-popup-form.php:31
+msgid "Subtitle"
+msgstr "Alapealkiri"
 
-#: search.php:73
-msgid "Search page footer"
-msgstr "Otsi lehe jalus"
+#: inc/widgets/class-widget-adv-banner.php:31
+#: inc/widgets/class-widget-buttons.php:31
+#: inc/widgets/class-widget-contacts.php:31
+#: inc/widgets/class-widget-language-switcher.php:31
+#: inc/widgets/class-widget-logo.php:31 inc/widgets/class-widget-menus.php:36
+#: inc/widgets/class-widget-recent-posts.php:31
+#: inc/widgets/class-widget-search-popup-form.php:31
+#: inc/widgets/class-widget-socials.php:31
+#: inc/widgets/class-widget-subscribe-form.php:31
+#: inc/widgets/class-widget-subscribe-popup-form.php:31
+msgid "Before title"
+msgstr "Enne pealkirja"
 
-#: searchform.php:16
-msgid "Search..."
-msgstr "Otsing..."
+#: inc/widgets/class-widget-adv-banner.php:36
+#: inc/widgets/class-widget-adv-banner.php:51
+#: inc/widgets/class-widget-buttons.php:36
+#: inc/widgets/class-widget-contacts.php:36
+#: inc/widgets/class-widget-language-switcher.php:36
+#: inc/widgets/class-widget-logo.php:36 inc/widgets/class-widget-menus.php:41
+#: inc/widgets/class-widget-recent-posts.php:36
+#: inc/widgets/class-widget-search-popup-form.php:36
+#: inc/widgets/class-widget-socials.php:36
+#: inc/widgets/class-widget-subscribe-form.php:36
+#: inc/widgets/class-widget-subscribe-popup-form.php:36
+msgid "Description"
+msgstr "Kirjeldus"
 
-#: searchform.php:16
-msgid "Search for"
-msgstr "Otsima"
+#: inc/widgets/class-widget-adv-banner.php:36
+#: inc/widgets/class-widget-buttons.php:36
+#: inc/widgets/class-widget-contacts.php:36
+#: inc/widgets/class-widget-language-switcher.php:36
+#: inc/widgets/class-widget-logo.php:36 inc/widgets/class-widget-menus.php:41
+#: inc/widgets/class-widget-recent-posts.php:36
+#: inc/widgets/class-widget-search-popup-form.php:36
+#: inc/widgets/class-widget-socials.php:36
+#: inc/widgets/class-widget-subscribe-form.php:36
+#: inc/widgets/class-widget-subscribe-popup-form.php:36
+msgid "After title"
+msgstr "Pärast pealkirja"
 
-#: searchform.php:18
+#: inc/widgets/class-widget-adv-banner.php:41
+#: templates/widget/widget-adv-banner.php:13
+msgid "Banner"
+msgstr "Bänner"
+
+#: inc/widgets/class-widget-adv-banner.php:46
+msgid "Link"
+msgstr "Link"
+
+#: inc/widgets/class-widget-buttons.php:19
+#: inc/widgets/class-widget-contacts.php:19
+#: inc/widgets/class-widget-logo.php:19 inc/widgets/class-widget-menus.php:24
+#: inc/widgets/class-widget-socials.php:19
+#: inc/widgets/class-widget-subscribe-form.php:19
+msgid "The global settings for this form can be found in the Customizer"
+msgstr "Selle vormi globaalsed sätted leiate kohandajast"
+
+#: inc/widgets/class-widget-buttons.php:41
+#: inc/widgets/class-widget-contacts.php:41
+#: inc/widgets/class-widget-language-switcher.php:41
+#: inc/widgets/class-widget-socials.php:41
+msgid "Select style block"
+msgstr "Valige stiiliplokk"
+
+#: inc/widgets/class-widget-buttons.php:42
+#: inc/widgets/class-widget-contacts.php:42
+#: inc/widgets/class-widget-language-switcher.php:42
+#: inc/widgets/class-widget-socials.php:42
+msgid "Inline"
+msgstr "Järjekorras"
+
+#: inc/widgets/class-widget-buttons.php:42
+#: inc/widgets/class-widget-contacts.php:42
+#: inc/widgets/class-widget-language-switcher.php:42
+#: inc/widgets/class-widget-socials.php:42
+msgid "Block"
+msgstr "Blokeeri"
+
+#: inc/widgets/class-widget-buttons.php:47
+msgid "Select buttons"
+msgstr "Vali nupud"
+
+#: inc/widgets/class-widget-buttons.php:51 templates/subscribe-form.php:45
+#: templates/widget/widget-subscribe-toggle.php:18
+msgid "Subscribe"
+msgstr "Telli"
+
+#: inc/widgets/class-widget-buttons.php:52 searchform.php:23
+#: templates/widget/widget-search-toggle.php:18
 msgid "Search"
 msgstr "Otsing"
 
+#: inc/widgets/class-widget-buttons.php:64
+#: inc/widgets/class-widget-language-switcher.php:59
+#: inc/widgets/class-widget-search-popup-form.php:59
+#: inc/widgets/class-widget-socials.php:71
+#: inc/widgets/class-widget-subscribe-popup-form.php:53
+msgid "Select button content"
+msgstr "Valige nupu sisu"
+
+#: inc/widgets/class-widget-language-switcher.php:19
+#: inc/widgets/class-widget-search-popup-form.php:19
+#: inc/widgets/class-widget-subscribe-popup-form.php:19
+msgid "The global settings for this button can be found in the сustomizer"
+msgstr "Selle nupu globaalsed seaded leiate kohandajast"
+
+#: inc/widgets/class-widget-language-switcher.php:42
+msgid "Dropdown"
+msgstr "Rippmenüü"
+
+#: inc/widgets/class-widget-language-switcher.php:47
+#: inc/widgets/class-widget-search-popup-form.php:47
+#: inc/widgets/class-widget-socials.php:59
+#: inc/widgets/class-widget-subscribe-popup-form.php:41
+msgid "Select button color"
+msgstr "Valige nupu värv"
+
+#: inc/widgets/class-widget-menus.php:46
+msgid "Select count columns"
+msgstr "Valige loendusveerud"
+
+#: inc/widgets/class-widget-menus.php:57
+msgid "Menus structure"
+msgstr "Menüüde struktuur"
+
+#: inc/widgets/class-widget-recent-posts.php:19
+msgid "This widget displays recent posts with aesthetix style"
+msgstr "See vidin kuvab hiljutisi postitusi esthetixi stiilis"
+
+#: inc/widgets/class-widget-recent-posts.php:61
+msgid "Select posts layout"
+msgstr "Valige postituste kujundus"
+
+#: inc/widgets/class-widget-socials.php:47
+msgid "Select icon size"
+msgstr "Valige ikooni suurus"
+
+#: inc/widgets/widget-defaults.php:67 inc/widgets/widget-defaults.php:87
+msgid "Follow us"
+msgstr "Järgne meile"
+
+#: inc/widgets/widget-defaults.php:68 inc/widgets/widget-defaults.php:88
+#: inc/widgets/widget-init.php:244
+msgid "Socials"
+msgstr "Sotsiaalsed"
+
+#: inc/widgets/widget-defaults.php:72
+msgid "Contact us"
+msgstr "Võta meiega ühendust"
+
+#: inc/widgets/widget-defaults.php:73
+msgid "Feel free"
+msgstr "Tundke end vabalt"
+
+#: inc/widgets/widget-defaults.php:81
+msgid "Browse"
+msgstr "Sirvige"
+
+#: inc/widgets/widget-defaults.php:82
+msgid "Help & Info"
+msgstr "Abi ja teave"
+
+#: inc/widgets/widget-init.php:43
+msgid "Main sidebar"
+msgstr "Peamine külgriba"
+
+#: inc/widgets/widget-init.php:44
+msgid "Add widgets in main sidebar"
+msgstr "Lisage põhiküljeribale vidinaid"
+
+#: inc/widgets/widget-init.php:48
+msgid "Aside menu sidebar"
+msgstr "Kõrvale menüü külgriba"
+
+#: inc/widgets/widget-init.php:49
+msgid "Add widgets in aside menu sidebar"
+msgstr "Lisage kõrvalolevale menüü külgribale vidinaid"
+
+#: inc/widgets/widget-init.php:53
+msgid "Header mobile left"
+msgstr "Mobiili päis vasakul"
+
+#: inc/widgets/widget-init.php:54
+msgid "Add widgets in header mobile left sidebar"
+msgstr "Lisage vidinad päise mobiili vasakpoolsele külgribale"
+
+#: inc/widgets/widget-init.php:58
+msgid "Header mobile right"
+msgstr "Mobiili päis paremal"
+
+#: inc/widgets/widget-init.php:59
+msgid "Add widgets in header mobile right sidebar"
+msgstr "Lisage vidinad päise mobiili paremale külgribale"
+
+#: inc/widgets/widget-init.php:67
+msgid "Header mobile center"
+msgstr "Päise mobiilikeskus"
+
+#: inc/widgets/widget-init.php:68
+msgid "Add widgets in header mobile center sidebar"
+msgstr "Lisage vidinad päise mobiilikeskuse külgribale"
+
+#: inc/widgets/widget-init.php:78
+msgid "Header top bar left"
+msgstr "Päise ülemine riba vasakul"
+
+#: inc/widgets/widget-init.php:79
+msgid "Add widgets in header top bar left sidebar"
+msgstr "Lisage vidinad päise ülemise riba vasakusse külgriba"
+
+#: inc/widgets/widget-init.php:83
+msgid "Header top bar right"
+msgstr "Päise ülemine riba paremal"
+
+#: inc/widgets/widget-init.php:84
+msgid "Add widgets in header top bar right sidebar"
+msgstr "Lisage vidinad päise ülemisele riba paremale külgribale"
+
+#: inc/widgets/widget-init.php:90
+msgid "Header main left"
+msgstr "Pealkiri vasakul"
+
+#: inc/widgets/widget-init.php:91
+msgid "Add widgets in header main left sidebar"
+msgstr "Lisage vidinad päise peamisele vasakpoolsele külgribale"
+
+#: inc/widgets/widget-init.php:96
+msgid "Header main right"
+msgstr "Pealkiri paremal"
+
+#: inc/widgets/widget-init.php:97
+msgid "Add widgets in header main right sidebar"
+msgstr "Lisage vidinad päise peamisele paremale külgribale"
+
+#: inc/widgets/widget-init.php:103
+msgid "Header main center"
+msgstr "Päise põhikeskus"
+
+#: inc/widgets/widget-init.php:104
+msgid "Add widgets in header main center sidebar"
+msgstr "Lisage vidinad päise peamisele keskmisele külgribale"
+
+#: inc/widgets/widget-init.php:113
+msgid "Header bottom left"
+msgstr "Päis all vasakul"
+
+#: inc/widgets/widget-init.php:114
+msgid "Add widgets in header bottom left sidebar"
+msgstr "Lisage vidinad päise vasakpoolsesse alumisse külgriba"
+
+#: inc/widgets/widget-init.php:121
+msgid "Header bottom right"
+msgstr "Päis all paremal"
+
+#: inc/widgets/widget-init.php:122
+msgid "Add widgets in header bottom right sidebar"
+msgstr "Lisage vidinad päise all paremale külgribale"
+
+#: inc/widgets/widget-init.php:131
+msgid "Footer top bar left"
+msgstr "Jaluse ülemine riba vasak"
+
+#: inc/widgets/widget-init.php:132
+msgid "Add widgets in footer top bar left sidebar"
+msgstr "Lisage vidinad jaluse ülariba vasakule külgribale"
+
+#: inc/widgets/widget-init.php:137
+msgid "Footer top bar right"
+msgstr "Jaluse ülemine riba parempoolne"
+
+#: inc/widgets/widget-init.php:138
+msgid "Add widgets in footer top bar right sidebar"
+msgstr "Lisage vidinad jaluse ülemisele riba paremale külgribale"
+
+#: inc/widgets/widget-init.php:146
+msgid "Footer main first sidebar"
+msgstr "Jaluse peamine esimene külgriba"
+
+#: inc/widgets/widget-init.php:147
+msgid "Add widgets in footer main first sidebar"
+msgstr "Jaluse peamine esimene külgriba"
+
+#: inc/widgets/widget-init.php:152
+msgid "Footer main second sidebar"
+msgstr "Jaluse peamine teine külgriba"
+
+#: inc/widgets/widget-init.php:153
+msgid "Add widgets in footer main second sidebar"
+msgstr "Lisage vidinad jaluse peamisele teisele külgribale"
+
+#: inc/widgets/widget-init.php:158
+msgid "Footer main third sidebar"
+msgstr "Jaluse peamine kolmas külgriba"
+
+#: inc/widgets/widget-init.php:159
+msgid "Add widgets in footer main third sidebar"
+msgstr "Lisage vidinad jaluse peamisele kolmandale külgribale"
+
+#: inc/widgets/widget-init.php:165
+msgid "Footer main fourth sidebar"
+msgstr "Jaluse peamine neljas külgriba"
+
+#: inc/widgets/widget-init.php:166
+msgid "Add widgets in footer main fourth sidebar"
+msgstr "Lisage vidinad jaluse peamisele neljandale külgribale"
+
+#: inc/widgets/widget-init.php:175
+msgid "Footer bottom bar left"
+msgstr "Jaluse alumine riba vasak"
+
+#: inc/widgets/widget-init.php:176
+msgid "Add widgets in footer bottom bar left sidebar"
+msgstr "Lisage vidinad jaluse alumise riba vasakusse külgriba"
+
+#: inc/widgets/widget-init.php:181
+msgid "Footer bottom bar right"
+msgstr "Jaluse alumine riba parem"
+
+#: inc/widgets/widget-init.php:182
+msgid "Add widgets in footer bottom bar right sidebar"
+msgstr "Lisage vidinad jaluse alumise riba paremale külgribale"
+
+#: inc/widgets/widget-init.php:201
+msgid "If the sidebar is empty, widgets are displayed by default"
+msgstr "Kui külgriba on tühi, kuvatakse vidinad vaikimisi"
+
+#: inc/widgets/widget-init.php:240
+msgid "Logo"
+msgstr "Logo"
+
+#: inc/widgets/widget-init.php:241
+msgid "Menus"
+msgstr "Menüüd"
+
+#: inc/widgets/widget-init.php:243
+msgid "Recent posts"
+msgstr "Viimased postitused"
+
+#: inc/widgets/widget-init.php:245
+msgid "Contacts"
+msgstr "Kontaktid"
+
+#: inc/widgets/widget-init.php:246
+msgid "Search button"
+msgstr "Otsi nupp"
+
+#: inc/widgets/widget-init.php:248
+msgid "Subscribe button"
+msgstr "Tellimisnupp"
+
+#: inc/widgets/widget-init.php:249
+msgid "Adv banner"
+msgstr "Adv bänner"
+
+#: inc/widgets/widget-init.php:250
+msgid "Language switcher"
+msgstr "Keele vahetaja"
+
+#: search.php:25
+#, php-format
+msgid "Search results for: %s"
+msgstr "Otsingutulemused: %s"
+
+#: searchform.php:19
+msgid "Search for"
+msgstr "Otsima"
+
 #: templates/archive/archive-content-none.php:12
-msgid "Nothing Found"
+msgid "Nothing found"
 msgstr "Ei leitud midagi"
 
-#: templates/archive/archive-content-none.php:19
+#: templates/archive/archive-content-none.php:18
 #, php-format
 msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>"
 msgstr ""
 "Kas olete valmis oma esimest postitust avaldama? <a href=\"%1$s\">Alustage "
 "siit</a>"
 
-#: templates/archive/archive-content-none.php:21
+#: templates/archive/archive-content-none.php:20
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different keywords"
@@ -1431,47 +2043,42 @@ msgstr ""
 "Vabandust, kuid teie otsinguterminitele ei vastanud midagi. Palun proovi "
 "uuesti mõne teise märksõnaga"
 
-#: templates/archive/archive-content-none.php:23
+#: templates/archive/archive-content-none.php:22
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help"
 msgstr "Näib, et me ei leia seda, mida otsite. Ehk aitab otsimine"
 
-#: templates/archive/archive-entry-post-detail-button.php:12
-msgid "Read more"
-msgstr "Loe rohkem"
+#: templates/archive/archive-entry-post-author.php:24
+msgid "Posted by"
+msgstr "Postitanud"
 
-#: templates/archive/archive-entry-post-meta.php:11
-#: templates/single/single-entry-post-meta.php:11
-msgid "Post meta information"
-msgstr "Postitage metateave"
-
-#: templates/archive/archive-entry-post-meta.php:58
+#: templates/archive/archive-entry-post-meta.php:57
 #: templates/single/single-entry-post-meta.php:58
 msgid "min."
 msgstr "min."
 
-#: templates/archive/archive-entry-post-title.php:11
-msgid "Post title"
-msgstr "Postituse pealkiri"
+#: templates/archive/archive-entry-post-more-button.php:19
+msgid "Continue reading"
+msgstr "Jätka lugemist"
 
-#: templates/archive/archive-pagination.php:28
-msgid "Site post navigation"
-msgstr "Saidi postituste navigeerimine"
+#: templates/archive/archive-pagination.php:33
+msgid "First"
+msgstr "Esiteks"
 
-#: templates/archive/archive-pagination.php:77
-msgid "Older Posts"
-msgstr "Vanemad postitused"
+#: templates/archive/archive-pagination.php:66
+msgid "Last"
+msgstr "Viimane"
 
-#: templates/archive/archive-pagination.php:85
-msgid "Newer Posts"
-msgstr "Uuemad postitused"
+#: templates/archive/archive-pagination.php:78
+msgid "Next posts"
+msgstr "Järgmised postitused"
 
-#: templates/button-scroll-top.php:15
-msgid "Scroll up"
-msgstr "Keri üles"
+#: templates/archive/archive-pagination.php:86
+msgid "Previous posts"
+msgstr "Eelmised postitused"
 
-#: templates/cookie.php:13
+#: templates/aside/aside-cookie.php:16
 #, php-format
 msgid ""
 "By continuing to use %s, you agree to the use of cookies. More information "
@@ -1482,54 +2089,20 @@ msgstr ""
 "leiate <a class=\"%s\" href=\"%s\" target=\"_blank\">privaatsuseeskirjadest</"
 "a></p>"
 
-#: templates/footer/footer-content-type-four-columns.php:46
-#: templates/footer/footer-content-type-three-columns.php:55
-msgid "Contacts"
-msgstr "Kontaktid"
-
-#: templates/footer/footer-content-type-three-columns.php:33
-#: templates/footer/footer-top-bar.php:37
-#: templates/header/header-content-type-content.php:45
-#: templates/header/header-content-type-logo-center.php:52
-#: templates/header/header-content-type-simple.php:30
-#: templates/main-menu.php:21
-msgid "Site main menu"
-msgstr "Saidi peamenüü"
-
-#: templates/single/single-content-type-page.php:13
-msgid "Page header"
-msgstr "Lehe päis"
-
-#: templates/single/single-content-type-page.php:18
-msgid "Page thumbnail"
-msgstr "Lehekülje pisipilt"
-
-#: templates/single/single-content-type-page.php:23
-msgid "Page content"
-msgstr "Lehe sisu"
+#: templates/aside/aside-scroll-top.php:50
+msgid "Scroll up"
+msgstr "Keri üles"
 
 #: templates/single/single-content-type-page.php:29
 #: templates/single/single-entry-post-footer.php:16
 msgid "Pages:"
 msgstr "Leheküljed:"
 
-#: templates/single/single-content-type-page.php:36
-msgid "Page footer"
-msgstr "Lehe jalus"
-
-#: templates/single/single-entry-post-content.php:11
-msgid "Post content"
-msgstr "Postitage sisu"
-
 #: templates/single/single-entry-post-content.php:12
 #, php-format
 msgid "Continue reading <span class=\"screen-reader-text\">\"%s\"</span>"
 msgstr ""
 "Jätkake artikli <span class=\"screen-reader-text\">„%s”</span> lugemist"
-
-#: templates/single/single-entry-post-footer.php:11
-msgid "Post footer"
-msgstr "Postituse jalus"
 
 #: templates/single/single-entry-post-footer.php:37
 msgid "Post categories"
@@ -1539,19 +2112,219 @@ msgstr "Postituste kategooriad"
 msgid "Post tags"
 msgstr "Postitage sildid"
 
-#: templates/single/single-entry-post-header.php:11
-msgid "Post header"
-msgstr "Postituse päis"
+#: templates/single/single-entry-post-meta.php:11
+msgid "Post meta information"
+msgstr "Postitage metateave"
 
-#: templates/single/single-entry-post-thumbnail.php:12
-msgid "Post thumbnail"
-msgstr "Postituse pisipilt"
-
-#: templates/single/single-similar-posts.php:13
+#: templates/single/single-similar-posts.php:15
 msgid "Similar posts"
 msgstr "Sarnased postitused"
 
-#: templates/single/single-similar-posts.php:15
+#: templates/subscribe-form.php:44
 #, php-format
-msgid "Similar %1$s"
-msgstr "Sarnane %1$s"
+msgid ""
+"By submitting this form, you confirm that you agree to the storage and "
+"processing of your personal data described in our <a class=\"%s\" "
+"href=\"%s\" target=\"_blank\">Privacy Policy</a>"
+msgstr ""
+"Selle vormi esitamisega kinnitate, et nõustute oma isikuandmete salvestamise "
+"ja töötlemisega, mis on kirjeldatud meie <a class=\"%s\" href=\"%s\" "
+"target=\"_blank\">privaatsuseeskirjades</a>"
+
+#: templates/widget/widget-socials.php:56
+msgid "Setup social links"
+msgstr "Seadistage sotsiaalsed lingid"
+
+#~ msgid "404 page header"
+#~ msgstr "404 lehekülje päis"
+
+#~ msgid "404 page content"
+#~ msgstr "404 lehekülje sisu"
+
+#~ msgid "404 page footer"
+#~ msgstr "404 lehekülje jalus"
+
+#~ msgid "Archive page header"
+#~ msgstr "Arhiivi lehe päis"
+
+#~ msgid "Archive page content"
+#~ msgstr "Arhiveeri lehe sisu"
+
+#~ msgid "Archive page footer"
+#~ msgstr "Arhiivi lehe jalus"
+
+#~ msgid "Published Date"
+#~ msgstr "Avaldamise kuupäev"
+
+#~ msgid "Site footer"
+#~ msgstr "Saidi jalus"
+
+#~ msgid "Site header"
+#~ msgstr "Saidi päis"
+
+#~ msgid "General"
+#~ msgstr "Üldine"
+
+#~ msgid "Average"
+#~ msgstr "Keskmine"
+
+#~ msgid "Fluid"
+#~ msgstr "Vedelik"
+
+#~ msgid "Header Simple"
+#~ msgstr "Päis Lihtne"
+
+#~ msgid "Header Content"
+#~ msgstr "Päise sisu"
+
+#~ msgid "Open"
+#~ msgstr "Avatud"
+
+#~ msgid "Close"
+#~ msgstr "Sulge"
+
+#~ msgid "Absolute"
+#~ msgstr "Absoluutne"
+
+#~ msgid "Fixed"
+#~ msgstr "Parandatud"
+
+#~ msgid "Icon + Text"
+#~ msgstr "Ikoon + tekst"
+
+#~ msgid "Tils"
+#~ msgstr "Tils"
+
+#~ msgid "Simple"
+#~ msgstr "Lihtne"
+
+#~ msgid "Button"
+#~ msgstr "Nupp"
+
+#~ msgid "Cover"
+#~ msgstr "Kaas"
+
+#~ msgid "Pattern"
+#~ msgstr "Muster"
+
+#~ msgid "Select menu type"
+#~ msgstr "Valige menüü tüüp"
+
+#~ msgid "Select menu position"
+#~ msgstr "Valige menüü asukoht"
+
+#~ msgid "Position of the menu container when opened"
+#~ msgstr "Menüü asukoht avamisel"
+
+#~ msgid "Select menu button icon position"
+#~ msgstr "Valige menüünupu ikooni asukoht"
+
+#~ msgid "Comments display"
+#~ msgstr "Kommentaaride kuvamine"
+
+#~ msgid "Comments block hide/display"
+#~ msgstr "Kommentaarid blokeerivad peitmise/kuvamise"
+
+#~ msgid "External UTM Links"
+#~ msgstr "Välised UTM-i lingid"
+
+#~ msgid "Adds utm tags to all external links"
+#~ msgstr "Lisab utm-sildid kõikidele välistele linkidele"
+
+#~ msgid "Display button icons"
+#~ msgstr "Kuva nuppude ikoonid"
+
+#~ msgid "Left Sidebar Display"
+#~ msgstr "Vasaku külgriba ekraan"
+
+#~ msgid "Right Sidebar Display"
+#~ msgstr "Parema külgriba ekraan"
+
+#~ msgid "Main Options"
+#~ msgstr "Peamised valikud"
+
+#~ msgid "Verifications and counters"
+#~ msgstr "Kontrollid ja loendurid"
+
+#~ msgid "Get your google verification code in the Google Search Console"
+#~ msgstr "Hankige oma Google'i kinnituskood Google'i otsingukonsoolist"
+
+#~ msgid "Sidebar options"
+#~ msgstr "Külgriba valikud"
+
+#~ msgid "Archive "
+#~ msgstr "Arhiiv"
+
+#~ msgid "Post Thumbnail"
+#~ msgstr "Postituse pisipilt"
+
+#~ msgid "Post Content"
+#~ msgstr "Postituse sisu"
+
+#~ msgid "Post Footer"
+#~ msgstr "Postituse jalus"
+
+#~ msgid "Sidebar left"
+#~ msgstr "Külgriba vasakul"
+
+#~ msgid "Sidebar right"
+#~ msgstr "Külgriba paremal"
+
+#~ msgid "Header top sidebar right"
+#~ msgstr "Päise ülemine külgriba paremal"
+
+#~ msgid "Footer bottom sidebar left"
+#~ msgstr "Jaluse alumine külgriba vasak"
+
+#~ msgid "Footer bottom sidebar right"
+#~ msgstr "Jaluse alumine külgriba parempoolne"
+
+#~ msgid "Fourth footer sidebar"
+#~ msgstr "Neljanda jaluse külgriba"
+
+#, php-format
+#~ msgid "Page generated in %s seconds"
+#~ msgstr "Leht genereeriti %s sekundiga"
+
+#~ msgid "Content section"
+#~ msgstr "Sisu jaotis"
+
+#~ msgid "Search page header"
+#~ msgstr "Otsingulehe päis"
+
+#~ msgid "Search page content"
+#~ msgstr "Otsige lehe sisu"
+
+#~ msgid "Post type:"
+#~ msgstr "Postituse tüüp:"
+
+#~ msgid "Search page footer"
+#~ msgstr "Otsi lehe jalus"
+
+#~ msgid "Search..."
+#~ msgstr "Otsing..."
+
+#~ msgid "Site post navigation"
+#~ msgstr "Saidi postituste navigeerimine"
+
+#~ msgid "Older Posts"
+#~ msgstr "Vanemad postitused"
+
+#~ msgid "Site main menu"
+#~ msgstr "Saidi peamenüü"
+
+#~ msgid "Page header"
+#~ msgstr "Lehe päis"
+
+#~ msgid "Page thumbnail"
+#~ msgstr "Lehekülje pisipilt"
+
+#~ msgid "Page content"
+#~ msgstr "Lehe sisu"
+
+#~ msgid "Page footer"
+#~ msgstr "Lehe jalus"
+
+#, php-format
+#~ msgid "Similar %1$s"
+#~ msgstr "Sarnane %1$s"

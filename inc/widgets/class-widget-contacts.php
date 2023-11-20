@@ -17,8 +17,8 @@ class WPA_Widget_Contacts extends WPA_Widget {
 	public function __construct() {
 		$this->widget_cssclass    = 'widget_contacts';
 		$this->widget_description = __( 'The global settings for this form can be found in the Customizer', 'aesthetix' );
-		$this->widget_id          = 'aesthetix_contacts_widget';
-		$this->widget_name        = 'Aesthetix ' . mb_strtolower( __( 'Contacts', 'aesthetix' ) );
+		$this->widget_id          = 'aesthetix-widget-contacts';
+		$this->widget_name        = get_widget_name( 'widget-contacts' );
 		$this->settings           = array(
 			'title'            => array(
 				'type'  => 'text',

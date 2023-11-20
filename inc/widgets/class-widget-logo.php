@@ -1,6 +1,6 @@
 <?php
 /**
- * Widget Subscribe Form.
+ * Widget Logo.
  *
  * @package Aesthetix
  */
@@ -9,16 +9,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class WPA_Widget_Subscribe_Form extends WPA_Widget {
+class WPA_Widget_Logo extends WPA_Widget {
 
 	/**
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->widget_cssclass    = 'widget_subscribe_form';
+		$this->widget_cssclass    = 'widget_logo';
 		$this->widget_description = __( 'The global settings for this form can be found in the Customizer', 'aesthetix' );
-		$this->widget_id          = 'aesthetix-widget-subscribe-form';
-		$this->widget_name        = get_widget_name( 'widget-subscribe-form' );
+		$this->widget_id          = 'aesthetix-widget-logo';
+		$this->widget_name        = get_widget_name( 'widget-logo' );
 		$this->settings           = array(
 			'title'            => array(
 				'type'  => 'text',
@@ -34,6 +34,12 @@ class WPA_Widget_Subscribe_Form extends WPA_Widget {
 				'type'  => 'textarea',
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
+			),
+			'logo_size' => array(
+				'type'    => 'select',
+				'std'     => get_aesthetix_options( 'title_tagline_logo_size' ),
+				'label'   => __( 'Select logo size', 'aesthetix' ),
+				'options' => get_aesthetix_customizer_sizes(),
 			),
 		);
 
@@ -51,7 +57,10 @@ class WPA_Widget_Subscribe_Form extends WPA_Widget {
 	public function widget( $args, $instance ) {
 		$this->widget_start( $args, $instance );
 
-		get_template_part( 'templates/subscribe-form' );
+		$template_args              = array();
+		$template_args['logo_size'] = isset( $instance['logo_size'] ) ? $instance['logo_size'] : $this->settings['logo_size']['std'];
+
+		get_template_part( 'templates/widget/widget-logo', '', $template_args );
 
 		$this->widget_end( $args, $instance );
 	}

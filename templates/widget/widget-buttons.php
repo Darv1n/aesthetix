@@ -40,7 +40,7 @@ if ( is_string( $args['structure'] ) && ! empty( $args['structure'] ) ) {
 					break;
 				case 'telegram': ?>
 					<?php if ( wp_http_validate_url( get_aesthetix_options( 'other_telegram_chat' ) ) ) { ?>
-						<a <?php icon_classes( 'button-telegram icon icon-brand icon-telegram', $args ); ?> href="<?php echo esc_url( get_aesthetix_options( 'other_telegram_chat' ) ); ?>" aria-label="<?php esc_attr_e( 'Telegram button', 'aesthetix' ) ?>" target="_blank">
+						<a <?php button_classes( 'button-telegram icon icon-brand icon-telegram', $args ); ?> href="<?php echo esc_url( get_aesthetix_options( 'other_telegram_chat' ) ); ?>" aria-label="<?php esc_attr_e( 'Telegram button', 'aesthetix' ) ?>" target="_blank">
 							<?php if ( ! in_array( $args['button_content'], array( 'icon', 'button-icon' ), true ) ) {
 								esc_html_e( 'Telegram', 'aesthetix' );
 							} ?>
@@ -49,7 +49,7 @@ if ( is_string( $args['structure'] ) && ! empty( $args['structure'] ) ) {
 					<?php break;
 				case 'whatsapp': ?>
 					<?php if ( get_aesthetix_options( 'other_whatsapp' ) ) { ?>
-						<a <?php icon_classes( 'button-whatsapp icon icon-brand icon-whatsapp', $args ); ?> href="<?php echo esc_url( 'https://api.whatsapp.com/send?phone=' . preg_replace( '/(\D)/', '', get_aesthetix_options( 'other_whatsapp' ) ) ); ?>" aria-label="<?php esc_attr_e( 'WhatsApp button', 'aesthetix' ) ?>" target="_blank">
+						<a <?php button_classes( 'button-whatsapp icon icon-brand icon-whatsapp', $args ); ?> href="<?php echo esc_url( 'https://api.whatsapp.com/send?phone=' . preg_replace( '/(\D)/', '', get_aesthetix_options( 'other_whatsapp' ) ) ); ?>" aria-label="<?php esc_attr_e( 'WhatsApp button', 'aesthetix' ) ?>" target="_blank">
 							<?php if ( ! in_array( $args['button_content'], array( 'icon', 'button-icon' ), true ) ) {
 								esc_html_e( 'WhatsApp', 'aesthetix' );
 							} ?>

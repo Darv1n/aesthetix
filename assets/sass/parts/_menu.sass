@@ -27,14 +27,14 @@
 	&.has_wpadminbar
 		top: 32px
 	> *
-		margin: 0 1.875rem
+		margin: 0 1.875rem 1.875rem
 		display: block
 		width: auto
 		max-width: 100%
 		&:first-child
 			margin-top: 1.875rem
-		&:not(:last-child)
-			margin-bottom: 1.875rem
+		&:last-child
+			margin-bottom: 0
 	&-toggle
 		text-align: right
 
@@ -71,71 +71,61 @@
 		> *
 			display: inline-block
 			vertical-align: middle
+			&[type="button"]
+				margin-left: .25rem
 		a
 			display: inline-block
 			padding: .25rem 0
 			vertical-align: middle
 			> *
 				display: block
-		&-has-children
-			position: relative
-			margin-right: 0
-			> *:not(.sub-menu)
-				display: inline-block
-				vertical-align: middle
-			&:hover, &:focus, &:active
-				> .sub-menu
-					opacity: 1
-					visibility: visible
 	&-count-button
 		margin-top: .25rem
-		margin-left: .25rem
 		float: right
-	.sub-menu
-		display: none
-		transition: $transition
-		padding-bottom: .75rem
-		&.on
-			display: block
-		&-toggle
-			padding: calc( .125rem * 1.25 + .825rem / 2 ) calc( .125rem * 1.25 + .825rem / 2 )
-		.menu-item
-			display: block
-	&-primary
+	&-inline
 		.menu-count-button
 			margin-top: .375rem
 		.menu-item
+			font-size: $medium-font-size
+			margin: 0 .5rem
+		> .menu-item
 			display: inline-block
 			vertical-align: middle
-			font-size: $medium-font-size
-			margin: 0 .75rem
 			&:first-child
 				margin-left: 0
 			&:last-child
 				margin-right: 0
-		.sub-menu
+
+.dropdown
+	&-container
+		position: relative
+	&-button
+		&.on
+	&-content
+		display: none
+		transition: $transition
+		padding-left: .5rem
+		&.on
+			display: block
+		&-absolute
 			position: absolute
 			left: 0
-			top: calc( 100% + 1rem )
+			top: 100%
 			z-index: 11
 			min-width: 220px
+			padding: .5rem
 			background: $primary-bg-color
 			border-radius: $border-radius
 			border-top-left-radius: 0
 			border-top-right-radius: 0
-			opacity: 0
-			visibility: hidden
 			text-align: left
 			box-shadow: 0 10px 10px rgba( 0, 0, 0, 0.1 )
-			&.on
-				opacity: 1
-				visibility: visible
-			.sub-menu
-				top: 0
-				left: calc( 100% + 1rem )
-				&-toggle.icon
-					&::before
-						transform: translate( -50%, -50% ) rotate( -90deg )
+			.dropdown-button
+				&::before
+					transform: translate( -50%, -50% ) rotate( -90deg )
+			.dropdown-content
+				top: -.5rem
+				left: 100%
+				border-radius: $border-radius
 			.menu-item
-				margin: 0 1rem
 				border-bottom: 1px solid $primary-bd-color

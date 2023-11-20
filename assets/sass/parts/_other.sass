@@ -71,7 +71,7 @@
 		margin-bottom: 0 !important
 
 // #social-list
-.social-list, .contact-list, .button-list
+.social-list, .contact-list, .button-list, .language-list
 	&-block
 		@extend .list-block
 	&-inline
@@ -82,6 +82,16 @@
 .social-list
 	&-icons
 		line-height: 1rem
+
+.language-switcher
+	&-item
+		position: relative
+		padding-left: calc( 1rem + .375rem )
+	img
+		position: absolute
+		top: 50%
+		left: .125rem
+		transform: translateY( -50% )
 
 .aspect-ratio
 	position: relative

@@ -628,6 +628,53 @@ if ( ! function_exists( 'array_insert_after' ) ) {
 	}
 }
 
+if ( ! function_exists( 'return_template_part' ) ) {
+
+	/**
+	 * Return content from get_template_part() function.
+	 *
+	 * @param string      $slug The slug name for the generic template.
+	 * @param string|null $name The name of the specialized template or null if
+	 *                          there is none.
+	 * @param array       $args Additional arguments passed to the template.
+	 */
+	function return_template_part( $slug, $name = null, $args = array() ) {
+		ob_start();
+		get_template_part( $slug, $name, $args );
+		$output = ob_get_contents();
+		ob_end_clean();
+		return $output;
+	}
+}
+
+if ( ! function_exists( 'has_menu_items' ) ) {
+
+	/**
+	 * Check if a WordPress navigation menu has items.
+	 *
+	 * @param string $menu_name The name of the menu location to check.
+	 * 
+	 * @return bool Whether the menu has items (true) or is empty (false).
+	 */
+	function has_menu_items( $menu_name ) {
+		// Get all registered menu locations and their assigned menus.
+		$locations = get_nav_menu_locations();
+		
+		// Check if the menu location exists.
+		if ( isset( $locations[ $menu_name] ) ) {
+			// Get the menu object based on the menu location.
+			$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
+			
+			// Check if the menu has items
+			if ( $menu && ! empty( wp_get_nav_menu_items( $menu->term_id ) ) ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+}
+
 if ( ! function_exists( 'is_subscribe_form_theme_active' ) ) {
 
 	/**
@@ -684,49 +731,24 @@ if ( ! function_exists( 'is_magnific_popup_active' ) ) {
 	}
 }
 
-if ( ! function_exists( 'return_template_part' ) ) {
+if ( ! function_exists( 'is_language_switcher_active' ) ) {
 
 	/**
-	 * Return content from get_template_part() function.
-	 *
-	 * @param string      $slug The slug name for the generic template.
-	 * @param string|null $name The name of the specialized template or null if
-	 *                          there is none.
-	 * @param array       $args Additional arguments passed to the template.
-	 */
-	function return_template_part( $slug, $name = null, $args = array() ) {
-		ob_start();
-		get_template_part( $slug, $name, $args );
-		$output = ob_get_contents();
-		ob_end_clean();
-		return $output;
-	}
-}
-
-if ( ! function_exists( 'has_menu_items' ) ) {
-
-	/**
-	 * Check if a WordPress navigation menu has items.
-	 *
-	 * @param string $menu_name The name of the menu location to check.
+	 * Adds conditions for language switcher.
 	 * 
-	 * @return bool Whether the menu has items (true) or is empty (false).
+	 * @return bool
 	 */
-	function has_menu_items( $menu_name ) {
-		// Get all registered menu locations and their assigned menus.
-		$locations = get_nav_menu_locations();
-		
-		// Check if the menu location exists.
-		if ( isset( $locations[ $menu_name] ) ) {
-			// Get the menu object based on the menu location.
-			$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
-			
-			// Check if the menu has items
-			if ( $menu && ! empty( wp_get_nav_menu_items( $menu->term_id ) ) ) {
-				return true;
-			}
+	function is_language_switcher_active() {
+
+		$active = false;
+
+		if ( is_plugin_active( 'polylang/polylang.php' ) && function_exists( 'pll_the_languages' ) && function_exists( 'pll_languages_list' ) && count( pll_languages_list() ) > 1 ) {
+			$active = true;
 		}
 
-		return false;
+		
+		$active = apply_filters( 'is_language_switcher_active', $active );
+
+		return $active;
 	}
 }

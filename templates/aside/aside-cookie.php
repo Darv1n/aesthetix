@@ -15,7 +15,7 @@
 			<div <?php aesthetix_container_classes( 'container-inner' ); ?>>
 				<?php echo sprintf( wp_kses( '<p class="cookie-text">' . __( 'By continuing to use %s, you agree to the use of cookies. More information can be found in the <a class="%s" href="%s" target="_blank">Privacy Policy</a>' .  '</p>', 'aesthetix' ), kses_available_tags() ), wp_parse_url( get_home_url() )['host'], esc_attr( implode( ' ', get_link_classes() ) ), esc_url( get_privacy_policy_url() ) ); ?>
 				<div class="cookie-button-wrap">
-					<button <?php icon_classes( 'cookie-button icon icon-xmark', array( 'button_content' => 'icon', 'button_size' => 'sm' ) ); ?> type="button"></button>
+					<button <?php button_classes( 'cookie-button icon icon-xmark', array( 'button_content' => 'icon', 'button_size' => 'sm' ) ); ?> type="button"></button>
 				</div>
 			</div>
 		</div>

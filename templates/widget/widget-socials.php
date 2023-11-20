@@ -40,7 +40,7 @@ if ( has_aesthetix_customizer_social() ) { ?>
 
 		if ( $social_link ) { ?>
 			<li class="social-list-item">
-				<a <?php icon_classes( 'icon icon-brand icon-' . $social_key, $args ); ?> href="<?php echo esc_url( $social_link ); ?>" target="_blank" rel="noopener noreferrer external">
+				<a <?php button_classes( 'icon icon-brand icon-' . $social_key, $args ); ?> href="<?php echo esc_url( $social_link ); ?>" target="_blank" rel="noopener noreferrer external">
 					<?php if ( ! in_array( $args['button_content'], array( 'icon', 'button-icon' ), true ) ) {
 						echo esc_html( mb_ucfirst( $social_name ) );
 					} ?>

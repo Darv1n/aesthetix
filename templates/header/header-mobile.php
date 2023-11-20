@@ -40,7 +40,7 @@
 							if ( in_array( get_aesthetix_options( 'root_menu_button_content' ), array( 'button-icon-text', 'button-text', 'button-icon' ), true ) ) {
 								$args['button_content'] = 'button-icon';
 							} else {
-								$args['button_content'] = 'icon';
+								$args['button_content'] = get_aesthetix_options( 'root_menu_button_content' );
 							}
 						?>
 

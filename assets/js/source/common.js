@@ -1,9 +1,7 @@
 jQuery( document ).ready( function( $ ) {
 
-	var searchForm = $( '.search-form' );
-
-	if ( searchForm.length > 0 ) {
-		searchForm.each( function() {
+	if ( $( '.search-form' ).length > 0 ) {
+		$( '.search-form' ).each( function() {
 			var width = $( this ).find( '.search-submit' ).outerWidth();
 			$( this ).find( '.search-field' ).css( 'padding-right', width );
 		} );
@@ -23,9 +21,12 @@ jQuery( document ).ready( function( $ ) {
 		e.preventDefault();
 	} );
 
-	$( '.scroll-top' ).on( 'click', function() {
-		$( 'html, body' ).animate( { scrollTop : 0 }, 800 );
-		return false;
+	$( 'body' ).on( 'click', '.dropdown-button', function( e ) {
+
+		$( this ).toggleClass( 'on' );
+		$( this ).next( '.dropdown-content' ).toggleClass( 'on' );
+
+		e.preventDefault();
 	} );
 
 	$( '.menu-open' ).on( 'click', function() {
@@ -36,6 +37,11 @@ jQuery( document ).ready( function( $ ) {
 		$( this ).closest( '.aside' ).removeClass( 'on' );
 	} );
 
+	$( '.scroll-top' ).on( 'click', function() {
+		$( 'html, body' ).animate( { scrollTop : 0 }, 800 );
+		return false;
+	} );
+
 	$( window ).on( 'scroll', function() {
 		if ( $( this ).scrollTop() >= 800 ) {
 			$( '.scroll-top-wrap' ).fadeIn( 350 );
@@ -44,14 +50,9 @@ jQuery( document ).ready( function( $ ) {
 		}
 	});
 
-	$( 'body' ).on( 'click', '.notification-button-wrap', function( e ) {
-		$( this ).parent().remove();
-	} );
-
 	window.notificationButton = function() {
-		var notification = $( '.notification' );
-		if ( notification.length > 0 ) {
-			notification.each( function() {
+		if ( $( '.notification' ).length > 0 ) {
+			$( '.notification' ).each( function() {
 				$( this ).prepend( '<span class="notification-button-wrap"><button class="button button-icon button-none button-sm notification-button icon icon-center icon_xmark" type="button"></button></span>' );
 			});
 		}
@@ -59,10 +60,14 @@ jQuery( document ).ready( function( $ ) {
 
 	notificationButton();
 
+	$( 'body' ).on( 'click', '.notification-button-wrap', function( e ) {
+		$( this ).parent().remove();
+	} );
+
 	function initMainNavigation( menuContainer ) {
 
-		var menuToggle     = menuContainer.find( '.menu-toggle' );
-			header         = menuContainer.find( '.header' );
+		var menuToggle = menuContainer.find( '.menu-toggle' );
+			header     = menuContainer.find( '.header' );
 
 		menuToggle.click( function() {
 			$( this ).add( mainNavigation ).toggleClass( 'on' );
@@ -91,16 +96,9 @@ jQuery( document ).ready( function( $ ) {
 			$( this ).closest( '.menu-item-has-children' ).find( '.sub-menu' ).attr( 'aria-expanded', $( this ).next( '.sub-menu'  ).attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
 			$( this ).attr( 'aria-expanded', $( this ).closest( '.menu-item-has-children' ).find( '.sub-menu'  ).attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
 		} );
-
-		// Initial state.
-		onResizeMainMenu();
-
-		// On resize main menu.
-		$( window ).on('resize', onResizeMainMenu);
-
 	}
 
-	initMainNavigation( $( '.menu-wrap' ) );
+	// initMainNavigation( $( '.menu-wrap' ) );
 
 	function initCookieAcceper( cookieAccepter ) {
 		var button = cookieAccepter.find( '.cookie-button' );
