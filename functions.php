@@ -15,15 +15,15 @@ require_once ABSPATH . '/wp-admin/includes/plugin.php';
 require_once ABSPATH . '/wp-admin/includes/taxonomy.php';
 
 // Setup.
-require_once get_template_directory() . '/inc/setup.php';
-require_once get_template_directory() . '/inc/register-post-types.php';
+require_once get_template_directory() . '/inc/template-setup.php';
 require_once get_template_directory() . '/inc/template-functions.php';
 require_once get_template_directory() . '/inc/template-filters.php';
 require_once get_template_directory() . '/inc/template-actions.php';
 require_once get_template_directory() . '/inc/template-wrappers.php';
-require_once get_template_directory() . '/inc/handlers.php';
+require_once get_template_directory() . '/inc/template-handlers.php';
+require_once get_template_directory() . '/inc/template-shortcodes.php';
+require_once get_template_directory() . '/inc/register-post-types.php';
 require_once get_template_directory() . '/inc/meta-boxes.php';
-require_once get_template_directory() . '/inc/shortcodes.php';
 
 // Customizer.
 require_once get_template_directory() . '/inc/customizer/customizer.php';
