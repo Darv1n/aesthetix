@@ -31,7 +31,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'general_content_width'                     => 'wide',
 
 			'general_header_top_bar_display'            => false,
-			'general_header_type'                       => 'mid-2-bot-2',
+			'general_header_type'                       => 'default',
 			'general_header_mobile_type'                => 'default',
 
 			'general_menu_align'                        => 'left',
@@ -58,7 +58,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'front_page_slider_post_type'               => 'post',
 			'front_page_slider_slides_count'            => 6,
 			'front_page_slider_slides_to_show'          => 4,
-			'front_page_slider_slides_template_type'    => 'tils',
+			'front_page_slider_slides_layout'           => 'grid-image', // grid, grid-image, list, list-chess.
 
 			'root_primary_font'                         => 'open-sans',
 			'root_secondary_font'                       => 'open-sans',
@@ -86,24 +86,24 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 			'root_menu_button_color'                    => 'primary',
 			'root_menu_button_type'                     => 'common',
-			'root_menu_button_content'                  => 'button-icon-text', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon
+			'root_menu_button_content'                  => 'button-icon-text', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon.
 
 			'root_home_button_color'                    => 'primary',
 			'root_home_button_display'                  => 'none',
 			'root_home_button_type'                     => 'common',
-			'root_home_button_content'                  => 'button-icon', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon
+			'root_home_button_content'                  => 'button-icon', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon.
 
 			'root_scroll_top_button_color'              => 'primary',
 			'root_scroll_top_button_type'               => 'common',
-			'root_scroll_top_button_content'            => 'button-icon', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon
+			'root_scroll_top_button_content'            => 'button-icon', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon.
 
 			'root_subscribe_popup_form_button_color'    => 'primary',
 			'root_subscribe_popup_form_button_type'     => 'common',
-			'root_subscribe_popup_form_button_content'  => 'button-icon-text', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon
+			'root_subscribe_popup_form_button_content'  => 'button-icon-text', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon.
 
 			'root_searchform_form_button_color'         => 'primary',
 			'root_searchform_form_button_type'          => 'common',
-			'root_searchform_form_button_content'       => 'button-icon', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon
+			'root_searchform_form_button_content'       => 'button-icon', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon.
 
 			'root_searchform_popup_form_button_color'   => 'primary',
 			'root_searchform_popup_form_button_type'    => 'common',
@@ -118,7 +118,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
 				'single_' . $post_type . '_template_type' => 'one',
 				'archive_' . $post_type . '_masonry'      => false,
-				'archive_' . $post_type . '_layout'       => 'grid', // grid, grid-image, list, list-chess
+				'archive_' . $post_type . '_layout'       => 'grid', // grid, grid-image, list, list-chess.
 			) );
 
 			if ( in_array( $aesthetix_defaults['archive_' . $post_type . '_layout'], array( 'list', 'list-chess' ), true ) ) {
@@ -151,15 +151,14 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 			if ( $post_type_object->has_archive || ! empty( $object_taxonomies ) ) {
 				$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
-					'archive_' . $post_type . '_structure'               => 'taxonomies,meta,title,excerpt,author,more',
+					'archive_' . $post_type . '_structure'               => 'meta,title,excerpt,author,more',
 					'archive_' . $post_type . '_meta_structure'          => 'date,time,edit',
 					'archive_' . $post_type . '_taxonomies_structure'    => 'post_format,sticky',
-					'archive_' . $post_type . '_taxonomies_in_thumbnail' => true,
 					'archive_' . $post_type . '_posts_per_page'          => get_option( 'posts_per_page' ),
 					'archive_' . $post_type . '_posts_order'             => 'desc',
 					'archive_' . $post_type . '_posts_orderby'           => 'date',
 					'archive_' . $post_type . '_pagination'              => 'numeric',
-					'archive_' . $post_type . '_more_button_content'     => 'link-icon-text', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon
+					'archive_' . $post_type . '_more_button_content'     => 'link-icon-text', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon.
 				) );
 			}
 

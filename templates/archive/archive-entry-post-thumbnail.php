@@ -7,7 +7,9 @@
  * @package Aesthetix
  */
 
-if ( has_post_format() && get_post_format() === 'gallery' && get_post_meta( get_the_ID(), 'post_image_gallery', true ) ) {
+$args['post_format'] = $args['post_format'] ?? get_post_format();
+
+if ( has_post_format() && $args['post_format'] === 'gallery' && get_post_meta( get_the_ID(), 'post_image_gallery', true ) ) {
 
 	$images = get_post_meta( get_the_ID(), 'post_image_gallery', true );
 	$images = array_merge( array( get_post_thumbnail_id() ), array_map( 'trim', explode( ',', $images ) ) ); ?>

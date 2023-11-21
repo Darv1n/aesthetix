@@ -7,11 +7,11 @@
  * @package Aesthetix
  */
 
-$args['post_layout']                  = $args['post_layout'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_layout' );
-$args['post_structure']               = $args['post_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_structure' );
-$args['post_meta_structure']          = $args['post_meta_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_meta_structure' );
-$args['post_taxonomies_structure']    = $args['post_taxonomies_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_taxonomies_structure' );
-$args['post_taxonomies_in_thumbnail'] = $args['post_taxonomies_in_thumbnail'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_taxonomies_in_thumbnail' );
+$args['post_format']               = $args['post_format'] ?? get_post_format();
+$args['post_layout']               = $args['post_layout'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_layout' );
+$args['post_structure']            = $args['post_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_structure' );
+$args['post_meta_structure']       = $args['post_meta_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_meta_structure' );
+$args['post_taxonomies_structure'] = $args['post_taxonomies_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_taxonomies_structure' );
 
 if ( is_string( $args['post_structure'] ) && ! empty( $args['post_structure'] ) ) {
 	$args['post_structure'] = array_map( 'trim', explode( ',', $args['post_structure'] ) );
@@ -35,10 +35,7 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 				<div class="post-thumbnail-wrap">
 
 					<?php get_template_part( 'templates/archive/archive-entry-post-thumbnail', '', $args ); ?>
-
-					<?php if ( $args['post_taxonomies_in_thumbnail'] ) { ?>
-						<?php get_template_part( 'templates/archive/archive-entry-post-taxonomies', '', $args ); ?>
-					<?php } ?>
+					<?php get_template_part( 'templates/archive/archive-entry-post-taxonomies', '', $args ); ?>
 
 				</div>
 			<?php } ?>
@@ -58,9 +55,7 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 								get_template_part( 'templates/archive/archive-entry-post-title', '', $args );
 								break;
 							case 'taxonomies':
-								if ( ! has_post_thumbnail() || ! $args['post_taxonomies_in_thumbnail'] ) {
-									get_template_part( 'templates/archive/archive-entry-post-taxonomies', '', $args );
-								}
+								get_template_part( 'templates/archive/archive-entry-post-taxonomies', '', $args );
 								break;
 							case 'meta':
 								get_template_part( 'templates/archive/archive-entry-post-meta', '', $args );

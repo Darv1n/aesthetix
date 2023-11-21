@@ -15,6 +15,7 @@ class WPA_Widget_Recent_Posts extends WPA_Widget {
 	 * Constructor.
 	 */
 	public function __construct() {
+
 		$this->widget_cssclass    = 'widget_posts';
 		$this->widget_description = __( 'This widget displays recent posts with aesthetix style', 'aesthetix' );
 		$this->widget_id          = 'aesthetix-widget-recent-posts';
@@ -63,7 +64,7 @@ class WPA_Widget_Recent_Posts extends WPA_Widget {
 			),
 			'post_structure'               => array(
 				'type'    => 'sortable',
-				'std'     => 'taxonomies,title,meta',
+				'std'     => 'title,meta',
 				'label'   => __( 'Post structure', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_archive_post_structure(),
 			),
@@ -78,11 +79,6 @@ class WPA_Widget_Recent_Posts extends WPA_Widget {
 				'std'     => 'category',
 				'label'   => __( 'Post taxonomies structure', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_post_taxonomies_structure(),
-			),
-			'post_taxonomies_in_thumbnail' => array(
-				'type'  => 'checkbox',
-				'std'   => false,
-				'label' => __( 'Display taxonomies in thumbnail', 'aesthetix' ),
 			),
 		);
 
@@ -100,15 +96,14 @@ class WPA_Widget_Recent_Posts extends WPA_Widget {
 	public function widget( $args, $instance ) {
 		$this->widget_start( $args, $instance );
 
-		$post_args['order']                        = isset( $instance['posts_order'] ) ? $instance['posts_order'] : $this->settings['posts_order']['std'];
-		$post_args['orderby']                      = isset( $instance['posts_orderby'] ) ? $instance['posts_orderby'] : $this->settings['posts_orderby']['std'];
-		$post_args['posts_per_page']               = isset( $instance['posts_count'] ) ? $instance['posts_count'] : $this->settings['posts_count']['std'];
-		$post_args['post_layout']                  = isset( $instance['post_layout'] ) ? $instance['post_layout'] : $this->settings['post_layout']['std'];
-		$post_args['post_structure']               = isset( $instance['post_structure'] ) ? $instance['post_structure'] : $this->settings['post_structure']['std'];
-		$post_args['post_meta_structure']          = isset( $instance['post_meta_structure'] ) ? $instance['post_meta_structure'] : $this->settings['post_meta_structure']['std'];
-		$post_args['post_taxonomies_structure']    = isset( $instance['post_taxonomies_structure'] ) ? $instance['post_taxonomies_structure'] : $this->settings['post_taxonomies_structure']['std'];
-		$post_args['post_taxonomies_in_thumbnail'] = isset( $instance['post_taxonomies_in_thumbnail'] ) ? $instance['post_taxonomies_in_thumbnail'] : $this->settings['post_taxonomies_in_thumbnail']['std'];
-		$post_args['button_size']                  = 'xxs';
+		$post_args['order']                     = isset( $instance['posts_order'] ) ? $instance['posts_order'] : $this->settings['posts_order']['std'];
+		$post_args['orderby']                   = isset( $instance['posts_orderby'] ) ? $instance['posts_orderby'] : $this->settings['posts_orderby']['std'];
+		$post_args['posts_per_page']            = isset( $instance['posts_count'] ) ? $instance['posts_count'] : $this->settings['posts_count']['std'];
+		$post_args['post_layout']               = isset( $instance['post_layout'] ) ? $instance['post_layout'] : $this->settings['post_layout']['std'];
+		$post_args['post_structure']            = isset( $instance['post_structure'] ) ? $instance['post_structure'] : $this->settings['post_structure']['std'];
+		$post_args['post_meta_structure']       = isset( $instance['post_meta_structure'] ) ? $instance['post_meta_structure'] : $this->settings['post_meta_structure']['std'];
+		$post_args['post_taxonomies_structure'] = isset( $instance['post_taxonomies_structure'] ) ? $instance['post_taxonomies_structure'] : $this->settings['post_taxonomies_structure']['std'];
+		$post_args['button_size']               = 'xxs';
 
 		get_template_part( 'templates/widget/widget-recent-posts', '', $post_args );
 

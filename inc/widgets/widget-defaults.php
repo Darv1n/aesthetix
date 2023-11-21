@@ -100,12 +100,11 @@ if ( ! function_exists( 'aesthetix_widget_default' ) ) {
 			}
 
 			if ( $widget_name === 'widget-recent-posts' ) {
-				$args['posts_per_page']               = 2;
-				$args['post_layout']                  = 'list';
-				$args['post_structure']               = 'taxonomies,title,meta';
-				$args['post_meta_structure']          = 'author,date';
-				$args['post_taxonomies_structure']    = 'category';
-				$args['post_taxonomies_in_thumbnail'] = false;
+				$args['posts_per_page']            = 2;
+				$args['post_layout']               = 'list';
+				$args['post_structure']            = 'taxonomies,title,meta';
+				$args['post_meta_structure']       = 'author,date';
+				$args['post_taxonomies_structure'] = 'category';
 			}
 
 			// Merge child and parent default options.

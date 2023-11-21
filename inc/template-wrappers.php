@@ -82,9 +82,9 @@ if ( ! function_exists( 'get_aesthetix_post_classes' ) ) {
 		);
 
 		if ( has_post_format() ) {
-			$defaults['format'] = get_post_format();
+			$defaults['post_format'] = get_post_format();
 		} else {
-			$defaults['format'] = 'standard';
+			$defaults['post_format'] = 'standard';
 		}
 
 		$args = wp_parse_args( $args, $defaults );
@@ -108,7 +108,7 @@ if ( ! function_exists( 'get_aesthetix_post_classes' ) ) {
 		if ( $args['post_layout'] === 'grid-image' ) {
 			$classes[] = 'post-format-image';
 		} else {
-			$classes[] = 'post-format-' . $args['format'];
+			$classes[] = 'post-format-' . $args['post_format'];
 		}
 
 		if ( is_sticky() ) {

@@ -48,13 +48,13 @@ jQuery( document ).ready( function( $ ) {
 		} else {
 			$( '.scroll-top-wrap' ).fadeOut( 350 );
 		}
-	});
+	} );
 
 	window.notificationButton = function() {
 		if ( $( '.notification' ).length > 0 ) {
 			$( '.notification' ).each( function() {
 				$( this ).prepend( '<span class="notification-button-wrap"><button class="button button-icon button-none button-sm notification-button icon icon-center icon_xmark" type="button"></button></span>' );
-			});
+			} );
 		}
 	}
 
@@ -63,42 +63,6 @@ jQuery( document ).ready( function( $ ) {
 	$( 'body' ).on( 'click', '.notification-button-wrap', function( e ) {
 		$( this ).parent().remove();
 	} );
-
-	function initMainNavigation( menuContainer ) {
-
-		var menuToggle = menuContainer.find( '.menu-toggle' );
-			header     = menuContainer.find( '.header' );
-
-		menuToggle.click( function() {
-			$( this ).add( mainNavigation ).toggleClass( 'on' );
-			header.toggleClass( 'header_expanded' );
-		} );
-
-		// Init dropdown toggle for sub menu.
-		var dropdownToggle = $( '<button />', {
-			'class': 'sub-menu-toggle toggle-icon button button-icon button-none button-xs icon icon-center icon-angle-down',
-			'aria-expanded': false,
-			'data-icon-on': 'icon-angle-up',
-			'data-icon-off': 'icon-angle-down',
-		} );
-
-		var subMenu = menuContainer.find( '.sub-menu' );
-
-		// subMenu.before( dropdownToggle );
-		subMenu.attr( 'aria-expanded', 'false' );
-		dropdownToggle.attr( 'aria-haspopup', 'true' );
-		dropdownToggle.attr( 'aria-expanded', 'false' );
-
-		menuContainer.find( '.sub-menu-toggle' ).click( function() {
-			$( this ).toggleClass( 'on' );
-			// $( this ).next( '.sub-menu' ).slideToggle( 'fast' );
-			$( this ).closest( '.menu-item-has-children' ).find( '.sub-menu' ).toggleClass( 'on' );
-			$( this ).closest( '.menu-item-has-children' ).find( '.sub-menu' ).attr( 'aria-expanded', $( this ).next( '.sub-menu'  ).attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
-			$( this ).attr( 'aria-expanded', $( this ).closest( '.menu-item-has-children' ).find( '.sub-menu'  ).attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
-		} );
-	}
-
-	// initMainNavigation( $( '.menu-wrap' ) );
 
 	function initCookieAcceper( cookieAccepter ) {
 		var button = cookieAccepter.find( '.cookie-button' );
@@ -121,34 +85,4 @@ jQuery( document ).ready( function( $ ) {
 	}
 
 	initCookieAcceper( $( '#cookie' ) );
-
-	// Find all YouTube videos.
-/*	var $allVideos = $("iframe[src^='https://www.youtube.com']"),
-
-	// The element that is fluid width.
-	$fluidEl = $("body");
-
-	// Figure out and save aspect ratio for each video.
-	$allVideos.each(function() {
-		$(this)
-			data('aspectRatio', this.height / this.width)
-			// and remove the hard coded width/height
-			removeAttr('height')
-			removeAttr('width')
-
-			wrap('<div class="video-container"></div>');
-	});
-
-	// When the window is resized.
-	$(window).resize(function() {
-		var newWidth = $fluidEl.width();
-		// Resize all videos according to their own aspect ratio
-		$allVideos.each(function() {
-			var $el = $(this);
-			$el
-				width(newWidth)
-				height(newWidth * $el.data('aspectRatio'));
-		});
-	// Kick off one resize to fix all videos on page load.
-	}).resize();*/
-});
+} );

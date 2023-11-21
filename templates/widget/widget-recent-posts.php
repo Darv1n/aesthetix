@@ -16,7 +16,6 @@ $args['post_layout']                  = $args['post_layout'] ?? get_aesthetix_op
 $args['post_structure']               = $args['post_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_structure' );
 $args['post_meta_structure']          = $args['post_meta_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_meta_structure' );
 $args['post_taxonomies_structure']    = $args['post_taxonomies_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_taxonomies_structure' );
-$args['post_taxonomies_in_thumbnail'] = $args['post_taxonomies_in_thumbnail'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_taxonomies_in_thumbnail' );
 
 if ( is_single() ) {
 	$args['post__not_in'] = array( get_the_ID() );

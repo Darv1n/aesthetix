@@ -41,7 +41,7 @@ get_header(); ?>
 
 						<?php
 							if ( in_array( $layout, array( 'list', 'list-chess' ), true ) ) {
-								get_template_part( 'templates/archive/archive-post-list', $post_type, array( 'counter' => $i ) );
+								get_template_part( 'templates/archive/archive-post-list', get_post_type(), array( 'counter' => $i ) );
 							} else {
 								if ( has_post_format() ) {
 									if ( get_theme_file_path( 'templates/archive/archive-post-' . get_post_type() . '-' . get_post_format() . '.php' ) ) {

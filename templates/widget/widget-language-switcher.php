@@ -39,7 +39,7 @@ if ( is_language_switcher_active() ) {
 					echo esc_html( ucfirst( apply_filters( 'aesthetix_polylang_button_title', $languages[ $locale ][ $args['button_title'] ], $args['button_title'] ) ) );
 				} ?>
 			</button>
-			<ul class="dropdown-content dropdown-content-absolute language-switcher" aria-expanded="false">
+			<ul class="dropdown-content dropdown-content-absolute language-switcher">
 				<?php foreach ( $languages as $key => $language ) { ?>
 					<li class="language-switcher-item menu-item <?php echo esc_attr( implode( ' ', $language['classes'] ) ); ?>">
 						<?php echo $language['flag']; ?>

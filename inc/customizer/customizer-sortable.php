@@ -27,7 +27,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_structure' ) ) {
 		}
 
 		$converter = array(
-			'taxonomies' => __( 'Post taxonomies', 'aesthetix' ),
 			'title'      => __( 'Post title', 'aesthetix' ),
 			'meta'       => __( 'Post meta data', 'aesthetix' ),
 			'excerpt'    => __( 'Post excerpt', 'aesthetix' ),

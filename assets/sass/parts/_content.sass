@@ -168,6 +168,7 @@ a.logo
 			position: absolute
 			top: calc( var( --post-thumbnail-padding ) + .5rem )
 			left: calc( var( --post-thumbnail-padding ) + .5rem )
+			max-width: calc( 100% - ( var( --post-thumbnail-padding ) * 2 ) - 1rem )
 			margin-bottom: 0 !important
 			z-index: 1
 	&-content
@@ -187,12 +188,16 @@ a.logo
 		h6
 			margin-top: $gutter
 		ul, ol
+			padding-left: 1.5rem
 			li
 				&:not(:last-child)
 					margin-bottom: $margin/2
-		ul, ol
 			ul, ol
 				margin-bottom: 0
+		ul
+			list-style-type: disc
+		ol
+			list-style-type: decimal
 		.button
 			@extend .mb
 	&-thumbnail
