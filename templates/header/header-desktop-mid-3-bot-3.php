@@ -25,17 +25,20 @@
 				</div>
 				<div class="col-12 col-md-4">
 					<div <?php widgets_classes( '', 'header-main-center' ); ?>>
+
 						<?php if ( is_active_sidebar( 'header-main-center' ) ) {
 							dynamic_sidebar( 'header-main-center' );
 						} else {
 							aesthetix_widget_default( 'header-main-center' );
 						} ?>
+
 					</div>
 				</div>
 				<div class="col-12 col-md-4">
 					<div <?php widgets_classes( '', 'header-main-right' ); ?>>
+
 						<?php if ( is_active_sidebar( 'header-main-right' ) ) {
-							ynamic_sidebar( 'header-main-right' );
+							dynamic_sidebar( 'header-main-right' );
 						} else {
 							aesthetix_widget_default( 'header-main-right' );
 						} ?>
@@ -65,7 +68,7 @@
 				<div class="col-12 col-md-8">
 					<div <?php widgets_classes( '', 'header-bottom-center' ); ?>>
 
-						<div <?php widget_classes( 'widget-primary-menu', 'header-bottom-center' ) ?>>
+						<div <?php widget_classes( 'widget-primary-menu', 'header-bottom-center' ); ?>>
 							<?php get_template_part( 'templates/widget/widget-menu', '', array( 'theme_location' => 'primary' ) ); ?>
 						</div>
 

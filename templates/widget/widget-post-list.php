@@ -7,17 +7,21 @@
  * @package Aesthetix
  */
 
-$args['post_format']               = $args['post_format'] ?? get_post_format();
-$args['post_layout']               = $args['post_layout'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_layout' );
-$args['post_structure']            = $args['post_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_structure' );
-$args['post_meta_structure']       = $args['post_meta_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_meta_structure' );
-$args['post_taxonomies_structure'] = $args['post_taxonomies_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_taxonomies_structure' );
+$defaults = array(
+	'post_format'         => get_post_format(),
+	'post_layout'         => get_aesthetix_options( 'archive_' . get_post_type() . '_layout' ),
+	'post_structure'      => get_aesthetix_options( 'archive_' . get_post_type() . '_structure' ),
+	'post_meta_structure' => get_aesthetix_options( 'archive_' . get_post_type() . '_meta_structure' ),
+	'post_equal_height'   => get_aesthetix_options( 'archive_' . get_post_type() . '_equal_height' ),
+	'post_title_size'     => get_aesthetix_options( 'archive_' . get_post_type() . '_title_size' ),
+);
+
+$args      = array_merge( $defaults, $args );
+$classes[] = 'post-content-wrap';
 
 if ( is_string( $args['post_structure'] ) && ! empty( $args['post_structure'] ) ) {
 	$args['post_structure'] = array_map( 'trim', explode( ',', $args['post_structure'] ) );
 }
-
-array_unshift( $args['post_structure'], 'taxonomies' );
 
 if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int) $args['counter'] % 2 === 0 ) {
 	$order_left  = 'order-md-2';
@@ -33,7 +37,10 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 	<div <?php aesthetix_archive_page_columns_wrapper_classes( 'row-xs align-items-center' ); ?>>
 		<div class="col-xs col-5 align-self-stretch <?php echo esc_attr( $order_left ); ?>">
 
-			<?php if ( has_post_thumbnail() ) { ?>
+			<?php if ( has_post_thumbnail( $post ) ) {
+
+				$classes[] = 'has-post-thumbnail'; ?>
+
 				<div class="post-thumbnail-wrap">
 
 					<?php get_template_part( 'templates/archive/archive-entry-post-thumbnail', '', $args ); ?>
@@ -44,7 +51,7 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 		</div>
 		<div class="col-xs col-7 <?php echo esc_attr( $order_right ); ?>">
 
-			<div class="post-content-wrap">
+			<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 
 				<?php if ( is_array( $args['post_structure'] ) && ! empty( $args['post_structure'] ) ) {
 					foreach ( $args['post_structure'] as $key => $value ) {
@@ -54,9 +61,6 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 								break;
 							case 'title':
 								get_template_part( 'templates/archive/archive-entry-post-title', '', $args );
-								break;
-							case 'taxonomies':
-								get_template_part( 'templates/archive/archive-entry-post-taxonomies', '', $args );
 								break;
 							case 'meta':
 								get_template_part( 'templates/archive/archive-entry-post-meta', '', $args );
@@ -71,6 +75,7 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 								get_template_part( 'templates/archive/archive-entry-post-more-button', '', $args );
 								break;
 							default:
+								get_template_part( 'templates/archive/archive-entry-post-taxonomies', '', array_merge( $args, array( 'structure' => $value ) ) );
 								break;
 						}
 					}

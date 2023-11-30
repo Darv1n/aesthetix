@@ -7,13 +7,18 @@
  * @package Aesthetix
  */
 
-$args['style']                = $args['style'] ?? 'inline'; // dropdown, inline, block.
-$args['button_title']         = $args['button_title'] ?? 'slug'; // name, slug.
-$args['button_size']          = $args['button_size'] ?? get_aesthetix_options( 'root_button_size' );
-$args['button_color']         = $args['button_color'] ?? 'primary';
-$args['button_type']          = $args['button_type'] ?? get_aesthetix_options( 'root_button_type' );
-$args['button_content']       = $args['button_content'] ?? 'button-icon-text';
-$args['button_border_radius'] = $args['button_border_radius'] ?? get_aesthetix_options( 'root_button_border_radius' );
+$defaults = array(
+	'button_size'          => get_aesthetix_options( 'root_button_size' ),
+	'button_color'         => 'primary',
+	'button_type'          => get_aesthetix_options( 'root_button_type' ),
+	'button_content'       => 'button-icon-text',
+	'button_border_width'  => get_aesthetix_options( 'root_button_border_width' ),
+	'button_border_radius' => get_aesthetix_options( 'root_button_border_radius' ),
+	'button_title'         => 'slug', // name, slug.
+	'style'                => 'inline', // dropdown, inline, block.
+);
+
+$args = array_merge( $defaults, $args );
 
 if ( is_language_switcher_active() ) {
 
@@ -34,7 +39,7 @@ if ( is_language_switcher_active() ) {
 
 	if ( $args['style'] === 'dropdown' ) { ?>
 		<div class="dropdown-container"<?php echo $css_style; ?>>
-			<button <?php button_classes( 'dropdown-button icon icon-globe', $args ); ?> aria-label="<?php esc_attr_e( 'Language switcher', 'aesthetix' ) ?>" type="button">
+			<button <?php button_classes( 'dropdown-button icon icon-globe', $args ); ?> aria-label="<?php esc_attr_e( 'Language switcher', 'aesthetix' ); ?>" type="button">
 				<?php if ( ! in_array( $args['button_content'], array( 'icon', 'button-icon' ), true ) ) {
 					echo esc_html( ucfirst( apply_filters( 'aesthetix_polylang_button_title', $languages[ $locale ][ $args['button_title'] ], $args['button_title'] ) ) );
 				} ?>

@@ -20,17 +20,17 @@ class WPA_Widget_Subscribe_Form extends WPA_Widget {
 		$this->widget_id          = 'aesthetix-widget-subscribe-form';
 		$this->widget_name        = get_widget_name( 'widget-subscribe-form' );
 		$this->settings           = array(
-			'title'            => array(
+			'title'       => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Title', 'aesthetix' ),
 			),
-			'subtitle'         => array(
+			'subtitle'    => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Subtitle', 'aesthetix' ) . ' (' . mb_strtolower( __( 'Before title', 'aesthetix' ) ) . ')',
 			),
-			'description'      => array(
+			'description' => array(
 				'type'  => 'textarea',
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',

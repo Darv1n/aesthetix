@@ -26,6 +26,14 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_structure' ) ) {
 			$control = get_title_slug( $control );
 		}
 
+		if ( is_null( $post_type ) ) {
+			if ( get_post_type() ) {
+				$post_type = get_post_type();
+			} else {
+				$post_type = 'post';
+			}
+		}
+
 		$converter = array(
 			'title'      => __( 'Post title', 'aesthetix' ),
 			'meta'       => __( 'Post meta data', 'aesthetix' ),
@@ -33,6 +41,13 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_structure' ) ) {
 			'author'     => __( 'Post author', 'aesthetix' ),
 			'more'       => __( 'Post read more', 'aesthetix' ),
 		);
+
+		$object_taxonomies = get_object_taxonomies( $post_type );
+
+		foreach ( $object_taxonomies as $key => $object_taxonomy ) {
+			$taxonomy = get_taxonomy( $object_taxonomy );
+			$converter[ $taxonomy->name ] = $taxonomy->label;
+		}
 
 		// Merge child and parent default options.
 		$converter = apply_filters( 'get_aesthetix_customizer_archive_post_structure', $converter, $post_type );
@@ -63,6 +78,14 @@ if ( ! function_exists( 'get_aesthetix_customizer_single_post_structure' ) ) {
 		// Sanitize string (just to be safe).
 		if ( ! is_null( $control ) ) {
 			$control = get_title_slug( $control );
+		}
+
+		if ( is_null( $post_type ) ) {
+			if ( get_post_type() ) {
+				$post_type = get_post_type();
+			} else {
+				$post_type = 'post';
+			}
 		}
 
 		$converter = array(
@@ -104,13 +127,23 @@ if ( ! function_exists( 'get_aesthetix_customizer_single_post_footer_structure' 
 			$control = get_title_slug( $control );
 		}
 
+		if ( is_null( $post_type ) ) {
+			if ( get_post_type() ) {
+				$post_type = get_post_type();
+			} else {
+				$post_type = 'post';
+			}
+		}
+
 		$converter = array(
 			'edit' => __( 'Edit', 'aesthetix' ),
 		);
 
-		if ( $post_type === 'post' ) {
-			$converter['cats'] = __( 'Categories', 'aesthetix' );
-			$converter['tags'] = __( 'Tags', 'aesthetix' );
+		$object_taxonomies = get_object_taxonomies( $post_type );
+
+		foreach ( $object_taxonomies as $key => $object_taxonomy ) {
+			$taxonomy = get_taxonomy( $object_taxonomy );
+			$converter[ $taxonomy->name ] = $taxonomy->label;
 		}
 
 		// Merge child and parent default options.
@@ -181,7 +214,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_meta_structure' ) ) {
 	}
 }
 
-if ( ! function_exists( 'get_aesthetix_customizer_post_taxonomies_structure' ) ) {
+if ( ! function_exists( 'get_aesthetix_customizer_post_thumbnail_structure' ) ) {
 
 	/**
 	 * Return array with the customizer post thumbnail structure.
@@ -191,7 +224,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_taxonomies_structure' ) )
 	 *
 	 * @return string|array|false
 	 */
-	function get_aesthetix_customizer_post_taxonomies_structure( $control = null, $post_type = null ) {
+	function get_aesthetix_customizer_post_thumbnail_structure( $control = null, $post_type = null ) {
 
 		// Sanitize string (just to be safe).
 		if ( ! is_null( $control ) ) {
@@ -218,7 +251,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_taxonomies_structure' ) )
 		}
 
 		// Merge child and parent default options.
-		$converter = apply_filters( 'get_aesthetix_customizer_post_taxonomies_structure', $converter, $post_type );
+		$converter = apply_filters( 'get_aesthetix_customizer_post_thumbnail_structure', $converter, $post_type );
 
 		// Return controls.
 		if ( is_null( $control ) ) {

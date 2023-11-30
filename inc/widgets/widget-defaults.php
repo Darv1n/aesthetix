@@ -95,16 +95,16 @@ if ( ! function_exists( 'aesthetix_widget_default' ) ) {
 			}
 
 			if ( $widget_name === 'widget-menus' ) {
-				$args['menu_titles']         = get_registered_nav_menus();
 				$args['count_items_display'] = true;
 			}
 
 			if ( $widget_name === 'widget-recent-posts' ) {
-				$args['posts_per_page']            = 2;
-				$args['post_layout']               = 'list';
-				$args['post_structure']            = 'taxonomies,title,meta';
-				$args['post_meta_structure']       = 'author,date';
-				$args['post_taxonomies_structure'] = 'category';
+				$args['posts_per_page']      = 2;
+				$args['post_title_size']     = 'h6';
+				$args['post_layout']         = 'list';
+				$args['post_structure']      = 'title,meta';
+				$args['post_meta_structure'] = 'author,date';
+				$args['widget_title']        = __( 'Recent posts', 'aesthetix' );
 			}
 
 			// Merge child and parent default options.
@@ -114,74 +114,74 @@ if ( ! function_exists( 'aesthetix_widget_default' ) ) {
 				case has_action( 'aesthetix_aesthetix_widget_default_loop_' . $widget_name ):
 					do_action( 'aesthetix_aesthetix_widget_default_loop_' . $widget_name, $args, $widget_id, $widget_name );
 					break;
-				case 'search-form': ?>
-					<div <?php widget_classes( '', $widget_id ) ?>>
+				case 'widget-search-form': ?>
+					<div <?php widget_classes( '', $widget_id ); ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_search_form(); ?>
 					</div>
 					<?php break;
 				case 'widget-logo': ?>
-					<div <?php widget_classes( '', $widget_id ) ?>>
+					<div <?php widget_classes( '', $widget_id ); ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_template_part( 'templates/widget/widget-logo', '', $args ); ?>
 					</div>
 					<?php break;
 				case 'widget-socials': ?>
-					<div <?php widget_classes( '', $widget_id ) ?>>
+					<div <?php widget_classes( '', $widget_id ); ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_template_part( 'templates/widget/widget-socials', '', $args ); ?>
 					</div>
 					<?php break;
 				case 'widget-contacts': ?>
-					<div <?php widget_classes( '', $widget_id ) ?>>
+					<div <?php widget_classes( '', $widget_id ); ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_template_part( 'templates/widget/widget-contacts', '', $args ); ?>
 					</div>
 					<?php break;
 				case 'widget-recent-posts': ?>
-					<div <?php widget_classes( '', $widget_id ) ?>>
+					<div <?php widget_classes( '', $widget_id ); ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_template_part( 'templates/widget/widget-recent-posts', '', $args ); ?>
 					</div>
 					<?php break;
 				case 'widget-menus': ?>
-					<div <?php widget_classes( '', $widget_id ) ?>>
+					<div <?php widget_classes( '', $widget_id ); ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_template_part( 'templates/widget/widget-menus', '', $args ); ?>
 					</div>
 					<?php break;
 				case 'widget-menu': ?>
-					<div <?php widget_classes( '', $widget_id ) ?>>
+					<div <?php widget_classes( '', $widget_id ); ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_template_part( 'templates/widget/widget-menu', '', $args ); ?>
 					</div>
 					<?php break;
 				case 'widget-menu-primary': ?>
-					<div <?php widget_classes( '', $widget_id ) ?>>
+					<div <?php widget_classes( '', $widget_id ); ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_template_part( 'templates/widget/widget-menu', '', array( 'theme_location' => 'primary' ) ); ?>
 					</div>
 					<?php break;
 				case 'widget-search-toggle': ?>
-					<div <?php widget_classes( '', $widget_id ) ?>>
+					<div <?php widget_classes( '', $widget_id ); ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_template_part( 'templates/widget/widget-search-toggle', '', $args ); ?>
 					</div>
 					<?php break;
 				case 'widget-subscribe-toggle': ?>
-					<div <?php widget_classes( '', $widget_id ) ?>>
+					<div <?php widget_classes( '', $widget_id ); ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_template_part( 'templates/widget/widget-subscribe-toggle', '', $args ); ?>
 					</div>
 					<?php break;
 				case 'widget-adv-banner': ?>
-					<div <?php widget_classes( '', $widget_id ) ?>>
+					<div <?php widget_classes( '', $widget_id ); ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_template_part( 'templates/widget/widget-adv-banner', '', $args ); ?>
 					</div>
 					<?php break;
 				case 'widget-language-switcher': ?>
-					<div <?php widget_classes( '', $widget_id ) ?>>
+					<div <?php widget_classes( '', $widget_id ); ?>>
 						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
 						<?php get_template_part( 'templates/widget/widget-language-switcher', '', $args ); ?>
 					</div>
@@ -226,7 +226,7 @@ if ( ! function_exists( 'get_aesthetix_widget_default' ) ) {
 			'header-bottom-right'  => array( 'widget-search-toggle', 'widget-subscribe-toggle' ),
 			'footer-top-left'      => array( 'widget-logo' ),
 			'footer-top-right'     => array( 'widget-menu-primary' ),
-			'footer-main-first'    => array( 'widget-logo', 'search-form', 'widget-language-switcher' ),
+			'footer-main-first'    => array( 'widget-logo', 'widget-search-form', 'widget-language-switcher' ),
 			'footer-main-second'   => array( 'widget-menus' ),
 			'footer-main-third'    => array( 'widget-contacts', 'widget-socials' ),
 			'footer-main-fourth'   => array( 'widget-contacts', 'widget-socials' ),
@@ -257,6 +257,11 @@ if ( ! function_exists( 'get_aesthetix_widget_default' ) ) {
 			$converter['header-main-right'] = array( 'widget-language-switcher', 'widget-search-toggle', 'widget-subscribe-toggle' );
 		}
 
+		if ( get_aesthetix_options( 'general_footer_type' ) === 'footer-four-columns' ) {
+			$converter['footer-main-second'] = array( 'widget-recent-posts' );
+			$converter['footer-main-third']  = array( 'widget-menus' );
+		}
+
 		if ( get_aesthetix_options( 'general_footer_top_bar_display' ) === true ) {
 
 			$converter['footer-main-first']  = array( 'widget-recent-posts' );
@@ -264,10 +269,6 @@ if ( ! function_exists( 'get_aesthetix_widget_default' ) ) {
 			$converter['footer-main-third']  = array( 'widget-contacts', 'widget-socials' );
 			$converter['footer-main-fourth'] = array( 'widget-contacts', 'widget-socials' );
 
-			if ( get_aesthetix_options( 'general_footer_type' ) === 'footer-four-columns' ) {
-				$converter['footer-main-second'] = array( 'widget-recent-posts' );
-				$converter['footer-main-third']  = array( 'widget-menus' );
-			}
 		}
 
 		// Merge child and parent default options.

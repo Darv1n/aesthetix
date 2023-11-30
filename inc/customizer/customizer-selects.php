@@ -127,6 +127,45 @@ if ( ! function_exists( 'get_aesthetix_customizer_button_sizes' ) ) {
 	}
 }
 
+if ( ! function_exists( 'get_aesthetix_customizer_padding_sizes' ) ) {
+
+	/**
+	 * Return array with the customizer padding sizes.
+	 *
+	 * @param string $control Array key to get one value.
+	 *
+	 * @return string|array|false
+	 */
+	function get_aesthetix_customizer_padding_sizes( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'none' => __( 'None', 'aesthetix' ),
+			'xs'   => 'XS',
+			'sm'   => 'SM',
+			'md'   => 'MD',
+			'lg'   => 'LG',
+			'xl'   => 'XL',
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_padding_sizes', $converter );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
 if ( ! function_exists( 'get_aesthetix_customizer_sizes' ) ) {
 
 	/**
@@ -153,6 +192,45 @@ if ( ! function_exists( 'get_aesthetix_customizer_sizes' ) ) {
 
 		// Merge child and parent default options.
 		$converter = apply_filters( 'get_aesthetix_customizer_sizes', $converter );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+if ( ! function_exists( 'get_aesthetix_customizer_title_size' ) ) {
+
+	/**
+	 * Return array with the customizer title size.
+	 *
+	 * @param string $control Array key to get one value.
+	 *
+	 * @return string|array|false
+	 */
+	function get_aesthetix_customizer_title_size( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'h1' => '2.25rem',
+			'h2' => '2rem',
+			'h3' => '1.75rem',
+			'h4' => '1.5rem',
+			'h5' => '1.25rem',
+			'h6' => '1rem',
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_title_size', $converter );
 
 		// Return controls.
 		if ( is_null( $control ) ) {
@@ -277,6 +355,45 @@ if ( ! function_exists( 'get_aesthetix_customizer_box_shadows' ) ) {
 
 		// Merge child and parent default options.
 		$converter = apply_filters( 'get_aesthetix_customizer_box_shadows', $converter );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+if ( ! function_exists( 'get_aesthetix_customizer_aspect_ratio' ) ) {
+
+	/**
+	 * Return array with the customizer aspect ratio.
+	 *
+	 * @param string $control Array key to get one value.
+	 *
+	 * @return string|array|false
+	 */
+	function get_aesthetix_customizer_aspect_ratio( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'2-3'  => '2/3',
+			'3-2'  => '3/2',
+			'3-4'  => '3/4',
+			'4-3'  => '4/3',
+			'9-16' => '9/16',
+			'16-9' => '16/9',
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_aspect_ratio', $converter );
 
 		// Return controls.
 		if ( is_null( $control ) ) {
@@ -738,6 +855,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_socials' ) ) {
 			'twitter'   => __( 'Twitter', 'aesthetix' ),
 			'linkedin'  => __( 'LinkedIn', 'aesthetix' ),
 			'telegram'  => __( 'Telegram', 'aesthetix' ),
+			'vkontakte' => __( 'Vkontakte', 'aesthetix' ),
 		);
 
 		// Merge child and parent default options.

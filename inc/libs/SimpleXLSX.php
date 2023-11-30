@@ -681,9 +681,11 @@ class SimpleXLSX {
 				$format = $this->workbook_cell_formats[ $s ]['format'];
 			}
 		}
-		if ( strpos( $format, 'm' ) !== false ) {
+
+		if ( ! is_null( $format ) && strpos( $format, 'm' ) !== false ) {
 			$dataType = 'd';
 		}
+
 		$value = '';
 		switch ( $dataType ) {
 			case 's':

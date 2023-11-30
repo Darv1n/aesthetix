@@ -7,16 +7,15 @@
  * @package Aesthetix
  */
 
-$args['theme_location']      = $args['theme_location'] ?? 'primary';
-$args['count_items_display'] = $args['count_items_display'] ?? get_aesthetix_options( 'general_menu_count_items_display' );
-
-$args = array(
-	'theme_location'      => $args['theme_location'],
+$defaults = array(
+	'theme_location'      => 'primary',
 	'container'           => '',
 	'menu_id'             => '',
-	'count_items_display' => (bool) $args['count_items_display'],
+	'count_items_display' => (bool) get_aesthetix_options( 'general_menu_count_items_display' ),
 	'fallback_cb'         => 'setup_menu_fallback',
-) ?>
+);
+
+$args = array_merge( $defaults, $args ); ?>
 
 <nav <?php aesthetix_menu_wrapper_classes( 'menu-' . $args['theme_location'] ); ?> role="navigation">
 	<?php wp_nav_menu( $args ); ?>

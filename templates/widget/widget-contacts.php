@@ -7,14 +7,18 @@
  * @package Aesthetix
  */
 
-$args['style']    = $args['style'] ?? 'block'; // inline, block.
-$args['address']  = $args['address'] ?? get_aesthetix_options( 'other_address' );
-$args['phone']    = $args['phone'] ?? get_aesthetix_options( 'other_phone' );
-$args['email']    = $args['email'] ?? get_aesthetix_options( 'other_email' );
-$args['whatsapp'] = $args['whatsapp'] ?? get_aesthetix_options( 'other_whatsapp' );
-$args['telegram'] = $args['telegram'] ?? get_aesthetix_options( 'other_telegram_chat' );
+$defaults = array(
+	'address'  => get_aesthetix_options( 'other_address' ),
+	'phone'    => get_aesthetix_options( 'other_phone' ),
+	'email'    => get_aesthetix_options( 'other_email' ),
+	'whatsapp' => get_aesthetix_options( 'other_whatsapp' ),
+	'telegram' => get_aesthetix_options( 'other_telegram_chat' ),
+	'style'    => 'block', // inline, block.
+);
 
+$args      = array_merge( $defaults, $args );
 $classes[] = 'social-list';
+
 if ( $args['style'] === 'block' ) {
 	$classes[] = 'social-list-block';
 } else {
@@ -26,7 +30,7 @@ if ( $args['address'] || $args['phone'] || $args['email'] ) { ?>
 
 		<?php if ( $args['phone'] ) { ?>
 			<li class="contacts-list-item icon icon-before icon-location-dot icon-phone icon-gray">
-				<a <?php link_classes( 'link-phone' ); ?> href="tel:<?php echo esc_attr( preg_replace( '/[^0-9]/', '', $args['phone'] ) ); ?>"><?php echo esc_html( $args['phone'] ) ?></a>
+				<a <?php link_classes( 'link-phone' ); ?> href="tel:<?php echo esc_attr( preg_replace( '/[^0-9]/', '', $args['phone'] ) ); ?>"><?php echo esc_html( $args['phone'] ); ?></a>
 			</li>
 		<?php } ?>
 

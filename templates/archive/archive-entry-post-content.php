@@ -6,14 +6,13 @@
  *
  * @package Aesthetix
  */
- ?>
 
-<?php if ( get_aesthetix_options( 'archive_' . get_post_type() . '_detail_description' ) === 'content' ) { ?>
-	<div class="post-content" aria-label="<?php esc_attr_e( 'Post content', 'aesthetix' ); ?>">
-		<?php the_content(); ?>
-	</div>
-<?php } else { ?>
-	<div class="post-excerpt" aria-label="<?php esc_attr_e( 'Post excerpt', 'aesthetix' ); ?>">
-		<?php the_excerpt(); ?>
-	</div>
-<?php }
+$classes[] = 'post-entry-excerpt';
+
+if ( isset( $args['post_equal_height'] ) && $args['post_equal_height'] === 'excerpt' ) {
+	$classes[] = 'equal-height';
+} ?>
+
+<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>" aria-label="<?php esc_attr_e( 'Post excerpt', 'aesthetix' ); ?>">
+	<?php the_excerpt(); ?>
+</div>

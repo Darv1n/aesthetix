@@ -7,7 +7,11 @@
  * @package Aesthetix
  */
 
-$args['logo_size'] = $args['logo_size'] ?? get_aesthetix_options( 'title_tagline_logo_size' );
+$defaults = array(
+	'logo_size' => get_aesthetix_options( 'title_tagline_logo_size' ),
+);
+
+$args = array_merge( $defaults, $args );
 
 // Check if the image is set in the customizer settings or display the text.
 if ( has_custom_logo() ) { ?>

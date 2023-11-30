@@ -20,22 +20,22 @@ class WPA_Widget_Search_Popup_Form extends WPA_Widget {
 		$this->widget_id          = 'aesthetix-widget-search-toggle';
 		$this->widget_name        = get_widget_name( 'widget-search-toggle' );
 		$this->settings           = array(
-			'title'            => array(
+			'title'          => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Title', 'aesthetix' ),
 			),
-			'subtitle'         => array(
+			'subtitle'       => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Subtitle', 'aesthetix' ) . ' (' . mb_strtolower( __( 'Before title', 'aesthetix' ) ) . ')',
 			),
-			'description'      => array(
+			'description'    => array(
 				'type'  => 'textarea',
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
-			'input_size'   => array(
+			'input_size'     => array(
 				'type'    => 'select',
 				'std'     => get_aesthetix_options( 'root_input_size' ),
 				'label'   => __( 'Select input size', 'aesthetix' ),

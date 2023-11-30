@@ -1,6 +1,6 @@
 <?php
 /**
- * Ajax handlers.
+ * Template ajax handlers.
  *
  * @package Aesthetix
  */

@@ -46,7 +46,7 @@
 				<div class="col-12 col-md-9">
 					<div <?php widgets_classes( '', 'header-bottom-left' ); ?>>
 
-						<div <?php widget_classes( 'widget-primary-menu', 'header-bottom-left' ) ?>>
+						<div <?php widget_classes( 'widget-primary-menu', 'header-bottom-left' ); ?>>
 							<?php get_template_part( 'templates/widget/widget-menu', '', array( 'theme_location' => 'primary' ) ); ?>
 						</div>
 

@@ -8,7 +8,7 @@
  */
  ?>
 
- <div class="header-desktop header-middle"<?php echo has_custom_header() ? ' style="background: url( ' . esc_url( get_header_image() ) . ' ) center/cover no-repeat" role="img"' : ''; ?>>
+<div class="header-desktop header-middle"<?php echo has_custom_header() ? ' style="background: url( ' . esc_url( get_header_image() ) . ' ) center/cover no-repeat" role="img"' : ''; ?>>
 	<div <?php aesthetix_container_classes( 'container-outer' ); ?>>
 		<div <?php aesthetix_container_classes( 'container-inner' ); ?>>
 			<div <?php aesthetix_archive_page_columns_wrapper_classes( 'align-items-center' ); ?>>
@@ -57,7 +57,7 @@
 				<div class="col-12 col-md-9">
 					<div <?php widgets_classes( '', 'header-bottom-left' ); ?>>
 
-						<div <?php widget_classes( 'widget-primary-menu', 'header-bottom-left' ) ?>>
+						<div <?php widget_classes( 'widget-primary-menu', 'header-bottom-left' ); ?>>
 							<?php get_template_part( 'templates/widget/widget-menu', '', array( 'theme_location' => 'primary' ) ); ?>
 						</div>
 

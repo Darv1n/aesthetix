@@ -6,24 +6,29 @@
  *
  * @package Aesthetix
  */
-
-$args['order']                        = $args['order'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_posts_order' );
-$args['orderby']                      = $args['orderby'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_posts_orderby' );
-$args['posts_per_page']               = $args['posts_per_page'] ?? 4;
-$args['post_type']                    = $args['post_type'] ?? 'post';
-$args['post_status']                  = $args['post_status'] ?? 'publish';
-$args['post_layout']                  = $args['post_layout'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_layout' );
-$args['post_structure']               = $args['post_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_structure' );
-$args['post_meta_structure']          = $args['post_meta_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_meta_structure' );
-$args['post_taxonomies_structure']    = $args['post_taxonomies_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_taxonomies_structure' );
+$post_type = $args['post_type'] ?? 'post';
+$defaults  = array(
+	'order'               => get_aesthetix_options( 'archive_' . $post_type . '_posts_order' ),
+	'orderby'             => get_aesthetix_options( 'archive_' . $post_type . '_posts_orderby' ),
+	'posts_per_page'      => 4,
+	'post_type'           => $post_type,
+	'post_status'         => 'publish',
+	'ignore_sticky_posts' => true,
+	'post_layout'         => get_aesthetix_options( 'archive_' . $post_type . '_layout' ),
+	'post_structure'      => get_aesthetix_options( 'archive_' . $post_type . '_structure' ),
+	'post_meta_structure' => get_aesthetix_options( 'archive_' . $post_type . '_meta_structure' ),
+	'post_equal_height'   => get_aesthetix_options( 'archive_' . $post_type . '_equal_height' ),
+);
 
 if ( is_single() ) {
-	$args['post__not_in'] = array( get_the_ID() );
+	$defaults['post__not_in'] = array( get_the_ID() );
 }
 
+$args  = array_merge( apply_filters( 'get_aesthetix_widget_recent_posts_default_args', $defaults ), $args );
 $query = new WP_Query( $args );
 
 if ( $query->have_posts() ) {
+
 	$i = 1;
 
 	while ( $query->have_posts() ) {

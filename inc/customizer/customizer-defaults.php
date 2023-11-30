@@ -25,7 +25,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			$control = get_title_slug( $control );
 		}
 
-		$aesthetix_defaults = array(
+		$defaults = array(
 			'general_demo_var'                          => 'demo-1',
 			'general_container_width'                   => 'lg',
 			'general_content_width'                     => 'wide',
@@ -58,7 +58,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'front_page_slider_post_type'               => 'post',
 			'front_page_slider_slides_count'            => 6,
 			'front_page_slider_slides_to_show'          => 4,
-			'front_page_slider_slides_layout'           => 'grid-image', // grid, grid-image, list, list-chess.
+			'front_page_slider_slides_layout'           => 'grid', // grid, grid-image, list, list-chess.
 
 			'root_primary_font'                         => 'open-sans',
 			'root_secondary_font'                       => 'open-sans',
@@ -70,13 +70,6 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'root_box_shadow'                           => 'md',
 			'root_border_width'                         => 'sm',
 			'root_border_radius'                        => 'md',
-
-			'root_post_background'                      => 'theme',
-			'root_post_thumbnail_padding'               => 'xs',
-			'root_post_content_padding'                 => 'xl',
-			'root_post_shadow'                          => 'md',
-			'root_post_border_width'                    => 'xs',
-			'root_post_border_radius'                   => 'md',
 
 			'root_button_type'                          => 'common',
 			'root_button_icon_position'                 => 'before',
@@ -115,16 +108,16 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 		);
 
 		foreach ( get_post_types() as $key => $post_type ) {
-			$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
+			$defaults = array_merge( $defaults, array(
 				'single_' . $post_type . '_template_type' => 'one',
 				'archive_' . $post_type . '_masonry'      => false,
 				'archive_' . $post_type . '_layout'       => 'grid', // grid, grid-image, list, list-chess.
 			) );
 
-			if ( in_array( $aesthetix_defaults['archive_' . $post_type . '_layout'], array( 'list', 'list-chess' ), true ) ) {
-				$aesthetix_defaults[ 'archive_' . $post_type . '_columns' ] = 1;
+			if ( in_array( $defaults['archive_' . $post_type . '_layout'], array( 'list', 'list-chess' ), true ) ) {
+				$defaults[ 'archive_' . $post_type . '_columns' ] = 1;
 			} else {
-				$aesthetix_defaults[ 'archive_' . $post_type . '_columns' ] = 3;
+				$defaults[ 'archive_' . $post_type . '_columns' ] = 3;
 			}
 		}
 
@@ -134,7 +127,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 				continue;
 			}
 
-			$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
+			$defaults = array_merge( $defaults, array(
 				'single_' . $post_type . '_structure'             => 'header,thumbnail,meta,content,footer',
 				'single_' . $post_type . '_meta_structure'        => 'date,time,edit',
 				'single_' . $post_type . '_footer_structure'      => 'edit',
@@ -150,10 +143,21 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			$object_taxonomies = get_object_taxonomies( $post_type );
 
 			if ( $post_type_object->has_archive || ! empty( $object_taxonomies ) ) {
-				$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
+				$defaults = array_merge( $defaults, array(
+					'archive_' . $post_type . '_background'              => 'theme',
+					'archive_' . $post_type . '_equal_height'            => 'excerpt',
+					'archive_' . $post_type . '_title_size'              => 'h4',
+					'archive_' . $post_type . '_thumbnail_aspect_ratio'  => '4-3',
+					'archive_' . $post_type . '_thumbnail_padding'       => 'xs',
+					'archive_' . $post_type . '_content_padding'         => 'xl',
+					'archive_' . $post_type . '_shadow'                  => 'md',
+					'archive_' . $post_type . '_border_width'            => 'xs',
+					'archive_' . $post_type . '_border_radius'           => 'md',
+
 					'archive_' . $post_type . '_structure'               => 'meta,title,excerpt,author,more',
 					'archive_' . $post_type . '_meta_structure'          => 'date,time,edit',
-					'archive_' . $post_type . '_taxonomies_structure'    => 'post_format,sticky',
+					'archive_' . $post_type . '_thumbnail_before'        => '',
+					'archive_' . $post_type . '_thumbnail_after'         => 'post_format,sticky',
 					'archive_' . $post_type . '_posts_per_page'          => get_option( 'posts_per_page' ),
 					'archive_' . $post_type . '_posts_order'             => 'desc',
 					'archive_' . $post_type . '_posts_orderby'           => 'date',
@@ -163,9 +167,10 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			}
 
 			if ( $post_type === 'post' ) {
-				$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
+				$defaults = array_merge( $defaults, array(
 					'archive_post_meta_structure'           => 'date,category,post_tag,post_format,time,edit',
-					'archive_post_taxonomies_structure'     => 'category,post_tag,post_format,sticky',
+					'archive_post_thumbnail_before'         => 'category',
+					'archive_post_thumbnail_after'          => 'post_format,sticky',
 					'single_post_meta_structure'            => 'date,category,post_tag,time,edit',
 					'single_post_footer_structure'          => 'category,post_tag,edit',
 					'single_post_entry_footer_cats_display' => false,
@@ -174,43 +179,43 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			}
 		}
 
-		$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
-			'other_address'       => '30th floor, Maakri 19/1, Tallinn, Estonia, 10145',
-			'other_phone'         => '+79500463854',
-			'other_email'         => 'artem@artzolin.ru',
-			'other_whatsapp'      => '+79500463854',
-			'other_telegram_chat' => 'https://qna.habr.com/curator/latest',
+		$defaults = array_merge( $defaults, array(
+			'other_address'       => '',
+			'other_phone'         => '',
+			'other_email'         => '',
+			'other_whatsapp'      => '',
+			'other_telegram_chat' => '',
 		) );
 
 		foreach ( get_aesthetix_customizer_socials() as $key => $value ) {
-			$aesthetix_defaults[ 'other_' . $key ] = 'https://qna.habr.com/curator/latest';
+			$defaults[ 'other_' . $key ] = '';
 		}
 
-		$aesthetix_defaults = array_merge( $aesthetix_defaults, array(
+		$defaults = array_merge( $defaults, array(
 			'title_tagline_logo_size' => 'md',
 		) );
 
-		if ( $aesthetix_defaults['general_header_type'] === 'mid-2-bot-2' ) {
-			$aesthetix_defaults['root_home_button_display'] = 'menu-start';
+		if ( $defaults['general_header_type'] === 'mid-2-bot-2' ) {
+			$defaults['root_home_button_display'] = 'menu-start';
 		}
 
-		if ( $aesthetix_defaults['general_header_type'] === 'mid-2-bot-3' ) {
-			$aesthetix_defaults['root_home_button_display'] = 'menu-center';
+		if ( $defaults['general_header_type'] === 'mid-2-bot-3' ) {
+			$defaults['root_home_button_display'] = 'menu-center';
 		}
 
 		// Merge child and parent default options.
-		$aesthetix_defaults = apply_filters( 'get_aesthetix_options', $aesthetix_defaults );
+		$defaults = apply_filters( 'get_aesthetix_options', $defaults );
 
 		// Merge defaults and theme options.
-		$aesthetix_defaults = wp_parse_args( get_option( 'aesthetix_options', array() ), $aesthetix_defaults );
+		$defaults = wp_parse_args( get_option( 'aesthetix_options', array() ), $defaults );
 
 		// Return controls.
 		if ( is_null( $control ) ) {
-			return $aesthetix_defaults;
-		} elseif ( ! isset( $aesthetix_defaults[ $control ] ) ) {
+			return $defaults;
+		} elseif ( ! isset( $defaults[ $control ] ) ) {
 			return false;
 		} else {
-			return $aesthetix_defaults[ $control ];
+			return $defaults[ $control ];
 		}
 	}
 }

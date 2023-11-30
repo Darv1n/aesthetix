@@ -353,18 +353,14 @@ input[type="submit"]
 			background: $gray-color-300
 			border: $button-bd-width solid $gray-color-300
 			color: $text-color
-		&:focus, &:active, &.active
-			border: $button-bd-width solid $gray-color-300
 	&-empty
 		background: transparent
-		border: $button-bd-width solid $gray-color-500
+		border: $button-bd-width solid $gray-color-200
 		color: $text-color
 		&:hover, &:focus, &:active, &.active
 			background: transparent
-			border: $button-bd-width solid $gray-color-600
+			border: $button-bd-width solid $gray-color-300
 			color: $text-color
-		&:focus, &:active, &.active
-			border: $button-bd-width solid $gray-color-500
 	&-gradient
 		position: relative
 		z-index: 1
@@ -540,8 +536,10 @@ input[type="submit"]
 			border: $button-bd-width solid $gray-color-200
 			color: $text-color
 			box-shadow: none
+		&.button-slide, &.button-gradient
+			&:after
+				display: none
 		&.button-gradient
-			background: $gray-gradient
 			border: none
 			&:hover, &:focus, &:active
 				border: none

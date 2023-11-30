@@ -97,7 +97,7 @@ if ( ! function_exists( 'rmp_result_archive_entry_post_meta_loop' ) ) {
 	 */
 	function rmp_result_archive_entry_post_meta_loop( $post ) {  ?>
 
-		<li class="meta__item meta__item_rating-count data-title" data-title="<?php _e( 'Rating', 'aesthetix' ); ?>">
+		<li class="post-entry-meta-item data-title" data-title="<?php esc_html_e( 'Rating', 'aesthetix' ); ?>">
 			<?php echo do_shortcode( '[ratemypost-result]' ); ?>
 		</li>
 

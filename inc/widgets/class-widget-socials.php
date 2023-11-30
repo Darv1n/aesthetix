@@ -20,46 +20,46 @@ class WPA_Widget_Socials extends WPA_Widget {
 		$this->widget_id          = 'aesthetix-widget-socials';
 		$this->widget_name        = get_widget_name( 'widget-socials' );
 		$this->settings           = array(
-			'title'            => array(
+			'title'          => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Title', 'aesthetix' ),
 			),
-			'subtitle'         => array(
+			'subtitle'       => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Subtitle', 'aesthetix' ) . ' (' . mb_strtolower( __( 'Before title', 'aesthetix' ) ) . ')',
 			),
-			'description'      => array(
+			'description'    => array(
 				'type'  => 'textarea',
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
-			'style' => array(
+			'style'          => array(
 				'type'    => 'select',
 				'std'     => 'inline',
 				'label'   => __( 'Select style block', 'aesthetix' ),
 				'options' => array( 'inline' => __( 'Inline', 'aesthetix' ), 'block' => __( 'Block', 'aesthetix' ) ),
 			),
-			'icon_size' => array(
+			'icon_size'      => array(
 				'type'    => 'select',
 				'std'     => get_aesthetix_options( 'root_button_size' ),
 				'label'   => __( 'Select icon size', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_sizes(),
 			),
-			'button_size' => array(
+			'button_size'    => array(
 				'type'    => 'select',
 				'std'     => get_aesthetix_options( 'root_button_size' ),
 				'label'   => __( 'Select button size', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_button_sizes(),
 			),
-			'button_color' => array(
+			'button_color'   => array(
 				'type'    => 'select',
 				'std'     => 'primary',
 				'label'   => __( 'Select button color', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_button_color(),
 			),
-			'button_type' => array(
+			'button_type'    => array(
 				'type'    => 'select',
 				'std'     => get_aesthetix_options( 'root_button_type' ),
 				'label'   => __( 'Select button type', 'aesthetix' ),

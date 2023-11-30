@@ -14,7 +14,7 @@ if ( is_admin_bar_showing() ) {
 	$classes[] = 'has_wpadminbar';
 } ?>
 
-<aside id="aside-menu" class="<?php echo esc_attr( implode( ' ', $classes ) ) ?>" aria-label="<?php esc_attr_e( 'Menu aside', 'aesthetix' ); ?>">
+<aside id="aside-menu" class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>" aria-label="<?php esc_attr_e( 'Menu aside', 'aesthetix' ); ?>">
 
 	<div class="aside-menu-header">
 		<div <?php aesthetix_archive_page_columns_wrapper_classes( 'align-items-center' ); ?>>

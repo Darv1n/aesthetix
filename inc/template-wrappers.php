@@ -90,13 +90,10 @@ if ( ! function_exists( 'get_aesthetix_post_classes' ) ) {
 		$args = wp_parse_args( $args, $defaults );
 
 		$classes[] = 'post';
+		$classes[] = 'post-type-' . get_post_type();
 
 		if ( has_post_thumbnail() ) {
 			$classes[] = 'has-thumbnail';
-		}
-
-		if ( get_post_type() !== 'post' ) {
-			$classes[] = 'post-' . get_post_type();
 		}
 
 		if ( in_array( $args['post_layout'], array( 'list', 'list-chess' ), true ) ) {
@@ -107,8 +104,10 @@ if ( ! function_exists( 'get_aesthetix_post_classes' ) ) {
 
 		if ( $args['post_layout'] === 'grid-image' ) {
 			$classes[] = 'post-format-image';
-		} else {
+		} elseif ( $args['post_format'] ) {
 			$classes[] = 'post-format-' . $args['post_format'];
+		} else {
+			$classes[] = 'post-format-standard';
 		}
 
 		if ( is_sticky() ) {
@@ -330,7 +329,7 @@ if ( ! function_exists( 'get_aesthetix_content_area_classes' ) ) {
 
 		$sidebar = apply_filters( 'get_aesthetix_sidebar', 'main' );
 
-		if ( is_active_sidebar( $sidebar ) ) {
+		if ( is_active_sidebar( $sidebar ) || ! empty( get_aesthetix_widget_default( $sidebar ) )  ) {
 			$classes[] = 'col-lg-8';
 			$classes[] = 'order-lg-2';
 			$classes[] = 'col-xl-9';

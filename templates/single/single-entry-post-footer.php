@@ -34,7 +34,7 @@
 					case 'category': ?>
 						<?php if ( has_category() ) { ?>
 							<div class="post-footer-item post-footer-cats">
-								<strong><?php esc_html_e( 'Post categories', 'aesthetix' ) ?>:</strong>
+								<strong><?php esc_html_e( 'Post categories', 'aesthetix' ); ?>:</strong>
 								<ul class="post-footer-list cat-list">
 									<?php foreach ( get_the_category() as $key => $category ) { ?>
 										<li class="cat-list-item">

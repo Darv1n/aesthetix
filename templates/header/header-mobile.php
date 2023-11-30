@@ -44,7 +44,7 @@
 							}
 						?>
 
-						<div <?php widget_classes( '', 'header-mobile-right' ) ?>>
+						<div <?php widget_classes( '', 'header-mobile-right' ); ?>>
 							<?php get_template_part( 'templates/widget/widget-menu-toggle', '', $args ); ?>
 						</div>
 

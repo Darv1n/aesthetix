@@ -7,14 +7,16 @@
  * @package Aesthetix
  */
 
-$args['adv_desktop']     = $args['adv_desktop'] ?? get_theme_file_uri( '/assets/img/header-promo.png' );
-$args['adv_mobile']      = $args['adv_mobile'] ?? '';
-$args['adv_link']        = $args['adv_link'] ?? 'https://www.3forty.media/zosia/demo-2/';
-$args['adv_alt']         = $args['adv_alt'] ?? __( 'Banner', 'aesthetix' );
-$args['adv_description'] = $args['adv_description'] ?? '';
+$defaults = array(
+	'adv_desktop'     => get_theme_file_uri( '/assets/img/header-promo.png' ),
+	'adv_mobile'      => '',
+	'adv_link'        => 'https://www.3forty.media/zosia/demo-2/',
+	'adv_alt'         => __( 'Banner', 'aesthetix' ),
+	'adv_description' => '',
+);
 
-$url = wp_http_validate_url( $args['adv_link'] );
-
+$args      = array_merge( $defaults, $args );
+$url       = wp_http_validate_url( $args['adv_link'] );
 $classes[] = 'ab';
 
 if ( ! empty( $args['adv_mobile'] ) ) {

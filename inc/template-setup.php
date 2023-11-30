@@ -1,6 +1,6 @@
 <?php
 /**
- * Main setup options.
+ * Template setup theme.
  *
  * @package Aesthetix
  */
@@ -84,9 +84,9 @@ if ( ! function_exists( 'aesthetix_setup_theme' ) ) {
 		add_filter( 'widget_text', 'do_shortcode' );
 
 		// Убираем пустые теги.
-		remove_filter( 'the_excerpt', 'wpautop' );
-		remove_filter( 'the_content', 'wpautop' );
-		add_filter( 'the_content', 'wpautop', 12 );
+		// remove_filter( 'the_excerpt', 'wpautop' );
+		// remove_filter( 'the_content', 'wpautop' );
+		// add_filter( 'the_content', 'wpautop', 12 );
 
 		// Убираем meta generator.
 		add_filter( 'the_generator', '__return_empty_string' );

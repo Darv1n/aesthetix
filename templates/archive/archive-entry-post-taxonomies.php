@@ -7,49 +7,75 @@
  * @package Aesthetix
  */
 
-$args['button_size']               = $args['button_size'] ?? 'xs';
-$args['button_content']            = $args['button_content'] ?? 'button-icon-text';
-$args['button_border_radius']      = $args['button_border_radius'] ?? 'rounded-full';
-$args['post_taxonomies_structure'] = $args['post_taxonomies_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_taxonomies_structure' );
+$defaults = array(
+	'button_size'          => 'xs',
+	'button_color'         => 'secondary',
+	'button_type'          => get_aesthetix_options( 'root_button_type' ),
+	'button_content'       => 'button-text',
+	'button_border_width'  => get_aesthetix_options( 'root_button_border_width' ),
+	'button_border_radius' => 'full',
+	'structure'            => '',
+	'max_tax'              => -1,
+);
 
-if ( is_string( $args['post_taxonomies_structure'] ) && ! empty( $args['post_taxonomies_structure'] ) ) {
-	$args['post_taxonomies_structure'] = array_map( 'trim', explode( ',', $args['post_taxonomies_structure'] ) );
+$args = array_merge( $defaults, $args );
+$i    = 0;
+
+if ( is_string( $args['structure'] ) && ! empty( $args['structure'] ) ) {
+	$args['structure'] = array_map( 'trim', explode( ',', $args['structure'] ) );
 }
 
-if ( is_array( $args['post_taxonomies_structure'] ) && ! empty( $args['post_taxonomies_structure'] ) ) { ?>
+if ( is_array( $args['structure'] ) && ! empty( $args['structure'] ) ) { ?>
 
-	<ul class="post-taxonomies" aria-label="<?php esc_attr_e( 'Post taxonomies', 'aesthetix' ); ?>">
+	<ul class="post-entry-taxonomies" aria-label="<?php esc_attr_e( 'Post taxonomies', 'aesthetix' ); ?>">
 
-	<?php foreach ( $args['post_taxonomies_structure'] as $key => $value ) {
+	<?php foreach ( $args['structure'] as $key => $value ) {
+
+		$args = apply_filters( 'get_aesthetix_archive_entry_post_taxonomies_args', $args, $value );
+
 		switch ( $value ) {
 			case has_action( 'aesthetix_archive_entry_post_taxonomies_loop_' . $value ):
 				do_action( 'aesthetix_archive_entry_post_taxonomies_loop_' . $value, $post, $args );
 				break;
 			case 'sticky':
 				if ( is_sticky() ) { ?>
-					<li class="post-taxonomies-item">
-						<button <?php button_classes( 'post-taxonomies-button button-disabled icon icon-thumbtack', $args ); ?> type="button" disabled>
-							<?php esc_html_e( 'Sticky', 'aesthetix' ); ?>
-						</button>
+					<li class="post-entry-taxonomies-item">
+						<span <?php button_classes( 'post-taxonomies-button button-disabled icon icon-thumbtack', $args ); ?>>
+							<?php if ( ! in_array( $args['button_content'], array( 'icon', 'button-icon' ), true ) ) {
+								esc_html_e( 'Sticky', 'aesthetix' );
+							} ?>
+						</span>
 					</li>
 				<?php }
+				$i++;
 				break;
 			case 'post_format':
 				if ( has_post_format() ) { ?>
-					<li class="post-taxonomies-item">
-						<button <?php button_classes( 'post-taxonomies-button button-disabled icon icon-' . get_post_format(), $args ); ?> type="button" disabled>
-							<?php echo ucfirst( get_post_format() ); ?>
-						</button>
+					<li class="post-entry-taxonomies-item">
+						<span <?php button_classes( 'post-taxonomies-button button-disabled icon icon-' . get_post_format(), $args ); ?>>
+							<?php if ( ! in_array( $args['button_content'], array( 'icon', 'button-icon' ), true ) ) {
+								echo ucfirst( get_post_format() );
+							} ?>
+						</span>
 					</li>
 				<?php }
+				$i++;
 				break;
 			default:
-				if ( has_term( '', $value ) ) {
+				if ( in_array( $value, get_object_taxonomies( get_post_type() ), true ) && has_term( '', $value ) ) {
 					foreach ( get_the_terms( get_the_ID(), $value ) as $key => $taxonomy ) { ?>
-						<li class="post-taxonomies-item">
-							<a <?php button_classes( 'post-taxonomies-button', array_merge( $args, array( 'button_color' => 'secondary', 'button_content' => 'button-text' ) ) ); ?> href="<?php echo esc_url( get_term_link( $taxonomy->term_id, $taxonomy->taxonomy ) ); ?>"><?php echo esc_html( $taxonomy->name ); ?></a>
+						<li class="post-entry-taxonomies-item">
+							<a <?php button_classes( 'post-taxonomies-button', $args ); ?> href="<?php echo esc_url( get_term_link( $taxonomy->term_id, $taxonomy->taxonomy ) ); ?>">
+								<?php if ( ! in_array( $args['button_content'], array( 'icon', 'button-icon' ), true ) ) {
+									echo esc_html( $taxonomy->name );
+								} ?>
+							</a>
 						</li>
-					<?php }
+						<?php $i++;
+							if ( $i === $args['max_tax'] ) {
+								break;
+							}
+					}
 				}
 				break;
 		}

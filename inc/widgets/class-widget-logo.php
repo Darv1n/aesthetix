@@ -20,22 +20,22 @@ class WPA_Widget_Logo extends WPA_Widget {
 		$this->widget_id          = 'aesthetix-widget-logo';
 		$this->widget_name        = get_widget_name( 'widget-logo' );
 		$this->settings           = array(
-			'title'            => array(
+			'title'       => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Title', 'aesthetix' ),
 			),
-			'subtitle'         => array(
+			'subtitle'    => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Subtitle', 'aesthetix' ) . ' (' . mb_strtolower( __( 'Before title', 'aesthetix' ) ) . ')',
 			),
-			'description'      => array(
+			'description' => array(
 				'type'  => 'textarea',
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
-			'logo_size' => array(
+			'logo_size'   => array(
 				'type'    => 'select',
 				'std'     => get_aesthetix_options( 'title_tagline_logo_size' ),
 				'label'   => __( 'Select logo size', 'aesthetix' ),

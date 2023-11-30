@@ -110,11 +110,26 @@ body
 .italic
 	font-style: italic
 
-.small
+.font-size-xs
+	font-size: $font-size-xs
+
+.font-size-sm
 	font-size: $font-size-sm
 
-.large
+.font-size-md
+	font-size: $font-size-md
+
+.font-size-lg
 	font-size: $font-size-lg
+
+.font-size-xl
+	font-size: $font-size-xl
+
+.small
+	@extend .font-size-sm
+
+.large
+	@extend .font-size-lg
 
 .initialism
 	font-size: 90%
@@ -126,7 +141,6 @@ body
 		list-style: none
 	&-inline
 		> *
-			margin-top: .125rem
 			margin-bottom: .125rem
 			vertical-align: middle
 			display: inline-block
@@ -304,7 +318,7 @@ sup
 	top: -.5rem
 
 del
-	opacity: 0.8
+	opacity: .8
 
 progress
 	vertical-align: baseline
@@ -336,7 +350,7 @@ blockquote
 		margin-bottom: $margin
 		line-height: 30.7px
 		letter-spacing: .5px
-		opacity: 0.9
+		opacity: .9
 	a
 		@extend .italic
 	cite
@@ -345,7 +359,7 @@ blockquote
 
 caption, cite
 	@extend .italic
-	padding-top: 0.5rem
+	padding-top: .5rem
 	color: $gray-color-500
 	text-align: right
 	caption-side: bottom
@@ -361,10 +375,12 @@ table
 	table-layout: fixed
 	td, th
 		padding: .375rem .75rem
-		vertical-align: middle
 		border-bottom: 1px solid $gray-color-200
+		vertical-align: middle
+		text-align: left
 	th
 		font-weight: bold
+		background: $gray-color-200
 
 @media (min-width: 576px)
 	table

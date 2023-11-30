@@ -7,14 +7,25 @@
  * @package Aesthetix
  */
 
-$args['post_format']               = $args['post_format'] ?? get_post_format();
-$args['post_layout']               = $args['post_layout'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_layout' );
-$args['post_structure']            = $args['post_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_structure' );
-$args['post_meta_structure']       = $args['post_meta_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_meta_structure' );
-$args['post_taxonomies_structure'] = $args['post_taxonomies_structure'] ?? get_aesthetix_options( 'archive_' . get_post_type() . '_taxonomies_structure' );
+$defaults = array(
+	'post_format'         => get_post_format(),
+	'post_layout'         => get_aesthetix_options( 'archive_' . get_post_type() . '_layout' ),
+	'post_structure'      => get_aesthetix_options( 'archive_' . get_post_type() . '_structure' ),
+	'post_meta_structure' => get_aesthetix_options( 'archive_' . get_post_type() . '_meta_structure' ),
+	'post_equal_height'   => get_aesthetix_options( 'archive_' . get_post_type() . '_equal_height' ),
+	'post_title_size'     => get_aesthetix_options( 'archive_' . get_post_type() . '_title_size' ),
+	'max_tax'             => -1,
+);
+
+$args      = array_merge( $defaults, $args );
+$classes[] = 'post-content-wrap';
 
 if ( is_string( $args['post_structure'] ) && ! empty( $args['post_structure'] ) ) {
 	$args['post_structure'] = array_map( 'trim', explode( ',', $args['post_structure'] ) );
+}
+
+if ( $args['post_layout'] === 'grid-image' || $args['post_format'] === 'image' && get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_before' ) ) {
+	array_unshift( $args['post_structure'], implode( ',', array( get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_before' ), get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_after' ) ) ) );
 }
 
 if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int) $args['counter'] % 2 === 0 ) {
@@ -31,11 +42,18 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 	<div <?php aesthetix_archive_page_columns_wrapper_classes( 'align-items-center' ); ?>>
 		<div class="col-12 col-xs-12 col-md-5 align-self-stretch <?php echo esc_attr( $order_left ); ?>">
 
-			<?php if ( has_post_thumbnail() ) { ?>
+			<?php if ( has_post_thumbnail( $post ) ) {
+
+				$classes[] = 'has-post-thumbnail'; ?>
+
 				<div class="post-thumbnail-wrap">
 
 					<?php get_template_part( 'templates/archive/archive-entry-post-thumbnail', '', $args ); ?>
-					<?php get_template_part( 'templates/archive/archive-entry-post-taxonomies', '', $args ); ?>
+
+					<?php if ( $args['post_layout'] !== 'grid-image' && $args['post_format'] !== 'image' ) {
+						get_template_part( 'templates/archive/archive-entry-post-taxonomies', '', array_merge( $args, array( 'structure' => get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_before' ) ) ) );
+						get_template_part( 'templates/archive/archive-entry-post-taxonomies', '', array_merge( $args, array( 'structure' => get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_after' ) ) ) );
+					} ?>
 
 				</div>
 			<?php } ?>
@@ -43,7 +61,7 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 		</div>
 		<div class="col-12 col-xs-12 col-md-7 <?php echo esc_attr( $order_right ); ?>">
 
-			<div class="post-content-wrap">
+			<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 
 				<?php if ( is_array( $args['post_structure'] ) && ! empty( $args['post_structure'] ) ) {
 					foreach ( $args['post_structure'] as $key => $value ) {
@@ -70,6 +88,7 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 								get_template_part( 'templates/archive/archive-entry-post-more-button', '', $args );
 								break;
 							default:
+								get_template_part( 'templates/archive/archive-entry-post-taxonomies', '', array_merge( $args, array( 'structure' => $value ) ) );
 								break;
 						}
 					}

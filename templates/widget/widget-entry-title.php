@@ -7,8 +7,12 @@
  * @package Aesthetix
  */
 
-$args['widget_title']    = $args['widget_title'] ?? '';
-$args['widget_subtitle'] = $args['widget_subtitle'] ?? '';
+$defaults = array(
+	'widget_title'    => '',
+	'widget_subtitle' => '',
+);
+
+$args = array_merge( $defaults, $args );
 
 if ( $args['widget_title'] ) { ?>
 	<div class="widget-title-wrap">

@@ -20,48 +20,48 @@ class WPA_Widget_Contacts extends WPA_Widget {
 		$this->widget_id          = 'aesthetix-widget-contacts';
 		$this->widget_name        = get_widget_name( 'widget-contacts' );
 		$this->settings           = array(
-			'title'            => array(
+			'title'       => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Title', 'aesthetix' ),
 			),
-			'subtitle'         => array(
+			'subtitle'    => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Subtitle', 'aesthetix' ) . ' (' . mb_strtolower( __( 'Before title', 'aesthetix' ) ) . ')',
 			),
-			'description'      => array(
+			'description' => array(
 				'type'  => 'textarea',
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
-			'style' => array(
+			'style'       => array(
 				'type'    => 'select',
 				'std'     => 'inline',
 				'label'   => __( 'Select style block', 'aesthetix' ),
 				'options' => array( 'inline' => __( 'Inline', 'aesthetix' ), 'block' => __( 'Block', 'aesthetix' ) ),
 			),
-			'address'  => array(
+			'address'     => array(
 				'type'  => 'text',
 				'std'   => get_aesthetix_options( 'other_address' ),
 				'label' => __( 'Address', 'aesthetix' ),
 			),
-			'phone'    => array(
+			'phone'       => array(
 				'type'  => 'text',
 				'std'   => get_aesthetix_options( 'other_phone' ),
 				'label' => __( 'Phone', 'aesthetix' ),
 			),
-			'email'    => array(
+			'email'       => array(
 				'type'  => 'email',
 				'std'   => get_aesthetix_options( 'other_email' ),
 				'label' => __( 'Email', 'aesthetix' ),
 			),
-			'whatsapp' => array(
+			'whatsapp'    => array(
 				'type'  => 'text',
 				'std'   => get_aesthetix_options( 'other_whatsapp' ),
 				'label' => __( 'WhatsApp', 'aesthetix' ),
 			),
-			'telegram' => array(
+			'telegram'    => array(
 				'type'  => 'url',
 				'std'   => get_aesthetix_options( 'other_telegram_chat' ),
 				'label' => __( 'Telegram', 'aesthetix' ),

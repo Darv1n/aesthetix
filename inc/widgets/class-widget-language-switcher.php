@@ -20,34 +20,34 @@ class WPA_Widget_Language_Switcher extends WPA_Widget {
 		$this->widget_id          = 'aesthetix-widget-language-switcher';
 		$this->widget_name        = get_widget_name( 'widget-language-switcher' );
 		$this->settings           = array(
-			'title'            => array(
+			'title'          => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Title', 'aesthetix' ),
 			),
-			'subtitle'         => array(
+			'subtitle'       => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Subtitle', 'aesthetix' ) . ' (' . mb_strtolower( __( 'Before title', 'aesthetix' ) ) . ')',
 			),
-			'description'      => array(
+			'description'    => array(
 				'type'  => 'textarea',
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
-			'style' => array(
+			'style'          => array(
 				'type'    => 'select',
 				'std'     => 'dropdown',
 				'label'   => __( 'Select style block', 'aesthetix' ),
 				'options' => array( 'dropdown' => __( 'Dropdown', 'aesthetix' ), 'inline' => __( 'Inline', 'aesthetix' ), 'block' => __( 'Block', 'aesthetix' ) ),
 			),
-			'button_color' => array(
+			'button_color'   => array(
 				'type'    => 'select',
 				'std'     => 'primary',
 				'label'   => __( 'Select button color', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_button_color(),
 			),
-			'button_type' => array(
+			'button_type'    => array(
 				'type'    => 'select',
 				'std'     => get_aesthetix_options( 'root_button_type' ),
 				'label'   => __( 'Select button type', 'aesthetix' ),

@@ -20,27 +20,27 @@ class WPA_Widget_Adv_Banner extends WPA_Widget {
 		$this->widget_id          = 'aesthetix-widget-adv-banner';
 		$this->widget_name        = get_widget_name( 'widget-adv-banner' );
 		$this->settings           = array(
-			'title'            => array(
+			'title'          => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Title', 'aesthetix' ),
 			),
-			'subtitle'         => array(
+			'subtitle'       => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Subtitle', 'aesthetix' ) . ' (' . mb_strtolower( __( 'Before title', 'aesthetix' ) ) . ')',
 			),
-			'description'      => array(
+			'description'     => array(
 				'type'  => 'textarea',
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
-			'adv_desktop' => array(
+			'adv_desktop'     => array(
 				'type'  => 'image',
 				'std'   => '',
 				'label' => __( 'Banner', 'aesthetix' ),
 			),
-			'adv_link' => array(
+			'adv_link'        => array(
 				'type'  => 'url',
 				'std'   => '',
 				'label' => __( 'Link', 'aesthetix' ),

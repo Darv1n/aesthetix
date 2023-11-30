@@ -44,7 +44,7 @@ if ( ! function_exists( 'kama_postview_archive_entry_post_meta_loop' ) ) {
 	 */
 	function kama_postview_archive_entry_post_meta_loop( $post ) {  ?>
 
-		<li class="post-meta-item icon icon-before icon-eye data-title" data-title="<?php esc_attr_e( 'Views', 'aesthetix' ); ?>">
+		<li class="post-entry-meta-item icon icon-before icon-eye data-title" data-title="<?php esc_attr_e( 'Views', 'aesthetix' ); ?>">
 			<?php echo get_fresh_kap_views( get_the_ID(), 'post' ); ?>
 		</li>
 	<?php }

@@ -67,7 +67,7 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 			'aside-subscribe', // TODO: Load by condition.
 			'aside-cookie',
 			'aside-scroll-top',
-			'first-screen',
+			'first-screen-post-slider',
 			'breadcrumbs',
 			'content-wrapper-start',
 		);
@@ -94,8 +94,8 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 				case 'aside-scroll-top':
 					get_template_part( 'templates/aside/aside-scroll-top' );
 					break;
-				case 'first-screen':
-					get_template_part( 'templates/first-screen' );
+				case 'first-screen-post-slider':
+					get_template_part( 'templates/first-screen-post-slider' );
 					break;
 				case 'breadcrumbs':
 					get_template_part( 'templates/breadcrumbs' );

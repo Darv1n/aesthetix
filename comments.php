@@ -66,7 +66,7 @@ if ( ! function_exists( 'aesthetix_comments_list' ) ) {
 
 					<ul class="comment-meta__list">
 						<li>
-							<time class="comment-date data-title" datetime="<?php echo get_comment_date( 'Y-m-d\TH:i:sP' ); ?>" data-title="<?php esc_attr_e( 'Published date', 'aesthetix' ) ?>"><?php echo get_comment_date( 'j M, Y' ) ?></time>
+							<time class="comment-date data-title" datetime="<?php echo get_comment_date( 'Y-m-d\TH:i:sP' ); ?>" data-title="<?php esc_attr_e( 'Published date', 'aesthetix' ); ?>"><?php echo get_comment_date( 'j M, Y' ); ?></time>
 						</li>
 						<?php if ( $edit_link = get_edit_comment_link( $comment->comment_ID ) ) : ?>
 							<li>

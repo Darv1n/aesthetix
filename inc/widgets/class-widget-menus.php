@@ -25,22 +25,22 @@ class WPA_Widget_Menus extends WPA_Widget {
 		$this->widget_id          = 'aesthetix-widget-menus';
 		$this->widget_name        = get_widget_name( 'widget-menus' );
 		$this->settings           = array(
-			'title'            => array(
+			'title'               => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Title', 'aesthetix' ),
 			),
-			'subtitle'         => array(
+			'subtitle'            => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Subtitle', 'aesthetix' ) . ' (' . mb_strtolower( __( 'Before title', 'aesthetix' ) ) . ')',
 			),
-			'description'      => array(
+			'description'         => array(
 				'type'  => 'textarea',
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
-			'columns'         => array(
+			'columns'             => array(
 				'type'    => 'select',
 				'std'     => 2,
 				'label'   => __( 'Select count columns', 'aesthetix' ),
@@ -51,7 +51,7 @@ class WPA_Widget_Menus extends WPA_Widget {
 					4 => __( 'Four', 'aesthetix' ),
 				),
 			),
-			'menu_structure' => array(
+			'menu_structure'      => array(
 				'type'    => 'sortable',
 				'std'     => implode( ',', array_keys( $menus ) ),
 				'label'   => __( 'Menus structure', 'aesthetix' ),
@@ -63,14 +63,6 @@ class WPA_Widget_Menus extends WPA_Widget {
 				'label' => __( 'Count category items display', 'aesthetix' ),
 			),
 		);
-
-		foreach ( $menus as $key => $value ) {
-			$this->settings[ 'title-' . $key ] = array(
-				'type'  => 'text',
-				'std'   => $value,
-				'label' => $value . ' ' . mb_strtolower( __( 'Title', 'aesthetix' ) ),
-			);
-		}
 
 		parent::__construct();
 	}
@@ -90,14 +82,6 @@ class WPA_Widget_Menus extends WPA_Widget {
 		$template_args['columns']             = isset( $instance['columns'] ) ? $instance['columns'] : $this->settings['columns']['std'];
 		$template_args['menu_structure']      = isset( $instance['menu_structure'] ) ? $instance['menu_structure'] : $this->settings['menu_structure']['std'];
 		$template_args['count_items_display'] = isset( $instance['count_items_display'] ) ? (bool) $instance['count_items_display'] : $this->settings['count_items_display']['std'];
-
-		$menus = get_registered_nav_menus();
-		unset( $menus['primary'] );
-		unset( $menus['mobile'] );
-
-		foreach ( $menus as $key => $value ) {
-			$template_args['menu_titles'][ $key ] = isset( $instance[ 'title-' . $key ] ) ? $instance[ 'title-' . $key ] : $this->settings[ 'title-' . $key ]['std'];
-		}
 
 		get_template_part( 'templates/widget/widget-menus', '', $template_args );
 

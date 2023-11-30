@@ -18,7 +18,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_types' ) ) {
 	 */
 	function get_aesthetix_customizer_post_types() {
 
-		$post_types = array( 'post', 'project', 'service', 'product', 'event' );
+		$post_types = array( 'post' );
 
 		$post_types = apply_filters( 'get_aesthetix_customizer_post_types', $post_types );
 
@@ -76,24 +76,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 		$roots['white-color'] = get_aesthetix_customizer_converter_colors( $gray_color . '-50' );
 		$roots['black-color'] = get_aesthetix_customizer_converter_colors( $gray_color . '-950' );
 
-		if ( get_aesthetix_options( 'root_color_scheme' ) === 'black' ) {
-			// $roots['primary-text-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-200' );
-			$roots['primary-bg-color']         = get_aesthetix_customizer_converter_colors( $gray_color . '-950' );
-			$roots['primary-bd-color']         = get_aesthetix_customizer_converter_colors( $gray_color . '-800' );
-			$roots['secondary-bg-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-900' );
-			$roots['secondary-bd-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-700' );
-			$roots['primary-gray-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-300' );
-			$roots['primary-gray-color-hover'] = get_aesthetix_customizer_converter_colors( $gray_color . '-400' );
-		} else {
-			// $roots['primary-text-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-800' );
-			$roots['primary-bg-color']         = get_aesthetix_customizer_converter_colors( $gray_color . '-50' );
-			$roots['primary-bd-color']         = get_aesthetix_customizer_converter_colors( $gray_color . '-200' );
-			$roots['secondary-bg-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-100' );
-			$roots['secondary-bd-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-300' );
-			$roots['primary-gray-color']       = get_aesthetix_customizer_converter_colors( $gray_color . '-500' );
-			$roots['primary-gray-color-hover'] = get_aesthetix_customizer_converter_colors( $gray_color . '-600' );
-		}
-
 		if ( get_aesthetix_options( 'root_link_color' ) === 'blue' ) {
 			$link_color = 'blue';
 		} else {
@@ -110,67 +92,75 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 		$roots['font-size-lg']     = '1.25rem';
 		$roots['font-size-xl']     = '1.5rem';
 
-		switch ( get_aesthetix_options( 'root_post_background' ) ) {
-			case has_action( 'aesthetix_archive_root_post_background_loop_' . get_aesthetix_options( 'root_post_background' ) ):
-				do_action( 'aesthetix_archive_root_post_background_loop_' . get_aesthetix_options( 'root_post_background' ), $post );
-				break;
-			case 'theme':
-				if ( get_aesthetix_options( 'root_color_scheme' ) === 'black' ) {
-					$roots['post-background']   = get_aesthetix_customizer_converter_colors( $gray_color . '-950' );
-					$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $gray_color . '-900' );
-				} else {
-					$roots['post-background']   = get_aesthetix_customizer_converter_colors( $gray_color . '-50' );
-					$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $gray_color . '-100' );
-				}
-				break;
-			case 'white':
-				$roots['post-background']   = get_aesthetix_customizer_converter_colors( $gray_color . '-50' );
-				$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $gray_color . '-100' );
-				break;
-			case 'black':
-				$roots['post-background']   = get_aesthetix_customizer_converter_colors( $gray_color . '-950' );
-				$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $gray_color . '-900' );
-				break;
-			case 'gray':
-				if ( get_aesthetix_options( 'root_color_scheme' ) === 'black' ) {
-					$roots['post-background']   = get_aesthetix_customizer_converter_colors( $gray_color . '-900' );
-					$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $gray_color . '-800' );
-				} else {
-					$roots['post-background']   = get_aesthetix_customizer_converter_colors( $gray_color . '-100' );
-					$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $gray_color . '-200' );
-				}
-				break;
-			case 'primary':
-				if ( get_aesthetix_options( 'root_color_scheme' ) === 'black' ) {
-					$roots['post-background']   = get_aesthetix_customizer_converter_colors( $primary_color . '-950' );
-					$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $primary_color . '-900' );
-				} else {
-					$roots['post-background']   = get_aesthetix_customizer_converter_colors( $primary_color . '-50' );
-					$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $primary_color . '-100' );
-				}
-				break;
-			case 'secondary':
-				if ( get_aesthetix_options( 'root_color_scheme' ) === 'black' ) {
-					$roots['post-background']   = get_aesthetix_customizer_converter_colors( $secondary_color . '-950' );
-					$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $secondary_color . '-900' );
-				} else {
-					$roots['post-background']   = get_aesthetix_customizer_converter_colors( $secondary_color . '-50' );
-					$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $secondary_color . '-100' );
-				}
-				break;
-			default:
-				$roots['post-background']   = get_aesthetix_customizer_converter_colors( $gray_color . '-50' );
-				$roots['post-border-color'] = get_aesthetix_customizer_converter_colors( $gray_color . '-100' );
-				break;
-		}
+		foreach ( get_aesthetix_customizer_post_types() as $key => $post_type ) {
 
-		$roots['post-border-width']      = get_aesthetix_customizer_converter_borders( get_aesthetix_options( 'root_post_border_width' ) );
-		$roots['post-border-radius']     = get_aesthetix_customizer_converter_radiuses( get_aesthetix_options( 'root_post_border_radius' ) );
-		$roots['post-margin']            = '.5rem';
-		$roots['post-thumbnail-padding'] = get_aesthetix_customizer_converter_sizes( get_aesthetix_options( 'root_post_thumbnail_padding' ) );
-		$roots['post-content-padding']   = get_aesthetix_customizer_converter_sizes( get_aesthetix_options( 'root_post_content_padding' ) );
-		$roots['post-shadow']            = get_aesthetix_customizer_converter_shadows( get_aesthetix_options( 'root_post_shadow' ) );
-		$roots['post-shadow-hover']      = str_replace( '0.15', '0.25', get_aesthetix_customizer_converter_shadows( get_aesthetix_options( 'root_post_shadow' ) ) );
+			if ( ! post_type_exists( $post_type ) ) {
+				continue;
+			}
+
+			switch ( get_aesthetix_options( 'archive_' . $post_type . '_background' ) ) {
+				case has_action( 'aesthetix_archive_root_' . $post_type . '_background_loop' ):
+					do_action( 'aesthetix_archive_root_' . $post_type . '_background_loop', get_post() );
+					break;
+				case 'theme':
+					if ( get_aesthetix_options( 'root_color_scheme' ) === 'black' ) {
+						$roots[ $post_type . '-background' ]   = get_aesthetix_customizer_converter_colors( $gray_color . '-950' );
+						$roots[ $post_type . '-border-color' ] = get_aesthetix_customizer_converter_colors( $gray_color . '-900' );
+					} else {
+						$roots[ $post_type . '-background' ]   = get_aesthetix_customizer_converter_colors( $gray_color . '-50' );
+						$roots[ $post_type . '-border-color' ] = get_aesthetix_customizer_converter_colors( $gray_color . '-100' );
+					}
+					break;
+				case 'white':
+					$roots[ $post_type . '-background' ]   = get_aesthetix_customizer_converter_colors( $gray_color . '-50' );
+					$roots[ $post_type . '-border-color' ] = get_aesthetix_customizer_converter_colors( $gray_color . '-100' );
+					break;
+				case 'black':
+					$roots[ $post_type . '-background' ]   = get_aesthetix_customizer_converter_colors( $gray_color . '-950' );
+					$roots[ $post_type . '-border-color' ] = get_aesthetix_customizer_converter_colors( $gray_color . '-900' );
+					break;
+				case 'gray':
+					if ( get_aesthetix_options( 'root_color_scheme' ) === 'black' ) {
+						$roots[ $post_type . '-background' ]   = get_aesthetix_customizer_converter_colors( $gray_color . '-900' );
+						$roots[ $post_type . '-border-color' ] = get_aesthetix_customizer_converter_colors( $gray_color . '-800' );
+					} else {
+						$roots[ $post_type . '-background' ]   = get_aesthetix_customizer_converter_colors( $gray_color . '-100' );
+						$roots[ $post_type . '-border-color' ] = get_aesthetix_customizer_converter_colors( $gray_color . '-200' );
+					}
+					break;
+				case 'primary':
+					if ( get_aesthetix_options( 'root_color_scheme' ) === 'black' ) {
+						$roots[ $post_type . '-background' ]   = get_aesthetix_customizer_converter_colors( $primary_color . '-950' );
+						$roots[ $post_type . '-border-color' ] = get_aesthetix_customizer_converter_colors( $primary_color . '-900' );
+					} else {
+						$roots[ $post_type . '-background' ]   = get_aesthetix_customizer_converter_colors( $primary_color . '-50' );
+						$roots[ $post_type . '-border-color' ] = get_aesthetix_customizer_converter_colors( $primary_color . '-100' );
+					}
+					break;
+				case 'secondary':
+					if ( get_aesthetix_options( 'root_color_scheme' ) === 'black' ) {
+						$roots[ $post_type . '-background' ]   = get_aesthetix_customizer_converter_colors( $secondary_color . '-950' );
+						$roots[ $post_type . '-border-color' ] = get_aesthetix_customizer_converter_colors( $secondary_color . '-900' );
+					} else {
+						$roots[ $post_type . '-background' ]   = get_aesthetix_customizer_converter_colors( $secondary_color . '-50' );
+						$roots[ $post_type . '-border-color' ] = get_aesthetix_customizer_converter_colors( $secondary_color . '-100' );
+					}
+					break;
+				default:
+					$roots[ $post_type . '-background' ]   = get_aesthetix_customizer_converter_colors( $gray_color . '-50' );
+					$roots[ $post_type . '-border-color' ] = get_aesthetix_customizer_converter_colors( $gray_color . '-100' );
+					break;
+			}
+
+			$roots[ $post_type . '-border-width' ]           = get_aesthetix_customizer_converter_borders( get_aesthetix_options( 'archive_' . $post_type . '_border_width' ) );
+			$roots[ $post_type . '-border-radius' ]          = get_aesthetix_customizer_converter_radiuses( get_aesthetix_options( 'archive_' . $post_type . '_border_radius' ) );
+			$roots[ $post_type . '-margin' ]                 = '.5rem';
+			$roots[ $post_type . '-thumbnail-aspect-ratio' ] = get_aesthetix_customizer_aspect_ratio( get_aesthetix_options( 'archive_' . $post_type . '_thumbnail_aspect_ratio' ) );
+			$roots[ $post_type . '-thumbnail-padding' ]      = get_aesthetix_customizer_converter_sizes( get_aesthetix_options( 'archive_' . $post_type . '_thumbnail_padding' ) );
+			$roots[ $post_type . '-content-padding' ]        = get_aesthetix_customizer_converter_sizes( get_aesthetix_options( 'archive_' . $post_type . '_content_padding' ) );
+			$roots[ $post_type . '-shadow' ]                 = get_aesthetix_customizer_converter_shadows( get_aesthetix_options( 'archive_' . $post_type . '_shadow' ) );
+			$roots[ $post_type . '-shadow-hover' ]           = str_replace( '0.15', '0.25', get_aesthetix_customizer_converter_shadows( get_aesthetix_options( 'archive_' . $post_type . '_shadow' ) ) );
+		}
 
 		$roots['button-padding-top']     = get_first_value_from_string( get_aesthetix_customizer_converter_button_sizes( get_aesthetix_options( 'root_button_size' ) ), ' ' );
 		$roots['button-padding-side']    = get_last_value_from_string( get_aesthetix_customizer_converter_button_sizes( get_aesthetix_options( 'root_button_size' ) ), ' ' );

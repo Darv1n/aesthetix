@@ -7,16 +7,21 @@
  * @package Aesthetix
  */
 
-$args['structure']            = $args['structure'] ?? array();
-$args['style']                = $args['style'] ?? 'inline'; // inline, block.
-$args['icon_size']            = $args['icon_size'] ?? get_aesthetix_options( 'root_button_size' );
-$args['button_size']          = $args['button_size'] ?? get_aesthetix_options( 'root_button_size' );
-$args['button_color']         = $args['button_color'] ?? 'primary';
-$args['button_type']          = $args['button_type'] ?? get_aesthetix_options( 'root_button_type' );
-$args['button_content']       = $args['button_content'] ?? 'button-icon'; // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon
-$args['button_border_radius'] = $args['button_border_radius'] ?? get_aesthetix_options( 'root_button_border_radius' );
+$defaults = array(
+	'button_size'          => get_aesthetix_options( 'root_button_size' ),
+	'button_color'         => 'primary',
+	'button_type'          => get_aesthetix_options( 'root_button_type' ),
+	'button_content'       => 'button-icon',
+	'button_border_width'  => get_aesthetix_options( 'root_button_border_width' ),
+	'button_border_radius' => get_aesthetix_options( 'root_button_border_radius' ),
+	'icon_size'            => get_aesthetix_options( 'root_button_size' ),
+	'structure'            => array(),
+	'style'                => 'inline', // inline, block.
+);
 
+$args      = array_merge( $defaults, $args );
 $classes[] = 'social-list';
+
 if ( $args['style'] === 'block' ) {
 	$classes[] = 'social-list-block';
 } else {
@@ -46,13 +51,12 @@ if ( has_aesthetix_customizer_social() ) { ?>
 					} ?>
 				</a>
 			</li>
-
 		<?php }
 	} ?>
 
 	</ul>
 <?php } else {
 	if ( current_user_can( 'edit_theme_options' ) ) { ?>
-		<a <?php link_classes( 'setup-link' ); ?> href="<?php echo esc_url( admin_url( 'customize.php' ) ); ?>" target="_blank"><?php esc_html_e( 'Setup social links', 'aesthetix' ) ?></a>
+		<a <?php link_classes( 'setup-link' ); ?> href="<?php echo esc_url( admin_url( 'customize.php' ) ); ?>" target="_blank"><?php esc_html_e( 'Setup social links', 'aesthetix' ); ?></a>
 	<?php }
 }

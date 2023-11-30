@@ -7,8 +7,6 @@
  * @package Aesthetix
  */
 
-$args['post_format'] = $args['post_format'] ?? get_post_format();
-
 if ( has_post_format() && $args['post_format'] === 'gallery' && get_post_meta( get_the_ID(), 'post_image_gallery', true ) ) {
 
 	$images = get_post_meta( get_the_ID(), 'post_image_gallery', true );
@@ -16,9 +14,9 @@ if ( has_post_format() && $args['post_format'] === 'gallery' && get_post_meta( g
 
 	<div class="slick-slider post-gallery-slider">
 		<?php foreach ( $images as $key => $image ) { ?>
-			<figure class="slick-item wp-block-image">
+			<figure class="slick-item">
 				<a href="<?php the_permalink(); ?>" class="post-thumbnail-link" tabindex="-1">
-					<?php echo wp_get_attachment_image( $image, 'large', false, array( 'class' => 'post-thumbnail', ) ); ?>
+					<?php echo wp_get_attachment_image( $image, 'large', false, array( 'class' => 'post-thumbnail wp-post-image', ) ); ?>
 				</a>
 			</figure>
 		<?php } ?>
