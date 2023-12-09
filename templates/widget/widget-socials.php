@@ -15,7 +15,7 @@ $defaults = array(
 	'button_border_width'  => get_aesthetix_options( 'root_button_border_width' ),
 	'button_border_radius' => get_aesthetix_options( 'root_button_border_radius' ),
 	'icon_size'            => get_aesthetix_options( 'root_button_size' ),
-	'structure'            => array(),
+	'structure'            => '', // example for string: instagram=https://instagram.com/art_zolin&telegram=https://telegram.me/artzolin
 	'style'                => 'inline', // inline, block.
 );
 
@@ -32,27 +32,33 @@ if ( $args['button_content'] === 'icon' ) {
 	$classes[] = 'social-list-icons';
 }
 
-if ( has_aesthetix_customizer_social() ) { ?>
+if ( is_string( $args['structure'] ) && ! empty( $args['structure'] ) ) {
+	wp_parse_str( $args['structure'], $args['structure'] );
+}
+
+if ( empty( $args['structure'] ) ) {
+	$args['structure'] = array();
+	foreach ( get_aesthetix_customizer_socials() as $key => $value ) {
+		if ( get_aesthetix_options( 'other_' . $key ) ) {
+			$args['structure'][ $key ] = get_aesthetix_options( 'other_' . $key );
+		}
+	}
+}
+
+if ( ! empty( $args['structure'] ) ) { ?>
 	<ul class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 
-	<?php foreach ( get_aesthetix_customizer_socials() as $social_key => $social_name ) {
-
-		if ( isset( $args['structure'][ $social_key ] ) ) {
-			$social_link = wp_http_validate_url( $args['structure'][ $social_key ] );
-		} else {
-			$social_link = wp_http_validate_url( get_aesthetix_options( 'other_' . $social_key ) );
-		}
-
-		if ( $social_link ) { ?>
-			<li class="social-list-item">
-				<a <?php button_classes( 'icon icon-brand icon-' . $social_key, $args ); ?> href="<?php echo esc_url( $social_link ); ?>" target="_blank" rel="noopener noreferrer external">
-					<?php if ( ! in_array( $args['button_content'], array( 'icon', 'button-icon' ), true ) ) {
-						echo esc_html( mb_ucfirst( $social_name ) );
-					} ?>
-				</a>
-			</li>
-		<?php }
-	} ?>
+		<?php foreach ( $args['structure'] as $key => $value ) {
+			if ( wp_http_validate_url( $value ) ) { ?>
+				<li class="social-list-item">
+					<a <?php button_classes( 'icon icon-brand icon-' . $key, $args ); ?> href="<?php echo esc_url( $value ); ?>" target="_blank" rel="noopener noreferrer external">
+						<?php if ( ! in_array( $args['button_content'], array( 'icon', 'button-icon' ), true ) ) {
+							echo esc_html( mb_ucfirst( get_aesthetix_customizer_socials()[ $key ] ) );
+						} ?>
+					</a>
+				</li>
+			<?php }
+		} ?>
 
 	</ul>
 <?php } else {

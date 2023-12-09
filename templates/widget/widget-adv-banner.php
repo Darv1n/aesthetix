@@ -10,7 +10,7 @@
 $defaults = array(
 	'adv_desktop'     => get_theme_file_uri( '/assets/img/header-promo.png' ),
 	'adv_mobile'      => '',
-	'adv_link'        => 'https://www.3forty.media/zosia/demo-2/',
+	'adv_link'        => 'https://zolin.digital/',
 	'adv_alt'         => __( 'Banner', 'aesthetix' ),
 	'adv_description' => '',
 );

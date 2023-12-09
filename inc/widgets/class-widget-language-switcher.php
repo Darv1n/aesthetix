@@ -15,7 +15,7 @@ class WPA_Widget_Language_Switcher extends WPA_Widget {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->widget_cssclass    = 'widget_language_switcher';
+		$this->widget_cssclass    = 'widget-language-switcher';
 		$this->widget_description = __( 'The global settings for this button can be found in the сustomizer', 'aesthetix' );
 		$this->widget_id          = 'aesthetix-widget-language-switcher';
 		$this->widget_name        = get_widget_name( 'widget-language-switcher' );

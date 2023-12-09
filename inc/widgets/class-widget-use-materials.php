@@ -1,6 +1,6 @@
 <?php
 /**
- * Widget Subscribe Form.
+ * Widget Use Materials
  *
  * @package Aesthetix
  */
@@ -9,16 +9,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class WPA_Widget_Subscribe_Form extends WPA_Widget {
+class WPA_Widget_Use_Materials extends WPA_Widget {
 
 	/**
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->widget_cssclass    = 'widget-subscribe-form';
+
+		$home_url = wp_parse_url( get_home_url() );
+
+		if ( is_multisite() ) {
+			$home_url = wp_parse_url( network_home_url() );
+		}
+
+		$this->widget_cssclass    = 'widget-use-materials';
 		$this->widget_description = __( 'The global settings for this form can be found in the Customizer', 'aesthetix' );
-		$this->widget_id          = 'aesthetix-widget-subscribe-form';
-		$this->widget_name        = get_widget_name( 'widget-subscribe-form' );
+		$this->widget_id          = 'aesthetix-widget-use-materials';
+		$this->widget_name        = get_widget_name( 'widget-use-materials' );
 		$this->settings           = array(
 			'title'       => array(
 				'type'  => 'text',
@@ -34,6 +41,11 @@ class WPA_Widget_Subscribe_Form extends WPA_Widget {
 				'type'  => 'textarea',
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
+			),
+			'text'        => array(
+				'type'  => 'textarea',
+				'std'   => sprintf( __( 'Use of site materials is permitted only with reference to the source %s', 'aesthetix' ), $home_url['host'] ),
+				'label' => __( 'Text', 'aesthetix' ),
 			),
 		);
 
@@ -51,7 +63,10 @@ class WPA_Widget_Subscribe_Form extends WPA_Widget {
 	public function widget( $args, $instance ) {
 		$this->widget_start( $args, $instance );
 
-		get_template_part( 'templates/subscribe-form' );
+		$template_args         = array();
+		$template_args['text'] = isset( $instance['text'] ) ? $instance['text'] : $this->settings['text']['std'];
+
+		get_template_part( 'templates/widget/widget-use-materials', '', $template_args );
 
 		$this->widget_end( $args, $instance );
 	}

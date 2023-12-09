@@ -1,6 +1,6 @@
 <?php
 /**
- * Widget Subscribe Form.
+ * Widget Copyright
  *
  * @package Aesthetix
  */
@@ -9,16 +9,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class WPA_Widget_Subscribe_Form extends WPA_Widget {
+class WPA_Widget_Copyright extends WPA_Widget {
 
 	/**
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->widget_cssclass    = 'widget-subscribe-form';
+		$this->widget_cssclass    = 'widget-copyright';
 		$this->widget_description = __( 'The global settings for this form can be found in the Customizer', 'aesthetix' );
-		$this->widget_id          = 'aesthetix-widget-subscribe-form';
-		$this->widget_name        = get_widget_name( 'widget-subscribe-form' );
+		$this->widget_id          = 'aesthetix-widget-copyright';
+		$this->widget_name        = get_widget_name( 'widget-copyright' );
 		$this->settings           = array(
 			'title'       => array(
 				'type'  => 'text',
@@ -34,6 +34,11 @@ class WPA_Widget_Subscribe_Form extends WPA_Widget {
 				'type'  => 'textarea',
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
+			),
+			'start_year'  => array(
+				'type'  => 'text',
+				'std'   => '',
+				'label' => __( 'Start year', 'aesthetix' ),
 			),
 		);
 
@@ -51,7 +56,10 @@ class WPA_Widget_Subscribe_Form extends WPA_Widget {
 	public function widget( $args, $instance ) {
 		$this->widget_start( $args, $instance );
 
-		get_template_part( 'templates/subscribe-form' );
+		$template_args               = array();
+		$template_args['start_year'] = isset( $instance['start_year'] ) ? $instance['start_year'] : $this->settings['start_year']['std'];
+
+		get_template_part( 'templates/widget/widget-copyright', '', $template_args );
 
 		$this->widget_end( $args, $instance );
 	}

@@ -15,7 +15,7 @@ class WPA_Widget_Logo extends WPA_Widget {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->widget_cssclass    = 'widget_logo';
+		$this->widget_cssclass    = 'widget-logo';
 		$this->widget_description = __( 'The global settings for this form can be found in the Customizer', 'aesthetix' );
 		$this->widget_id          = 'aesthetix-widget-logo';
 		$this->widget_name        = get_widget_name( 'widget-logo' );

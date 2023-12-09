@@ -15,16 +15,20 @@ if ( ! function_exists( 'aesthetix_widgets_init' ) ) {
 	 * Register widgets.
 	 */
 	function aesthetix_widgets_init() {
+		register_widget( 'WPA_Widget_Adv_Banner' );
+		register_widget( 'WPA_Widget_Buttons' );
+		register_widget( 'WPA_Widget_Contacts' );
+		register_widget( 'WPA_Widget_Copyright' );
+		register_widget( 'WPA_Widget_Creator' );
+		register_widget( 'WPA_Widget_Language_Switcher' );
 		register_widget( 'WPA_Widget_Logo' );
 		register_widget( 'WPA_Widget_Menus' );
-		register_widget( 'WPA_Widget_Buttons' );
 		register_widget( 'WPA_Widget_Recent_Posts' );
-		register_widget( 'WPA_Widget_Socials' );
-		register_widget( 'WPA_Widget_Contacts' );
 		register_widget( 'WPA_Widget_Search_Popup_Form' );
+		register_widget( 'WPA_Widget_Socials' );
 		register_widget( 'WPA_Widget_Subscribe_Form' );
 		register_widget( 'WPA_Widget_Subscribe_Popup_Form' );
-		register_widget( 'WPA_Widget_Adv_Banner' );
+		register_widget( 'WPA_Widget_Use_Materials' );
 	}
 }
 add_action( 'widgets_init', 'aesthetix_widgets_init' );
@@ -237,17 +241,20 @@ if ( ! function_exists( 'get_widget_name' ) ) {
 		}
 
 		$converter = array(
+			'widget-adv-banner'        => 'Aesthetix ' . mb_strtolower( __( 'Adv banner', 'aesthetix' ) ),
+			'widget-buttons'           => 'Aesthetix ' . mb_strtolower( __( 'Buttons', 'aesthetix' ) ),
+			'widget-contacts'          => 'Aesthetix ' . mb_strtolower( __( 'Contacts', 'aesthetix' ) ),
+			'widget-copyright'         => 'Aesthetix ' . mb_strtolower( __( 'Copyright', 'aesthetix' ) ),
+			'widget-creator'           => 'Aesthetix ' . mb_strtolower( __( 'Creator', 'aesthetix' ) ),
+			'widget-language-switcher' => 'Aesthetix ' . mb_strtolower( __( 'Language switcher', 'aesthetix' ) ),
 			'widget-logo'              => 'Aesthetix ' . mb_strtolower( __( 'Logo', 'aesthetix' ) ),
 			'widget-menus'             => 'Aesthetix ' . mb_strtolower( __( 'Menus', 'aesthetix' ) ),
-			'widget-buttons'           => 'Aesthetix ' . mb_strtolower( __( 'Buttons', 'aesthetix' ) ),
 			'widget-recent-posts'      => 'Aesthetix ' . mb_strtolower( __( 'Recent posts', 'aesthetix' ) ),
-			'widget-socials'           => 'Aesthetix ' . mb_strtolower( __( 'Socials', 'aesthetix' ) ),
-			'widget-contacts'          => 'Aesthetix ' . mb_strtolower( __( 'Contacts', 'aesthetix' ) ),
 			'widget-search-toggle'     => 'Aesthetix ' . mb_strtolower( __( 'Search button', 'aesthetix' ) ),
+			'widget-socials'           => 'Aesthetix ' . mb_strtolower( __( 'Socials', 'aesthetix' ) ),
 			'widget-subscribe-form'    => 'Aesthetix ' . mb_strtolower( __( 'Subscribe form', 'aesthetix' ) ),
 			'widget-subscribe-toggle'  => 'Aesthetix ' . mb_strtolower( __( 'Subscribe button', 'aesthetix' ) ),
-			'widget-adv-banner'        => 'Aesthetix ' . mb_strtolower( __( 'Adv banner', 'aesthetix' ) ),
-			'widget-language-switcher' => 'Aesthetix ' . mb_strtolower( __( 'Language switcher', 'aesthetix' ) ),
+			'widget-use-materials'     => 'Aesthetix ' . mb_strtolower( __( 'Use materials', 'aesthetix' ) ),
 		);
 
 		// Merge child and parent default options.

@@ -23,14 +23,14 @@
 		<?php do_action( 'wp_footer_open' ); ?>
 
 		<?php if ( get_aesthetix_options( 'general_footer_top_bar_display' ) ) { ?>
-			<div <?php aesthetix_container_classes( 'container-outer' ); ?>>
+			<div <?php aesthetix_container_classes( 'container-outer footer-top-bar' ); ?>>
 				<div <?php aesthetix_container_classes( 'container-inner' ); ?>>
 					<?php get_template_part( 'templates/footer/footer-top-bar' ); ?>
 				</div>
 			</div>
 		<?php } ?>
 
-		<div <?php aesthetix_container_classes( 'container-outer' ); ?>>
+		<div <?php aesthetix_container_classes( 'container-outer footer-middle-bar' ); ?>>
 			<div <?php aesthetix_container_classes( 'container-inner' ); ?>>
 				<?php
 					if ( get_aesthetix_options( 'general_footer_type' ) === 'footer-three-columns' ) {
@@ -45,7 +45,7 @@
 		</div>
 
 		<?php if ( get_aesthetix_options( 'general_footer_bottom_bar_display' ) ) { ?>
-			<div <?php aesthetix_container_classes( 'container-outer' ); ?>>
+			<div <?php aesthetix_container_classes( 'container-outer footer-bottom-bar' ); ?>>
 				<div <?php aesthetix_container_classes( 'container-inner' ); ?>>
 					<?php get_template_part( 'templates/footer/footer-bottom-bar' ); ?>
 				</div>

@@ -37,41 +37,45 @@ if ( is_string( $args['structure'] ) && ! empty( $args['structure'] ) ) {
 
 	<?php foreach ( $args['structure'] as $key => $value ) { ?>
 
-		<li class="button-list-item">
-
-			<?php switch ( $value ) {
-				case has_action( 'aesthetix_widget_buttons_loop_' . $value ):
-					do_action( 'aesthetix_widget_buttons_loop_' . $value, $post, $args );
-					break;
-				case 'telegram': ?>
-					<?php if ( wp_http_validate_url( get_aesthetix_options( 'other_telegram_chat' ) ) ) { ?>
+		<?php switch ( $value ) {
+			case has_action( 'aesthetix_widget_buttons_loop_' . $value ):
+				do_action( 'aesthetix_widget_buttons_loop_' . $value, $post, $args );
+				break;
+			case 'telegram': ?>
+				<?php if ( wp_http_validate_url( get_aesthetix_options( 'other_telegram_chat' ) ) ) { ?>
+					<li class="button-list-item">
 						<a <?php button_classes( 'button-telegram icon icon-brand icon-telegram', $args ); ?> href="<?php echo esc_url( get_aesthetix_options( 'other_telegram_chat' ) ); ?>" aria-label="<?php esc_attr_e( 'Telegram button', 'aesthetix' ); ?>" target="_blank">
 							<?php if ( ! in_array( $args['button_content'], array( 'icon', 'button-icon' ), true ) ) {
 								esc_html_e( 'Telegram', 'aesthetix' );
 							} ?>
 						</a>
-					<?php } ?>
-					<?php break;
-				case 'whatsapp': ?>
-					<?php if ( get_aesthetix_options( 'other_whatsapp' ) ) { ?>
+					</li>
+				<?php } ?>
+				<?php break;
+			case 'whatsapp': ?>
+				<?php if ( get_aesthetix_options( 'other_whatsapp' ) ) { ?>
+					<li class="button-list-item">
 						<a <?php button_classes( 'button-whatsapp icon icon-brand icon-whatsapp', $args ); ?> href="<?php echo esc_url( 'https://api.whatsapp.com/send?phone=' . preg_replace( '/(\D)/', '', get_aesthetix_options( 'other_whatsapp' ) ) ); ?>" aria-label="<?php esc_attr_e( 'WhatsApp button', 'aesthetix' ); ?>" target="_blank">
 							<?php if ( ! in_array( $args['button_content'], array( 'icon', 'button-icon' ), true ) ) {
 								esc_html_e( 'WhatsApp', 'aesthetix' );
 							} ?>
 						</a>
-					<?php } ?>
-					<?php break;
-				case 'subscribe': ?>
-					<?php get_template_part( 'templates/widget/widget-subscribe-toggle', '', $args );?>
-					<?php break;
-				case 'search': ?>
-					<?php get_template_part( 'templates/widget/widget-search-toggle', '', $args );?>
-					<?php break;
-				default:
-					break;
-			} ?>
-
-		</li>
+					</li>
+				<?php } ?>
+				<?php break;
+			case 'subscribe': ?>
+				<li class="button-list-item">
+					<?php get_template_part( 'templates/widget/widget-subscribe-toggle', '', $args ); ?>
+				</li>
+				<?php break;
+			case 'search': ?>
+				<li class="button-list-item">
+					<?php get_template_part( 'templates/widget/widget-search-toggle', '', $args ); ?>
+				</li>
+				<?php break;
+			default:
+				break;
+		} ?>
 
 	<?php } ?>
 

@@ -186,6 +186,24 @@ if ( ! function_exists( 'aesthetix_widget_default' ) ) {
 						<?php get_template_part( 'templates/widget/widget-language-switcher', '', $args ); ?>
 					</div>
 					<?php break;
+				case 'widget-copyright': ?>
+					<div <?php widget_classes( '', $widget_id ); ?>>
+						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
+						<?php get_template_part( 'templates/widget/widget-copyright', '', $args ); ?>
+					</div>
+					<?php break;
+				case 'widget-creator': ?>
+					<div <?php widget_classes( '', $widget_id ); ?>>
+						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
+						<?php get_template_part( 'templates/widget/widget-creator', '', $args ); ?>
+					</div>
+					<?php break;
+				case 'widget-use-materials': ?>
+					<div <?php widget_classes( '', $widget_id ); ?>>
+						<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
+						<?php get_template_part( 'templates/widget/widget-use-materials', '', $args ); ?>
+					</div>
+					<?php break;
 				default:
 					break;
 			}
@@ -230,8 +248,8 @@ if ( ! function_exists( 'get_aesthetix_widget_default' ) ) {
 			'footer-main-second'   => array( 'widget-menus' ),
 			'footer-main-third'    => array( 'widget-contacts', 'widget-socials' ),
 			'footer-main-fourth'   => array( 'widget-contacts', 'widget-socials' ),
-			'footer-bottom-left'   => array(),
-			'footer-bottom-right'  => array(),
+			'footer-bottom-left'   => array( 'widget-creator' ),
+			'footer-bottom-right'  => array( 'widget-copyright' ),
 		);
 
 		if ( get_aesthetix_options( 'general_header_mobile_type' ) === 'mid-3' ) {
@@ -263,12 +281,10 @@ if ( ! function_exists( 'get_aesthetix_widget_default' ) ) {
 		}
 
 		if ( get_aesthetix_options( 'general_footer_top_bar_display' ) === true ) {
-
 			$converter['footer-main-first']  = array( 'widget-recent-posts' );
 			$converter['footer-main-second'] = array( 'widget-menus' );
 			$converter['footer-main-third']  = array( 'widget-contacts', 'widget-socials' );
 			$converter['footer-main-fourth'] = array( 'widget-contacts', 'widget-socials' );
-
 		}
 
 		// Merge child and parent default options.

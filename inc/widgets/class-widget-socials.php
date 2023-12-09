@@ -15,7 +15,7 @@ class WPA_Widget_Socials extends WPA_Widget {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->widget_cssclass    = 'widget_socials';
+		$this->widget_cssclass    = 'widget-socials';
 		$this->widget_description = __( 'The global settings for this form can be found in the Customizer', 'aesthetix' );
 		$this->widget_id          = 'aesthetix-widget-socials';
 		$this->widget_name        = get_widget_name( 'widget-socials' );

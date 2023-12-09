@@ -15,7 +15,7 @@ class WPA_Widget_Search_Popup_Form extends WPA_Widget {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->widget_cssclass    = 'widget_search_toggle';
+		$this->widget_cssclass    = 'widget-search-toggle';
 		$this->widget_description = __( 'The global settings for this button can be found in the сustomizer', 'aesthetix' );
 		$this->widget_id          = 'aesthetix-widget-search-toggle';
 		$this->widget_name        = get_widget_name( 'widget-search-toggle' );

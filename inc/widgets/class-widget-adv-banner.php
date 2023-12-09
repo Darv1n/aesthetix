@@ -15,7 +15,7 @@ class WPA_Widget_Adv_Banner extends WPA_Widget {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->widget_cssclass    = 'widget_adv_banner';
+		$this->widget_cssclass    = 'widget-adv-banner';
 		$this->widget_description = __( 'This widget displays an advertising banner', 'aesthetix' );
 		$this->widget_id          = 'aesthetix-widget-adv-banner';
 		$this->widget_name        = get_widget_name( 'widget-adv-banner' );

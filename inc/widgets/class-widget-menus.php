@@ -20,7 +20,7 @@ class WPA_Widget_Menus extends WPA_Widget {
 		unset( $menus['primary'] );
 		unset( $menus['mobile'] );
 
-		$this->widget_cssclass    = 'widget_menus';
+		$this->widget_cssclass    = 'widget-menus';
 		$this->widget_description = __( 'The global settings for this form can be found in the Customizer', 'aesthetix' );
 		$this->widget_id          = 'aesthetix-widget-menus';
 		$this->widget_name        = get_widget_name( 'widget-menus' );
