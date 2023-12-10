@@ -91,8 +91,12 @@ a.logo
 	position: relative
 	padding-top: 1.5rem
 	padding-bottom: 1.5rem
-	&-title
+	&-title, &-title-wrapper
 		@extend .mb
+	&-title-wrapper
+		position: relative
+		.section-title
+			margin-bottom: .375rem
 	&-background, &-primary, &-secondary
 		.container-outer
 			padding-top: 1rem
@@ -105,6 +109,15 @@ a.logo
 		.container-outer
 			background: $gray-color-100
 			border: $border-width solid $gray-color-300
+
+@media (min-width: 768px)
+	.section-title-wrapper
+		.section-title
+			margin-bottom: 0
+	.section-title-link
+		position: absolute
+		top: .375rem
+		right: 0
 
 .header, .footer
 	position: relative
@@ -143,6 +156,8 @@ a.logo
 	flex-direction: column
 	width: 100%
 	margin-bottom: calc( var( --post-margin ) * 2 )
+	&-subtitle
+		color: $gray-color-500
 	&-single
 		> *
 			margin-bottom: .5rem

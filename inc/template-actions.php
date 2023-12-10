@@ -146,3 +146,42 @@ if ( ! function_exists( 'after_site_content_structure' ) ) {
 	}
 }
 add_action( 'after_site_content', 'after_site_content_structure' );
+
+if ( ! function_exists( 'after_single_post_structure' ) ) {
+
+	/**
+	 * Display after single post structure in single.php.
+	 */
+	function after_single_post_structure() {
+
+		$structure = array(
+			'single-pagination',
+			'single-similar-posts',
+			'single-comments',
+		);
+
+		$structure = apply_filters( 'after_single_post_structure', $structure );
+
+		foreach ( $structure as $key => $value ) {
+			switch ( $value ) {
+				case has_action( 'after_single_post_structure_loop_' . $value ):
+					do_action( 'after_single_post_structure_loop_' . $value );
+					break;
+				case 'single-pagination':
+					get_template_part( 'templates/single-pagination' );
+					break;
+				case 'single-similar-posts':
+					get_template_part( 'templates/single/single-similar-posts' );
+					break;
+				case 'single-comments':
+					if ( comments_open() || get_comments_number() ) {
+						comments_template();
+					}
+					break;
+				default:
+					break;
+			}
+		}
+	}
+}
+add_action( 'after_single_post', 'after_single_post_structure' );

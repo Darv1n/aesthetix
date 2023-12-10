@@ -8,11 +8,38 @@
  */
  ?>
 
-<?php if ( get_post_type() === 'post' && get_aesthetix_options( 'single_' . get_post_type() . '_similar_posts_display' ) ) { ?>
+<?php if ( get_aesthetix_options( 'single_' . get_post_type() . '_similar_posts_display' ) ) { ?>
 
-	<section id="similar-posts" <?php aesthetix_section_classes( 'section-similar-posts similar-posts' ); ?> aria-label="<?php esc_attr_e( 'Similar posts', 'aesthetix' ); ?>">
+	<?php
+		$post_type_labels = get_post_type_labels( get_post_type_object( get_post_type() ) );
+		$taxonomy_names   = get_object_taxonomies( get_post_type() );
+		$title            = apply_filters( 'get_aesthetix_similar_posts_title', __( 'Similar', 'aesthetix' ) . ' ' . mb_strtolower( $post_type_labels->name ) );
 
-		<h2 class="section-title"><?php esc_html_e( 'Similar posts', 'aesthetix' ); ?></h2>
+		if ( isset( $taxonomy_names[0] ) ) {
+			$terms = get_the_terms( get_the_ID(), $taxonomy_names[0] );
+
+			if ( isset( $terms[0] ) ) {
+				$title      = apply_filters( 'get_aesthetix_similar_posts_title', __( 'Similar', 'aesthetix' ) . ' ' . mb_strtolower( $terms[0]->name ) );
+				$link       = apply_filters( 'get_aesthetix_similar_posts_link', get_term_link( $terms[0]->term_id, $terms[0]->taxonomy ) );
+				$link_title = apply_filters( 'get_aesthetix_similar_posts_link_title', __( 'All', 'aesthetix' ) . ' ' . mb_strtolower( $terms[0]->name ) );
+			}
+		}
+
+		if ( ! isset( $link ) && get_post_type_archive_link( get_post_type() ) ) {
+			$link       = apply_filters( 'get_aesthetix_similar_posts_link', get_post_type_archive_link( get_post_type() ), get_the_ID() );
+			$link_title = apply_filters( 'get_aesthetix_similar_posts_link_title', __( 'All', 'aesthetix' ) . ' ' . mb_strtolower( $post_type_labels->name ) );
+		}
+	?>
+
+	<section id="similar-posts" <?php aesthetix_section_classes( 'section-similar-posts similar-posts' ); ?> aria-label="<?php echo esc_attr( $title ); ?>">
+
+		<div class="section-title-wrapper">
+			<h2 class="section-title"><?php echo esc_html( $title ); ?></h2>
+
+			<?php if ( isset( $link ) ) { ?>
+				<a <?php link_classes( 'section-title-link' ); ?> href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( $link_title ); ?></a>
+			<?php } ?>
+		</div>
 
 		<?php
 
@@ -21,53 +48,31 @@
 				'order'          => get_aesthetix_options( 'single_' . get_post_type() . '_similar_posts_order' ),
 				'orderby'        => get_aesthetix_options( 'single_' . get_post_type() . '_similar_posts_orderby' ),
 				'posts_per_page' => get_aesthetix_options( 'single_' . get_post_type() . '_similar_posts_count' ),
+				'post_type'      => get_post_type(),
 			);
 
-			if ( get_post_type() === 'post' && has_category() ) {
-				foreach ( get_the_category() as $key => $cat ) {
-					$args['category__in'][] = $cat->term_id;
+			if ( $taxonomy_names ) {
+				$args['tax_query']['relation'] = 'OR';
+				$i = 0;
+				foreach ( $taxonomy_names as $key => $taxonomy_name ) {
+
+					if ( $taxonomy_name === 'post_format' ) {
+						continue;
+					}
+
+					$args['tax_query'][ $i ]['taxonomy'] = $taxonomy_name;
+					$args['tax_query'][ $i ]['field']    = 'id';
+					foreach ( get_the_terms( get_the_ID(), $taxonomy_name ) as $key => $term ) {
+						$args['tax_query'][ $i ]['terms'][] = $term->term_id;
+					}
+					$i++;
 				}
 			}
 
-			if ( get_post_type() === 'post' && has_tag() ) {
-				foreach ( get_the_tags() as $key => $tag ) {
-					$args['tag__in'][] = $tag->term_id;
-				}
-			}
+			// Merge child and parent default options.
+			$args  = apply_filters( 'get_aesthetix_similar_posts_args', $args, get_the_ID() );
 
-			$query = new wp_query( $args );
-
-			if ( $query->have_posts() ) : ?>
-				<?php $i = 0; ?>
-
-				<div <?php aesthetix_archive_page_columns_wrapper_classes(); ?>>
-
-				<?php while ( $query->have_posts() ) : ?>
-					<?php $query->the_post(); ?>
-
-					<div <?php aesthetix_archive_page_columns_classes( $i ); ?>>
-
-						<?php
-							// Get a template with a post type, if there is one in the theme.
-							if ( file_exists( get_theme_file_path( 'templates/archive/archive-content-type-' . get_post_type() . '.php' ) ) ) {
-								get_template_part( 'templates/archive/archive-content-type', get_post_type(), array( 'counter' => $i ) );
-							} elseif ( get_aesthetix_options( 'archive_' . get_post_type() . '_template_type' ) ) {
-								get_template_part( 'templates/archive/archive-content-type', get_aesthetix_options( 'archive_' . get_post_type() . '_template_type' ), array( 'counter' => $i ) );
-							} else {
-								get_template_part( 'templates/archive/archive-content-type', 'tils', array( 'counter' => $i ) );
-							}
-						?>
-
-					</div>
-
-					<?php $i++; ?>
-				<?php endwhile; ?>
-
-				</div>
-
-			<?php endif; ?>
-
-			<?php wp_reset_postdata(); ?>
+			get_template_part( 'templates/archive/archive-recent-posts', '', $args ); ?>
 
 	</section>
 
