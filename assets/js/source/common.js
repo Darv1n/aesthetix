@@ -53,7 +53,7 @@ jQuery( document ).ready( function( $ ) {
 	window.notificationButton = function() {
 		if ( $( '.notification' ).length > 0 ) {
 			$( '.notification' ).each( function() {
-				$( this ).prepend( '<span class="notification-button-wrap"><button class="button button-icon button-none button-sm notification-button icon icon-center icon_xmark" type="button"></button></span>' );
+				$( this ).prepend( '<span class="notification-button-wrap"><button class="notification-button button-icon-reset button-reset icon icon-md icon-reset icon-xmark" type="button"></button></span>' );
 			} );
 		}
 	}

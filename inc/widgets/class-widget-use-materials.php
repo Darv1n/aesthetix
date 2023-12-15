@@ -16,10 +16,10 @@ class WPA_Widget_Use_Materials extends WPA_Widget {
 	 */
 	public function __construct() {
 
-		$home_url = wp_parse_url( get_home_url() );
+		$url_host = wp_parse_url( get_home_url(), PHP_URL_HOST );
 
 		if ( is_multisite() ) {
-			$home_url = wp_parse_url( network_home_url() );
+			$url_host = wp_parse_url( network_home_url(), PHP_URL_HOST );
 		}
 
 		$this->widget_cssclass    = 'widget-use-materials';
@@ -44,7 +44,7 @@ class WPA_Widget_Use_Materials extends WPA_Widget {
 			),
 			'text'        => array(
 				'type'  => 'textarea',
-				'std'   => sprintf( __( 'Use of site materials is permitted only with reference to the source %s', 'aesthetix' ), $home_url['host'] ),
+				'std'   => sprintf( __( 'Use of site materials is permitted only with reference to the source %s', 'aesthetix' ), $url_host ),
 				'label' => __( 'Text', 'aesthetix' ),
 			),
 		);

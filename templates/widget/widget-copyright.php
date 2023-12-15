@@ -13,10 +13,10 @@ $defaults = array(
 
 $args = array_merge( $defaults, $args );
 
-$home_url = wp_parse_url( get_home_url() );
+$url_host = wp_parse_url( get_home_url(), PHP_URL_HOST );
 
 if ( is_multisite() ) {
-	$home_url = wp_parse_url( network_home_url() );
+	$url_host = wp_parse_url( network_home_url(), PHP_URL_HOST );
 }
 
 // Собираем год.
@@ -26,5 +26,5 @@ if ( $args['start_year'] && (int) $args['start_year'] !== (int) $year ) {
 } ?>
 
 <div class="copyright">
-	<p class="copyright-text">&copy;&nbsp;<?php echo esc_html( $year ); ?> <?php esc_html_e( 'All rights reserved', 'aesthetix' ); ?> <?php echo esc_html( $home_url['host'] ); ?></p>
+	<p class="copyright-text">&copy;&nbsp;<?php echo esc_html( $year ); ?> <?php esc_html_e( 'All rights reserved', 'aesthetix' ); ?> <?php echo esc_html( $url_host ); ?></p>
 </div>

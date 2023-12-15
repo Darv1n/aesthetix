@@ -1,7 +1,7 @@
 /**
- * subscribe form js handler
+ * Subscribe form js handler
  *
- * Form js handler  - /assets/js/source/loadmore.js
+ * Form js handler  - /assets/js/source/ajax-loadmore.js
  * Setup js scripts - /inc/setup.php
  * Form php handler - /inc/handlers.php
  * Html             - /templates/archive/archive-pagination.php
@@ -17,7 +17,7 @@ jQuery( document ).ready( function( $ ) {
 					$(this).text( $(this).data( 'disabled-text' ) );
 					$(this).attr( 'disabled', true );
 				}
-			});
+			} );
 		}
 	}
 
@@ -35,7 +35,7 @@ jQuery( document ).ready( function( $ ) {
 			currentPage  = btn.data( 'current-page' );
 
 		if ( ! btn.hasClass( 'processing' ) ) {
-			$.ajax({
+			$.ajax( {
 				url: ajax_obj.url, // путь до ajax.
 				type:'POST', // тип запроса.
 				data: {
@@ -54,10 +54,10 @@ jQuery( document ).ready( function( $ ) {
 
 					if ( container.hasClass( 'masonry-gallery' ) ) {
 						container.masonry( 'reloadItems' );
-						container.masonry({
+						container.masonry( {
 							columnWidth: '.masonry-item',
 							itemSelector: '.masonry-item',
-						});
+						} );
 					}
 				},
 				success:function( response ) {
@@ -66,9 +66,9 @@ jQuery( document ).ready( function( $ ) {
 						container.append( response.data );
 					}
 				}
-			});
+			} );
 		}
 
 		e.preventDefault();
-	});
-});
+	} );
+} );

@@ -299,3 +299,47 @@ if ( ! function_exists( 'get_aesthetix_customizer_scroll_top_structure' ) ) {
 		}
 	}
 }
+
+if ( ! function_exists( 'get_aesthetix_customizer_comments_structure' ) ) {
+
+	/**
+	 * Return array with the customizer comments structure.
+	 *
+	 * @param string $control Array key to get one value.
+	 *
+	 * @return string|array|false
+	 */
+	function get_aesthetix_customizer_comments_structure( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'header'        => __( 'Header', 'aesthetix' ),
+			'content'       => __( 'Content', 'aesthetix' ),
+			'notifications' => __( 'Notifications', 'aesthetix' ),
+			'footer'        => __( 'Footer', 'aesthetix' ),
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_comments_structure', $converter );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+
+
+
+
+
+

@@ -1,93 +1,88 @@
-.comment-text
-	> *:first-child
-		margin-top: 0 !important
-	p, blockquote
-		max-width: 960px
-	h1, h2, h3, h4, h5, h6, p, ul, ol, dl
-		margin-bottom: $margin
-	h2
-		margin-top: $gutter*5
-	h3
-		margin-top: $gutter*4
-	h4
-		margin-top: $gutter*3
-	h5
-		margin-top: $gutter*2
-	h6
-		margin-top: $gutter
-	ul, ol
-		li
-			max-width: 960px
-			&:not(:last-child)
-				margin-bottom: $margin/2
-	ul, ol
-		ul, ol
-			margin-bottom: 0
-	.button
-		@extend .mb
-
-.comments-area
-	ol.comments-list, ul.children
-		padding-left: 0
-		list-style-type: none
-	ul.children
-		margin-left: $margin*2
-	.comment-body
-		padding: $padding
-		background-color: $gray-color-50
-		margin-bottom: 1rem
-		&.comment-body-avatars
-			position: relative
-			padding-left: 90px
-			.comment-author-avatar
-				position: absolute
-				top: $margin
-				left: $margin
-				.avatar
-					border-radius: $border-radius
-		.entry__meta
-			margin-bottom: 0
-		.comment-meta, .comment-content
-			margin-bottom: $gutter*2
-		.comment-content
+.comment-form
+	margin-bottom: 0
+	label
+		margin-bottom: .25rem
+	input, textarea
+		margin-bottom: .75rem
+	.label
+		&-description
 			font-size: $font-size-sm
-			p:last-child
-				margin-bottom: 0
-		.comment-reply-link
-			text-transform: uppercase
-			font-size: 12px
 			color: $gray-color-500
+			text-transform: lowercase
+	&-comment
+		textarea
+			max-width: 100%
+	&-cookies-consent
+		position: relative
+		margin-bottom: 1rem
+		input
+			position: absolute
+			left: 0
+			top: .25rem
+			margin: 0
+		label
+			padding-left: 1.5rem
+			margin-bottom: 0
+	.comment-notes
+		display: none
+	.submit + .notification
+		margin-top: .5rem
+
 
 .comment
 	position: relative
-	// padding: $elem-padding
+	padding: .75rem 1.125rem
+	margin-bottom: 1rem
+	background: $gray-color-100
 	border: $border-width solid $gray-color-200
 	border-radius: $border-radius
+	> *
+		margin-bottom: .5rem
+		&:last-child
+			margin-bottom: 0
+	&-footer
+		@extend .list-inline
+	&-reply-title
+		margin-bottom: .25rem
+	&-avatar
+		position: absolute
+		left: 1.125rem
+		top: .75rem
+	&-title
+		@extend .h6
+		padding-left: calc( 48px + .5rem )
+		margin-top: .375rem
 	&-meta
-		position: relative
-		padding-left: 65px
-		&__avatar
-			position: absolute
-			top: 0
-			left: 0
-		&__title
-			@extend .h6
-		&__content
-			> *
-				display: block
-				margin-bottom: 0
-			> *:not(:last-child)
-		&__list
-			@extend .list-inline
-			font-size: $font-size-sm
+		@extend .list-inline
+		padding-left: calc( 48px + .5rem )
+		font-size: $font-size-sm
+		color: $gray-color-600
+	&-deleted
+		font-style: italic
 
+
+.comments-title
+	margin-bottom: 1rem
+
+.comments-area
+	margin-bottom: 0
+
+.comment-list
+	.children
+		padding-left: 3rem
 
 .comment-respond
-	.logged-in-as, .comment-form-comment, .comment-form-comment label
-		display: block
-		margin-bottom: 1rem
+	margin-bottom: 1rem
+	position: relative
 
-.comment-form
-	margin-bottom: 2rem
-	textarea
-		max-width: 100%
+.cancel-comment-wrapper
+	margin-bottom: .75rem
+
+@media (min-width: 576px)
+	.comment-reply-title
+		margin-bottom: .5rem
+	.cancel-comment-wrapper
+		position: absolute
+		top: .375rem
+		right: 0
+		margin-bottom: 0

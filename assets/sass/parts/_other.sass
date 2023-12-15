@@ -19,7 +19,7 @@
 	*
 		font-size: $font-size-sm
 	li
-		display: inline-block
+		display: inline
 		&:not(:last-child)
 			margin-right: .25rem
 
@@ -65,8 +65,9 @@
 		background-color: $accept-color
 	&-button-wrap
 		position: absolute
-		top: 0
-		right: 0
+		top: $gutter*2
+		right: $gutter*4
+		line-height: 0
 	&-button
 		margin-bottom: 0 !important
 
@@ -174,3 +175,12 @@
 				display: block
 			.ab-mobile
 				display: none
+
+.fade-in
+	animation: fadeIn 1.15s
+
+@keyframes fadeIn
+	0%
+		opacity: 0
+	100%
+		opacity: 1

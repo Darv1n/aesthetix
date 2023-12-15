@@ -87,11 +87,13 @@ if ( ! function_exists( 'aesthetix_robots' ) ) {
 	 */
 	function aesthetix_robots( $robots ) {
 
+		// Close archive links if hasn't posts.
 		if ( is_archive() && ! have_posts() ) {
 			$robots['noindex']  = true;
 			$robots['nofollow'] = true;
 		}
 
+		// Close non-publish posts from indexing.
 		if ( is_single() && get_post_status() !== 'publish' ) {
 			$robots['noindex']  = true;
 			$robots['nofollow'] = true;

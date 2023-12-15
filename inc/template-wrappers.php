@@ -815,7 +815,7 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 		// Add buton resets classes.
 		if ( in_array( $args['button_content'], array( 'link-icon-text', 'link-text', 'text-icon', 'text', 'icon' ) ) ) {
 			foreach ( $classes as $key => $class ) {
-				if ( stripos( $class, 'button' ) !== false && ! in_array( $class, array( 'popup-button', 'dropdown-button' ), true ) ) {
+				if ( stripos( $class, 'button' ) !== false && ! in_array( $class, array( 'notification-button', 'cookie-button', 'popup-button', 'dropdown-button' ), true ) ) {
 					unset( $classes[ $key ] );
 				}
 			}

@@ -131,13 +131,17 @@ if ( ! function_exists( 'aesthetix_setup_theme' ) ) {
 
 		// Удаляем "Рубрика: ", "Метка: " и т.д. из заголовка архива.
 		add_filter( 'get_the_archive_title', function( $title ) {
-			$title = wp_strip_all_tags( $title ); // удаляем лишний span.
-			return preg_replace( '~^[^:]+: ~', '', $title );
+			return preg_replace( '~^[^:]+: ~', '', wp_strip_all_tags( $title ) );
 		} );
 
 		// Убираем ссылку на https://ru.wordpress.org/ в авторизации.
 		add_filter( 'login_headerurl', function( $login_header_url ) {
-			return home_url(); // Или любой другой адрес.
+			return home_url( '/' ); // Или любой другой адрес.
+		} );
+
+		// Add support html markup to wp_mail content.
+		add_filter( 'wp_mail_content_type', function( $content_type ) {
+			return 'text/html';
 		} );
 	}
 }
@@ -180,9 +184,13 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 		// Основные скрипты. Компиляция галпом. Могут быть переопределены в дочерней.
 		wp_enqueue_script( 'common-scripts', get_theme_file_uri( '/assets/js/common.min.js' ), array( 'jquery' ), filemtime( get_theme_file_path( '/assets/js/common.min.js' ) ), true );
 
-		// Комментарии.
-		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-			wp_enqueue_script( 'comment-reply' );
+		// Comments.
+		if ( is_singular() && comments_open() ) {
+			if ( get_aesthetix_options( 'comments_ajax' ) ) {
+				wp_enqueue_script( 'ajax-comments', get_theme_file_uri( '/assets/js/ajax-comments.min.js' ), array( 'jquery', 'common-scripts' ), filemtime( get_theme_file_path( '/assets/js/ajax-comments.min.js' ) ), true );
+			} else {
+				wp_enqueue_script( 'comment-reply' );
+			}
 		}
 
 		// Отключаем глобальные стили для гутенберга, если пользователь не залогинен.
@@ -325,11 +333,11 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 		}
 
 		if ( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) === 'loadmore' && ( is_archive() || is_search() || is_home() ) ) {
-			wp_enqueue_script( 'loadmore-scripts', get_theme_file_uri( '/assets/js/loadmore.min.js' ), array( 'jquery', 'common-scripts' ), filemtime( get_theme_file_path( '/assets/js/loadmore.min.js' ) ), true );
+			wp_enqueue_script( 'ajax-loadmore', get_theme_file_uri( '/assets/js/ajax-loadmore.min.js' ), array( 'jquery', 'common-scripts' ), filemtime( get_theme_file_path( '/assets/js/ajax-loadmore.min.js' ) ), true );
 		}
 
 		if ( is_subscribe_form_theme_active() ) {
-			wp_enqueue_script( 'subscribe-from-scripts', get_theme_file_uri( '/assets/js/subscribe-from-handler.min.js' ), array( 'jquery', 'common-scripts' ), filemtime( get_theme_file_path( '/assets/js/subscribe-from-handler.min.js' ) ), true );
+			wp_enqueue_script( 'ajax-subscribe-from', get_theme_file_uri( '/assets/js/ajax-subscribe-from.min.js' ), array( 'jquery', 'common-scripts' ), filemtime( get_theme_file_path( '/assets/js/ajax-subscribe-from.min.js' ) ), true );
 		}
 
 		wp_localize_script( 'jquery', 'ajax_obj', ajax_localize_params() );

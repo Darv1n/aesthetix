@@ -56,7 +56,7 @@ if ( is_array( $args['post_meta_structure'] ) && ! empty( $args['post_meta_struc
 					<?php break;
 				case 'time': ?>
 					<li class="post-entry-meta-item icon icon-before icon-clock data-title" data-title="<?php esc_attr_e( 'Reading time', 'aesthetix' ); ?>">
-						<?php echo read_time_estimate( get_the_content() ) . ' ' . esc_html__( 'min.', 'aesthetix' ); ?>
+						<?php echo read_time_estimate( get_the_content() ) . '&nbsp;' . esc_html__( 'min.', 'aesthetix' ); ?>
 					</li>
 					<?php break;
 				case 'comments': ?>

@@ -1,7 +1,7 @@
 /**
  * Subscribe form js handler
  *
- * Form js handler  - /assets/js/source/subscribe-from-handler.js
+ * Form js handler  - /assets/js/source/ajax-subscribe-from.js
  * Setup js scripts - /inc/setup.php
  * Form php handler - /inc/handlers.php
  * Form html        - /templates/subscribe-form.php
@@ -18,7 +18,7 @@ jQuery( document ).ready( function( $ ) {
 
 		// Ajax request.
 		if ( ! form.hasClass( 'processing' ) ) {
-			$.ajax({
+			$.ajax( {
 				type: 'POST',
 				url: ajax_obj.url,
 				data: {
@@ -52,12 +52,12 @@ jQuery( document ).ready( function( $ ) {
 						$.each( response.data, function( key, val ) {
 							form.find( '#' + key ).addClass( 'error' );
 							form.find( '#' + key ).after( '<span class="notification notification_warning">' + val + '</span>' );
-						});
+						} );
 					}
 				},
-			})
+			} )
 		}
 
 		e.preventDefault();
-	});
-});
+	} );
+} );

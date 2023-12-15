@@ -303,6 +303,13 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			}
 		}
 
+		// Comments options.
+		$aesthetix_controls['comments'] = array(
+			'ajax'            => array( 'checkbox_control', __( 'Ajax', 'aesthetix' ), __( 'Add sending comments without reloading the page for unauthorized users', 'aesthetix' ) ),
+			'structure_title' => array( 'tab_title', __( 'Comments structure', 'aesthetix' ), '' ),
+			'structure'       => array( 'sortable_control', '', '', get_aesthetix_customizer_comments_structure() ),
+		);
+
 		// Other options.
 		$aesthetix_controls['other'] = array(
 			'tab_contacts_list' => array( 'tab_title', __( 'Contacts list', 'aesthetix' ), __( 'Add a link to contacts-list using a shortcode <strong>[aesthetix-contacts-list]</strong> or single <strong>[aesthetix-email]</strong>, <strong>[aesthetix-phone]</strong>, <strong>[aesthetix-address]</strong>', 'aesthetix' ) ),

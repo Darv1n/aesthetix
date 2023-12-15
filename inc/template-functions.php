@@ -458,7 +458,7 @@ if ( ! function_exists( 'format_bytes' ) ) {
 		$bytes /= pow( 1024, $pow );
 		// $bytes /= (1 << (10 * $pow));
 
-		return round( $bytes, $precision ) . ' ' . $units[ $pow ];
+		return round( $bytes, $precision ) . '&nbsp;' . $units[ $pow ];
 	}
 }
 
@@ -750,5 +750,56 @@ if ( ! function_exists( 'is_language_switcher_active' ) ) {
 		$active = apply_filters( 'is_language_switcher_active', $active );
 
 		return $active;
+	}
+}
+
+if ( ! function_exists( 'aesthetix_wp_mail' ) ) {
+
+	/**
+	 * Send letter function.
+	 *
+	 * @param string $message  Message in a letter.
+	 * @param array  $email_to Array of emails to send. Default, the letter is sent to the main admin and the author of the post.
+	 * @param string $subject  Letter subject. Default 'Notice from the site %s'.
+	 */
+	function aesthetix_wp_mail( $message, $email_to = array(), $subject = null ) {
+
+		if ( empty( $email_to ) ) {
+			$email_to[] = get_option( 'admin_email' );
+
+			global $post;
+			if ( is_object( $post ) && isset( $post->ID ) ) {
+				$userdata = get_userdata( $post->post_author );
+
+				if ( $userdata ) {
+					$email_to[] = $userdata->user_email;
+				}
+			}
+		} elseif ( is_string( $email_to ) ) {
+			$email_to = explode( ' ', $email_to );
+		}
+
+		$url_host   = wp_parse_url( get_home_url(), PHP_URL_HOST );
+		$email_from = 'noreply@' . $url_host;
+		$headers    = 'From: ' . $url_host . ' <' . $email_from . '>' . "\r\n" . 'Reply-To: ' . $email_from;
+
+		if ( is_null( $subject ) ) {
+			$subject = __( 'Notice from the site', 'aesthetix' ) . ' ' . $url_host;
+		}
+
+		// Send email.
+		$wp_mail = wp_mail( array_unique( $email_to ), $subject, $message, $headers );
+
+		// Error sending email.
+		if ( is_wp_error( $wp_mail ) ) {
+			$data = (int) $wp_mail->get_error_data();
+			if ( ! empty( $wp_mail ) ) {
+				return $wp_mail->get_error_message();
+			} else {
+				return __( 'An unknown error has occurred', 'aesthetix' );;
+			}
+		} else {
+			return true;
+		}
 	}
 }

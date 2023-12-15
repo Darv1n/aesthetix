@@ -14,7 +14,7 @@ if ( ! function_exists( 'ajax_loadmore_handler_callback' ) ) {
 	/**
 	 * Loadmore handler.
 	 * 
-	 * Form js handler  - /assets/js/source/loadmore.js
+	 * Form js handler  - /assets/js/source/ajax-loadmore.js
 	 * Setup js scripts - /inc/setup.php
 	 * Form php handler - /inc/handlers.php
 	 * Html             - /templates/archive/archive-pagination.php
@@ -71,7 +71,7 @@ if ( ! function_exists( 'ajax_loadmore_handler_callback' ) ) {
 
 		wp_reset_postdata();
 
-		return wp_send_json_success( $output );
+		wp_send_json_success( $output );
 
 		wp_die();
 	}
@@ -84,7 +84,7 @@ if ( ! function_exists( 'ajax_subscribe_form_callback' ) ) {
 	/**
 	 * Subscribe form handler.
 	 * 
-	 * Form js handler  - /assets/js/source/subscribe-from-handler.js
+	 * Form js handler  - /assets/js/source/ajax-subscribe-from.js
 	 * Setup js scripts - /inc/setup.php
 	 * Form php handler - /inc/handlers.php
 	 * Form html        - /templates/subscribe-form.php
@@ -98,7 +98,7 @@ if ( ! function_exists( 'ajax_subscribe_form_callback' ) ) {
 		$errors   = array(); // Error array.
 		$message  = array(); // Letter array.
 		$email    = sanitize_email( $data['form-email'] );
-		$home_url = preg_replace( '/^(http[s]?):\/\//', '', get_home_url() );
+		$url_host = wp_parse_url( get_home_url(), PHP_URL_HOST );
 
 		// Check nonce & spam. If hidden field is full or the check is cleared, block sending.
 		// ! wp_verify_nonce( sanitize_text_field( $_POST['nonce'] ), 'ajax-nonce' )
@@ -125,9 +125,9 @@ if ( ! function_exists( 'ajax_subscribe_form_callback' ) ) {
 
 			// Specify mail params.
 			$email_to[]   = get_option( 'admin_email' );
-			$email_from   = 'noreply@' . $home_url;
-			$form_subject = __( 'New subscriber to', 'aesthetix' ) . ' ' . $home_url;
-			$headers      = 'From: ' . $home_url . ' <' . $email_from . '>' . "\r\n" . 'Reply-To: ' . $email_from;
+			$email_from   = 'noreply@' . $url_host;
+			$form_subject = __( 'New subscriber to', 'aesthetix' ) . ' ' . $url_host;
+			$headers      = 'From: ' . $url_host . ' <' . $email_from . '>' . "\r\n" . 'Reply-To: ' . $email_from;
 			$body         = '';
 
 			foreach ( $message as $key => $value ) {
@@ -137,11 +137,19 @@ if ( ! function_exists( 'ajax_subscribe_form_callback' ) ) {
 			// Send email.
 			$wp_mail = wp_mail( $email_to, $form_subject, $body, $headers );
 
-			// Return json about successful sending.
-			if ( $wp_mail ) {
-				wp_send_json_success( __( 'Subscribe completed successfully', 'aesthetix' ) );
+			// Error sending email.
+			if ( is_wp_error( $wp_mail ) ) {
+				$data = (int) $wp_mail->get_error_data();
+				if ( ! empty( $wp_mail ) ) {
+					$errors['submit'] = $wp_mail->get_error_message();
+				} else {
+					$errors['submit'] = __( 'An unknown error has occurred', 'aesthetix' );
+				}
 			} else {
-				$errors['submit'] = __( 'An unknown error occurred while submitting the form. Please write to <a href="mailto:team@zolin.digital">team@zolin.digital</a>', 'aesthetix' );
+				wp_send_json_success( __( 'Subscribe completed successfully', 'aesthetix' ) );
+			}
+
+			if ( ! empty( $errors ) ) {
 				wp_send_json_error( $errors );
 			}
 		}

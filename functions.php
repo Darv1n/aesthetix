@@ -24,6 +24,13 @@ require_once get_template_directory() . '/inc/template-handlers.php';
 require_once get_template_directory() . '/inc/template-setup.php';
 require_once get_template_directory() . '/inc/template-wrappers.php';
 
+// Comments.
+require_once get_template_directory() . '/inc/comment/comment-actions.php';
+require_once get_template_directory() . '/inc/comment/comment-filters.php';
+require_once get_template_directory() . '/inc/comment/comment-functions.php';
+require_once get_template_directory() . '/inc/comment/comment-handlers.php';
+require_once get_template_directory() . '/inc/comment/comment-setup.php';
+
 // Customizer.
 require_once get_template_directory() . '/inc/customizer/customizer-controls.php';
 require_once get_template_directory() . '/inc/customizer/customizer-converters.php';

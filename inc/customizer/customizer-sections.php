@@ -61,6 +61,11 @@ if ( ! function_exists( 'get_aesthetix_customizer_sections' ) ) {
 			);
 		}
 
+		$sections['comments'] = array(
+			'title' => __( 'Comments options', 'aesthetix' ),
+			'type'  => 'section',
+		);
+
 		$sections['other'] = array(
 			'title' => __( 'Other options', 'aesthetix' ),
 			'type'  => 'section',

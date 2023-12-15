@@ -174,9 +174,7 @@ if ( ! function_exists( 'after_single_post_structure' ) ) {
 					get_template_part( 'templates/single/single-similar-posts' );
 					break;
 				case 'single-comments':
-					if ( comments_open() || get_comments_number() ) {
-						comments_template();
-					}
+					comments_template();
 					break;
 				default:
 					break;

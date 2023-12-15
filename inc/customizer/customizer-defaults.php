@@ -180,6 +180,11 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 		}
 
 		$defaults = array_merge( $defaults, array(
+			'comments_ajax'      => true,
+			'comments_structure' => 'header,content,notifications,footer',
+		) );
+
+		$defaults = array_merge( $defaults, array(
 			'other_address'       => '',
 			'other_phone'         => '',
 			'other_email'         => '',

@@ -13,21 +13,21 @@
 	<?php
 		$post_type_labels = get_post_type_labels( get_post_type_object( get_post_type() ) );
 		$taxonomy_names   = get_object_taxonomies( get_post_type() );
-		$title            = apply_filters( 'get_aesthetix_similar_posts_title', __( 'Similar', 'aesthetix' ) . ' ' . mb_strtolower( $post_type_labels->name ) );
+		$title            = apply_filters( 'get_aesthetix_similar_posts_title', __( 'Similar', 'aesthetix' ) . '&nbsp;' . mb_strtolower( $post_type_labels->name ) );
 
 		if ( isset( $taxonomy_names[0] ) ) {
 			$terms = get_the_terms( get_the_ID(), $taxonomy_names[0] );
 
 			if ( isset( $terms[0] ) ) {
-				$title      = apply_filters( 'get_aesthetix_similar_posts_title', __( 'Similar', 'aesthetix' ) . ' ' . mb_strtolower( $terms[0]->name ) );
+				$title      = apply_filters( 'get_aesthetix_similar_posts_title', __( 'Similar', 'aesthetix' ) . '&nbsp;' . mb_strtolower( $terms[0]->name ) );
 				$link       = apply_filters( 'get_aesthetix_similar_posts_link', get_term_link( $terms[0]->term_id, $terms[0]->taxonomy ) );
-				$link_title = apply_filters( 'get_aesthetix_similar_posts_link_title', __( 'All', 'aesthetix' ) . ' ' . mb_strtolower( $terms[0]->name ) );
+				$link_title = apply_filters( 'get_aesthetix_similar_posts_link_title', __( 'All', 'aesthetix' ) . '&nbsp;' . mb_strtolower( $terms[0]->name ) );
 			}
 		}
 
 		if ( ! isset( $link ) && get_post_type_archive_link( get_post_type() ) ) {
 			$link       = apply_filters( 'get_aesthetix_similar_posts_link', get_post_type_archive_link( get_post_type() ), get_the_ID() );
-			$link_title = apply_filters( 'get_aesthetix_similar_posts_link_title', __( 'All', 'aesthetix' ) . ' ' . mb_strtolower( $post_type_labels->name ) );
+			$link_title = apply_filters( 'get_aesthetix_similar_posts_link_title', __( 'All', 'aesthetix' ) . '&nbsp;' . mb_strtolower( $post_type_labels->name ) );
 		}
 	?>
 

@@ -6,7 +6,7 @@ jQuery( document ).ready( function ( $ ) {
 
 	function mediaUploader( buttonClass ) {
 
-		// Trigger the Media Uploader dialog
+		// Trigger the Media Uploader dialog.
 		$( document ).on( 'click', buttonClass, function( e ) {
 
 			var mediaUploader;
@@ -46,7 +46,7 @@ jQuery( document ).ready( function ( $ ) {
 		} );
 	}
 
-	// Initialize media uploader
+	// Initialize media uploader.
 	mediaUploader( '.button-add-adv-media' );
 
 	$( '.sortable-list' ).sortable( {
