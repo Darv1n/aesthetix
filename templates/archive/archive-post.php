@@ -7,6 +7,10 @@
  * @package Aesthetix
  */
 
+if ( ! $post ) {
+	return;
+}
+
 $defaults = array(
 	'post_format'         => get_post_format(),
 	'post_layout'         => get_aesthetix_options( 'archive_' . get_post_type() . '_layout' ),
@@ -30,7 +34,7 @@ if ( $args['post_layout'] === 'grid-image' || $args['post_format'] === 'image' &
 
 <article id="post-<?php the_ID(); ?>" <?php aesthetix_post_classes( '', $args ); ?>>
 
-	<?php if ( has_post_thumbnail( $post ) ) {
+	<?php if ( has_post_thumbnail( $post ) || get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_default' ) ) {
 
 		$classes[] = 'has-post-thumbnail'; ?>
 

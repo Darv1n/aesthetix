@@ -29,6 +29,11 @@ if ( is_single() ) {
 $args  = array_merge( apply_filters( 'get_aesthetix_widget_recent_posts_default_args', $defaults ), $args );
 $query = new WP_Query( $args );
 
+if ( ! $query->have_posts() && isset( $args['tax_query'] ) ) {
+	unset( $args['tax_query'] );
+	$query = new WP_Query( $args );
+}
+
 if ( $query->have_posts() ) {
 
 	$i = 1; ?>

@@ -33,6 +33,8 @@ if ( ! function_exists( 'aesthetix_widget_default' ) ) {
 			return false;
 		}
 
+		do_action( 'dynamic_sidebar_before', $widget_id, true );
+
 		foreach ( $structure as $key => $widget_name ) {
 
 			$args = array();
@@ -107,12 +109,41 @@ if ( ! function_exists( 'aesthetix_widget_default' ) ) {
 				$args['widget_title']        = __( 'Recent posts', 'aesthetix' );
 			}
 
+			if ( $widget_name === 'widget-adv-banner' ) {
+				$args['adv_title']       = 'Aesthetix Themes';
+				$args['adv_description'] = __( 'WordPress premium templates', 'aesthetix' );
+
+				if ( in_array( $widget_id, array( 'header-top-left', 'header-top-right', 'header-main-left', 'header-main-center', 'header-main-right', 'header-bottom-left', 'header-bottom-right' ), true ) ) {
+					$args['adv_desktop'] = get_theme_file_uri( '/data/img/adv/header-promo-728x90-desktop.png' );
+				}
+
+				if ( $widget_id === 'main' ) {
+					$args['adv_desktop'] = get_theme_file_uri( '/data/img/adv/aside-promo-300x250-desktop.png' );
+				}
+
+				if ( $widget_id === 'after-header' ) {
+					$args['adv_desktop'] = get_theme_file_uri( '/data/img/adv/content-promo-1200x113-desktop.png' );
+				}
+
+				if ( $widget_id === 'before-post-content' ) {
+					$args['adv_desktop'] = get_theme_file_uri( '/data/img/adv/content-promo-920x90-desktop.png' );
+				}
+
+				if ( $widget_id === 'after-post-content' ) {
+					$args['adv_desktop'] = get_theme_file_uri( '/data/img/adv/content-promo-1200x113-desktop.png' );
+				}
+
+				if ( $widget_id === 'before-footer' ) {
+					$args['adv_desktop'] = get_theme_file_uri( '/data/img/adv/content-promo-1200x113-desktop.png' );
+				}
+			}
+
 			// Merge child and parent default options.
 			$args = apply_filters( 'get_aesthetix_widget_default_args', $args, $widget_id, $widget_name );
 
 			switch ( $widget_name ) {
-				case has_action( 'aesthetix_aesthetix_widget_default_loop_' . $widget_name ):
-					do_action( 'aesthetix_aesthetix_widget_default_loop_' . $widget_name, $args, $widget_id, $widget_name );
+				case has_action( 'aesthetix_widget_default_loop_' . $widget_name ):
+					do_action( 'aesthetix_widget_default_loop_' . $widget_name, $args, $widget_id, $widget_name );
 					break;
 				case 'widget-search-form': ?>
 					<div <?php widget_classes( '', $widget_id ); ?>>
@@ -205,9 +236,17 @@ if ( ! function_exists( 'aesthetix_widget_default' ) ) {
 					</div>
 					<?php break;
 				default:
+					if ( locate_template( '/templates/widget/' . $widget_name . '.php' ) !== '' ) { ?>
+						<div <?php widget_classes( '', $widget_id ); ?>>
+							<?php get_template_part( 'templates/widget/widget-entry-title', '', $args ); ?>
+							<?php get_template_part( 'templates/widget/' . $widget_name, '', $args ); ?>
+						</div>
+					<?php }
 					break;
 			}
 		}
+
+		do_action( 'dynamic_sidebar_after', $widget_id, true );
 
 		return false;
 	}
@@ -232,6 +271,10 @@ if ( ! function_exists( 'get_aesthetix_widget_default' ) ) {
 		$converter = array(
 			'main'                 => array(),
 			'aside-menu'           => array( 'widget-socials', 'widget-language-switcher' ),
+			'after-header'         => array( 'widget-adv-banner' ),
+			'before-post-content'  => array( 'widget-adv-banner' ),
+			'after-post-content'   => array( 'widget-adv-banner' ),
+			'before-footer'        => array( 'widget-adv-banner' ),
 			'header-mobile-left'   => array( 'widget-logo' ),
 			'header-mobile-center' => array( 'widget-logo' ),
 			'header-mobile-right'  => array( 'widget-search-toggle', 'widget-subscribe-toggle' ),

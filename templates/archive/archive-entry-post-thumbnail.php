@@ -30,8 +30,33 @@ if ( has_post_format() && $args['post_format'] === 'gallery' && get_post_meta( g
 
 } else { ?>
 
-	<a href="<?php the_permalink(); ?>" class="post-thumbnail-link" tabindex="-1">
-		<?php the_post_thumbnail( 'large', array( 'class' => 'post-thumbnail' ) ); ?>
-	</a>
+	<?php if ( has_post_thumbnail( $post ) ) { ?>
+
+		<a href="<?php the_permalink(); ?>" class="post-thumbnail-link" tabindex="-1">
+
+			<?php if ( image_downsize( get_post_thumbnail_id( $post ), 'large' ) ) { ?>
+				<?php the_post_thumbnail( 'large', array( 'class' => 'post-thumbnail' ) ); ?>
+			<?php } else { ?>
+				<?php the_post_thumbnail( 'full', array( 'class' => 'post-thumbnail' ) ); ?>
+			<?php } ?>
+
+		</a>
+
+	<?php } elseif ( get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_default' ) ) { ?>
+
+		<a href="<?php the_permalink(); ?>" class="post-thumbnail-link" tabindex="-1">
+
+			<?php
+				$default_thumbnail_file_path = apply_filters( 'default_thumbnail_file_path', '/assets/img/default-thumbnail.jpg' );
+
+				if ( file_exists( get_theme_file_path( $default_thumbnail_file_path ) ) ) {
+					list( $width, $height, $type, $attr ) = getimagesize( get_theme_file_path( $default_thumbnail_file_path ) );
+					?>
+
+					<img <?php echo $attr; ?> src="<?php echo esc_url( get_theme_file_uri( $default_thumbnail_file_path ) ); ?>" class="post-thumbnail wp-post-image" alt="<?php the_title(); ?>" decoding="async" loading="lazy">
+				<?php } ?>
+		</a>
+
+	<?php } ?>
 
 <?php } ?>

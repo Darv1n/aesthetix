@@ -15,17 +15,7 @@
 		$taxonomy_names   = get_object_taxonomies( get_post_type() );
 		$title            = apply_filters( 'get_aesthetix_similar_posts_title', __( 'Similar', 'aesthetix' ) . '&nbsp;' . mb_strtolower( $post_type_labels->name ) );
 
-		if ( isset( $taxonomy_names[0] ) ) {
-			$terms = get_the_terms( get_the_ID(), $taxonomy_names[0] );
-
-			if ( isset( $terms[0] ) ) {
-				$title      = apply_filters( 'get_aesthetix_similar_posts_title', __( 'Similar', 'aesthetix' ) . '&nbsp;' . mb_strtolower( $terms[0]->name ) );
-				$link       = apply_filters( 'get_aesthetix_similar_posts_link', get_term_link( $terms[0]->term_id, $terms[0]->taxonomy ) );
-				$link_title = apply_filters( 'get_aesthetix_similar_posts_link_title', __( 'All', 'aesthetix' ) . '&nbsp;' . mb_strtolower( $terms[0]->name ) );
-			}
-		}
-
-		if ( ! isset( $link ) && get_post_type_archive_link( get_post_type() ) ) {
+		if ( get_post_type_archive_link( get_post_type() ) ) {
 			$link       = apply_filters( 'get_aesthetix_similar_posts_link', get_post_type_archive_link( get_post_type() ), get_the_ID() );
 			$link_title = apply_filters( 'get_aesthetix_similar_posts_link_title', __( 'All', 'aesthetix' ) . '&nbsp;' . mb_strtolower( $post_type_labels->name ) );
 		}
@@ -60,17 +50,20 @@
 						continue;
 					}
 
-					$args['tax_query'][ $i ]['taxonomy'] = $taxonomy_name;
-					$args['tax_query'][ $i ]['field']    = 'id';
-					foreach ( get_the_terms( get_the_ID(), $taxonomy_name ) as $key => $term ) {
-						$args['tax_query'][ $i ]['terms'][] = $term->term_id;
+					if ( has_term( '', $taxonomy_name ) ) {
+						$args['tax_query'][ $i ]['taxonomy'] = $taxonomy_name;
+						$args['tax_query'][ $i ]['field']    = 'id';
+
+						foreach ( get_the_terms( get_the_ID(), $taxonomy_name ) as $key => $term ) {
+							$args['tax_query'][ $i ]['terms'][] = $term->term_id;
+						}
+						$i++;
 					}
-					$i++;
 				}
 			}
 
 			// Merge child and parent default options.
-			$args  = apply_filters( 'get_aesthetix_similar_posts_args', $args, get_the_ID() );
+			$args = apply_filters( 'get_aesthetix_similar_posts_args', $args, get_the_ID() );
 
 			get_template_part( 'templates/archive/archive-recent-posts', '', $args ); ?>
 

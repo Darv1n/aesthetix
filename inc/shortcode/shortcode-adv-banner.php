@@ -17,7 +17,7 @@ if ( ! function_exists( 'aesthetix_shortcode_adv_banner' ) ) {
 	 * @param array  $atts    Array of attributes specified in the shortcode.
 	 * @param string $content Shortcode text when using a content shortcode.
 	 * 
-	 * @example [aesthetix-adv-banner adv_desktop="" adv_mobile="" adv_link="" adv_alt="" adv_description=""]
+	 * @example [aesthetix-adv-banner adv_desktop="" adv_tablet="" adv_mobile="" adv_link="" adv_alt="" adv_title="" adv_description=""]
 	 * 
 	 * @return void
 	 */
@@ -25,9 +25,11 @@ if ( ! function_exists( 'aesthetix_shortcode_adv_banner' ) ) {
 
 		$defaults = array(
 			'adv_desktop'     => get_theme_file_uri( '/assets/img/header-promo.png' ),
+			'adv_tablet'      => '',
 			'adv_mobile'      => '',
 			'adv_link'        => 'https://zolin.digital/',
 			'adv_alt'         => __( 'Banner', 'aesthetix' ),
+			'adv_title'       => '',
 			'adv_description' => '',
 		);
 

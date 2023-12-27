@@ -23,7 +23,7 @@ get_header(); ?>
 
 		<?php do_action( 'aesthetix_before_article_page' ); ?>
 
-			<?php get_template_part( 'templates/single/single-content-type', 'page' ); ?>
+			<?php get_template_part( 'templates/single/single-page' ); ?>
 
 		<?php do_action( 'aesthetix_after_article_page' ); ?>
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2023-10-21 07:22+0400\n"
-"PO-Revision-Date: 2023-10-21 07:22+0400\n"
+"POT-Creation-Date: 2023-12-26 01:07+0400\n"
+"PO-Revision-Date: 2023-12-26 01:46+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -11,98 +11,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;_x\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: 404.php:19
+#: 404.php:17
 msgid "Oops! That page can&rsquo;t be found"
 msgstr "К сожалению страница не найдена"
 
-#: 404.php:23
+#: 404.php:21
 msgid ""
 "It looks like nothing was found at this location. Maybe try one of the links "
 "below or a search?"
 msgstr ""
 "Мы ничего не нашли по вашему запросу. Может быть, попробуйте одну из ссылок "
 "ниже или поиск?"
-
-#: comments.php:75 inc/customizer/customizer-selects.php:117
-#: inc/customizer/customizer-selects.php:163
-#: templates/archive/archive-entry-post-meta.php:73
-#: templates/single/single-content-type-page.php:39
-#: templates/single/single-entry-post-footer.php:67
-#: templates/single/single-entry-post-meta.php:71
-msgid "Edit"
-msgstr "Редактировать"
-
-#: comments.php:100
-msgid "Your comment is awaiting moderation"
-msgstr "Ваш комментарий ожидает модерации"
-
-#: comments.php:116
-msgid "Comments:&nbsp;"
-msgstr "Комментарии:&nbsp;"
-
-#: comments.php:131
-msgid "Previous comments"
-msgstr "Предыдущие комментарии"
-
-#: comments.php:132
-msgid "Next comments"
-msgstr "Следущие комментарии"
-
-#: comments.php:154
-msgid "Name"
-msgstr "Имя"
-
-#: comments.php:158 inc/customizer/customizer-controls.php:364
-msgid "Email"
-msgstr "Почта"
-
-#: comments.php:163
-msgid ""
-"Save my name, email, and website in this browser for the next time I comment."
-msgstr ""
-"Сохранить мое имя, электронную почту и веб-сайт в этом браузере для "
-"следующего комментария."
-
-#: comments.php:168
-msgid "Comment"
-msgstr "Комментарий"
-
-#: comments.php:172
-#, php-format
-msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
-msgstr ""
-"Вы должны быть <<a href=\"%s\">авторизованны</a> чтобы оставить комментарий."
-
-#: comments.php:175
-#, php-format
-msgid ""
-"<a href=\"%1$s\" aria-label=\"Logged in as %2$s. Edit your profile.\">Logged "
-"in as %2$s</a>. <a href=\"%3$s\">Log out?</a>"
-msgstr ""
-"<a href=\"%1$s\" aria-label=\"Вошел в систему как %2$s. Отредактируйте свой "
-"профиль.\">Вошел в систему как %2$s</a>. <a href=\"%3$s\">Выйти из системы?</"
-"a>"
-
-#: comments.php:179
-msgid "Your email address will not be published."
-msgstr "Ваш адрес электронной почты не будет опубликован."
-
-#: comments.php:183
-msgid "Leave a reply"
-msgstr "Ответить"
-
-#: comments.php:184
-msgid "Post comment"
-msgstr "Опубликовать комментарий"
-
-#: comments.php:190
-msgid "Comments are closed"
-msgstr "Комментарии закрыты"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:334
 msgid "Install Required Plugins"
@@ -426,341 +350,376 @@ msgstr "Все установки завершены."
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: inc/compatibility/breadcrumb-navxt.php:20 templates/button-home.php:20
+#: inc/comment/comment-handlers.php:28
+msgid "For some reason an empty comment id was sent"
+msgstr "По какой-то причине был отправлен пустой идентификатор комментария"
+
+#: inc/comment/comment-handlers.php:34
+msgid "For some reason we couldn't get you comment"
+msgstr "По какой-то причине мы не смогли получить от вас комментарий"
+
+#: inc/comment/comment-handlers.php:40 inc/comment/comment-handlers.php:171
+#, php-format
+msgid "A comment was left on the site %s from your email"
+msgstr "На сайте %s был оставлен комментарий с вашей электронной почты"
+
+#: inc/comment/comment-handlers.php:42 inc/comment/comment-handlers.php:173
+msgid "To confirm your comment, follow the link"
+msgstr "Чтобы подтвердить свой комментарий, перейдите по ссылке"
+
+#: inc/comment/comment-handlers.php:49 inc/comment/comment-handlers.php:180
+#: inc/comment/comment-handlers.php:197 inc/comment/comment-setup.php:62
+msgid ""
+"An error occurred when sending an email to confirm a comment to the user"
+msgstr ""
+"Произошла ошибка при отправке электронного письма для подтверждения "
+"комментария пользователю"
+
+#: inc/comment/comment-handlers.php:51
+msgid "The letter was sent successfully"
+msgstr "Письмо было успешно отправлено"
+
+#: inc/comment/comment-handlers.php:91 inc/template-handlers.php:124
+#: templates/comment/comment-form.php:47
+msgid "Please enter your email address"
+msgstr "Пожалуйста, введите ваш e-mail"
+
+#: inc/comment/comment-handlers.php:93 inc/template-handlers.php:121
+msgid "Email address is incorrect"
+msgstr "Адрес электронной почты неверен"
+
+#: inc/comment/comment-handlers.php:97 templates/comment/comment-form.php:42
+msgid "Please enter your name"
+msgstr "Пожалуйста, введите Ваше имя"
+
+#: inc/comment/comment-handlers.php:101 templates/comment/comment-form.php:58
+msgid "Please enter your comment"
+msgstr "Пожалуйста, введите ваш комментарий"
+
+#: inc/comment/comment-handlers.php:123
+#: templates/comment/comment-entry-content.php:18
+msgid "Comment deleted by user"
+msgstr "Комментарий удален пользователем"
+
+#: inc/comment/comment-handlers.php:134 inc/comment/comment-handlers.php:139
+#: inc/comment/comment-handlers.php:158 inc/template-functions.php:799
+#: inc/template-handlers.php:152
+msgid "An unknown error has occurred"
+msgstr "Произошла неизвестная ошибка"
+
+#: inc/comment/comment-handlers.php:192 inc/comment/comment-setup.php:57
+#, php-format
+msgid "Someone replied to your comment on the post %s"
+msgstr "Кто-то ответил на ваш комментарий к посту %s"
+
+#: inc/compatibility/breadcrumb-navxt.php:18 templates/button-home.php:17
 msgid "Home"
 msgstr "Главная"
 
-#: inc/compatibility/kama-postviews.php:53
-#: inc/compatibility/kama-postviews.php:128
+#: inc/compatibility/kama-postviews.php:89
 msgid "Views"
 msgstr "Просмотры"
 
-#: inc/compatibility/rate-my-post.php:53 inc/compatibility/rate-my-post.php:110
-#: inc/compatibility/rate-my-post.php:134
-#: inc/compatibility/woocommerce/customizer/customizer-selects.php:35
+#: inc/compatibility/rate-my-post.php:47 inc/compatibility/rate-my-post.php:100
+#: inc/compatibility/rate-my-post.php:122
+#: inc/compatibility/woocommerce/customizer/customizer-selects.php:31
 msgid "Rating"
 msgstr "Рейтинг"
 
-#: inc/compatibility/woocommerce/customizer/customizer-controls.php:19
+#: inc/compatibility/woocommerce/customizer/customizer-controls.php:17
 msgid "Which pages display sidebar"
 msgstr ""
 
-#: inc/compatibility/woocommerce/customizer/customizer-controls.php:20
-#: inc/customizer/customizer-controls.php:265
+#: inc/compatibility/woocommerce/customizer/customizer-controls.php:18
+#: inc/customizer/customizer-controls.php:232
 msgid "Select element border radius"
 msgstr ""
 
-#: inc/compatibility/woocommerce/customizer/customizer-controls.php:25
-#: inc/customizer/customizer-controls.php:292
-#: inc/customizer/customizer-controls.php:327
+#: inc/compatibility/woocommerce/customizer/customizer-controls.php:23
+#: inc/customizer/customizer-controls.php:248
+#: inc/customizer/customizer-controls.php:294
+#: inc/widgets/class-widget-recent-posts.php:73
 msgid "Post structure"
 msgstr ""
 
-#: inc/compatibility/woocommerce/customizer/customizer-controls.php:27
+#: inc/compatibility/woocommerce/customizer/customizer-controls.php:25
 msgid "Shop display options"
 msgstr ""
 
-#: inc/compatibility/woocommerce/customizer/customizer-sections.php:30
+#: inc/compatibility/woocommerce/customizer/customizer-sections.php:28
 msgid "Single product"
 msgstr ""
 
-#: inc/compatibility/woocommerce/customizer/customizer-selects.php:34
+#: inc/compatibility/woocommerce/customizer/customizer-selects.php:30
 msgid "Product title"
 msgstr ""
 
-#: inc/compatibility/woocommerce/customizer/customizer-selects.php:36
+#: inc/compatibility/woocommerce/customizer/customizer-selects.php:32
 msgid "Price"
 msgstr ""
 
-#: inc/compatibility/woocommerce/customizer/customizer-selects.php:37
+#: inc/compatibility/woocommerce/customizer/customizer-selects.php:33
 msgid "Add to cart button"
 msgstr ""
 
-#: inc/compatibility/woocommerce/woocommerce-actions.php:93
+#: inc/compatibility/woocommerce/woocommerce-actions.php:81
 msgid "Out of stock"
 msgstr ""
 
-#: inc/compatibility/woocommerce/woocommerce-actions.php:94
+#: inc/compatibility/woocommerce/woocommerce-actions.php:82
 msgid "On backorder"
 msgstr ""
 
-#: inc/compatibility/woocommerce/woocommerce-setup.php:169
+#: inc/compatibility/woocommerce/woocommerce-setup.php:159
 msgid "WooCommerce sidebar"
 msgstr ""
 
-#: inc/compatibility/woocommerce/woocommerce-setup.php:171
+#: inc/compatibility/woocommerce/woocommerce-setup.php:161
 msgid ""
 "This sidebar will be used on product archive, cart, checkout and my account "
 "pages"
 msgstr ""
 
-#: inc/compatibility/woocommerce/woocommerce-setup.php:183
+#: inc/compatibility/woocommerce/woocommerce-setup.php:173
 msgid "Product sidebar"
 msgstr ""
 
-#: inc/compatibility/woocommerce/woocommerce-setup.php:185
+#: inc/compatibility/woocommerce/woocommerce-setup.php:175
 msgid "This sidebar will be used on single product page"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:29
+#: inc/customizer/customizer-controls.php:25
+#: inc/customizer/customizer-selects.php:515
 msgid "White"
 msgstr "Белый"
 
-#: inc/customizer/customizer-controls.php:30
+#: inc/customizer/customizer-controls.php:26
+#: inc/customizer/customizer-selects.php:516
 msgid "Black"
 msgstr "Черная"
 
-#: inc/customizer/customizer-controls.php:34
-#: inc/customizer/customizer-controls.php:42
+#: inc/customizer/customizer-controls.php:30
 msgid "Narrow"
 msgstr "Узкий"
 
-#: inc/customizer/customizer-controls.php:35
-msgid "General"
-msgstr "Основной"
-
-#: inc/customizer/customizer-controls.php:36
-msgid "Average"
-msgstr "Средний"
-
-#: inc/customizer/customizer-controls.php:37
-#: inc/customizer/customizer-controls.php:43
+#: inc/customizer/customizer-controls.php:31
 msgid "Wide"
 msgstr "Широкий"
 
-#: inc/customizer/customizer-controls.php:38
-msgid "Fluid"
-msgstr ""
-
-#: inc/customizer/customizer-controls.php:47
+#: inc/customizer/customizer-controls.php:35
 msgid "Header desktop default"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:48
+#: inc/customizer/customizer-controls.php:36
 msgid "Header desktop 3 + 0 columns"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:49
+#: inc/customizer/customizer-controls.php:37
 msgid "Header desktop 2 + 2 columns"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:50
+#: inc/customizer/customizer-controls.php:38
 msgid "Header desktop 2 + 3 columns"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:51
+#: inc/customizer/customizer-controls.php:39
 msgid "Header desktop 3 + 2 columns"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:52
+#: inc/customizer/customizer-controls.php:40
 msgid "Header desktop 3 + 3 columns"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:56
+#: inc/customizer/customizer-controls.php:44
 msgid "Header mobile default"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:57
+#: inc/customizer/customizer-controls.php:45
 msgid "Header mobile three columns"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:61
+#: inc/customizer/customizer-controls.php:49
 msgid "Footer simple"
 msgstr "Футер простой"
 
-#: inc/customizer/customizer-controls.php:62
+#: inc/customizer/customizer-controls.php:50
 msgid "Footer three columns"
 msgstr "Футер три колонки"
 
-#: inc/customizer/customizer-controls.php:63
+#: inc/customizer/customizer-controls.php:51
 msgid "Footer four columns"
 msgstr "Футер четыре колонки"
 
-#: inc/customizer/customizer-controls.php:67
+#: inc/customizer/customizer-controls.php:55
 msgid "Right"
 msgstr "Справа"
 
-#: inc/customizer/customizer-controls.php:68
+#: inc/customizer/customizer-controls.php:56
 msgid "Left"
 msgstr "Слева"
 
-#: inc/customizer/customizer-controls.php:69
+#: inc/customizer/customizer-controls.php:57
 msgid "Center"
 msgstr "По центру"
 
-#: inc/customizer/customizer-controls.php:73
+#: inc/customizer/customizer-controls.php:61
 msgid "WooCommerce (Plugin must be activated)"
 msgstr "WooCommerce (Плагин должен быть активирован)"
 
-#: inc/customizer/customizer-controls.php:74
+#: inc/customizer/customizer-controls.php:62
 msgid "Breadcrumb NavXT plugin"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:75
+#: inc/customizer/customizer-controls.php:63
 msgid "Yoast (Must be enabled in the plugin)"
 msgstr "Yoast (Плагин должен быть активирован)"
 
-#: inc/customizer/customizer-controls.php:76
+#: inc/customizer/customizer-controls.php:64
 msgid "RankMath (Must be enabled in the plugin)"
 msgstr "RankMath (Плагин должен быть активирован)"
 
-#: inc/customizer/customizer-controls.php:77
+#: inc/customizer/customizer-controls.php:65
 msgid "SEOPress (Must be enabled in the plugin)"
 msgstr "SEOPress (Плагин должен быть активирован)"
 
-#: inc/customizer/customizer-controls.php:81
+#: inc/customizer/customizer-controls.php:69
 msgid "Before"
 msgstr "До"
 
-#: inc/customizer/customizer-controls.php:82
+#: inc/customizer/customizer-controls.php:70
 msgid "After"
 msgstr "После"
 
-#: inc/customizer/customizer-controls.php:86
-#: inc/customizer/customizer-controls.php:336
+#: inc/customizer/customizer-controls.php:74
+#: inc/customizer/customizer-selects.php:147
+#: inc/customizer/customizer-selects.php:263
+#: inc/customizer/customizer-selects.php:302
+#: inc/customizer/customizer-selects.php:346
 msgid "None"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:87
+#: inc/customizer/customizer-controls.php:75
 msgid "Menu start"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:88
+#: inc/customizer/customizer-controls.php:76
 msgid "Menu center"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:89
+#: inc/customizer/customizer-controls.php:77
 msgid "Menu end"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:93
-#: inc/customizer/customizer-controls.php:103
-#: inc/customizer/customizer-controls.php:112
-#: inc/customizer/customizer-controls.php:125
+#: inc/customizer/customizer-controls.php:81
+#: inc/customizer/customizer-controls.php:86
+#: inc/customizer/customizer-controls.php:95
+#: inc/customizer/customizer-controls.php:108
+#: inc/widgets/class-widget-menus.php:48
 msgid "One"
 msgstr "Один"
 
-#: inc/customizer/customizer-controls.php:94
-#: inc/customizer/customizer-controls.php:104
-#: inc/customizer/customizer-controls.php:113
-#: inc/customizer/customizer-controls.php:126
+#: inc/customizer/customizer-controls.php:82
+#: inc/customizer/customizer-controls.php:87
+#: inc/customizer/customizer-controls.php:96
+#: inc/customizer/customizer-controls.php:109
+#: inc/widgets/class-widget-menus.php:49
 msgid "Two"
 msgstr "Два"
 
-#: inc/customizer/customizer-controls.php:105
-#: inc/customizer/customizer-controls.php:114
-#: inc/customizer/customizer-controls.php:127
+#: inc/customizer/customizer-controls.php:88
+#: inc/customizer/customizer-controls.php:97
+#: inc/customizer/customizer-controls.php:110
+#: inc/widgets/class-widget-menus.php:50
 msgid "Three"
 msgstr "Три"
 
-#: inc/customizer/customizer-controls.php:106
-#: inc/customizer/customizer-controls.php:115
-#: inc/customizer/customizer-controls.php:128
+#: inc/customizer/customizer-controls.php:89
+#: inc/customizer/customizer-controls.php:98
+#: inc/customizer/customizer-controls.php:111
+#: inc/widgets/class-widget-menus.php:51
 msgid "Four"
 msgstr "Четыре"
 
-#: inc/customizer/customizer-controls.php:107
-#: inc/customizer/customizer-controls.php:116
+#: inc/customizer/customizer-controls.php:90
+#: inc/customizer/customizer-controls.php:99
 msgid "Five"
 msgstr "Пять"
 
-#: inc/customizer/customizer-controls.php:108
-#: inc/customizer/customizer-controls.php:117
+#: inc/customizer/customizer-controls.php:91
+#: inc/customizer/customizer-controls.php:100
 msgid "Six"
 msgstr "Шесть"
 
-#: inc/customizer/customizer-controls.php:118
+#: inc/customizer/customizer-controls.php:101
 msgid "Seven"
 msgstr "Семь"
 
-#: inc/customizer/customizer-controls.php:119
+#: inc/customizer/customizer-controls.php:102
 msgid "Eight"
 msgstr "Восемь"
 
-#: inc/customizer/customizer-controls.php:120
+#: inc/customizer/customizer-controls.php:103
 msgid "Nine"
 msgstr "Девять"
 
-#: inc/customizer/customizer-controls.php:121
+#: inc/customizer/customizer-controls.php:104
 msgid "Ten"
 msgstr "Десять"
 
-#: inc/customizer/customizer-controls.php:132
-msgid "List"
-msgstr "Список"
-
-#: inc/customizer/customizer-controls.php:133
-msgid "Tils"
-msgstr "Плитка"
-
-#: inc/customizer/customizer-controls.php:134
-msgid "Banner"
-msgstr ""
-
-#: inc/customizer/customizer-controls.php:135
-msgid "Simple"
-msgstr ""
-
-#: inc/customizer/customizer-controls.php:139
-#: inc/customizer/customizer-selects.php:754
+#: inc/customizer/customizer-controls.php:115
+#: inc/customizer/customizer-selects.php:892
 msgid "Default"
 msgstr "По умолчанию"
 
-#: inc/customizer/customizer-controls.php:140
+#: inc/customizer/customizer-controls.php:116
 msgid "Numeric"
 msgstr "Числовой"
 
-#: inc/customizer/customizer-controls.php:141
-#: templates/archive/archive-pagination.php:73
+#: inc/customizer/customizer-controls.php:117
+#: templates/archive/archive-pagination.php:70
 msgid "Load more"
 msgstr "Подробнее"
 
-#: inc/customizer/customizer-controls.php:145
-msgid "Button"
-msgstr "Кнопка"
-
-#: inc/customizer/customizer-controls.php:146
-msgid "Link"
-msgstr "Ссылка"
-
-#: inc/customizer/customizer-controls.php:153
+#: inc/customizer/customizer-controls.php:124
 msgid "Demo"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:154
+#: inc/customizer/customizer-controls.php:125
 msgid "Select demo variant"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:156
+#: inc/customizer/customizer-controls.php:127
+#: inc/customizer/customizer-sortable.php:321
 msgid "Content"
 msgstr "Контент"
 
-#: inc/customizer/customizer-controls.php:157
+#: inc/customizer/customizer-controls.php:128
 msgid "Select container width"
 msgstr "Выберите ширину контейнера"
 
-#: inc/customizer/customizer-controls.php:157
-msgid "Here you can change the width of the site"
-msgstr "Здесь вы можете изменить ширину сайта"
+#: inc/customizer/customizer-controls.php:128
+msgid "Here you can change the container width of the site"
+msgstr "Здесь вы можете изменить ширину контейнера сайта"
 
-#: inc/customizer/customizer-controls.php:158
+#: inc/customizer/customizer-controls.php:129
 msgid "Select content width"
 msgstr "Выберите ширину контента"
 
-#: inc/customizer/customizer-controls.php:158
+#: inc/customizer/customizer-controls.php:129
 msgid "Note: its work if sidebar dont show"
 msgstr "Примечание: будет работать, только если sidebar отключен"
 
-#: inc/customizer/customizer-controls.php:160
+#: inc/customizer/customizer-controls.php:131
+#: inc/customizer/customizer-sortable.php:320
 msgid "Header"
 msgstr "Хедер"
 
-#: inc/customizer/customizer-controls.php:161
-#: inc/customizer/customizer-controls.php:169
+#: inc/customizer/customizer-controls.php:132
+#: inc/customizer/customizer-controls.php:141
 msgid "Top bar display"
 msgstr "Отображение топ-бара"
 
-#: inc/customizer/customizer-controls.php:161
+#: inc/customizer/customizer-controls.php:132
 msgid ""
 "This checkbox displays two sidebars before the header of the site. They are "
 "adds in the widget section options"
@@ -768,37 +727,46 @@ msgstr ""
 "Этот чекбокс отображает два сайдбара перед хедером сайта. Они добавляются в "
 "опциях раздела виджетов"
 
-#: inc/customizer/customizer-controls.php:162
+#: inc/customizer/customizer-controls.php:133
 msgid "Select header type"
 msgstr "Выберите тип хедера"
 
-#: inc/customizer/customizer-controls.php:162
+#: inc/customizer/customizer-controls.php:133
 msgid "You can change parts of the header on the widgets page"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:163
+#: inc/customizer/customizer-controls.php:134
 msgid "Select header mobile type"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:165
-#: templates/aside-menu-toggle.php:31
-#: templates/footer/footer-content-type-three-columns.php:36
+#: inc/customizer/customizer-controls.php:136
+#: templates/widget/widget-menu-toggle.php:32
 msgid "Menu"
 msgstr "Меню"
 
-#: inc/customizer/customizer-controls.php:166
+#: inc/customizer/customizer-controls.php:137
 msgid "Select menu alignment"
 msgstr "Выберите выравнивание меню"
 
-#: inc/customizer/customizer-controls.php:166
+#: inc/customizer/customizer-controls.php:137
 msgid "Alignment of the menu container"
 msgstr "Выравнивание контейнера меню"
 
-#: inc/customizer/customizer-controls.php:168
+#: inc/customizer/customizer-controls.php:138
+#: inc/widgets/class-widget-menus.php:63
+msgid "Count category items display"
+msgstr "Отображение подсчета элементов категории"
+
+#: inc/customizer/customizer-controls.php:138
+msgid "This checkbox displays count posts in taxonomies"
+msgstr ""
+
+#: inc/customizer/customizer-controls.php:140
+#: inc/customizer/customizer-sortable.php:323
 msgid "Footer"
 msgstr "Футер"
 
-#: inc/customizer/customizer-controls.php:169
+#: inc/customizer/customizer-controls.php:141
 msgid ""
 "This checkbox displays two sidebars before the footer of the site. They are "
 "adds in the widget section options"
@@ -806,11 +774,11 @@ msgstr ""
 "Этот чекбокс включает два сайдбара перед футером сайта. Они добавляются в "
 "опциях раздела виджетов"
 
-#: inc/customizer/customizer-controls.php:170
+#: inc/customizer/customizer-controls.php:142
 msgid "Bottom bar display"
 msgstr "Отображение боттом-бара"
 
-#: inc/customizer/customizer-controls.php:170
+#: inc/customizer/customizer-controls.php:142
 msgid ""
 "This checkbox displays two sidebars after the footer of the site. They are "
 "adds in the widget section options"
@@ -818,461 +786,455 @@ msgstr ""
 "Этот чекбокс включает два сайдбара после футера сайта. Они добавляются в "
 "опциях раздела виджетов"
 
-#: inc/customizer/customizer-controls.php:171
+#: inc/customizer/customizer-controls.php:143
 msgid "Select footer type"
 msgstr "Выберите тип футера"
 
-#: inc/customizer/customizer-controls.php:173
+#: inc/customizer/customizer-controls.php:145
 msgid "Breadcrumbs"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:174
+#: inc/customizer/customizer-controls.php:146
 msgid "Breadcrumbs display"
 msgstr "Отображение хлебных крошек"
 
-#: inc/customizer/customizer-controls.php:175
+#: inc/customizer/customizer-controls.php:147
 msgid "Select breadcrumbs type"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:176
+#: inc/customizer/customizer-controls.php:148
 msgid "Breadcrumbs separator"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:178
-#: inc/widgets/class-widget-subscribe-form.php:30
+#: inc/customizer/customizer-controls.php:150 inc/widgets/widget-init.php:275
 msgid "Subscribe form"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:179
+#: inc/customizer/customizer-controls.php:151
 msgid "Subscribe form before footer display"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:180
+#: inc/customizer/customizer-controls.php:152
 msgid "Subscribe form type"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:181
+#: inc/customizer/customizer-controls.php:153
 msgid "Subscribe form title"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:182
+#: inc/customizer/customizer-controls.php:154
 msgid "Subscribe form background image"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:183
+#: inc/customizer/customizer-controls.php:155
 msgid "Subscribe form shortcode"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:183
+#: inc/customizer/customizer-controls.php:155
 msgid "Use this field if you chose Mailchimp"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:185
-#: inc/customizer/customizer-controls.php:262
+#: inc/customizer/customizer-controls.php:157
+msgid "Scroll top structure"
+msgstr "Структура блока Наверх"
+
+#: inc/customizer/customizer-controls.php:160
+#: inc/customizer/customizer-controls.php:229
 msgid "Other"
 msgstr "Другое"
 
-#: inc/customizer/customizer-controls.php:186
+#: inc/customizer/customizer-controls.php:161
 msgid "Cookie display"
 msgstr "Отображение cookie"
 
-#: inc/customizer/customizer-controls.php:186
+#: inc/customizer/customizer-controls.php:161
 msgid "Displays a notification about the use of cookies on the site"
 msgstr "Отображает уведомление об использовании cookie на сайте"
 
-#: inc/customizer/customizer-controls.php:190
+#: inc/customizer/customizer-controls.php:165
 msgid "Slider"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:191
+#: inc/customizer/customizer-controls.php:166
 msgid "Slider display"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:192
+#: inc/customizer/customizer-controls.php:167
 msgid "Slider post type"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:193
+#: inc/customizer/customizer-controls.php:168
 msgid "Slides count"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:194
+#: inc/customizer/customizer-controls.php:169
 msgid "Slides to show"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:195
-#: inc/customizer/customizer-controls.php:299
-#: inc/customizer/customizer-controls.php:321
+#: inc/customizer/customizer-controls.php:170
+#: inc/customizer/customizer-controls.php:255
+#: inc/customizer/customizer-controls.php:288
 msgid "Select template type"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:195
-#: inc/customizer/customizer-controls.php:321
+#: inc/customizer/customizer-controls.php:170
+#: inc/customizer/customizer-controls.php:288
 msgid "This field displays template of posts"
 msgstr "В этом поле отображается шаблон постов"
 
-#: inc/customizer/customizer-controls.php:200
+#: inc/customizer/customizer-controls.php:175
 msgid "Fonts"
-msgstr ""
+msgstr "Шрифты"
 
-#: inc/customizer/customizer-controls.php:201
+#: inc/customizer/customizer-controls.php:176
 msgid "Select primary font"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:202
+#: inc/customizer/customizer-controls.php:177
 msgid "Select secondary font"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:204
+#: inc/customizer/customizer-controls.php:179
 msgid "Colors"
-msgstr ""
+msgstr "Цвета"
 
-#: inc/customizer/customizer-controls.php:205
+#: inc/customizer/customizer-controls.php:180
 msgid "Select color scheme"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:206
+#: inc/customizer/customizer-controls.php:181
 msgid "Select primary color"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:207
+#: inc/customizer/customizer-controls.php:182
 msgid "Select secondary color"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:208
+#: inc/customizer/customizer-controls.php:183
 msgid "Select gray color"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:209
+#: inc/customizer/customizer-controls.php:184
 msgid "Select link color"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:211
+#: inc/customizer/customizer-controls.php:186 inc/widgets/widget-init.php:265
 msgid "Buttons"
 msgstr "Кнопки"
 
-#: inc/customizer/customizer-controls.php:212
+#: inc/customizer/customizer-controls.php:187
+#: inc/widgets/class-widget-buttons.php:58
+#: inc/widgets/class-widget-language-switcher.php:53
+#: inc/widgets/class-widget-search-popup-form.php:53
+#: inc/widgets/class-widget-socials.php:65
+#: inc/widgets/class-widget-subscribe-popup-form.php:47
 msgid "Select button type"
 msgstr "Выберите тип кнопки"
 
-#: inc/customizer/customizer-controls.php:213
-msgid "Display button icons"
-msgstr ""
-
-#: inc/customizer/customizer-controls.php:214
+#: inc/customizer/customizer-controls.php:188
 msgid "Select button icon position"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:215
+#: inc/customizer/customizer-controls.php:189
+#: inc/widgets/class-widget-socials.php:53
 msgid "Select button size"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:216
+#: inc/customizer/customizer-controls.php:190
 msgid "Select button border width"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:217
+#: inc/customizer/customizer-controls.php:191
 msgid "Select button border radius"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:219
+#: inc/customizer/customizer-controls.php:193
 msgid "Menu button"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:220
+#: inc/customizer/customizer-controls.php:194
 msgid "Select menu button color"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:221
+#: inc/customizer/customizer-controls.php:195
 msgid "Select menu button type"
-msgstr "Выберите тип кнопки меню"
+msgstr ""
 
-#: inc/customizer/customizer-controls.php:222
+#: inc/customizer/customizer-controls.php:196
 msgid "Select menu button content"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:223
-#: inc/customizer/customizer-controls.php:230
-#: inc/customizer/customizer-controls.php:237
-#: inc/customizer/customizer-controls.php:243
-#: inc/customizer/customizer-controls.php:249
-#: inc/customizer/customizer-controls.php:255
-#: inc/widgets/class-widget-search-popup-form.php:64
-#: inc/widgets/class-widget-subscribe-popup-form.php:58
-msgid "Rounded button"
-msgstr ""
-
-#: inc/customizer/customizer-controls.php:225
+#: inc/customizer/customizer-controls.php:198
 msgid "Home button"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:226
+#: inc/customizer/customizer-controls.php:199
 msgid "Select home button display"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:227
+#: inc/customizer/customizer-controls.php:200
 msgid "Select home button color"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:228
+#: inc/customizer/customizer-controls.php:201
 msgid "Select home button type"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:229
+#: inc/customizer/customizer-controls.php:202
 msgid "Select home button content"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:232
+#: inc/customizer/customizer-controls.php:204
+#: inc/customizer/customizer-sortable.php:286
 msgid "Scroll top button"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:233
-msgid "Scroll to top button display"
-msgstr "Отображение кнопки «Вверх»"
-
-#: inc/customizer/customizer-controls.php:234
+#: inc/customizer/customizer-controls.php:205
 msgid "Select scroll top button color"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:235
+#: inc/customizer/customizer-controls.php:206
 msgid "Select scroll top button type"
-msgstr "Выберите тип кнопки «наверх»"
+msgstr ""
 
-#: inc/customizer/customizer-controls.php:236
+#: inc/customizer/customizer-controls.php:207
 msgid "Select scroll top button content"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:239
+#: inc/customizer/customizer-controls.php:209
 msgid "Subscribe popup form button"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:240
-#: inc/widgets/class-widget-subscribe-popup-form.php:40
+#: inc/customizer/customizer-controls.php:210
 msgid "Select subscribe popup form button color"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:241
-#: inc/widgets/class-widget-subscribe-popup-form.php:46
+#: inc/customizer/customizer-controls.php:211
 msgid "Select subscribe popup form button type"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:242
-#: inc/widgets/class-widget-subscribe-popup-form.php:52
+#: inc/customizer/customizer-controls.php:212
 msgid "Select subscribe popup form button content"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:245
+#: inc/customizer/customizer-controls.php:214
 msgid "Search form button"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:246
+#: inc/customizer/customizer-controls.php:215
 msgid "Select search form button color"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:247
+#: inc/customizer/customizer-controls.php:216
 msgid "Select search form button type"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:248
+#: inc/customizer/customizer-controls.php:217
 msgid "Select search form button content"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:251
+#: inc/customizer/customizer-controls.php:219
 msgid "Search popup form button"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:252
-#: inc/widgets/class-widget-search-popup-form.php:46
+#: inc/customizer/customizer-controls.php:220
 msgid "Select search popup form button color"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:253
-#: inc/widgets/class-widget-search-popup-form.php:52
+#: inc/customizer/customizer-controls.php:221
 msgid "Select search popup form button type"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:254
-#: inc/widgets/class-widget-search-popup-form.php:58
+#: inc/customizer/customizer-controls.php:222
 msgid "Select search popup form button content"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:257
+#: inc/customizer/customizer-controls.php:224
 msgid "Inputs"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:258
+#: inc/customizer/customizer-controls.php:225
+#: inc/widgets/class-widget-search-popup-form.php:41
 msgid "Select input size"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:259
+#: inc/customizer/customizer-controls.php:226
 msgid "Select input border width"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:260
+#: inc/customizer/customizer-controls.php:227
 msgid "Select input border radius"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:263
+#: inc/customizer/customizer-controls.php:230
 msgid "Select element shadow"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:264
+#: inc/customizer/customizer-controls.php:231
 msgid "Select element border width"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:280
-msgid "By date"
-msgstr "По дате"
-
-#: inc/customizer/customizer-controls.php:281
-msgid "By modified date"
-msgstr "По дате изменения"
-
-#: inc/customizer/customizer-controls.php:282
-msgid "By title"
-msgstr "По заголовку"
-
-#: inc/customizer/customizer-controls.php:283
-msgid "By random"
-msgstr "Случайно"
-
-#: inc/customizer/customizer-controls.php:287
-msgid "By menu order"
-msgstr "По параметру menu_order"
-
-#: inc/customizer/customizer-controls.php:294
-#: inc/customizer/customizer-controls.php:331
+#: inc/customizer/customizer-controls.php:250
+#: inc/customizer/customizer-controls.php:296
+#: inc/widgets/class-widget-recent-posts.php:79
 msgid "Post meta structure"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:296
+#: inc/customizer/customizer-controls.php:252
 msgid "Post footer structure"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:298
-#: inc/customizer/customizer-controls.php:318
+#: inc/customizer/customizer-controls.php:254
+#: inc/customizer/customizer-controls.php:285
 msgid "Main options"
 msgstr "Основные настройки"
 
-#: inc/customizer/customizer-controls.php:299
+#: inc/customizer/customizer-controls.php:255
 msgid "This field displays template of the post"
 msgstr "В этом поле отображается шаблон поста"
 
-#: inc/customizer/customizer-controls.php:300
+#: inc/customizer/customizer-controls.php:256
 msgid "Prev/next post navigation display"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:301
+#: inc/customizer/customizer-controls.php:257
 msgid "Entry footer display"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:306
+#: inc/customizer/customizer-controls.php:262
 msgid "Entry footer cats display"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:307
+#: inc/customizer/customizer-controls.php:263
 msgid "Entry footer tags display"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:308
+#: inc/customizer/customizer-controls.php:264
 msgid "Similar posts display"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:309
-#: inc/customizer/customizer-controls.php:323
+#: inc/customizer/customizer-controls.php:265
+#: inc/customizer/customizer-controls.php:290
+#: inc/widgets/class-widget-recent-posts.php:41
 msgid "Select posts order"
-msgstr "Выберите порядок сортировки"
+msgstr ""
 
-#: inc/customizer/customizer-controls.php:310
-#: inc/customizer/customizer-controls.php:324
+#: inc/customizer/customizer-controls.php:266
+#: inc/customizer/customizer-controls.php:291
+#: inc/widgets/class-widget-recent-posts.php:47
 msgid "Select posts orderby"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:311
+#: inc/customizer/customizer-controls.php:267
+#: inc/widgets/class-widget-recent-posts.php:56
 msgid "Select posts count"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:319
+#: inc/customizer/customizer-controls.php:274
+msgid "Root"
+msgstr ""
+
+#: inc/customizer/customizer-controls.php:275
+msgid "Select post background"
+msgstr "Выбрать фон постов"
+
+#: inc/customizer/customizer-controls.php:276
+msgid "Select equal height element"
+msgstr "Выберите элемент для выравнивания по высоте"
+
+#: inc/customizer/customizer-controls.php:277
+#: inc/widgets/class-widget-recent-posts.php:61
+msgid "Select title size"
+msgstr "Выберите размер заголовка"
+
+#: inc/customizer/customizer-controls.php:278
+msgid "Select post thumbnail aspect ratio"
+msgstr "Выберите соотношение сторон миниатюры постов"
+
+#: inc/customizer/customizer-controls.php:279
+msgid "Select post thumbnail padding"
+msgstr "Выберите отступ для миниатюр постов"
+
+#: inc/customizer/customizer-controls.php:280
+msgid "Select post content padding"
+msgstr "Выберите внутренний отступ постов"
+
+#: inc/customizer/customizer-controls.php:281
+msgid "Select post shadow"
+msgstr "Выберите тень границы постов"
+
+#: inc/customizer/customizer-controls.php:282
+msgid "Select post border width"
+msgstr "Выберите ширину границы постов"
+
+#: inc/customizer/customizer-controls.php:283
+msgid "Select post border radius"
+msgstr "Выберите радиус границы постов"
+
+#: inc/customizer/customizer-controls.php:286
 msgid "Masonry blog style"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:320
+#: inc/customizer/customizer-controls.php:287
 msgid "Select columns of posts"
 msgstr "Выберите количество колонок постов"
 
-#: inc/customizer/customizer-controls.php:320
+#: inc/customizer/customizer-controls.php:287
 msgid "Choose how many columns to display posts"
 msgstr "Выберите количество колонок для отображения постов"
 
-#: inc/customizer/customizer-controls.php:322
+#: inc/customizer/customizer-controls.php:289
 msgid "Select posts per page"
-msgstr ""
+msgstr "Выберите количество постов на странице"
 
-#: inc/customizer/customizer-controls.php:325
+#: inc/customizer/customizer-controls.php:292
 msgid "Post pagination"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:326
-msgid "Read more button type"
+#: inc/customizer/customizer-controls.php:293
+msgid "Read more button content"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:329
+#: inc/customizer/customizer-controls.php:298
 msgid "Post thumbnail structure"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:344
-msgid "Taxonomy options"
+#: inc/customizer/customizer-controls.php:299
+msgid "Add a default banner if thumbnail is not installed"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:345
-msgid "Select taxomy for display"
+#: inc/customizer/customizer-controls.php:300
+msgid "Elements before thumbnail"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:352
-msgid "Social list"
-msgstr "Соц.сети"
-
-#: inc/customizer/customizer-controls.php:352
-msgid ""
-"Add a link to social-list networks using a shortcode <strong>[aesthetix-"
-"social-list]</strong>"
+#: inc/customizer/customizer-controls.php:300
+#: inc/customizer/customizer-controls.php:301
+msgid "This option does not work for grid image template type"
 msgstr ""
-"Добавьте ссылку на социальный список сетей с помощью шорткода "
-"<strong>[aesthetix-social-list]</strong>"
 
-#: inc/customizer/customizer-controls.php:353
-msgid "Facebook link"
-msgstr "Ссылка Фуйсбук"
+#: inc/customizer/customizer-controls.php:301
+msgid "Elements after thumbnail"
+msgstr ""
 
-#: inc/customizer/customizer-controls.php:354
-msgid "Instagram link"
-msgstr "Ссылка Инстаграм"
+#: inc/customizer/customizer-controls.php:308
+msgid "Ajax"
+msgstr ""
 
-#: inc/customizer/customizer-controls.php:355
-msgid "Youtube link"
-msgstr "Ссылка Ютуб"
+#: inc/customizer/customizer-controls.php:308
+msgid "Add sending comments without reloading the page for unauthorized users"
+msgstr ""
+"Добавьте отправку комментариев без перезагрузки страницы для "
+"неавторизованных пользователей"
 
-#: inc/customizer/customizer-controls.php:356
-msgid "Twitter link"
-msgstr "Ссылка Твиттер"
+#: inc/customizer/customizer-controls.php:309
+msgid "Comments structure"
+msgstr "Структура комментариев"
 
-#: inc/customizer/customizer-controls.php:357
-msgid "Telegram link"
-msgstr "Ссылка Телеграм"
-
-#: inc/customizer/customizer-controls.php:358
-msgid "Linkedin link"
-msgstr "Ссылка LinkedIn"
-
-#: inc/customizer/customizer-controls.php:359
-msgid "Vkontakte link"
-msgstr "Ссылка Вконтакте"
-
-#: inc/customizer/customizer-controls.php:361
+#: inc/customizer/customizer-controls.php:315
 msgid "Contacts list"
 msgstr "Список контактов"
 
-#: inc/customizer/customizer-controls.php:361
+#: inc/customizer/customizer-controls.php:315
 msgid ""
 "Add a link to contacts-list using a shortcode <strong>[aesthetix-contacts-"
 "list]</strong> or single <strong>[aesthetix-email]</strong>, "
@@ -1282,238 +1244,372 @@ msgstr ""
 "contacts-list]</strong> или одиночные <strong>[aesthetix-email]</strong>, "
 "<strong>[aesthetix-phone]</strong>, <strong>[aesthetix-address]</strong>"
 
-#: inc/customizer/customizer-controls.php:362
+#: inc/customizer/customizer-controls.php:316
+#: inc/widgets/class-widget-contacts.php:47
 msgid "Address"
 msgstr "Адрес"
 
-#: inc/customizer/customizer-controls.php:363
+#: inc/customizer/customizer-controls.php:317
+#: inc/widgets/class-widget-contacts.php:52
 msgid "Phone"
 msgstr "Телефон"
 
-#: inc/customizer/customizer-controls.php:365
-msgid "Whatsapp phone"
-msgstr "Телефон в Whatsapp"
+#: inc/customizer/customizer-controls.php:318
+#: inc/widgets/class-widget-contacts.php:57
+#: templates/comment/comment-form.php:46
+msgid "Email"
+msgstr "Почта"
 
-#: inc/customizer/customizer-controls.php:365
-msgid "Enter data in the format 7999XXXXXXX without \"+\""
-msgstr "Введите данные в формате 7999XXXXXXX без \"+\""
+#: inc/customizer/customizer-controls.php:319
+#: inc/widgets/class-widget-buttons.php:50
+#: inc/widgets/class-widget-contacts.php:62
+#: templates/aside/aside-scroll-top.php:47
+#: templates/widget/widget-buttons.php:60
+msgid "WhatsApp"
+msgstr "WhatsApp"
 
-#: inc/customizer/customizer-controls.php:366
-msgid "Telegram chat link"
-msgstr "Ссылка на чат Telegram"
-
-#: inc/customizer/customizer-controls.php:366
-msgid "Enter you telegram chet link for contact with you"
+#: inc/customizer/customizer-controls.php:319
+msgid "Enter your WhatsApp phone for contact with you"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:371
+#: inc/customizer/customizer-controls.php:320
+#: inc/customizer/customizer-selects.php:857
+#: inc/widgets/class-widget-buttons.php:49
+#: inc/widgets/class-widget-contacts.php:67
+#: templates/aside/aside-scroll-top.php:38
+#: templates/widget/widget-buttons.php:49
+msgid "Telegram"
+msgstr "Телеграм"
+
+#: inc/customizer/customizer-controls.php:320
+msgid "Enter your personal/bot Telegram link for contact with you"
+msgstr "Введите свою личную ссылку/бота в Telegram для связи с вами"
+
+#: inc/customizer/customizer-controls.php:321
+msgid "Social list"
+msgstr "Список соц.сетей"
+
+#: inc/customizer/customizer-controls.php:321
+msgid ""
+"Add a link to social-list networks using a shortcode <strong>[aesthetix-"
+"social-list]</strong>"
+msgstr ""
+"Добавьте ссылку на социальный список сетей с помощью шорткода "
+"<strong>[aesthetix-social-list]</strong>"
+
+#: inc/customizer/customizer-controls.php:330
+#: inc/widgets/class-widget-logo.php:41
 msgid "Select logo size"
-msgstr ""
+msgstr "Выберите размер логотипа"
 
-#: inc/customizer/customizer-defaults.php:53
+#: inc/customizer/customizer-defaults.php:50
 msgid "Subscribe to our newsletter for all the latest updates"
 msgstr ""
+"Подпишитесь на нашу рассылку, чтобы быть в курсе всех последних обновлений"
 
-#: inc/customizer/customizer-defaults.php:198
-msgid "Advertising banner"
-msgstr ""
-
-#: inc/customizer/customizer-functions.php:145
+#: inc/customizer/customizer-functions.php:215
 msgid "Base"
 msgstr ""
 
-#: inc/customizer/customizer-sections.php:35
+#: inc/customizer/customizer-sections.php:31
 msgid "General options"
 msgstr "Основные настройки"
 
-#: inc/customizer/customizer-sections.php:39
+#: inc/customizer/customizer-sections.php:35
 msgid "Root style options"
 msgstr ""
 
-#: inc/customizer/customizer-sections.php:43
+#: inc/customizer/customizer-sections.php:39
 msgid "Front page options"
 msgstr "Настройки главной страницы"
 
-#: inc/customizer/customizer-sections.php:47
+#: inc/customizer/customizer-sections.php:43
 msgid "Archive options"
 msgstr "Настройки архивов"
 
-#: inc/customizer/customizer-sections.php:59
+#: inc/customizer/customizer-sections.php:55
 #, php-format
 msgid "Single %s options"
 msgstr ""
 
-#: inc/customizer/customizer-sections.php:63
+#: inc/customizer/customizer-sections.php:59
 #, php-format
 msgid "Archive %s options"
 msgstr ""
 
-#: inc/customizer/customizer-sections.php:69
+#: inc/customizer/customizer-sections.php:65
+msgid "Comments options"
+msgstr "Параметры комментариев"
+
+#: inc/customizer/customizer-sections.php:70
 msgid "Other options"
 msgstr "Другие настройки"
 
-#: inc/customizer/customizer-sections.php:74
+#: inc/customizer/customizer-sections.php:75
 msgid "Advertising banners"
+msgstr "Рекламные баннеры"
+
+#: inc/customizer/customizer-selects.php:29
+msgid "Button + icon + text"
+msgstr ""
+
+#: inc/customizer/customizer-selects.php:30
+msgid "Button + icon"
+msgstr ""
+
+#: inc/customizer/customizer-selects.php:31
+msgid "Button + text"
+msgstr ""
+
+#: inc/customizer/customizer-selects.php:32
+msgid "Link + icon + text"
+msgstr ""
+
+#: inc/customizer/customizer-selects.php:33
+msgid "Link + text"
 msgstr ""
 
 #: inc/customizer/customizer-selects.php:34
-msgid "Post title"
+msgid "Text + icon"
 msgstr ""
 
 #: inc/customizer/customizer-selects.php:35
-#: inc/customizer/customizer-selects.php:77
-msgid "Post thumbnail"
-msgstr "Изображение записи"
+#: inc/widgets/class-widget-use-materials.php:48
+msgid "Text"
+msgstr ""
 
 #: inc/customizer/customizer-selects.php:36
-#: inc/customizer/customizer-selects.php:78
-msgid "Post meta data"
+msgid "Icon"
 msgstr ""
 
-#: inc/customizer/customizer-selects.php:37
-msgid "Post excerpt"
-msgstr ""
-
-#: inc/customizer/customizer-selects.php:38
-msgid "Post author widget"
-msgstr ""
-
-#: inc/customizer/customizer-selects.php:39
-msgid "Post read more"
-msgstr ""
-
-#: inc/customizer/customizer-selects.php:76
-msgid "Post header"
-msgstr "Хедер записи"
-
-#: inc/customizer/customizer-selects.php:79
-msgid "Post content"
-msgstr "Контент записи"
-
-#: inc/customizer/customizer-selects.php:80
-msgid "Post footer"
-msgstr "Футер записи"
-
-#: inc/customizer/customizer-selects.php:121
-#: inc/customizer/customizer-selects.php:167
-msgid "Categories"
-msgstr "Категории"
-
-#: inc/customizer/customizer-selects.php:122
-#: inc/customizer/customizer-selects.php:168
-msgid "Tags"
-msgstr ""
-
-#: inc/customizer/customizer-selects.php:159
-msgid "Author"
-msgstr "Автор"
-
-#: inc/customizer/customizer-selects.php:160
-msgid "Publication date"
-msgstr "Дата публикации"
-
-#: inc/customizer/customizer-selects.php:161
-msgid "Reading time"
-msgstr "Время чтения"
-
-#: inc/customizer/customizer-selects.php:162
-#: templates/archive/archive-entry-post-meta.php:67
-#: templates/single/single-entry-post-meta.php:65
-msgid "Comments"
-msgstr "Комментарии"
-
-#: inc/customizer/customizer-selects.php:354
-#: inc/customizer/customizer-selects.php:675
-msgid "Primary"
-msgstr ""
-
-#: inc/customizer/customizer-selects.php:355
-#: inc/customizer/customizer-selects.php:676
-msgid "Secondary"
-msgstr ""
-
-#: inc/customizer/customizer-selects.php:356
-msgid "Blue"
-msgstr ""
-
-#: inc/customizer/customizer-selects.php:357
-#: inc/customizer/customizer-selects.php:677
-msgid "Gray"
-msgstr ""
-
-#: inc/customizer/customizer-selects.php:393
+#: inc/customizer/customizer-selects.php:70
 msgid "Common"
 msgstr "Общий"
 
-#: inc/customizer/customizer-selects.php:394
+#: inc/customizer/customizer-selects.php:71
 msgid "Empty"
 msgstr ""
 
-#: inc/customizer/customizer-selects.php:395
+#: inc/customizer/customizer-selects.php:72
 msgid "Gradient"
 msgstr ""
 
-#: inc/customizer/customizer-selects.php:396
+#: inc/customizer/customizer-selects.php:73
 msgid "Slide"
 msgstr ""
 
-#: inc/customizer/customizer-selects.php:432
-msgid "Extra small"
+#: inc/customizer/customizer-selects.php:312
+msgid "Full"
 msgstr ""
 
-#: inc/customizer/customizer-selects.php:433
-msgid "Small"
+#: inc/customizer/customizer-selects.php:353
+msgid "Inner"
 msgstr ""
 
-#: inc/customizer/customizer-selects.php:434
-msgid "Medium"
+#: inc/customizer/customizer-selects.php:514
+msgid "Theme"
+msgstr "Тема"
+
+#: inc/customizer/customizer-selects.php:517
+#: inc/customizer/customizer-selects.php:555
+#: inc/customizer/customizer-selects.php:592
+msgid "Gray"
 msgstr ""
 
-#: inc/customizer/customizer-selects.php:435
-msgid "Large"
+#: inc/customizer/customizer-selects.php:518
+#: inc/customizer/customizer-selects.php:553
+#: inc/customizer/customizer-selects.php:589
+msgid "Primary"
 msgstr ""
 
-#: inc/customizer/customizer-selects.php:436
-msgid "Extra large"
+#: inc/customizer/customizer-selects.php:519
+#: inc/customizer/customizer-selects.php:554
+#: inc/customizer/customizer-selects.php:590
+msgid "Secondary"
 msgstr ""
 
-#: inc/customizer/customizer-selects.php:601
+#: inc/customizer/customizer-selects.php:591
+msgid "Blue"
+msgstr ""
+
+#: inc/customizer/customizer-selects.php:686
 msgid "Theme (Messages will be sent to email)"
 msgstr ""
 
-#: inc/customizer/customizer-selects.php:638
-msgid "Post taxonomies"
+#: inc/customizer/customizer-selects.php:765
+msgid "By date"
+msgstr "По дате"
+
+#: inc/customizer/customizer-selects.php:766
+msgid "By modified date"
+msgstr "По дате изменения"
+
+#: inc/customizer/customizer-selects.php:767
+msgid "By title"
+msgstr "По заголовку"
+
+#: inc/customizer/customizer-selects.php:768
+msgid "By random"
+msgstr "Случайно"
+
+#: inc/customizer/customizer-selects.php:772
+msgid "By menu order"
+msgstr "По параметру menu order"
+
+#: inc/customizer/customizer-selects.php:815
+msgid "Grid"
 msgstr ""
 
-#: inc/customizer/customizer-selects.php:639
-msgid "Post sticky & formats"
+#: inc/customizer/customizer-selects.php:816
+msgid "Grid image"
 msgstr ""
 
-#: inc/customizer/customizer-selects.php:713
-msgid "Button + icon + text"
-msgstr "Кнопка + иконка + текст"
+#: inc/customizer/customizer-selects.php:817
+msgid "List"
+msgstr ""
 
-#: inc/customizer/customizer-selects.php:714
-msgid "Button + icon"
-msgstr "Кнопка + иконка"
+#: inc/customizer/customizer-selects.php:818
+msgid "List chess"
+msgstr ""
 
-#: inc/customizer/customizer-selects.php:715
-msgid "Button + text"
-msgstr "Кнопка + текст"
+#: inc/customizer/customizer-selects.php:852
+msgid "Instagram"
+msgstr "Инстаграм"
 
-#: inc/customizer/customizer-selects.php:716
-msgid "Icon"
-msgstr "Иконка"
+#: inc/customizer/customizer-selects.php:853
+msgid "Facebook"
+msgstr "Фейсбук"
 
-#: inc/customizer/customizer-selects.php:717
-msgid "Icon + text"
-msgstr "Иконка + текст"
+#: inc/customizer/customizer-selects.php:854
+msgid "YouTube"
+msgstr ""
 
-#: inc/customizer/customizer-selects.php:718
-msgid "Text"
-msgstr "Текст"
+#: inc/customizer/customizer-selects.php:855
+msgid "Twitter"
+msgstr "Твиттер"
 
-#: inc/handlers.php:111
+#: inc/customizer/customizer-selects.php:856
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: inc/customizer/customizer-selects.php:858
+msgid "Vkontakte"
+msgstr "Вконтакте"
+
+#: inc/customizer/customizer-sortable.php:38
+msgid "Post title"
+msgstr "Заголовок поста"
+
+#: inc/customizer/customizer-sortable.php:39
+#: inc/customizer/customizer-sortable.php:94
+msgid "Post meta data"
+msgstr "Мета-дата поста"
+
+#: inc/customizer/customizer-sortable.php:40
+msgid "Post excerpt"
+msgstr "Отрывок поста"
+
+#: inc/customizer/customizer-sortable.php:41
+msgid "Post author"
+msgstr "Автор поста"
+
+#: inc/customizer/customizer-sortable.php:42
+msgid "Post read more"
+msgstr "Читать далее поста"
+
+#: inc/customizer/customizer-sortable.php:92
+msgid "Post header"
+msgstr "Хедер поста"
+
+#: inc/customizer/customizer-sortable.php:93
+msgid "Post thumbnail"
+msgstr "Изображение поста"
+
+#: inc/customizer/customizer-sortable.php:95
+msgid "Post content"
+msgstr "Контент поста"
+
+#: inc/customizer/customizer-sortable.php:96
+msgid "Post footer"
+msgstr "Футер поста"
+
+#: inc/customizer/customizer-sortable.php:139
+#: inc/customizer/customizer-sortable.php:193
+#: templates/archive/archive-entry-post-meta.php:77
+#: templates/comment/comment-entry-footer.php:22
+#: templates/comment/comment-entry-footer.php:28
+#: templates/single/single-entry-post-footer.php:65
+#: templates/single/single-entry-post-meta.php:70
+#: templates/single/single-page.php:37
+msgid "Edit"
+msgstr "Редактировать"
+
+#: inc/customizer/customizer-sortable.php:189
+msgid "Author"
+msgstr "Автор"
+
+#: inc/customizer/customizer-sortable.php:190
+msgid "Publication date"
+msgstr "Дата публикации"
+
+#: inc/customizer/customizer-sortable.php:191
+msgid "Reading time"
+msgstr "Время чтения"
+
+#: inc/customizer/customizer-sortable.php:192
+#: templates/archive/archive-entry-post-meta.php:71
+#: templates/comment/comment-list.php:15
+#: templates/single/single-entry-post-meta.php:64
+msgid "Comments"
+msgstr "Комментарии"
+
+#: inc/customizer/customizer-sortable.php:243
+#: templates/archive/archive-entry-post-taxonomies.php:45
+msgid "Sticky"
+msgstr ""
+
+#: inc/customizer/customizer-sortable.php:284
+msgid "Telegram button"
+msgstr "Кнопка Телеграм"
+
+#: inc/customizer/customizer-sortable.php:285
+msgid "WhatsApp button"
+msgstr "Кнопка WhatsApp"
+
+#: inc/customizer/customizer-sortable.php:322
+msgid "Notifications"
+msgstr "Уведомления"
+
+#: inc/meta-boxes.php:23
+msgid "Post gallery"
+msgstr "Галерея постов"
+
+#: inc/meta-boxes.php:70
+msgid "Select image"
+msgstr "Выберите изображение"
+
+#: inc/meta-boxes.php:70
+msgid "Add post gallery images"
+msgstr "Добавить изображения галереи постов"
+
+#: inc/shortcode/shortcode-adv-banner.php:31
+#: templates/widget/widget-adv-banner.php:15
+msgid "Banner"
+msgstr "Баннер"
+
+#: inc/template-filters.php:54
+msgid "Setup menu"
+msgstr "Установить меню"
+
+#: inc/template-functions.php:787
+msgid "Notice from the site"
+msgstr "Уведомление с сайта"
+
+#: inc/template-handlers.php:75
+msgid "No posts found"
+msgstr "Постов не найдено"
+
+#: inc/template-handlers.php:112
 msgid ""
 "Your message does not pass the spam filter. If an error occurs, please write "
 "to <a href=\"mailto:team@zolin.digital\">team@zolin.digital</a>"
@@ -1522,269 +1618,553 @@ msgstr ""
 "пожалуйста, напишите на <a href=\"mailto:team@zolin.digital\">team@zolin."
 "digital</a>"
 
-#: inc/handlers.php:113
+#: inc/template-handlers.php:114
 msgid "There was an error submitting the form"
-msgstr ""
+msgstr "Произошла ошибка при отправке формы"
 
-#: inc/handlers.php:120
-msgid "Email address is incorrect"
-msgstr ""
-
-#: inc/handlers.php:123
-msgid "Please enter your email address"
-msgstr "Пожалуйста, введите ваш e-mail"
-
-#: inc/handlers.php:134
+#: inc/template-handlers.php:135
 msgid "New subscriber to"
-msgstr ""
+msgstr "Новый подписчик на"
 
-#: inc/handlers.php:147
+#: inc/template-handlers.php:155
 msgid "Subscribe completed successfully"
-msgstr ""
+msgstr "Подписка завершена успешно"
 
-#: inc/handlers.php:149
-msgid ""
-"An unknown error occurred while submitting the form. Please write to <a "
-"href=\"mailto:team@zolin.digital\">team@zolin.digital</a>"
-msgstr ""
-"При отправке формы произошла неизвестная ошибка. Пожалуйста, напишите на <a "
-"href=\"mailto:team@zolin.digital\">team@zolin.digital</a>"
-
-#: inc/setup.php:30
+#: inc/template-setup.php:26
 msgid "Primary menu"
 msgstr "Основное меню"
 
-#: inc/shortcodes.php:94
-msgid "Created by"
-msgstr "Разработано в"
+#: inc/template-setup.php:27
+msgid "Mobile menu"
+msgstr "Мобильное меню"
 
-#: inc/shortcodes.php:97
-msgid "All rights reserved"
-msgstr "Все права защищены"
+#: inc/template-setup.php:28
+msgid "Footer menu"
+msgstr "Меню футера"
 
-#: inc/shortcodes.php:171
-msgid "Privacy policy"
-msgstr "Политика конфиденциальности"
+#: inc/template-setup.php:29
+msgid "Categories"
+msgstr "Категории"
 
-#: inc/shortcodes.php:271
-msgid "Write to Telegram"
-msgstr "Написать в Telegram"
+#: inc/template-setup.php:30
+msgid "Tags"
+msgstr "Теги"
 
-#: inc/shortcodes.php:296
-msgid "Write to WhatsApp"
-msgstr "Написать в WhatsApp"
+#: inc/template-setup.php:31
+msgid "About us"
+msgstr "О нас"
 
-#: inc/template-filters.php:47
-msgid "Setup menu"
-msgstr "Установить меню"
+#: inc/template-setup.php:32
+msgid "Info"
+msgstr "Информация"
 
-#: inc/widgets/class-widget-search-popup-form.php:28
-#: inc/widgets/class-widget-subscribe-popup-form.php:28
-msgid "The global settings for this button can be found in the сustomizer"
-msgstr ""
+#: inc/widgets/abstract-widget.php:407
+msgid "Add image"
+msgstr "Добавить изображение"
 
-#: inc/widgets/class-widget-search-popup-form.php:30
-msgid "Search button"
-msgstr "Кнопка поиска"
+#: inc/widgets/class-widget-adv-banner.php:19
+msgid "This widget displays an advertising banner"
+msgstr "Этот виджет отображает рекламный баннер"
 
-#: inc/widgets/class-widget-search-popup-form.php:35
-#: inc/widgets/class-widget-subscribe-form.php:35
-#: inc/widgets/class-widget-subscribe-popup-form.php:35
+#: inc/widgets/class-widget-adv-banner.php:26
+#: inc/widgets/class-widget-buttons.php:26
+#: inc/widgets/class-widget-contacts.php:26
+#: inc/widgets/class-widget-copyright.php:26
+#: inc/widgets/class-widget-creator.php:26
+#: inc/widgets/class-widget-language-switcher.php:26
+#: inc/widgets/class-widget-logo.php:26 inc/widgets/class-widget-menus.php:31
+#: inc/widgets/class-widget-recent-posts.php:26
+#: inc/widgets/class-widget-search-popup-form.php:26
+#: inc/widgets/class-widget-socials.php:26
+#: inc/widgets/class-widget-subscribe-form.php:26
+#: inc/widgets/class-widget-subscribe-popup-form.php:26
+#: inc/widgets/class-widget-use-materials.php:33
 msgid "Title"
 msgstr "Заголовок"
 
-#: inc/widgets/class-widget-search-popup-form.php:40
-msgid "Select search popup form input size"
+#: inc/widgets/class-widget-adv-banner.php:31
+#: inc/widgets/class-widget-buttons.php:31
+#: inc/widgets/class-widget-contacts.php:31
+#: inc/widgets/class-widget-copyright.php:31
+#: inc/widgets/class-widget-creator.php:31
+#: inc/widgets/class-widget-language-switcher.php:31
+#: inc/widgets/class-widget-logo.php:31 inc/widgets/class-widget-menus.php:36
+#: inc/widgets/class-widget-recent-posts.php:31
+#: inc/widgets/class-widget-search-popup-form.php:31
+#: inc/widgets/class-widget-socials.php:31
+#: inc/widgets/class-widget-subscribe-form.php:31
+#: inc/widgets/class-widget-subscribe-popup-form.php:31
+#: inc/widgets/class-widget-use-materials.php:38
+msgid "Subtitle"
+msgstr "Допзаголовок"
+
+#: inc/widgets/class-widget-adv-banner.php:31
+#: inc/widgets/class-widget-buttons.php:31
+#: inc/widgets/class-widget-contacts.php:31
+#: inc/widgets/class-widget-copyright.php:31
+#: inc/widgets/class-widget-creator.php:31
+#: inc/widgets/class-widget-language-switcher.php:31
+#: inc/widgets/class-widget-logo.php:31 inc/widgets/class-widget-menus.php:36
+#: inc/widgets/class-widget-recent-posts.php:31
+#: inc/widgets/class-widget-search-popup-form.php:31
+#: inc/widgets/class-widget-socials.php:31
+#: inc/widgets/class-widget-subscribe-form.php:31
+#: inc/widgets/class-widget-subscribe-popup-form.php:31
+#: inc/widgets/class-widget-use-materials.php:38
+msgid "Before title"
+msgstr "До заголовка"
+
+#: inc/widgets/class-widget-adv-banner.php:36
+#: inc/widgets/class-widget-buttons.php:36
+#: inc/widgets/class-widget-contacts.php:36
+#: inc/widgets/class-widget-copyright.php:36
+#: inc/widgets/class-widget-creator.php:36
+#: inc/widgets/class-widget-language-switcher.php:36
+#: inc/widgets/class-widget-logo.php:36 inc/widgets/class-widget-menus.php:41
+#: inc/widgets/class-widget-recent-posts.php:36
+#: inc/widgets/class-widget-search-popup-form.php:36
+#: inc/widgets/class-widget-socials.php:36
+#: inc/widgets/class-widget-subscribe-form.php:36
+#: inc/widgets/class-widget-subscribe-popup-form.php:36
+#: inc/widgets/class-widget-use-materials.php:43
+msgid "Description"
+msgstr "Описание"
+
+#: inc/widgets/class-widget-adv-banner.php:36
+#: inc/widgets/class-widget-buttons.php:36
+#: inc/widgets/class-widget-contacts.php:36
+#: inc/widgets/class-widget-copyright.php:36
+#: inc/widgets/class-widget-creator.php:36
+#: inc/widgets/class-widget-language-switcher.php:36
+#: inc/widgets/class-widget-logo.php:36 inc/widgets/class-widget-menus.php:41
+#: inc/widgets/class-widget-recent-posts.php:36
+#: inc/widgets/class-widget-search-popup-form.php:36
+#: inc/widgets/class-widget-socials.php:36
+#: inc/widgets/class-widget-subscribe-form.php:36
+#: inc/widgets/class-widget-subscribe-popup-form.php:36
+#: inc/widgets/class-widget-use-materials.php:43
+msgid "After title"
+msgstr "После заголовка"
+
+#: inc/widgets/class-widget-adv-banner.php:41
+msgid "Desktop banner"
 msgstr ""
 
-#: inc/widgets/class-widget-subscribe-form.php:28
+#: inc/widgets/class-widget-adv-banner.php:46
+msgid "Tablet banner"
+msgstr ""
+
+#: inc/widgets/class-widget-adv-banner.php:51
+msgid "Mobile banner"
+msgstr ""
+
+#: inc/widgets/class-widget-adv-banner.php:56
+msgid "Link"
+msgstr "Ссылка"
+
+#: inc/widgets/class-widget-adv-banner.php:61
+msgid "Banner title"
+msgstr "Заголовок баннера"
+
+#: inc/widgets/class-widget-adv-banner.php:66
+msgid "Banner description"
+msgstr "Описание баннера"
+
+#: inc/widgets/class-widget-buttons.php:19
+#: inc/widgets/class-widget-contacts.php:19
+#: inc/widgets/class-widget-copyright.php:19
+#: inc/widgets/class-widget-creator.php:19 inc/widgets/class-widget-logo.php:19
+#: inc/widgets/class-widget-menus.php:24
+#: inc/widgets/class-widget-socials.php:19
+#: inc/widgets/class-widget-subscribe-form.php:19
+#: inc/widgets/class-widget-use-materials.php:26
 msgid "The global settings for this form can be found in the Customizer"
+msgstr "Глобальные настройки этой формы можно найти в кастомайзере"
+
+#: inc/widgets/class-widget-buttons.php:41
+#: inc/widgets/class-widget-contacts.php:41
+#: inc/widgets/class-widget-language-switcher.php:41
+#: inc/widgets/class-widget-socials.php:41
+msgid "Select style block"
+msgstr "Выберите стиль блока"
+
+#: inc/widgets/class-widget-buttons.php:42
+#: inc/widgets/class-widget-contacts.php:42
+#: inc/widgets/class-widget-language-switcher.php:42
+#: inc/widgets/class-widget-socials.php:42
+msgid "Inline"
 msgstr ""
 
-#: inc/widgets/class-widget-subscribe-popup-form.php:30
-msgid "Subscribe button"
+#: inc/widgets/class-widget-buttons.php:42
+#: inc/widgets/class-widget-contacts.php:42
+#: inc/widgets/class-widget-language-switcher.php:42
+#: inc/widgets/class-widget-socials.php:42
+msgid "Block"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:43
+#: inc/widgets/class-widget-buttons.php:47
+msgid "Select buttons"
+msgstr "Выберите кнопки"
+
+#: inc/widgets/class-widget-buttons.php:51 templates/subscribe-form.php:45
+#: templates/widget/widget-subscribe-toggle.php:23
+msgid "Subscribe"
+msgstr "Подписаться"
+
+#: inc/widgets/class-widget-buttons.php:52 searchform.php:23
+#: templates/widget/widget-search-toggle.php:24
+msgid "Search"
+msgstr "Поиск"
+
+#: inc/widgets/class-widget-buttons.php:64
+#: inc/widgets/class-widget-language-switcher.php:59
+#: inc/widgets/class-widget-search-popup-form.php:59
+#: inc/widgets/class-widget-socials.php:71
+#: inc/widgets/class-widget-subscribe-popup-form.php:53
+msgid "Select button content"
+msgstr "Выберите содержимое кнопки"
+
+#: inc/widgets/class-widget-copyright.php:41
+msgid "Start year"
+msgstr "Год начала"
+
+#: inc/widgets/class-widget-creator.php:41
+msgid "Creator link"
+msgstr "Ссылка автора"
+
+#: inc/widgets/class-widget-language-switcher.php:19
+#: inc/widgets/class-widget-search-popup-form.php:19
+#: inc/widgets/class-widget-subscribe-popup-form.php:19
+msgid "The global settings for this button can be found in the сustomizer"
+msgstr "Глобальные настройки этой кнопки можно найти в кастомайзере"
+
+#: inc/widgets/class-widget-language-switcher.php:42
+msgid "Dropdown"
+msgstr ""
+
+#: inc/widgets/class-widget-language-switcher.php:47
+#: inc/widgets/class-widget-search-popup-form.php:47
+#: inc/widgets/class-widget-socials.php:59
+#: inc/widgets/class-widget-subscribe-popup-form.php:41
+msgid "Select button color"
+msgstr "Выберите тип кнопок"
+
+#: inc/widgets/class-widget-menus.php:46
+msgid "Select count columns"
+msgstr "Выберите количество колонок"
+
+#: inc/widgets/class-widget-menus.php:57
+msgid "Menus structure"
+msgstr ""
+
+#: inc/widgets/class-widget-recent-posts.php:19
+msgid "This widget displays recent posts with aesthetix style"
+msgstr ""
+
+#: inc/widgets/class-widget-recent-posts.php:67
+msgid "Select posts layout"
+msgstr ""
+
+#: inc/widgets/class-widget-socials.php:47
+msgid "Select icon size"
+msgstr "Выберите размер иконки"
+
+#: inc/widgets/class-widget-use-materials.php:47
+#: templates/widget/widget-use-materials.php:17
+#, php-format
+msgid "Use of site materials is permitted only with reference to the source %s"
+msgstr ""
+"Использование материалов сайта разрешено только со ссылкой на источник %s"
+
+#: inc/widgets/widget-defaults.php:69 inc/widgets/widget-defaults.php:89
+msgid "Follow us"
+msgstr "Подписывайтесь на нас"
+
+#: inc/widgets/widget-defaults.php:70 inc/widgets/widget-defaults.php:90
+#: inc/widgets/widget-init.php:274
+msgid "Socials"
+msgstr "Соц.сети"
+
+#: inc/widgets/widget-defaults.php:74
+msgid "Contact us"
+msgstr "Связаться с нами"
+
+#: inc/widgets/widget-defaults.php:75
+msgid "Feel free"
+msgstr ""
+
+#: inc/widgets/widget-defaults.php:83
+msgid "Browse"
+msgstr "Меню"
+
+#: inc/widgets/widget-defaults.php:84
+msgid "Help & Info"
+msgstr "Помощь & информация"
+
+#: inc/widgets/widget-defaults.php:109 inc/widgets/widget-init.php:272
+msgid "Recent posts"
+msgstr "Недавние посты"
+
+#: inc/widgets/widget-defaults.php:114
+msgid "WordPress premium templates"
+msgstr ""
+
+#: inc/widgets/widget-init.php:47
 msgid "Main sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:44
+#: inc/widgets/widget-init.php:48
 msgid "Add widgets in main sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:48
+#: inc/widgets/widget-init.php:52
+msgid "Aside menu sidebar"
+msgstr ""
+
+#: inc/widgets/widget-init.php:53
+msgid "Add widgets in aside menu sidebar"
+msgstr ""
+
+#: inc/widgets/widget-init.php:57
+msgid "After header sidebar"
+msgstr ""
+
+#: inc/widgets/widget-init.php:58
+msgid "Add widgets in after header sidebar"
+msgstr ""
+
+#: inc/widgets/widget-init.php:62
+msgid "before post content sidebar"
+msgstr ""
+
+#: inc/widgets/widget-init.php:63
+msgid "Add widgets in before post content sidebar"
+msgstr ""
+
+#: inc/widgets/widget-init.php:67
+msgid "After post content sidebar"
+msgstr ""
+
+#: inc/widgets/widget-init.php:68
+msgid "Add widgets in after post content sidebar"
+msgstr ""
+
+#: inc/widgets/widget-init.php:72
+msgid "before footer sidebar"
+msgstr ""
+
+#: inc/widgets/widget-init.php:73
+msgid "Add widgets in before footer sidebar"
+msgstr ""
+
+#: inc/widgets/widget-init.php:77
 msgid "Header mobile left"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:49
+#: inc/widgets/widget-init.php:78
 msgid "Add widgets in header mobile left sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:53
+#: inc/widgets/widget-init.php:82
 msgid "Header mobile right"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:54
+#: inc/widgets/widget-init.php:83
 msgid "Add widgets in header mobile right sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:62
+#: inc/widgets/widget-init.php:91
 msgid "Header mobile center"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:63
+#: inc/widgets/widget-init.php:92
 msgid "Add widgets in header mobile center sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:73
+#: inc/widgets/widget-init.php:102
 msgid "Header top bar left"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:74
+#: inc/widgets/widget-init.php:103
 msgid "Add widgets in header top bar left sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:78
+#: inc/widgets/widget-init.php:107
 msgid "Header top bar right"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:79
+#: inc/widgets/widget-init.php:108
 msgid "Add widgets in header top bar right sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:85
+#: inc/widgets/widget-init.php:114
 msgid "Header main left"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:86
+#: inc/widgets/widget-init.php:115
 msgid "Add widgets in header main left sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:91
+#: inc/widgets/widget-init.php:120
 msgid "Header main right"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:92
+#: inc/widgets/widget-init.php:121
 msgid "Add widgets in header main right sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:98
+#: inc/widgets/widget-init.php:127
 msgid "Header main center"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:99
+#: inc/widgets/widget-init.php:128
 msgid "Add widgets in header main center sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:108
+#: inc/widgets/widget-init.php:137
 msgid "Header bottom left"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:109
+#: inc/widgets/widget-init.php:138
 msgid "Add widgets in header bottom left sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:116
+#: inc/widgets/widget-init.php:145
 msgid "Header bottom right"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:117
+#: inc/widgets/widget-init.php:146
 msgid "Add widgets in header bottom right sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:126
+#: inc/widgets/widget-init.php:155
 msgid "Footer top bar left"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:127
+#: inc/widgets/widget-init.php:156
 msgid "Add widgets in footer top bar left sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:132
+#: inc/widgets/widget-init.php:161
 msgid "Footer top bar right"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:133
+#: inc/widgets/widget-init.php:162
 msgid "Add widgets in footer top bar right sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:141
+#: inc/widgets/widget-init.php:170
 msgid "Footer main first sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:142
+#: inc/widgets/widget-init.php:171
 msgid "Add widgets in footer main first sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:147
-msgid "Footer main second right"
+#: inc/widgets/widget-init.php:176
+msgid "Footer main second sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:148
+#: inc/widgets/widget-init.php:177
 msgid "Add widgets in footer main second sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:153
-msgid "Footer main third right"
+#: inc/widgets/widget-init.php:182
+msgid "Footer main third sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:154
+#: inc/widgets/widget-init.php:183
 msgid "Add widgets in footer main third sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:160
-msgid "Footer main fourth right"
+#: inc/widgets/widget-init.php:189
+msgid "Footer main fourth sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:161
+#: inc/widgets/widget-init.php:190
 msgid "Add widgets in footer main fourth sidebar"
 msgstr ""
 
-#: inc/widgets/widgets-init.php:170
+#: inc/widgets/widget-init.php:199
 msgid "Footer bottom bar left"
-msgstr ""
+msgstr "Нижняя левая панель футера"
 
-#: inc/widgets/widgets-init.php:171
+#: inc/widgets/widget-init.php:200
 msgid "Add widgets in footer bottom bar left sidebar"
-msgstr ""
+msgstr "Добавьте виджеты в левый нижний сайдбар футера"
 
-#: inc/widgets/widgets-init.php:176
+#: inc/widgets/widget-init.php:205
 msgid "Footer bottom bar right"
-msgstr ""
+msgstr "Нижняя правая панель футера"
 
-#: inc/widgets/widgets-init.php:177
+#: inc/widgets/widget-init.php:206
 msgid "Add widgets in footer bottom bar right sidebar"
-msgstr ""
+msgstr "Добавьте виджеты в правый нижний сайдбар футера"
 
-#: search.php:21
+#: inc/widgets/widget-init.php:225
+msgid "If the sidebar is empty, widgets are displayed by default"
+msgstr "Если сайдбар пустой, отображаются виджеты по умолчанию"
+
+#: inc/widgets/widget-init.php:264
+msgid "Adv banner"
+msgstr "Рекламный баннер"
+
+#: inc/widgets/widget-init.php:266
+msgid "Contacts"
+msgstr "Контакты"
+
+#: inc/widgets/widget-init.php:267
+msgid "Copyright"
+msgstr "Авторские права"
+
+#: inc/widgets/widget-init.php:268
+msgid "Creator"
+msgstr "Создатель"
+
+#: inc/widgets/widget-init.php:269
+msgid "Language switcher"
+msgstr "Переключатель языков"
+
+#: inc/widgets/widget-init.php:270
+msgid "Logo"
+msgstr "Логотип"
+
+#: inc/widgets/widget-init.php:271
+msgid "Menus"
+msgstr "Меню"
+
+#: inc/widgets/widget-init.php:273
+msgid "Search button"
+msgstr "Кнопка поиска"
+
+#: inc/widgets/widget-init.php:276
+msgid "Subscribe button"
+msgstr "Кнопка подписки"
+
+#: inc/widgets/widget-init.php:277
+msgid "Use materials"
+msgstr "Использовать материалы"
+
+#: search.php:25
 #, php-format
 msgid "Search results for: %s"
 msgstr "Результаты поиска для: %s"
 
-#: search.php:36 search.php:44
-msgid "Post type"
-msgstr "Тип записи"
-
-#: searchform.php:24
+#: searchform.php:19
 msgid "Search for"
 msgstr "Результаты поиска для: %s"
 
-#: searchform.php:28 templates/aside-search-toggle.php:20
-msgid "Search"
-msgstr "Поиск"
-
-#: templates/archive/archive-content-none.php:14
+#: templates/archive/archive-content-none.php:12
 msgid "Nothing found"
 msgstr "Ничего не найдено"
 
-#: templates/archive/archive-content-none.php:20
+#: templates/archive/archive-content-none.php:18
 #, php-format
 msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>"
 msgstr ""
 "Готовы опубликовать свой первый пост? <a href=\"%1$s\">Начните здесь</a>"
 
-#: templates/archive/archive-content-none.php:22
+#: templates/archive/archive-content-none.php:20
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different keywords"
@@ -1792,55 +2172,43 @@ msgstr ""
 "Извините, но мы не нашли результаты, соответствующие вашим условиям поиска. "
 "Пожалуйста, попытайтесь снова с другими ключевыми словами"
 
-#: templates/archive/archive-content-none.php:24
+#: templates/archive/archive-content-none.php:22
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
 "searching can help"
 msgstr ""
 "Похоже, мы не можем найти то, что вы ищете. Возможно, вам поможет поиск"
 
-#: templates/archive/archive-entry-post-author.php:26
+#: templates/archive/archive-entry-post-author.php:27
 msgid "Posted by"
-msgstr ""
+msgstr "Опубликовано"
 
-#: templates/archive/archive-entry-post-detail-button.php:14
-msgid "Continue reading"
-msgstr ""
-
-#: templates/archive/archive-entry-post-formats.php:16
-msgid "Sticky"
-msgstr ""
-
-#: templates/archive/archive-entry-post-meta.php:62
-#: templates/single/single-entry-post-meta.php:60
+#: templates/archive/archive-entry-post-meta.php:66
+#: templates/single/single-entry-post-meta.php:59
 msgid "min."
 msgstr "мин."
 
-#: templates/archive/archive-pagination.php:36
+#: templates/archive/archive-entry-post-more-button.php:29
+msgid "Continue reading"
+msgstr "Продолжить чтение"
+
+#: templates/archive/archive-pagination.php:33
 msgid "First"
-msgstr ""
+msgstr "Первый"
 
-#: templates/archive/archive-pagination.php:69
+#: templates/archive/archive-pagination.php:66
 msgid "Last"
-msgstr ""
+msgstr "Последний"
 
-#: templates/archive/archive-pagination.php:81
-msgid "Next posts"
-msgstr "Новые посты"
-
-#: templates/archive/archive-pagination.php:89
+#: templates/archive/archive-pagination.php:78
 msgid "Previous posts"
 msgstr "Предыдущие посты"
 
-#: templates/aside-subscribe-toggle.php:20 templates/subscribe-form.php:45
-msgid "Subscribe"
-msgstr ""
+#: templates/archive/archive-pagination.php:86
+msgid "Next posts"
+msgstr "Новые посты"
 
-#: templates/button-scroll-top.php:23
-msgid "Scroll up"
-msgstr "Наверх"
-
-#: templates/cookie.php:18
+#: templates/aside/aside-cookie.php:16
 #, php-format
 msgid ""
 "By continuing to use %s, you agree to the use of cookies. More information "
@@ -1851,36 +2219,127 @@ msgstr ""
 "cookie. Более подробную информацию можно найти в <a class=\"%s\" href=\"%s\" "
 "target=\"_blank\">Политике конфиденциальности</a>"
 
-#: templates/footer/footer-content-type-four-columns.php:55
-#: templates/footer/footer-content-type-three-columns.php:62
-msgid "Contacts"
-msgstr "Контакты"
+#: templates/aside/aside-scroll-top.php:55
+msgid "Scroll up"
+msgstr "Наверх"
 
-#: templates/single/single-content-type-page.php:31
-#: templates/single/single-entry-post-footer.php:18
-msgid "Pages:"
-msgstr "Страницы:"
+#: templates/comment/comment-entry-footer.php:28
+msgid "Cancel"
+msgstr "Отмена"
 
-#: templates/single/single-entry-post-content.php:14
+#: templates/comment/comment-entry-footer.php:31
+msgid "Delete"
+msgstr "Удалить"
+
+#: templates/comment/comment-entry-header.php:37
+msgid "User site"
+msgstr "Пользовательский сайт"
+
+#: templates/comment/comment-entry-notifications.php:16
+msgid "Your comment is awaiting moderation"
+msgstr "Ваш комментарий ожидает модерации"
+
+#: templates/comment/comment-entry-notifications.php:22
+#, php-format
+msgid ""
+"You need to confirm your comment, an email has been sent to your email %s. "
+"If the email did not arrive, check your Spam folder or <a class=\"%s\" "
+"href=\"%s\" data-comment-id=\"%s\">resend</a>"
+msgstr ""
+"Вам необходимо подтвердить свой комментарий, на ваш адрес электронной почты "
+"%s было отправлено письмо. Если письмо не пришло, проверьте папку «Спам» или "
+"<a class=\"%s\" href=\"%s\" data-comment-id=\"%s\">отправьте повторно</a>"
+
+#: templates/comment/comment-entry-notifications.php:32
+msgid "This comment is awaiting moderation"
+msgstr "Этот комментарий ожидает модерации"
+
+#: templates/comment/comment-entry-notifications.php:37
+msgid "This comment is not approved by the user"
+msgstr "Этот комментарий не одобрен пользователем"
+
+#: templates/comment/comment-form.php:33 templates/comment/comment-form.php:86
+msgid "Your email address will not be published."
+msgstr "Ваш адрес электронной почты не будет опубликован."
+
+#: templates/comment/comment-form.php:41
+msgid "Name"
+msgstr "Имя"
+
+#: templates/comment/comment-form.php:46
+msgid "Will not be published"
+msgstr "Не будет опубликовано"
+
+#: templates/comment/comment-form.php:51
+msgid "Website"
+msgstr "Сайт"
+
+#: templates/comment/comment-form.php:57
+msgid "Comment"
+msgstr "Комментарий"
+
+#: templates/comment/comment-form.php:65
+#, php-format
+msgid "You must be <a href=\"%s\" class=\""
+msgstr ""
+
+#: templates/comment/comment-form.php:74
+#, php-format
+msgid "Logged in as %1$s. <a href=\"%2$s\" class=\""
+msgstr ""
+
+#: templates/comment/comment-form.php:92
+msgid "Sending..."
+msgstr "Отправка..."
+
+#: templates/comment/comment-form.php:108
+msgid ""
+"Save my name, email, and website in this browser for the next time I comment."
+msgstr ""
+"Сохранить мое имя, электронную почту и веб-сайт в этом браузере для "
+"следующего комментария."
+
+#: templates/comment/comment-form.php:118
+msgid "Comments are closed"
+msgstr "Комментарии закрыты"
+
+#: templates/comment/comment-list.php:31
+msgid "Previous comments"
+msgstr "Предыдущие комментарии"
+
+#: templates/comment/comment-list.php:32
+msgid "Next comments"
+msgstr "Следущие комментарии"
+
+#: templates/single/single-entry-post-content.php:12
 #, php-format
 msgid "Continue reading <span class=\"screen-reader-text\">\"%s\"</span>"
 msgstr "Продолжить чтение<span class=\"screen-reader-text\">\"%s\"</span>"
 
-#: templates/single/single-entry-post-footer.php:39
+#: templates/single/single-entry-post-footer.php:16
+#: templates/single/single-page.php:29
+msgid "Pages:"
+msgstr "Страницы:"
+
+#: templates/single/single-entry-post-footer.php:37
 msgid "Post categories"
-msgstr ""
+msgstr "Категории поста"
 
-#: templates/single/single-entry-post-footer.php:53
+#: templates/single/single-entry-post-footer.php:51
 msgid "Post tags"
-msgstr ""
+msgstr "Теги поста"
 
-#: templates/single/single-entry-post-meta.php:13
+#: templates/single/single-entry-post-meta.php:22
 msgid "Post meta information"
 msgstr "Мета-информация записи"
 
-#: templates/single/single-similar-posts.php:17
-msgid "Similar posts"
-msgstr "Похожие посты"
+#: templates/single/single-similar-posts.php:16
+msgid "Similar"
+msgstr "Похожие"
+
+#: templates/single/single-similar-posts.php:20
+msgid "All"
+msgstr "Все"
 
 #: templates/subscribe-form.php:44
 #, php-format
@@ -1892,6 +2351,81 @@ msgstr ""
 "Отправляя эту форму, вы соглашаетесь с условиями хранения и обработки ваших "
 "персональных данных, описанными в нашей <a class=\"%s\" href=\"%s\" "
 "target=\"_blank\">Политике конфиденциальности</a>"
+
+#: templates/widget/widget-contacts.php:51
+msgid "Write to WhatsApp"
+msgstr "Написать в WhatsApp"
+
+#: templates/widget/widget-contacts.php:57
+msgid "Write to Telegram"
+msgstr "Написать в Telegram"
+
+#: templates/widget/widget-copyright.php:29
+msgid "All rights reserved"
+msgstr "Все права защищены"
+
+#: templates/widget/widget-creator.php:29
+msgid "Created by"
+msgstr "Разработано в"
+
+#: templates/widget/widget-socials.php:66
+msgid "Setup social links"
+msgstr "Настройка социальных ссылок"
+
+#~ msgid "Comments:&nbsp;"
+#~ msgstr "Комментарии:&nbsp;"
+
+#, php-format
+#~ msgid ""
+#~ "<a href=\"%1$s\" aria-label=\"Logged in as %2$s. Edit your profile."
+#~ "\">Logged in as %2$s</a>. <a href=\"%3$s\">Log out?</a>"
+#~ msgstr ""
+#~ "<a href=\"%1$s\" aria-label=\"Вошел в систему как %2$s. Отредактируйте "
+#~ "свой профиль.\">Вошел в систему как %2$s</a>. <a href=\"%3$s\">Выйти из "
+#~ "системы?</a>"
+
+#~ msgid "Leave a reply"
+#~ msgstr "Ответить"
+
+#~ msgid "Post comment"
+#~ msgstr "Опубликовать комментарий"
+
+#~ msgid "General"
+#~ msgstr "Основной"
+
+#~ msgid "Average"
+#~ msgstr "Средний"
+
+#~ msgid "Tils"
+#~ msgstr "Плитка"
+
+#~ msgid "Button"
+#~ msgstr "Кнопка"
+
+#~ msgid "Scroll to top button display"
+#~ msgstr "Отображение кнопки «Вверх»"
+
+#~ msgid "Youtube link"
+#~ msgstr "Ссылка Ютуб"
+
+#~ msgid "Enter data in the format 7999XXXXXXX without \"+\""
+#~ msgstr "Введите данные в формате 7999XXXXXXX без \"+\""
+
+#~ msgid "Telegram chat link"
+#~ msgstr "Ссылка на чат Telegram"
+
+#~ msgid ""
+#~ "An unknown error occurred while submitting the form. Please write to <a "
+#~ "href=\"mailto:team@zolin.digital\">team@zolin.digital</a>"
+#~ msgstr ""
+#~ "При отправке формы произошла неизвестная ошибка. Пожалуйста, напишите на "
+#~ "<a href=\"mailto:team@zolin.digital\">team@zolin.digital</a>"
+
+#~ msgid "Privacy policy"
+#~ msgstr "Политика конфиденциальности"
+
+#~ msgid "Post type"
+#~ msgstr "Тип записи"
 
 #~ msgid "Archive "
 #~ msgstr "Архивы"
@@ -1949,9 +2483,6 @@ msgstr ""
 
 #~ msgid "What is your phone?"
 #~ msgstr "Ваш номер телефона"
-
-#~ msgid "Sending..."
-#~ msgstr "Отправка..."
 
 #~ msgid "Sent"
 #~ msgstr "Отправлено"
@@ -2019,9 +2550,6 @@ msgstr ""
 
 #~ msgid "Page"
 #~ msgstr "Страница"
-
-#~ msgid "Text Font"
-#~ msgstr "Текстовый шрифт"
 
 #~ msgid "Button type"
 #~ msgstr "Тип кнопки"
@@ -2113,26 +2641,14 @@ msgstr ""
 #~ msgid "Footer color scheme"
 #~ msgstr "Цветовая схема футера"
 
-#~ msgid "Scroll top"
-#~ msgstr "Наверх"
-
 #~ msgid "Seo meta tags separator"
 #~ msgstr "Разделитель SEO-метатегов"
-
-#~ msgid "Comments display"
-#~ msgstr "Отображение комментариев"
 
 #~ msgid "External UTM Links"
 #~ msgstr "Внешние UTM-ссылки"
 
 #~ msgid "Sidebar options"
 #~ msgstr "Настройки cайдбаров"
-
-#~ msgid "Third footer sidebar"
-#~ msgstr "Футер третья колонка"
-
-#~ msgid "Fourth footer sidebar"
-#~ msgstr "Футер четвертая колонка"
 
 #, php-format
 #~ msgid "Page generated in %s seconds"
@@ -2229,9 +2745,6 @@ msgstr ""
 #~ msgid "Continue reading <span class=\"screen-reader-text\">«%s»</span>"
 #~ msgstr "Продолжить чтение<span class=\"screen-reader-text\">«%s»</span>"
 
-#~ msgid "Main menu of the site"
-#~ msgstr "Основное меню сайта"
-
 #~ msgid "Header of the article with title"
 #~ msgstr "Заголовок статьи"
 
@@ -2252,9 +2765,6 @@ msgstr ""
 
 #~ msgid "Popup form"
 #~ msgstr "Попап форма"
-
-#~ msgid "Theme"
-#~ msgstr "Тема"
 
 #, fuzzy
 #~| msgid "Telegram link"

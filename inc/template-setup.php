@@ -248,7 +248,7 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 				$( \'.popup-gallery\' ).each( function() {
 					$( this ).magnificPopup( {
 						delegate: \'a\',
-						type: \'\',
+						type: \'image\',
 						gallery: {
 							enabled:true
 						},

@@ -7,6 +7,10 @@
  * @package Aesthetix
  */
 
+if ( ! $post ) {
+	return;
+}
+
 $defaults = array(
 	'post_format'         => get_post_format(),
 	'post_layout'         => get_aesthetix_options( 'archive_' . get_post_type() . '_layout' ),
@@ -37,7 +41,7 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 	<div <?php aesthetix_archive_page_columns_wrapper_classes( 'row-xs align-items-center' ); ?>>
 		<div class="col-xs col-5 align-self-stretch <?php echo esc_attr( $order_left ); ?>">
 
-			<?php if ( has_post_thumbnail( $post ) ) {
+			<?php if ( has_post_thumbnail( $post ) || get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_default' ) ) {
 
 				$classes[] = 'has-post-thumbnail'; ?>
 

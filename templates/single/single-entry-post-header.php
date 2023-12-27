@@ -8,7 +8,7 @@
  */
  ?>
 
-<header class="post-header" aria-label="<?php esc_attr_e( 'Post header', 'aesthetix' ); ?>">
+<header class="post-entry-header" aria-label="<?php esc_attr_e( 'Post header', 'aesthetix' ); ?>">
 
 	<?php
 		$structure = array( 'title' );

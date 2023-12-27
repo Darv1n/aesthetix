@@ -20,12 +20,12 @@ class WPA_Widget_Adv_Banner extends WPA_Widget {
 		$this->widget_id          = 'aesthetix-widget-adv-banner';
 		$this->widget_name        = get_widget_name( 'widget-adv-banner' );
 		$this->settings           = array(
-			'title'          => array(
+			'title'           => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Title', 'aesthetix' ),
 			),
-			'subtitle'       => array(
+			'subtitle'        => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Subtitle', 'aesthetix' ) . ' (' . mb_strtolower( __( 'Before title', 'aesthetix' ) ) . ')',
@@ -38,17 +38,32 @@ class WPA_Widget_Adv_Banner extends WPA_Widget {
 			'adv_desktop'     => array(
 				'type'  => 'image',
 				'std'   => '',
-				'label' => __( 'Banner', 'aesthetix' ),
+				'label' => __( 'Desktop banner', 'aesthetix' ),
+			),
+			'adv_tablet'      => array(
+				'type'  => 'image',
+				'std'   => '',
+				'label' => __( 'Tablet banner', 'aesthetix' ),
+			),
+			'adv_mobile'      => array(
+				'type'  => 'image',
+				'std'   => '',
+				'label' => __( 'Mobile banner', 'aesthetix' ),
 			),
 			'adv_link'        => array(
 				'type'  => 'url',
 				'std'   => '',
 				'label' => __( 'Link', 'aesthetix' ),
 			),
-			'adv_description' => array(
-				'type'  => 'description',
+			'adv_title'       => array(
+				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Description', 'aesthetix' ),
+				'label' => __( 'Banner title', 'aesthetix' ),
+			),
+			'adv_description' => array(
+				'type'  => 'text',
+				'std'   => '',
+				'label' => __( 'Banner description', 'aesthetix' ),
 			),
 		);
 

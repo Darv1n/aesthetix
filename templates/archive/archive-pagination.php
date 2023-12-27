@@ -72,18 +72,18 @@ if ( (int) $pages === 1 ) {
 
 		<div class="row">
 
-			<?php if ( get_next_posts_link() ) { ?>
-				<div class="col-12 col-md-6">
-					<div class="posts-navigation__item_prev">
-						<?php next_posts_link( esc_html__( 'Next posts', 'aesthetix' ) ); ?>
+			<?php if ( get_previous_posts_link() ) { ?>
+				<div class="col-12 col-sm-6">
+					<div class="posts-navigation-item-prev">
+						<?php previous_posts_link( esc_html__( 'Previous posts', 'aesthetix' ) ); ?>
 					</div>
 				</div>
 			<?php } ?>
 
-			<?php if ( get_previous_posts_link() ) { ?>
-				<div class="col-12 col-md-6">
-					<div class="posts-navigation__item_next">
-						<?php previous_posts_link( esc_html__( 'Previous posts', 'aesthetix' ) ); ?>
+			<?php if ( get_next_posts_link() ) { ?>
+				<div class="col-12 col-sm-6">
+					<div class="posts-navigation-item-next">
+						<?php next_posts_link( esc_html__( 'Next posts', 'aesthetix' ) ); ?>
 					</div>
 				</div>
 			<?php } ?>

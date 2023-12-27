@@ -57,12 +57,6 @@ a.logo
 			img
 				max-height: calc( ( .75rem * 1.25 * 2 + 1.125rem ) * 1.125 )
 
-
-.content-area, .widget-area, .content-area-header, .content-area-content, .content-area-footer
-	> *
-		&:not(:last-child)
-			@extend .mb
-
 .section, .container-outer, .container-inner
 	border-radius: $border-radius
 
@@ -119,6 +113,21 @@ a.logo
 		top: .375rem
 		right: 0
 
+.content-area
+	margin-bottom: 2rem
+	> .section
+		padding: 0
+	> *
+		margin-bottom: 2rem
+		&:last-child
+			margin-bottom: 0
+
+.widget-area, .content-area-header, .content-area-content, .content-area-footer
+	> *
+		@extend .mb
+		&:last-child
+			margin-bottom: 0
+
 .header, .footer
 	position: relative
 	*
@@ -155,7 +164,6 @@ a.logo
 	display: flex
 	flex-direction: column
 	width: 100%
-	margin-bottom: calc( var( --post-margin ) * 2 )
 	&-subtitle
 		color: $gray-color-500
 	&-single
@@ -172,8 +180,9 @@ a.logo
 			margin-bottom: 0 !important
 			z-index: 1
 	&-entry-content
-		> *
+		> p, ul, ol
 			max-width: 960px
+		> *
 			margin-bottom: 1rem
 		> *:first-child
 			margin-top: 0 !important
@@ -203,7 +212,6 @@ a.logo
 	&-thumbnail
 		width: 100%
 		height: 100%
-		object-fit: cover
 		&-link
 			display: block
 			height: 100%
@@ -239,6 +247,7 @@ a.logo
 			color: $gray-color-500
 	&-archive
 		height: calc( 100% - var( --post-margin ) * 2 )
+		margin-bottom: calc( var( --post-margin ) * 2 )
 		.post-meta-item
 			font-size: .75rem
 			&.icon-before
@@ -256,6 +265,25 @@ a.logo
 			flex-direction: row
 			flex-wrap: wrap
 			flex-grow: 1
+		&.post-format-image
+			&:not(.post-list)
+				> *
+					color: $white-color
+				.post-entry-author-date
+					color: var( --white-color )
+				.link
+					@extend .link-white
+				.post-content-wrap
+					display: flex
+					flex-direction: column
+					justify-content: flex-end
+				.post-thumbnail-wrap
+					position: absolute
+					height: 100%
+					width: 100%
+					.post-thumbnail
+						height: 100%
+						filter: brightness( 50% )
 	&-aside
 		padding: calc( var( --post-content-padding ) / 2 )
 		height: auto
@@ -270,26 +298,6 @@ a.logo
 				left: calc( var( --post-margin ) + .5rem )
 			.post-thumbnail
 				height: 100%
-	&-format-image
-		&:not(.post-list)
-			> *
-				color: $white-color
-			.post-entry-author-date
-				color: var( --white-color )
-			.link
-				@extend .link-white
-			.post-content-wrap
-				display: flex
-				flex-direction: column
-				justify-content: flex-end
-			.post-thumbnail-wrap
-				position: absolute
-				height: 100%
-				width: 100%
-				.post-thumbnail
-					height: 100%
-					filter: brightness( 50% )
-	&-format-gallery
 
 @media ( min-width: 992px )
 	.post
@@ -330,20 +338,20 @@ a.logo
 				padding: var( --#{$post-type}-content-padding ) var( --#{$post-type}-content-padding )
 				&.has-post-thumbnail
 					padding: 0 var( --#{$post-type}-content-padding ) var( --#{$post-type}-content-padding )
+			&.post-format-image
+				&:not(.post-list)
+					.post-thumbnail-wrap
+						padding: var( --#{$post-type}-thumbnail-padding )
+					.post-content-wrap
+						aspect-ratio: var( --#{$post-type}-thumbnail-aspect-ratio )
+						padding: calc( var( --#{$post-type}-thumbnail-padding ) + var( --#{$post-type}-content-padding ) )
+						&.has-post-thumbnail
+							padding: calc( var( --#{$post-type}-thumbnail-padding ) + var( --#{$post-type}-content-padding ) )
 		&.post-aside
 			padding: calc( var( --#{$post-type}-content-padding ) / 2 )
 			&.post-list
 				.post-thumbnail-wrap, .post-content-wrap
 					padding: 0 !important
-		&.post-format-image
-			&:not(.post-list)
-				.post-thumbnail-wrap
-					padding: var( --#{$post-type}-thumbnail-padding )
-				.post-content-wrap
-					aspect-ratio: var( --#{$post-type}-thumbnail-aspect-ratio )
-					padding: calc( var( --#{$post-type}-thumbnail-padding ) + var( --#{$post-type}-content-padding ) )
-					&.has-post-thumbnail
-						padding: calc( var( --#{$post-type}-thumbnail-padding ) + var( --#{$post-type}-content-padding ) )
 	@media (min-width: 768px)
 		.post-type-#{$post-type}
 			&.post-list

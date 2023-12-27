@@ -1,11 +1,5 @@
-.post-navigation, .posts-navigation
-	&__item_first
-		text-align: left
-	&__item_last
-		text-align: right
-
 .post-navigation
-	&__item
+	&-item
 		a
 			display: block
 			padding: $padding
@@ -14,15 +8,22 @@
 			border: $border-width solid $gray-color-200
 			&:hover, &:focus, &:active
 				background-color: $primary-color-500
-	.entry__title, .entry__post-date
+	.entry-title, .entry-post-date
 		display: block
-	.entry__post-date
+	.entry-post-date
 		color: $gray-color-500
 		font-size: $font-size-sm
 
 .posts-navigation
-	&__item
+	&-item
 		margin-bottom: $gutter
 		overflow: hidden
 		&:not(:last-child)
 			margin-right: .25rem
+
+@media (min-width: 576px)
+	.post-navigation, .posts-navigation
+		&-item-first, &-item-prev
+			text-align: left
+		&-item-last, &-item-next
+			text-align: right

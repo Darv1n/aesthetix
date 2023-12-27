@@ -69,6 +69,7 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 			'aside-scroll-top',
 			'first-screen-post-slider',
 			'breadcrumbs',
+			'widget-adv-banner',
 			'content-wrapper-start',
 		);
 
@@ -100,6 +101,9 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 				case 'breadcrumbs':
 					get_template_part( 'templates/breadcrumbs' );
 					break;
+				case 'widget-adv-banner':
+					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'after-header', 'container' => true ) );
+					break;
 				case 'content-wrapper-start':
 					get_template_part( 'templates/content-wrapper-start' );
 					break;
@@ -126,18 +130,22 @@ if ( ! function_exists( 'after_site_content_structure' ) ) {
 			$structure[] = 'subscribe-form';
 		}
 
-		$structure = apply_filters( 'after_site_content_structure', $structure );
+		$structure[] = 'widget-adv-banner';
+		$structure   = apply_filters( 'after_site_content_structure', $structure );
 
 		foreach ( $structure as $key => $value ) {
 			switch ( $value ) {
 				case has_action( 'after_site_content_structure_loop_' . $value ):
 					do_action( 'after_site_content_structure_loop_' . $value );
 					break;
+				case 'content-wrapper-end':
+					get_template_part( 'templates/content-wrapper-end' );
+					break;
 				case 'subscribe-form':
 					get_template_part( 'templates/subscribe-form', '', array( 'section' => true, 'title' => get_aesthetix_options( 'general_subscribe_form_title' ) ) );
 					break;
-				case 'content-wrapper-end':
-					get_template_part( 'templates/content-wrapper-end' );
+				case 'widget-adv-banner':
+					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'before-footer', 'container' => true ) );
 					break;
 				default:
 					break;
@@ -146,6 +154,35 @@ if ( ! function_exists( 'after_site_content_structure' ) ) {
 	}
 }
 add_action( 'after_site_content', 'after_site_content_structure' );
+
+if ( ! function_exists( 'before_single_post_structure' ) ) {
+
+	/**
+	 * Display before single post structure in single.php.
+	 */
+	function before_single_post_structure() {
+
+		$structure = array(
+			'widget-adv-banner',
+		);
+
+		$structure = apply_filters( 'before_single_post_structure', $structure );
+
+		foreach ( $structure as $key => $value ) {
+			switch ( $value ) {
+				case has_action( 'before_single_post_structure_loop_' . $value ):
+					do_action( 'before_single_post_structure_loop_' . $value );
+					break;
+				case 'widget-adv-banner':
+					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'before-post-content' ) );
+					break;
+				default:
+					break;
+			}
+		}
+	}
+}
+add_action( 'before_single_post', 'before_single_post_structure' );
 
 if ( ! function_exists( 'after_single_post_structure' ) ) {
 
@@ -156,6 +193,7 @@ if ( ! function_exists( 'after_single_post_structure' ) ) {
 
 		$structure = array(
 			'single-pagination',
+			'widget-adv-banner',
 			'single-similar-posts',
 			'single-comments',
 		);
@@ -169,6 +207,9 @@ if ( ! function_exists( 'after_single_post_structure' ) ) {
 					break;
 				case 'single-pagination':
 					get_template_part( 'templates/single-pagination' );
+					break;
+				case 'widget-adv-banner':
+					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'after-post-content' ) );
 					break;
 				case 'single-similar-posts':
 					get_template_part( 'templates/single/single-similar-posts' );

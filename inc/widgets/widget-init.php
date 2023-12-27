@@ -46,11 +46,31 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 			'main' => array(
 				'name'        => __( 'Main sidebar', 'aesthetix' ),
 				'description' => __( 'Add widgets in main sidebar', 'aesthetix' ),
-				'title_tag'   => 'h2',
+				'title_tag'   => 'h3',
 			),
 			'aside-menu' => array(
 				'name'        => __( 'Aside menu sidebar', 'aesthetix' ),
 				'description' => __( 'Add widgets in aside menu sidebar', 'aesthetix' ),
+				'title_tag'   => 'h3',
+			),
+			'after-header' => array(
+				'name'        => __( 'After header sidebar', 'aesthetix' ),
+				'description' => __( 'Add widgets in after header sidebar', 'aesthetix' ),
+				'title_tag'   => 'h3',
+			),
+			'before-post-content' => array(
+				'name'        => __( 'Before post content sidebar', 'aesthetix' ),
+				'description' => __( 'Add widgets in before post content sidebar', 'aesthetix' ),
+				'title_tag'   => 'h3',
+			),
+			'after-post-content' => array(
+				'name'        => __( 'After post content sidebar', 'aesthetix' ),
+				'description' => __( 'Add widgets in after post content sidebar', 'aesthetix' ),
+				'title_tag'   => 'h3',
+			),
+			'before-footer' => array(
+				'name'        => __( 'Before footer sidebar', 'aesthetix' ),
+				'description' => __( 'Add widgets in before footer sidebar', 'aesthetix' ),
 				'title_tag'   => 'h3',
 			),
 			'header-mobile-left' => array(
@@ -212,7 +232,7 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 						'name'            => $sidebar['name'],
 						'id'              => $id,
 						'description'     => $sidebar['description'],
-						'before_widget'   => '<div id="%1$s" class="widget %2$s">',
+						'before_widget'   => '<div id="%1$s" class="widget widget-' . $id . ' %2$s">',
 						'after_widget'    => '</div>',
 						'before_title'    => '<' . $sidebar['title_tag'] . ' class="widget-title">',
 						'after_title'     => '</' . $sidebar['title_tag'] . '>',

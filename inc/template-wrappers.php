@@ -1269,6 +1269,7 @@ if ( ! function_exists( 'get_widget_classes' ) ) {
 
 		// Add elements to array.
 		$classes[] = 'widget';
+		$classes[] = 'widget-' . $id;
 
 		if ( in_array( $id, array( 'header-mobile-left', 'header-mobile-center', 'header-mobile-right', 'header-main-left', 'header-top-left', 'header-top-right', 'header-main-left', 'header-main-center', 'header-main-right', 'header-bottom-left', 'header-bottom-center', 'header-bottom-right', 'footer-top-left', 'footer-top-right', 'footer-bottom-left', 'footer-bottom-right' ), true ) ) {
 			$classes[] = 'd-flex';

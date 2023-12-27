@@ -36,11 +36,11 @@ jQuery( document ).ready( function( $ ) {
 
 		if ( ! btn.hasClass( 'processing' ) ) {
 			$.ajax( {
-				url: ajax_obj.url, // путь до ajax.
-				type:'POST', // тип запроса.
+				url: ajax_obj.url, // Ajax url from function ajax_localize_params().
+				type:'POST',
 				data: {
-					'action': 'loadmore_handler', // обработчик.
-					'query': ajax_obj.query,
+					'action': 'loadmore_handler', // Handler name.
+					'query': ajax_obj.query, // Query from function ajax_localize_params().
 					'page': currentPage,
 				},
 				beforeSend: function() {

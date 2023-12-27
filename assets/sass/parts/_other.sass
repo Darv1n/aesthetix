@@ -149,19 +149,26 @@
 // #Advertising banners
 .ab
 	position: relative
-	display: inline-block
-	vertical-align: middle
-	&-description
+	display: flex
+	width: 100%
+	border-radius: $border-radius
+	overflow: hidden
+	img
+		width: inherit
+		object-fit: cover
+		align-self: center
+	&-offer
 		position: absolute
-		bottom: 0
-		left: 0
-		background: linear-gradient( 180deg, rgba( 2, 0, 36, 0 ) 0%, $black-color 45%, $black-color 100% )
-		&-inner
-			padding: 1rem
-			color: $white-color
-			transition: $transition
-			&:hover
-				opacity: .8
+		bottom: .75rem
+		left: .75rem
+		max-height: calc( 100% - 1.5rem )
+		max-width: calc( 100% - 1.5rem )
+		padding: .75rem 1.25rem
+		border-radius: $border-radius
+		color: $white-color
+		background: $primary-color-500
+		text-align: left
+		overflow: hidden
 	&.has_mobile
 		.ab-desktop
 			display: none

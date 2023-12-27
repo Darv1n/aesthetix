@@ -18,10 +18,10 @@ get_header(); ?>
 
 		<?php
 			// Get a template with a post type, if there is one in the theme.
-			if ( file_exists( get_theme_file_path( 'templates/single/single-content-type-' . get_post_type() . '.php' ) ) ) {
-				get_template_part( 'templates/single/single-content-type', get_post_type() );
+			if ( file_exists( get_theme_file_path( 'templates/single/single-' . get_post_type() . '.php' ) ) ) {
+				get_template_part( 'templates/single/single', get_post_type() );
 			} else {
-				get_template_part( 'templates/single/single-content-type', get_aesthetix_options( 'single_' . get_post_type() . '_template_type' ) );
+				get_template_part( 'templates/single/single', get_aesthetix_options( 'single_' . get_post_type() . '_template_type' ) );
 			}
 		?>
 

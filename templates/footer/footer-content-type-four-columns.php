@@ -9,7 +9,7 @@
  ?>
 
 <div <?php aesthetix_archive_page_columns_wrapper_classes(); ?>>
-	<div class="col-12 col-sm-6 col-md-3">
+	<div class="col-12 col-sm-6 col-lg-3">
 		<div <?php widgets_classes( '', 'footer-main-first' ); ?>>
 
 			<?php if ( is_active_sidebar( 'footer-main-first' ) ) {
@@ -20,7 +20,7 @@
 
 		</div>
 	</div>
-	<div class="col-12 col-sm-6 col-md-3">
+	<div class="col-12 col-sm-6 col-lg-3">
 		<div <?php widgets_classes( '', 'footer-main-second' ); ?>>
 
 			<?php if ( is_active_sidebar( 'footer-main-second' ) ) {
@@ -31,7 +31,7 @@
 
 		</div>
 	</div>
-	<div class="col-12 col-sm-6 col-md-3">
+	<div class="col-12 col-sm-6 col-lg-3">
 		<div <?php widgets_classes( '', 'footer-main-third' ); ?>>
 
 			<?php if ( is_active_sidebar( 'footer-main-third' ) ) {
@@ -42,7 +42,7 @@
 
 		</div>
 	</div>
-	<div class="col-12 col-sm-6 col-md-3">
+	<div class="col-12 col-sm-6 col-lg-3">
 		<div <?php widgets_classes( '', 'footer-main-fourth' ); ?>>
 
 			<?php if ( is_active_sidebar( 'footer-main-fourth' ) ) {

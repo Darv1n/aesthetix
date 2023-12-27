@@ -10,6 +10,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! function_exists( 'ajax_localize_params' ) ) {
+
+	/**
+	 * Add parameters of the current request for ajax.
+	 * The function is used when calling wp_localize_script()
+	 * 
+	 * @return array
+	 */
 	function ajax_localize_params() {
 
 		global $wp_query;
@@ -21,6 +28,8 @@ if ( ! function_exists( 'ajax_localize_params' ) ) {
 			'lang'  => determine_locale(),
 			'nonce' => wp_create_nonce( 'ajax-nonce' ),
 		);
+
+		$ajax_localize['query']['post_status'] = 'publish';
 
 		if ( isset( $wp_query->query_vars ) ) {
 			foreach ( $wp_query->query_vars as $key => $query_var ) {
@@ -445,6 +454,44 @@ if ( ! function_exists( 'aesthetix_nav_menu_submenu_css_class' ) ) {
 	}
 }
 add_filter( 'nav_menu_submenu_css_class', 'aesthetix_nav_menu_submenu_css_class', 10, 3 );
+
+if ( ! function_exists( 'aesthetix_previous_posts_link_attributes' ) ) {
+
+	/**
+	 * Function for 'previous_posts_link_attributes' filter-hook.
+	 * 
+	 * @param string $attributes Attributes for the anchor tag.
+	 *
+	 * @return string
+	 */
+	function aesthetix_previous_posts_link_attributes( $attributes ) {
+
+		$attributes = 'class="' . esc_attr( implode( ' ', get_button_classes( 'icon icon-before icon-chevron-left' ) ) ) . '"';
+
+		// filter...
+		return $attributes;
+	}
+}
+add_filter( 'previous_posts_link_attributes', 'aesthetix_previous_posts_link_attributes' );
+
+if ( ! function_exists( 'aesthetix_next_posts_link_attributes' ) ) {
+
+	/**
+	 * Function for 'next_posts_link_attributes' filter-hook.
+	 * 
+	 * @param string $attributes Attributes for the anchor tag.
+	 *
+	 * @return string
+	 */
+	function aesthetix_next_posts_link_attributes( $attributes ) {
+
+		$attributes = 'class="' . esc_attr( implode( ' ', get_button_classes( 'icon icon-after icon-chevron-right' ) ) ) . '"';
+
+		// filter...
+		return $attributes;
+	}
+}
+add_filter( 'next_posts_link_attributes', 'aesthetix_next_posts_link_attributes' );
 
 if ( ! function_exists( 'aesthetix_search_highlight' ) ) {
 

@@ -8,7 +8,7 @@
  */
  ?>
 
-<footer class="post-footer" aria-label="<?php esc_attr_e( 'Post footer', 'aesthetix' ); ?>">
+<footer class="post-entry-footer" aria-label="<?php esc_attr_e( 'Post footer', 'aesthetix' ); ?>">
 
 	<?php do_action( 'aesthetix_before_single_entry_post_footer' ); ?>
 

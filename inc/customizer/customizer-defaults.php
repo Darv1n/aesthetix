@@ -156,6 +156,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 					'archive_' . $post_type . '_structure'               => 'meta,title,excerpt,author,more',
 					'archive_' . $post_type . '_meta_structure'          => 'date,time,edit',
+					'archive_' . $post_type . '_thumbnail_default'       => true,
 					'archive_' . $post_type . '_thumbnail_before'        => '',
 					'archive_' . $post_type . '_thumbnail_after'         => 'post_format,sticky',
 					'archive_' . $post_type . '_posts_per_page'          => get_option( 'posts_per_page' ),

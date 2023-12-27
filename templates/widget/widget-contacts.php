@@ -29,7 +29,7 @@ if ( $args['address'] || $args['phone'] || $args['email'] ) { ?>
 	<ul class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 
 		<?php if ( $args['phone'] ) { ?>
-			<li class="contacts-list-item icon icon-before icon-location-dot icon-phone icon-gray">
+			<li class="contacts-list-item icon icon-before icon-phone icon-gray">
 				<a <?php link_classes( 'link-phone' ); ?> href="tel:<?php echo esc_attr( preg_replace( '/[^0-9]/', '', $args['phone'] ) ); ?>"><?php echo esc_html( $args['phone'] ); ?></a>
 			</li>
 		<?php } ?>

@@ -271,7 +271,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			// Archive $post_type options.
 			if ( $post_type_object->has_archive || ! empty( $object_taxonomies ) ) {
 				$aesthetix_controls[ 'archive_' . $post_type ] = array(
-
 					'tab_title'                  => array( 'tab_title', __( 'Root', 'aesthetix' ), '' ),
 					'background'                 => array( 'select_control', __( 'Select post background', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
 					'equal_height'               => array( 'select_control', __( 'Select equal height element', 'aesthetix' ), '', get_aesthetix_customizer_archive_post_structure() ),
@@ -297,6 +296,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 					'meta_structure_title'       => array( 'tab_title', __( 'Post meta structure', 'aesthetix' ), '' ),
 					'meta_structure'             => array( 'sortable_control', '', '', get_aesthetix_customizer_post_meta_structure( null, $post_type ) ),
 					'thumbnail_title'            => array( 'tab_title', __( 'Post thumbnail structure', 'aesthetix' ), '' ),
+					'thumbnail_default'          => array( 'checkbox_control', __( 'Add a default banner if thumbnail is not installed', 'aesthetix' ), '' ),
 					'thumbnail_before'           => array( 'sortable_control', __( 'Elements before thumbnail', 'aesthetix' ), __( 'This option does not work for grid image template type', 'aesthetix' ), get_aesthetix_customizer_post_thumbnail_structure() ),
 					'thumbnail_after'            => array( 'sortable_control', __( 'Elements after thumbnail', 'aesthetix' ), __( 'This option does not work for grid image template type', 'aesthetix' ), get_aesthetix_customizer_post_thumbnail_structure() ),
 				);
