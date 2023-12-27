@@ -9,6 +9,59 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if ( ! function_exists( 'ajax_postviews_handler_callback' ) ) {
+
+	/**
+	 * Loadmore handler.
+	 * 
+	 * Form js handler  - /assets/js/source/ajax-loadmore.js
+	 * Setup js scripts - /inc/setup.php
+	 * Form php handler - /inc/handlers.php
+	 * Html             - /templates/archive/archive-pagination.php
+	 * 
+	 * @return json
+	 */
+	function ajax_postviews_handler_callback() {
+
+		global $wpdb;
+
+		$post_id  = intval( $_POST['post_id'] ); // Replace with your actual post ID
+		$meta_key = 'views'; // Replace with your actual meta key
+
+		// Update the post meta field with the new value.
+		$in = $wpdb->query(
+			$wpdb->prepare(
+				"UPDATE {$wpdb->postmeta} SET meta_value = ( meta_value + 1 ) WHERE post_id = %d AND meta_key = %s",
+				$post_id,
+				$meta_key
+			)
+		);
+
+		// Insert the post meta field, if it's not exist.
+		if ( (bool) $in === false ) {
+			$in = $wpdb->insert(
+				$wpdb->postmeta,
+				array(
+					'post_id'    => $post_id,
+					'meta_key'   => $meta_key,
+					'meta_value' => 1,
+				),
+				array( '%d', '%s', '%s' ),
+			);
+		}
+
+		if ( (bool) $in === false ) {
+			wp_send_json_error();
+		} else {
+			wp_send_json_success();
+		}
+
+		wp_die();
+	}
+}
+add_action( 'wp_ajax_postviews_handler', 'ajax_postviews_handler_callback' );
+add_action( 'wp_ajax_nopriv_postviews_handler', 'ajax_postviews_handler_callback' );
+
 if ( ! function_exists( 'ajax_loadmore_handler_callback' ) ) {
 
 	/**

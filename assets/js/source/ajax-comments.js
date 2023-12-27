@@ -45,7 +45,6 @@ jQuery( document ).ready(function ( $ ) {
 
 		// Ajax request.
 		if ( ! _this.hasClass( 'diactive' ) ) {
-			console.log( 'ajax' );
 			$.ajax( {
 				type: 'POST',
 				url: ajax_obj.url,
@@ -64,7 +63,6 @@ jQuery( document ).ready(function ( $ ) {
 					}, 20000 );
 				},
 				success: function( response ) {
-					console.log( response.data );
 					if ( response.success ) {
 						_this.closest( '.comment' ).find( '.comment-notifications' ).append( '<div class="notification notification_accept">' + response.data + '</div>' );
 					} else {
@@ -142,7 +140,6 @@ jQuery( document ).ready(function ( $ ) {
 				resetCommentForm();
 			},
 			success: function( response ) {
-				console.log( response.data );
 				if ( response.success ) {
 					$( '#comment-' + comment_id ).find( '.comment-content' ).html( response.data ).addClass( 'comment-deleted fade-in' );
 				} else {
@@ -160,8 +157,6 @@ jQuery( document ).ready(function ( $ ) {
 	} );
 
 	$( '#comments' ).on( 'click', '#cancel-comment-reply-link', function( e ) {
-
-		console.log( true );
 
 		$( this ).css( 'display', 'none' ); // Hiding the cancel comment link.
 
@@ -193,7 +188,6 @@ jQuery( document ).ready(function ( $ ) {
 
 		// Ajax request.
 		if ( ready && ! form.hasClass( 'processing' ) ) {
-			console.log( 'ajax' );
 			$.ajax( {
 				type: 'POST',
 				url: ajax_obj.url,
@@ -214,7 +208,6 @@ jQuery( document ).ready(function ( $ ) {
 					resetCommentForm();
 				},
 				success: function( response ) {
-					// console.log( response.data );
 					if ( response.success ) {
 						if ( comment_action.length > 0 && comment_id.length > 0 ) {
 							$( '#comment-' + comment_id ).find( '.comment-content' ).html( response.data ).addClass( 'fade-in' );

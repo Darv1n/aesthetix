@@ -108,7 +108,7 @@ if ( is_plugin_active( 'breadcrumb-navxt/breadcrumb-navxt.php' ) ) {
 
 // Load Kama Postviews compatibility file.
 if ( is_plugin_active( 'kama-postviews/kama-postviews.php' ) ) {
-	require_once get_template_directory() . '/inc/compatibility/kama-postviews.php';
+	// require_once get_template_directory() . '/inc/compatibility/kama-postviews.php';
 }
 
 // Load Rate my Post compatibility file.

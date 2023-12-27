@@ -60,9 +60,16 @@ if ( is_array( $args['post_meta_structure'] ) && ! empty( $args['post_meta_struc
 					</li>
 					<?php break;
 				case 'comments': ?>
-					<li class="post-entry-meta-item icon icon-before icon-comment">
+					<li class="post-entry-meta-item icon icon-before icon-comment data-title" data-title="<?php esc_attr_e( 'Number of comments', 'aesthetix' ); ?>">
 						<a <?php link_classes( 'post-meta-link' ); ?> href="<?php echo esc_url( get_comments_link() ); ?>" rel="bookmark"><?php esc_html_e( 'Comments', 'aesthetix' ); ?>: <?php echo get_comments_number(); ?></a>
 					</li>
+					<?php break;
+				case 'views': ?>
+					<?php if ( $views = get_post_meta( get_the_ID(), 'views', true ) ) { ?>
+						<li class="post-entry-meta-item icon icon-before icon-eye data-title" data-title="<?php esc_attr_e( 'Number of views', 'aesthetix' ); ?>">
+							<?php echo esc_html( (int) $views ); ?>
+						</li>
+					<?php } ?>
 					<?php break;
 				case 'edit': ?>
 					<?php if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) { ?>

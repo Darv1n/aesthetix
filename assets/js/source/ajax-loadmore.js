@@ -61,7 +61,6 @@ jQuery( document ).ready( function( $ ) {
 					}
 				},
 				success:function( response ) {
-					// console.log( response.data );
 					if ( response.success ) {
 						container.append( response.data );
 					}
