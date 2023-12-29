@@ -9,15 +9,123 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+if ( ! function_exists( 'ajax_likers_handler_callback' ) ) {
+
+	/**
+	 * Loadmore handler.
+	 * 
+	 * Form js handler  - /assets/js/source/ajax-postviews.js
+	 * Setup js scripts - /inc/setup.php
+	 * Form php handler - /inc/handlers.php
+	 * 
+	 * @return json
+	 */
+	function ajax_likers_handler_callback() {
+
+		$query = array_map( 'sanitize_text_field', $_POST['query'] );
+
+		// wp_send_json_success( $query );
+
+		if ( ! isset( $query['object_id'] ) || ! is_numeric( $query['object_id'] ) || ! isset( $query['object_type'] ) ) {
+			wp_send_json_error();
+		}
+
+		global $wpdb;
+
+		foreach ( array( 'like', 'dislike' ) as $key => $value ) {
+			if ( isset( $query[ $value ] ) && $query['object_type'] === 'post' ) {
+
+				if ( $query[ $value ] === 'set' ) {
+					$in = $wpdb->query(
+						$wpdb->prepare(
+							"UPDATE {$wpdb->postmeta} SET meta_value = ( meta_value + 1 ) WHERE post_id = %d AND meta_key = %s",
+							intval( $query['object_id'] ),
+							'_' . $value
+						)
+					);
+				}
+
+				if ( $query[ $value ] === 'unset' ) {
+					$in = $wpdb->query(
+						$wpdb->prepare(
+							"UPDATE {$wpdb->postmeta} SET meta_value = ( meta_value - 1 ) WHERE post_id = %d AND meta_key = %s",
+							intval( $query['object_id'] ),
+							'_' . $value
+						)
+					);
+				}
+
+				// Insert the post meta field, if it's not exist.
+				if ( (bool) $in === false ) {
+					$in = $wpdb->insert(
+						$wpdb->postmeta,
+						array(
+							'post_id'    => intval( $query['object_id'] ),
+							'meta_key'   => '_' . $value,
+							'meta_value' => 1,
+						),
+						array( '%d', '%s', '%d' ),
+					);
+				}
+			}
+
+			if ( isset( $query[ $value ] ) && $query['object_type'] === 'comment' ) {
+
+				if ( $query[ $value ] === 'set' ) {
+					$in = $wpdb->query(
+						$wpdb->prepare(
+							"UPDATE {$wpdb->commentmeta} SET meta_value = ( meta_value + 1 ) WHERE comment_id = %d AND meta_key = %s",
+							intval( $query['object_id'] ),
+							'_' . $value
+						)
+					);
+				}
+
+				if ( $query[ $value ] === 'unset' ) {
+					$in = $wpdb->query(
+						$wpdb->prepare(
+							"UPDATE {$wpdb->commentmeta} SET meta_value = ( meta_value - 1 ) WHERE comment_id = %d AND meta_key = %s",
+							intval( $query['object_id'] ),
+							'_' . $value
+						)
+					);
+				}
+
+				// Insert the post meta field, if it's not exist.
+				if ( (bool) $in === false ) {
+					$in = $wpdb->insert(
+						$wpdb->commentmeta,
+						array(
+							'comment_id' => intval( $query['object_id'] ),
+							'meta_key'   => '_' . $value,
+							'meta_value' => 1,
+						),
+						array( '%d', '%s', '%d' ),
+					);
+				}
+			}
+		}
+
+		if ( ! isset( $in ) || (bool) $in === false ) {
+			wp_send_json_error( $in );
+		} else {
+			wp_send_json_success( $in );
+		}
+
+		wp_die();
+	}
+}
+add_action( 'wp_ajax_likers_handler', 'ajax_likers_handler_callback' );
+add_action( 'wp_ajax_nopriv_likers_handler', 'ajax_likers_handler_callback' );
+
 if ( ! function_exists( 'ajax_postviews_handler_callback' ) ) {
 
 	/**
 	 * Loadmore handler.
 	 * 
-	 * Form js handler  - /assets/js/source/ajax-loadmore.js
+	 * Form js handler  - /assets/js/source/ajax-postviews.js
 	 * Setup js scripts - /inc/setup.php
 	 * Form php handler - /inc/handlers.php
-	 * Html             - /templates/archive/archive-pagination.php
 	 * 
 	 * @return json
 	 */

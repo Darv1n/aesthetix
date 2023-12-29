@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2023-12-26 01:07+0400\n"
-"PO-Revision-Date: 2023-12-26 01:46+0400\n"
+"POT-Creation-Date: 2023-12-29 04:30+0400\n"
+"PO-Revision-Date: 2023-12-29 04:33+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -13,12 +13,20 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 3.4.2\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;_x\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e;_x;esc_attr__;esc_attr_e\n"
 "X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:16
+msgid "404 page header"
+msgstr "Хедер 404-страницы"
 
 #: 404.php:17
 msgid "Oops! That page can&rsquo;t be found"
 msgstr "К сожалению страница не найдена"
+
+#: 404.php:20
+msgid "404 page content"
+msgstr "Контент 404-страницы"
 
 #: 404.php:21
 msgid ""
@@ -27,6 +35,30 @@ msgid ""
 msgstr ""
 "Мы ничего не нашли по вашему запросу. Может быть, попробуйте одну из ссылок "
 "ниже или поиск?"
+
+#: 404.php:26
+msgid "404 page footer"
+msgstr "Футер 404-страницы"
+
+#: archive.php:26 index.php:31
+msgid "Archive page header"
+msgstr "Хедер страницы архива"
+
+#: archive.php:50 index.php:38
+msgid "Archive page content"
+msgstr "Контент страницы архива"
+
+#: archive.php:85 index.php:73
+msgid "Archive page footer"
+msgstr "Футер страницы архива"
+
+#: footer.php:21
+msgid "Site footer"
+msgstr "Футер сайта"
+
+#: header.php:29
+msgid "Site header"
+msgstr "Хедер сайта"
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:334
 msgid "Install Required Plugins"
@@ -99,6 +131,10 @@ msgstr ""
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:404
 msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: inc/addons/tgm/class-tgm-plugin-activation.php:607
+msgid "This plugin needs to be updated to be compatible with your theme."
 msgstr ""
 
 #: inc/addons/tgm/class-tgm-plugin-activation.php:608
@@ -379,12 +415,12 @@ msgstr ""
 msgid "The letter was sent successfully"
 msgstr "Письмо было успешно отправлено"
 
-#: inc/comment/comment-handlers.php:91 inc/template-handlers.php:124
+#: inc/comment/comment-handlers.php:91 inc/template-handlers.php:285
 #: templates/comment/comment-form.php:47
 msgid "Please enter your email address"
 msgstr "Пожалуйста, введите ваш e-mail"
 
-#: inc/comment/comment-handlers.php:93 inc/template-handlers.php:121
+#: inc/comment/comment-handlers.php:93 inc/template-handlers.php:282
 msgid "Email address is incorrect"
 msgstr "Адрес электронной почты неверен"
 
@@ -403,7 +439,7 @@ msgstr "Комментарий удален пользователем"
 
 #: inc/comment/comment-handlers.php:134 inc/comment/comment-handlers.php:139
 #: inc/comment/comment-handlers.php:158 inc/template-functions.php:799
-#: inc/template-handlers.php:152
+#: inc/template-handlers.php:313
 msgid "An unknown error has occurred"
 msgstr "Произошла неизвестная ошибка"
 
@@ -416,7 +452,9 @@ msgstr "Кто-то ответил на ваш комментарий к пос�
 msgid "Home"
 msgstr "Главная"
 
+#: inc/compatibility/kama-postviews.php:47
 #: inc/compatibility/kama-postviews.php:89
+#: inc/customizer/customizer-sortable.php:193
 msgid "Views"
 msgstr "Просмотры"
 
@@ -486,6 +524,10 @@ msgstr ""
 
 #: inc/compatibility/woocommerce/woocommerce-setup.php:175
 msgid "This sidebar will be used on single product page"
+msgstr ""
+
+#: inc/compatibility/woocommerce/woocommerce-setup.php:350
+msgid "View your shopping cart"
 msgstr ""
 
 #: inc/customizer/customizer-controls.php:25
@@ -689,7 +731,7 @@ msgid "Select demo variant"
 msgstr ""
 
 #: inc/customizer/customizer-controls.php:127
-#: inc/customizer/customizer-sortable.php:321
+#: inc/customizer/customizer-sortable.php:325
 msgid "Content"
 msgstr "Контент"
 
@@ -710,7 +752,7 @@ msgid "Note: its work if sidebar dont show"
 msgstr "Примечание: будет работать, только если sidebar отключен"
 
 #: inc/customizer/customizer-controls.php:131
-#: inc/customizer/customizer-sortable.php:320
+#: inc/customizer/customizer-sortable.php:324
 msgid "Header"
 msgstr "Хедер"
 
@@ -762,7 +804,7 @@ msgid "This checkbox displays count posts in taxonomies"
 msgstr ""
 
 #: inc/customizer/customizer-controls.php:140
-#: inc/customizer/customizer-sortable.php:323
+#: inc/customizer/customizer-sortable.php:327
 msgid "Footer"
 msgstr "Футер"
 
@@ -807,6 +849,7 @@ msgid "Breadcrumbs separator"
 msgstr ""
 
 #: inc/customizer/customizer-controls.php:150 inc/widgets/widget-init.php:275
+#: templates/subscribe-form.php:27
 msgid "Subscribe form"
 msgstr ""
 
@@ -964,7 +1007,7 @@ msgstr ""
 msgid "Select menu button content"
 msgstr ""
 
-#: inc/customizer/customizer-controls.php:198
+#: inc/customizer/customizer-controls.php:198 templates/button-home.php:15
 msgid "Home button"
 msgstr ""
 
@@ -985,7 +1028,8 @@ msgid "Select home button content"
 msgstr ""
 
 #: inc/customizer/customizer-controls.php:204
-#: inc/customizer/customizer-sortable.php:286
+#: inc/customizer/customizer-sortable.php:290
+#: templates/aside/aside-scroll-top.php:53
 msgid "Scroll top button"
 msgstr ""
 
@@ -1111,7 +1155,7 @@ msgstr ""
 
 #: inc/customizer/customizer-controls.php:264
 msgid "Similar posts display"
-msgstr ""
+msgstr "Отображение похожих постов"
 
 #: inc/customizer/customizer-controls.php:265
 #: inc/customizer/customizer-controls.php:290
@@ -1270,7 +1314,7 @@ msgstr "WhatsApp"
 
 #: inc/customizer/customizer-controls.php:319
 msgid "Enter your WhatsApp phone for contact with you"
-msgstr ""
+msgstr "Введите свой телефон WhatsApp для связи"
 
 #: inc/customizer/customizer-controls.php:320
 #: inc/customizer/customizer-selects.php:857
@@ -1497,6 +1541,7 @@ msgid "Vkontakte"
 msgstr "Вконтакте"
 
 #: inc/customizer/customizer-sortable.php:38
+#: templates/archive/archive-entry-post-title.php:22
 msgid "Post title"
 msgstr "Заголовок поста"
 
@@ -1506,10 +1551,12 @@ msgid "Post meta data"
 msgstr "Мета-дата поста"
 
 #: inc/customizer/customizer-sortable.php:40
+#: templates/archive/archive-entry-post-content.php:16
 msgid "Post excerpt"
 msgstr "Отрывок поста"
 
 #: inc/customizer/customizer-sortable.php:41
+#: templates/archive/archive-entry-post-author.php:22
 msgid "Post author"
 msgstr "Автор поста"
 
@@ -1518,65 +1565,90 @@ msgid "Post read more"
 msgstr "Читать далее поста"
 
 #: inc/customizer/customizer-sortable.php:92
+#: templates/single/single-entry-post-header.php:11
 msgid "Post header"
 msgstr "Хедер поста"
 
 #: inc/customizer/customizer-sortable.php:93
+#: templates/single/single-entry-post-thumbnail.php:12
 msgid "Post thumbnail"
 msgstr "Изображение поста"
 
 #: inc/customizer/customizer-sortable.php:95
+#: templates/single/single-entry-post-content.php:11
 msgid "Post content"
 msgstr "Контент поста"
 
 #: inc/customizer/customizer-sortable.php:96
+#: templates/single/single-entry-post-footer.php:11
 msgid "Post footer"
 msgstr "Футер поста"
 
 #: inc/customizer/customizer-sortable.php:139
-#: inc/customizer/customizer-sortable.php:193
-#: templates/archive/archive-entry-post-meta.php:77
-#: templates/comment/comment-entry-footer.php:22
-#: templates/comment/comment-entry-footer.php:28
-#: templates/single/single-entry-post-footer.php:65
-#: templates/single/single-entry-post-meta.php:70
+msgid "Post likes"
+msgstr "Лайки поста"
+
+#: inc/customizer/customizer-sortable.php:140
+#: inc/customizer/customizer-sortable.php:197
+#: templates/archive/archive-entry-post-meta.php:92
+#: templates/comment/comment-entry-footer.php:26
+#: templates/comment/comment-entry-footer.php:32
+#: templates/single/single-entry-post-footer.php:70
+#: templates/single/single-entry-post-meta.php:85
 #: templates/single/single-page.php:37
 msgid "Edit"
 msgstr "Редактировать"
 
-#: inc/customizer/customizer-sortable.php:189
+#: inc/customizer/customizer-sortable.php:190
 msgid "Author"
 msgstr "Автор"
 
-#: inc/customizer/customizer-sortable.php:190
+#: inc/customizer/customizer-sortable.php:191
+#: templates/archive/archive-entry-post-author.php:32
+#: templates/archive/archive-entry-post-meta.php:41
+#: templates/single/single-entry-post-meta.php:36
 msgid "Publication date"
 msgstr "Дата публикации"
 
-#: inc/customizer/customizer-sortable.php:191
+#: inc/customizer/customizer-sortable.php:192
+#: templates/archive/archive-entry-post-meta.php:65
+#: templates/single/single-entry-post-meta.php:58
 msgid "Reading time"
 msgstr "Время чтения"
 
-#: inc/customizer/customizer-sortable.php:192
+#: inc/customizer/customizer-sortable.php:194
+msgid "Likes"
+msgstr "Лайки"
+
+#: inc/customizer/customizer-sortable.php:195
+msgid "Dislikes"
+msgstr "Дизлайки"
+
+#: inc/customizer/customizer-sortable.php:196
 #: templates/archive/archive-entry-post-meta.php:71
 #: templates/comment/comment-list.php:15
 #: templates/single/single-entry-post-meta.php:64
 msgid "Comments"
 msgstr "Комментарии"
 
-#: inc/customizer/customizer-sortable.php:243
+#: inc/customizer/customizer-sortable.php:247
 #: templates/archive/archive-entry-post-taxonomies.php:45
 msgid "Sticky"
 msgstr ""
 
-#: inc/customizer/customizer-sortable.php:284
+#: inc/customizer/customizer-sortable.php:288
+#: templates/aside/aside-scroll-top.php:36
+#: templates/widget/widget-buttons.php:47
 msgid "Telegram button"
 msgstr "Кнопка Телеграм"
 
-#: inc/customizer/customizer-sortable.php:285
+#: inc/customizer/customizer-sortable.php:289
+#: templates/aside/aside-scroll-top.php:45
+#: templates/widget/widget-buttons.php:58
 msgid "WhatsApp button"
 msgstr "Кнопка WhatsApp"
 
-#: inc/customizer/customizer-sortable.php:322
+#: inc/customizer/customizer-sortable.php:326
 msgid "Notifications"
 msgstr "Уведомления"
 
@@ -1605,11 +1677,11 @@ msgstr "Установить меню"
 msgid "Notice from the site"
 msgstr "Уведомление с сайта"
 
-#: inc/template-handlers.php:75
+#: inc/template-handlers.php:236
 msgid "No posts found"
 msgstr "Постов не найдено"
 
-#: inc/template-handlers.php:112
+#: inc/template-handlers.php:273
 msgid ""
 "Your message does not pass the spam filter. If an error occurs, please write "
 "to <a href=\"mailto:team@zolin.digital\">team@zolin.digital</a>"
@@ -1618,15 +1690,15 @@ msgstr ""
 "пожалуйста, напишите на <a href=\"mailto:team@zolin.digital\">team@zolin."
 "digital</a>"
 
-#: inc/template-handlers.php:114
+#: inc/template-handlers.php:275
 msgid "There was an error submitting the form"
 msgstr "Произошла ошибка при отправке формы"
 
-#: inc/template-handlers.php:135
+#: inc/template-handlers.php:296
 msgid "New subscriber to"
 msgstr "Новый подписчик на"
 
-#: inc/template-handlers.php:155
+#: inc/template-handlers.php:316
 msgid "Subscribe completed successfully"
 msgstr "Подписка завершена успешно"
 
@@ -1811,7 +1883,7 @@ msgstr "Выберите кнопки"
 msgid "Subscribe"
 msgstr "Подписаться"
 
-#: inc/widgets/class-widget-buttons.php:52 searchform.php:23
+#: inc/widgets/class-widget-buttons.php:52 searchform.php:21 searchform.php:23
 #: templates/widget/widget-search-toggle.php:24
 msgid "Search"
 msgstr "Поиск"
@@ -1934,7 +2006,7 @@ msgid "Add widgets in after header sidebar"
 msgstr ""
 
 #: inc/widgets/widget-init.php:62
-msgid "before post content sidebar"
+msgid "Before post content sidebar"
 msgstr ""
 
 #: inc/widgets/widget-init.php:63
@@ -1950,7 +2022,7 @@ msgid "Add widgets in after post content sidebar"
 msgstr ""
 
 #: inc/widgets/widget-init.php:72
-msgid "before footer sidebar"
+msgid "Before footer sidebar"
 msgstr ""
 
 #: inc/widgets/widget-init.php:73
@@ -2122,6 +2194,7 @@ msgid "Creator"
 msgstr "Создатель"
 
 #: inc/widgets/widget-init.php:269
+#: templates/widget/widget-language-switcher.php:42
 msgid "Language switcher"
 msgstr "Переключатель языков"
 
@@ -2145,18 +2218,44 @@ msgstr "Кнопка подписки"
 msgid "Use materials"
 msgstr "Использовать материалы"
 
+#: search.php:23
+msgid "Search page header"
+msgstr "Хедер страницы поиска"
+
 #: search.php:25
 #, php-format
 msgid "Search results for: %s"
 msgstr "Результаты поиска для: %s"
 
-#: searchform.php:19
+#: search.php:29
+msgid "Search page content"
+msgstr "Контент страницы поиска"
+
+#: search.php:62
+msgid "Search page footer"
+msgstr "Результаты поиска для: %s"
+
+#: searchform.php:19 searchform.php:20
 msgid "Search for"
 msgstr "Результаты поиска для: %s"
+
+#: searchform.php:20
+msgid "Search..."
+msgstr "Поиск..."
+
+#: templates/archive/archive-content-none.php:11
+#: templates/single/single-page.php:13
+msgid "Page header"
+msgstr "Хедер страницы"
 
 #: templates/archive/archive-content-none.php:12
 msgid "Nothing found"
 msgstr "Ничего не найдено"
+
+#: templates/archive/archive-content-none.php:15
+#: templates/single/single-page.php:23
+msgid "Page content"
+msgstr "Контент страницы"
 
 #: templates/archive/archive-content-none.php:18
 #, php-format
@@ -2179,18 +2278,55 @@ msgid ""
 msgstr ""
 "Похоже, мы не можем найти то, что вы ищете. Возможно, вам поможет поиск"
 
+#: templates/archive/archive-content-none.php:27
+#: templates/single/single-page.php:36
+msgid "Page footer"
+msgstr "Футер страницы"
+
 #: templates/archive/archive-entry-post-author.php:27
 msgid "Posted by"
 msgstr "Опубликовано"
+
+#: templates/archive/archive-entry-post-meta.php:27
+#: templates/single/single-entry-post-meta.php:22
+msgid "Post meta information"
+msgstr "Мета-информация поста"
 
 #: templates/archive/archive-entry-post-meta.php:66
 #: templates/single/single-entry-post-meta.php:59
 msgid "min."
 msgstr "мин."
 
+#: templates/archive/archive-entry-post-meta.php:75
+#: templates/single/single-entry-post-meta.php:68
+msgid "Number of views"
+msgstr "Количество просмотров"
+
+#: templates/archive/archive-entry-post-meta.php:80
+#: templates/single/single-entry-post-meta.php:73
+msgid "Number of likes"
+msgstr "Количество лайков"
+
+#: templates/archive/archive-entry-post-meta.php:85
+#: templates/single/single-entry-post-meta.php:78
+msgid "Number of dislikes"
+msgstr "Количество дизлайков"
+
+#: templates/archive/archive-entry-post-more-button.php:26
+msgid "Post continue reading"
+msgstr "Продолжить чтение поста"
+
 #: templates/archive/archive-entry-post-more-button.php:29
 msgid "Continue reading"
 msgstr "Продолжить чтение"
+
+#: templates/archive/archive-entry-post-taxonomies.php:30
+msgid "Post taxonomies"
+msgstr "Таксономии поста"
+
+#: templates/archive/archive-pagination.php:27
+msgid "Site post pagination"
+msgstr ""
 
 #: templates/archive/archive-pagination.php:33
 msgid "First"
@@ -2199,6 +2335,14 @@ msgstr "Первый"
 #: templates/archive/archive-pagination.php:66
 msgid "Last"
 msgstr "Последний"
+
+#: templates/archive/archive-pagination.php:70
+msgid "Loading..."
+msgstr "Загрузка..."
+
+#: templates/archive/archive-pagination.php:70
+msgid "All posts have been uploaded"
+msgstr "Все посты загружены"
 
 #: templates/archive/archive-pagination.php:78
 msgid "Previous posts"
@@ -2219,17 +2363,33 @@ msgstr ""
 "cookie. Более подробную информацию можно найти в <a class=\"%s\" href=\"%s\" "
 "target=\"_blank\">Политике конфиденциальности</a>"
 
+#: templates/aside/aside-menu.php:17
+msgid "Menu aside"
+msgstr ""
+
 #: templates/aside/aside-scroll-top.php:55
 msgid "Scroll up"
 msgstr "Наверх"
 
-#: templates/comment/comment-entry-footer.php:28
+#: templates/aside/aside-search.php:11
+msgid "Search popup"
+msgstr ""
+
+#: templates/aside/aside-subscribe.php:11
+msgid "Subscribe popup"
+msgstr ""
+
+#: templates/comment/comment-entry-footer.php:32
 msgid "Cancel"
 msgstr "Отмена"
 
-#: templates/comment/comment-entry-footer.php:31
+#: templates/comment/comment-entry-footer.php:35
 msgid "Delete"
 msgstr "Удалить"
+
+#: templates/comment/comment-entry-header.php:33
+msgid "Published date"
+msgstr "Дата публикации"
 
 #: templates/comment/comment-entry-header.php:37
 msgid "User site"
@@ -2288,7 +2448,7 @@ msgstr ""
 msgid "Logged in as %1$s. <a href=\"%2$s\" class=\""
 msgstr ""
 
-#: templates/comment/comment-form.php:92
+#: templates/comment/comment-form.php:92 templates/subscribe-form.php:45
 msgid "Sending..."
 msgstr "Отправка..."
 
@@ -2311,6 +2471,14 @@ msgstr "Предыдущие комментарии"
 msgid "Next comments"
 msgstr "Следущие комментарии"
 
+#: templates/content-wrapper-start.php:11
+msgid "Site content"
+msgstr "Контент сайта"
+
+#: templates/first-screen-post-slider.php:26
+msgid "First screen slider"
+msgstr ""
+
 #: templates/single/single-entry-post-content.php:12
 #, php-format
 msgid "Continue reading <span class=\"screen-reader-text\">\"%s\"</span>"
@@ -2329,9 +2497,17 @@ msgstr "Категории поста"
 msgid "Post tags"
 msgstr "Теги поста"
 
-#: templates/single/single-entry-post-meta.php:22
-msgid "Post meta information"
-msgstr "Мета-информация записи"
+#: templates/single/single-entry-post-likes.php:11
+msgid "Rate this post"
+msgstr "Оцените этот пост"
+
+#: templates/single/single-entry-post-meta.php:63
+msgid "Number of comments"
+msgstr "Количество комментариев"
+
+#: templates/single/single-page.php:18
+msgid "Page thumbnail"
+msgstr "Изображение поста"
 
 #: templates/single/single-similar-posts.php:16
 msgid "Similar"
@@ -2340,6 +2516,10 @@ msgstr "Похожие"
 #: templates/single/single-similar-posts.php:20
 msgid "All"
 msgstr "Все"
+
+#: templates/subscribe-form.php:40
+msgid "E-mail? (required)"
+msgstr "E-mail (не обязательно)"
 
 #: templates/subscribe-form.php:44
 #, php-format
@@ -2368,9 +2548,21 @@ msgstr "Все права защищены"
 msgid "Created by"
 msgstr "Разработано в"
 
+#: templates/widget/widget-menu-toggle.php:30
+msgid "Open menu button"
+msgstr ""
+
+#: templates/widget/widget-search-toggle.php:22
+msgid "Popup search button"
+msgstr ""
+
 #: templates/widget/widget-socials.php:66
 msgid "Setup social links"
 msgstr "Настройка социальных ссылок"
+
+#: templates/widget/widget-subscribe-toggle.php:21
+msgid "Popup subscribe button"
+msgstr ""
 
 #~ msgid "Comments:&nbsp;"
 #~ msgstr "Комментарии:&nbsp;"
@@ -2437,27 +2629,6 @@ msgstr "Настройка социальных ссылок"
 #~| msgid "Read more"
 #~ msgid "Load ьore"
 #~ msgstr "Подробнее"
-
-#~ msgid "404 page header"
-#~ msgstr "Хедер 404-страницы"
-
-#~ msgid "404 page content"
-#~ msgstr "Контент 404-страницы"
-
-#~ msgid "Archive page header"
-#~ msgstr "Хедер страницы архива"
-
-#~ msgid "Archive page content"
-#~ msgstr "Контент страницы архива"
-
-#~ msgid "Archive page footer"
-#~ msgstr "Футер страницы архива"
-
-#~ msgid "Site footer"
-#~ msgstr "Футер сайта"
-
-#~ msgid "Site header"
-#~ msgstr "Хедер сайта"
 
 #~ msgid "Please enter a phone number"
 #~ msgstr "Пожалуйста, введите номер телефона"
@@ -2663,20 +2834,8 @@ msgstr "Настройка социальных ссылок"
 #~ msgid "Older Posts"
 #~ msgstr "Предыдущие посты"
 
-#~ msgid "Search page header"
-#~ msgstr "Хедер страницы поиска"
-
-#~ msgid "Search page content"
-#~ msgstr "Контент страницы поиска"
-
-#~ msgid "Search page footer"
-#~ msgstr "Результаты поиска для: %s"
-
 #~ msgid "Search:"
 #~ msgstr "Поиск:"
-
-#~ msgid "Search..."
-#~ msgstr "Поиск..."
 
 #~ msgid "Site main menu"
 #~ msgstr "Главное меню сайта"
@@ -2690,15 +2849,9 @@ msgstr "Настройка социальных ссылок"
 #~ msgid "Your name (not required)"
 #~ msgstr "Ваше имя (не обязательно)"
 
-#~ msgid "E-mail (not required)"
-#~ msgstr "E-mail (не обязательно)"
-
 #, php-format
 #~ msgid "%1$s in %2$s"
 #~ msgstr "%1$s в %2$s"
-
-#~ msgid "Number of columns"
-#~ msgstr "Количество колонок"
 
 #~ msgid "Date"
 #~ msgstr "Дата"

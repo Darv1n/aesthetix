@@ -59,6 +59,11 @@
 							</div>
 						<?php } ?>
 						<?php break;
+					case 'likes': ?>
+						<div class="post-footer-item post-footer-rating">
+							<?php get_template_part( 'templates/single/single-entry-post-likes' ); ?>
+						</div>
+						<?php break;
 					case 'edit': ?>
 						<?php if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) { ?>
 							<div class="post-footer-item post-footer-edit">

@@ -493,6 +493,62 @@ if ( ! function_exists( 'aesthetix_next_posts_link_attributes' ) ) {
 }
 add_filter( 'next_posts_link_attributes', 'aesthetix_next_posts_link_attributes' );
 
+if ( ! function_exists( 'aesthetix_default_post_metadata' ) ) {
+
+	/**
+	 * Function for 'default_post_metadata' filter-hook.
+	 * 
+	 * @param mixed  $value     The value to return, either a single metadata value or an array
+	 *                          of values depending on the value of `$single`.
+	 * @param int    $object_id ID of the object metadata is for.
+	 * @param string $meta_key  Metadata key.
+	 * @param bool   $single    Whether to return only the first value of the specified `$meta_key`.
+	 * @param string $meta_type Type of object metadata is for. Accepts 'post', 'comment', 'term', 'user',
+	 *                          or any other object type with an associated meta table.
+	 *
+	 * @return string
+	 */
+	function aesthetix_default_post_metadata( $value, $object_id, $meta_key, $single, $meta_type ) {
+
+		if ( in_array( $meta_key, array( '_like', '_dislike' ), true ) && $value === '' ) {
+			$value = 0;
+		}
+
+		if ( $meta_key === 'views' && $value === '' ) {
+			$value = 0;
+		}
+
+		return $value;
+	}
+}
+add_filter( 'default_post_metadata', 'aesthetix_default_post_metadata', 10, 5 );
+
+if ( ! function_exists( 'aesthetix_default_comment_metadata' ) ) {
+
+	/**
+	 * Function for 'default_comment_metadata' filter-hook.
+	 * 
+	 * @param mixed  $value     The value to return, either a single metadata value or an array
+	 *                          of values depending on the value of `$single`.
+	 * @param int    $object_id ID of the object metadata is for.
+	 * @param string $meta_key  Metadata key.
+	 * @param bool   $single    Whether to return only the first value of the specified `$meta_key`.
+	 * @param string $meta_type Type of object metadata is for. Accepts 'post', 'comment', 'term', 'user',
+	 *                          or any other object type with an associated meta table.
+	 *
+	 * @return string
+	 */
+	function aesthetix_default_comment_metadata( $value, $object_id, $meta_key, $single, $meta_type ) {
+
+		if ( in_array( $meta_key, array( '_like', '_dislike' ), true ) && $value === '' ) {
+			$value = 0;
+		}
+
+		return $value;
+	}
+}
+add_filter( 'default_comment_metadata', 'aesthetix_default_comment_metadata', 10, 5 );
+
 if ( ! function_exists( 'aesthetix_search_highlight' ) ) {
 
 	/**

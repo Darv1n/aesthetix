@@ -10,6 +10,10 @@
 
 <ul class="comment-footer">
 
+	<li class="comment-footer-item">
+		<?php get_template_part( 'templates/comment/comment-entry-likes', '', $args ); ?>
+	</li>
+
 	<?php
 		$args['before'] = '<li class="comment-footer-item comment-reply reply">';
 		$args['after']  = '</li>';

@@ -136,7 +136,8 @@ if ( ! function_exists( 'get_aesthetix_customizer_single_post_footer_structure' 
 		}
 
 		$converter = array(
-			'edit' => __( 'Edit', 'aesthetix' ),
+			'likes' => __( 'Post likes', 'aesthetix' ),
+			'edit'  => __( 'Edit', 'aesthetix' ),
 		);
 
 		$object_taxonomies = get_object_taxonomies( $post_type );
@@ -190,6 +191,8 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_meta_structure' ) ) {
 			'date'     => __( 'Publication date', 'aesthetix' ),
 			'time'     => __( 'Reading time', 'aesthetix' ),
 			'views'    => __( 'Views', 'aesthetix' ),
+			'likes'    => __( 'Likes', 'aesthetix' ),
+			'dislikes' => __( 'Dislikes', 'aesthetix' ),
 			'comments' => __( 'Comments', 'aesthetix' ),
 			'edit'     => __( 'Edit', 'aesthetix' ),
 		);

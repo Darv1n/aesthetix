@@ -8,7 +8,7 @@
  */
 
 $defaults = array(
-	'post_meta_structure'  => get_aesthetix_options( 'archive_' . get_post_type() . '_meta_structure' ),
+	'post_meta_structure' => get_aesthetix_options( 'single_' . get_post_type() . '_meta_structure' ),
 );
 
 $args = array_merge( $defaults, $args );
@@ -65,11 +65,19 @@ if ( is_array( $args['post_meta_structure'] ) && ! empty( $args['post_meta_struc
 					</li>
 					<?php break;
 				case 'views': ?>
-					<?php if ( $views = get_post_meta( get_the_ID(), 'views', true ) ) { ?>
-						<li class="post-entry-meta-item icon icon-before icon-eye data-title" data-title="<?php esc_attr_e( 'Number of views', 'aesthetix' ); ?>">
-							<?php echo esc_html( (int) $views ); ?>
-						</li>
-					<?php } ?>
+					<li class="post-entry-meta-item icon icon-before icon-eye data-title" data-title="<?php esc_attr_e( 'Number of views', 'aesthetix' ); ?>">
+						<?php echo get_post_meta( get_the_ID(), 'views', true ); ?>
+					</li>
+					<?php break;
+				case 'likes': ?>
+					<li class="post-entry-meta-item icon icon-before icon-thumbs-up data-title" data-title="<?php esc_attr_e( 'Number of likes', 'aesthetix' ); ?>">
+						<?php echo get_post_meta( get_the_ID(), '_like', true ); ?>
+					</li>
+					<?php break;
+				case 'dislikes': ?>
+					<li class="post-entry-meta-item icon icon-before icon-thumbs-down data-title" data-title="<?php esc_attr_e( 'Number of dislikes', 'aesthetix' ); ?>">
+						<?php echo get_post_meta( get_the_ID(), '_dislike', true ); ?>
+					</li>
 					<?php break;
 				case 'edit': ?>
 					<?php if ( is_user_logged_in() && current_user_can( 'edit_posts' ) ) { ?>
@@ -85,4 +93,4 @@ if ( is_array( $args['post_meta_structure'] ) && ! empty( $args['post_meta_struc
 
 	</ul>
 
-	<?php } ?>
+<?php }

@@ -130,7 +130,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			$defaults = array_merge( $defaults, array(
 				'single_' . $post_type . '_structure'             => 'header,thumbnail,meta,content,footer',
 				'single_' . $post_type . '_meta_structure'        => 'date,time,views,edit',
-				'single_' . $post_type . '_footer_structure'      => 'edit',
+				'single_' . $post_type . '_footer_structure'      => 'likes,edit',
 				'single_' . $post_type . '_post_nav_display'      => false,
 				'single_' . $post_type . '_entry_footer_display'  => true,
 				'single_' . $post_type . '_similar_posts_display' => true,
@@ -155,7 +155,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 					'archive_' . $post_type . '_border_radius'           => 'md',
 
 					'archive_' . $post_type . '_structure'               => 'meta,title,excerpt,author,more',
-					'archive_' . $post_type . '_meta_structure'          => 'date,time,views,edit',
+					'archive_' . $post_type . '_meta_structure'          => 'date,time,views,likes,edit',
 					'archive_' . $post_type . '_thumbnail_default'       => true,
 					'archive_' . $post_type . '_thumbnail_before'        => '',
 					'archive_' . $post_type . '_thumbnail_after'         => 'post_format,sticky',
@@ -169,13 +169,13 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 			if ( $post_type === 'post' ) {
 				$defaults = array_merge( $defaults, array(
-					'archive_post_meta_structure'           => 'date,category,post_tag,post_format,time,views,edit',
-					'archive_post_thumbnail_before'         => 'category',
-					'archive_post_thumbnail_after'          => 'post_format,sticky',
 					'single_post_meta_structure'            => 'date,category,post_tag,time,views,edit',
-					'single_post_footer_structure'          => 'category,post_tag,edit',
+					'single_post_footer_structure'          => 'category,post_tag,likes,edit',
 					'single_post_entry_footer_cats_display' => false,
 					'single_post_entry_footer_tags_display' => true,
+					'archive_post_meta_structure'           => 'date,category,post_tag,post_format,time,views,likes,edit',
+					'archive_post_thumbnail_before'         => 'category',
+					'archive_post_thumbnail_after'          => 'post_format,sticky',
 				) );
 			}
 		}
