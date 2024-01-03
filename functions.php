@@ -23,6 +23,7 @@ require_once get_template_directory() . '/inc/template-functions.php';
 require_once get_template_directory() . '/inc/template-handlers.php';
 require_once get_template_directory() . '/inc/template-setup.php';
 require_once get_template_directory() . '/inc/template-wrappers.php';
+require_once get_template_directory() . '/inc/class-breadcrumbs.php';
 
 // Comments.
 require_once get_template_directory() . '/inc/comment/comment-actions.php';
@@ -106,16 +107,6 @@ if ( is_plugin_active( 'breadcrumb-navxt/breadcrumb-navxt.php' ) ) {
 	require_once get_template_directory() . '/inc/compatibility/breadcrumb-navxt.php';
 }
 
-// Load Kama Postviews compatibility file.
-if ( is_plugin_active( 'kama-postviews/kama-postviews.php' ) ) {
-	// require_once get_template_directory() . '/inc/compatibility/kama-postviews.php';
-}
-
-// Load Rate my Post compatibility file.
-if ( is_plugin_active( 'rate-my-post/rate-my-post.php' ) ) {
-	require_once get_template_directory() . '/inc/compatibility/rate-my-post.php';
-}
-
 // Load Mailchimp compatibility file.
 if ( is_plugin_active( 'mailchimp-for-wp/mailchimp-for-wp.php' ) ) {
 	require_once get_template_directory() . '/inc/compatibility/mailchimp.php';
@@ -128,7 +119,6 @@ if ( is_plugin_active( 'polylang/polylang.php' ) ) {
 
 // Libs.
 require_once get_template_directory() . '/inc/libs/minifier.php';
-require_once get_template_directory() . '/inc/libs/kama-breadcrumb.php';
 
 // Lib for DOM parsing https://simplehtmldom.sourceforge.io/
 if ( ! class_exists( 'simple_html_dom_node' ) ) {

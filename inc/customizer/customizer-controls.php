@@ -57,14 +57,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'center' => __( 'Center', 'aesthetix' ),
 		);
 
-		$general_breadcrumbs_select = array(
-			'woocommerce' => __( 'WooCommerce (Plugin must be activated)', 'aesthetix' ),
-			'navxt'       => __( 'Breadcrumb NavXT plugin', 'aesthetix' ),
-			'yoast'       => __( 'Yoast (Must be enabled in the plugin)', 'aesthetix' ),
-			'rankmath'    => __( 'RankMath (Must be enabled in the plugin)', 'aesthetix' ),
-			'seopress'    => __( 'SEOPress (Must be enabled in the plugin)', 'aesthetix' ),
-		);
-
 		$alignment_pseudo_select = array(
 			'before' => __( 'Before', 'aesthetix' ),
 			'after'  => __( 'After', 'aesthetix' ),
@@ -142,10 +134,10 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'footer_bottom_bar_display' => array( 'checkbox_control', __( 'Bottom bar display', 'aesthetix' ), __( 'This checkbox displays two sidebars after the footer of the site. They are adds in the widget section options', 'aesthetix' ) ),
 			'footer_type'               => array( 'select_control', __( 'Select footer type', 'aesthetix' ), '', $general_footer_type_select ),
 
-			'breadcrumbs_tab_title'     => array( 'tab_title', __( 'Breadcrumbs', 'aesthetix' ), '' ),
-			'breadcrumbs_display'       => array( 'checkbox_control', __( 'Breadcrumbs display', 'aesthetix' ), '' ),
-			'breadcrumbs_type'          => array( 'select_control', __( 'Select breadcrumbs type', 'aesthetix' ), '', $general_breadcrumbs_select ),
-			'breadcrumbs_separator'     => array( 'text_control', __( 'Breadcrumbs separator', 'aesthetix' ), '' ),
+			// 'breadcrumbs_tab_title'     => array( 'tab_title', __( 'Breadcrumbs', 'aesthetix' ), '' ),
+			// 'breadcrumbs_display'       => array( 'checkbox_control', __( 'Breadcrumbs display', 'aesthetix' ), '' ),
+			// 'breadcrumbs_type'          => array( 'select_control', __( 'Select breadcrumbs type', 'aesthetix' ), '', get_aesthetix_customizer_breadcrumbs() ),
+			// 'breadcrumbs_separator'     => array( 'text_control', __( 'Breadcrumbs separator', 'aesthetix' ), '' ),
 
 			'subscribe_form_tab_title'  => array( 'tab_title', __( 'Subscribe form', 'aesthetix' ), '' ),
 			'subscribe_form_display'    => array( 'checkbox_control', __( 'Subscribe form before footer display', 'aesthetix' ), '' ),
@@ -232,6 +224,13 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'border_radius'                         => array( 'select_control', __( 'Select element border radius', 'aesthetix' ), '', get_aesthetix_customizer_border_radiuses() ),
 		);
 
+		$aesthetix_controls['breadcrumbs'] = array(
+			'display'   => array( 'checkbox_control', __( 'Breadcrumbs display', 'aesthetix' ), '' ),
+			'type'      => array( 'select_control', __( 'Select breadcrumbs type', 'aesthetix' ), '', get_aesthetix_customizer_breadcrumbs() ),
+			'separator' => array( 'text_control', __( 'Breadcrumbs separator', 'aesthetix' ), '' ),
+			'tab_title' => array( 'tab_title', __( 'Breadcrumbs for Post Types', 'aesthetix' ), __( 'Select which taxonomy you want to show in breadcrumbs for post types', 'aesthetix' ) ),
+		);
+
 		$post_types = get_aesthetix_customizer_post_types();
 
 		foreach ( $post_types as $key => $post_type ) {
@@ -245,17 +244,32 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 
 			// Single $post_type options.
 			$aesthetix_controls[ 'single_' . $post_type ] = array(
-				'structure_title'           => array( 'tab_title', __( 'Post structure', 'aesthetix' ), '' ),
-				'structure'                 => array( 'sortable_control', '', '', get_aesthetix_customizer_single_post_structure( null, $post_type ) ),
-				'meta_structure_title'      => array( 'tab_title', __( 'Post meta structure', 'aesthetix' ), '' ),
-				'meta_structure'            => array( 'sortable_control', '', '', get_aesthetix_customizer_post_meta_structure( null, $post_type ) ),
-				'footer_structure_title'    => array( 'tab_title', __( 'Post footer structure', 'aesthetix' ), '' ),
-				'footer_structure'          => array( 'sortable_control', '', '', get_aesthetix_customizer_single_post_footer_structure( null, $post_type ) ),
-				'options_title'             => array( 'tab_title', __( 'Main options', 'aesthetix' ), '' ),
-				'template_type'             => array( 'select_control', __( 'Select template type', 'aesthetix' ), __( 'This field displays template of the post', 'aesthetix' ), $single_post_template_type_select ),
-				'post_nav_display'          => array( 'checkbox_control', __( 'Prev/next post navigation display', 'aesthetix' ), '' ),
-				'entry_footer_display'      => array( 'checkbox_control', __( 'Entry footer display', 'aesthetix' ), '' ),
+				'structure_title'        => array( 'tab_title', __( 'Post structure', 'aesthetix' ), '' ),
+				'structure'              => array( 'sortable_control', '', '', get_aesthetix_customizer_single_post_structure( null, $post_type ) ),
+				'meta_structure_title'   => array( 'tab_title', __( 'Post meta structure', 'aesthetix' ), '' ),
+				'meta_structure'         => array( 'sortable_control', '', '', get_aesthetix_customizer_post_meta_structure( null, $post_type ) ),
+				'footer_structure_title' => array( 'tab_title', __( 'Post footer structure', 'aesthetix' ), '' ),
+				'footer_structure'       => array( 'sortable_control', '', '', get_aesthetix_customizer_single_post_footer_structure( null, $post_type ) ),
+				'options_title'          => array( 'tab_title', __( 'Main options', 'aesthetix' ), '' ),
+				'template_type'          => array( 'select_control', __( 'Select template type', 'aesthetix' ), __( 'This field displays template of the post', 'aesthetix' ), $single_post_template_type_select ),
+				'post_nav_display'       => array( 'checkbox_control', __( 'Prev/next post navigation display', 'aesthetix' ), '' ),
+				'entry_footer_display'   => array( 'checkbox_control', __( 'Entry footer display', 'aesthetix' ), '' ),
 			);
+
+			if ( is_array( $object_taxonomies ) && ! empty( $object_taxonomies ) ) {
+
+				$select_terms   = array();
+				$select_terms[ 'empty' ] = __( 'Empty', 'aesthetix' );
+				foreach ( $object_taxonomies as $key => $object_taxonomy ) {
+					$select_terms[ $object_taxonomy ] = ucwords( str_replace( '_', ' ', $object_taxonomy ) );
+				}
+
+				$aesthetix_controls['breadcrumbs'][ $post_type . '_term' ] = array( 'select_control', ucfirst( $post_type ), '', $select_terms );
+			}
+
+			if ( $post_type_object->has_archive ) {
+				$aesthetix_controls['breadcrumbs'][ $post_type . '_archive_display' ] = array( 'checkbox_control', sprintf( __( 'Add post type %s archive to breadcrumbs', 'aesthetix' ), $post_type ), '' );
+			}
 
 			if ( $post_type === 'post' ) {
 				$aesthetix_controls[ 'single_' . $post_type ] = array_merge( $aesthetix_controls[ 'single_' . $post_type ], array(
@@ -271,34 +285,34 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			// Archive $post_type options.
 			if ( $post_type_object->has_archive || ! empty( $object_taxonomies ) ) {
 				$aesthetix_controls[ 'archive_' . $post_type ] = array(
-					'tab_title'                  => array( 'tab_title', __( 'Root', 'aesthetix' ), '' ),
-					'background'                 => array( 'select_control', __( 'Select post background', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
-					'equal_height'               => array( 'select_control', __( 'Select equal height element', 'aesthetix' ), '', get_aesthetix_customizer_archive_post_structure() ),
-					'title_size'                 => array( 'select_control', __( 'Select title size', 'aesthetix' ), '', get_aesthetix_customizer_title_size() ),
-					'thumbnail_aspect_ratio'     => array( 'select_control', __( 'Select post thumbnail aspect ratio', 'aesthetix' ), '', get_aesthetix_customizer_aspect_ratio() ),
-					'thumbnail_padding'          => array( 'select_control', __( 'Select post thumbnail padding', 'aesthetix' ), '', get_aesthetix_customizer_padding_sizes() ),
-					'content_padding'            => array( 'select_control', __( 'Select post content padding', 'aesthetix' ), '', get_aesthetix_customizer_padding_sizes() ),
-					'shadow'                     => array( 'select_control', __( 'Select post shadow', 'aesthetix' ), '', get_aesthetix_customizer_box_shadows() ),
-					'border_width'               => array( 'select_control', __( 'Select post border width', 'aesthetix' ), '', get_aesthetix_customizer_border_widths() ),
-					'border_radius'              => array( 'select_control', __( 'Select post border radius', 'aesthetix' ), '', get_aesthetix_customizer_border_radiuses() ),
+					'tab_title'              => array( 'tab_title', __( 'Root', 'aesthetix' ), '' ),
+					'background'             => array( 'select_control', __( 'Select post background', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
+					'equal_height'           => array( 'select_control', __( 'Select equal height element', 'aesthetix' ), '', get_aesthetix_customizer_archive_post_structure() ),
+					'title_size'             => array( 'select_control', __( 'Select title size', 'aesthetix' ), '', get_aesthetix_customizer_title_size() ),
+					'thumbnail_aspect_ratio' => array( 'select_control', __( 'Select post thumbnail aspect ratio', 'aesthetix' ), '', get_aesthetix_customizer_aspect_ratio() ),
+					'thumbnail_padding'      => array( 'select_control', __( 'Select post thumbnail padding', 'aesthetix' ), '', get_aesthetix_customizer_padding_sizes() ),
+					'content_padding'        => array( 'select_control', __( 'Select post content padding', 'aesthetix' ), '', get_aesthetix_customizer_padding_sizes() ),
+					'shadow'                 => array( 'select_control', __( 'Select post shadow', 'aesthetix' ), '', get_aesthetix_customizer_box_shadows() ),
+					'border_width'           => array( 'select_control', __( 'Select post border width', 'aesthetix' ), '', get_aesthetix_customizer_border_widths() ),
+					'border_radius'          => array( 'select_control', __( 'Select post border radius', 'aesthetix' ), '', get_aesthetix_customizer_border_radiuses() ),
 
-					'options_title'              => array( 'tab_title', __( 'Main options', 'aesthetix' ), '' ),
-					'masonry'                    => array( 'checkbox_control', __( 'Masonry blog style', 'aesthetix' ), '' ),
-					'columns'                    => array( 'select_control', __( 'Select columns of posts', 'aesthetix' ), __( 'Choose how many columns to display posts', 'aesthetix' ), $archive_page_columns_select ),
-					'layout'                     => array( 'select_control', __( 'Select template type', 'aesthetix' ), __( 'This field displays template of posts', 'aesthetix' ), get_aesthetix_customizer_archive_post_layout() ),
-					'posts_per_page'             => array( 'number_control', __( 'Select posts per page', 'aesthetix' ), array( 'step' => '1', 'min' => '1', 'max' => '100' ) ),
-					'posts_order'                => array( 'select_control', __( 'Select posts order', 'aesthetix' ), '', get_aesthetix_customizer_archive_post_order() ),
-					'posts_orderby'              => array( 'select_control', __( 'Select posts orderby', 'aesthetix' ), '', get_aesthetix_customizer_archive_post_orderby( null, $post_type ) ),
-					'pagination'                 => array( 'select_control', __( 'Post pagination', 'aesthetix' ), '', $archive_page_pagination_select ),
-					'more_button_content'        => array( 'select_control', __( 'Read more button content', 'aesthetix' ), '', get_aesthetix_customizer_button_content() ),
-					'structure_title'            => array( 'tab_title', __( 'Post structure', 'aesthetix' ), '' ),
-					'structure'                  => array( 'sortable_control', '', '', get_aesthetix_customizer_archive_post_structure( null, $post_type ) ),
-					'meta_structure_title'       => array( 'tab_title', __( 'Post meta structure', 'aesthetix' ), '' ),
-					'meta_structure'             => array( 'sortable_control', '', '', get_aesthetix_customizer_post_meta_structure( null, $post_type ) ),
-					'thumbnail_title'            => array( 'tab_title', __( 'Post thumbnail structure', 'aesthetix' ), '' ),
-					'thumbnail_default'          => array( 'checkbox_control', __( 'Add a default banner if thumbnail is not installed', 'aesthetix' ), '' ),
-					'thumbnail_before'           => array( 'sortable_control', __( 'Elements before thumbnail', 'aesthetix' ), __( 'This option does not work for grid image template type', 'aesthetix' ), get_aesthetix_customizer_post_thumbnail_structure() ),
-					'thumbnail_after'            => array( 'sortable_control', __( 'Elements after thumbnail', 'aesthetix' ), __( 'This option does not work for grid image template type', 'aesthetix' ), get_aesthetix_customizer_post_thumbnail_structure() ),
+					'options_title'          => array( 'tab_title', __( 'Main options', 'aesthetix' ), '' ),
+					'masonry'                => array( 'checkbox_control', __( 'Masonry blog style', 'aesthetix' ), '' ),
+					'columns'                => array( 'select_control', __( 'Select columns of posts', 'aesthetix' ), __( 'Choose how many columns to display posts', 'aesthetix' ), $archive_page_columns_select ),
+					'layout'                 => array( 'select_control', __( 'Select template type', 'aesthetix' ), __( 'This field displays template of posts', 'aesthetix' ), get_aesthetix_customizer_archive_post_layout() ),
+					'posts_per_page'         => array( 'number_control', __( 'Select posts per page', 'aesthetix' ), array( 'step' => '1', 'min' => '1', 'max' => '100' ) ),
+					'posts_order'            => array( 'select_control', __( 'Select posts order', 'aesthetix' ), '', get_aesthetix_customizer_archive_post_order() ),
+					'posts_orderby'          => array( 'select_control', __( 'Select posts orderby', 'aesthetix' ), '', get_aesthetix_customizer_archive_post_orderby( null, $post_type ) ),
+					'pagination'             => array( 'select_control', __( 'Post pagination', 'aesthetix' ), '', $archive_page_pagination_select ),
+					'more_button_content'    => array( 'select_control', __( 'Read more button content', 'aesthetix' ), '', get_aesthetix_customizer_button_content() ),
+					'structure_title'        => array( 'tab_title', __( 'Post structure', 'aesthetix' ), '' ),
+					'structure'              => array( 'sortable_control', '', '', get_aesthetix_customizer_archive_post_structure( null, $post_type ) ),
+					'meta_structure_title'   => array( 'tab_title', __( 'Post meta structure', 'aesthetix' ), '' ),
+					'meta_structure'         => array( 'sortable_control', '', '', get_aesthetix_customizer_post_meta_structure( null, $post_type ) ),
+					'thumbnail_title'        => array( 'tab_title', __( 'Post thumbnail structure', 'aesthetix' ), '' ),
+					'thumbnail_default'      => array( 'checkbox_control', __( 'Add a default banner if thumbnail is not installed', 'aesthetix' ), '' ),
+					'thumbnail_before'       => array( 'sortable_control', __( 'Elements before thumbnail', 'aesthetix' ), __( 'This option does not work for grid image template type', 'aesthetix' ), get_aesthetix_customizer_post_thumbnail_structure() ),
+					'thumbnail_after'        => array( 'sortable_control', __( 'Elements after thumbnail', 'aesthetix' ), __( 'This option does not work for grid image template type', 'aesthetix' ), get_aesthetix_customizer_post_thumbnail_structure() ),
 				);
 			}
 		}

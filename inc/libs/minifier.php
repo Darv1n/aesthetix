@@ -1,8 +1,6 @@
 <?php
 /**
- * Minifier functions
- *
- * @since 1.0.0
+ * Minifier functions.
  *
  * @package Aesthetix
  */

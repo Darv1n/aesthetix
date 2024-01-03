@@ -7,53 +7,35 @@
  * @package Aesthetix
  */
 
-if ( ! is_front_page() && ! is_home() && get_aesthetix_options( 'general_breadcrumbs_display' ) ) {
+if ( ! is_front_page() && ! is_home() && get_aesthetix_options( 'general_breadcrumbs_display' ) ) { ?>
 
-	$before = '<section id="section-breadcrumbs" ' . aesthetix_section_classes( 'section-breadcrumbs', false ) . '>';
-		$before .= '<div ' . aesthetix_container_classes( 'container-outer', false ) . '>';
-			$before .= '<div ' . aesthetix_container_classes( 'container-inner', false ) . '>';
-				$before .= '<div class="row">';
-					$before .= '<div class="col-12 align-items-center">';
+	<section id="section-breadcrumbs" <?php aesthetix_section_classes( 'section-breadcrumbs' ); ?> aria-label="<?php esc_attr_e( 'Section breadcrumbs', 'aesthetix' ); ?>">
+		<div <?php aesthetix_container_classes( 'container-outer' ); ?>>
+			<div <?php aesthetix_container_classes( 'container-inner' ); ?>>
 
-					$after = '</div>';
-				$after .= '</div>';
-			$after .= '</div>';
-		$after .= '</div>';
-	$after .= '</section>';
+				<?php
 
-	if ( get_aesthetix_options( 'general_breadcrumbs_type' ) === 'navxt' && is_plugin_active( 'breadcrumb-navxt/breadcrumb-navxt.php' ) ) {
-		$before .= '<nav id="breadcrumbs" class="breadcrumbs breadcrumbs-' . esc_attr( get_aesthetix_options( 'general_breadcrumbs_type' ) ) . '" typeof="BreadcrumbList" vocab="https://schema.org/" aria-label="breadcrumb">';
-			$before .= '<ol class="list-inline list-unstyled">';
-			$after  .= '</ol>';
-		$after  .= '</nav>';
-	} else {
-		$before .= '<div id="breadcrumbs" class="breadcrumbs breadcrumbs-' . esc_attr( get_aesthetix_options( 'general_breadcrumbs_type' ) ) . '">';
-		$after  .= '</div>';
-	}
+					if ( get_aesthetix_options( 'breadcrumbs_type' ) === 'woocommerce' && is_plugin_active( 'woocommerce/woocommerce.php' ) && function_exists( 'woocommerce_breadcrumb' ) ) {
+						woocommerce_breadcrumb();
+					} elseif ( get_aesthetix_options( 'breadcrumbs_type' ) === 'yoast' && is_plugin_active( 'wordpress-seo/wp-seo.php' ) && function_exists( 'yoast_breadcrumb' ) ) {
+						yoast_breadcrumb( '<nav id="breadcrumbs" class="breadcrumbs breadcrumbs-yoast" aria-label="' . esc_attr_x( 'Breadcrumbs', 'breadcrumbs aria label', 'aesthetix' ) . '">', '</nav>' );
+					} elseif ( get_aesthetix_options( 'breadcrumbs_type' ) === 'rankmath' && is_plugin_active( 'seo-by-rank-math/rank-math.php' ) && function_exists( 'rank_math_the_breadcrumbs' ) ) {
+						rank_math_the_breadcrumbs();
+					} elseif ( get_aesthetix_options( 'breadcrumbs_type' ) === 'aioseo' && is_plugin_active( 'all-in-one-seo-pack/all_in_one_seo_pack.php' ) && function_exists( 'aioseo_breadcrumbs' ) ) {
+						aioseo_breadcrumbs();
+					} elseif ( get_aesthetix_options( 'breadcrumbs_type' ) === 'navxt' && is_plugin_active( 'breadcrumb-navxt/breadcrumb-navxt.php' ) && function_exists( 'bcn_display_list' ) ) { ?>
+						<nav id="breadcrumbs" class="breadcrumbs breadcrumbs-navxt" typeof="BreadcrumbList" vocab="https://schema.org/" aria-label="<?php echo esc_attr_x( 'Breadcrumbs', 'breadcrumbs aria label', 'aesthetix' ); ?>">
+							<ol class="breadcrumbs-list breadcrumbs-list-inline">
+								<?php bcn_display_list(); ?>
+							</ol>
+						</nav>
+					<?php } else {
+						$breadcrumb = new Aesthetix_Breadcrumbs();
+						$breadcrumb->the_output();
+					} ?>
 
-	if ( get_aesthetix_options( 'general_breadcrumbs_type' ) === 'navxt' && is_plugin_active( 'breadcrumb-navxt/breadcrumb-navxt.php' ) ) {
-		echo $before;
-			bcn_display_list();
-		echo $after;
-	} elseif ( get_aesthetix_options( 'general_breadcrumbs_type' ) === 'kama' && class_exists( 'Kama_Breadcrumbs' ) ) {
-		echo $before;
-			kama_breadcrumbs();
-		echo $after;
-	} elseif ( get_aesthetix_options( 'general_breadcrumbs_type' ) === 'yoast' && is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
-		echo $before;
-			yoast_breadcrumb( '<nav class="breadcrumbs__navigation">', '</nav>' );
-		echo $after;
-	} elseif ( get_aesthetix_options( 'general_breadcrumbs_type' ) === 'rankmath' && is_plugin_active( 'seo-by-rank-math/rank-math.php' ) ) {
-		echo $before;
-			rank_math_the_breadcrumbs();
-		echo $after;
-	} elseif ( get_aesthetix_options( 'general_breadcrumbs_type' ) === 'seopress' && is_plugin_active( 'wp-seopress/seopress.php' ) ) {
-		echo $before;
-			seopress_display_breadcrumbs();
-		echo $after;
-	} elseif ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
-		echo $before;
-			woocommerce_breadcrumb();
-		echo $after;
-	}
-}
+			</div>
+		</div>
+	</section>
+
+<?php }

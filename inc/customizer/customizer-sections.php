@@ -35,6 +35,10 @@ if ( ! function_exists( 'get_aesthetix_customizer_sections' ) ) {
 				'title' => __( 'Root style options', 'aesthetix' ),
 				'type'  => 'section',
 			),
+			'breadcrumbs'  => array(
+				'title' => __( 'Breadcrumbs options', 'aesthetix' ),
+				'type'  => 'section',
+			),
 			'front_page'   => array(
 				'title' => __( 'Front page options', 'aesthetix' ),
 				'type'  => 'section',

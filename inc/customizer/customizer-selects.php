@@ -872,6 +872,45 @@ if ( ! function_exists( 'get_aesthetix_customizer_socials' ) ) {
 	}
 }
 
+if ( ! function_exists( 'get_aesthetix_customizer_breadcrumbs' ) ) {
+
+	/**
+	 * Return array with the customizer breadcrumbs
+	 *
+	 * @param string $control Array key to get one value.
+	 *
+	 * @return string|array|false
+	 */
+	function get_aesthetix_customizer_breadcrumbs( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'default'     => __( 'Theme', 'aesthetix' ),
+			'woocommerce' => __( 'WooCommerce (Plugin must be activated)', 'aesthetix' ),
+			'yoast'       => __( 'Yoast (Plugin must be activated)', 'aesthetix' ),
+			'aioseo'      => __( 'All in One SEO (Plugin must be activated)', 'aesthetix' ),
+			'rankmath'    => __( 'RankMath (Plugin must be activated)', 'aesthetix' ),
+			'navxt'       => __( 'Breadcrumb NavXT (Plugin must be activated)', 'aesthetix' ),
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_breadcrumbs', $converter );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
 if ( ! function_exists( 'get_aesthetix_customizer_demo_variant' ) ) {
 
 	/**

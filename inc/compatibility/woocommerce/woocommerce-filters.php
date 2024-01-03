@@ -69,3 +69,22 @@ if ( ! function_exists( 'aesthetix_woo_rating_markup' ) ) {
 	}
 }
 add_filter( 'woocommerce_product_get_rating_html', 'aesthetix_woo_rating_markup', 10, 3 );
+
+if ( ! function_exists( 'woocommerce_breadcrumb_defaults_aesthetix_callback' ) ) {
+
+	/**
+	 * Function for 'woocommerce_breadcrumb_defaults' filter-hook.
+	 *
+	 * @param array $args Arguments.
+	 * 
+	 * @return string
+	 */
+	function woocommerce_breadcrumb_defaults_aesthetix_callback( $args ) {
+
+		$args['wrap_before'] = '<nav id="breadcrumbs" class="woocommerce-breadcrumb breadcrumbs breadcrumbs-woocommerce" aria-label="' . esc_attr_x( 'Breadcrumbs', 'breadcrumbs aria label', 'aesthetix' ) . '">';
+
+		return $args;
+	}
+}
+add_filter( 'woocommerce_breadcrumb_defaults', 'woocommerce_breadcrumb_defaults_aesthetix_callback', 10, 3 );
+

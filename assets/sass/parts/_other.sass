@@ -16,12 +16,27 @@
 		right: $margin*2
 
 .breadcrumbs
-	*
-		font-size: $font-size-sm
+	font-size: $font-size-sm
 	li
 		display: inline
 		&:not(:last-child)
 			margin-right: .25rem
+	&-sep
+		padding-left: .375rem
+		padding-right: .125rem
+
+// #lists
+.social-list, .contact-list, .button-list, .language-list, .likes-list, .breadcrumbs-list
+	&-block
+		@extend .list-block
+	&-inline
+		@extend .list-inline
+		> *:not(:last-child)
+			margin-right: .25rem
+
+.social-list
+	&-icons
+		line-height: 1rem
 
 .cookie
 	position: fixed
@@ -70,19 +85,6 @@
 		line-height: 0
 	&-button
 		margin-bottom: 0 !important
-
-// #social-list
-.social-list, .contact-list, .button-list, .language-list, .likes-list
-	&-block
-		@extend .list-block
-	&-inline
-		@extend .list-inline
-		> *:not(:last-child)
-			margin-right: .25rem
-
-.social-list
-	&-icons
-		line-height: 1rem
 
 .likes
 	&-title

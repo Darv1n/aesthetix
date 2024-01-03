@@ -41,9 +41,9 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'general_footer_top_bar_display'            => false,
 			'general_footer_bottom_bar_display'         => true,
 
-			'general_breadcrumbs_display'               => true,
-			'general_breadcrumbs_type'                  => 'woocommerce',
-			'general_breadcrumbs_separator'             => '/',
+			// 'general_breadcrumbs_display'               => true,
+			// 'general_breadcrumbs_type'                  => 'woocommerce',
+			// 'general_breadcrumbs_separator'             => '/',
 
 			'general_subscribe_form_display'            => true,
 			'general_subscribe_form_type'               => 'theme',
@@ -105,6 +105,10 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'root_input_size'                           => 'md',
 			'root_input_border_width'                   => 'sm',
 			'root_input_border_radius'                  => 'md',
+
+			'breadcrumbs_display'                       => true,
+			'breadcrumbs_type'                          => 'default',
+			'breadcrumbs_separator'                     => '/',
 		);
 
 		foreach ( get_post_types() as $key => $post_type ) {
@@ -127,6 +131,9 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 				continue;
 			}
 
+			$post_type_object  = get_post_type_object( $post_type );
+			$object_taxonomies = get_object_taxonomies( $post_type );
+
 			$defaults = array_merge( $defaults, array(
 				'single_' . $post_type . '_structure'             => 'header,thumbnail,meta,content,footer',
 				'single_' . $post_type . '_meta_structure'        => 'date,time,views,edit',
@@ -139,8 +146,13 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 				'single_' . $post_type . '_similar_posts_count'   => 3,
 			) );
 
-			$post_type_object  = get_post_type_object( $post_type );
-			$object_taxonomies = get_object_taxonomies( $post_type );
+			if ( is_array( $object_taxonomies ) && ! empty( $object_taxonomies ) ) {
+				$defaults['breadcrumbs_' . $post_type . '_term'] = $object_taxonomies[0];
+			}
+
+			if ( $post_type_object->has_archive ) {
+				$defaults['breadcrumbs_' . $post_type . '_archive_display'] = true;
+			}
 
 			if ( $post_type_object->has_archive || ! empty( $object_taxonomies ) ) {
 				$defaults = array_merge( $defaults, array(

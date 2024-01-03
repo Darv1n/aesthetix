@@ -66,14 +66,15 @@ if ( ! function_exists( 'wp_enqueue_navxt_breadcrumb_styles' ) ) {
 	 */
 	function wp_enqueue_navxt_breadcrumb_styles() {
 		$css = '
-			.breadcrumbs_navxt .breadcrumbs-item:not(:last-child) {
+			.breadcrumbs-navxt .breadcrumbs-item:not(:last-child) {
 				position: relative;
 				margin-right: 1rem;
 			}
-			.breadcrumbs_navxt .breadcrumbs-item:not(:last-child)::before {
+			.breadcrumbs-navxt .breadcrumbs-item:not(:last-child)::before {
 				position: absolute;
 				content: \'/\';
 				right: -.75rem;
+				top: 0;
 			}';
 
 		$css = minify_css( $css );
