@@ -18,7 +18,7 @@ if ( ! function_exists( 'polylang_widgets_init' ) ) {
 	 * Register polylang widgets.
 	 */
 	function polylang_widgets_init() {
-		if ( is_language_switcher_active() ) {
+		if ( is_plugin_active( 'polylang/polylang.php' ) && function_exists( 'pll_the_languages' ) ) {
 			register_widget( 'WPA_Widget_Language_Switcher' );
 		}
 	}

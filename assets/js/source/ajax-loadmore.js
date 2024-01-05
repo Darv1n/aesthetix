@@ -27,8 +27,6 @@ jQuery( document ).ready( function( $ ) {
 
 		var btn          = $( this );
 			container    = $( e.delegateTarget ).find( '.loop' );
-			defaultIcon  = btn.data( 'default-icon' );
-			loadingIcon  = btn.data( 'loading-icon' );
 			defaultText  = btn.data( 'default-text' );
 			loadingText  = btn.data( 'loading-text' );
 			disabledText = btn.data( 'disabled-text' );
@@ -44,10 +42,10 @@ jQuery( document ).ready( function( $ ) {
 					'page': currentPage,
 				},
 				beforeSend: function() {
-					btn.addClass( 'processing' ).removeClass( defaultIcon ).addClass( loadingIcon ).text( loadingText );
+					btn.addClass( 'processing' ).addClass( 'icon-loading' ).text( loadingText );
 				},
 				complete: function() {
-					btn.removeClass( 'processing' ).removeClass( loadingIcon ).addClass( defaultIcon ).text( defaultText );
+					btn.removeClass( 'processing' ).removeClass( 'icon-loading' ).text( defaultText );
 					btn.data( 'current-page', parseInt( currentPage + 1 ) );
 
 					checkLoadingPages();
@@ -59,6 +57,8 @@ jQuery( document ).ready( function( $ ) {
 							itemSelector: '.masonry-item',
 						} );
 					}
+
+					$( '.post-gallery-slider' ).slick();
 				},
 				success:function( response ) {
 					if ( response.success ) {

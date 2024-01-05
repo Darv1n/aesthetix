@@ -731,28 +731,6 @@ if ( ! function_exists( 'is_magnific_popup_active' ) ) {
 	}
 }
 
-if ( ! function_exists( 'is_language_switcher_active' ) ) {
-
-	/**
-	 * Adds conditions for language switcher.
-	 * 
-	 * @return bool
-	 */
-	function is_language_switcher_active() {
-
-		$active = false;
-
-		if ( is_plugin_active( 'polylang/polylang.php' ) && function_exists( 'pll_the_languages' ) && function_exists( 'pll_languages_list' ) && count( pll_languages_list() ) > 1 ) {
-			$active = true;
-		}
-
-		
-		$active = apply_filters( 'is_language_switcher_active', $active );
-
-		return $active;
-	}
-}
-
 if ( ! function_exists( 'aesthetix_wp_mail' ) ) {
 
 	/**

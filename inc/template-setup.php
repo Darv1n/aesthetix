@@ -122,12 +122,12 @@ if ( ! function_exists( 'aesthetix_setup_theme' ) ) {
 		// Добавляем троеточие в excerpt.
 		add_filter( 'excerpt_more', function( $more ) {
 			return '...';
-		});
+		} );
 
 		// Переписываем email в нижний регистр.
 		add_filter( 'sanitize_email', function( $email ) {
 			return strtolower( $email );
-		});
+		} );
 
 		// Удаляем "Рубрика: ", "Метка: " и т.д. из заголовка архива.
 		add_filter( 'get_the_archive_title', function( $title ) {
@@ -191,11 +191,6 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 			} else {
 				wp_enqueue_script( 'comment-reply' );
 			}
-		}
-
-		// Отключаем глобальные стили для гутенберга, если пользователь не залогинен.
-		if ( ! is_user_logged_in() ) {
-			wp_dequeue_style( 'global-styles' );
 		}
 
 		if ( is_archive() || is_home() && get_aesthetix_options( 'archive_' . get_post_type() . '_masonry' ) ) {

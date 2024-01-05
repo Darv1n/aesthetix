@@ -157,7 +157,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			if ( $post_type_object->has_archive || ! empty( $object_taxonomies ) ) {
 				$defaults = array_merge( $defaults, array(
 					'archive_' . $post_type . '_background'              => 'theme',
-					'archive_' . $post_type . '_equal_height'            => 'excerpt',
+					'archive_' . $post_type . '_equal_height'            => 'title',
 					'archive_' . $post_type . '_title_size'              => 'h4',
 					'archive_' . $post_type . '_thumbnail_aspect_ratio'  => '4-3',
 					'archive_' . $post_type . '_thumbnail_padding'       => 'xs',
@@ -166,7 +166,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 					'archive_' . $post_type . '_border_width'            => 'xs',
 					'archive_' . $post_type . '_border_radius'           => 'md',
 
-					'archive_' . $post_type . '_structure'               => 'meta,title,excerpt,author,more',
+					'archive_' . $post_type . '_structure'               => 'meta,title,author,more',
 					'archive_' . $post_type . '_meta_structure'          => 'date,time,views,likes,edit',
 					'archive_' . $post_type . '_thumbnail_default'       => true,
 					'archive_' . $post_type . '_thumbnail_before'        => '',
@@ -174,7 +174,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 					'archive_' . $post_type . '_posts_per_page'          => get_option( 'posts_per_page' ),
 					'archive_' . $post_type . '_posts_order'             => 'desc',
 					'archive_' . $post_type . '_posts_orderby'           => 'date',
-					'archive_' . $post_type . '_pagination'              => 'numeric',
+					'archive_' . $post_type . '_pagination'              => 'loadmore',
 					'archive_' . $post_type . '_more_button_content'     => 'link-icon-text', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon.
 				) );
 			}
@@ -226,6 +226,8 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 		// Merge defaults and theme options.
 		$defaults = wp_parse_args( get_option( 'aesthetix_options', array() ), $defaults );
+
+
 
 		// Return controls.
 		if ( is_null( $control ) ) {

@@ -45,6 +45,8 @@ jQuery( document ).ready( function( $ ) {
 								// Update the HTML with the new value.
 								postmeta.text( currentValue + 1 );
 
+								console.log( 'Added new post view' );
+
 							} else {
 							}
 						}

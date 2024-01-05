@@ -36,7 +36,11 @@ if ( ! function_exists( 'aesthetix_pre_get_posts' ) ) {
 		// Sort post by aesthetix option.
 		if ( $query->is_archive || $query->is_home ) {
 
-			$post_type = $query->get( 'post_type' ) ?? 'post';
+			if ( $query->get( 'post_type' ) ) {
+				$post_type = $query->get( 'post_type' );
+			} else {
+				$post_type = 'post';
+			}
 
 			if ( get_aesthetix_options( 'archive_' . $post_type . '_posts_per_page' ) ) {
 				$query->set( 'posts_per_page', get_aesthetix_options( 'archive_' . $post_type . '_posts_per_page' ) );
@@ -69,7 +73,7 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 			'aside-scroll-top',
 			'first-screen-post-slider',
 			'breadcrumbs',
-			'widget-adv-banner',
+			// 'widget-adv-banner',
 			'content-wrapper-start',
 		);
 
@@ -130,7 +134,7 @@ if ( ! function_exists( 'after_site_content_structure' ) ) {
 			$structure[] = 'subscribe-form';
 		}
 
-		$structure[] = 'widget-adv-banner';
+		// $structure[] = 'widget-adv-banner';
 		$structure   = apply_filters( 'after_site_content_structure', $structure );
 
 		foreach ( $structure as $key => $value ) {
@@ -163,7 +167,7 @@ if ( ! function_exists( 'before_single_post_structure' ) ) {
 	function before_single_post_structure() {
 
 		$structure = array(
-			'widget-adv-banner',
+			// 'widget-adv-banner',
 		);
 
 		$structure = apply_filters( 'before_single_post_structure', $structure );
@@ -193,7 +197,7 @@ if ( ! function_exists( 'after_single_post_structure' ) ) {
 
 		$structure = array(
 			'single-pagination',
-			'widget-adv-banner',
+			// 'widget-adv-banner',
 			'single-similar-posts',
 			'single-comments',
 		);

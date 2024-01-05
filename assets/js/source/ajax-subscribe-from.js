@@ -27,13 +27,13 @@ jQuery( document ).ready( function( $ ) {
 					'nonce': ajax_obj.nonce,
 				},
 				beforeSend: function() {
-					submit.text( processText );
+					submit.addClass( 'icon-loading' ).text( processText );
 					form.find( '.error' ).removeClass( 'error' );
 					form.find( '.notification' ).remove();
 					form.addClass( 'processing' );
 				},
 				complete: function() {
-					submit.text( defaultText );
+					submit.removeClass( 'icon-loading' ).text( defaultText );
 					form.trigger( 'reset' ).removeClass( 'processing' );
 					notificationButton();
 				},

@@ -110,14 +110,14 @@ if ( ! function_exists( 'aesthetix_widget_default' ) ) {
 			}
 
 			if ( $widget_name === 'widget-adv-banner' ) {
-				$args['adv_title']       = 'Aesthetix Themes';
-				$args['adv_description'] = __( 'WordPress premium templates', 'aesthetix' );
+				// $args['adv_title']       = 'Aesthetix Themes';
+				// $args['adv_description'] = __( 'WordPress premium templates', 'aesthetix' );
 
 				if ( in_array( $widget_id, array( 'header-top-left', 'header-top-right', 'header-main-left', 'header-main-center', 'header-main-right', 'header-bottom-left', 'header-bottom-right' ), true ) ) {
-					$args['adv_desktop'] = get_theme_file_uri( '/data/img/adv/header-promo-728x90-desktop.png' );
+					// $args['adv_desktop'] = get_theme_file_uri( '/data/img/adv/header-promo-728x90-desktop.png' );
 				}
 
-				if ( $widget_id === 'main' ) {
+/*				if ( $widget_id === 'main' ) {
 					$args['adv_desktop'] = get_theme_file_uri( '/data/img/adv/aside-promo-300x250-desktop.png' );
 				}
 
@@ -135,7 +135,7 @@ if ( ! function_exists( 'aesthetix_widget_default' ) ) {
 
 				if ( $widget_id === 'before-footer' ) {
 					$args['adv_desktop'] = get_theme_file_uri( '/data/img/adv/content-promo-1200x113-desktop.png' );
-				}
+				}*/
 			}
 
 			// Merge child and parent default options.

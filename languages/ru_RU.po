@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2023-12-29 04:30+0400\n"
-"PO-Revision-Date: 2023-12-29 04:33+0400\n"
+"PO-Revision-Date: 2024-01-05 02:00+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -720,7 +720,7 @@ msgstr "Числовой"
 #: inc/customizer/customizer-controls.php:117
 #: templates/archive/archive-pagination.php:70
 msgid "Load more"
-msgstr "Подробнее"
+msgstr "Загрузить еще"
 
 #: inc/customizer/customizer-controls.php:124
 msgid "Demo"

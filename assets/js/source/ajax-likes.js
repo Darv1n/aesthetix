@@ -107,6 +107,8 @@ jQuery( document ).ready( function( $ ) {
 									$( this ).removeClass( 'button-empty' ).addClass( 'button-secondary' ).text( count + 1 );
 								}
 								localStorage.setItem( 'likers', JSON.stringify( likers ) );
+
+								console.log( 'A new like has been added to the post' );
 							} else {
 								// События для второй кнопки.
 								if ( $( this ).hasClass( 'button-secondary' ) ) {

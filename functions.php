@@ -117,6 +117,11 @@ if ( is_plugin_active( 'polylang/polylang.php' ) ) {
 	require_once get_template_directory() . '/inc/compatibility/polylang.php';
 }
 
+// Load WPML compatibility file.
+if ( is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' ) ) {
+	require_once get_template_directory() . '/inc/compatibility/wpml.php';
+}
+
 // Libs.
 require_once get_template_directory() . '/inc/libs/minifier.php';
 

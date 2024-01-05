@@ -8,7 +8,7 @@
  */
 
 $defaults = array(
-	'adv_desktop'     => get_theme_file_uri( '/assets/img/header-promo.png' ),
+	'adv_desktop'     => '',
 	'adv_tablet'      => '',
 	'adv_mobile'      => '',
 	'adv_link'        => 'https://zolin.digital/',

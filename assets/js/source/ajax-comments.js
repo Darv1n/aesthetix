@@ -197,13 +197,13 @@ jQuery( document ).ready(function ( $ ) {
 					'nonce': ajax_obj.nonce,
 				},
 				beforeSend: function() {
-					submit.text( processText );
+					submit.addClass( 'icon-loading' ).text( processText );
 					// form.find( '.error' ).removeClass( 'error' );
 					form.addClass( 'processing' );
 				},
 				complete: function() {
 					form.trigger( 'reset' ).removeClass( 'processing' );
-					submit.text( defaultText );
+					submit.removeClass( 'icon-loading' ).text( defaultText );
 					notificationButton();
 					resetCommentForm();
 				},
@@ -223,6 +223,8 @@ jQuery( document ).ready(function ( $ ) {
 								children.append( response.data );
 							}
 						}
+
+						console.log( 'New comment added' );
 					} else {
 						$.each( response.data, function( key, val ) {
 							if ( val.length !== 0 ) {
