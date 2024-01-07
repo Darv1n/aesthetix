@@ -1,7 +1,5 @@
 jQuery( document ).ready( function( $ ) {
 
-	// localStorage.removeItem( 'likers' );
-
 	var likers    = localStorage.getItem( 'likers' );
 		container = '';
 		button    = '';

@@ -74,7 +74,7 @@ if ( ! function_exists( 'aesthetix_comment_reply_link' ) ) {
 	 */
 	function aesthetix_comment_reply_link( $comment_reply_link, $args, $comment, $post ) {
 
-		$comment_reply_link = str_replace( 'comment-reply-link', esc_attr( implode( ' ', get_link_classes( 'comment-reply-link' ) ) ), $comment_reply_link );
+		$comment_reply_link = str_replace( 'comment-reply-link', esc_attr( implode( ' ', get_link_classes( 'comment-reply-link icon icon-before icon-reply' ) ) ), $comment_reply_link );
 
 		return $comment_reply_link;
 	}

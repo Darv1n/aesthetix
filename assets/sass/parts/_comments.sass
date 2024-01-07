@@ -58,7 +58,8 @@
 		font-size: $font-size-sm
 		color: $gray-color-600
 	&-deleted
-		font-style: italic
+		.comment-content
+			font-style: italic
 
 
 .comments-title
@@ -80,6 +81,10 @@
 
 .cancel-comment-wrapper
 	margin-bottom: .75rem
+
+.comment-confirmation-resend
+	cursor: pointer
+	transition: $transition
 
 @media (min-width: 576px)
 	.comment-reply-title

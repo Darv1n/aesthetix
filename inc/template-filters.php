@@ -23,10 +23,14 @@ if ( ! function_exists( 'ajax_localize_params' ) ) {
 
 		// Parameters for the ajax handler.
 		$ajax_localize = array(
-			'url'   => admin_url( 'admin-ajax.php' ),
-			'query' => $wp_query->query,
-			'lang'  => determine_locale(),
-			'nonce' => wp_create_nonce( 'ajax-nonce' ),
+			'url'           => admin_url( 'admin-ajax.php' ),
+			'query'         => $wp_query->query,
+			'lang'          => determine_locale(),
+			'notifications' => array(
+				'comment-awaiting-moderation'   => sprintf( __( 'Your comment is awaiting moderation', 'aesthetix' ) ),
+				'comment-awaiting-confirmation' => sprintf( __( 'You need to confirm your comment, an email has been sent to your email. If the email did not arrive, check your Spam folder or <span class="%s">resend</span>', 'aesthetix' ), esc_attr( implode( ' ', get_link_classes( 'comment-confirmation-resend' ) ) ) ),
+			),
+			'nonce'         => wp_create_nonce( 'ajax-nonce' ),
 		);
 
 		$ajax_localize['query']['post_status'] = 'publish';

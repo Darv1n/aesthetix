@@ -134,11 +134,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'footer_bottom_bar_display' => array( 'checkbox_control', __( 'Bottom bar display', 'aesthetix' ), __( 'This checkbox displays two sidebars after the footer of the site. They are adds in the widget section options', 'aesthetix' ) ),
 			'footer_type'               => array( 'select_control', __( 'Select footer type', 'aesthetix' ), '', $general_footer_type_select ),
 
-			// 'breadcrumbs_tab_title'     => array( 'tab_title', __( 'Breadcrumbs', 'aesthetix' ), '' ),
-			// 'breadcrumbs_display'       => array( 'checkbox_control', __( 'Breadcrumbs display', 'aesthetix' ), '' ),
-			// 'breadcrumbs_type'          => array( 'select_control', __( 'Select breadcrumbs type', 'aesthetix' ), '', get_aesthetix_customizer_breadcrumbs() ),
-			// 'breadcrumbs_separator'     => array( 'text_control', __( 'Breadcrumbs separator', 'aesthetix' ), '' ),
-
 			'subscribe_form_tab_title'  => array( 'tab_title', __( 'Subscribe form', 'aesthetix' ), '' ),
 			'subscribe_form_display'    => array( 'checkbox_control', __( 'Subscribe form before footer display', 'aesthetix' ), '' ),
 			'subscribe_form_type'       => array( 'select_control', __( 'Subscribe form type', 'aesthetix' ), '', get_aesthetix_customizer_subscribe_form_type() ),
@@ -319,7 +314,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 
 		// Comments options.
 		$aesthetix_controls['comments'] = array(
-			'ajax'            => array( 'checkbox_control', __( 'Ajax', 'aesthetix' ), __( 'Add sending comments without reloading the page for unauthorized users', 'aesthetix' ) ),
+			'ajax'            => array( 'checkbox_control', __( 'Enable support for ajax comments without authorization with confirmation via email', 'aesthetix' ), __( 'Add sending comments without reloading the page for unauthorized users', 'aesthetix' ) ),
 			'structure_title' => array( 'tab_title', __( 'Comments structure', 'aesthetix' ), '' ),
 			'structure'       => array( 'sortable_control', '', '', get_aesthetix_customizer_comments_structure() ),
 		);

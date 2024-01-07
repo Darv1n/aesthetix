@@ -88,9 +88,9 @@ if ( comments_open() ) {
 			$required_text
 		),
 
-		'class_submit'          => esc_attr( implode( ' ', get_button_classes( 'submit icon icon-envelope' ) ) ),
-		'submit_button'         => '<button name="%1$s" type="submit" id="%2$s" class="%3$s" data-process-text="' . __( 'Sending...', 'aesthetix' ) . '" data-default-text="%4$s">%4$s</button>',
-		'submit_field'          => '<div class="col-12 order-8"><div class="button-list button-list-inline">%1$s %2$s</div></div>',
+		'class_submit'         => esc_attr( implode( ' ', get_button_classes( 'submit icon icon-envelope' ) ) ),
+		'submit_button'        => '<button name="%1$s" type="submit" id="%2$s" class="%3$s" data-process-text="' . __( 'Sending...', 'aesthetix' ) . '" data-default-text="%4$s">%4$s</button>',
+		'submit_field'         => '<div class="col-12 order-8"><div class="button-list button-list-inline">%1$s %2$s</div></div>',
 	);
 
 	if ( get_option( 'thread_comments' ) ) {

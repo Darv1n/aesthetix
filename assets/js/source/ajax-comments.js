@@ -38,10 +38,57 @@ jQuery( document ).ready(function ( $ ) {
 		respond.remove(); // Removing the form from the DOM.
 	}
 
+	var commentStorage = localStorage.getItem( 'commentStorage' );
+
+	if ( commentStorage === 'undefined' || commentStorage === null ) {
+		commentStorage = {};
+	} else {
+		commentStorage = JSON.parse( commentStorage );
+
+		if ( commentStorage['comment_hash'] !== 'undefined' ) {
+			checkCommentNotifications( commentStorage['comment_hash'] );
+		}
+	}
+
+	// Functions added notifications for comments if hash has in the localStorage.
+	function checkCommentNotifications( hash ) {
+		var comments = $( '#comments' ).find( '.comment[data-object-hash="' + hash + '"]' );
+		
+
+		if ( comments.length !== 0 ) {
+			comments.each( function( key ) {
+
+				var divNotifications = $( this ).find( '.comment-notifications' );
+
+				if ( divNotifications.length === 0 ) {
+					var notifications = $('<div>', {
+						class: 'comment-notifications',
+					} );
+
+					if ( $( this ).hasClass( 'awaiting-moderation' ) ) {
+						notifications.append( '<div class="notification notification_warning">' + ajax_obj.notifications['comment-awaiting-moderation'] + '</div>' );
+					}
+
+					if ( $( this ).hasClass( 'awaiting-confirmation' ) ) {
+						notifications.append( '<div class="notification notification_warning">' + ajax_obj.notifications['comment-awaiting-confirmation'] + '</div>' );
+					}
+
+					if ( notifications.html().trim() !== '' ) {
+						$( this ).find( '.comment-footer' ).before( notifications );
+					}
+				}
+
+			} );
+
+			notificationButton();
+		}
+	}
+
 	$( '#comments' ).on( 'click', '.comment-confirmation-resend', function( e ) {
 
 		var _this      = $( this );
-			comment_id = $( this ).data( 'comment-id' );
+			comment    = $( this ).closest( '.comment' );
+			comment_id = comment.data( 'object-id' );
 
 		// Ajax request.
 		if ( ! _this.hasClass( 'diactive' ) ) {
@@ -80,7 +127,7 @@ jQuery( document ).ready(function ( $ ) {
 		resetCommentFormValues();
 
 		var comment    = $( this ).closest( '.comment' );
-			comment_id = $( this ).data( 'commentid' );
+			comment_id = comment.data( 'object-id' );
 
 		$( '#cancel-comment-reply-link' ).css( 'display', 'inline' ); // Activate the cancel comment link.
 		$( '#commentform' ).find( '[name="comment_parent"]' ).val( comment_id ); // Add the comment ID to the form.
@@ -98,7 +145,7 @@ jQuery( document ).ready(function ( $ ) {
 		resetCommentFormValues();
 
 		var comment      = $( this ).closest( '.comment' );
-			comment_id   = $( this ).data( 'commentid' );
+			comment_id   = comment.data( 'object-id' );
 			comment_text = comment.find( '.comment-content' ).html().trim();
 
 		$( '#cancel-comment-reply-link' ).css( 'display', 'inline' ); // Activate the cancel comment link.
@@ -117,12 +164,23 @@ jQuery( document ).ready(function ( $ ) {
 
 	$( '#comments' ).on( 'click', '.comment-delete-link', function( e ) {
 
-		var form       = $( '#commentform' );
-			comment_id = $( this ).data( 'commentid' );
+		var _this        = $( this )
+			form         = $( '#commentform' );
+			comment      = _this.closest( '.comment' );
+			comment_id   = comment.data( 'object-id' );
+			restoreText  = _this.data( 'restore-text' );
+			deleteText   = _this.data( 'delete-text' );
+			val          = '';
 
-		form.find( '[name="comment"]' ).text( 'delete' );
+		if ( _this.hasClass( 'icon-trash-undo' ) ) {
+			val = 'restore';
+		} else {
+			val = 'delete';
+		}
+
+		form.find( '[name="comment"]' ).text( val );
 		form.find( '[name="comment_id"]' ).val( comment_id );
-		form.find( '[name="comment_action"]' ).val( 'delete' );
+		form.find( '[name="comment_action"]' ).val( val );
 
 		$.ajax( {
 			type: 'POST',
@@ -133,22 +191,25 @@ jQuery( document ).ready(function ( $ ) {
 				'nonce': ajax_obj.nonce,
 			},
 			beforeSend: function() {
+				_this.addClass( 'icon-loading' );
 			},
 			complete: function() {
 				form.trigger( 'reset' );
+				_this.removeClass( 'icon-loading' );
 				notificationButton();
 				resetCommentForm();
+
+				if ( _this.hasClass( 'icon-trash-undo' ) ) {
+					_this.addClass( 'icon-trash'  ).removeClass( 'icon-trash-undo'  ).text( deleteText );
+					comment.removeClass( 'comment-deleted' ).addClass( 'comment-restored fade-in' );
+				} else {
+					_this.addClass( 'icon-trash-undo'  ).removeClass( 'icon-trash'  ).text( restoreText );
+					comment.removeClass( 'comment-restored' ).addClass( 'comment-deleted fade-in' );
+				}
 			},
 			success: function( response ) {
 				if ( response.success ) {
-					$( '#comment-' + comment_id ).find( '.comment-content' ).html( response.data ).addClass( 'comment-deleted fade-in' );
-				} else {
-					$.each( response.data, function( key, val ) {
-						if ( val.length !== 0 ) {
-							// form.find( '[name="' + key + '"]' ).addClass( 'error' );
-							form.find( '[name="' + key + '"]' ).after( '<div class="notification notification_warning">' + val + '</div>' );
-						}
-					} );
+					comment.find( '.comment-content' ).html( response.data );
 				}
 			},
 		} )
@@ -174,6 +235,8 @@ jQuery( document ).ready(function ( $ ) {
 			comment_id        = form.find( '[name="comment_id"]' ).val();
 			comment_parent_id = form.find( '[name="comment_parent"]' ).val();
 			comment_action    = form.find( '[name="comment_action"]' ).val();
+			formDataArray     = form.serializeArray();
+			consentStorage    = false;
 			ready             = true;
 
 		form.find( '.notification' ).remove();
@@ -210,11 +273,11 @@ jQuery( document ).ready(function ( $ ) {
 				success: function( response ) {
 					if ( response.success ) {
 						if ( comment_action.length > 0 && comment_id.length > 0 ) {
-							$( '#comment-' + comment_id ).find( '.comment-content' ).html( response.data ).addClass( 'fade-in' );
+							$( '.comment[data-object-id="' + comment_id + '"]' ).find( '.comment-content' ).html( response.data ).addClass( 'fade-in' );
 						} else if ( comment_parent_id === '0' ) {
-							$( '#comments > .comment-list' ).append( response.data );
+							$( '.comment-list' ).append( response.data );
 						} else {
-							var comment_parent = $( '#comments' ).find( '.comment[data-id="' + comment_parent_id + '"]' );
+							var comment_parent = $( '.comment-list' ).find( '.comment[data-object-id="' + comment_parent_id + '"]' );
 								children       = comment_parent.closest( '.comment-list-item' ).find( '.children' );
 
 							if ( children.length === 0 ) {
@@ -225,6 +288,26 @@ jQuery( document ).ready(function ( $ ) {
 						}
 
 						console.log( 'New comment added' );
+
+						// Set localStorage.
+						for ( var i = 0; i < formDataArray.length; i++ ) {
+							if ( $.inArray( formDataArray[i].name, [ 'author', 'email', 'url', 'comment_hash' ] ) !== -1 ) {
+								commentStorage[ formDataArray[i].name ] = formDataArray[i].value;
+							}
+
+							if ( formDataArray[i].name === 'wp-comment-cookies-consent' ) {
+								consentStorage = true;
+							}
+						}
+
+						if ( consentStorage === true ) {
+							localStorage.setItem( 'commentStorage', JSON.stringify( commentStorage ) );
+						}
+
+						if ( commentStorage['comment_hash'] !== 'undefined' ) {
+							checkCommentNotifications( commentStorage['comment_hash'] );
+						}
+
 					} else {
 						$.each( response.data, function( key, val ) {
 							if ( val.length !== 0 ) {

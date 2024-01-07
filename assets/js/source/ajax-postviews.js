@@ -1,7 +1,7 @@
 jQuery( document ).ready( function( $ ) {
 
 	var article = $( '#article' );
-		post_id = article.data( 'post-id' );
+		post_id = article.data( 'object-id' );
 		updated = false;
 
 	if ( article.length === 0 ) {

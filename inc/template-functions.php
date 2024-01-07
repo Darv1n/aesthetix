@@ -781,3 +781,56 @@ if ( ! function_exists( 'aesthetix_wp_mail' ) ) {
 		}
 	}
 }
+
+if ( ! function_exists( 'aesthetix_flush_post_cache' ) ) {
+
+	/**
+	 * Deletes the current page cache depending on the plugin used.
+	 * 
+	 * @param ind $post_id Post ID for clearing.
+	 * 
+	 * @return bool
+	 */
+	function aesthetix_flush_post_cache( $post_id = null ) {
+
+		if ( is_null( $post_id ) ) {
+			return;
+		}
+
+		$post = get_post( $post_id );
+
+		if ( is_null( $post ) ) {
+			return;
+		}
+
+		// W3 Total Cache.
+		if ( function_exists( 'w3tc_flush_post' ) ) {
+			w3tc_flush_post( $post_id );
+		}
+
+		// WP Super Cache.
+		if ( function_exists( 'wp_cache_post_change' ) ) {
+			wp_cache_post_change( $post_id );
+		}
+
+		// WP Rocket.
+		if ( function_exists( 'rocket_clean_post' ) ) {
+			rocket_clean_post( $post_id );
+		}
+
+		// WP Fastest Cache.
+		if ( function_exists( 'wpfc_clear_post_cache_by_id' ) ) {
+			wpfc_clear_post_cache_by_id( $post_id );
+		}
+
+		// WP Optimize.
+		if ( class_exists( 'WPO_Page_Cache' ) ) {
+			WPO_Page_Cache::delete_single_post_cache( $post_id );
+		}
+
+		// LiteSpeed Cache.
+		if ( has_action( 'litespeed_purge_post' ) ) {
+			add_action( 'litespeed_purge_post', $post_id );
+		}
+	}
+}

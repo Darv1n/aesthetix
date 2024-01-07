@@ -23,17 +23,24 @@
 
 	<?php if ( current_user_can( 'edit_comment', $args['comment']->comment_ID ) ) { ?>
 		<li class="comment-footer-item">
-			<a <?php link_classes(); ?> href="<?php echo esc_url( get_edit_comment_link( $args['comment']->comment_ID ) ); ?>"><?php esc_html_e( 'Edit', 'aesthetix' ); ?></a>
+			<a <?php link_classes( 'icon icon-before icon-pen-to-square' ); ?> href="<?php echo esc_url( get_edit_comment_link( $args['comment']->comment_ID ) ); ?>"><?php esc_html_e( 'Edit', 'aesthetix' ); ?></a>
 		</li>
 	<?php } ?>
 
 	<?php if ( isset( $_COOKIE['comment_author_email_' . COOKIEHASH] ) && $_COOKIE['comment_author_email_' . COOKIEHASH] === $args['comment']->comment_author_email ) { ?>
 		<li class="comment-footer-item">
-			<a <?php link_classes( 'comment-edit-link' ); ?> href="<?php echo esc_url( get_comment_link( $args['comment'] ) ); ?>" data-commentid="<?php echo esc_attr( $args['comment']->comment_ID ); ?>" data-on-text="<?php esc_html_e( 'Cancel', 'aesthetix' ); ?>" data-off-text="<?php esc_html_e( 'Edit', 'aesthetix' ); ?>"><?php esc_html_e( 'Edit', 'aesthetix' ); ?></a>
+			<a <?php link_classes( 'comment-edit-link icon icon-before icon-pen-to-square' ); ?> href="<?php echo esc_url( get_comment_link( $args['comment'] ) ); ?>" data-on-text="<?php esc_html_e( 'Cancel', 'aesthetix' ); ?>" data-off-text="<?php esc_html_e( 'Edit', 'aesthetix' ); ?>"><?php esc_html_e( 'Edit', 'aesthetix' ); ?></a>
 		</li>
 		<li class="comment-footer-item">
-			<a <?php link_classes( 'comment-delete-link' ); ?> href="<?php echo esc_url( get_comment_link( $args['comment'] ) ); ?>" data-commentid="<?php echo esc_attr( $args['comment']->comment_ID ); ?>"><?php esc_html_e( 'Delete', 'aesthetix' ); ?></a>
+
+			<?php if ( $args['comment']->comment_type === 'deleted' ) { ?>
+				<a <?php link_classes( 'comment-delete-link icon icon-before icon-trash-undo' ); ?> href="<?php echo esc_url( get_comment_link( $args['comment'] ) ); ?>" data-delete-text="<?php esc_html_e( 'Delete', 'aesthetix' ); ?>" data-restore-text="<?php esc_html_e( 'Restore', 'aesthetix' ); ?>"><?php esc_html_e( 'Restore', 'aesthetix' ); ?></a>
+			<?php } else { ?>
+				<a <?php link_classes( 'comment-delete-link icon icon-before icon-trash' ); ?> href="<?php echo esc_url( get_comment_link( $args['comment'] ) ); ?>" data-delete-text="<?php esc_html_e( 'Delete', 'aesthetix' ); ?>" data-restore-text="<?php esc_html_e( 'Restore', 'aesthetix' ); ?>"><?php esc_html_e( 'Delete', 'aesthetix' ); ?></a>
+			<?php } ?>
+
 		</li>
+
 	<?php } ?>
 
 </ul>

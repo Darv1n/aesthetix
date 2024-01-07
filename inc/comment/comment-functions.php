@@ -22,43 +22,8 @@ if ( ! function_exists( 'aesthetix_comments_list' ) ) {
 	function aesthetix_comments_list( $comment, $args, $depth ) {
 
 		$args['comment'] = $comment;
-		$args['depth']  = $depth;
+		$args['depth']   = $depth;
 
 		get_template_part( 'templates/comment/comment', '', $args );
-	}
-}
-
-if ( ! function_exists( 'aesthetix_has_confirmed_comments' ) ) {
-
-	/**
-	 * Checks that the user has verified comments.
-	 *
-	 * @param string $comment_author_email User email.
-	 */
-	function aesthetix_has_confirmed_comments( $comment_author_email ) {
-
-		if ( ! is_email( $comment_author_email ) ) {
-			return false;
-		}
-
-		$args = array(
-			'author_email' => $comment_author_email,
-			'fields'       => 'ids',
-			'meta_query'   => array(
-				array(
-					'key'     => 'confirm',
-					'value'   => '1',
-					'compare' => '=',
-				),
-			)
-		);
-
-		$comments = get_comments( $args );
-
-		if ( count( $comments ) > 0 ) {
-			return true;
-		}
-
-		return false;
 	}
 }

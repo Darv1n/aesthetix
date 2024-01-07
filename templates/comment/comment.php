@@ -23,19 +23,26 @@ if ( ! $args['comment'] && ! is_object( $args['comment'] && isset( $args['commen
 	return;
 }
 
-// vardump( $args['comment'] );
-
 if ( is_string( $args['comments_structure'] ) && ! empty( $args['comments_structure'] ) ) {
 	$args['comments_structure'] = array_map( 'trim', explode( ',', $args['comments_structure'] ) );
+}
+
+// vardump( $args['comment'] );
+
+$classes[] = 'comment';
+
+if ( $args['comment']->comment_approved === '0' ) {
+	$classes[] = 'awaiting-moderation';
+}
+
+if ( get_comment_meta( $args['comment']->comment_ID, 'confirm', true ) === '0' ) {
+	$classes[] = 'awaiting-confirmation';
 }
 
 ?>
 
 <li class="comment-list-item">
-	<div id="comment-<?php comment_ID(); ?>" class="comment" data-id="<?php comment_ID(); ?>">
-
-
-
+	<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>" data-object-id="<?php echo esc_attr( $args['comment']->comment_ID ); ?>" data-object-hash="<?php echo esc_attr( wp_hash( $args['comment']->comment_author_email ) ); ?>">
 
 		<?php if ( is_array( $args['comments_structure'] ) && ! empty( $args['comments_structure'] ) ) {
 			foreach ( $args['comments_structure'] as $key => $value ) {
@@ -60,9 +67,6 @@ if ( is_string( $args['comments_structure'] ) && ! empty( $args['comments_struct
 				}
 			}
 		} ?>
-
-
-
 
 	</div>
 

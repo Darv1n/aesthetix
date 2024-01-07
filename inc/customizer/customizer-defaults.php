@@ -41,10 +41,6 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'general_footer_top_bar_display'            => false,
 			'general_footer_bottom_bar_display'         => true,
 
-			// 'general_breadcrumbs_display'               => true,
-			// 'general_breadcrumbs_type'                  => 'woocommerce',
-			// 'general_breadcrumbs_separator'             => '/',
-
 			'general_subscribe_form_display'            => true,
 			'general_subscribe_form_type'               => 'theme',
 			'general_subscribe_form_title'              => apply_filters( 'get_aesthetix_general_subscribe_form_title', esc_html__( 'Subscribe to our newsletter for all the latest updates', 'aesthetix' ) ),
@@ -226,8 +222,6 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 		// Merge defaults and theme options.
 		$defaults = wp_parse_args( get_option( 'aesthetix_options', array() ), $defaults );
-
-
 
 		// Return controls.
 		if ( is_null( $control ) ) {

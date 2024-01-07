@@ -19,7 +19,7 @@
 		<?php if ( get_comment_meta( $args['comment']->comment_ID, 'confirm', true ) === '0' ) { ?>
 			<div class="notification notification_warning">
 				<p class="comment-awaiting-confirmation">
-					<?php echo sprintf( __( 'You need to confirm your comment, an email has been sent to your email %s. If the email did not arrive, check your Spam folder or <a class="%s" href="%s" data-comment-id="%s">resend</a>', 'aesthetix' ), $args['comment']->comment_author_email, esc_attr( implode( ' ', get_link_classes( 'comment-confirmation-resend' ) ) ), esc_url( get_comment_link( $args['comment'] ) ), $args['comment']->comment_ID ); ?>
+					<?php echo sprintf( __( 'You need to confirm your comment, an email has been sent to your email %s. If the email did not arrive, check your Spam folder or <a class="%s" href="%s">resend</a>', 'aesthetix' ), $args['comment']->comment_author_email, esc_attr( implode( ' ', get_link_classes( 'comment-confirmation-resend' ) ) ), esc_url( get_comment_link( $args['comment'] ) ) ); ?>
 				</p>
 			</div>
 		<?php } ?>
