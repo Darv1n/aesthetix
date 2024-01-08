@@ -1168,7 +1168,7 @@ if ( ! function_exists( 'get_widgets_classes' ) ) {
 	 * Get classes for widgets.
 	 *
 	 * @param string $class Widgets classes. Default ''.
-	 * @param string $id    Widgets id. Default null.
+	 * @param string $id    Widgets ID. Default null.
 	 *
 	 * @return array
 	 */

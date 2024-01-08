@@ -12,21 +12,17 @@ $args['container'] = $args['container'] ?? false;
 
 if ( ! empty( $args['widget_id'] ) && ( is_active_sidebar( $args['widget_id'] ) || get_aesthetix_widget_default( $args['widget_id'] ) ) ) { ?>
 	<section id="section-widget-<?php echo esc_attr( $args['widget_id'] ); ?>" <?php aesthetix_section_classes( 'section-widget section-widget-' . $args['widget_id'] ); ?>>
-		
+
 		<?php if ( $args['container'] ) { ?>
 			<div <?php aesthetix_container_classes( 'container-outer' ); ?>>
 				<div <?php aesthetix_container_classes( 'container-inner' ); ?>>
 		<?php } ?>
 
-			<div <?php widgets_classes( '', $args['widget_id'] ); ?>>
-
-				<?php if ( is_active_sidebar( $args['widget_id'] ) ) {
-					dynamic_sidebar( $args['widget_id'] );
-				} else {
-					aesthetix_widget_default( $args['widget_id'] );
-				} ?>
-
-			</div>
+			<?php if ( is_active_sidebar( $args['widget_id'] ) ) { ?>
+				<div <?php widgets_classes( '', $args['widget_id'] ); ?>>
+					<?php dynamic_sidebar( $args['widget_id'] ); ?>
+				</div>
+			<?php } ?>
 
 		<?php if ( $args['container'] ) { ?>
 				</div>

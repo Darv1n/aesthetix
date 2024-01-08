@@ -8,7 +8,8 @@
  */
 
 $defaults = array(
-	'post_title_size' => get_aesthetix_options( 'archive_' . get_post_type() . '_title_size' ),
+	'post_title_size'   => get_aesthetix_options( 'archive_' . get_post_type() . '_title_size' ),
+	'post_equal_height' => get_aesthetix_options( 'archive_' . get_post_type() . '_equal_height' ),
 );
 
 $args = array_merge( $defaults, $args );

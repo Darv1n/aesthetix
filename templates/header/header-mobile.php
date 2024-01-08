@@ -13,24 +13,18 @@
 		<div <?php aesthetix_container_classes( 'container-inner' ); ?>>
 			<div <?php aesthetix_archive_page_columns_wrapper_classes( 'align-items-center' ); ?>>
 				<div class="col-6">
-					<div <?php widgets_classes( '', 'header-mobile-left' ); ?>>
-
-						<?php if ( is_active_sidebar( 'header-mobile-left' ) ) {
-							dynamic_sidebar( 'header-mobile-left' );
-						} else {
-							aesthetix_widget_default( 'header-mobile-left' );
-						} ?>
-
-					</div>
+					<?php if ( is_active_sidebar( 'header-mobile-left' ) ) { ?>
+						<div <?php widgets_classes( '', 'header-mobile-left' ); ?>>
+							<?php dynamic_sidebar( 'header-mobile-left' ); ?>
+						</div>
+					<?php } ?>
 				</div>
 				<div class="col-6">
 					<div <?php widgets_classes( '', 'header-mobile-right' ); ?>>
 
-						<?php if ( is_active_sidebar( 'header-mobile-right' ) ) {
-							dynamic_sidebar( 'header-mobile-right' );
-						} else {
-							aesthetix_widget_default( 'header-mobile-right' );
-						} ?>
+						<?php if ( is_active_sidebar( 'header-mobile-right' ) ) { ?>
+							<?php dynamic_sidebar( 'header-mobile-right' ); ?>
+						<?php } ?>
 
 						<?php
 							if ( in_array( get_aesthetix_options( 'root_button_size' ), array( 'lg', 'xl' ), true ) ) {

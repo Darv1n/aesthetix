@@ -225,6 +225,8 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 				$description .= '. ' . __( 'If the sidebar is empty, widgets are displayed by default', 'aesthetix' ) . ': ' . implode( ', ', $widget_names );
 			}
 
+			$classes = get_widget_classes( 'widget widget-' . $id, $id );
+
 			register_sidebar(
 				apply_filters(
 					'aesthetix_sidebar_' . $id . '_init',
@@ -232,7 +234,7 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 						'name'            => $sidebar['name'],
 						'id'              => $id,
 						'description'     => $sidebar['description'],
-						'before_widget'   => '<div id="%1$s" class="widget widget-' . $id . ' %2$s">',
+						'before_widget'   => '<div id="%1$s" class="' . implode( ' ', $classes ). ' %2$s">',
 						'after_widget'    => '</div>',
 						'before_title'    => '<' . $sidebar['title_tag'] . ' class="widget-title">',
 						'after_title'     => '</' . $sidebar['title_tag'] . '>',
@@ -268,8 +270,10 @@ if ( ! function_exists( 'get_widget_name' ) ) {
 			'widget-creator'           => 'Aesthetix ' . mb_strtolower( __( 'Creator', 'aesthetix' ) ),
 			'widget-language-switcher' => 'Aesthetix ' . mb_strtolower( __( 'Language switcher', 'aesthetix' ) ),
 			'widget-logo'              => 'Aesthetix ' . mb_strtolower( __( 'Logo', 'aesthetix' ) ),
+			'widget-menu-primary'      => 'Aesthetix ' . mb_strtolower( __( 'Primary menu', 'aesthetix' ) ),
 			'widget-menus'             => 'Aesthetix ' . mb_strtolower( __( 'Menus', 'aesthetix' ) ),
 			'widget-recent-posts'      => 'Aesthetix ' . mb_strtolower( __( 'Recent posts', 'aesthetix' ) ),
+			'widget-search-form'       => 'Aesthetix ' . mb_strtolower( __( 'Search form', 'aesthetix' ) ),
 			'widget-search-toggle'     => 'Aesthetix ' . mb_strtolower( __( 'Search button', 'aesthetix' ) ),
 			'widget-socials'           => 'Aesthetix ' . mb_strtolower( __( 'Socials', 'aesthetix' ) ),
 			'widget-subscribe-form'    => 'Aesthetix ' . mb_strtolower( __( 'Subscribe form', 'aesthetix' ) ),

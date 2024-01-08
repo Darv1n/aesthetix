@@ -13,37 +13,25 @@
 		<div <?php aesthetix_container_classes( 'container-inner' ); ?>>
 			<div <?php aesthetix_archive_page_columns_wrapper_classes( 'align-items-center' ); ?>>
 				<div class="col-12 col-md-3">
-					<div <?php widgets_classes( '', 'header-main-left' ); ?>>
-
-						<?php if ( is_active_sidebar( 'header-main-left' ) ) {
-							dynamic_sidebar( 'header-main-left' );
-						} else {
-							aesthetix_widget_default( 'header-main-left' );
-						} ?>
-
-					</div>
+					<?php if ( is_active_sidebar( 'header-main-left' ) ) { ?>
+						<div <?php widgets_classes( '', 'header-main-left' ); ?>>
+							<?php dynamic_sidebar( 'header-main-left' ); ?>
+						</div>
+					<?php } ?>
 				</div>
 				<div class="col-12 col-md-6">
-					<div <?php widgets_classes( '', 'header-main-center' ); ?>>
-
-						<?php if ( is_active_sidebar( 'header-main-center' ) ) {
-							dynamic_sidebar( 'header-main-center' );
-						} else {
-							aesthetix_widget_default( 'header-main-center' );
-						} ?>
-
-					</div>
+					<?php if ( is_active_sidebar( 'header-main-center' ) ) { ?>
+						<div <?php widgets_classes( '', 'header-main-center' ); ?>>
+							<?php dynamic_sidebar( 'header-main-center' ); ?>
+						</div>
+					<?php } ?>
 				</div>
 				<div class="col-12 col-md-3">
-					<div <?php widgets_classes( '', 'header-main-right' ); ?>>
-
-						<?php if ( is_active_sidebar( 'header-main-right' ) ) {
-							dynamic_sidebar( 'header-main-right' );
-						} else {
-							aesthetix_widget_default( 'header-main-right' );
-						} ?>
-
-					</div>
+					<?php if ( is_active_sidebar( 'header-main-right' ) ) { ?>
+						<div <?php widgets_classes( '', 'header-main-right' ); ?>>
+							<?php dynamic_sidebar( 'header-main-right' ); ?>
+						</div>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
@@ -56,23 +44,17 @@
 			<div <?php aesthetix_archive_page_columns_wrapper_classes( 'align-items-center' ); ?>>
 				<div class="col-12 col-md-9">
 					<div <?php widgets_classes( '', 'header-bottom-left' ); ?>>
-
 						<div <?php widget_classes( 'widget-primary-menu', 'header-bottom-left' ); ?>>
 							<?php get_template_part( 'templates/widget/widget-menu', '', array( 'theme_location' => 'primary' ) ); ?>
 						</div>
-
 					</div>
 				</div>
 				<div class="col-12 col-md-3">
-					<div <?php widgets_classes( '', 'header-bottom-right' ); ?>>
-
-						<?php if ( is_active_sidebar( 'header-bottom-right' ) ) {
-							dynamic_sidebar( 'header-bottom-right' );
-						} else {
-							aesthetix_widget_default( 'header-bottom-right' );
-						} ?>
-
-					</div>
+					<?php if ( is_active_sidebar( 'header-bottom-right' ) ) { ?>
+						<div <?php widgets_classes( '', 'header-bottom-right' ); ?>>
+							<?php dynamic_sidebar( 'header-bottom-right' ); ?>
+						</div>
+					<?php } ?>
 				</div>
 			</div>
 		</div>

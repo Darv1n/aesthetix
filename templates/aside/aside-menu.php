@@ -33,14 +33,10 @@ if ( is_admin_bar_showing() ) {
 		<?php get_template_part( 'templates/widget/widget-menu', '', array( 'theme_location' => 'mobile' ) ); ?>
 	</div>
 
-	<div <?php widgets_classes( 'aside-menu-footer', 'aside-menu' ); ?>>
-
-		<?php if ( is_active_sidebar( 'aside-menu' ) ) {
-			dynamic_sidebar( 'aside-menu' );
-		} else {
-			aesthetix_widget_default( 'aside-menu' );
-		} ?>
-
-	</div>
+	<?php if ( is_active_sidebar( 'aside-menu' ) ) { ?>
+		<div <?php widgets_classes( 'aside-menu-footer', 'aside-menu' ); ?>>
+			<?php dynamic_sidebar( 'aside-menu' ); ?>
+		</div>
+	<?php } ?>
 
 </aside>

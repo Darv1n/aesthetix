@@ -13,15 +13,11 @@
 		<div <?php aesthetix_container_classes( 'container-inner' ); ?>>
 			<div <?php aesthetix_archive_page_columns_wrapper_classes( 'align-items-center' ); ?>>
 				<div class="col-12 col-md-3">
-					<div <?php widgets_classes( '', 'header-main-left' ); ?>>
-
-						<?php if ( is_active_sidebar( 'header-main-left' ) ) {
-							dynamic_sidebar( 'header-main-left' );
-						} else {
-							aesthetix_widget_default( 'header-main-left' );
-						} ?>
-
-					</div>
+					<?php if ( is_active_sidebar( 'header-main-left' ) ) { ?>
+						<div <?php widgets_classes( '', 'header-main-left' ); ?>>
+							<?php dynamic_sidebar( 'header-main-left' ); ?>
+						</div>
+					<?php } ?>
 				</div>
 				<div class="col-12 col-md-9">
 					<div <?php widgets_classes( '', 'header-main-right' ); ?>>
@@ -32,8 +28,6 @@
 
 						<?php if ( is_active_sidebar( 'header-main-right' ) ) {
 							dynamic_sidebar( 'header-main-right' );
-						} else {
-							aesthetix_widget_default( 'header-main-right' );
 						} ?>
 
 					</div>

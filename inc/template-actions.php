@@ -73,7 +73,6 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 			'aside-scroll-top',
 			'first-screen-post-slider',
 			'breadcrumbs',
-			// 'widget-adv-banner',
 			'content-wrapper-start',
 		);
 
@@ -105,9 +104,6 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 				case 'breadcrumbs':
 					get_template_part( 'templates/breadcrumbs' );
 					break;
-				case 'widget-adv-banner':
-					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'after-header', 'container' => true ) );
-					break;
 				case 'content-wrapper-start':
 					get_template_part( 'templates/content-wrapper-start' );
 					break;
@@ -134,8 +130,7 @@ if ( ! function_exists( 'after_site_content_structure' ) ) {
 			$structure[] = 'subscribe-form';
 		}
 
-		// $structure[] = 'widget-adv-banner';
-		$structure   = apply_filters( 'after_site_content_structure', $structure );
+		$structure = apply_filters( 'after_site_content_structure', $structure );
 
 		foreach ( $structure as $key => $value ) {
 			switch ( $value ) {
@@ -147,9 +142,6 @@ if ( ! function_exists( 'after_site_content_structure' ) ) {
 					break;
 				case 'subscribe-form':
 					get_template_part( 'templates/subscribe-form', '', array( 'section' => true, 'title' => get_aesthetix_options( 'general_subscribe_form_title' ) ) );
-					break;
-				case 'widget-adv-banner':
-					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'before-footer', 'container' => true ) );
 					break;
 				default:
 					break;
@@ -167,7 +159,7 @@ if ( ! function_exists( 'before_single_post_structure' ) ) {
 	function before_single_post_structure() {
 
 		$structure = array(
-			// 'widget-adv-banner',
+			// 'section-adv-banner',
 		);
 
 		$structure = apply_filters( 'before_single_post_structure', $structure );
@@ -177,7 +169,7 @@ if ( ! function_exists( 'before_single_post_structure' ) ) {
 				case has_action( 'before_single_post_structure_loop_' . $value ):
 					do_action( 'before_single_post_structure_loop_' . $value );
 					break;
-				case 'widget-adv-banner':
+				case 'section-adv-banner':
 					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'before-post-content' ) );
 					break;
 				default:
@@ -197,7 +189,7 @@ if ( ! function_exists( 'after_single_post_structure' ) ) {
 
 		$structure = array(
 			'single-pagination',
-			// 'widget-adv-banner',
+			// 'section-adv-banner',
 			'single-similar-posts',
 			'single-comments',
 		);
@@ -212,7 +204,7 @@ if ( ! function_exists( 'after_single_post_structure' ) ) {
 				case 'single-pagination':
 					get_template_part( 'templates/single-pagination' );
 					break;
-				case 'widget-adv-banner':
+				case 'section-adv-banner':
 					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'after-post-content' ) );
 					break;
 				case 'single-similar-posts':

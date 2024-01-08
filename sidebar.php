@@ -17,8 +17,6 @@ if ( is_active_sidebar( $sidebar ) || ! empty( get_aesthetix_widget_default( $si
 
 			<?php if ( is_active_sidebar( $sidebar ) ) {
 				dynamic_sidebar( $sidebar );
-			} else {
-				aesthetix_widget_default( $sidebar );
 			} ?>
 
 		<?php do_action( 'aesthetix_after_sidebar' ); ?>
