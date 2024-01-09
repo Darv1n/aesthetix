@@ -159,7 +159,7 @@ if ( ! function_exists( 'before_single_post_structure' ) ) {
 	function before_single_post_structure() {
 
 		$structure = array(
-			// 'section-adv-banner',
+			'section-widget',
 		);
 
 		$structure = apply_filters( 'before_single_post_structure', $structure );
@@ -169,8 +169,8 @@ if ( ! function_exists( 'before_single_post_structure' ) ) {
 				case has_action( 'before_single_post_structure_loop_' . $value ):
 					do_action( 'before_single_post_structure_loop_' . $value );
 					break;
-				case 'section-adv-banner':
-					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'before-post-content' ) );
+				case 'section-widget':
+					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'before-post-content', 'container' => false ) );
 					break;
 				default:
 					break;
@@ -189,7 +189,7 @@ if ( ! function_exists( 'after_single_post_structure' ) ) {
 
 		$structure = array(
 			'single-pagination',
-			// 'section-adv-banner',
+			'section-widget',
 			'single-similar-posts',
 			'single-comments',
 		);
@@ -204,8 +204,8 @@ if ( ! function_exists( 'after_single_post_structure' ) ) {
 				case 'single-pagination':
 					get_template_part( 'templates/single-pagination' );
 					break;
-				case 'section-adv-banner':
-					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'after-post-content' ) );
+				case 'section-widget':
+					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'after-post-content', 'container' => false ) );
 					break;
 				case 'single-similar-posts':
 					get_template_part( 'templates/single/single-similar-posts' );

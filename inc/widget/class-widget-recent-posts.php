@@ -95,14 +95,14 @@ class WPA_Widget_Recent_Posts extends WPA_Widget {
 	public function widget( $args, $instance ) {
 		$this->widget_start( $args, $instance );
 
-		$post_args['order']                     = isset( $instance['posts_order'] ) ? $instance['posts_order'] : $this->settings['posts_order']['std'];
-		$post_args['orderby']                   = isset( $instance['posts_orderby'] ) ? $instance['posts_orderby'] : $this->settings['posts_orderby']['std'];
-		$post_args['posts_per_page']            = isset( $instance['posts_count'] ) ? $instance['posts_count'] : $this->settings['posts_count']['std'];
-		$post_args['post_title_size']           = isset( $instance['post_title_size'] ) ? $instance['post_title_size'] : $this->settings['post_title_size']['std'];
-		$post_args['post_layout']               = isset( $instance['post_layout'] ) ? $instance['post_layout'] : $this->settings['post_layout']['std'];
-		$post_args['post_structure']            = isset( $instance['post_structure'] ) ? $instance['post_structure'] : $this->settings['post_structure']['std'];
-		$post_args['post_meta_structure']       = isset( $instance['post_meta_structure'] ) ? $instance['post_meta_structure'] : $this->settings['post_meta_structure']['std'];
-		$post_args['button_size']               = 'xxs';
+		$post_args['order']               = isset( $instance['posts_order'] ) ? $instance['posts_order'] : $this->settings['posts_order']['std'];
+		$post_args['orderby']             = isset( $instance['posts_orderby'] ) ? $instance['posts_orderby'] : $this->settings['posts_orderby']['std'];
+		$post_args['posts_per_page']      = isset( $instance['posts_count'] ) ? $instance['posts_count'] : $this->settings['posts_count']['std'];
+		$post_args['post_title_size']     = isset( $instance['post_title_size'] ) ? $instance['post_title_size'] : $this->settings['post_title_size']['std'];
+		$post_args['post_layout']         = isset( $instance['post_layout'] ) ? $instance['post_layout'] : $this->settings['post_layout']['std'];
+		$post_args['post_structure']      = isset( $instance['post_structure'] ) ? $instance['post_structure'] : $this->settings['post_structure']['std'];
+		$post_args['post_meta_structure'] = isset( $instance['post_meta_structure'] ) ? $instance['post_meta_structure'] : $this->settings['post_meta_structure']['std'];
+		$post_args['button_size']         = 'xxs';
 
 		get_template_part( 'templates/widget/widget-recent-posts', '', $post_args );
 

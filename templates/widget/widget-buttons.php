@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying buttons.
+ * Template part for displaying widget buttons.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

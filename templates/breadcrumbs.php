@@ -7,9 +7,9 @@
  * @package Aesthetix
  */
 
-if ( ! is_front_page() && ! is_home() && get_aesthetix_options( 'general_breadcrumbs_display' ) ) { ?>
+if ( ! is_front_page() && ! is_home() && get_aesthetix_options( 'breadcrumbs_display' ) ) { ?>
 
-	<section id="section-breadcrumbs" <?php aesthetix_section_classes( 'section-breadcrumbs' ); ?> aria-label="<?php esc_attr_e( 'Section breadcrumbs', 'aesthetix' ); ?>">
+	<section id="section-breadcrumbs" <?php aesthetix_section_classes( 'section-breadcrumbs', get_aesthetix_options( 'root_bg_breadcrumbs' ) ); ?> aria-label="<?php esc_attr_e( 'Section breadcrumbs', 'aesthetix' ); ?>">
 		<div <?php aesthetix_container_classes( 'container-outer' ); ?>>
 			<div <?php aesthetix_container_classes( 'container-inner' ); ?>>
 

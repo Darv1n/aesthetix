@@ -227,7 +227,11 @@ if ( ! function_exists( 'ajax_comments_callback' ) ) {
 		}
 
 		// wp_send_json_success( $my_key );
-		$cookies_consent = (bool) $query['wp-comment-cookies-consent'] ?? false;
+		if ( isset( $query['wp-comment-cookies-consent'] ) ) {
+			$cookies_consent = (bool) $query['wp-comment-cookies-consent'];
+		} else {
+			$cookies_consent = false;
+		}
 
 		/**
 		 * Fires after comment cookies are set.

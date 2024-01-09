@@ -46,17 +46,15 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'general_subscribe_form_display'            => true,
 			'general_subscribe_form_type'               => 'theme',
 			'general_subscribe_form_title'              => apply_filters( 'get_aesthetix_general_subscribe_form_title', esc_html__( 'Subscribe to our newsletter for all the latest updates', 'aesthetix' ) ),
-			'general_subscribe_form_bg'                 => '',
+			'general_subscribe_form_image'              => '',
 			'general_subscribe_form_shortcode'          => '',
 
 			'general_scroll_top_structure'              => 'telegram,whatsapp,scroll-top',
 			'general_cookie_display'                    => true,
 
-			'front_page_slider_display'                 => true,
-			'front_page_slider_post_type'               => 'post',
-			'front_page_slider_slides_count'            => 6,
-			'front_page_slider_slides_to_show'          => 4,
-			'front_page_slider_slides_layout'           => 'grid', // grid, grid-image, list, list-chess.
+			'breadcrumbs_display'                       => true,
+			'breadcrumbs_type'                          => 'default',
+			'breadcrumbs_separator'                     => '/',
 
 			'root_primary_font'                         => 'open-sans',
 			'root_secondary_font'                       => 'open-sans',
@@ -68,6 +66,16 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'root_box_shadow'                           => 'md',
 			'root_border_width'                         => 'sm',
 			'root_border_radius'                        => 'md',
+
+			'root_bg_header_top_bar'                    => 'primary',
+			'root_bg_header_middle_bar'                 => 'theme',
+			'root_bg_header_bottom_bar'                 => 'theme',
+			'root_bg_footer_top_bar'                    => 'primary',
+			'root_bg_footer_middle_bar'                 => 'theme',
+			'root_bg_footer_bottom_bar'                 => 'primary',
+			'root_bg_subscribe_form'                    => 'primary',
+			'root_bg_breadcrumbs'                       => 'primary',
+			'root_bg_aside_widgets'                     => 'primary',
 
 			'root_button_type'                          => 'common',
 			'root_button_icon_position'                 => 'before',
@@ -104,9 +112,11 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'root_input_border_width'                   => 'sm',
 			'root_input_border_radius'                  => 'md',
 
-			'breadcrumbs_display'                       => true,
-			'breadcrumbs_type'                          => 'default',
-			'breadcrumbs_separator'                     => '/',
+			'front_page_slider_display'                 => true,
+			'front_page_slider_post_type'               => 'post',
+			'front_page_slider_slides_count'            => 6,
+			'front_page_slider_slides_to_show'          => 4,
+			'front_page_slider_slides_layout'           => 'grid', // grid, grid-image, list, list-chess.
 		);
 
 		foreach ( get_post_types() as $key => $post_type ) {
@@ -154,13 +164,13 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 			if ( $post_type_object->has_archive || ! empty( $object_taxonomies ) ) {
 				$defaults = array_merge( $defaults, array(
-					'archive_' . $post_type . '_background'             => 'theme',
+					'archive_' . $post_type . '_background'             => 'primary',
 					'archive_' . $post_type . '_equal_height'           => 'title',
 					'archive_' . $post_type . '_title_size'             => 'h4',
 					'archive_' . $post_type . '_thumbnail_aspect_ratio' => '4-3',
 					'archive_' . $post_type . '_thumbnail_padding'      => 'xs',
 					'archive_' . $post_type . '_content_padding'        => 'xl',
-					'archive_' . $post_type . '_shadow'                 => 'md',
+					'archive_' . $post_type . '_shadow'                 => 'none',
 					'archive_' . $post_type . '_border_width'           => 'xs',
 					'archive_' . $post_type . '_border_radius'          => 'md',
 
@@ -189,6 +199,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 				) );
 			}
 		}
+
 
 		$defaults = array_merge( $defaults, array(
 			'comments_ajax'      => true,

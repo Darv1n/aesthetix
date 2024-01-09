@@ -26,7 +26,7 @@
 		wp_body_open();
 	} ?>
 
-	<header id="header" <?php aesthetix_section_classes( 'header' ); ?> aria-label="<?php esc_attr_e( 'Site header', 'aesthetix' ); ?>">
+	<header id="header" class="header" aria-label="<?php esc_attr_e( 'Site header', 'aesthetix' ); ?>">
 
 		<?php do_action( 'wp_header_open' ); ?>
 
@@ -35,8 +35,8 @@
 		} ?>
 
 		<?php
-			get_template_part( 'templates/header/header-mobile', get_aesthetix_options( 'general_header_mobile_type' ) );
 			get_template_part( 'templates/header/header-desktop', get_aesthetix_options( 'general_header_type' ) );
+			get_template_part( 'templates/header/header-mobile', get_aesthetix_options( 'general_header_mobile_type' ) );
 		?>
 
 		<?php do_action( 'wp_header_close' ); ?>

@@ -23,6 +23,15 @@
 
 .widget
 	position: relative
+	&-background
+		padding: 1rem 1.25rem
+		border-radius: $border-radius
+	&-gray
+		background: $gray-color-100
+	&-primary
+		background: $primary-color-50
+	&-secondary
+		background: $secondary-color-50
 	&-title-wrap
 		margin-bottom: .5rem
 		> *:not(:last-child)
@@ -35,11 +44,6 @@
 	&-menu-title
 		@extend .h6
 		margin: .25rem 0
-	ul, ol, dl
-		// list-style-type: none
-		// padding-left: 0
-		// li:not(:last-child)
-		// 	margin-bottom: .375rem
 	&_recent_entries
 		.post-date
 			display: block

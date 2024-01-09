@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying subscribe popup toggle.
+ * Template part for displaying widget subscribe popup toggle.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

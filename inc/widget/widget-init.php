@@ -24,11 +24,13 @@ if ( ! function_exists( 'aesthetix_widgets_init' ) ) {
 		register_widget( 'WPA_Widget_Logo' );
 		register_widget( 'WPA_Widget_Menus' );
 		register_widget( 'WPA_Widget_Recent_Posts' );
+		register_widget( 'WPA_Widget_Recent_Users' );
 		register_widget( 'WPA_Widget_Search_Popup_Form' );
 		register_widget( 'WPA_Widget_Socials' );
 		register_widget( 'WPA_Widget_Subscribe_Form' );
 		register_widget( 'WPA_Widget_Subscribe_Popup_Form' );
 		register_widget( 'WPA_Widget_Use_Materials' );
+		register_widget( 'WPA_Widget_User' );
 	}
 }
 add_action( 'widgets_init', 'aesthetix_widgets_init' );
@@ -53,11 +55,6 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 				'description' => __( 'Add widgets in aside menu sidebar', 'aesthetix' ),
 				'title_tag'   => 'h3',
 			),
-			'after-header' => array(
-				'name'        => __( 'After header sidebar', 'aesthetix' ),
-				'description' => __( 'Add widgets in after header sidebar', 'aesthetix' ),
-				'title_tag'   => 'h3',
-			),
 			'before-post-content' => array(
 				'name'        => __( 'Before post content sidebar', 'aesthetix' ),
 				'description' => __( 'Add widgets in before post content sidebar', 'aesthetix' ),
@@ -66,11 +63,6 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 			'after-post-content' => array(
 				'name'        => __( 'After post content sidebar', 'aesthetix' ),
 				'description' => __( 'Add widgets in after post content sidebar', 'aesthetix' ),
-				'title_tag'   => 'h3',
-			),
-			'before-footer' => array(
-				'name'        => __( 'Before footer sidebar', 'aesthetix' ),
-				'description' => __( 'Add widgets in before footer sidebar', 'aesthetix' ),
 				'title_tag'   => 'h3',
 			),
 			'header-mobile-left' => array(
@@ -273,12 +265,14 @@ if ( ! function_exists( 'get_widget_name' ) ) {
 			'widget-menu-primary'      => 'Aesthetix ' . mb_strtolower( __( 'Primary menu', 'aesthetix' ) ),
 			'widget-menus'             => 'Aesthetix ' . mb_strtolower( __( 'Menus', 'aesthetix' ) ),
 			'widget-recent-posts'      => 'Aesthetix ' . mb_strtolower( __( 'Recent posts', 'aesthetix' ) ),
+			'widget-recent-users'      => 'Aesthetix ' . mb_strtolower( __( 'Recent users', 'aesthetix' ) ),
 			'widget-search-form'       => 'Aesthetix ' . mb_strtolower( __( 'Search form', 'aesthetix' ) ),
 			'widget-search-toggle'     => 'Aesthetix ' . mb_strtolower( __( 'Search button', 'aesthetix' ) ),
 			'widget-socials'           => 'Aesthetix ' . mb_strtolower( __( 'Socials', 'aesthetix' ) ),
 			'widget-subscribe-form'    => 'Aesthetix ' . mb_strtolower( __( 'Subscribe form', 'aesthetix' ) ),
 			'widget-subscribe-toggle'  => 'Aesthetix ' . mb_strtolower( __( 'Subscribe button', 'aesthetix' ) ),
 			'widget-use-materials'     => 'Aesthetix ' . mb_strtolower( __( 'Use materials', 'aesthetix' ) ),
+			'widget-user'              => 'Aesthetix ' . mb_strtolower( __( 'User', 'aesthetix' ) ),
 		);
 
 		// Merge child and parent default options.

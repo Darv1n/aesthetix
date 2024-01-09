@@ -8,7 +8,7 @@
  */
  ?>
 
-<div class="header-top-bar">
+<div <?php aesthetix_section_classes( 'header-section header-top-bar', get_aesthetix_options( 'root_bg_header_top_bar' ) ); ?>>
 	<div <?php aesthetix_container_classes( 'container-outer' ); ?>>
 		<div <?php aesthetix_container_classes( 'container-inner' ); ?>>
 			<div <?php aesthetix_archive_page_columns_wrapper_classes( 'align-items-center' ); ?>>

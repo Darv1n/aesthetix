@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying social list.
+ * Template part for displaying widget social list.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

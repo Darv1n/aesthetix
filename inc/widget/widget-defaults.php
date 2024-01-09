@@ -64,17 +64,10 @@ if ( ! function_exists( 'aesthetix_register_default_sidebar_widgets' ) ) {
 			if ( is_array( $widget_names ) && ! empty( $widget_names ) ) {
 				foreach ( $widget_names as $key => $widget_name ) {
 
-					// vardump( $widget_name );
-					// vardump( get_widget_name( $widget_name ) );
-
 					wp_register_sidebar_widget(
 						$widget_id . '_' . $widget_name,
 						get_widget_name( $widget_name ),
 						'aesthetix_widget_default',
-						array(
-							// 'widget_id'   => $widget_id,
-							// 'widget_name' => $widget_name,
-						)
 					);
 				}
 			}
@@ -246,7 +239,24 @@ if ( ! function_exists( 'get_aesthetix_widget_default_args' ) ) {
 						$converter[ $widget_id ][ $widget_name ]['post_layout']         = 'list';
 						$converter[ $widget_id ][ $widget_name ]['post_structure']      = 'title,meta';
 						$converter[ $widget_id ][ $widget_name ]['post_meta_structure'] = 'author,date';
-						$converter[ $widget_id ][ $widget_name ]['widget_title']        = __( 'Recent posts', 'aesthetix' );
+						$converter[ $widget_id ][ $widget_name ]['widget_subtitle']     = __( 'Popular Posts', 'aesthetix' );
+						$converter[ $widget_id ][ $widget_name ]['widget_title']        = __( 'Trending', 'aesthetix' );
+					}
+
+					if ( $widget_name === 'widget-recent-users' ) {
+						$converter[ $widget_id ][ $widget_name ]['widget_subtitle'] = __( 'By post count', 'aesthetix' );
+						$converter[ $widget_id ][ $widget_name ]['widget_title']    = __( 'Edithors', 'aesthetix' );
+					}
+
+					if ( $widget_name === 'widget-user' ) {
+						$converter[ $widget_id ][ $widget_name ]['widget_subtitle'] = __( 'Author', 'aesthetix' );
+						$converter[ $widget_id ][ $widget_name ]['widget_title']    = __( 'About me', 'aesthetix' );
+					}
+
+					if ( ! in_array( $widget_id, array( 'before-post-content', 'after-post-content' ), true ) ) {
+						if ( in_array( $widget_name, array( 'widget-user', 'widget-recent-users' ), true ) ) {
+							$converter[ $widget_id ][ $widget_name ]['container_class'] = 'user-aside';
+						}
 					}
 
 					if ( $widget_name === 'widget-adv-banner' ) {
@@ -261,19 +271,11 @@ if ( ! function_exists( 'get_aesthetix_widget_default_args' ) ) {
 							$converter[ $widget_id ][ $widget_name ]['adv_desktop'] = get_theme_file_uri( '/data/img/adv/aside-promo-300x250-desktop.png' );
 						}
 
-						if ( $widget_id === 'after-header' ) {
-							$converter[ $widget_id ][ $widget_name ]['adv_desktop'] = get_theme_file_uri( '/data/img/adv/content-promo-1200x113-desktop.png' );
-						}
-
 						if ( $widget_id === 'before-post-content' ) {
 							$converter[ $widget_id ][ $widget_name ]['adv_desktop'] = get_theme_file_uri( '/data/img/adv/content-promo-920x90-desktop.png' );
 						}
 
 						if ( $widget_id === 'after-post-content' ) {
-							$converter[ $widget_id ][ $widget_name ]['adv_desktop'] = get_theme_file_uri( '/data/img/adv/content-promo-1200x113-desktop.png' );
-						}
-
-						if ( $widget_id === 'before-footer' ) {
 							$converter[ $widget_id ][ $widget_name ]['adv_desktop'] = get_theme_file_uri( '/data/img/adv/content-promo-1200x113-desktop.png' );
 						}*/
 					}
@@ -318,12 +320,10 @@ if ( ! function_exists( 'get_aesthetix_widget_default' ) ) {
 		}
 
 		$converter = array(
-			'main'                 => array( 'widget-search-form', 'widget-recent-posts', 'widget-adv-banner' ),
+			'main'                 => array( 'widget-user', 'widget-recent-posts', 'widget-adv-banner', 'widget-recent-users' ),
 			'aside-menu'           => array( 'widget-socials', 'widget-language-switcher' ),
-			'after-header'         => array( 'widget-adv-banner' ),
 			'before-post-content'  => array( 'widget-adv-banner' ),
-			'after-post-content'   => array( 'widget-adv-banner' ),
-			'before-footer'        => array( 'widget-adv-banner' ),
+			'after-post-content'   => array( 'widget-user', 'widget-adv-banner' ),
 			'header-mobile-left'   => array( 'widget-logo' ),
 			'header-mobile-center' => array( 'widget-logo' ),
 			'header-mobile-right'  => array( 'widget-search-toggle', 'widget-subscribe-toggle' ),

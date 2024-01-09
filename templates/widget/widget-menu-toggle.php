@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying toggle menu.
+ * Template part for displaying widget toggle menu.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

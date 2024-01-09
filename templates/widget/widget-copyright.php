@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying copyright.
+ * Template part for displaying widget copyright.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

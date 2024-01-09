@@ -53,11 +53,13 @@ require_once get_template_directory() . '/inc/widget/class-widget-language-switc
 require_once get_template_directory() . '/inc/widget/class-widget-logo.php';
 require_once get_template_directory() . '/inc/widget/class-widget-menus.php';
 require_once get_template_directory() . '/inc/widget/class-widget-recent-posts.php';
+require_once get_template_directory() . '/inc/widget/class-widget-recent-users.php';
 require_once get_template_directory() . '/inc/widget/class-widget-search-popup-form.php';
 require_once get_template_directory() . '/inc/widget/class-widget-socials.php';
 require_once get_template_directory() . '/inc/widget/class-widget-subscribe-form.php';
 require_once get_template_directory() . '/inc/widget/class-widget-subscribe-popup-form.php';
 require_once get_template_directory() . '/inc/widget/class-widget-use-materials.php';
+require_once get_template_directory() . '/inc/widget/class-widget-user.php';
 require_once get_template_directory() . '/inc/widget/widget-defaults.php';
 require_once get_template_directory() . '/inc/widget/widget-init.php';
 

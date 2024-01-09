@@ -275,9 +275,14 @@ jQuery( document ).ready(function ( $ ) {
 						if ( comment_action.length > 0 && comment_id.length > 0 ) {
 							$( '.comment[data-object-id="' + comment_id + '"]' ).find( '.comment-content' ).html( response.data ).addClass( 'fade-in' );
 						} else if ( comment_parent_id === '0' ) {
-							$( '.comment-list' ).append( response.data );
+							var commentList = $( '#comments' ).find( '.comment-list' );
+							if ( commentList.length === 0 ) {
+								$( '#comments' ).append( '<ol class="comment-list">' + response.data + '</ol>' );
+							} else {
+								$( '#comments' ).append( response.data );
+							}
 						} else {
-							var comment_parent = $( '.comment-list' ).find( '.comment[data-object-id="' + comment_parent_id + '"]' );
+							var comment_parent = $( '#comments' ).find( '.comment[data-object-id="' + comment_parent_id + '"]' );
 								children       = comment_parent.closest( '.comment-list-item' ).find( '.children' );
 
 							if ( children.length === 0 ) {

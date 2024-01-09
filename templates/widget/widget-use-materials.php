@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying use materials.
+ * Template part for displaying widget use materials.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

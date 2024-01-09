@@ -1,6 +1,6 @@
 <?php
 /**
- * Widget Copyright
+ * Widget Copyright.
  *
  * @package Aesthetix
  */

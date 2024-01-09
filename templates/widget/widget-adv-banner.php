@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying advertising banner.
+ * Template part for displaying widget advertising banner.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

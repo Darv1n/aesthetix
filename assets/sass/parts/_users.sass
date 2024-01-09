@@ -1,0 +1,24 @@
+.user
+	position: relative
+	margin-bottom: .5rem
+	> *
+		margin-bottom: .5rem
+		&:last-child
+			margin-bottom: 0
+	&-reply-title
+		margin-bottom: .25rem
+	&-header
+		min-height: 48px
+	&-avatar
+		position: absolute
+		top: 0
+		left: 0
+	&-title
+		@extend .h6
+		padding-left: calc( 48px + .5rem )
+		margin-top: .125rem
+	&-meta
+		@extend .list-inline
+		padding-left: calc( 48px + .5rem )
+		font-size: $font-size-sm
+		color: $gray-color-600

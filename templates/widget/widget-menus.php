@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying any menu.
+ * Template part for displaying widget all menus.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

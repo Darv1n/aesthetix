@@ -14,17 +14,13 @@
 
 $section_wrapper = isset( $args['section'] ) ?? false;
 $form_title      = $args['title'] ?? false;
-$classes[]       = 'section-subscribe-form';
 
 if ( get_aesthetix_options( 'general_subscribe_form_bg' ) ) {
-	$background_image = get_aesthetix_options( 'general_subscribe_form_bg' );
-	$classes[] = 'section-background';
-} else {
-	$classes[] = 'section-primary';
+	$background_image = get_aesthetix_options( 'general_subscribe_form_image' );
 } ?>
 
 <?php if ( $section_wrapper ) { ?>
-	<section id="section-subscribe-from" <?php aesthetix_section_classes( $classes ); ?> aria-label="<?php esc_attr_e( 'Subscribe form', 'aesthetix' ); ?>">
+	<section id="section-subscribe-from" <?php aesthetix_section_classes( 'section-subscribe-form', get_aesthetix_options( 'root_bg_subscribe_form' )  ); ?> aria-label="<?php esc_attr_e( 'Subscribe form', 'aesthetix' ); ?>">
 		<div <?php aesthetix_container_classes( 'container-outer' ); ?><?php echo isset( $background_image ) ? ' style="background: url( ' . esc_url( $background_image ) . ' ) center bottom/cover no-repeat"' : ''; ?>>
 			<div <?php aesthetix_container_classes( 'container-inner' ); ?>>
 <?php } ?>

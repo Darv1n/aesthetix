@@ -7,22 +7,30 @@
  * @package Aesthetix
  */
 
-$args['widget_id'] = $args['widget_id'] ?? '';
-$args['container'] = $args['container'] ?? false;
+$defaults = array(
+	'widget_id' => '',
+	'container' => false,
+);
 
-if ( ! empty( $args['widget_id'] ) && ( is_active_sidebar( $args['widget_id'] ) || get_aesthetix_widget_default( $args['widget_id'] ) ) ) { ?>
-	<section id="section-widget-<?php echo esc_attr( $args['widget_id'] ); ?>" <?php aesthetix_section_classes( 'section-widget section-widget-' . $args['widget_id'] ); ?>>
+$args = array_merge( $defaults, $args );
+
+$classes[] = 'section-widget';
+$classes[] = 'section-widget-' . $args['widget_id'];
+if ( $args['container'] === false ) {
+	$classes[] = 'section-container';
+}
+
+if ( ! empty( $args['widget_id'] ) && is_active_sidebar( $args['widget_id'] ) ) { ?>
+	<section <?php aesthetix_section_classes( implode( ' ', $classes ), get_aesthetix_options( 'root_bg_aside_widgets' ) ); ?>>
 
 		<?php if ( $args['container'] ) { ?>
 			<div <?php aesthetix_container_classes( 'container-outer' ); ?>>
 				<div <?php aesthetix_container_classes( 'container-inner' ); ?>>
 		<?php } ?>
 
-			<?php if ( is_active_sidebar( $args['widget_id'] ) ) { ?>
-				<div <?php widgets_classes( '', $args['widget_id'] ); ?>>
-					<?php dynamic_sidebar( $args['widget_id'] ); ?>
-				</div>
-			<?php } ?>
+			<div <?php widgets_classes( '', $args['widget_id'] ); ?>>
+				<?php dynamic_sidebar( $args['widget_id'] ); ?>
+			</div>
 
 		<?php if ( $args['container'] ) { ?>
 				</div>

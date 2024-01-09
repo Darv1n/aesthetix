@@ -139,7 +139,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'subscribe_form_display'    => array( 'checkbox_control', __( 'Subscribe form before footer display', 'aesthetix' ), '' ),
 			'subscribe_form_type'       => array( 'select_control', __( 'Subscribe form type', 'aesthetix' ), '', get_aesthetix_customizer_subscribe_form_type() ),
 			'subscribe_form_title'      => array( 'text_control', __( 'Subscribe form title', 'aesthetix' ), '' ),
-			'subscribe_form_bg'         => array( 'image_control', __( 'Subscribe form background image', 'aesthetix' ), '', '' ),
+			'subscribe_form_image'      => array( 'image_control', __( 'Subscribe form background image', 'aesthetix' ), '', '' ),
 			'subscribe_form_shortcode'  => array( 'text_control', __( 'Subscribe form shortcode', 'aesthetix' ), __( 'Use this field if you chose Mailchimp', 'aesthetix' ) ),
 
 			'scroll_top_tab_title'      => array( 'tab_title', __( 'Scroll top structure', 'aesthetix' ), '' ),
@@ -149,13 +149,11 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'cookie_display'            => array( 'checkbox_control', __( 'Cookie display', 'aesthetix' ), __( 'Displays a notification about the use of cookies on the site', 'aesthetix' ) ),
 		);
 
-		$aesthetix_controls['front_page'] = array(
-			'slider_tab_title'      => array( 'tab_title', __( 'Slider', 'aesthetix' ), '' ),
-			'slider_display'        => array( 'checkbox_control', __( 'Slider display', 'aesthetix' ), '' ),
-			'slider_post_type'      => array( 'select_control', __( 'Slider post type', 'aesthetix' ), '', get_post_types( array( 'publicly_queryable' => 1, ) ) ),
-			'slider_slides_count'   => array( 'select_control', __( 'Slides count', 'aesthetix' ), '', $archive_page_slides_count_select ),
-			'slider_slides_to_show' => array( 'select_control', __( 'Slides to show', 'aesthetix' ), '', $archive_page_slides_to_show_select ),
-			'slider_slides_layout'  => array( 'select_control', __( 'Select template type', 'aesthetix' ), __( 'This field displays template of posts', 'aesthetix' ), get_aesthetix_customizer_archive_post_layout() ),
+		$aesthetix_controls['breadcrumbs'] = array(
+			'display'    => array( 'checkbox_control', __( 'Breadcrumbs display', 'aesthetix' ), '' ),
+			'type'       => array( 'select_control', __( 'Select breadcrumbs type', 'aesthetix' ), '', get_aesthetix_customizer_breadcrumbs() ),
+			'separator'  => array( 'text_control', __( 'Breadcrumbs separator', 'aesthetix' ), '' ),
+			'tab_title'  => array( 'tab_title', __( 'Breadcrumbs for Post Types', 'aesthetix' ), __( 'Select which taxonomy you want to show in breadcrumbs for post types', 'aesthetix' ) ),
 		);
 
 		// Sidebar options.
@@ -170,6 +168,17 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'secondary_color'                       => array( 'select_control', __( 'Select secondary color', 'aesthetix' ), '', get_aesthetix_customizer_colors() ),
 			'gray_color'                            => array( 'select_control', __( 'Select gray color', 'aesthetix' ), '', get_aesthetix_customizer_gray_colors() ),
 			'link_color'                            => array( 'select_control', __( 'Select link color', 'aesthetix' ), '', get_aesthetix_customizer_link_colors() ),
+
+			'bg_tab_title'                          => array( 'tab_title', __( 'Backgrounds', 'aesthetix' ), '' ),
+			'bg_header_top_bar'                     => array( 'select_control', __( 'Header top bar background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
+			'bg_header_middle_bar'                  => array( 'select_control', __( 'Header middle bar widgets background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
+			'bg_header_bottom_bar'                  => array( 'select_control', __( 'Header bottom bar widgets background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
+			'bg_footer_top_bar'                     => array( 'select_control', __( 'Footer top bar background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
+			'bg_footer_middle_bar'                  => array( 'select_control', __( 'Footer middle bar widgets background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
+			'bg_footer_bottom_bar'                  => array( 'select_control', __( 'Footer bottom bar widgets background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
+			'bg_subscribe_form'                     => array( 'select_control', __( 'Subscribe form background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
+			'bg_breadcrumbs'                        => array( 'select_control', __( 'Breadcrumbs background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
+			'bg_aside_widgets'                      => array( 'select_control', __( 'Aside widgets background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
 
 			'button_tab_title'                      => array( 'tab_title', __( 'Buttons', 'aesthetix' ), '' ),
 			'button_type'                           => array( 'select_control', __( 'Select button type', 'aesthetix' ), '', get_aesthetix_customizer_button_type() ),
@@ -218,13 +227,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'box_shadow'                            => array( 'select_control', __( 'Select element shadow', 'aesthetix' ), '', get_aesthetix_customizer_box_shadows() ),
 			'border_width'                          => array( 'select_control', __( 'Select element border width', 'aesthetix' ), '', get_aesthetix_customizer_border_widths() ),
 			'border_radius'                         => array( 'select_control', __( 'Select element border radius', 'aesthetix' ), '', get_aesthetix_customizer_border_radiuses() ),
-		);
-
-		$aesthetix_controls['breadcrumbs'] = array(
-			'display'   => array( 'checkbox_control', __( 'Breadcrumbs display', 'aesthetix' ), '' ),
-			'type'      => array( 'select_control', __( 'Select breadcrumbs type', 'aesthetix' ), '', get_aesthetix_customizer_breadcrumbs() ),
-			'separator' => array( 'text_control', __( 'Breadcrumbs separator', 'aesthetix' ), '' ),
-			'tab_title' => array( 'tab_title', __( 'Breadcrumbs for Post Types', 'aesthetix' ), __( 'Select which taxonomy you want to show in breadcrumbs for post types', 'aesthetix' ) ),
 		);
 
 		$post_types = get_aesthetix_customizer_post_types();
@@ -313,13 +315,21 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			}
 		}
 
+		$aesthetix_controls['front_page'] = array(
+			'slider_tab_title'      => array( 'tab_title', __( 'Slider', 'aesthetix' ), '' ),
+			'slider_display'        => array( 'checkbox_control', __( 'Slider display', 'aesthetix' ), '' ),
+			'slider_post_type'      => array( 'select_control', __( 'Slider post type', 'aesthetix' ), '', get_post_types( array( 'publicly_queryable' => 1, ) ) ),
+			'slider_slides_count'   => array( 'select_control', __( 'Slides count', 'aesthetix' ), '', $archive_page_slides_count_select ),
+			'slider_slides_to_show' => array( 'select_control', __( 'Slides to show', 'aesthetix' ), '', $archive_page_slides_to_show_select ),
+			'slider_slides_layout'  => array( 'select_control', __( 'Select template type', 'aesthetix' ), __( 'This field displays template of posts', 'aesthetix' ), get_aesthetix_customizer_archive_post_layout() ),
+		);
+
 		// Comments options.
 		$aesthetix_controls['comments'] = array(
 			'ajax'            => array( 'checkbox_control', __( 'Enable support for ajax comments without authorization with confirmation via email', 'aesthetix' ), __( 'Add sending comments without reloading the page for unauthorized users', 'aesthetix' ) ),
 			'structure_title' => array( 'tab_title', __( 'Comments structure', 'aesthetix' ), '' ),
 			'structure'       => array( 'sortable_control', '', '', get_aesthetix_customizer_comments_structure() ),
 		);
-
 		// Other options.
 		$aesthetix_controls['other'] = array(
 			'tab_contacts_list' => array( 'tab_title', __( 'Contacts list', 'aesthetix' ), __( 'Add a link to contacts-list using a shortcode <strong>[aesthetix-contacts-list]</strong> or single <strong>[aesthetix-email]</strong>, <strong>[aesthetix-phone]</strong>, <strong>[aesthetix-address]</strong>', 'aesthetix' ) ),

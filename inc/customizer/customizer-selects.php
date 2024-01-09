@@ -512,8 +512,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_background_colors' ) ) {
 
 		$converter = array(
 			'theme'     => __( 'Theme', 'aesthetix' ),
-			'white'     => __( 'White', 'aesthetix' ),
-			'black'     => __( 'Black', 'aesthetix' ),
 			'gray'      => __( 'Gray', 'aesthetix' ),
 			'primary'   => __( 'Primary', 'aesthetix' ),
 			'secondary' => __( 'Secondary', 'aesthetix' ),

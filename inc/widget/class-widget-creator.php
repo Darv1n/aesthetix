@@ -1,6 +1,6 @@
 <?php
 /**
- * Widget Creator
+ * Widget Creator.
  *
  * @package Aesthetix
  */

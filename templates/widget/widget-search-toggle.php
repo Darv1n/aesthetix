@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying search popup toggle.
+ * Template part for displaying widget search popup toggle.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

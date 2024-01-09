@@ -1,6 +1,6 @@
 <?php
 /**
- * Widget Use Materials
+ * Widget Use Materials.
  *
  * @package Aesthetix
  */

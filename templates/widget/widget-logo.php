@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying site logo.
+ * Template part for displaying widget site logo.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

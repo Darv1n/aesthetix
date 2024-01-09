@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying creator.
+ * Template part for displaying widget creator.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

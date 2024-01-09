@@ -57,52 +57,54 @@ a.logo
 			img
 				max-height: calc( ( .75rem * 1.25 * 2 + 1.125rem ) * 1.125 )
 
-.section, .container-outer, .container-inner
-	border-radius: $border-radius
-
 .container-inner
 	padding-top: .5rem
 	padding-bottom: .5rem
 
-.section-padding, .container-padding
-	&-xs
-		padding-top: .5rem
-		padding-bottom: .5rem
-	&-sm
-		padding-top: 1rem
-		padding-bottom: 1rem
-	&-md
-		padding-top: 2rem
-		padding-bottom: 2rem
-	&-lg
-		padding-top: 4rem
-		padding-bottom: 4rem
-	&-xl
-		padding-top: 6rem
-		padding-bottom: 6rem
+.section, .content-area, .widget-area
+	margin-bottom: 3rem
 
 .section
 	position: relative
-	padding-top: 1.5rem
-	padding-bottom: 1.5rem
+	border-radius: $border-radius
 	&-title, &-title-wrapper
 		@extend .mb
 	&-title-wrapper
 		position: relative
 		.section-title
 			margin-bottom: .375rem
-	&-background, &-primary, &-secondary
+	&-content
+		margin-bottom: 0
+	&-breadcrumbs
+		margin-bottom: 1.5rem
+	&-background
 		.container-outer
-			padding-top: 1rem
-			padding-bottom: 1rem
-	&-primary
-		.container-outer
-			background: $gray-color-50
-			border: $border-width solid $gray-color-200
-	&-secondary
+			padding-top: 1.5rem
+			padding-bottom: 1.5rem
+			border-radius: $border-radius
+		&.header-top-bar, &.footer-bottom-bar, &.section-breadcrumbs
+			.container-outer
+				padding-top: .75rem
+				padding-bottom: .75rem
+	&-gray
 		.container-outer
 			background: $gray-color-100
-			border: $border-width solid $gray-color-300
+	&-primary
+		.container-outer
+			background: $primary-color-50
+	&-secondary
+		.container-outer
+			background: $secondary-color-50
+	&-container
+		&.section-background
+			padding: 1rem 1.25rem
+			border-radius: $border-radius
+		&.section-gray
+			background: $gray-color-100
+		&.section-primary
+			background: $primary-color-50
+		&.section-secondary
+			background: $secondary-color-50
 
 @media (min-width: 768px)
 	.section-title-wrapper
@@ -113,12 +115,57 @@ a.logo
 		top: .375rem
 		right: 0
 
+.header, .footer
+	position: relative
+	*
+		hyphens: none
+	&-section
+		margin-bottom: 0
+		&.has-section-above
+			.container-outer
+				border-top-left-radius: 0
+				border-top-right-radius: 0
+		&.has-section-below
+			.container-outer
+				border-bottom-left-radius: 0
+				border-bottom-right-radius: 0
+
+.header
+	margin-bottom: 1.5rem
+	&-top-bar
+		font-size: $font-size-sm
+		.container-outer
+			border-top-left-radius: 0
+			border-top-right-radius: 0
+	&-section
+		padding-bottom: .25rem
+		&.section-background
+			padding-bottom: 0
+			.container-outer
+				padding-top: .25rem
+				padding-bottom: .25rem
+		&:last-child
+			padding-bottom: 0
+
+.footer
+	&-bottom-bar
+		font-size: $font-size-sm
+		.container-outer
+			border-bottom-left-radius: 0
+			border-bottom-right-radius: 0
+	&-section
+		padding-bottom: .75rem
+		&.section-background
+			padding-bottom: 0
+		&:last-child
+			padding-bottom: 0
+
+
 .content-area
-	margin-bottom: 2rem
-	> .section
-		padding: 0
 	> *
-		margin-bottom: 2rem
+		margin-bottom: 3rem
+		&.section-widget-before-post-content
+			margin-bottom: 1.5rem
 		&:last-child
 			margin-bottom: 0
 
@@ -127,23 +174,6 @@ a.logo
 		@extend .mb
 		&:last-child
 			margin-bottom: 0
-
-.header, .footer
-	position: relative
-	*
-		hyphens: none
-	.container-outer
-		padding-top: 0
-		padding-bottom: 0
-
-.header
-	padding-top: 0
-	padding-bottom: 0
-	&-top-bar
-		font-size: $font-size-sm
-
-.footer
-	padding-bottom: 0
 
 .avatar
 	border-radius: 50%
@@ -347,7 +377,6 @@ a.logo
 			background: var( --#{$post-type}-background )
 			box-shadow: var( --#{$post-type}-shadow )
 			border-radius: var( --#{$post-type}-border-radius )
-			border: var( --#{$post-type}-border-width ) solid var( --#{$post-type}-border-color )
 			&:hover, &:focus, &:active
 			.post-thumbnail
 				aspect-ratio: var( --#{$post-type}-thumbnail-aspect-ratio )
@@ -367,7 +396,10 @@ a.logo
 						&.has-post-thumbnail
 							padding: calc( var( --#{$post-type}-thumbnail-padding ) + var( --#{$post-type}-content-padding ) )
 		&.post-aside
-			padding: calc( var( --#{$post-type}-content-padding ) / 2 )
+			padding: 0
+			background: transparent
+			box-shadow: none
+			border-radius: 0
 			&.post-list
 				.post-thumbnail-wrap, .post-content-wrap
 					padding: 0 !important
@@ -378,4 +410,4 @@ a.logo
 				.post-thumbnail-wrap, .post-content-wrap
 					padding: 0 !important
 			&.post-aside
-				padding: calc( var( --#{$post-type}-content-padding ) / 2 )
+				padding: 0
