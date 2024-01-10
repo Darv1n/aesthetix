@@ -132,7 +132,7 @@ if ( ! function_exists( 'aesthetix_woo_scripts' ) ) {
 
 		if ( is_product_archive() || is_product() ) {
 			$add_link_classes = 'jQuery(function($) {
-				$( \'.woocommerce-breadcrumb a, .product_meta a, .woocommerce-review-link\' ).each(function() {
+				$( \'.woocommerce-breadcrumb a, .widget_product_categories a, .woocommerce-widget-layered-nav a, .product_meta a, .woocommerce-review-link\' ).each(function() {
 					$(this).addClass( \'' . esc_attr( implode( ' ', $link_classes ) ) . '\' );
 				});
 			});';
@@ -143,73 +143,6 @@ if ( ! function_exists( 'aesthetix_woo_scripts' ) ) {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'aesthetix_woo_scripts' );
-
-if ( ! function_exists( 'aesthetix_woo_widgets_init' ) ) {
-
-	/**
-	 * Register widget area.
-	 *
-	 * @return void
-	 */
-	function aesthetix_woo_widgets_init() {
-		register_sidebar(
-			apply_filters(
-				'aesthetix_woo_sidebar_shop_init',
-				array(
-					'name'          => esc_html__( 'WooCommerce sidebar', 'aesthetix' ),
-					'id'            => 'shop-sidebar',
-					'description'   => __( 'This sidebar will be used on product archive, cart, checkout and my account pages', 'aesthetix' ),
-					'before_widget' => '<div id="%1$s" class="widget %2$s">',
-					'after_widget'  => '</div>',
-					'before_title'  => '<h2 class="widget-title">',
-					'after_title'   => '</h2>',
-				)
-			)
-		);
-		register_sidebar(
-			apply_filters(
-				'aesthetix_woo_sidebar_single_product_init',
-				array(
-					'name'          => esc_html__( 'Product sidebar', 'aesthetix' ),
-					'id'            => 'single-product-sidebar',
-					'description'   => __( 'This sidebar will be used on single product page', 'aesthetix' ),
-					'before_widget' => '<div id="%1$s" class="widget %2$s">',
-					'after_widget'  => '</div>',
-					'before_title'  => '<h2 class="widget-title">',
-					'after_title'   => '</h2>',
-				)
-			)
-		);
-	}
-}
-add_action( 'widgets_init', 'aesthetix_woo_widgets_init' );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 if ( ! function_exists( 'aesthetix_woo_products_per_page' ) ) {
 
@@ -282,32 +215,6 @@ if ( ! function_exists( 'aesthetix_woo_related_products_args' ) ) {
 	}
 }
 add_filter( 'woocommerce_output_related_products_args', 'aesthetix_woo_related_products_args' );
-
-if ( ! function_exists( 'aesthetix_woo_product_columns_wrapper' ) ) {
-
-	/**
-	 * Product columns wrapper.
-	 *
-	 * @return void
-	 */
-	function aesthetix_woo_product_columns_wrapper() {
-		echo '<div class="columns-' . absint( aesthetix_woo_loop_columns() ) . '">';
-	}
-}
-// add_action( 'woocommerce_before_shop_loop', 'aesthetix_woo_product_columns_wrapper', 40 );
-
-if ( ! function_exists( 'aesthetix_woo_product_columns_wrapper_close' ) ) {
-
-	/**
-	 * Product columns wrapper close.
-	 *
-	 * @return  void
-	 */
-	function aesthetix_woo_product_columns_wrapper_close() {
-		echo '</div>';
-	}
-}
-// add_action( 'woocommerce_after_shop_loop', 'aesthetix_woo_product_columns_wrapper_close', 40 );
 
 /**
  * Sample implementation of the WooCommerce Mini Cart.

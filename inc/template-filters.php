@@ -491,11 +491,33 @@ if ( ! function_exists( 'aesthetix_next_posts_link_attributes' ) ) {
 
 		$attributes = 'class="' . esc_attr( implode( ' ', get_button_classes( 'icon icon-after icon-chevron-right' ) ) ) . '"';
 
-		// filter...
 		return $attributes;
 	}
 }
 add_filter( 'next_posts_link_attributes', 'aesthetix_next_posts_link_attributes' );
+
+if ( ! function_exists( 'aesthetix_paginate_links_output' ) ) {
+
+	/**
+	 * Function for 'paginate_links_output' filter-hook.
+	 *
+	 * @param string $r    HTML output.
+	 * @param array  $args An array of arguments. See paginate_links() for information on accepted arguments.
+	 * 
+	 * @return array
+	 */
+	function aesthetix_paginate_links_output( $r, $args ) {
+
+		// Add button classes to span.
+		$r = preg_replace( '/(<span[^>]*class=")([^"]*)(")/', '$1' . implode( ' ', get_button_classes( 'button-num button-disabled $2', array( 'button_content' => 'button-icon-text' ) ) ) . '$3', $r );
+		
+		// Add button classes to link.
+		$r = preg_replace( '/(<a[^>]*class=")([^"]*)(")/', '$1' . implode( ' ', get_button_classes( 'button-num $2', array( 'button_content' => 'button-icon-text' ) ) ) . '$3', $r );
+
+		return $r;
+	}
+}
+add_filter( 'paginate_links_output', 'aesthetix_paginate_links_output', 10, 2 );
 
 if ( ! function_exists( 'aesthetix_default_post_metadata' ) ) {
 

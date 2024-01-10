@@ -55,7 +55,7 @@
 	bottom: 0
 	top: initial
 
-.woocommerce
+.woocommerce-page
 	.blockUI.blockOverlay
 		position: relative
 		&::before
@@ -101,9 +101,9 @@
 		width: 20px
 		height: 20px
 		text-align: center
-		line-height: 21px
+		line-height: 1rem
 		border-radius: 100%
-		color: $gray-color-500
+		color: $gray-color-800
 		text-decoration: none
 		opacity: .5
 		&:before
@@ -115,14 +115,14 @@
 			left: 0
 			width: 100%
 			height: 100%
-			border: 1px solid $gray-color-500
+			border: 1px solid $gray-color-800
 			border-radius: 100%
 			transition: $transition
 		&:hover
-			color: $gray-color-600
+			color: $gray-color-950
 			opacity: 1
 			&:before
-				border-color: $gray-color-600
+				border-color: $gray-color-950
 	small.note
 		display: block
 		color: $gray-color-100
@@ -254,7 +254,7 @@
 		div.woocommerce-product-gallery--columns-5 .flex-control-thumbs li
 			// width: 18.5%
 			// width: calc(20% - .4rem)
-		div.social // ????
+		div.social
 			text-align: right
 			margin: 0 0 1em
 			span
@@ -262,13 +262,15 @@
 				span
 					margin: 0
 				.stButton .chicklets
-					padding-left: 16px
+					padding-left: 1rem
 					width: 0
 			iframe
 				float: left
 				margin-top: 3px
 		.woocommerce-tabs
 			margin-bottom: 4em
+			h2
+				margin-bottom: .5rem
 			ul.tabs
 				list-style: none
 				margin-bottom: 1rem
@@ -305,7 +307,7 @@
 							color: #6b6a6b
 					&.active
 						z-index: 2
-						border-bottom-color: #fff
+						border-bottom-color: $white-color
 						a
 							text-shadow: inherit
 							outline: 0
@@ -485,40 +487,34 @@
 					border-top: 1px solid $primary-color-500
 					padding-top: 0
 					border-top: 0
-		span.onsale
-			min-height: 3.5em
-			min-width: 3.5em
-			line-height: 3.5em
 		.related.products, .woocommerce-tabs
 			display: block
-		.related.products ul.products
-			margin: 0
-			li.product
-				width: 22.5%
-				width: calc(25% - 15px)
+		.related.products
+			h2
+				margin-bottom: .5rem
+			ul.products
+				margin: 0
+				li.product
+					width: 22.5%
+					width: calc( 25% - 15px )
 	span.onsale
-		min-width: 3em
-		min-height: 3em
-		line-height: 3em
-		padding: 0
-		font-size: .8em
-		font-weight: 400
 		position: absolute
-		text-align: center
-		top: .5em
-		left: .5em
+		top: .5rem
+		left: .5rem
+		padding: .375rem 1.25rem
 		margin: 0
-		border-radius: 100%
+		font-size: .875rem
+		line-height: .875rem
+		text-align: center
+		border-radius: 1.25rem
 		background-color: $secondary-color-500
-		color: #fff
+		color: $white-color
 		-webkit-font-smoothing: antialiased
 		z-index: 9
 	&.single-product .sale
 		> span.onsale
-			font-size: 1em
-			left: -.5em
-		&:not(.ast-product-gallery-layout-vertical-slider) > span.onsale
-			top: -.5em
+			top: 1rem
+			left: 1rem
 	.products ul, ul.products
 		margin: 0 0 1em
 		padding: 0
@@ -544,11 +540,6 @@
 	ul.products li
 		list-style: none outside
 		&.product
-			.onsale
-				top: 0
-				right: 0
-				left: auto
-				margin: -.5em -.5em 0 0
 			.woocommerce-loop-category__title, .woocommerce-loop-product__title, h3
 				padding: .5em 0
 				margin: 0
@@ -566,7 +557,7 @@
 			.button
 				margin-top: 1em
 			.price
-				color: #77a464
+				color: $secondary-color-500
 				display: block
 				font-weight: 400
 				margin-bottom: .5em
@@ -585,49 +576,6 @@
 					margin: -2px 0 0 0
 					text-transform: uppercase
 					color: rgba(132, 132, 132, 0.5)
-			a.ast-loop-product__link
-				display: inline-block
-	.woocommerce-result-count
-		margin: 1em 0 1em
-		line-height: 1
-	.woocommerce-ordering
-		margin: 0 0 1.5em
-		select
-			vertical-align: top
-	nav.woocommerce-pagination
-		text-align: left
-		ul
-			display: inline-block
-			text-align: center
-			white-space: normal
-			padding: 0
-			clear: both
-			border: 0
-			margin: 1px
-			li
-				margin: 0 5px 5px 0
-				border: 1px solid $primary-color-500
-				padding: 0
-				float: left
-				display: inline
-				overflow: hidden
-				a, span
-					margin: 0
-					text-decoration: none
-					padding: 0
-					line-height: 1
-					font-size: 1em
-					font-weight: 400
-					padding: .75em
-					display: block
-					min-width: 2.5em
-				a
-					&:focus, &:hover
-						background: #ebe9eb
-						color: #8a7e88
-				span.current
-					background: #ebe9eb
-					color: #8a7e88
 	#respond input#submit.loading, a.button.loading, button.button.loading, input.button.loading
 		opacity: .25
 	#respond input#submit.loading::after, a.button.loading::after, button.button.loading::after, input.button.loading::after
@@ -639,7 +587,7 @@
 		left: auto
 		width: .8em
 		height: .8em
-		background-color: var(--ast-global-color-5)
+		background-color: $primary-color-500
 		background-image: none
 		border-radius: 100%
 		animation: dotPulse 0.65s 0s infinite cubic-bezier(0.21, 0.53, 0.56, 0.8)
@@ -651,22 +599,22 @@
 	#respond input#submit.alt, a.button.alt, button.button.alt, input.button.alt
 		&.disabled
 			background-color: $primary-color-500
-			color: #fff
+			color: $white-color
 			&:hover
 				background-color: $primary-color-500
-				color: #fff
+				color: $white-color
 		&:disabled
 			background-color: $primary-color-500
-			color: #fff
+			color: $white-color
 			&:hover
 				background-color: $primary-color-500
-				color: #fff
+				color: $white-color
 			&[disabled]
 				background-color: $primary-color-500
-				color: #fff
+				color: $white-color
 				&:hover
 					background-color: $primary-color-500
-					color: #fff
+					color: $white-color
 	#respond input#submit, a.button, button.button, input.button
 		&.disabled
 			cursor: not-allowed
@@ -884,11 +832,11 @@
 		font-family: star
 		&::before
 			content: '\73\73\73\73\73'
-			color: #d3ced2
-			float: left
 			top: 0
 			left: 0
 			position: absolute
+			float: left
+			color: $gray-color-500
 		span
 			overflow: hidden
 			float: left
@@ -898,9 +846,10 @@
 			padding-top: 1.5em
 			&::before
 				content: '\53\53\53\53\53'
-				top: 0
 				position: absolute
+				top: 0
 				left: 0
+				color: $secondary-color-500
 	.woocommerce-product-rating
 		zoom: 1
 		line-height: 2
@@ -992,7 +941,7 @@
 					margin: 0
 					padding: 8px 0
 		&.shop_table
-			border: 1px solid $primary-color-500
+			border: 1px solid $gray-color-300
 			margin: 0 -1px 24px 0
 			text-align: left
 			width: 100%
@@ -1002,7 +951,7 @@
 				font-weight: 700
 				padding: 9px 12px
 			td
-				border-top: 1px solid $primary-color-500
+				border-top: 1px solid $gray-color-300
 				padding: 6px 12px
 				vertical-align: middle
 				small
@@ -1013,11 +962,11 @@
 						border-top: 0
 				th
 					font-weight: 500
-					border-top: 1px solid $primary-color-500
+					border-top: 1px solid $gray-color-300
 			tfoot
 				td, th
 					font-weight: 500
-					border-top: 1px solid $primary-color-500
+					border-top: 1px solid $gray-color-300
 	#customer_details, .woocommerce table.shop_table
 		margin-bottom: 2em
 		border-radius: 0
@@ -1081,66 +1030,53 @@
 			list-style: none outside
 			padding: 0
 			margin: 0
-		&.cart_list li, &.product_list_widget li
-			padding: 4px 0
-			margin: 0
-			zoom: 1
-			list-style: none
-		&.cart_list li
-			&::after, &::before
-				content: ' '
-				display: table
-		&.product_list_widget li
-			&::after, &::before
-				content: ' '
-				display: table
-		&.cart_list li::after, &.product_list_widget li::after
-			clear: both
-		&.cart_list li a, &.product_list_widget li a
-			display: block
-			font-weight: 700
-		&.cart_list li img, &.product_list_widget li img
-			float: right
-			margin-left: 4px
-			width: 32px
-			height: auto
-			box-shadow: none
-		&.cart_list li dl, &.product_list_widget li dl
-			margin: 0
-			padding-left: 1em
-			border-left: 2px solid $primary-color-500
-			zoom: 1
-		&.cart_list li dl
-			&::after, &::before
-				content: ' '
-				display: table
-		&.product_list_widget li dl
-			&::after, &::before
-				content: ' '
-				display: table
-		&.cart_list li dl::after, &.product_list_widget li dl::after
-			clear: both
-		&.cart_list li dl
-			dd, dt
-				display: inline-block
-				float: left
-				margin-bottom: .1em
-		&.product_list_widget li dl
-			dd, dt
-				display: inline-block
-				float: left
-				margin-bottom: .1em
-		&.cart_list li dl dt, &.product_list_widget li dl dt
-			font-weight: 500
-			padding: 0 0 .25em
-			margin: 0 4px 0 0
-			clear: left
-		&.cart_list li dl dd, &.product_list_widget li dl dd
-			padding: 0 0 .25em
-		&.cart_list li dl dd p:last-child, &.product_list_widget li dl dd p:last-child
-			margin-bottom: 0
-		&.cart_list li .star-rating, &.product_list_widget li .star-rating
-			float: none
+			li
+				padding: 4px 0
+				margin: 0
+				zoom: 1
+				list-style: none
+				&::after, &::before
+					content: ' '
+					display: table
+				&::after
+					clear: both
+				a
+					display: block
+					font-weight: 700
+				img
+					float: right
+					margin-left: 4px
+					width: 32px
+					height: auto
+					box-shadow: none
+				dl
+					margin: 0
+					padding-left: 1em
+					border-left: 2px solid $primary-color-500
+					zoom: 1
+					&::after, &::before
+						content: ' '
+						display: table
+					&::after
+						clear: both
+					dd, dt
+						display: inline-block
+						float: left
+						margin-bottom: .1em
+					dt
+						font-weight: 500
+						padding: 0 0 .25em
+						margin: 0 4px 0 0
+						clear: left
+					dd
+						padding: 0 0 .25em
+					p:last-child
+						margin-bottom: 0
+				.reviewer
+					font-size: $font-size-sm
+					color: $gray-color-500
+				.star-rating
+					float: none
 	.widget_shopping_cart .total strong, &.widget_shopping_cart .total strong
 		min-width: 40px
 		display: inline-block
@@ -1207,7 +1143,6 @@
 			box-shadow: none
 		.select2-container
 			width: 100%
-			line-height: 2em
 		&.woocommerce-invalid
 			.select2-container, input.input-text, select
 				border-color: #d65d67
@@ -1428,9 +1363,11 @@
 			a
 				padding: 1px 0
 				text-decoration: none
+				color: $gray-color-500
 			.star-rating
 				float: none
 				display: inline-block
+				color: $secondary-color-500
 			&.chosen a::before
 				font-family: WooCommerce
 				speak: none
@@ -1459,22 +1396,14 @@
 		opacity: 1
 		transform: scale(1) translateZ(0) translateY(0)
 		pointer-events: inherit
-	.ast-return-to-shop
-		display: inline-block
-		margin: 5px 0
-		vertical-align: middle
 	.comment-reply-title
 		font-size: 1.34rem
 		line-height: 1.3
 		font-weight: 500
 	.select2-container .select2-selection--single
 		height: auto
-		padding: .75em
-		.select2-selection__rendered
-			padding-left: 0
+		padding: var( --input-padding-top ) var( --input-padding-top )
 	.select2-container--default .select2-selection--single
-		.select2-selection__rendered
-			line-height: 1.35
 		.select2-selection__arrow
 			top: 50%
 			width: 1.7em
@@ -1504,14 +1433,13 @@
 		.comment-form-cookies-consent
 			clear: both
 
-.woocommerce, .woocommerce-page
+.woocommerce-page
 	.widget_product_search button
 		flex: 0 0 auto
 		padding: 10px 20px
 	ul.products 
 		li.product
 			text-align: left
-			// margin-bottom: 2.5em
 			a img
 				margin-bottom: .8em
 			.woocommerce-loop-product__title
@@ -1529,14 +1457,6 @@
 					background: 0 0
 					opacity: .5
 					font-size: .75em
-			.ast-woo-product-category
-				font-size: .85em
-				margin-bottom: .5em
-				display: block
-				line-height: 1.3
-				opacity: .6
-			.ast-woo-shop-product-description p
-				margin-bottom: .5em
 			.stock, .woocommerce-loop-category__title
 				position: absolute
 				background-color: rgba(255, 255, 255, 0.88)
@@ -1553,7 +1473,7 @@
 				position: relative
 				display: block
 				&:hover
-					background-color: #fff
+					background-color: $white-color
 			.star-rating
 				margin: 0 auto .5em 0
 				backface-visibility: hidden
@@ -1576,26 +1496,26 @@
 		display: inline-block
 		position: relative
 	table.shop_table
-		border: 1px solid $primary-color-500
+		border: 1px solid $gray-color-300
 		border-radius: 0
 		.product-thumbnail img
 			width: auto
 			max-width: 70px
 		thead
-			background-color: #fbfbfb
+			background-color: $gray-color-100
 			th
 				border-width: 0
 		td, th
 			border-bottom-width: 0
 			padding: .7em 1em
 		td
-			border-top: 1px solid $primary-color-500
+			border-top: 1px solid $gray-color-300
 		&.download-file, &.woocommerce-orders-table__cell-order-actions
 			display: block
 			a
-				margin-right: .5em
-				margin-top: .25em
-				margin-bottom: .25em
+				margin-right: .5rem
+				margin-top: .25rem
+				margin-bottom: .25rem
 				&:last-child
 					margin-right: 0
 		.woocommerce-Price-amount
@@ -1605,40 +1525,15 @@
 			.input-text
 				width: auto
 		td
-			min-height: 3.25em
-		[name=coupon_code]
-			max-height: 35px
+			min-height: 3.25rem
 		.button
 			display: inline-block
 			width: auto
 
-.ast-separate-container
-	.ast-woocommerce-container
-		background-color: #fff
-		.product
-			border-bottom: 0
-	&.single-product .ast-article-single
-		margin: 0
-		padding: 0
-		display: inline-block
-		width: 100%
-
-@media (max-width: 1200px)
-	.ast-separate-container .ast-woocommerce-container
-		padding: 3.34em 2.4em
-
-@media (max-width: 992px)
-	.ast-separate-container .ast-woocommerce-container
-		padding: 1.5em 2.14em
-
-@media (min-width: 1201px)
-	.ast-separate-container .ast-woocommerce-container
-		padding: 5.34em 6.67em
-
 .pswp
 	z-index: 999999
 
-.woocommerce, .woocommerce-page
+.woocommerce-page
 	img.pswp__img
 		max-width: none
 	.pswp__caption__center
@@ -1652,23 +1547,27 @@
 		border: 1px solid $primary-color-500
 		z-index: 98
 	.select2-container.select2-selection--single, select
-		padding: .8em
+		padding: var( --input-padding-top ) var( --input-padding-top )
 		line-height: normal
-		padding-right: 2em
 		appearance: none
 		background-position: 98% 50%
-		background-color: #fff
+		background-color: $white-color
 		border-color: $primary-color-500
-		border-radius: 3px
 		box-shadow: none
 	.select2-container .select2-selection--single:focus, select:focus
 		outline: 0
-	.select2-container .select2-selection--single b, select b
-		display: none
-	.woocommerce-ordering select
-		background-color: transparent
-		border: transparent
-		border-radius: 0
+	.woocommerce-products-header, .woocommerce-notices-wrapper, .woocommerce-result-count
+		margin-bottom: .75rem
+	.woocommerce-ordering
+		position: absolute
+		top: 0
+		right: .75rem
+		margin-bottom: 0
+		.orderby
+			margin-bottom: 0
+			border: 1px solid $gray-color-300
+			font-size: $font-size-sm
+			vertical-align: top
 
 button
 	&.pswp__button
@@ -1688,7 +1587,7 @@ button
 
 .woocommerce-error, .woocommerce-info, .woocommerce-message
 	padding: 1em 2em 1em 3.5em
-	margin: 0 0 2em
+	margin-bottom: .5rem
 	position: relative
 	background-color: #f7f6f7
 	color: #515151
@@ -1781,6 +1680,8 @@ button
 			text-decoration: none
 
 .woocommerce, .woocommerce-account
+	.woocommerce-Addresses
+		margin-top: .5rem
 	.woocommerce-Addresses, .woocommerce-MyAccount-content, .woocommerce-customer-details
 		.woocommerce-Address-title, .woocommerce-column__title
 			background: #fbfbfb
@@ -1788,485 +1689,231 @@ button
 			margin-bottom: 0
 			border-width: 1px 1px 0 1px
 			border-style: solid
-			border-color: $primary-color-500
+			border-color: $gray-color-300
 			h3
-				margin-bottom: 0
+				margin: 0
 		address
-			border: 1px solid $primary-color-500
+			border: 1px solid $gray-color-300
 			padding: 1em
 			border-radius: 0
-
-
-
 
 .cart-collaterals h2, .woocommerce-Address h3
 	font-size: 1.2rem
 	padding: .7em 1em
 
-.woocommerce-cart table.cart
-	td, th
-		vertical-align: middle
-
-.woocommerce-checkout table.cart
-	td, th
-		vertical-align: middle
-
-#add_payment_method table.cart .product-thumbnail, .woocommerce-cart table.cart .product-thumbnail, .woocommerce-checkout table.cart .product-thumbnail
-	min-width: 32px
-
-#add_payment_method table.cart img, .woocommerce-cart table.cart img, .woocommerce-checkout table.cart img
-	width: 32px
-	box-shadow: none
-
-#add_payment_method table.cart
-	td, th
-		vertical-align: middle
-
-#add_payment_method table.cart td.actions .coupon .input-text, .woocommerce-cart table.cart td.actions .coupon .input-text, .woocommerce-checkout table.cart td.actions .coupon .input-text
-	float: left
-	box-sizing: border-box
-	border: 1px solid $primary-color-500
-	padding: 6px 6px 5px
-	margin: 0 4px 0 0
-	outline: 0
-	line-height: 1
-
-#add_payment_method table.cart input, .woocommerce-cart table.cart input, .woocommerce-checkout table.cart input
-	margin: 0
-	vertical-align: middle
-	line-height: 1
-
-#add_payment_method .wc-proceed-to-checkout, .woocommerce-cart .wc-proceed-to-checkout, .woocommerce-checkout .wc-proceed-to-checkout
-	zoom: 1
-	padding: 1em 0
-
-#add_payment_method .wc-proceed-to-checkout
-	&::after, &::before
-		content: ' '
-		display: table
-
-.woocommerce-cart .wc-proceed-to-checkout
-	&::after, &::before
-		content: ' '
-		display: table
-
-.woocommerce-checkout .wc-proceed-to-checkout
-	&::after, &::before
-		content: ' '
-		display: table
-
-#add_payment_method .wc-proceed-to-checkout::after, .woocommerce-cart .wc-proceed-to-checkout::after, .woocommerce-checkout .wc-proceed-to-checkout::after
-	clear: both
-
-#add_payment_method .wc-proceed-to-checkout a.checkout-button, .woocommerce-cart .wc-proceed-to-checkout a.checkout-button, .woocommerce-checkout .wc-proceed-to-checkout a.checkout-button
-	display: block
-	text-align: center
-	margin-bottom: 1em
-	font-size: 1.25em
-	padding: 1em
-
-#add_payment_method .cart-collaterals .shipping_calculator .button, .woocommerce-cart .cart-collaterals .shipping_calculator .button, .woocommerce-checkout .cart-collaterals .shipping_calculator .button
-	width: 100%
-	float: none
-	display: block
-
-#add_payment_method .cart-collaterals .shipping_calculator .shipping-calculator-button::after, .woocommerce-cart .cart-collaterals .shipping_calculator .shipping-calculator-button::after, .woocommerce-checkout .cart-collaterals .shipping_calculator .shipping-calculator-button::after
-	font-family: WooCommerce
-	speak: none
-	font-weight: 400
-	font-variant: normal
-	text-transform: none
-	line-height: 1
-	-webkit-font-smoothing: antialiased
-	margin-left: .618em
-	content: ""
-	text-decoration: none
-
-#add_payment_method .cart-collaterals .cart_totals p small, .woocommerce-cart .cart-collaterals .cart_totals p small, .woocommerce-checkout .cart-collaterals .cart_totals p small
-	color: #777
-	font-size: .83em
-
-#add_payment_method .cart-collaterals .cart_totals table, .woocommerce-cart .cart-collaterals .cart_totals table, .woocommerce-checkout .cart-collaterals .cart_totals table
-	border-collapse: separate
-	margin: 0 0 6px
-	padding: 0
-
-#add_payment_method .cart-collaterals .cart_totals table tr:first-child
-	td, th
-		border-top: 0
-
-.woocommerce-cart .cart-collaterals .cart_totals table tr:first-child
-	td, th
-		border-top: 0
-
-.woocommerce-checkout .cart-collaterals .cart_totals table tr:first-child
-	td, th
-		border-top: 0
-
-#add_payment_method .cart-collaterals .cart_totals table th, .woocommerce-cart .cart-collaterals .cart_totals table th, .woocommerce-checkout .cart-collaterals .cart_totals table th
-	width: 40%
-
-#add_payment_method .cart-collaterals .cart_totals table
-	td, th
-		vertical-align: top
-		border-left: 0
-		border-right: 0
-		line-height: 1.5em
-
-.woocommerce-cart .cart-collaterals .cart_totals table
-	td, th
-		vertical-align: top
-		border-left: 0
-		border-right: 0
-		line-height: 1.5em
-
-.woocommerce-checkout .cart-collaterals .cart_totals table
-	td, th
-		vertical-align: top
-		border-left: 0
-		border-right: 0
-		line-height: 1.5em
-
-#add_payment_method .cart-collaterals .cart_totals table small, .woocommerce-cart .cart-collaterals .cart_totals table small, .woocommerce-checkout .cart-collaterals .cart_totals table small
-	color: #777
-
-#add_payment_method .cart-collaterals .cart_totals table select, .woocommerce-cart .cart-collaterals .cart_totals table select, .woocommerce-checkout .cart-collaterals .cart_totals table select
-	width: 100%
-
-#add_payment_method .cart-collaterals .cart_totals .discount td, .woocommerce-cart .cart-collaterals .cart_totals .discount td, .woocommerce-checkout .cart-collaterals .cart_totals .discount td
-	color: #77a464
-
-#add_payment_method .cart-collaterals .cart_totals tr
-	td, th
-		border-top: 1px solid $primary-color-500
-
-.woocommerce-cart .cart-collaterals .cart_totals tr
-	td, th
-		border-top: 1px solid $primary-color-500
-
-.woocommerce-checkout .cart-collaterals .cart_totals tr
-	td, th
-		border-top: 1px solid $primary-color-500
-
-#add_payment_method .cart-collaterals .cross-sells ul.products li.product, .woocommerce-cart .cart-collaterals .cross-sells ul.products li.product, .woocommerce-checkout .cart-collaterals .cross-sells ul.products li.product
-	margin-top: 0
-
-#add_payment_method .checkout .col-2 h3#ship-to-different-address, .woocommerce-cart .checkout .col-2 h3#ship-to-different-address, .woocommerce-checkout .checkout .col-2 h3#ship-to-different-address
-	float: left
-	clear: none
-
-#add_payment_method .checkout .col-2 .notes, .woocommerce-cart .checkout .col-2 .notes, .woocommerce-checkout .checkout .col-2 .notes, #add_payment_method .checkout .col-2 .form-row-first, .woocommerce-cart .checkout .col-2 .form-row-first, .woocommerce-checkout .checkout .col-2 .form-row-first
-	clear: left
-
-#add_payment_method .checkout .create-account small, .woocommerce-cart .checkout .create-account small, .woocommerce-checkout .checkout .create-account small
-	font-size: 11px
-	color: #777
-	font-weight: 400
-
-#add_payment_method .checkout div.shipping-address, .woocommerce-cart .checkout div.shipping-address, .woocommerce-checkout .checkout div.shipping-address
-	padding: 0
-	clear: left
-	width: 100%
-
-#add_payment_method .checkout .shipping_address, .woocommerce-cart .checkout .shipping_address, .woocommerce-checkout .checkout .shipping_address
-	clear: both
-
-#add_payment_method #payment, .woocommerce-cart #payment, .woocommerce-checkout #payment
-	border-radius: 5px
-
-#add_payment_method #payment ul.payment_methods, .woocommerce-cart #payment ul.payment_methods, .woocommerce-checkout #payment ul.payment_methods
-	zoom: 1
-	text-align: left
-	padding: 1em
-	border-bottom: 1px solid $primary-color-500
-	margin: 0
-	list-style: none outside
-
-#add_payment_method #payment ul.payment_methods
-	&::after, &::before
-		content: ' '
-		display: table
-
-.woocommerce-cart #payment ul.payment_methods
-	&::after, &::before
-		content: ' '
-		display: table
-
-.woocommerce-checkout #payment ul.payment_methods
-	&::after, &::before
-		content: ' '
-		display: table
-
-#add_payment_method #payment ul.payment_methods::after, .woocommerce-cart #payment ul.payment_methods::after, .woocommerce-checkout #payment ul.payment_methods::after
-	clear: both
-
-#add_payment_method #payment ul.payment_methods li, .woocommerce-cart #payment ul.payment_methods li, .woocommerce-checkout #payment ul.payment_methods li
-	line-height: 2
-	text-align: left
-	margin: 0
-	font-weight: 400
-
-#add_payment_method #payment ul.payment_methods li input, .woocommerce-cart #payment ul.payment_methods li input, .woocommerce-checkout #payment ul.payment_methods li input
-	cursor: pointer
-	margin: 0 1em 0 0
-
-#add_payment_method #payment ul.payment_methods li img, .woocommerce-cart #payment ul.payment_methods li img, .woocommerce-checkout #payment ul.payment_methods li img
-	vertical-align: middle
-	margin: -2px 0 0 .5em
-	padding: 0
-	position: relative
-	box-shadow: none
-
-#add_payment_method #payment ul.payment_methods li img + img, .woocommerce-cart #payment ul.payment_methods li img + img, .woocommerce-checkout #payment ul.payment_methods li img + img
-	margin-left: 2px
-
-#add_payment_method #payment ul.payment_methods li:not(.woocommerce-notice), .woocommerce-cart #payment ul.payment_methods li:not(.woocommerce-notice), .woocommerce-checkout #payment ul.payment_methods li:not(.woocommerce-notice)
-	zoom: 1
-
-#add_payment_method #payment ul.payment_methods li:not(.woocommerce-notice)
-	&::after, &::before
-		content: ' '
-		display: table
-
-.woocommerce-cart #payment ul.payment_methods li:not(.woocommerce-notice)
-	&::after, &::before
-		content: ' '
-		display: table
-
-.woocommerce-checkout #payment ul.payment_methods li:not(.woocommerce-notice)
-	&::after, &::before
-		content: ' '
-		display: table
-
-#add_payment_method #payment ul.payment_methods li:not(.woocommerce-notice)::after, .woocommerce-cart #payment ul.payment_methods li:not(.woocommerce-notice)::after, .woocommerce-checkout #payment ul.payment_methods li:not(.woocommerce-notice)::after
-	clear: both
-
-#add_payment_method #payment div.form-row, .woocommerce-cart #payment div.form-row, .woocommerce-checkout #payment div.form-row
-	padding: 1em
-
-#add_payment_method #payment div.payment_box, .woocommerce-cart #payment div.payment_box, .woocommerce-checkout #payment div.payment_box
-	position: relative
-	box-sizing: border-box
-	width: 100%
-	padding: 1em
-	margin: 1em 0
-	font-size: .92em
-	border-radius: 2px
-	line-height: 1.5
-	background-color: #dfdcde
-	color: #515151
-
-#add_payment_method #payment div.payment_box
-	input.input-text, textarea
-		border-color: #c7c1c6
-		border-top-color: #bbb3b9
-
-.woocommerce-cart #payment div.payment_box
-	input.input-text, textarea
-		border-color: #c7c1c6
-		border-top-color: #bbb3b9
-
-.woocommerce-checkout #payment div.payment_box
-	input.input-text, textarea
-		border-color: #c7c1c6
-		border-top-color: #bbb3b9
-
-#add_payment_method #payment div.payment_box ::-webkit-input-placeholder, .woocommerce-cart #payment div.payment_box ::-webkit-input-placeholder, .woocommerce-checkout #payment div.payment_box ::-webkit-input-placeholder, #add_payment_method #payment div.payment_box :-moz-placeholder, .woocommerce-cart #payment div.payment_box :-moz-placeholder, .woocommerce-checkout #payment div.payment_box :-moz-placeholder, #add_payment_method #payment div.payment_box :-ms-input-placeholder, .woocommerce-cart #payment div.payment_box :-ms-input-placeholder, .woocommerce-checkout #payment div.payment_box :-ms-input-placeholder
-	color: #bbb3b9
-
-#add_payment_method #payment div.payment_box .woocommerce-SavedPaymentMethods, .woocommerce-cart #payment div.payment_box .woocommerce-SavedPaymentMethods, .woocommerce-checkout #payment div.payment_box .woocommerce-SavedPaymentMethods
-	list-style: none outside
-	margin: 0
-
-#add_payment_method #payment div.payment_box .woocommerce-SavedPaymentMethods
-	.woocommerce-SavedPaymentMethods-new, .woocommerce-SavedPaymentMethods-token
-		margin: 0 0 .5em
-
-.woocommerce-cart #payment div.payment_box .woocommerce-SavedPaymentMethods
-	.woocommerce-SavedPaymentMethods-new, .woocommerce-SavedPaymentMethods-token
-		margin: 0 0 .5em
-
-.woocommerce-checkout #payment div.payment_box .woocommerce-SavedPaymentMethods
-	.woocommerce-SavedPaymentMethods-new, .woocommerce-SavedPaymentMethods-token
-		margin: 0 0 .5em
-
-#add_payment_method #payment div.payment_box .woocommerce-SavedPaymentMethods
-	.woocommerce-SavedPaymentMethods-new label, .woocommerce-SavedPaymentMethods-token label
-		cursor: pointer
-
-.woocommerce-cart #payment div.payment_box .woocommerce-SavedPaymentMethods
-	.woocommerce-SavedPaymentMethods-new label, .woocommerce-SavedPaymentMethods-token label
-		cursor: pointer
-
-.woocommerce-checkout #payment div.payment_box .woocommerce-SavedPaymentMethods
-	.woocommerce-SavedPaymentMethods-new label, .woocommerce-SavedPaymentMethods-token label
-		cursor: pointer
-
-#add_payment_method #payment div.payment_box .woocommerce-SavedPaymentMethods .woocommerce-SavedPaymentMethods-tokenInput, .woocommerce-cart #payment div.payment_box .woocommerce-SavedPaymentMethods .woocommerce-SavedPaymentMethods-tokenInput, .woocommerce-checkout #payment div.payment_box .woocommerce-SavedPaymentMethods .woocommerce-SavedPaymentMethods-tokenInput
-	vertical-align: middle
-	margin: -3px 1em 0 0
-	position: relative
-
-#add_payment_method #payment div.payment_box .wc-credit-card-form, .woocommerce-cart #payment div.payment_box .wc-credit-card-form, .woocommerce-checkout #payment div.payment_box .wc-credit-card-form
-	border: 0
-	padding: 0
-	margin: 1em 0 0
-
-#add_payment_method #payment div.payment_box
-	.wc-credit-card-form-card-cvc, .wc-credit-card-form-card-expiry, .wc-credit-card-form-card-number
-		font-size: 1.5em
-		padding: 8px
-		background-repeat: no-repeat
-		background-position: right .618em center
-		background-size: 32px 20px
-
-.woocommerce-cart #payment div.payment_box
-	.wc-credit-card-form-card-cvc, .wc-credit-card-form-card-expiry, .wc-credit-card-form-card-number
-		font-size: 1.5em
-		padding: 8px
-		background-repeat: no-repeat
-		background-position: right .618em center
-		background-size: 32px 20px
-
-.woocommerce-checkout #payment div.payment_box
-	.wc-credit-card-form-card-cvc, .wc-credit-card-form-card-expiry, .wc-credit-card-form-card-number
-		font-size: 1.5em
-		padding: 8px
-		background-repeat: no-repeat
-		background-position: right .618em center
-		background-size: 32px 20px
-
-#add_payment_method #payment div.payment_box
-	.wc-credit-card-form-card-cvc.visa, .wc-credit-card-form-card-expiry.visa, .wc-credit-card-form-card-number.visa
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/visa.svg")
-
-.woocommerce-cart #payment div.payment_box
-	.wc-credit-card-form-card-cvc.visa, .wc-credit-card-form-card-expiry.visa, .wc-credit-card-form-card-number.visa
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/visa.svg")
-
-.woocommerce-checkout #payment div.payment_box
-	.wc-credit-card-form-card-cvc.visa, .wc-credit-card-form-card-expiry.visa, .wc-credit-card-form-card-number.visa
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/visa.svg")
-
-#add_payment_method #payment div.payment_box
-	.wc-credit-card-form-card-cvc.mastercard, .wc-credit-card-form-card-expiry.mastercard, .wc-credit-card-form-card-number.mastercard
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/mastercard.svg")
-
-.woocommerce-cart #payment div.payment_box
-	.wc-credit-card-form-card-cvc.mastercard, .wc-credit-card-form-card-expiry.mastercard, .wc-credit-card-form-card-number.mastercard
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/mastercard.svg")
-
-.woocommerce-checkout #payment div.payment_box
-	.wc-credit-card-form-card-cvc.mastercard, .wc-credit-card-form-card-expiry.mastercard, .wc-credit-card-form-card-number.mastercard
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/mastercard.svg")
-
-#add_payment_method #payment div.payment_box
-	.wc-credit-card-form-card-cvc.laser, .wc-credit-card-form-card-expiry.laser, .wc-credit-card-form-card-number.laser
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/laser.svg")
-
-.woocommerce-cart #payment div.payment_box
-	.wc-credit-card-form-card-cvc.laser, .wc-credit-card-form-card-expiry.laser, .wc-credit-card-form-card-number.laser
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/laser.svg")
-
-.woocommerce-checkout #payment div.payment_box
-	.wc-credit-card-form-card-cvc.laser, .wc-credit-card-form-card-expiry.laser, .wc-credit-card-form-card-number.laser
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/laser.svg")
-
-#add_payment_method #payment div.payment_box
-	.wc-credit-card-form-card-cvc.dinersclub, .wc-credit-card-form-card-expiry.dinersclub, .wc-credit-card-form-card-number.dinersclub
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/diners.svg")
-
-.woocommerce-cart #payment div.payment_box
-	.wc-credit-card-form-card-cvc.dinersclub, .wc-credit-card-form-card-expiry.dinersclub, .wc-credit-card-form-card-number.dinersclub
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/diners.svg")
-
-.woocommerce-checkout #payment div.payment_box
-	.wc-credit-card-form-card-cvc.dinersclub, .wc-credit-card-form-card-expiry.dinersclub, .wc-credit-card-form-card-number.dinersclub
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/diners.svg")
-
-#add_payment_method #payment div.payment_box
-	.wc-credit-card-form-card-cvc.maestro, .wc-credit-card-form-card-expiry.maestro, .wc-credit-card-form-card-number.maestro
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/maestro.svg")
-
-.woocommerce-cart #payment div.payment_box
-	.wc-credit-card-form-card-cvc.maestro, .wc-credit-card-form-card-expiry.maestro, .wc-credit-card-form-card-number.maestro
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/maestro.svg")
-
-.woocommerce-checkout #payment div.payment_box
-	.wc-credit-card-form-card-cvc.maestro, .wc-credit-card-form-card-expiry.maestro, .wc-credit-card-form-card-number.maestro
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/maestro.svg")
-
-#add_payment_method #payment div.payment_box
-	.wc-credit-card-form-card-cvc.jcb, .wc-credit-card-form-card-expiry.jcb, .wc-credit-card-form-card-number.jcb
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/jcb.svg")
-
-.woocommerce-cart #payment div.payment_box
-	.wc-credit-card-form-card-cvc.jcb, .wc-credit-card-form-card-expiry.jcb, .wc-credit-card-form-card-number.jcb
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/jcb.svg")
-
-.woocommerce-checkout #payment div.payment_box
-	.wc-credit-card-form-card-cvc.jcb, .wc-credit-card-form-card-expiry.jcb, .wc-credit-card-form-card-number.jcb
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/jcb.svg")
-
-#add_payment_method #payment div.payment_box
-	.wc-credit-card-form-card-cvc.amex, .wc-credit-card-form-card-expiry.amex, .wc-credit-card-form-card-number.amex
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/amex.svg")
-
-.woocommerce-cart #payment div.payment_box
-	.wc-credit-card-form-card-cvc.amex, .wc-credit-card-form-card-expiry.amex, .wc-credit-card-form-card-number.amex
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/amex.svg")
-
-.woocommerce-checkout #payment div.payment_box
-	.wc-credit-card-form-card-cvc.amex, .wc-credit-card-form-card-expiry.amex, .wc-credit-card-form-card-number.amex
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/amex.svg")
-
-#add_payment_method #payment div.payment_box
-	.wc-credit-card-form-card-cvc.discover, .wc-credit-card-form-card-expiry.discover, .wc-credit-card-form-card-number.discover
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/discover.svg")
-
-.woocommerce-cart #payment div.payment_box
-	.wc-credit-card-form-card-cvc.discover, .wc-credit-card-form-card-expiry.discover, .wc-credit-card-form-card-number.discover
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/discover.svg")
-
-.woocommerce-checkout #payment div.payment_box
-	.wc-credit-card-form-card-cvc.discover, .wc-credit-card-form-card-expiry.discover, .wc-credit-card-form-card-number.discover
-		background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/discover.svg")
-
-#add_payment_method #payment div.payment_box span.help, .woocommerce-cart #payment div.payment_box span.help, .woocommerce-checkout #payment div.payment_box span.help
-	font-size: .857em
-	color: #777
-	font-weight: 400
-
-#add_payment_method #payment div.payment_box .form-row, .woocommerce-cart #payment div.payment_box .form-row, .woocommerce-checkout #payment div.payment_box .form-row
-	margin: 0 0 1em
-
-#add_payment_method #payment div.payment_box p:last-child, .woocommerce-cart #payment div.payment_box p:last-child, .woocommerce-checkout #payment div.payment_box p:last-child
-	margin-bottom: 0
-
-#add_payment_method #payment div.payment_box::before, .woocommerce-cart #payment div.payment_box::before, .woocommerce-checkout #payment div.payment_box::before
-	content: ''
-	display: block
-	border: 1em solid #dfdcde
-	border-right-color: transparent
-	border-left-color: transparent
-	border-top-color: transparent
-	position: absolute
-	top: -1em
-	left: 0
-	margin: -1em 0 0 2em
-
-#add_payment_method #payment .payment_method_paypal .about_paypal, .woocommerce-cart #payment .payment_method_paypal .about_paypal, .woocommerce-checkout #payment .payment_method_paypal .about_paypal
-	float: right
-	line-height: 52px
-	font-size: .83em
-
-#add_payment_method #payment .payment_method_paypal img, .woocommerce-cart #payment .payment_method_paypal img, .woocommerce-checkout #payment .payment_method_paypal img
-	max-height: 52px
-	vertical-align: middle
+#add_payment_method, .woocommerce-cart, .woocommerce-checkout
+	table.cart
+		td, th
+			vertical-align: middle
+		.product-thumbnail
+			min-width: 32px
+		img
+			width: 32px
+			box-shadow: none
+		td.actions .coupon
+			.button
+				margin-bottom: 0
+			.input-text
+				float: left
+				margin: 0 4px 0 0
+				padding: var( --button-padding-top ) var( --button-padding-side )
+	.wc-proceed-to-checkout
+		zoom: 1
+		padding: 1em 0
+		&::after, &::before
+			content: ' '
+			display: table
+		&::after
+			clear: both
+		a.checkout-button
+			margin-bottom: 0
+	.cart-collaterals
+		.shipping_calculator
+			.button
+				width: 100%
+				float: none
+				display: block
+			.shipping-calculator-button::after
+				font-family: WooCommerce
+				speak: none
+				font-weight: 400
+				font-variant: normal
+				text-transform: none
+				line-height: 1
+				-webkit-font-smoothing: antialiased
+				margin-left: .618em
+				content: ""
+				text-decoration: none
+		.cart_totals
+			p small
+				color: $gray-color-500
+				font-size: .83em
+			table
+				border-collapse: separate
+				margin: 0 0 6px
+				padding: 0
+				tr
+					td, th
+						border-top: 1px solid $gray-color-300
+					&:first-child
+						td, th
+							border-top: 0
+				th
+					width: 40%
+				td, th
+					vertical-align: top
+					border-left: 0
+					border-right: 0
+					line-height: 1.5em
+				small
+					color: $gray-color-500
+				select
+					width: 100%
+				.discount td
+					color: $secondary-color-500
+		.cross-sells
+			ul.products
+				li.product
+					margin-top: 0
+	.checkout
+		.col-2
+			h3#ship-to-different-address,
+				float: left
+				clear: none
+			.notes
+				clear: left
+		.create-account
+			small
+				font-size: 11px
+				color: #777
+				font-weight: 400
+		div.shipping-address
+			padding: 0
+			clear: left
+			width: 100%
+		.shipping_address
+			clear: both
+	#payment
+		border-radius: 5px
+		ul.payment_methods
+			zoom: 1
+			text-align: left
+			padding: 1em
+			border-bottom: 1px solid $primary-color-500
+			margin: 0
+			list-style: none outside
+			&::after, &::before
+				content: ' '
+				display: table
+			&::after
+				clear: both
+			li
+				text-align: left
+				margin: 0
+				font-weight: 400
+				input
+					cursor: pointer
+					margin: 0 1em 0 0
+				img
+					vertical-align: middle
+					margin: -2px 0 0 .5em
+					padding: 0
+					position: relative
+					box-shadow: none
+				img + img
+					margin-left: 2px
+				&:not(.woocommerce-notice)
+					zoom: 1
+					&::after, &::before
+						content: ' '
+						display: table
+					&::after
+						clear: both
+		div.form-row				
+			padding: 1em
+		div.payment_box
+			position: relative
+			box-sizing: border-box
+			width: 100%
+			padding: 1em
+			margin: 1em 0
+			font-size: .92em
+			border-radius: 2px
+			line-height: 1.5
+			background-color: #dfdcde
+			color: #515151
+			input.input-text, textarea
+				border-color: #c7c1c6
+				border-top-color: #bbb3b9
+			::-webkit-input-placeholder,
+				color: #bbb3b9
+			.woocommerce-SavedPaymentMethods
+				list-style: none outside
+				margin: 0
+				.woocommerce-SavedPaymentMethods-new, .woocommerce-SavedPaymentMethods-token
+					margin: 0 0 .5em
+					label
+						cursor: pointer
+				.woocommerce-SavedPaymentMethods-tokenInput
+					vertical-align: middle
+					margin: -3px 1em 0 0
+					position: relative
+			.wc-credit-card-form
+				border: 0
+				padding: 0
+				margin: 1em 0 0
+			.wc-credit-card-form-card-cvc, .wc-credit-card-form-card-expiry, .wc-credit-card-form-card-number
+				font-size: 1.5em
+				padding: 8px
+				background-repeat: no-repeat
+				background-position: right .618em center
+				background-size: 32px 20px
+			span.help
+				font-size: .857em
+				color: #777
+				font-weight: 400
+			.form-row
+				margin: 0 0 1em
+			p:last-child
+				margin-bottom: 0
+			&::before
+				content: ''
+				display: block
+				border: 1em solid #dfdcde
+				border-right-color: transparent
+				border-left-color: transparent
+				border-top-color: transparent
+				position: absolute
+				top: -1em
+				left: 0
+				margin: -1em 0 0 2em
+		.wc-credit-card-form-card-cvc.visa, .wc-credit-card-form-card-expiry.visa, .wc-credit-card-form-card-number.visa
+			background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/visa.svg")
+		.wc-credit-card-form-card-cvc.mastercard, .wc-credit-card-form-card-expiry.mastercard, .wc-credit-card-form-card-number.mastercard
+			background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/mastercard.svg")
+		.wc-credit-card-form-card-cvc.laser, .wc-credit-card-form-card-expiry.laser, .wc-credit-card-form-card-number.laser
+			background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/laser.svg")
+		.wc-credit-card-form-card-cvc.dinersclub, .wc-credit-card-form-card-expiry.dinersclub, .wc-credit-card-form-card-number.dinersclub
+			background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/diners.svg")
+		.wc-credit-card-form-card-cvc.maestro, .wc-credit-card-form-card-expiry.maestro, .wc-credit-card-form-card-number.maestro
+			background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/maestro.svg")
+		.wc-credit-card-form-card-cvc.jcb, .wc-credit-card-form-card-expiry.jcb, .wc-credit-card-form-card-number.jcb
+			background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/jcb.svg")
+		.wc-credit-card-form-card-cvc.amex, .wc-credit-card-form-card-expiry.amex, .wc-credit-card-form-card-number.amex
+			background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/amex.svg")
+		.wc-credit-card-form-card-cvc.discover, .wc-credit-card-form-card-expiry.discover, .wc-credit-card-form-card-number.discover
+			background-image: url("../../../../../plugins/woocommerce/assets/images/icons/credit-cards/discover.svg")
+		.payment_method_paypal
+			.about_paypal
+				float: right
+				line-height: 52px
+				font-size: .83em
+			img
+				max-height: 52px
+				vertical-align: middle
 
 .woocommerce-cart-form__cart-item td.product-remove
 	text-align: center
-
 	a.remove
 		display: inline-block
 		vertical-align: middle
@@ -2275,233 +1922,126 @@ button
 	table.shop_table
 		td, th
 			border-right: 0
-
 		.woocommerce-Price-amount, td.product-name
 			font-weight: 500
-
 		.woocommerce-Price-amount
 			font-weight: 400
-
 		dl
 			dt
 				font-weight: 500
-
 			dd
 				font-weight: 400
-
 	.cart-collaterals
 		.cross-sells li.product
 			padding-bottom: 1em
-
 		.cart_totals, .cross-sells
 			padding: 0 20px
-			border-width: 1px
-			border-style: solid
-			border-color: $primary-color-500
-			border-radius: 0
+			border: 1px solid $gray-color-300
 			margin-bottom: 2em
-
-		.cart_totals .shop_table, .cross-sells .shop_table
-			border-top: 0
-			border-left: 0
-			border-right: 0
-			border-radius: 0
-
-		.cart_totals > h2, .cross-sells > h2
-			margin: 0 -20px 20px
-			background-color: #fbfbfb
-			border-bottom: 1px solid $primary-color-500
-			font-weight: 700
-
+			> h2
+				margin: 0 -20px 20px
+				background-color: $gray-color-100
+				border-bottom: 1px solid $gray-color-300
 	.hentry, ul.products, .hentry li.product, ul.products li.product
 		margin-bottom: 0
-
 	table.cart td.actions
 		.coupon
 			display: flex
 			align-items: center
-			margin: 5px 0
 
-			.input-text
-				padding: .5em .75em
+.woocommerce-terms-and-conditions-wrapper
+	margin-bottom: 1rem
 
-		.button
-			padding: .5em 1em
-			line-height: 1.5
-
-		input.button
-			display: inline-block
-			width: auto
-
-	.wc-proceed-to-checkout a.checkout-button
-		font-size: 1.1em
-		line-height: 1.8em
-
-.woocommerce-page.woocommerce-checkout form.checkout.woocommerce-checkout:after, .woocommerce.woocommerce-checkout form.checkout.woocommerce-checkout:after
-	content: ""
-	clear: both
-	display: table
-
-.woocommerce-page.woocommerce-checkout table.shop_table thead, .woocommerce.woocommerce-checkout table.shop_table thead
-	background: 0 0
-
-.woocommerce-page.woocommerce-checkout table.shop_table th, .woocommerce.woocommerce-checkout table.shop_table th
-	padding: 14px 12px
-
-.woocommerce-page.woocommerce-checkout table.shop_table td, .woocommerce.woocommerce-checkout table.shop_table td
-	padding: 10px 10px 10px 0
-	border-color: $primary-color-500
-
-.woocommerce-page.woocommerce-checkout table.shop_table tfoot td, .woocommerce.woocommerce-checkout table.shop_table tfoot td
-	opacity: 1
-
-.woocommerce-page.woocommerce-checkout table.shop_table
-	td, th
-		border-bottom-width: 1px
-
-.woocommerce.woocommerce-checkout table.shop_table
-	td, th
-		border-bottom-width: 1px
-
-.woocommerce-page.woocommerce-checkout form #order_review table, .woocommerce.woocommerce-checkout form #order_review table
-	border-width: 0
-
-.woocommerce-page.woocommerce-checkout form #order_review
-	td, th
-		border-top: 0
-		border-right: 0
-		padding-left: 0
-		border-color: $primary-color-500
-
-.woocommerce.woocommerce-checkout form #order_review
-	td, th
-		border-top: 0
-		border-right: 0
-		padding-left: 0
-		border-color: $primary-color-500
-
-.woocommerce-page.woocommerce-checkout form #order_review td.product-name, .woocommerce.woocommerce-checkout form #order_review td.product-name
-	font-weight: 500
-	display: flex
-	align-items: center
-
-.woocommerce-page.woocommerce-checkout form #order_review td.product-name .product-quantity, .woocommerce.woocommerce-checkout form #order_review td.product-name .product-quantity
-	font-weight: 400
-
-.woocommerce-page.woocommerce-checkout form #order_review
-	td:last-child, th:last-child
-		text-align: right
-
-.woocommerce.woocommerce-checkout form #order_review
-	td:last-child, th:last-child
-		text-align: right
-
-.woocommerce-page.woocommerce-checkout form .form-row:last-child, .woocommerce.woocommerce-checkout form .form-row:last-child
-	margin-bottom: 0
-
-.woocommerce-page.woocommerce-checkout #payment, .woocommerce.woocommerce-checkout #payment
-	border-radius: 0
-
-.woocommerce-page.woocommerce-checkout #payment ul.payment_methods, .woocommerce.woocommerce-checkout #payment ul.payment_methods
-	padding: 0
-	margin-bottom: 1em
-	border-bottom: 0
-
-.woocommerce-page.woocommerce-checkout #payment div.payment_box, .woocommerce.woocommerce-checkout #payment div.payment_box
-	background-color: #efefef
-
-.woocommerce-page.woocommerce-checkout #payment div.payment_box:before, .woocommerce.woocommerce-checkout #payment div.payment_box:before
-	border-bottom-color: #efefef
-
-.woocommerce-page.woocommerce-checkout #payment div.form-row, .woocommerce.woocommerce-checkout #payment div.form-row
-	padding: 0 0 2em
-
-.woocommerce-page.woocommerce-checkout #payment #place_order, .woocommerce.woocommerce-checkout #payment #place_order
-	width: 100%
-
-.woocommerce-page.woocommerce-checkout .woocommerce-order table.shop_table
-	td, th
-		padding: .7em 1em
-		border-bottom-width: 0
-
-.woocommerce.woocommerce-checkout .woocommerce-order table.shop_table
-	td, th
-		padding: .7em 1em
-		border-bottom-width: 0
-
-.woocommerce-page.woocommerce-checkout .woocommerce-order table.shop_table
-	td:last-child, th:last-child
-		border-right-width: 0
-
-.woocommerce.woocommerce-checkout .woocommerce-order table.shop_table
-	td:last-child, th:last-child
-		border-right-width: 0
-
-.woocommerce-page.woocommerce-checkout .woocommerce-order h2
-	&.woocommerce-column__title, &.woocommerce-order-details__title
-		background: #fbfbfb
-		padding: 1em
-		margin-bottom: 0
-		font-size: 1.3rem
-		border-width: 1px 1px 0 1px
-		border-style: solid
-		border-color: $primary-color-500
-
-.woocommerce.woocommerce-checkout .woocommerce-order h2
-	&.woocommerce-column__title, &.woocommerce-order-details__title
-		background: #fbfbfb
-		padding: 1em
-		margin-bottom: 0
-		font-size: 1.3rem
-		border-width: 1px 1px 0 1px
-		border-style: solid
-		border-color: $primary-color-500
-
-.woocommerce-page.woocommerce-checkout .woocommerce-order h2.wc-bacs-bank-details-heading, .woocommerce.woocommerce-checkout .woocommerce-order h2.wc-bacs-bank-details-heading
-	font-size: 1.5rem
-	border-top: 3px solid $primary-color-500
-	padding-top: .5em
-
-.woocommerce-page.woocommerce-checkout .woocommerce-order h3, .woocommerce.woocommerce-checkout .woocommerce-order h3
-	font-size: 1.1rem
-
-.woocommerce-page.woocommerce-checkout .woocommerce-order ul.order_details, .woocommerce.woocommerce-checkout .woocommerce-order ul.order_details
-	margin-bottom: 2em
-
-.woocommerce-page.woocommerce-checkout .woocommerce-customer-details address
-	border-right-width: 1px
-	border-bottom-width: 1px
-	border-radius: 0
-
-.woocommerce
-	&.woocommerce-checkout .woocommerce-customer-details address
-		border-right-width: 1px
-		border-bottom-width: 1px
-		border-radius: 0
-
+.woocommerce-page
+	&.woocommerce-checkout
+		form.checkout.woocommerce-checkout:after
+			content: ""
+			clear: both
+			display: table
+		table.shop_table
+			thead
+				background: 0 0
+			th
+				padding: 14px 12px
+			td
+				padding: 10px
+				border-color: $gray-color-300
+			td, th
+				border-bottom-width: 1px
+			tfoot td
+				opacity: 1
+		form #order_review
+			table
+				border-width: 0
+			td, th
+				border-top: 0
+				border-right: 0
+				border-color: $primary-color-300
+				&:last-child
+					text-align: right
+			td.product-name
+				font-weight: 500
+				display: flex
+				align-items: center
+				.product-quantity
+					font-weight: 400
+		form .form-row
+			&:last-child
+				margin-bottom: 0
+		#payment
+			border-radius: 0
+			ul.payment_methods
+				padding: 0
+				margin-bottom: 1em
+				border-bottom: 0
+			div.payment_box
+				background-color: #efefef
+				&::before
+					border-bottom-color: #efefef
+			div.form-row
+				padding: 0 0 2em
+			#place_order
+				width: 100%
+		.woocommerce-order
+			table.shop_table
+				td, th
+					padding: .7em 1em
+					border-bottom-width: 0
+					&:last-child
+						border-right-width: 0
+			h2
+				&.woocommerce-column__title, &.woocommerce-order-details__title
+					background: #fbfbfb
+					padding: 1em
+					margin-bottom: 0
+					font-size: 1.3rem
+					border-width: 1px 1px 0 1px
+					border-style: solid
+					border-color: $primary-color-500
+				&.wc-bacs-bank-details-heading
+					font-size: 1.5rem
+					border-top: 3px solid $primary-color-500
+					padding-top: .5em
+			h3
+				font-size: 1.1rem
+			ul.order_details
+				margin-bottom: 2em
+		.woocommerce-customer-details
+			address
+				border-right-width: 1px
+				border-bottom-width: 1px
+				border-radius: 0
 	form
 		.form-row .required
 			text-decoration: none
-
 		&.checkout_coupon
 			margin: 0
 			border: 0
-			padding: 0 0 2em
-
 			.form-row
 				margin: 0
 				padding: 0
 				float: none
 				display: inline-block
-
-			[name=coupon_code]
-				padding-top: 9px
-				padding-bottom: 9px
-
-			.button
-				padding: .5em 1em
-				vertical-align: initial
-				line-height: 1.35
 
 @media (max-width: 420px)
 	.woocommerce form.checkout_coupon
@@ -2509,16 +2049,8 @@ button
 			display: block
 			margin: 0 auto
 			width: 100%
-
 		.form-row-first
 			margin-bottom: 10px
-
-		.button[name=apply_coupon]
-			width: 100%
-			padding: 10px 5px
-
-.checkout_coupon .input-text
-	padding: .5em .75em
 
 .woocommerce-MyAccount-navigation > ul
 	margin: 0
@@ -2530,84 +2062,63 @@ button
 #secondary
 	.widget.woocommerce > li, .widget_layered_nav_filters > li
 		margin-bottom: 0
-
 	.widget
 		.select2-container .select2-selection--multiple .select2-selection__rendered
 			display: block
 			min-height: 42px
-
 		.select2-selection--multiple .select2-selection__rendered .select2-selection__choice
 			margin-top: 5px
 			margin-bottom: 5px
-
 		.select2-search__field
 			min-height: 42px
 			margin: 0
 
 .woocommerce-js ul
 	&.cart_list li > a, &.product_list_widget li > a
-		font-weight: 500
-		margin-bottom: .33em
-		color: $secondary-color-500
+		font-size: $h6
+		line-height: $h5
+		margin-bottom: .25rem
 
 .woocommerce
 	#secondary .woocommerce ul
 		&.cart_list, &.product_list_widget
 			margin: 0
-
-	.widget_shopping_cart
+	.widget_shopping_cart, ul.product_list_widget
 		.cart_list li, li
 			padding: .6em 0 .6em 5em
 			min-height: 5em
 			position: relative
-			border-bottom: 1px solid $primary-color-500
+			border-bottom: 1px solid $gray-color-400
 			margin: 0
 			line-height: 1.5
-
-	ul.product_list_widget
-		.cart_list li, li
-			padding: .6em 0 .6em 5em
-			min-height: 5em
-			position: relative
-			border-bottom: 1px solid $primary-color-500
-			margin: 0
-			line-height: 1.5
-
-	.widget_shopping_cart
 		.cart_list li:last-child, li:last-child
 			border-bottom: none
-
-	ul.product_list_widget
-		.cart_list li:last-child, li:last-child
-			border-bottom: none
-
 	.widget_shopping_cart .woocommerce-mini-cart__buttons
 		margin-bottom: 0
-
 		.checkout.wc-forward
 			margin-left: 5px
 			margin-right: 0
-
 	&.widget_product_tag_cloud .tagcloud
 		margin-top: 10px
 		display: inline-block
-
 		a
 			border: 1px solid $primary-color-500
 			padding: .5em .9em
 			display: inline-block
 			margin-bottom: 4px
-			font-size: 14px
 			margin-right: 4px
 			line-height: 1.5
+			padding: .5em 1.2em
+			font-size: 12px !important
+			font-size: 0.8rem !important
 			transition: all .2s linear
-
+			&.current-item, &:focus, &:hover
+				background-color: #fafafa
 	.widget_shopping_cart .total, &.widget_shopping_cart .total
 		padding: 5px 0
 		border-top: 1px solid $primary-color-500
 		border-bottom: 1px solid $primary-color-500
 		margin-bottom: 1.3em
-
 	ul
 		&.product_list_widget li img
 			position: absolute
@@ -2618,78 +2129,48 @@ button
 			top: 50%
 			transform: translateY(-50%)
 			object-fit: cover
-
 		&.product-categories > li
 			padding: 2px 0
 
 			&:first-child
 				border: none
-
 	.widget
 		del
 			opacity: .5
-
 		ins
 			background: inherit
-
 		.amount, ins
 			font-weight: 400
-
 		.star-rating
 			margin: 5px 0
-
 	.widget_rating_filter ul li a
 		display: inline-flex
 		align-items: center
-
 	.price_slider_amount .price_label span
 		font-weight: 700
-
 	.widget_price_filter
 		.ui-slider-horizontal
 			height: .2em
-
 		.ui-slider .ui-slider-handle
 			top: -.4em
 			cursor: pointer
-
 		.price_slider_amount .button
 			font-size: 0.9em !important
 			padding: 8px 18px
-
 		.price_slider
 			margin-bottom: 1.2em
-
 		.price_slider_wrapper .ui-widget-content
 			background-color: #ededed
-
-	.widget_product_tag_cloud .tagcloud a
-		border: 1px solid $primary-color-500
-		padding: .5em .9em
-		display: inline-block
-		margin-bottom: 4px
-		margin-right: 4px
-		line-height: 1.5
-		padding: .5em 1.2em
-		font-size: 12px !important
-		font-size: 0.8rem !important
-
-		a
-			&.current-item, &:focus, &:hover
-				background-color: #fafafa
-
 	.widget_shopping_cart .cart_list li, &.widget_shopping_cart .cart_list li
 		padding: 1.2em 1.8em 1.2em 5em
-
 	.widget_shopping_cart .cart_list li a.remove, &.widget_shopping_cart .cart_list li a.remove
 		position: absolute
 		left: auto
 		right: 0
 		top: .5em
-		color: var(--ast-global-color-3)
-
+		color: $primary-color-600
 	.widget_shopping_cart .cart_list li a.remove:hover, &.widget_shopping_cart .cart_list li a.remove:hover
-		color: var(--ast-global-color-3)
+		color: $primary-color-800
 
 .woocommerce-product-search
 	display: flex
@@ -2706,25 +2187,24 @@ button
 		border-top-left-radius: 0
 		border-bottom-left-radius: 0
 
-#secondary .widget_layered_nav_filters ul li.chosen, .widget_layered_nav_filters ul li.chosen
-	padding: 0 .5em
-	margin-right: .5em
-	margin-bottom: .5em
-	background: rgba(245, 245, 245, 0.75)
-	border-radius: 20px
-	font-size: 1em
-
-#secondary .widget_layered_nav_filters ul li.chosen:hover, .widget_layered_nav_filters ul li.chosen:hover
-	background-color: #f5f5f5
-
-#secondary .widget_layered_nav_filters ul li.chosen a, .widget_layered_nav_filters ul li.chosen a
-	display: block
-
-#secondary .widget_layered_nav_filters ul li.chosen a::before, .widget_layered_nav_filters ul li.chosen a::before
-	margin-right: .5em
-	line-height: inherit
-	position: relative
-	top: 1px
+.widget_layered_nav_filters 
+	ul 
+		li.chosen
+			padding: 0 .5em
+			margin-right: .5em
+			margin-bottom: .5em
+			background: rgba(245, 245, 245, 0.75)
+			border-radius: 20px
+			font-size: 1em
+			&:hover,
+				background-color: #f5f5f5
+			a
+				display: block
+				&::before
+					margin-right: .5em
+					line-height: inherit
+					position: relative
+					top: 1px
 
 .woocommerce-terms-and-conditions
 	border: 1px solid rgba(0, 0, 0, 0.2)
@@ -2736,19 +2216,15 @@ button
 	font-weight: 600
 	padding: 3px .5em
 	font-size: 1em
-
 	&.strong
 		background-color: #c1e1b9
 		border-color: #83c373
-
 	&.short
 		background-color: #f1adad
 		border-color: #e35b5b
-
 	&.bad
 		background-color: #fbc5a9
 		border-color: #f78b53
-
 	&.good
 		background-color: #ffe399
 		border-color: #ffc733
@@ -2757,87 +2233,59 @@ button
 	margin: .5em 0 0
 	display: block
 
-.ast-safari-browser-less-than-11.ast-woocommerce-cart-menu
-	.header-main-layout-2 .main-header-container
-		display: block
-
-	&.ast-header-custom-item-outside
-		.header-main-layout-2 .main-header-container
-			text-align: center
-
-		.ast-main-header-bar-alignment
-			display: inline-block
-
-		.ast-masthead-custom-menu-items
-			display: inline-block
-			float: right
-
-	&.ast-header-break-point .header-main-layout-2 .main-header-container
-		display: flex
-
-.rtl .woocommerce-pagination .page-numbers li
+.rtl .woocommerce-pagination ul.page-numbers li
 	&:last-child .next
 		transform: rotateY(180deg)
-
 	&:first-child .prev
 		transform: rotateY(-180deg)
-
-.ast-site-header-cart .widgettitle
-	display: none
 
 .wc-block-grid .wc-block-grid__products .wc-block-grid__product
 	text-align: left
 	margin-bottom: 2.5em
-
 	&.product-category > a
 		display: inline-block
 		position: relative
-
 	a img
 		width: 100%
 		height: auto
 		display: block
 		margin: 0 0 .8em 0
 		box-shadow: none
-
 	.wc-block-grid__product-title
 		margin-bottom: .5em
 		padding: 0
 		font-size: 1em
 		line-height: 1.2
 		font-weight: inherit
-
 	.star-rating
 		margin: 0 auto .5em 0
 		backface-visibility: hidden
-
 	.woocommerce-loop-product__link
 		position: relative
 		display: block
-
 		&:hover .out-of-stock
-			background-color: #fff
-
+			background-color: $white-color
 	&.product-category > a:hover .woocommerce-loop-category__title
-		background-color: #fff
-
+		background-color: $white-color
 	.woocommerce-loop-category__title
 		bottom: 1.8em
+		text-transform: uppercase
 		font-size: .9em
-
+		font-weight: 700
+		line-height: 1.5
 		.count
-			font-size: .7em
-
+			display: block
+			background: 0 0
+			opacity: .5
+			font-size: .75em
 	.price
 		line-height: 1.3
 		margin-bottom: 0
 		font-weight: 700
 		margin-bottom: .5em
 		font-size: .9em
-
 		del
 			display: initial
-
 	.wp-block-button__link
 		margin-top: .5em
 		margin-bottom: .5em
@@ -2845,117 +2293,78 @@ button
 		line-height: 1.3
 		font-size: 100%
 		font-weight: 700
-
 		&.added
 			margin-bottom: 0
 			transition: margin 0s
-
-	.woocommerce-loop-category__title
-		text-transform: uppercase
-		font-weight: 700
-		line-height: 1.5
-
-		.count
-			display: block
-			background: 0 0
-			opacity: .5
-			font-size: .75em
-
 	.wc-block-grid__product-onsale
-		min-width: 3em
-		min-height: 3em
-		line-height: 3em
-		padding: 0
-		font-size: .8em
-		font-weight: 400
-		text-transform: capitalize
 		position: absolute
+		top: .5rem
+		right: .5rem
+		padding: .375rem 1.25rem
+		margin: 0
+		font-size: .875rem
+		line-height: .875rem
 		text-align: center
-		border-radius: 100%
+		border-radius: 1.25rem
+		background-color: $secondary-color-500
+		color: $white-color
+		-webkit-font-smoothing: antialiased
 		z-index: 9
-		top: 0
-		right: 10px
-		left: auto
-		margin: -.5em -.5em 0 0
 
 .widget_product_categories .children
 	padding-left: 20px
 
-.woocommerce-page .widget
-	.widget-title, .widget-title-common, > div h3
-		font-size: 1.2em
-		font-weight: 500
-		margin-bottom: 1rem
-		color: var(--ast-global-color-3)
-
-	.wc-block-price-slider
-		padding-top: .15em
-
-		.wc-block-components-price-slider__range-input-progress
-			// --range-color:var(--ast-global-color-0)
-			top: -1px
-
-		.wc-block-components-price-slider__range-input-wrapper
-			box-shadow: none
-			background-color: #ededed
-
-		.wc-block-components-price-slider__range-input-progress, .wc-block-components-price-slider__range-input-wrapper
-			height: 3px
-
-		.wc-block-price-filter__controls
-			border-color: $primary-color-500
-
-		.wc-block-price-filter__range-text
-			line-height: 2.4
-			font-size: .8751em
-
-			.wc-block-components-formatted-money-amount
-				font-weight: 700
-
-		.wc-block-components-price-slider__controls
-			justify-content: end
-
-		input[type=range]
-			margin: 0
-
-			&::-webkit-slider-runnable-track, &::-moz-range-track
-				height: 3px
+.woocommerce-page
+	.widget
+		.widget-title
+			margin-bottom: .5rem
+		.wc-block-price-slider
+			padding-top: .15rem
+			.wc-block-components-price-slider__range-input-progress
+				// --range-color: $primary-color-500
+				top: -1px
+			.wc-block-components-price-slider__range-input-wrapper
 				box-shadow: none
-				background-color: transparent
-
-			&.wc-block-price-filter__range-input::-webkit-slider-thumb
-				-webkit-appearance: none
-				border: 0
-				width: 15px
-				height: 15px
-
-			&::-moz-range-thumb
-				height: 15px
-				border: 0
-				width: 15px
-
-	.wc-block-checkbox-list li
-		input[type=checkbox]
-			margin: 0 .5rem 0 0
-			position: relative
-			top: 1px
-
-		.wc-filter-element-label-list-count
-			opacity: 1
-
-	.wc-layered-nav-rating
-		line-height: 1
-
-		.star-rating
-			margin: 0
-
+				background-color: #ededed
+			.wc-block-components-price-slider__range-input-progress, .wc-block-components-price-slider__range-input-wrapper
+				height: 3px
+			.wc-block-price-filter__controls
+				border-color: $primary-color-500
+			.wc-block-price-filter__range-text
+				line-height: 2.4
+				font-size: .8751em
+				.wc-block-components-formatted-money-amount
+					font-weight: 700
+			.wc-block-components-price-slider__controls
+				justify-content: end
+			input[type=range]
+				margin: 0
+				&::-webkit-slider-runnable-track, &::-moz-range-track
+					height: 3px
+					box-shadow: none
+					background-color: transparent
+				&.wc-block-price-filter__range-input::-webkit-slider-thumb
+					-webkit-appearance: none
+					border: 0
+					width: 15px
+					height: 15px
+				&::-moz-range-thumb
+					height: 15px
+					border: 0
+					width: 15px
+		.wc-block-checkbox-list li
+			input[type=checkbox]
+				margin: 0 .5rem 0 0
+				position: relative
+				top: 1px
+			.wc-filter-element-label-list-count
+				opacity: 1
+		.wc-layered-nav-rating
+			line-height: 1
+			.star-rating
+				margin: 0
 
 .product.woocommerce.add_to_cart_inline
 	border: 0 !important
-
 	a.button
 		margin-left: 1em
-
-.ast-site-header-cart .widget_shopping_cart, .astra-cart-drawer
-	background-color: var(--ast-global-color-5)
-	border: 1px solid $primary-color-500

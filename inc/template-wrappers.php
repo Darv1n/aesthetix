@@ -227,7 +227,7 @@ if ( ! function_exists( 'get_aesthetix_section_classes' ) ) {
 		}
 
 		// Add filter to array.
-		$classes = apply_filters( 'get_aesthetix_section_classes', $classes );
+		$classes = apply_filters( 'get_aesthetix_section_classes', $classes, $background );
 		$classes = array_unique( (array) $classes );
 		sort( $classes );
 
@@ -1292,12 +1292,12 @@ if ( ! function_exists( 'get_widget_classes' ) ) {
 	/**
 	 * Get classes for widgets.
 	 *
-	 * @param string $class Widget classes. Default ''.
-	 * @param string $id    Widget id. Default null.
+	 * @param string $class     Widget classes. Default ''.
+	 * @param string $widget_id Widget id. Default null.
 	 *
 	 * @return array
 	 */
-	function get_widget_classes( $class = '', $id = null ) {
+	function get_widget_classes( $class = '', $widget_id = null ) {
 
 		// Check the function has accepted any classes.
 		if ( isset( $class ) && ! empty( $class ) ) {
@@ -1315,21 +1315,21 @@ if ( ! function_exists( 'get_widget_classes' ) ) {
 		// Add elements to array.
 		$classes[] = 'widget';
 
-		if ( ! is_null( $id ) ) {
-			$classes[] = 'widget-' . $id;
+		if ( ! is_null( $widget_id ) ) {
+			$classes[] = 'widget-' . $widget_id;
 
-			if ( in_array( $id, array( 'header-mobile-left', 'header-mobile-center', 'header-mobile-right', 'header-main-left', 'header-top-left', 'header-top-right', 'header-main-left', 'header-main-center', 'header-main-right', 'header-bottom-left', 'header-bottom-center', 'header-bottom-right', 'footer-top-left', 'footer-top-right', 'footer-bottom-left', 'footer-bottom-right' ), true ) ) {
+			if ( in_array( $widget_id, array( 'header-mobile-left', 'header-mobile-center', 'header-mobile-right', 'header-main-left', 'header-top-left', 'header-top-right', 'header-main-left', 'header-main-center', 'header-main-right', 'header-bottom-left', 'header-bottom-center', 'header-bottom-right', 'footer-top-left', 'footer-top-right', 'footer-bottom-left', 'footer-bottom-right' ), true ) ) {
 				$classes[] = 'd-flex';
 			}
 
-			if ( $id === 'main' ) {
+			if ( $widget_id === 'main' ) {
 				$classes[] = 'widget-background';
-				$classes[] = 'widget-' . get_aesthetix_options( 'root_bg_aside_widgets' );;
+				$classes[] = 'widget-' . get_aesthetix_options( 'root_bg_aside_widgets' );
 			}
 		}
 
 		// Add filter to array.
-		$classes = apply_filters( 'get_widget_classes', $classes );
+		$classes = apply_filters( 'get_widget_classes', $classes, $widget_id );
 		$classes = array_unique( (array) $classes );
 		sort( $classes );
 
@@ -1342,15 +1342,15 @@ if ( ! function_exists( 'widget_classes' ) ) {
 	/**
 	 * Display classes for widgets.
 	 *
-	 * @param string $class Additional widget classes. Default ''.
-	 * @param string $id    Widget id. Default null.
-	 * @param bool   $echo  Echo or return widget classes.
+	 * @param string $class     Additional widget classes. Default ''.
+	 * @param string $widget_id Widget id. Default null.
+	 * @param bool   $echo      Echo or return widget classes.
 	 *
 	 * @return string|void
 	 */
-	function widget_classes( $class = '', $id = null, $echo = true ) {
+	function widget_classes( $class = '', $widget_id = null, $echo = true ) {
 
-		$classes = get_widget_classes( $class, $id );
+		$classes = get_widget_classes( $class, $widget_id );
 
 		if ( $echo ) {
 			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';

@@ -8,7 +8,7 @@
  */
  ?>
 
-<article <?php aesthetix_post_classes( 'post-single', $args ); ?> data-object-id="<?php the_ID(); ?>">
+<article id="article" <?php aesthetix_post_classes( 'post-single', $args ); ?> data-object-id="<?php the_ID(); ?>">
 
 	<?php
 		// Post header part.

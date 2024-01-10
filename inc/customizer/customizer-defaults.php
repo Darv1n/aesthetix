@@ -182,7 +182,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 					'archive_' . $post_type . '_posts_per_page'         => get_option( 'posts_per_page' ),
 					'archive_' . $post_type . '_posts_order'            => 'desc',
 					'archive_' . $post_type . '_posts_orderby'          => 'date',
-					'archive_' . $post_type . '_pagination'             => 'loadmore',
+					'archive_' . $post_type . '_pagination'             => 'numeric',
 					'archive_' . $post_type . '_more_button_content'    => 'link-icon-text', // button-icon-text, button-icon, button-text, link-icon-text, link-text, text-icon, text, icon.
 				) );
 			}

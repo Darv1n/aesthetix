@@ -30,7 +30,7 @@ if ( (int) $pages === 1 ) {
 
 		// First page.
 		if ( $paged > 3 ) { ?>
-			<a <?php button_classes( 'posts-navigation-item icon icon-before icon-chevron-left', array( 'button_content' => 'button-icon-text' ) ); ?> href="<?php echo esc_url( get_pagenum_link( 1 ) ); ?>" role="button"><?php esc_html_e( 'First', 'aesthetix' ); ?></a>
+			<a <?php button_classes( 'posts-navigation-item posts-navigation-item-first button-num', array( 'button_content' => 'button-icon-text' ) ); ?> href="<?php echo esc_url( get_pagenum_link( 1 ) ); ?>" role="button">←</a>
 		<?php }
 
 		// The main link output loop.
@@ -63,7 +63,7 @@ if ( (int) $pages === 1 ) {
 
 		// Last Page.
 		if ( $pages > 5 && $paged < $pages - 2 ) { ?>
-			<a <?php button_classes( 'posts-navigation-item posts-navigation-item-last icon icon-after icon-chevron-right', array( 'button_content' => 'button-icon-text' ) ); ?> href="<?php echo esc_url( get_pagenum_link( $pages ) ); ?>" role="button"><?php esc_html_e( 'Last', 'aesthetix' ); ?></a>
+			<a <?php button_classes( 'posts-navigation-item posts-navigation-item-last button-num', array( 'button_content' => 'button-icon-text' ) ); ?> href="<?php echo esc_url( get_pagenum_link( $pages ) ); ?>" role="button">→</a>
 		<?php }
 
 	} elseif ( get_aesthetix_options( 'archive_' . get_post_type() . '_pagination' ) === 'loadmore' ) { ?>
@@ -72,21 +72,21 @@ if ( (int) $pages === 1 ) {
 
 		<div class="row">
 
-			<?php if ( get_previous_posts_link() ) { ?>
-				<div class="col-12 col-sm-6">
+			<div class="col-12 col-sm-6">
+				<?php if ( get_previous_posts_link() ) { ?>
 					<div class="posts-navigation-item-prev">
 						<?php previous_posts_link( esc_html__( 'Previous posts', 'aesthetix' ) ); ?>
 					</div>
-				</div>
-			<?php } ?>
+				<?php } ?>
+			</div>
 
-			<?php if ( get_next_posts_link() ) { ?>
-				<div class="col-12 col-sm-6">
+			<div class="col-12 col-sm-6">
+				<?php if ( get_next_posts_link() ) { ?>
 					<div class="posts-navigation-item-next">
 						<?php next_posts_link( esc_html__( 'Next posts', 'aesthetix' ) ); ?>
 					</div>
-				</div>
-			<?php } ?>
+				<?php } ?>
+			</div>
 
 		</div>
 	<?php } ?>

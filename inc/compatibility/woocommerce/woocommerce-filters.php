@@ -7,24 +7,7 @@
  * @package Aesthetix
  */
 
-if ( ! function_exists( 'aesthetix_woo_active_body_class' ) ) {
-
-	/**
-	 * Add 'woocommerce-active' class to the body tag.
-	 *
-	 * @param array $classes CSS classes applied to the body tag.
-	 * 
-	 * @return array
-	 */
-	function aesthetix_woo_active_body_class( $classes ) {
-		$classes[] = 'woocommerce-active';
-
-		return $classes;
-	}
-}
-add_filter( 'body_class', 'aesthetix_woo_active_body_class' );
-
-if ( ! function_exists( 'get_aesthetix_woo_sidebar' ) ) {
+if ( ! function_exists( 'get_aesthetix_sidebar_woo_callback' ) ) {
 
 	/**
 	 * Assign shop sidebar for store page.
@@ -33,20 +16,70 @@ if ( ! function_exists( 'get_aesthetix_woo_sidebar' ) ) {
 	 *
 	 * @return string
 	 */
-	function get_aesthetix_woo_sidebar( $sidebar ) {
+	function get_aesthetix_sidebar_woo_callback( $sidebar ) {
 
 		if ( is_shop() || is_product_taxonomy() || is_checkout() || is_cart() || is_account_page() ) {
-			$sidebar = 'shop-sidebar';
+			$sidebar = 'woo-sidebar-shop';
 		} elseif ( is_product() ) {
-			$sidebar = 'single-product-sidebar';
+			$sidebar = 'woo-sidebar-single-product';
 		}
 
 		return $sidebar;
 	}
 }
-add_filter( 'get_aesthetix_sidebar', 'get_aesthetix_woo_sidebar' );
+add_filter( 'get_aesthetix_sidebar', 'get_aesthetix_sidebar_woo_callback' );
 
-if ( ! function_exists( 'aesthetix_woo_rating_markup' ) ) {
+if ( ! function_exists( 'aesthetix_register_sidebar_woo_callback' ) ) {
+
+	/**
+	 * Function for 'aesthetix_register_sidebar' filter-hook.
+	 *
+	 * @param array $sidebars Theme sidebars for register.
+	 * 
+	 * @return array
+	 */
+	function aesthetix_register_sidebar_woo_callback( $sidebars ) {
+
+		$sidebars['woo-sidebar-shop'] = array(
+			'name'        => esc_html__( 'WooCommerce sidebar', 'aesthetix' ),
+			'description' => esc_html__( 'This sidebar will be used on product archive, cart, checkout and my account pages', 'aesthetix' ),
+			'title_tag'   => 'h3',
+		);
+
+		$sidebars['woo-sidebar-single-product'] = array(
+			'name'        => esc_html__( 'Product sidebar', 'aesthetix' ),
+			'description' => esc_html__( 'This sidebar will be used on single product page', 'aesthetix' ),
+			'title_tag'   => 'h3',
+		);
+
+		return $sidebars;
+	}
+}
+add_filter( 'aesthetix_register_sidebar', 'aesthetix_register_sidebar_woo_callback' );
+
+if ( ! function_exists( 'get_widget_classes_woo_callback' ) ) {
+
+	/**
+	 * Function for 'aesthetix_register_sidebar' filter-hook.
+	 *
+	 * @param array  $classes   Widget classes.
+	 * @param string $widget_id Widget ID.
+	 * 
+	 * @return array
+	 */
+	function get_widget_classes_woo_callback( $classes, $widget_id ) {
+
+		if ( ! is_null( $widget_id ) && in_array( $widget_id, array( 'woo-sidebar-shop', 'woo-sidebar-single-product' ), true ) ) {
+			$classes[] = 'widget-background';
+			$classes[] = 'widget-' . get_aesthetix_options( 'root_bg_aside_widgets' );
+		}
+
+		return $classes;
+	}
+}
+add_filter( 'get_widget_classes', 'get_widget_classes_woo_callback', 10, 2 );
+
+if ( ! function_exists( 'woocommerce_product_get_rating_html_aesthetix_callback' ) ) {
 
 	/**
 	 * Rating Markup.
@@ -57,7 +90,7 @@ if ( ! function_exists( 'aesthetix_woo_rating_markup' ) ) {
 	 * 
 	 * @return string
 	 */
-	function aesthetix_woo_rating_markup( $html, $rating, $count ) {
+	function woocommerce_product_get_rating_html_aesthetix_callback( $html, $rating, $count ) {
 
 		if ( '0' === $rating ) {
 			$html  = '<div class="star-rating" role="img">';
@@ -68,7 +101,7 @@ if ( ! function_exists( 'aesthetix_woo_rating_markup' ) ) {
 		return $html;
 	}
 }
-add_filter( 'woocommerce_product_get_rating_html', 'aesthetix_woo_rating_markup', 10, 3 );
+add_filter( 'woocommerce_product_get_rating_html', 'woocommerce_product_get_rating_html_aesthetix_callback', 10, 3 );
 
 if ( ! function_exists( 'woocommerce_breadcrumb_defaults_aesthetix_callback' ) ) {
 
@@ -87,4 +120,3 @@ if ( ! function_exists( 'woocommerce_breadcrumb_defaults_aesthetix_callback' ) )
 	}
 }
 add_filter( 'woocommerce_breadcrumb_defaults', 'woocommerce_breadcrumb_defaults_aesthetix_callback', 10, 3 );
-
