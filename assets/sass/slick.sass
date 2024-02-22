@@ -66,10 +66,7 @@
 .slick-slide
 	display: none
 	min-height: 1px
-	> div, .slick-item
-		height: 100%
-	img
-		display: block
+	height: auto
 	&.slick-loading img
 		display: none
 	&.dragging img
@@ -137,12 +134,9 @@
 	right: auto
 	left: .75rem
 
-.slick-dotted.slick-slider
-	margin-bottom: 1.5rem
-
 .slick-dots
 	position: absolute
-	bottom: -1rem
+	bottom: 1rem
 	display: block
 	width: 100%
 	padding: 0
@@ -167,13 +161,13 @@
 		cursor: pointer
 		color: transparent
 		outline: none
-		background: $white-color
-		border: 2px solid $primary-color-500
+		background: $gray-color-50
+		border: 1px solid $gray-color-100
 		border-radius: 50%
 		&:hover, &:focus
-			background: $primary-color-500
-			border: 2px solid $primary-color-500
+			background: $gray-color-300
+			border: 1px solid $gray-color-300
 	.slick-active
 		button
-			background: $primary-color-500
-			border: 2px solid $primary-color-500
+			background: $gray-color-300
+			border: 1px solid $gray-color-300

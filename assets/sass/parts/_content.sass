@@ -95,16 +95,6 @@ a.logo
 	&-secondary
 		.container-outer
 			background: $secondary-color-50
-	&-container
-		&.section-background
-			padding: 1rem 1.25rem
-			border-radius: $border-radius
-		&.section-gray
-			background: $gray-color-100
-		&.section-primary
-			background: $primary-color-50
-		&.section-secondary
-			background: $secondary-color-50
 
 @media (min-width: 768px)
 	.section-title-wrapper
@@ -131,7 +121,7 @@ a.logo
 				border-bottom-right-radius: 0
 
 .header
-	margin-bottom: 1.5rem
+	margin-bottom: 1.25rem
 	&-top-bar
 		font-size: $font-size-sm
 		.container-outer
@@ -209,13 +199,35 @@ a.logo
 			position: absolute
 			margin-bottom: 0 !important
 			z-index: 1
+	&-thumbnail
+		width: 100%
+		height: 100%
+		&-link
+			display: block
+			height: 100%
+	&-date
+		&-modified
+			padding-left: .25rem
+			color: $gray-color-500
+	&-footer
+		&-item
+			display: block
+			> *
+				display: inline-block
+			&:not(:last-child)
+				margin-bottom: .5rem
+		&-list, &-tags, &-cats
+			@extend .list-inline
+	&-entry-header, &-entry-content, &-entry-footer
+		> *
+			margin-bottom: 1rem
+			&:first-child
+				margin-top: 0 !important
+			&:last-child
+				margin-bottom: 0
 	&-entry-content
 		> p, ul, ol
 			max-width: 960px
-		> *
-			margin-bottom: 1rem
-		> *:first-child
-			margin-top: 0 !important
 		h2
 			margin-top: $gutter*5
 		h3
@@ -239,25 +251,6 @@ a.logo
 			list-style-type: decimal
 		.button
 			@extend .mb
-	&-thumbnail
-		width: 100%
-		height: 100%
-		&-link
-			display: block
-			height: 100%
-	&-date
-		&-modified
-			padding-left: .25rem
-			color: $gray-color-500
-	&-footer
-		&-item
-			display: block
-			> *
-				display: inline-block
-			&:not(:last-child)
-				margin-bottom: .5rem
-		&-list, &-tags, &-cats
-			@extend .list-inline
 	&-entry-meta
 		@extend .list-inline
 		&-item
@@ -328,7 +321,7 @@ a.logo
 					position: absolute
 					height: 100%
 					width: 100%
-					.post-thumbnail
+					img
 						height: 100%
 						filter: brightness( 50% )
 	&-aside
@@ -338,13 +331,9 @@ a.logo
 			padding: 0
 	&-list
 		.post-thumbnail-wrap
-			height: 100%
-			width: 100%
 			.post-entry-taxonomies
 				top: calc( var( --post-margin ) + .5rem )
 				left: calc( var( --post-margin ) + .5rem )
-			.post-thumbnail
-				height: 100%
 
 @media ( min-width: 992px )
 	.post
@@ -379,7 +368,8 @@ a.logo
 			border-radius: var( --#{$post-type}-border-radius )
 			&:hover, &:focus, &:active
 			.post-thumbnail
-				aspect-ratio: var( --#{$post-type}-thumbnail-aspect-ratio )
+				img
+					aspect-ratio: var( --#{$post-type}-thumbnail-aspect-ratio )
 			.post-thumbnail-wrap
 				padding: var( --#{$post-type}-thumbnail-padding ) var( --#{$post-type}-thumbnail-padding ) 0
 			.post-content-wrap
@@ -391,7 +381,6 @@ a.logo
 					.post-thumbnail-wrap
 						padding: var( --#{$post-type}-thumbnail-padding )
 					.post-content-wrap
-						aspect-ratio: var( --#{$post-type}-thumbnail-aspect-ratio )
 						padding: calc( var( --#{$post-type}-thumbnail-padding ) + var( --#{$post-type}-content-padding ) )
 						&.has-post-thumbnail
 							padding: calc( var( --#{$post-type}-thumbnail-padding ) + var( --#{$post-type}-content-padding ) )
@@ -401,6 +390,9 @@ a.logo
 			box-shadow: none
 			border-radius: 0
 			&.post-list
+				.post-thumbnail
+					img
+						aspect-ratio: 1/1
 				.post-thumbnail-wrap, .post-content-wrap
 					padding: 0 !important
 	@media (min-width: 768px)

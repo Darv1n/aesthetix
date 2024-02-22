@@ -1,6 +1,6 @@
 <?php
 /**
- * Template list for displaying widget posts.
+ * Template part for displaying widget post list.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -39,7 +39,7 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 
 <article id="post-<?php the_ID(); ?>" <?php aesthetix_post_classes( 'post-aside', $args ); ?>>
 	<div <?php aesthetix_archive_page_columns_wrapper_classes( 'row-xs align-items-center' ); ?>>
-		<div class="col-xs col-5 align-self-stretch <?php echo esc_attr( $order_left ); ?>">
+		<div class="col-xs col-5 <?php echo esc_attr( $order_left ); ?>">
 
 			<?php if ( has_post_thumbnail( $post ) || get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_default' ) ) {
 

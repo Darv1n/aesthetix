@@ -42,6 +42,7 @@ if ( ! function_exists( 'aesthetix_pre_get_posts' ) ) {
 				$post_type = 'post';
 			}
 
+
 			if ( get_aesthetix_options( 'archive_' . $post_type . '_posts_per_page' ) ) {
 				$query->set( 'posts_per_page', get_aesthetix_options( 'archive_' . $post_type . '_posts_per_page' ) );
 			}
@@ -71,9 +72,8 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 			'aside-subscribe', // TODO: Load by condition.
 			'aside-cookie',
 			'aside-scroll-top',
-			'first-screen-post-slider',
-			'breadcrumbs',
-			'content-wrapper-start',
+			'section-widget',
+			'wrapper-section-content-start',
 		);
 
 		$structure = apply_filters( 'before_site_content_structure', $structure );
@@ -98,16 +98,16 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 				case 'aside-scroll-top':
 					get_template_part( 'templates/aside/aside-scroll-top' );
 					break;
-				case 'first-screen-post-slider':
-					get_template_part( 'templates/first-screen-post-slider' );
+				case 'section-widget':
+					get_template_part( 'templates/section/section-widget', '', array( 'widget_id' => 'after-header' ) );
 					break;
-				case 'breadcrumbs':
-					get_template_part( 'templates/breadcrumbs' );
-					break;
-				case 'content-wrapper-start':
-					get_template_part( 'templates/content-wrapper-start' );
+				case 'wrapper-section-content-start':
+					get_template_part( 'templates/wrapper/wrapper-section-content-start' );
 					break;
 				default:
+					if ( locate_template( '/templates/section/' . $value . '.php' ) !== '' ) {
+						get_template_part( 'templates/section/' . $value );
+					}
 					break;
 			}
 		}
@@ -123,7 +123,8 @@ if ( ! function_exists( 'after_site_content_structure' ) ) {
 	function after_site_content_structure() {
 
 		$structure = array(
-			'content-wrapper-end',
+			'wrapper-section-content-end',
+			'section-widget',
 		);
 
 		if ( get_aesthetix_options( 'general_subscribe_form_display' ) ) {
@@ -137,13 +138,16 @@ if ( ! function_exists( 'after_site_content_structure' ) ) {
 				case has_action( 'after_site_content_structure_loop_' . $value ):
 					do_action( 'after_site_content_structure_loop_' . $value );
 					break;
-				case 'content-wrapper-end':
-					get_template_part( 'templates/content-wrapper-end' );
+				case 'wrapper-section-content-end':
+					get_template_part( 'templates/wrapper/wrapper-section-content-end' );
 					break;
-				case 'subscribe-form':
-					get_template_part( 'templates/subscribe-form', '', array( 'section' => true, 'title' => get_aesthetix_options( 'general_subscribe_form_title' ) ) );
+				case 'section-widget':
+					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'before-footer' ) );
 					break;
 				default:
+					if ( locate_template( '/templates/section/' . $value . '.php' ) !== '' ) {
+						get_template_part( 'templates/section/' . $value );
+					}
 					break;
 			}
 		}
@@ -170,9 +174,12 @@ if ( ! function_exists( 'before_single_post_structure' ) ) {
 					do_action( 'before_single_post_structure_loop_' . $value );
 					break;
 				case 'section-widget':
-					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'before-post-content', 'container' => false ) );
+					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'before-post-content' ) );
 					break;
 				default:
+					if ( locate_template( '/templates/section/' . $value . '.php' ) !== '' ) {
+						get_template_part( 'templates/section/' . $value );
+					}
 					break;
 			}
 		}
@@ -204,16 +211,19 @@ if ( ! function_exists( 'after_single_post_structure' ) ) {
 				case 'single-pagination':
 					get_template_part( 'templates/single-pagination' );
 					break;
-				case 'section-widget':
-					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'after-post-content', 'container' => false ) );
-					break;
 				case 'single-similar-posts':
 					get_template_part( 'templates/single/single-similar-posts' );
 					break;
 				case 'single-comments':
 					comments_template();
 					break;
+				case 'section-widget':
+					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'after-post-content' ) );
+					break;
 				default:
+					if ( locate_template( '/templates/section/' . $value . '.php' ) !== '' ) {
+						get_template_part( 'templates/section/' . $value );
+					}
 					break;
 			}
 		}

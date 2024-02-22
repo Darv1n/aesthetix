@@ -23,26 +23,29 @@ get_header(); ?>
 		?>
 
 		<?php if ( get_the_archive_title() || get_the_archive_description() ): ?>
-			<header class="content-area-header" aria-label="<?php esc_attr_e( 'Archive page header', 'aesthetix' ); ?>">
-				<?php
-					$structure = array( 'title', 'description' );
-					$structure = apply_filters( 'aesthetix_archive_header_structure', $structure );
-					foreach ( $structure as $key => $value ) {
-						switch ( $value ) {
-							case has_action( 'aesthetix_archive_header_loop_' . $value ):
-								do_action( 'aesthetix_archive_header_loop_' . $value );
-								break;
-							case 'title':
-								the_archive_title( '<h1 class="content-area-title">', '</h1>' );
-								break;
-							case 'description':
-								the_archive_description( '<div class="content-area-description">', '</div>' );
-								break;
-							default:
-								break;
-						}
-					} ?>
-			</header>
+			<?php
+				$structure = array( 'title', 'description' );
+				$structure = apply_filters( 'aesthetix_archive_header_structure', $structure );
+
+				if ( is_array( $structure ) && ! empty( $structure ) ) { ?>
+					<header class="content-area-header" aria-label="<?php esc_attr_e( 'Archive page header', 'aesthetix' ); ?>">
+						<?php foreach ( $structure as $key => $value ) {
+							switch ( $value ) {
+								case has_action( 'aesthetix_archive_header_loop_' . $value ):
+									do_action( 'aesthetix_archive_header_loop_' . $value );
+									break;
+								case 'title':
+									the_archive_title( '<h1 class="content-area-title">', '</h1>' );
+									break;
+								case 'description':
+									the_archive_description( '<div class="content-area-description">', '</div>' );
+									break;
+								default:
+									break;
+							}
+						} ?>
+					</header>
+				<?php } ?>
 		<?php endif ?>
 
 		<?php do_action( 'aesthetix_before_archive_page_content' ); ?>

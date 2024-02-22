@@ -67,12 +67,12 @@ if ( ! function_exists( 'aesthetix_setup_theme' ) ) {
 			'flex-height' => true,
 		) );
 
-		// Добавляем поддержку кастом header.
+		// Adding support for custom header.
 		add_theme_support( 'custom-header', apply_filters( 'aesthetix_custom_header_args', array(
 			'default-image'      => '',
 			'default-text-color' => '000000',
 			'width'              => 1920,
-			'height'             => 500,
+			'height'             => 480,
 			'flex-width'         => true,
 			'flex-height'        => true,
 		) ) );
@@ -80,69 +80,48 @@ if ( ! function_exists( 'aesthetix_setup_theme' ) ) {
 		// Gutenberg Embeds.
 		add_theme_support( 'responsive-embeds' ); 
 
-		// Добавляем поддержку шорткодов в виджетах.
+		// Starter content.
+		if ( is_customize_preview() ) {
+			require_once get_template_directory() . '/inc/starter-content.php';
+			add_theme_support( 'starter-content', aesthetix_starter_content() );
+		}
+
+		require_once get_template_directory() . '/inc/starter-content.php';
+		add_theme_support( 'starter-content', aesthetix_starter_content() );
+
+		// Adding support for shortcodes in widgets.
 		add_filter( 'widget_text', 'do_shortcode' );
 
-		// Убираем пустые теги.
-		// remove_filter( 'the_excerpt', 'wpautop' );
-		// remove_filter( 'the_content', 'wpautop' );
-		// add_filter( 'the_content', 'wpautop', 12 );
-
-		// Убираем meta generator.
+		// Remove meta generator.
 		add_filter( 'the_generator', '__return_empty_string' );
 		remove_action( 'wp_head', 'wp_generator' );
 
-		// Отключение embed.js
-		remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
-		remove_action( 'wp_head', 'wp_oembed_add_host_js' );
-
-		// Удаляем фиды.
-		remove_action( 'wp_head', 'feed_links', 2 ); // Ссылки основных фидов (записи, комментарии, лента новостей).
-		remove_action( 'wp_head', 'feed_links_extra', 3 ); // Ссылки на доп. фиды (на рубрики, теги, таксономии).
-
-		// Удаляем RSD, WLW ссылки, на главную, предыдущую, первую запись.
-		remove_action( 'wp_head', 'rsd_link' ); // Ссылка для блог-клиентов.
-		remove_action( 'wp_head', 'wlwmanifest_link' ); // Ссылка используемая Windows Live Writer.
-		remove_action( 'wp_head', 'adjacent_posts_rel_link', 10, 0 ); // Ссылка на следующий и предыдущий пост.
-		remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
-		remove_action( 'wp_head', 'index_rel_link' ); // Ссылка на главную.
-		remove_action( 'wp_head', 'start_post_rel_link', 10, 0 ); // Ссылка на первый пост.
-		remove_action( 'wp_head', 'parent_post_rel_link', 10, 0 ); // Ссылка на родительскую страницу.
-		remove_action( 'wp_head', 'wp_resource_hints', 2 ); // Удаляем dns-prefetch.
-
-		// Отключаем emoji.
-		remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-		remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-		remove_action( 'wp_print_styles', 'print_emoji_styles' );
-		remove_action( 'admin_print_styles', 'print_emoji_styles' );
-		remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-		remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
-		remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-
-		// Добавляем троеточие в excerpt.
+		// Add an ellipsis to excerpt.
 		add_filter( 'excerpt_more', function( $more ) {
 			return '...';
 		} );
 
-		// Переписываем email в нижний регистр.
+		// Rewrite email to lower case.
 		add_filter( 'sanitize_email', function( $email ) {
 			return strtolower( $email );
 		} );
 
-		// Удаляем "Рубрика: ", "Метка: " и т.д. из заголовка архива.
+		// Delete "Category:", "Tag:", etc. from the archive header.
 		add_filter( 'get_the_archive_title', function( $title ) {
 			return preg_replace( '~^[^:]+: ~', '', wp_strip_all_tags( $title ) );
 		} );
 
-		// Убираем ссылку на https://ru.wordpress.org/ в авторизации.
+		// Remove the link to https://ru.wordpress.org/ in the authorization.
 		add_filter( 'login_headerurl', function( $login_header_url ) {
-			return home_url( '/' ); // Или любой другой адрес.
+			return home_url( '/' );
 		} );
 
 		// Add support html markup to wp_mail content.
 		add_filter( 'wp_mail_content_type', function( $content_type ) {
 			return 'text/html';
 		} );
+
+		add_action( 'admin_notices', 'aesthetix_classic_widgets_notice' );
 	}
 }
 add_action( 'after_setup_theme', 'aesthetix_setup_theme' );
@@ -167,12 +146,11 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 		// Bootstrap grid.
 		wp_enqueue_style( 'bootstrap-grid', get_theme_file_uri( '/assets/css/bootstrap-grid.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/bootstrap-grid.min.css' ) ) );
 
-		// Основные стили. Компиляция галпом. Могут быть переопределены в дочерней.
+		// Basic styles. Gulp compilation. Can be overridden in a child theme.
 		wp_enqueue_style( 'common-styles', get_theme_file_uri( '/assets/css/common.min.css' ), array(), filemtime( get_theme_file_path( '/assets/css/common.min.css' ) ) );
 
 		// Icons.
 		wp_enqueue_style( 'icons', get_theme_file_uri( '/assets/css/icons.min.css' ), array( 'common-styles' ), filemtime( get_theme_file_path( '/assets/css/icons.min.css' ) ) );
-
 
 		$root_string = '';
 		foreach ( get_aesthetix_customizer_roots() as $key => $root_value ) {
@@ -181,8 +159,8 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 
 		wp_add_inline_style( 'common-styles', ':root {' . esc_attr( $root_string ) . '}' );
 
-		// Основные скрипты. Компиляция галпом. Могут быть переопределены в дочерней.
-		wp_enqueue_script( 'common-scripts', get_theme_file_uri( '/assets/js/common.min.js' ), array( 'jquery' ), filemtime( get_theme_file_path( '/assets/js/common.min.js' ) ), true );
+		// Basic scripts. Gulp compilation. Can be overridden in a child theme.
+		wp_enqueue_script( 'common-scripts', get_theme_file_uri( '/assets/js/source/common.js' ), array( 'jquery' ), filemtime( get_theme_file_path( '/assets/js/source/common.js' ) ), true );
 
 		// Comments.
 		if ( is_singular() && comments_open() ) {
@@ -209,6 +187,11 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 			});';
 
 			wp_add_inline_script( 'masonry', minify_js( $masonry_init ) );
+		}
+
+		// Stiky kit.
+		if ( get_aesthetix_options( 'general_sidebar_stuck' ) ) {
+			wp_enqueue_script( 'sticky-kit', get_theme_file_uri( '/assets/libs/sticky-kit/sticky-kit.min.js' ), array( 'jquery' ), filemtime( get_theme_file_path( '/assets/libs/sticky-kit/sticky-kit.min.js' ) ), true );
 		}
 
 		// Swiper.
@@ -324,7 +307,7 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 				$( \'.first-screen-slider\' ).slick( ' . json_encode( $slick_args ) . ' );
 			} );';
 
-			wp_add_inline_script( 'slick-script', minify_js( $slick_init ) );
+			// wp_add_inline_script( 'slick-script', minify_js( $slick_init ) );
 		}
 
 		if ( is_single() ) {

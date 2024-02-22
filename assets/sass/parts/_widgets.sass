@@ -1,7 +1,7 @@
 .widgets
 	> *
 		&:not(:last-child)
-			margin-bottom: 1.5rem
+			margin-bottom: 2rem
 	&-left
 		text-align: left
 	&-center
@@ -21,8 +21,17 @@
 			&:last-child
 				margin-right: 0 !important
 
+.footer .widgets
+	margin-bottom: 1.5rem
+
 .widget
 	position: relative
+	&-title
+		@extend .h4
+		margin-bottom: .5rem
+	&-subtitle, &-description
+		font-size: $font-size-sm
+		color: $gray-color-500
 	&-background
 		padding: 1rem 1.25rem
 		border-radius: $border-radius
@@ -36,20 +45,17 @@
 		margin-bottom: .5rem
 		> *:not(:last-child)
 			margin-bottom: .25rem
-	&-title
-		@extend .h4
-	&-subtitle, &-description
-		font-size: $font-size-sm
-		color: $gray-color-500
 	&-menu-title
 		@extend .h6
 		margin: .25rem 0
 	&_recent_entries
+		a
+			@extend .link
 		.post-date
 			display: block
 			margin-top: $gutter
 			font-size: $font-size-sm
-			color: $gray-color-500
+			color: $gray-color-400
 	&_rss
 		.rss-date, .rssSummary, cite, img
 			display: block

@@ -143,7 +143,7 @@ abstract class WPA_Widget extends WP_Widget {
 			<div class="widget-title-wrap">
 
 				<?php if ( $subtitle ) {
-					echo '<span class="widget-subtitle">' . $subtitle . '</span>'; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
+					echo '<div class="widget-subtitle">' . $subtitle . '</div>'; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped
 				} ?>
 
 				<?php echo $args['before_title'] . $title . $args['after_title']; // phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?>
@@ -400,6 +400,7 @@ abstract class WPA_Widget extends WP_Widget {
 							<div class="media-image-container">
 								<?php if ( ! empty( $value ) ) : ?>
 									<img src="<?php echo esc_url( $value ) ; ?>" alt="Image Preview" style="max-width:100%;margin-bottom:10px" />
+									<span class="media-remove dashicons dashicons-no-alt"></span>
 								<?php endif; ?>
 							</div>
 

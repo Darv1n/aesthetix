@@ -1,11 +1,12 @@
 <?php
 /**
- * Template tils for displaying widget recent posts.
+ * Template part for displaying widget recent posts.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package Aesthetix
  */
+
 $post_type = $args['post_type'] ?? 'post';
 $defaults  = array(
 	'order'               => get_aesthetix_options( 'archive_' . $post_type . '_posts_order' ),

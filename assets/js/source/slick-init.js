@@ -4,6 +4,12 @@
 
 jQuery( document ).ready( function ( $ ) {
 
-	$( '.post-gallery-slider' ).slick();
+	$( '.slick-gallery-slider' ).slick( {
+		dots: true,
+		arrows: false,
+		adaptiveHeight: true,
+		// autoplay: true,
+		// autoplaySpeed: 3000,
+	} );
 
 } );

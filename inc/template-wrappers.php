@@ -369,14 +369,13 @@ if ( ! function_exists( 'get_aesthetix_content_area_classes' ) ) {
 
 		// Add elements to array.
 		$classes[] = 'col-12';
-		$classes[] = 'order-1';
+		$classes[] = 'order-2';
 		$classes[] = 'col-sm-12';
 
 		$sidebar = apply_filters( 'get_aesthetix_sidebar', 'main' );
 
-		if ( is_active_sidebar( $sidebar ) || ! empty( get_aesthetix_widget_default( $sidebar ) )  ) {
+		if ( is_active_sidebar( $sidebar ) ) {
 			$classes[] = 'col-lg-8';
-			$classes[] = 'order-lg-2';
 			$classes[] = 'col-xl-9';
 		}
 
@@ -438,13 +437,19 @@ if ( ! function_exists( 'get_aesthetix_widget_area_classes' ) ) {
 		}
 
 		// Add elements to array.
+		$classes[] = 'widget-area';
+
 		$classes[] = 'col-12';
 		$classes[] = 'col-sm-12';
 		$classes[] = 'col-lg-4';
 		$classes[] = 'col-xl-3';
 
-		$classes[] = 'widget-area';
-		$classes   = array_merge( $classes, get_widgets_classes() );
+		if ( get_aesthetix_options( 'general_sidebar_align' ) === 'left' ) {
+			$classes[] = 'order-3';
+			$classes[] = 'order-lg-1';
+		} else {
+			$classes[] = 'order-3';
+		}
 
 		// Add filter to array.
 		$classes = apply_filters( 'get_aesthetix_widget_area_classes', $classes );
@@ -1237,6 +1242,8 @@ if ( ! function_exists( 'get_widgets_classes' ) ) {
 
 		if ( ! is_null( $id ) ) {
 
+			$classes[] = 'widgets-' . $id;
+
 			if ( in_array( $id, array( 'header-mobile-left', 'header-mobile-center', 'header-mobile-right', 'header-main-left', 'header-top-left', 'header-top-right', 'header-main-left', 'header-main-center', 'header-main-right', 'header-bottom-left', 'header-bottom-center', 'header-bottom-right', 'footer-top-left', 'footer-top-right', 'footer-bottom-left', 'footer-bottom-right' ), true ) ) {
 				$classes[] = 'widgets-inline';
 				$classes[] = 'd-flex';
@@ -1252,6 +1259,11 @@ if ( ! function_exists( 'get_widgets_classes' ) ) {
 			} elseif ( str_contains( $id, 'center' ) ) {
 				$classes[] = 'widgets-center';
 				$classes[] = 'justify-content-center';
+			}
+
+			if ( $id === 'main' && get_aesthetix_options( 'general_sidebar_stuck' ) ) {
+				$classes[] = 'sidebar-main';
+				$classes[] = 'sidebar-stuck';
 			}
 		}
 
@@ -1292,12 +1304,13 @@ if ( ! function_exists( 'get_widget_classes' ) ) {
 	/**
 	 * Get classes for widgets.
 	 *
-	 * @param string $class     Widget classes. Default ''.
-	 * @param string $widget_id Widget id. Default null.
+	 * @param string $class      Widget classes. Default ''.
+	 * @param string $sidebar_id Sidebar ID. Default null.
+	 * @param string $background Background type. Default null.
 	 *
 	 * @return array
 	 */
-	function get_widget_classes( $class = '', $widget_id = null ) {
+	function get_widget_classes( $class = '', $sidebar_id = null, $background = null ) {
 
 		// Check the function has accepted any classes.
 		if ( isset( $class ) && ! empty( $class ) ) {
@@ -1312,24 +1325,28 @@ if ( ! function_exists( 'get_widget_classes' ) ) {
 			$classes = array();
 		}
 
+		if ( is_null( $background ) ) {
+			$background = get_aesthetix_options( 'root_bg_aside_widgets' );
+		}
+
 		// Add elements to array.
 		$classes[] = 'widget';
 
-		if ( ! is_null( $widget_id ) ) {
-			$classes[] = 'widget-' . $widget_id;
+		if ( ! is_null( $sidebar_id ) ) {
+			$classes[] = 'widget-' . $sidebar_id;
 
-			if ( in_array( $widget_id, array( 'header-mobile-left', 'header-mobile-center', 'header-mobile-right', 'header-main-left', 'header-top-left', 'header-top-right', 'header-main-left', 'header-main-center', 'header-main-right', 'header-bottom-left', 'header-bottom-center', 'header-bottom-right', 'footer-top-left', 'footer-top-right', 'footer-bottom-left', 'footer-bottom-right' ), true ) ) {
+			if ( in_array( $sidebar_id, array( 'header-mobile-left', 'header-mobile-center', 'header-mobile-right', 'header-main-left', 'header-top-left', 'header-top-right', 'header-main-left', 'header-main-center', 'header-main-right', 'header-bottom-left', 'header-bottom-center', 'header-bottom-right', 'footer-top-left', 'footer-top-right', 'footer-bottom-left', 'footer-bottom-right' ), true ) ) {
 				$classes[] = 'd-flex';
 			}
 
-			if ( $widget_id === 'main' ) {
+			if ( in_array( $sidebar_id, array( 'main', 'before-post-content', 'after-post-content' ), true ) && $background !== 'theme' ) {
 				$classes[] = 'widget-background';
-				$classes[] = 'widget-' . get_aesthetix_options( 'root_bg_aside_widgets' );
+				$classes[] = 'widget-' . $background;
 			}
 		}
 
 		// Add filter to array.
-		$classes = apply_filters( 'get_widget_classes', $classes, $widget_id );
+		$classes = apply_filters( 'get_widget_classes', $classes, $sidebar_id );
 		$classes = array_unique( (array) $classes );
 		sort( $classes );
 
@@ -1342,15 +1359,16 @@ if ( ! function_exists( 'widget_classes' ) ) {
 	/**
 	 * Display classes for widgets.
 	 *
-	 * @param string $class     Additional widget classes. Default ''.
-	 * @param string $widget_id Widget id. Default null.
-	 * @param bool   $echo      Echo or return widget classes.
+	 * @param string $class      Additional widget classes. Default ''.
+	 * @param string $sidebar_id Sideabr ID. Default null.
+	 * @param string $background Background type. Default null.
+	 * @param bool   $echo       Echo or return widget classes.
 	 *
 	 * @return string|void
 	 */
-	function widget_classes( $class = '', $widget_id = null, $echo = true ) {
+	function widget_classes( $class = '', $sidebar_id = null, $background = null, $echo = true ) {
 
-		$classes = get_widget_classes( $class, $widget_id );
+		$classes = get_widget_classes( $class, $sidebar_id, $background );
 
 		if ( $echo ) {
 			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';

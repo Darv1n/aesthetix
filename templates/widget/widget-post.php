@@ -1,6 +1,6 @@
 <?php
 /**
- * Template tils for displaying widget posts.
+ * Template part for displaying widget post.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -40,6 +40,11 @@ if ( $args['post_layout'] === 'grid-image' || $args['post_format'] === 'image' &
 		<div class="post-thumbnail-wrap">
 
 			<?php get_template_part( 'templates/archive/archive-entry-post-thumbnail', '', $args ); ?>
+
+			<?php if ( $args['post_layout'] !== 'grid-image' && $args['post_format'] !== 'image' ) {
+				get_template_part( 'templates/archive/archive-entry-post-taxonomies', '', array_merge( $args, array( 'structure' => get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_before' ) ) ) );
+				get_template_part( 'templates/archive/archive-entry-post-taxonomies', '', array_merge( $args, array( 'structure' => get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_after' ) ) ) );
+			} ?>
 
 		</div>
 	<?php } ?>

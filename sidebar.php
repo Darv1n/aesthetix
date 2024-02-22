@@ -9,15 +9,15 @@
 
 $sidebar = apply_filters( 'get_aesthetix_sidebar', 'main' );
 
-if ( is_active_sidebar( $sidebar ) || ! empty( get_aesthetix_widget_default( $sidebar ) ) ) { ?>
+if ( is_active_sidebar( $sidebar ) ) { ?>
 
-	<aside id="aside" <?php aesthetix_widget_area_classes( 'order-3 order-lg-3' ); ?> role="complementary">
+	<aside id="aside" <?php aesthetix_widget_area_classes(); ?> role="complementary">
 
 		<?php do_action( 'aesthetix_before_sidebar' ); ?>
 
-			<?php if ( is_active_sidebar( $sidebar ) ) {
-				dynamic_sidebar( $sidebar );
-			} ?>
+			<div <?php widgets_classes( '', $sidebar ); ?>>
+				<?php dynamic_sidebar( $sidebar ); ?>
+			</div>
 
 		<?php do_action( 'aesthetix_after_sidebar' ); ?>
 

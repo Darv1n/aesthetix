@@ -24,6 +24,7 @@ require_once get_template_directory() . '/inc/template-handlers.php';
 require_once get_template_directory() . '/inc/template-setup.php';
 require_once get_template_directory() . '/inc/template-wrappers.php';
 require_once get_template_directory() . '/inc/class-breadcrumbs.php';
+require_once get_template_directory() . '/inc/table-of-contents.php';
 
 // Comments.
 require_once get_template_directory() . '/inc/comment/comment-actions.php';
@@ -45,6 +46,7 @@ require_once get_template_directory() . '/inc/customizer/customizer.php';
 // Widgets.
 require_once get_template_directory() . '/inc/widget/abstract-widget.php';
 require_once get_template_directory() . '/inc/widget/class-widget-adv-banner.php';
+require_once get_template_directory() . '/inc/widget/class-widget-breadcrumbs.php';
 require_once get_template_directory() . '/inc/widget/class-widget-buttons.php';
 require_once get_template_directory() . '/inc/widget/class-widget-contacts.php';
 require_once get_template_directory() . '/inc/widget/class-widget-copyright.php';
@@ -55,9 +57,11 @@ require_once get_template_directory() . '/inc/widget/class-widget-menus.php';
 require_once get_template_directory() . '/inc/widget/class-widget-recent-posts.php';
 require_once get_template_directory() . '/inc/widget/class-widget-recent-users.php';
 require_once get_template_directory() . '/inc/widget/class-widget-search-popup-form.php';
+require_once get_template_directory() . '/inc/widget/class-widget-slider-posts.php';
 require_once get_template_directory() . '/inc/widget/class-widget-socials.php';
 require_once get_template_directory() . '/inc/widget/class-widget-subscribe-form.php';
 require_once get_template_directory() . '/inc/widget/class-widget-subscribe-popup-form.php';
+require_once get_template_directory() . '/inc/widget/class-widget-table-of-contents.php';
 require_once get_template_directory() . '/inc/widget/class-widget-use-materials.php';
 require_once get_template_directory() . '/inc/widget/class-widget-user.php';
 require_once get_template_directory() . '/inc/widget/widget-defaults.php';
@@ -78,9 +82,12 @@ require_once get_template_directory() . '/inc/shortcode/shortcode-socials.php';
 require_once get_template_directory() . '/inc/shortcode/shortcode-subscribe-toggle.php';
 require_once get_template_directory() . '/inc/shortcode/shortcode-use-materials.php';
 
+// Notices.
+require_once get_template_directory() . '/inc/admin/notice.php';
+
 // TGM Plugin Activation.
-require_once get_template_directory() . '/inc/addons/tgm/class-tgm-plugin-activation.php';
-require_once get_template_directory() . '/inc/addons/tgm/tgm-setup.php';
+require_once get_template_directory() . '/inc/admin/tgm/class-tgm-plugin-activation.php';
+require_once get_template_directory() . '/inc/admin/tgm/tgm-setup.php';
 
 // WooCommerce.
 if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {

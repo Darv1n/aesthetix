@@ -1,6 +1,6 @@
 <?php
 /**
- * Template list for displaying posts.
+ * TTemplate part for displaying post list.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -42,13 +42,14 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php aesthetix_post_classes( '', $args ); ?>>
+<article id="article" <?php aesthetix_post_classes( '', $args ); ?> ata-object-id="<?php the_ID(); ?>">
 	<div <?php aesthetix_archive_page_columns_wrapper_classes( 'align-items-center' ); ?>>
-		<div class="col-12 col-xs-12 col-md-5 align-self-stretch <?php echo esc_attr( $order_left ); ?>">
 
-			<?php if ( has_post_thumbnail( $post ) || get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_default' ) ) {
+		<?php if ( has_post_thumbnail( $post ) || get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_default' ) ) { ?>
 
-				$classes[] = 'has-post-thumbnail'; ?>
+			<div class="col-12 col-xs-12 col-md-5 align-self-stretch <?php echo esc_attr( $order_left ); ?>">
+
+				<?php $classes[] = 'has-post-thumbnail'; ?>
 
 				<div class="post-thumbnail-wrap">
 
@@ -60,10 +61,12 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 					} ?>
 
 				</div>
-			<?php } ?>
 
-		</div>
-		<div class="col-12 col-xs-12 col-md-7 <?php echo esc_attr( $order_right ); ?>">
+			</div>
+			<div class="col-12 col-xs-12 col-md-7 <?php echo esc_attr( $order_right ); ?>">
+		<?php } else { ?>
+			<div class="col-12 col-xs-12">
+		<?php } ?>
 
 			<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 
@@ -92,7 +95,11 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 								get_template_part( 'templates/archive/archive-entry-post-more-button', '', $args );
 								break;
 							default:
-								get_template_part( 'templates/archive/archive-entry-post-taxonomies', '', array_merge( $args, array( 'structure' => $value ) ) );
+								if ( locate_template( '/templates/archive/archive-entry-post-' . $value . '.php' ) !== '' ) {
+									get_template_part( 'templates/archive/archive-entry-post-' . $value );
+								} else {
+									get_template_part( 'templates/archive/archive-entry-post-taxonomies', '', array_merge( $args, array( 'structure' => $value ) ) );
+								}
 								break;
 						}
 					}

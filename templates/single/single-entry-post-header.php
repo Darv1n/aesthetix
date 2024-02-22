@@ -25,6 +25,9 @@
 					the_excerpt();
 					break;
 				default:
+					if ( locate_template( '/templates/single/single-entry-post-header-' . $value . '.php' ) !== '' ) {
+						get_template_part( 'templates/single/single-entry-post-header-' . $value );
+					}
 					break;
 			}
 		} ?>

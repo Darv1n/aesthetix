@@ -384,6 +384,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_aspect_ratio' ) ) {
 		}
 
 		$converter = array(
+			'1-1'  => '1/1',
 			'2-3'  => '2/3',
 			'3-2'  => '3/2',
 			'3-4'  => '3/4',
@@ -833,7 +834,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_layout' ) ) {
 if ( ! function_exists( 'get_aesthetix_customizer_socials' ) ) {
 
 	/**
-	 * Return array with the social.
+	 * Return array with the social names.
 	 *
 	 * @param string $control Array key to get one value.
 	 *
@@ -853,7 +854,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_socials' ) ) {
 			'twitter'   => __( 'Twitter', 'aesthetix' ),
 			'linkedin'  => __( 'LinkedIn', 'aesthetix' ),
 			'telegram'  => __( 'Telegram', 'aesthetix' ),
-			'vkontakte' => __( 'Vkontakte', 'aesthetix' ),
 		);
 
 		// Merge child and parent default options.
@@ -870,10 +870,50 @@ if ( ! function_exists( 'get_aesthetix_customizer_socials' ) ) {
 	}
 }
 
+if ( ! function_exists( 'get_aesthetix_customizer_share' ) ) {
+
+	/**
+	 * Return array with the share names.
+	 *
+	 * @param string $control Array key to get one value.
+	 *
+	 * @return string|array|false
+	 */
+	function get_aesthetix_customizer_share( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'facebook'  => __( 'Facebook', 'aesthetix' ),
+			'twitter'   => __( 'Twitter', 'aesthetix' ),
+			'pinterest' => __( 'Pinterest', 'aesthetix' ),
+			'whatsapp'  => __( 'WhatsApp', 'aesthetix' ),
+			'linkedin'  => __( 'LinkedIn', 'aesthetix' ),
+			'tumblr'    => __( 'Tumblr', 'aesthetix' ),
+			'reddit'    => __( 'Reddit', 'aesthetix' ),
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_share', $converter );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
 if ( ! function_exists( 'get_aesthetix_customizer_breadcrumbs' ) ) {
 
 	/**
-	 * Return array with the customizer breadcrumbs
+	 * Return array with the customizer breadcrumbs.
 	 *
 	 * @param string $control Array key to get one value.
 	 *
@@ -909,10 +949,60 @@ if ( ! function_exists( 'get_aesthetix_customizer_breadcrumbs' ) ) {
 	}
 }
 
+if ( ! function_exists( 'get_aesthetix_customizer_display' ) ) {
+
+	/**
+	 * Return array with the customizer display options.
+	 *
+	 * @param string $control Array key to get one value.
+	 *
+	 * @return string|array|false
+	 */
+	function get_aesthetix_customizer_display( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$converter = array(
+			'all'            => __( 'All', 'aesthetix' ),
+			'front-page'     => __( 'Only front page', 'aesthetix' ),
+			'not-front-page' => __( 'Except front page', 'aesthetix' ),
+			'pages'          => __( 'Only single pages', 'aesthetix' ),
+			'not-pages'      => __( 'Except single pages', 'aesthetix' ),
+			'posts'          => __( 'Only single posts', 'aesthetix' ),
+			'not-posts'      => __( 'Except single posts', 'aesthetix' ),
+		);
+
+		// Merge child and parent default options.
+		$converter = apply_filters( 'get_aesthetix_customizer_display', $converter );
+
+		// Return controls.
+		if ( is_null( $control ) ) {
+			return $converter;
+		} elseif ( ! isset( $converter[ $control ] ) || empty( $converter[ $control ] ) ) {
+			return false;
+		} else {
+			return $converter[ $control ];
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
 if ( ! function_exists( 'get_aesthetix_customizer_demo_variant' ) ) {
 
 	/**
-	 * Return array with the customizer demo variant
+	 * Return array with the customizer demo variant.
 	 *
 	 * @param string $control Array key to get one value.
 	 *

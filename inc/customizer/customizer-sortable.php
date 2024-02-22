@@ -45,8 +45,10 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_structure' ) ) {
 		$object_taxonomies = get_object_taxonomies( $post_type );
 
 		foreach ( $object_taxonomies as $key => $object_taxonomy ) {
-			$taxonomy = get_taxonomy( $object_taxonomy );
-			$converter[ $taxonomy->name ] = $taxonomy->label;
+			if ( ! in_array( $object_taxonomy, array( 'language', 'post_translations' ), true ) ) {
+				$taxonomy                     = get_taxonomy( $object_taxonomy );
+				$converter[ $taxonomy->name ] = $taxonomy->label;
+			}
 		}
 
 		// Merge child and parent default options.
@@ -137,14 +139,17 @@ if ( ! function_exists( 'get_aesthetix_customizer_single_post_footer_structure' 
 
 		$converter = array(
 			'likes' => __( 'Post likes', 'aesthetix' ),
+			'share' => __( 'Post share', 'aesthetix' ),
 			'edit'  => __( 'Edit', 'aesthetix' ),
 		);
 
 		$object_taxonomies = get_object_taxonomies( $post_type );
 
 		foreach ( $object_taxonomies as $key => $object_taxonomy ) {
-			$taxonomy = get_taxonomy( $object_taxonomy );
-			$converter[ $taxonomy->name ] = $taxonomy->label;
+			if ( ! in_array( $object_taxonomy, array( 'language', 'post_translations' ), true ) ) {
+				$taxonomy = get_taxonomy( $object_taxonomy );
+				$converter[ $taxonomy->name ] = $taxonomy->label;
+			}
 		}
 
 		// Merge child and parent default options.
@@ -200,8 +205,10 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_meta_structure' ) ) {
 		$object_taxonomies = get_object_taxonomies( $post_type );
 
 		foreach ( $object_taxonomies as $key => $object_taxonomy ) {
-			$taxonomy = get_taxonomy( $object_taxonomy );
-			$converter[ $taxonomy->name ] = $taxonomy->label;
+			if ( ! in_array( $object_taxonomy, array( 'language', 'post_translations' ), true ) ) {
+				$taxonomy = get_taxonomy( $object_taxonomy );
+				$converter[ $taxonomy->name ] = $taxonomy->label;
+			}
 		}
 
 		// Merge child and parent default options.
@@ -250,8 +257,10 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_thumbnail_structure' ) ) 
 		$object_taxonomies = get_object_taxonomies( $post_type );
 
 		foreach ( $object_taxonomies as $key => $object_taxonomy ) {
-			$taxonomy = get_taxonomy( $object_taxonomy );
-			$converter[ $taxonomy->name ] = $taxonomy->label;
+			if ( ! in_array( $object_taxonomy, array( 'language', 'post_translations' ), true ) ) {
+				$taxonomy = get_taxonomy( $object_taxonomy );
+				$converter[ $taxonomy->name ] = $taxonomy->label;
+			}
 		}
 
 		// Merge child and parent default options.

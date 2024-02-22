@@ -564,3 +564,64 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_colors' ) ) {
 	}
 }
 
+if ( ! function_exists( 'get_aesthetix_customizer_converter_display' ) ) {
+
+	/**
+	 * Return bool converter display.
+	 *
+	 * @param string $control Key to get one value. Optional. Default null.
+	 *
+	 * @return bool
+	 */
+	function get_aesthetix_customizer_converter_display( $control = null ) {
+
+		// Sanitize string (just to be safe).
+		if ( ! is_null( $control ) ) {
+			$control = get_title_slug( $control );
+		}
+
+		$display = false;
+
+		if ( $control === 'all' ) {
+			$display = true;
+		}
+
+		if ( $control === 'front-page' ) {
+			if ( ( is_front_page() || is_home() ) && is_paged() ) {
+				$display = true;
+			}
+		}
+
+		if ( $control === 'not-front-page' ) {
+			if ( ! is_front_page() && ! is_home() ) {
+				$display = true;
+			}
+		}
+
+		if ( $control === 'pages' ) {
+			if ( is_page() ) {
+				$display = true;
+			}
+		}
+
+		if ( $control === 'not-pages' ) {
+			if ( ! is_page() ) {
+				$display = true;
+			}
+		}
+
+		if ( $control === 'posts' ) {
+			if ( is_single() ) {
+				$display = true;
+			}
+		}
+
+		if ( $control === 'not-posts' ) {
+			if ( ! is_single() ) {
+				$display = true;
+			}
+		}
+
+		return apply_filters( 'get_aesthetix_customizer_converter_display', $display, $control );
+	}
+}

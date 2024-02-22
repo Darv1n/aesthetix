@@ -18,54 +18,65 @@ class WPA_Widget_Socials extends WPA_Widget {
 		$this->widget_cssclass    = 'widget-socials';
 		$this->widget_description = __( 'The global settings for this form can be found in the Customizer', 'aesthetix' );
 		$this->widget_id          = 'aesthetix-widget-socials';
-		$this->widget_name        = get_widget_name( 'widget-socials' );
+		$this->widget_name        = get_widget_name( 'WPA_Widget_Socials' );
 		$this->settings           = array(
-			'title'          => array(
+			'title'            => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Title', 'aesthetix' ),
 			),
-			'subtitle'       => array(
+			'subtitle'         => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Subtitle', 'aesthetix' ) . ' (' . mb_strtolower( __( 'Before title', 'aesthetix' ) ) . ')',
 			),
-			'description'    => array(
+			'description'      => array(
 				'type'  => 'textarea',
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
-			'style'          => array(
+			'background_color' => array(
+				'type'    => 'select',
+				'std'     => get_aesthetix_options( 'root_bg_aside_widgets' ),
+				'label'   =>__( 'Background color', 'aesthetix' ),
+				'options' => get_aesthetix_customizer_background_colors(),
+			),
+			'background_image' => array(
+				'type'  => 'image',
+				'std'   => '',
+				'label' => __( 'Background image (used instead of background color)', 'aesthetix' ),
+			),
+			'style'            => array(
 				'type'    => 'select',
 				'std'     => 'inline',
 				'label'   => __( 'Select style block', 'aesthetix' ),
 				'options' => array( 'inline' => __( 'Inline', 'aesthetix' ), 'block' => __( 'Block', 'aesthetix' ) ),
 			),
-			'icon_size'      => array(
+			'icon_size'        => array(
 				'type'    => 'select',
 				'std'     => get_aesthetix_options( 'root_button_size' ),
 				'label'   => __( 'Select icon size', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_sizes(),
 			),
-			'button_size'    => array(
+			'button_size'      => array(
 				'type'    => 'select',
 				'std'     => get_aesthetix_options( 'root_button_size' ),
 				'label'   => __( 'Select button size', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_button_sizes(),
 			),
-			'button_color'   => array(
+			'button_color'     => array(
 				'type'    => 'select',
 				'std'     => 'primary',
 				'label'   => __( 'Select button color', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_button_color(),
 			),
-			'button_type'    => array(
+			'button_type'      => array(
 				'type'    => 'select',
 				'std'     => get_aesthetix_options( 'root_button_type' ),
 				'label'   => __( 'Select button type', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_button_type(),
 			),
-			'button_content' => array(
+			'button_content'   => array(
 				'type'    => 'select',
 				'std'     => get_aesthetix_options( 'root_subscribe_popup_form_button_content' ),
 				'label'   => __( 'Select button content', 'aesthetix' ),
@@ -95,13 +106,15 @@ class WPA_Widget_Socials extends WPA_Widget {
 	public function widget( $args, $instance ) {
 		$this->widget_start( $args, $instance );
 
-		$template_args                   = array();
-		$template_args['style']          = isset( $instance['style'] ) ? $instance['style'] : $this->settings['style']['std'];
-		$template_args['icon_size']      = isset( $instance['icon_size'] ) ? $instance['icon_size'] : $this->settings['icon_size']['std'];
-		$template_args['button_size']    = isset( $instance['button_size'] ) ? $instance['button_size'] : $this->settings['button_size']['std'];
-		$template_args['button_color']   = isset( $instance['button_color'] ) ? $instance['button_color'] : $this->settings['button_color']['std'];
-		$template_args['button_type']    = isset( $instance['button_type'] ) ? $instance['button_type'] : $this->settings['button_type']['std'];
-		$template_args['button_content'] = isset( $instance['button_content'] ) ? $instance['button_content'] : $this->settings['button_content']['std'];
+		$template_args                     = array();
+		$template_args['background_color'] = isset( $instance['background_color'] ) ? $instance['background_color'] : $this->settings['background_color']['std'];
+		$template_args['background_image'] = isset( $instance['background_image'] ) ? $instance['background_image'] : $this->settings['background_image']['std'];
+		$template_args['style']            = isset( $instance['style'] ) ? $instance['style'] : $this->settings['style']['std'];
+		$template_args['icon_size']        = isset( $instance['icon_size'] ) ? $instance['icon_size'] : $this->settings['icon_size']['std'];
+		$template_args['button_size']      = isset( $instance['button_size'] ) ? $instance['button_size'] : $this->settings['button_size']['std'];
+		$template_args['button_color']     = isset( $instance['button_color'] ) ? $instance['button_color'] : $this->settings['button_color']['std'];
+		$template_args['button_type']      = isset( $instance['button_type'] ) ? $instance['button_type'] : $this->settings['button_type']['std'];
+		$template_args['button_content']   = isset( $instance['button_content'] ) ? $instance['button_content'] : $this->settings['button_content']['std'];
 
 		foreach ( get_aesthetix_customizer_socials() as $key => $value ) {
 			$template_args['structure'][ $key ] = isset( $instance[ 'link-' . $key ] ) ? $instance[ 'link-' . $key ] : $this->settings[ 'link-' . $key ]['std'];

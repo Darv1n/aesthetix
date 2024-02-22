@@ -26,18 +26,6 @@
 							<?php dynamic_sidebar( 'header-mobile-right' ); ?>
 						<?php } ?>
 
-						<?php
-							if ( in_array( get_aesthetix_options( 'root_button_size' ), array( 'lg', 'xl' ), true ) ) {
-								$args['button_size'] = 'md';
-							}
-
-							if ( in_array( get_aesthetix_options( 'root_menu_button_content' ), array( 'button-icon-text', 'button-text', 'button-icon' ), true ) ) {
-								$args['button_content'] = 'button-icon';
-							} else {
-								$args['button_content'] = get_aesthetix_options( 'root_menu_button_content' );
-							}
-						?>
-
 						<div <?php widget_classes( '', 'header-mobile-right' ); ?>>
 							<?php get_template_part( 'templates/widget/widget-menu-toggle', '', $args ); ?>
 						</div>

@@ -575,6 +575,160 @@ if ( ! function_exists( 'aesthetix_default_comment_metadata' ) ) {
 }
 add_filter( 'default_comment_metadata', 'aesthetix_default_comment_metadata', 10, 5 );
 
+if ( ! function_exists( 'dynamic_sidebar_params_aesthetix_callback' ) ) {
+
+	/**
+	 * Function for 'dynamic_sidebar_params' filter-hook.
+	 * 
+	 * @param array $params 
+	 *
+	 * @return array
+	 */
+	function dynamic_sidebar_params_aesthetix_callback( $params ) {
+
+		global $wp_registered_widgets;
+
+		$background_color = get_aesthetix_options( 'root_bg_aside_widgets' );
+
+		// Check just in case.
+		if ( isset( $params[0], $params[0]['id'], $params[0]['widget_id'] ) ) {
+
+			$widget_id = $params[0]['widget_id'];
+			preg_match( '/^(.+)-(\d+)$/', $widget_id, $matches );
+
+			// Get id_base and key from string ID.
+			if ( isset( $matches[1], $matches[2] ) ) {
+				$widget_id_base = $matches[1];
+				$widget_key     = $matches[2];
+			} else {
+				$widget_id_base = $widget_id;
+				$widget_key     = 0;
+			}
+
+			// Get widget params.
+			$sidebar_id     = $params[0]['id'];
+			$widget_name    = get_last_value_from_string( $widget_id_base, '_' );
+			$widget_options = get_option( 'widget_' . $widget_id_base );
+			$widget_classes = get_widget_classes( 'widget widget-' . $sidebar_id, $sidebar_id, $background_color );
+
+			// vardump( $widget_options[ $widget_key ] );
+
+			if ( isset( $widget_options[ $widget_key ] ) ) {
+				if ( isset( $widget_options[ $widget_key ]['background_color'] ) && ! empty( $widget_options[ $widget_key ]['background_color'] ) ) {
+					$background_color = $widget_options[ $widget_key ]['background_color'];
+				}
+				if ( isset( $widget_options[ $widget_key ]['background_image'] ) && ! empty( $widget_options[ $widget_key ]['background_image'] ) ) {
+					$background_image = $widget_options[ $widget_key ]['background_image'];
+				}
+			}
+
+			// If it full size section, added <section> tag to wrapper.
+			if ( in_array( $params[0]['id'], array( 'after-header', 'before-footer' ), true ) ) {
+
+				$before = '<section ' . aesthetix_section_classes( 'section-widget', $background_color, false ) . '>';
+
+				// Add backgrunt to the outer container.
+				if ( isset( $background_image ) ) {
+					$before .= '<div ' . aesthetix_container_classes( 'container-outer', false ) . ' style="background: url(' . esc_url( $background_image ) . ') center/cover no-repeat">';
+				} else {
+					$before .= '<div ' . aesthetix_container_classes( 'container-outer', false ) . '>';
+				}
+
+						$before .= '<div ' . aesthetix_container_classes( 'container-inner', false ) . '>';
+							$before .= '<div class="' . esc_attr( implode( ' ', $widget_classes ) ) . '">';
+
+							$after = '</div>';
+						$after .= '</div>';
+					$after .= '</div>';
+				$after .= '</section>';
+
+				$params[0]['before_widget'] = $before;
+				$params[0]['after_widget']  = $after;
+
+			} else {
+				if ( isset( $background_image ) ) {
+					$params[0]['before_widget'] = '<div class="' . esc_attr( implode( ' ', $widget_classes ) ) . '" style="background: url(' . esc_url( $background_image ) . ') center/cover no-repeat">';
+				} else {
+					$params[0]['before_widget'] = '<div class="' . esc_attr( implode( ' ', $widget_classes ) ) . '">';
+				}
+			}
+		}
+
+		return $params;
+	}
+}
+add_filter( 'dynamic_sidebar_params', 'dynamic_sidebar_params_aesthetix_callback' );
+
+if ( ! function_exists( 'sidebars_widgets_aesthetix_callback' ) ) {
+
+	/**
+	 * Function for 'sidebars_widgets' filter-hook.
+	 * 
+	 * @param array $sidebars_widgets An associative array of sidebars and their widgets.
+	 *
+	 * @return array
+	 */
+	function sidebars_widgets_aesthetix_callback( $sidebars_widgets ) {
+
+		// Remove widget breadcrumbs from front-page.
+		if ( is_front_page() ) {
+			foreach ( $sidebars_widgets as $sidebar_name => $sidebars_widget ) {
+				foreach ( $sidebars_widget as $widget_key => $widget_name ) {
+					if ( str_contains( $widget_name, 'aesthetix-widget-breadcrumbs' ) ) {
+						unset( $sidebars_widgets[ $sidebar_name ][ $widget_key ] );
+					}
+				}
+			}
+		} else {
+			foreach ( $sidebars_widgets as $sidebar_name => $sidebars_widget ) {
+				foreach ( $sidebars_widget as $widget_key => $widget_name ) {
+					if ( str_contains( $widget_name, 'aesthetix-widget-slider-posts' ) ) {
+						unset( $sidebars_widgets[ $sidebar_name ][ $widget_key ] );
+					}
+				}
+			}
+		}
+
+		return $sidebars_widgets;
+	}
+}
+add_filter( 'sidebars_widgets', 'sidebars_widgets_aesthetix_callback' );
+
+
+if ( ! function_exists( 'pre_get_avatar_data_aesthetix_callback' ) ) {
+
+	/**
+	 * Function for 'pre_get_avatar_data' filter-hook.
+	 * 
+	 * @param array $args        Arguments passed to get_avatar_data(), after processing.
+	 * @param mixed $id_or_email The avatar to retrieve. Accepts a user ID, Gravatar MD5 hash, user email, WP_User object, WP_Post object, or WP_Comment object.
+	 *
+	 * @return array
+	 */
+	function pre_get_avatar_data_aesthetix_callback( $args, $id_or_email ) {
+
+		if ( is_admin() && get_current_screen()->base === 'options-discussion' ) {
+			return $args;
+		}
+
+		if ( ! is_int( $id_or_email ) ) {
+			return $args;
+		}
+
+		$user_data = get_userdata( $id_or_email );
+
+		if ( isset( $user_data->user_login ) ) {
+
+			if ( file_exists( get_theme_file_path( '/data/images/users/' . $user_data->user_login . '.jpg' ) ) ) {
+				$args['url'] = get_theme_file_uri( '/data/images/users/' . $user_data->user_login . '.jpg' );
+			}
+		}
+
+		return $args;
+	}
+}
+add_filter( 'pre_get_avatar_data', 'pre_get_avatar_data_aesthetix_callback', 10, 2 );
+
 if ( ! function_exists( 'aesthetix_search_highlight' ) ) {
 
 	/**

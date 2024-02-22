@@ -25,6 +25,31 @@ if ( ! function_exists( 'vardump' ) ) {
 	}
 }
 
+if ( ! function_exists( 'get_template_call_count' ) ) {
+
+	/**
+	 * Function to get and increment the template call count.
+	 *
+	 * @param string $template Parameter for dumping. Default null (return false)
+	 */
+	function get_template_call_count( $template = null ) {
+
+		if ( is_null( $template ) ) {
+			return false;
+		}
+
+		global $template_call_count;
+
+		if ( is_null( $template_call_count ) || ! isset( $template_call_count[ $template ] ) ) {
+			$template_call_count[ $template ] = 1;
+		} else {
+			$template_call_count[ $template ]++;
+		}
+
+		return $template_call_count[ $template ];
+	}
+}
+
 if ( ! function_exists( 'array_key_first' ) ) {
 
 	/**
@@ -364,6 +389,33 @@ if ( ! function_exists( 'get_explode_part' ) ) {
 	}
 }
 
+if ( ! function_exists( 'get_unique_anchor' ) ) {
+
+	/**
+	 * Unique anchor.
+	 *
+	 * @param string $anchor  Anchor for checking.
+	 * @param array $anchors  Array for checking.
+	 * @param int $key        Key that will be added to the anchor if it already exists.
+	 */
+	function get_unique_anchor( $anchor, $anchors = array(), $key = 0 ) {
+
+		if ( $key > 0 ) {
+			$anchor_check = $anchor . '-' . $key;
+		} else {
+			$anchor_check = $anchor;
+		}
+
+		if ( in_array( $anchor_check, $anchors, true ) ) {
+			$key++;
+			$anchors[]    = $anchor_check;
+			$anchor_check = get_unique_anchor( $anchor, $anchors, $key );
+		}
+
+		return $anchor_check;
+	}
+}
+
 if ( ! function_exists( 'get_first_value_from_string' ) ) {
 
 	/**
@@ -426,9 +478,9 @@ if ( ! function_exists( 'get_first_post_img' ) ) {
 			$output = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches );
 		}
 
-		$first_image = $matches[1][0];
-
-		if ( empty( $first_image ) ) {
+		if ( isset( $matches[1], $matches[1][0] ) ) {
+			$first_image = $matches[1][0];
+		} else {
 			$first_image = get_stylesheet_directory_uri() . '/assets/img/default-banner.jpg';
 		}
 

@@ -2,8 +2,8 @@
  * Subscribe form js handler
  *
  * Form js handler  - /assets/js/source/ajax-loadmore.js
- * Setup js scripts - /inc/setup.php
- * Form php handler - /inc/handlers.php
+ * Setup js scripts - /inc/template-setup.php
+ * Form php handler - /inc/template-handlers.php
  * Html             - /templates/archive/archive-pagination.php
  */
 

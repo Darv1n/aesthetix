@@ -18,24 +18,35 @@ class WPA_Widget_Recent_Users extends WPA_Widget {
 		$this->widget_cssclass    = 'widget-recent-users';
 		$this->widget_description = __( 'The global settings for this form can be found in the Customizer', 'aesthetix' );
 		$this->widget_id          = 'aesthetix-widget-recent-users';
-		$this->widget_name        = get_widget_name( 'widget-recent-users' );
+		$this->widget_name        = get_widget_name( 'WPA_Widget_Recent_Users' );
 		$this->settings           = array(
-			'title'       => array(
+			'title'            => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Title', 'aesthetix' ),
 			),
-			'subtitle'    => array(
+			'subtitle'         => array(
 				'type'  => 'text',
 				'std'   => '',
 				'label' => __( 'Subtitle', 'aesthetix' ) . ' (' . mb_strtolower( __( 'Before title', 'aesthetix' ) ) . ')',
 			),
-			'description' => array(
+			'description'      => array(
 				'type'  => 'textarea',
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
-			'number'      => array(
+			'background_color' => array(
+				'type'    => 'select',
+				'std'     => get_aesthetix_options( 'root_bg_aside_widgets' ),
+				'label'   =>__( 'Background color', 'aesthetix' ),
+				'options' => get_aesthetix_customizer_background_colors(),
+			),
+			'background_image' => array(
+				'type'  => 'image',
+				'std'   => '',
+				'label' => __( 'Background image (used instead of background color)', 'aesthetix' ),
+			),
+			'number'           => array(
 				'type'  => 'number',
 				'min'   => 1,
 				'max'   => 12,
@@ -43,7 +54,7 @@ class WPA_Widget_Recent_Users extends WPA_Widget {
 				'std'   => 4,
 				'label' => __( 'Select users count', 'aesthetix' ),
 			),
-			'orderby'     => array(
+			'orderby'          => array(
 				'type'    => 'select',
 				'std'     => 'post_count',
 				'label'   => __( 'Select how to orderby users', 'aesthetix' ),
@@ -67,12 +78,14 @@ class WPA_Widget_Recent_Users extends WPA_Widget {
 	public function widget( $args, $instance ) {
 		$this->widget_start( $args, $instance );
 
-		$template_args            = array();
-		$template_args['number']  = isset( $instance['number'] ) ? $instance['number'] : $this->settings['number']['std'];
-		$template_args['orderby'] = isset( $instance['orderby'] ) ? $instance['orderby'] : $this->settings['orderby']['std'];
+		$template_args                      = array();
+		$template_args['background_color']  = isset( $instance['background_color'] ) ? $instance['background_color'] : $this->settings['background_color']['std'];
+		$template_args['background_image']  = isset( $instance['background_image'] ) ? $instance['background_image'] : $this->settings['background_image']['std'];
+		$template_args['number']            = isset( $instance['number'] ) ? $instance['number'] : $this->settings['number']['std'];
+		$template_args['orderby']           = isset( $instance['orderby'] ) ? $instance['orderby'] : $this->settings['orderby']['std'];
 
 		if ( ! in_array( $args['id'], array( 'before-post-content', 'after-post-content' ), true ) ) {
-			$template_args['container_class'] = 'user-aside';
+			// $template_args['container_class'] = 'user-aside';
 		}
 
 		get_template_part( 'templates/widget/widget-recent-users', '', $template_args );

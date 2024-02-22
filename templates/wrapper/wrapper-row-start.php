@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying content wrapper end.
+ * Template part for displaying row wrapper start.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -8,7 +8,5 @@
  */
  ?>
 
-			</div>
-		</div>
-	</div>
-</section>
+<div class="row">
+ 

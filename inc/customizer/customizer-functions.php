@@ -18,9 +18,15 @@ if ( ! function_exists( 'get_aesthetix_customizer_post_types' ) ) {
 	 */
 	function get_aesthetix_customizer_post_types() {
 
-		$post_types = array( 'post' );
+		$args = array(
+			'public'   => true,
+			'_builtin' => false
+		);
 
-		$post_types = apply_filters( 'get_aesthetix_customizer_post_types', $post_types );
+		$post_types   = get_post_types( $args, 'names', 'and' );
+		$post_types[] = 'post';
+
+		$post_types   = apply_filters( 'get_aesthetix_customizer_post_types', $post_types );
 
 		return $post_types;
 	}
@@ -212,7 +218,7 @@ function prefix_filter_theme_json_theme( $theme_json ) {
 					array(
 						'slug'  => 'base',
 						'color' => 'white',
-						'name'  => __( 'Base', 'text-domain' ),
+						'name'  => __( 'Base', 'aesthetix' ),
 					),
 				),
 			),

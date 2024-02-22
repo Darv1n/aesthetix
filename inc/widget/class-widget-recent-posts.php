@@ -18,7 +18,7 @@ class WPA_Widget_Recent_Posts extends WPA_Widget {
 		$this->widget_cssclass    = 'widget-recent-posts';
 		$this->widget_description = __( 'This widget displays recent posts with aesthetix style', 'aesthetix' );
 		$this->widget_id          = 'aesthetix-widget-recent-posts';
-		$this->widget_name        = get_widget_name( 'widget-recent-posts' );
+		$this->widget_name        = get_widget_name( 'WPA_Widget_Recent_Posts' );
 		$this->settings           = array(
 			'title'               => array(
 				'type'  => 'text',
@@ -35,6 +35,25 @@ class WPA_Widget_Recent_Posts extends WPA_Widget {
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
+			'background_color'    => array(
+				'type'    => 'select',
+				'std'     => get_aesthetix_options( 'root_bg_aside_widgets' ),
+				'label'   =>__( 'Background color', 'aesthetix' ),
+				'options' => get_aesthetix_customizer_background_colors(),
+			),
+			'background_image'    => array(
+				'type'  => 'image',
+				'std'   => '',
+				'label' => __( 'Background image (used instead of background color)', 'aesthetix' ),
+			),
+			'posts_per_page'      => array(
+				'type'  => 'number',
+				'min'   => 1,
+				'max'   => 12,
+				'step'  => 1,
+				'std'   => 4,
+				'label' => __( 'Select posts count', 'aesthetix' ),
+			),
 			'posts_order'         => array(
 				'type'    => 'select',
 				'std'     => get_aesthetix_options( 'archive_post_posts_order' ),
@@ -46,14 +65,6 @@ class WPA_Widget_Recent_Posts extends WPA_Widget {
 				'std'     => get_aesthetix_options( 'archive_post_posts_orderby' ),
 				'label'   => __( 'Select posts orderby', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_archive_post_orderby(),
-			),
-			'posts_count'         => array(
-				'type'  => 'number',
-				'min'   => 1,
-				'max'   => 12,
-				'step'  => 1,
-				'std'   => 4,
-				'label' => __( 'Select posts count', 'aesthetix' ),
 			),
 			'post_title_size'      => array(
 				'type'    => 'select',
@@ -95,9 +106,12 @@ class WPA_Widget_Recent_Posts extends WPA_Widget {
 	public function widget( $args, $instance ) {
 		$this->widget_start( $args, $instance );
 
+		$post_args                        = array();
+		$post_args['background_color']    = isset( $instance['background_color'] ) ? $instance['background_color'] : $this->settings['background_color']['std'];
+		$post_args['background_image']    = isset( $instance['background_image'] ) ? $instance['background_image'] : $this->settings['background_image']['std'];
+		$post_args['posts_per_page']      = isset( $instance['posts_per_page'] ) ? $instance['posts_per_page'] : $this->settings['posts_per_page']['std'];
 		$post_args['order']               = isset( $instance['posts_order'] ) ? $instance['posts_order'] : $this->settings['posts_order']['std'];
 		$post_args['orderby']             = isset( $instance['posts_orderby'] ) ? $instance['posts_orderby'] : $this->settings['posts_orderby']['std'];
-		$post_args['posts_per_page']      = isset( $instance['posts_count'] ) ? $instance['posts_count'] : $this->settings['posts_count']['std'];
 		$post_args['post_title_size']     = isset( $instance['post_title_size'] ) ? $instance['post_title_size'] : $this->settings['post_title_size']['std'];
 		$post_args['post_layout']         = isset( $instance['post_layout'] ) ? $instance['post_layout'] : $this->settings['post_layout']['std'];
 		$post_args['post_structure']      = isset( $instance['post_structure'] ) ? $instance['post_structure'] : $this->settings['post_structure']['std'];

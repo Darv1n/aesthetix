@@ -1,6 +1,6 @@
 <?php
 /**
- * Template tils for displaying widget recent posts.
+ * Template part for displaying widget recent posts.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *

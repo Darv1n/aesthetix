@@ -23,7 +23,7 @@ class WPA_Widget_Menus extends WPA_Widget {
 		$this->widget_cssclass    = 'widget-menus';
 		$this->widget_description = __( 'The global settings for this form can be found in the Customizer', 'aesthetix' );
 		$this->widget_id          = 'aesthetix-widget-menus';
-		$this->widget_name        = get_widget_name( 'widget-menus' );
+		$this->widget_name        = get_widget_name( 'WPA_Widget_Menus' );
 		$this->settings           = array(
 			'title'               => array(
 				'type'  => 'text',
@@ -39,6 +39,17 @@ class WPA_Widget_Menus extends WPA_Widget {
 				'type'  => 'textarea',
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
+			),
+			'background_color'    => array(
+				'type'    => 'select',
+				'std'     => get_aesthetix_options( 'root_bg_aside_widgets' ),
+				'label'   =>__( 'Background color', 'aesthetix' ),
+				'options' => get_aesthetix_customizer_background_colors(),
+			),
+			'background_image'    => array(
+				'type'  => 'image',
+				'std'   => '',
+				'label' => __( 'Background image (used instead of background color)', 'aesthetix' ),
 			),
 			'columns'             => array(
 				'type'    => 'select',
@@ -79,6 +90,8 @@ class WPA_Widget_Menus extends WPA_Widget {
 		$this->widget_start( $args, $instance );
 
 		$template_args                        = array();
+		$template_args['background_color']    = isset( $instance['background_color'] ) ? $instance['background_color'] : $this->settings['background_color']['std'];
+		$template_args['background_image']    = isset( $instance['background_image'] ) ? $instance['background_image'] : $this->settings['background_image']['std'];
 		$template_args['columns']             = isset( $instance['columns'] ) ? $instance['columns'] : $this->settings['columns']['std'];
 		$template_args['menu_structure']      = isset( $instance['menu_structure'] ) ? $instance['menu_structure'] : $this->settings['menu_structure']['std'];
 		$template_args['count_items_display'] = isset( $instance['count_items_display'] ) ? (bool) $instance['count_items_display'] : $this->settings['count_items_display']['std'];

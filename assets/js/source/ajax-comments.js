@@ -2,8 +2,8 @@
  * Comment form js handler
  *
  * Form js handler  - /assets/js/source/subscribe-comments.js
- * Setup js scripts - /inc/setup.php
- * Form php handler - /inc/handlers.php
+ * Setup js scripts - /inc/template-setup.php
+ * Form php handler - /inc/template-handlers.php
  * Form html        - /templates/subscribe-form.php
  */
 

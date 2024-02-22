@@ -57,6 +57,11 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'center' => __( 'Center', 'aesthetix' ),
 		);
 
+		$general_sidebar_align_select = array(
+			'right'  => __( 'Right', 'aesthetix' ),
+			'left'   => __( 'Left', 'aesthetix' ),
+		);
+
 		$alignment_pseudo_select = array(
 			'before' => __( 'Before', 'aesthetix' ),
 			'after'  => __( 'After', 'aesthetix' ),
@@ -81,26 +86,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			4 => __( 'Four', 'aesthetix' ),
 			5 => __( 'Five', 'aesthetix' ),
 			6 => __( 'Six', 'aesthetix' ),
-		);
-
-		$archive_page_slides_count_select = array(
-			1  => __( 'One', 'aesthetix' ),
-			2  => __( 'Two', 'aesthetix' ),
-			3  => __( 'Three', 'aesthetix' ),
-			4  => __( 'Four', 'aesthetix' ),
-			5  => __( 'Five', 'aesthetix' ),
-			6  => __( 'Six', 'aesthetix' ),
-			7  => __( 'Seven', 'aesthetix' ),
-			8  => __( 'Eight', 'aesthetix' ),
-			9  => __( 'Nine', 'aesthetix' ),
-			10 => __( 'Ten', 'aesthetix' ),
-		);
-
-		$archive_page_slides_to_show_select = array(
-			'one'   => __( 'One', 'aesthetix' ),
-			'two'   => __( 'Two', 'aesthetix' ),
-			'three' => __( 'Three', 'aesthetix' ),
-			'four'  => __( 'Four', 'aesthetix' ),
 		);
 
 		$archive_page_pagination_select = array(
@@ -135,12 +120,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'footer_bottom_bar_display' => array( 'checkbox_control', __( 'Bottom bar display', 'aesthetix' ), __( 'This checkbox displays two sidebars after the footer of the site. They are adds in the widget section options', 'aesthetix' ) ),
 			'footer_type'               => array( 'select_control', __( 'Select footer type', 'aesthetix' ), '', $general_footer_type_select ),
 
-			'subscribe_form_tab_title'  => array( 'tab_title', __( 'Subscribe form', 'aesthetix' ), '' ),
-			'subscribe_form_display'    => array( 'checkbox_control', __( 'Subscribe form before footer display', 'aesthetix' ), '' ),
-			'subscribe_form_type'       => array( 'select_control', __( 'Subscribe form type', 'aesthetix' ), '', get_aesthetix_customizer_subscribe_form_type() ),
-			'subscribe_form_title'      => array( 'text_control', __( 'Subscribe form title', 'aesthetix' ), '' ),
-			'subscribe_form_image'      => array( 'image_control', __( 'Subscribe form background image', 'aesthetix' ), '', '' ),
-			'subscribe_form_shortcode'  => array( 'text_control', __( 'Subscribe form shortcode', 'aesthetix' ), __( 'Use this field if you chose Mailchimp', 'aesthetix' ) ),
+			'sidebar_tab_title'         => array( 'tab_title', __( 'Sidebar', 'aesthetix' ), '' ),
+			'sidebar_stuck'             => array( 'checkbox_control', __( 'Stuck sidebar', 'aesthetix' ), __( 'Stuck sidebar when scrolling', 'aesthetix' ) ),
+			'sidebar_align'             => array( 'select_control', __( 'Select sidebar alignment', 'aesthetix' ), '', $general_sidebar_align_select ),
 
 			'scroll_top_tab_title'      => array( 'tab_title', __( 'Scroll top structure', 'aesthetix' ), '' ),
 			'scroll_top_structure'      => array( 'sortable_control', '', '', get_aesthetix_customizer_scroll_top_structure() ),
@@ -176,9 +158,9 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'bg_footer_top_bar'                     => array( 'select_control', __( 'Footer top bar background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
 			'bg_footer_middle_bar'                  => array( 'select_control', __( 'Footer middle bar widgets background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
 			'bg_footer_bottom_bar'                  => array( 'select_control', __( 'Footer bottom bar widgets background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
+			'bg_aside_widgets'                      => array( 'select_control', __( 'Widgets background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
 			'bg_subscribe_form'                     => array( 'select_control', __( 'Subscribe form background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
 			'bg_breadcrumbs'                        => array( 'select_control', __( 'Breadcrumbs background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
-			'bg_aside_widgets'                      => array( 'select_control', __( 'Aside widgets background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
 
 			'button_tab_title'                      => array( 'tab_title', __( 'Buttons', 'aesthetix' ), '' ),
 			'button_type'                           => array( 'select_control', __( 'Select button type', 'aesthetix' ), '', get_aesthetix_customizer_button_type() ),
@@ -314,15 +296,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 				);
 			}
 		}
-
-		$aesthetix_controls['front_page'] = array(
-			'slider_tab_title'      => array( 'tab_title', __( 'Slider', 'aesthetix' ), '' ),
-			'slider_display'        => array( 'checkbox_control', __( 'Slider display', 'aesthetix' ), '' ),
-			'slider_post_type'      => array( 'select_control', __( 'Slider post type', 'aesthetix' ), '', get_post_types( array( 'publicly_queryable' => 1, ) ) ),
-			'slider_slides_count'   => array( 'select_control', __( 'Slides count', 'aesthetix' ), '', $archive_page_slides_count_select ),
-			'slider_slides_to_show' => array( 'select_control', __( 'Slides to show', 'aesthetix' ), '', $archive_page_slides_to_show_select ),
-			'slider_slides_layout'  => array( 'select_control', __( 'Select template type', 'aesthetix' ), __( 'This field displays template of posts', 'aesthetix' ), get_aesthetix_customizer_archive_post_layout() ),
-		);
 
 		// Comments options.
 		$aesthetix_controls['comments'] = array(

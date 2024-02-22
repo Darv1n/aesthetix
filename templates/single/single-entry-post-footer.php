@@ -59,6 +59,11 @@
 							</div>
 						<?php } ?>
 						<?php break;
+					case 'share': ?>
+						<div class="post-footer-item post-footer-share">
+							<?php get_template_part( 'templates/single/single-entry-post-share' ); ?>
+						</div>
+						<?php break;
 					case 'likes': ?>
 						<div class="post-footer-item post-footer-rating">
 							<?php get_template_part( 'templates/single/single-entry-post-likes' ); ?>

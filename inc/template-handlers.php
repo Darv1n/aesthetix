@@ -15,8 +15,8 @@ if ( ! function_exists( 'ajax_likers_handler_callback' ) ) {
 	 * Loadmore handler.
 	 * 
 	 * Form js handler  - /assets/js/source/ajax-postviews.js
-	 * Setup js scripts - /inc/setup.php
-	 * Form php handler - /inc/handlers.php
+	 * Setup js scripts - /inc/template-setup.php
+	 * Form php handler - /inc/template-handlers.php
 	 * 
 	 * @return json
 	 */
@@ -124,8 +124,8 @@ if ( ! function_exists( 'ajax_postviews_handler_callback' ) ) {
 	 * Loadmore handler.
 	 * 
 	 * Form js handler  - /assets/js/source/ajax-postviews.js
-	 * Setup js scripts - /inc/setup.php
-	 * Form php handler - /inc/handlers.php
+	 * Setup js scripts - /inc/template-setup.php
+	 * Form php handler - /inc/template-handlers.php
 	 * 
 	 * @return json
 	 */
@@ -176,8 +176,8 @@ if ( ! function_exists( 'ajax_loadmore_handler_callback' ) ) {
 	 * Loadmore handler.
 	 * 
 	 * Form js handler  - /assets/js/source/ajax-loadmore.js
-	 * Setup js scripts - /inc/setup.php
-	 * Form php handler - /inc/handlers.php
+	 * Setup js scripts - /inc/template-setup.php
+	 * Form php handler - /inc/template-handlers.php
 	 * Html             - /templates/archive/archive-pagination.php
 	 * 
 	 * @return json
@@ -252,8 +252,8 @@ if ( ! function_exists( 'ajax_subscribe_form_callback' ) ) {
 	 * Subscribe form handler.
 	 * 
 	 * Form js handler  - /assets/js/source/ajax-subscribe-from.js
-	 * Setup js scripts - /inc/setup.php
-	 * Form php handler - /inc/handlers.php
+	 * Setup js scripts - /inc/template-setup.php
+	 * Form php handler - /inc/template-handlers.php
 	 * Form html        - /templates/subscribe-form.php
 	 * 
 	 * @return json
@@ -321,7 +321,7 @@ if ( ! function_exists( 'ajax_subscribe_form_callback' ) ) {
 			}
 		}
 
-		// Kill ajax process.
+		// Kill ajax process, just in case.
 		wp_die();
 	}
 }

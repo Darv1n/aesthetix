@@ -166,7 +166,12 @@
 		.single-product-category
 			display: block
 			line-height: 1
-			margin-bottom: 1em
+			margin-bottom: 1rem
+		.woocommerce-grouped-product-list
+			display: block
+			&-item__label
+				label
+					margin-bottom: 0
 		.woocommerce-product-details__short-description
 			> *
 				margin-bottom: .5rem
@@ -372,7 +377,6 @@
 			&::after
 				clear: both
 		form.cart
-			display: flex
 			margin-bottom: 1.5rem
 			&::after, &::before
 				content: ' '
@@ -387,7 +391,8 @@
 				.qty
 					margin-bottom: 0
 					height: 100%
-					font-size: $font-size-md	
+					min-width: 4rem
+					font-size: $font-size-md
 			table
 				border-width: 0 0 1px
 				margin: 0 0 1em
@@ -449,7 +454,7 @@
 					vertical-align: middle
 					padding-bottom: .5em
 					border-right: 0
-					border-bottom: 1px solid $primary-color-500
+					border-bottom: 1px solid $gray-color-300
 					&:first-child
 						text-align: left
 						width: 4em

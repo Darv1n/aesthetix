@@ -41,7 +41,7 @@ jQuery( document ).ready( function ( $ ) {
 
 				container.find( 'li.image' ).each( function() {
 					items.push( $( this ).data( 'attachment_id' ) );
-				});
+				} );
 
 				container.find( '#post_image_gallery' ).val( items.join( ',' ) ).trigger( 'change' );
 
@@ -60,7 +60,7 @@ jQuery( document ).ready( function ( $ ) {
 	$( '.sortable-list' ).sortable( {
 		update: function( event, ui ) {
 			var items = [];
-			$( this ).find( 'li.image' ).each( function() {
+			$( this ).find( 'li.image' ).each( function( e ) {
 				items.push( $( this ).data( 'attachment_id' ) );
 			});
 			$( this ).next().val( items.join( ',' ) ).trigger( 'change' );
