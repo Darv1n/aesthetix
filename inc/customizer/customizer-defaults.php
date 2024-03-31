@@ -26,9 +26,6 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 		}
 
 		$defaults = array(
-			'general_demo_var'                          => 'demo-1',
-			'general_demo_widgets'                      => false,
-
 			'general_container_width'                   => 'lg',
 			'general_content_width'                     => 'wide',
 

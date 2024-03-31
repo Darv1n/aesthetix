@@ -215,21 +215,9 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 		}
 
 		// Merge child and parent default options.
-		$sidebars   = apply_filters( 'aesthetix_register_sidebar', $sidebars );
-		$uniqueizer = array();
+		$sidebars = apply_filters( 'aesthetix_register_sidebar', $sidebars );
 
 		foreach ( $sidebars as $sidebar_id => $sidebar ) {
-
-			$widget_default = get_aesthetix_widget_default( $sidebar_id );
-			$description    = $sidebar['description'];
-
-			if ( $widget_default && is_array( $widget_default ) && ! empty( $widget_default ) ) {
-				$widget_names = array();
-				foreach ( $widget_default as $key => $value ) {
-					$widget_names[ $value ] = get_widget_name( $value );
-				}
-				$description .= '. ' . esc_html__( 'If the sidebar is empty, widgets are displayed by default', 'aesthetix' ) . ': ' . implode( ', ', $widget_names );
-			}
 
 			register_sidebar(
 				apply_filters(
@@ -245,25 +233,6 @@ if ( ! function_exists( 'aesthetix_register_sidebar' ) ) {
 					)
 				)
 			);
-
-			// Register default widgets.
-			if ( get_aesthetix_options( 'general_demo_widgets' ) ) {
-				$widget_default = get_aesthetix_widget_default( $sidebar_id );
-
-				if ( is_array( $widget_default ) && ! empty( $widget_default ) ) {
-					foreach ( $widget_default as $key => $widget_name ) {
-						if ( isset( $uniqueizer[ $widget_name ] ) ) {
-							$uniqueizer[ $widget_name ]++;
-							$widget_id = $widget_name . '-' . $uniqueizer[ $widget_name ];
-						} else {
-							$widget_id = $widget_name;
-							$uniqueizer[ $widget_name ] = 1;
-						}
-
-						wp_register_sidebar_widget( get_title_slug( $widget_id ), get_widget_name( $widget_name ) . ' (' . __( 'Default options', 'aesthetix' ) . ')', 'aesthetix_widget_default', array(), array( 'widget' => $widget_name, 'sidebar_id' => $sidebar_id ) );
-					}
-				}
-			}
 		}
 	}
 }
@@ -286,27 +255,27 @@ if ( ! function_exists( 'get_widget_name' ) ) {
 		}
 
 		$converter = array(
-			'WPA_Widget_Adv_Banner'        => 'Aesthetix ' . mb_strtolower( __( 'Adv banner', 'aesthetix' ) ),
-			'WPA_Widget_Breadcrumbs'       => 'Aesthetix ' . mb_strtolower( __( 'Breadcrumbs', 'aesthetix' ) ),
-			'WPA_Widget_Buttons'           => 'Aesthetix ' . mb_strtolower( __( 'Buttons', 'aesthetix' ) ),
-			'WPA_Widget_Contacts'          => 'Aesthetix ' . mb_strtolower( __( 'Contacts', 'aesthetix' ) ),
-			'WPA_Widget_Copyright'         => 'Aesthetix ' . mb_strtolower( __( 'Copyright', 'aesthetix' ) ),
-			'WPA_Widget_Creator'           => 'Aesthetix ' . mb_strtolower( __( 'Creator', 'aesthetix' ) ),
-			'WPA_Widget_Language_Switcher' => 'Aesthetix ' . mb_strtolower( __( 'Language switcher', 'aesthetix' ) ),
-			'WPA_Widget_Logo'              => 'Aesthetix ' . mb_strtolower( __( 'Logo', 'aesthetix' ) ),
-			// 'widget-menu-primary'      => 'Aesthetix ' . mb_strtolower( __( 'Primary menu', 'aesthetix' ) ),
-			'WPA_Widget_Menus'             => 'Aesthetix ' . mb_strtolower( __( 'Menus', 'aesthetix' ) ),
-			'WPA_Widget_Recent_Posts'      => 'Aesthetix ' . mb_strtolower( __( 'Recent posts', 'aesthetix' ) ),
-			'WPA_Widget_Recent_Users'      => 'Aesthetix ' . mb_strtolower( __( 'Recent users', 'aesthetix' ) ),
-			'widget-search-form'       => 'Aesthetix ' . mb_strtolower( __( 'Search form', 'aesthetix' ) ),
-			'WPA_Widget_Search_Popup_Form'     => 'Aesthetix ' . mb_strtolower( __( 'Search button', 'aesthetix' ) ),
-			'WPA_Widget_Slider_Posts'      => 'Aesthetix ' . mb_strtolower( __( 'Slider posts', 'aesthetix' ) ),
-			'WPA_Widget_Socials'           => 'Aesthetix ' . mb_strtolower( __( 'Socials', 'aesthetix' ) ),
-			'WPA_Widget_Subscribe_Form'    => 'Aesthetix ' . mb_strtolower( __( 'Subscribe form', 'aesthetix' ) ),
-			'WPA_Widget_Subscribe_Popup_Form'  => 'Aesthetix ' . mb_strtolower( __( 'Subscribe button', 'aesthetix' ) ),
-			'WPA_Widget_Table_Of_Contents' => 'Aesthetix ' . mb_strtolower( __( 'Table of contents', 'aesthetix' ) ),
-			'WPA_Widget_Use_Materials'     => 'Aesthetix ' . mb_strtolower( __( 'Use materials', 'aesthetix' ) ),
-			'WPA_Widget_User'              => 'Aesthetix ' . mb_strtolower( __( 'User', 'aesthetix' ) ),
+			'WPA_Widget_Adv_Banner'           => 'Aesthetix ' . mb_strtolower( __( 'Adv banner', 'aesthetix' ) ),
+			'WPA_Widget_Breadcrumbs'          => 'Aesthetix ' . mb_strtolower( __( 'Breadcrumbs', 'aesthetix' ) ),
+			'WPA_Widget_Buttons'              => 'Aesthetix ' . mb_strtolower( __( 'Buttons', 'aesthetix' ) ),
+			'WPA_Widget_Contacts'             => 'Aesthetix ' . mb_strtolower( __( 'Contacts', 'aesthetix' ) ),
+			'WPA_Widget_Copyright'            => 'Aesthetix ' . mb_strtolower( __( 'Copyright', 'aesthetix' ) ),
+			'WPA_Widget_Creator'              => 'Aesthetix ' . mb_strtolower( __( 'Creator', 'aesthetix' ) ),
+			'WPA_Widget_Language_Switcher'    => 'Aesthetix ' . mb_strtolower( __( 'Language switcher', 'aesthetix' ) ),
+			'WPA_Widget_Logo'                 => 'Aesthetix ' . mb_strtolower( __( 'Logo', 'aesthetix' ) ),
+			// 'widget-menu-primary'          => 'Aesthetix ' . mb_strtolower( __( 'Primary menu', 'aesthetix' ) ),
+			'WPA_Widget_Menus'                => 'Aesthetix ' . mb_strtolower( __( 'Menus', 'aesthetix' ) ),
+			'WPA_Widget_Recent_Posts'         => 'Aesthetix ' . mb_strtolower( __( 'Recent posts', 'aesthetix' ) ),
+			'WPA_Widget_Recent_Users'         => 'Aesthetix ' . mb_strtolower( __( 'Recent users', 'aesthetix' ) ),
+			'widget-search-form'              => 'Aesthetix ' . mb_strtolower( __( 'Search form', 'aesthetix' ) ),
+			'WPA_Widget_Search_Popup_Form'    => 'Aesthetix ' . mb_strtolower( __( 'Search button', 'aesthetix' ) ),
+			'WPA_Widget_Slider_Posts'         => 'Aesthetix ' . mb_strtolower( __( 'Slider posts', 'aesthetix' ) ),
+			'WPA_Widget_Socials'              => 'Aesthetix ' . mb_strtolower( __( 'Socials', 'aesthetix' ) ),
+			'WPA_Widget_Subscribe_Form'       => 'Aesthetix ' . mb_strtolower( __( 'Subscribe form', 'aesthetix' ) ),
+			'WPA_Widget_Subscribe_Popup_Form' => 'Aesthetix ' . mb_strtolower( __( 'Subscribe button', 'aesthetix' ) ),
+			'WPA_Widget_Table_Of_Contents'    => 'Aesthetix ' . mb_strtolower( __( 'Table of contents', 'aesthetix' ) ),
+			'WPA_Widget_Use_Materials'        => 'Aesthetix ' . mb_strtolower( __( 'Use materials', 'aesthetix' ) ),
+			'WPA_Widget_User'                 => 'Aesthetix ' . mb_strtolower( __( 'User', 'aesthetix' ) ),
 		);
 
 		// Merge child and parent default options.

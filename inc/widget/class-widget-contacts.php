@@ -35,17 +35,6 @@ class WPA_Widget_Contacts extends WPA_Widget {
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
-			'background_color' => array(
-				'type'    => 'select',
-				'std'     => get_aesthetix_options( 'root_bg_aside_widgets' ),
-				'label'   =>__( 'Background color', 'aesthetix' ),
-				'options' => get_aesthetix_customizer_background_colors(),
-			),
-			'background_image' => array(
-				'type'  => 'image',
-				'std'   => '',
-				'label' => __( 'Background image (used instead of background color)', 'aesthetix' ),
-			),
 			'style'            => array(
 				'type'    => 'select',
 				'std'     => 'inline',
@@ -77,6 +66,23 @@ class WPA_Widget_Contacts extends WPA_Widget {
 				'std'   => get_aesthetix_options( 'other_telegram_chat' ),
 				'label' => __( 'Telegram', 'aesthetix' ),
 			),
+			'background_color' => array(
+				'type'    => 'select',
+				'std'     => get_aesthetix_options( 'root_bg_aside_widgets' ),
+				'label'   =>__( 'Background color', 'aesthetix' ),
+				'options' => get_aesthetix_customizer_background_colors(),
+			),
+			'background_image' => array(
+				'type'  => 'image',
+				'std'   => '',
+				'label' => __( 'Background image (used instead of background color)', 'aesthetix' ),
+			),
+			'display'          => array(
+				'type'    => 'select',
+				'std'     => 'all',
+				'label'   => __( 'Choose how to display the widget', 'aesthetix' ),
+				'options' => get_aesthetix_customizer_display(),
+			),
 		);
 
 		parent::__construct();
@@ -94,13 +100,14 @@ class WPA_Widget_Contacts extends WPA_Widget {
 		$this->widget_start( $args, $instance );
 
 		$template_args                     = array();
-		$template_args['background_color'] = isset( $instance['background_color'] ) ? $instance['background_color'] : $this->settings['background_color']['std'];
-		$template_args['background_image'] = isset( $instance['background_image'] ) ? $instance['background_image'] : $this->settings['background_image']['std'];
 		$template_args['address']          = isset( $instance['address'] ) ? $instance['address'] : $this->settings['address']['std'];
 		$template_args['phone']            = isset( $instance['phone'] ) ? $instance['phone'] : $this->settings['phone']['std'];
 		$template_args['email']            = isset( $instance['email'] ) ? $instance['email'] : $this->settings['email']['std'];
 		$template_args['whatsapp']         = isset( $instance['whatsapp'] ) ? $instance['whatsapp'] : $this->settings['whatsapp']['std'];
 		$template_args['telegram']         = isset( $instance['telegram'] ) ? $instance['telegram'] : $this->settings['telegram']['std'];
+		$template_args['background_color'] = isset( $instance['background_color'] ) ? $instance['background_color'] : $this->settings['background_color']['std'];
+		$template_args['background_image'] = isset( $instance['background_image'] ) ? $instance['background_image'] : $this->settings['background_image']['std'];
+		$template_args['display']          = isset( $instance['display'] ) ? $instance['display'] : $this->settings['display']['std'];
 
 		get_template_part( 'templates/widget/widget-contacts', '', $template_args );
 

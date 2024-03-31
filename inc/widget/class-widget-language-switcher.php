@@ -35,17 +35,6 @@ class WPA_Widget_Language_Switcher extends WPA_Widget {
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
-			'background_color' => array(
-				'type'    => 'select',
-				'std'     => get_aesthetix_options( 'root_bg_aside_widgets' ),
-				'label'   =>__( 'Background color', 'aesthetix' ),
-				'options' => get_aesthetix_customizer_background_colors(),
-			),
-			'background_image' => array(
-				'type'  => 'image',
-				'std'   => '',
-				'label' => __( 'Background image (used instead of background color)', 'aesthetix' ),
-			),
 			'style'            => array(
 				'type'    => 'select',
 				'std'     => 'dropdown',
@@ -70,6 +59,23 @@ class WPA_Widget_Language_Switcher extends WPA_Widget {
 				'label'   => __( 'Select button content', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_button_content(),
 			),
+			'background_color' => array(
+				'type'    => 'select',
+				'std'     => get_aesthetix_options( 'root_bg_aside_widgets' ),
+				'label'   =>__( 'Background color', 'aesthetix' ),
+				'options' => get_aesthetix_customizer_background_colors(),
+			),
+			'background_image' => array(
+				'type'  => 'image',
+				'std'   => '',
+				'label' => __( 'Background image (used instead of background color)', 'aesthetix' ),
+			),
+			'display'          => array(
+				'type'    => 'select',
+				'std'     => 'all',
+				'label'   => __( 'Choose how to display the widget', 'aesthetix' ),
+				'options' => get_aesthetix_customizer_display(),
+			),
 		);
 
 		parent::__construct();
@@ -87,12 +93,13 @@ class WPA_Widget_Language_Switcher extends WPA_Widget {
 		$this->widget_start( $args, $instance );
 
 		$template_args                     = array();
-		$template_args['background_color'] = isset( $instance['background_color'] ) ? $instance['background_color'] : $this->settings['background_color']['std'];
-		$template_args['background_image'] = isset( $instance['background_image'] ) ? $instance['background_image'] : $this->settings['background_image']['std'];
 		$template_args['style']            = isset( $instance['style'] ) ? $instance['style'] : $this->settings['style']['std'];
 		$template_args['button_color']     = isset( $instance['button_color'] ) ? $instance['button_color'] : $this->settings['button_color']['std'];
 		$template_args['button_type']      = isset( $instance['button_type'] ) ? $instance['button_type'] : $this->settings['button_type']['std'];
 		$template_args['button_content']   = isset( $instance['button_content'] ) ? $instance['button_content'] : $this->settings['button_content']['std'];
+		$template_args['background_color'] = isset( $instance['background_color'] ) ? $instance['background_color'] : $this->settings['background_color']['std'];
+		$template_args['background_image'] = isset( $instance['background_image'] ) ? $instance['background_image'] : $this->settings['background_image']['std'];
+		$template_args['display']          = isset( $instance['display'] ) ? $instance['display'] : $this->settings['display']['std'];
 
 		get_template_part( 'templates/widget/widget-language-switcher', '', $template_args );
 

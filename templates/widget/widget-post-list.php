@@ -39,7 +39,7 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 
 <article id="post-<?php the_ID(); ?>" <?php aesthetix_post_classes( 'post-aside', $args ); ?>>
 	<div <?php aesthetix_archive_page_columns_wrapper_classes( 'row-xs align-items-center' ); ?>>
-		<div class="col-xs col-5 <?php echo esc_attr( $order_left ); ?>">
+		<div class="col-xs col-4 <?php echo esc_attr( $order_left ); ?>">
 
 			<?php if ( has_post_thumbnail( $post ) || get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_default' ) ) {
 
@@ -53,7 +53,7 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 			<?php } ?>
 
 		</div>
-		<div class="col-xs col-7 <?php echo esc_attr( $order_right ); ?>">
+		<div class="col-xs col-8 <?php echo esc_attr( $order_right ); ?>">
 
 			<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 

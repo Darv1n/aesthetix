@@ -37,7 +37,7 @@ class WPA_Widget_Adv_Banner extends WPA_Widget {
 			),
 			'adv_desktop'     => array(
 				'type'  => 'image',
-				'std'   => '',
+				'std'   => get_theme_file_uri( '/assets/img/promo/promo-default-002.jpg' ),
 				'label' => __( 'Desktop banner', 'aesthetix' ),
 			),
 			'adv_tablet'      => array(
@@ -52,8 +52,13 @@ class WPA_Widget_Adv_Banner extends WPA_Widget {
 			),
 			'adv_link'        => array(
 				'type'  => 'url',
-				'std'   => '',
+				'std'   => 'https://aesthetix-pro.zolin.digital/',
 				'label' => __( 'Link', 'aesthetix' ),
+			),
+			'adv_alt'       => array(
+				'type'  => 'text',
+				'std'   => __( 'Banner', 'aesthetix' ),
+				'label' => __( 'Banner alt', 'aesthetix' ),
 			),
 			'adv_title'       => array(
 				'type'  => 'text',
@@ -86,6 +91,7 @@ class WPA_Widget_Adv_Banner extends WPA_Widget {
 		$template_args['adv_tablet']      = isset( $instance['adv_tablet'] ) ? $instance['adv_tablet'] : $this->settings['adv_tablet']['std'];
 		$template_args['adv_mobile']      = isset( $instance['adv_mobile'] ) ? $instance['adv_mobile'] : $this->settings['adv_mobile']['std'];
 		$template_args['adv_link']        = isset( $instance['adv_link'] ) && wp_http_validate_url( $instance['adv_link'] ) ? $instance['adv_link'] : $this->settings['adv_link']['std'];
+		$template_args['adv_alt']         = isset( $instance['adv_alt'] ) ? $instance['adv_alt'] : $this->settings['adv_alt']['std'];
 		$template_args['adv_title']       = isset( $instance['adv_title'] ) ? $instance['adv_title'] : $this->settings['adv_title']['std'];
 		$template_args['adv_description'] = isset( $instance['adv_description'] ) ? $instance['adv_description'] : $this->settings['adv_description']['std'];
 

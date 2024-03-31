@@ -26,7 +26,7 @@ get_header(); ?>
 			</h1>
 		</header>
 
-		<section class="content-area-content" aria-label="<?php esc_attr_e( 'Search page content', 'aesthetix' ); ?>">
+		<section class="content-area-loop" aria-label="<?php esc_attr_e( 'Search page content', 'aesthetix' ); ?>">
 			<div <?php aesthetix_archive_page_columns_wrapper_classes( 'loop' ); ?> data-columns="<?php echo esc_attr( $columns ); ?>">
 
 				<?php while ( have_posts() ) : ?>

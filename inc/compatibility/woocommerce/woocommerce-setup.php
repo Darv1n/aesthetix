@@ -22,6 +22,10 @@ if ( ! function_exists( 'aesthetix_woo_setup' ) ) {
 	 */
 	function aesthetix_woo_setup() {
 
+		register_nav_menus( array(
+			'shop' => __( 'Shop', 'aesthetix' ),
+		) );
+
 		add_theme_support( 'woocommerce', array(
 			'product_grid' => array(
 				'default_rows'    => 3,

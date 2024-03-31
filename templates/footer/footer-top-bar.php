@@ -10,10 +10,10 @@
 
 <?php
 	if ( get_aesthetix_options( 'general_footer_type' ) === 'footer-four-columns' ) {
-		$first_col_classes = array( 'col-12', 'col-sm-6', 'col-md-3' );
-		$last_col_classes  = array( 'col-12', 'col-sm-6', 'col-md-7' );
+		$first_col_classes = array( 'col-12', 'col-sm-6', 'col-md-3', 'col-sm-state-change' );
+		$last_col_classes  = array( 'col-12', 'col-sm-6', 'col-md-9' );
 	} else {
-		$first_col_classes = array( 'col-12', 'col-sm-6', 'col-md-4' );
+		$first_col_classes = array( 'col-12', 'col-sm-6', 'col-md-4', 'col-sm-state-change' );
 		$last_col_classes  = array( 'col-12', 'col-sm-6', 'col-md-8' );
 	}
 ?>

@@ -181,10 +181,13 @@ if ( ! function_exists( 'aesthetix_nav_menu_args' ) ) {
 		}
 
 		$menu_class[] = 'menu';
-		$menu_class[] = 'menu-' . $args['theme_location'];
 
-		if ( $args['theme_location'] === 'primary' ) {
-			$menu_class[] = 'menu-inline';
+		if ( isset( $args['theme_location'] ) && ! empty( $args['theme_location'] ) ) {
+			$menu_class[] = 'menu-' . $args['theme_location'];
+
+			if ( $args['theme_location'] === 'primary' ) {
+				$menu_class[] = 'menu-inline';
+			}
 		}
 
 		sort( $menu_class );
@@ -267,11 +270,12 @@ if ( ! function_exists( 'aesthetix_nav_menu_item_args' ) ) {
 			$title_classes[] = 'has-description';
 		}
 
-		$args->link_before = '<span class="' . esc_attr( implode( ' ', $title_classes ) ) . '"></span>';
+		$args->link_before = '<span class="' . esc_attr( implode( ' ', $title_classes ) ) . '">';
+		$args->link_after  = '</span>';
 		$args->after       = '';
 
 		if ( $menu_item->description ) {
-			$args->link_after = '<span class="menu-description">' . $menu_item->description . '</span>';
+			$args->link_after .= '<span class="menu-description">' . $menu_item->description . '</span>';
 		}
 
 		if ( in_array( 'menu-item-has-children', $menu_item->classes, true ) ) {
@@ -450,6 +454,7 @@ if ( ! function_exists( 'aesthetix_nav_menu_submenu_css_class' ) ) {
 
 		$classes[] = 'dropdown-content';
 
+		// TODO: Inline надо проверять
 		if ( $args->theme_location == 'primary' ) {
 			$classes[] = 'dropdown-content-absolute';
 		}
@@ -608,10 +613,9 @@ if ( ! function_exists( 'dynamic_sidebar_params_aesthetix_callback' ) ) {
 			// Get widget params.
 			$sidebar_id     = $params[0]['id'];
 			$widget_name    = get_last_value_from_string( $widget_id_base, '_' );
-			$widget_options = get_option( 'widget_' . $widget_id_base );
-			$widget_classes = get_widget_classes( 'widget widget-' . $sidebar_id, $sidebar_id, $background_color );
 
-			// vardump( $widget_options[ $widget_key ] );
+			$widget_options = get_option( 'widget_' . $widget_id_base );
+			$widget_classes = get_widget_classes( 'widget ' . str_replace( 'aesthetix-', '', $widget_name ), $sidebar_id, $background_color );
 
 			if ( isset( $widget_options[ $widget_key ] ) ) {
 				if ( isset( $widget_options[ $widget_key ]['background_color'] ) && ! empty( $widget_options[ $widget_key ]['background_color'] ) ) {
@@ -670,20 +674,44 @@ if ( ! function_exists( 'sidebars_widgets_aesthetix_callback' ) ) {
 	 */
 	function sidebars_widgets_aesthetix_callback( $sidebars_widgets ) {
 
-		// Remove widget breadcrumbs from front-page.
-		if ( is_front_page() ) {
-			foreach ( $sidebars_widgets as $sidebar_name => $sidebars_widget ) {
-				foreach ( $sidebars_widget as $widget_key => $widget_name ) {
-					if ( str_contains( $widget_name, 'aesthetix-widget-breadcrumbs' ) ) {
-						unset( $sidebars_widgets[ $sidebar_name ][ $widget_key ] );
+		foreach ( $sidebars_widgets as $sidebar_name => $sidebars_widget ) {
+			foreach ( $sidebars_widget as $widget_key => $widget_id ) {
+
+				preg_match( '/^(.+)-(\d+)$/', $widget_id, $matches );
+
+				// Get id_base and key from string ID.
+				if ( isset( $matches[1], $matches[2] ) ) {
+					$widget_id_base = $matches[1];
+					$widget_id_key     = $matches[2];
+				} else {
+					$widget_id_base = $widget_id;
+					$widget_id_key     = 0;
+				}
+
+				$widget_options = get_option( 'widget_' . $widget_id_base );
+
+				if ( isset( $widget_options[ $widget_id_key ], $widget_options[ $widget_id_key ]['display'] ) ) {
+					if ( get_aesthetix_customizer_converter_display( $widget_options[ $widget_id_key ]['display'] ) === false ) {
+						 unset( $sidebars_widgets[ $sidebar_name ][ $widget_key ] );
 					}
 				}
-			}
-		} else {
-			foreach ( $sidebars_widgets as $sidebar_name => $sidebars_widget ) {
-				foreach ( $sidebars_widget as $widget_key => $widget_name ) {
-					if ( str_contains( $widget_name, 'aesthetix-widget-slider-posts' ) ) {
+
+				// Remove breadcrumbs from front-page.
+				if ( is_front_page() && str_contains( $widget_id, 'aesthetix-widget-breadcrumbs' ) ) {
+					 unset( $sidebars_widgets[ $sidebar_name ][ $widget_key ] );
+				}
+
+				if ( str_contains( $widget_id, 'aesthetix-widget-table-of-contents' ) ) {
+					if ( ! is_single() ) {
+						// Remove ToC from non single.
 						unset( $sidebars_widgets[ $sidebar_name ][ $widget_key ] );
+					} else {
+						$table_of_contents = get_table_of_contents( get_the_ID() );
+
+						// Remove ToC if it empty.
+						if ( ! is_array( $table_of_contents ) || empty( $table_of_contents ) ) {
+							unset( $sidebars_widgets[ $sidebar_name ][ $widget_key ] );
+						}
 					}
 				}
 			}
@@ -693,7 +721,6 @@ if ( ! function_exists( 'sidebars_widgets_aesthetix_callback' ) ) {
 	}
 }
 add_filter( 'sidebars_widgets', 'sidebars_widgets_aesthetix_callback' );
-
 
 if ( ! function_exists( 'pre_get_avatar_data_aesthetix_callback' ) ) {
 
@@ -711,16 +738,12 @@ if ( ! function_exists( 'pre_get_avatar_data_aesthetix_callback' ) ) {
 			return $args;
 		}
 
-		if ( ! is_int( $id_or_email ) ) {
-			return $args;
-		}
-
 		$user_data = get_userdata( $id_or_email );
 
 		if ( isset( $user_data->user_login ) ) {
 
-			if ( file_exists( get_theme_file_path( '/data/images/users/' . $user_data->user_login . '.jpg' ) ) ) {
-				$args['url'] = get_theme_file_uri( '/data/images/users/' . $user_data->user_login . '.jpg' );
+			if ( file_exists( get_theme_file_path( '/assets/img/users/' . $user_data->user_login . '.jpg' ) ) ) {
+				$args['url'] = get_theme_file_uri( '/assets/img/users/' . $user_data->user_login . '.jpg' );
 			}
 		}
 

@@ -276,10 +276,11 @@ jQuery( document ).ready(function ( $ ) {
 							$( '.comment[data-object-id="' + comment_id + '"]' ).find( '.comment-content' ).html( response.data ).addClass( 'fade-in' );
 						} else if ( comment_parent_id === '0' ) {
 							var commentList = $( '#comments' ).find( '.comment-list' );
+
 							if ( commentList.length === 0 ) {
 								$( '#comments' ).append( '<ol class="comment-list">' + response.data + '</ol>' );
 							} else {
-								$( '#comments' ).append( response.data );
+								commentList.append( response.data );
 							}
 						} else {
 							var comment_parent = $( '#comments' ).find( '.comment[data-object-id="' + comment_parent_id + '"]' );

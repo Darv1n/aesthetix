@@ -98,10 +98,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 
 		// General common options.
 		$aesthetix_controls['general'] = array(
-			'demo_tab_title'            => array( 'tab_title', __( 'Demo', 'aesthetix' ), '' ),
-			'demo_var'                  => array( 'select_control', __( 'Select demo variant', 'aesthetix' ), '', get_aesthetix_customizer_demo_variant() ),
-			'demo_widgets'              => array( 'checkbox_control', __( 'Use default widgets', 'aesthetix' ), '' ),
-
 			'content_tab_title'         => array( 'tab_title', __( 'Content', 'aesthetix' ), '' ),
 			'container_width'           => array( 'select_control', __( 'Select container width', 'aesthetix' ), __( 'Here you can change the container width of the site', 'aesthetix' ), get_aesthetix_customizer_sizes() ),
 			'content_width'             => array( 'select_control', __( 'Select content width', 'aesthetix' ), __( 'Note: its work if sidebar dont show', 'aesthetix' ), $general_content_width_select ),

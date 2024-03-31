@@ -21,7 +21,7 @@ if ( isset( $args['post_equal_height'] ) && $args['post_equal_height'] === 'auth
 
 <div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>" aria-label="<?php esc_attr_e( 'Post author', 'aesthetix' ); ?>">
 	<div class="post-entry-author-avatar">
-		<img class="avatar avatar-<?php echo esc_attr( $args['avatar_size'] ); ?> photo" src="<?php echo esc_url( $args['avatar_url'] ); ?>" alt="<?php the_author(); ?>" width="<?php echo esc_attr( $args['avatar_size'] ); ?>" height="<?php echo esc_attr( $args['avatar_size'] ); ?>">
+		<img class="avatar avatar-<?php echo esc_attr( $args['avatar_size'] ); ?>" src="<?php echo esc_url( $args['avatar_url'] ); ?>" alt="<?php the_author(); ?>" width="<?php echo esc_attr( $args['avatar_size'] ); ?>" height="<?php echo esc_attr( $args['avatar_size'] ); ?>">
 	</div>
 	<div class="post-entry-author-name">
 		<span class="screen-reader-text"><?php esc_html_e( 'Posted by', 'aesthetix' ); ?></span>
@@ -30,6 +30,6 @@ if ( isset( $args['post_equal_height'] ) && $args['post_equal_height'] === 'auth
 		</a>
 	</div>
 	<time class="post-entry-author-date" datetime="<?php echo get_the_date( 'Y-m-d\TH:i:sP' ); ?>" data-title="<?php esc_attr_e( 'Publication date', 'aesthetix' ); ?>">
-		<?php echo get_the_date( 'j F, Y' ); ?>
+		<?php echo get_the_date( 'j M, Y' ); ?>
 	</time>
 </div>

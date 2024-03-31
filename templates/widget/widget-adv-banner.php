@@ -8,10 +8,10 @@
  */
 
 $defaults = array(
-	'adv_desktop'     => '',
+	'adv_desktop'     => get_theme_file_uri( '/assets/img/promo/promo-default-002.jpg' ),
 	'adv_tablet'      => '',
 	'adv_mobile'      => '',
-	'adv_link'        => 'https://zolin.digital/',
+	'adv_link'        => 'https://aesthetix-pro.zolin.digital/',
 	'adv_alt'         => __( 'Banner', 'aesthetix' ),
 	'adv_title'       => '',
 	'adv_description' => '',

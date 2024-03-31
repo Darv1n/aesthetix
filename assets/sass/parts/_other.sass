@@ -8,7 +8,7 @@
 		display: block
 		margin-bottom: .5rem
 		&:last-child
-			margin-bottom: 0 !important
+			margin-bottom: 0
 
 @media (min-width: 992px)
 	.scroll-top-wrap
@@ -19,8 +19,9 @@
 	font-size: $font-size-sm
 	li
 		display: inline
-		&:not(:last-child)
-			margin-right: .25rem
+		margin-right: .25rem
+		&:last-child
+			margin-right: 0
 	&-sep
 		padding-left: .375rem
 		padding-right: .125rem
@@ -31,8 +32,10 @@
 		@extend .list-block
 	&-inline
 		@extend .list-inline
-		> *:not(:last-child)
+		> *
 			margin-right: .25rem
+			&:last-child
+				margin-right: 0
 
 .social-list
 	&-icons

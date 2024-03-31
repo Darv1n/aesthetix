@@ -40,17 +40,6 @@ class WPA_Widget_Menus extends WPA_Widget {
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
-			'background_color'    => array(
-				'type'    => 'select',
-				'std'     => get_aesthetix_options( 'root_bg_aside_widgets' ),
-				'label'   =>__( 'Background color', 'aesthetix' ),
-				'options' => get_aesthetix_customizer_background_colors(),
-			),
-			'background_image'    => array(
-				'type'  => 'image',
-				'std'   => '',
-				'label' => __( 'Background image (used instead of background color)', 'aesthetix' ),
-			),
 			'columns'             => array(
 				'type'    => 'select',
 				'std'     => 2,
@@ -73,6 +62,23 @@ class WPA_Widget_Menus extends WPA_Widget {
 				'std'   => true,
 				'label' => __( 'Count category items display', 'aesthetix' ),
 			),
+			'background_color'    => array(
+				'type'    => 'select',
+				'std'     => get_aesthetix_options( 'root_bg_aside_widgets' ),
+				'label'   =>__( 'Background color', 'aesthetix' ),
+				'options' => get_aesthetix_customizer_background_colors(),
+			),
+			'background_image'    => array(
+				'type'  => 'image',
+				'std'   => '',
+				'label' => __( 'Background image (used instead of background color)', 'aesthetix' ),
+			),
+			'display'             => array(
+				'type'    => 'select',
+				'std'     => 'all',
+				'label'   => __( 'Choose how to display the widget', 'aesthetix' ),
+				'options' => get_aesthetix_customizer_display(),
+			),
 		);
 
 		parent::__construct();
@@ -90,11 +96,12 @@ class WPA_Widget_Menus extends WPA_Widget {
 		$this->widget_start( $args, $instance );
 
 		$template_args                        = array();
-		$template_args['background_color']    = isset( $instance['background_color'] ) ? $instance['background_color'] : $this->settings['background_color']['std'];
-		$template_args['background_image']    = isset( $instance['background_image'] ) ? $instance['background_image'] : $this->settings['background_image']['std'];
 		$template_args['columns']             = isset( $instance['columns'] ) ? $instance['columns'] : $this->settings['columns']['std'];
 		$template_args['menu_structure']      = isset( $instance['menu_structure'] ) ? $instance['menu_structure'] : $this->settings['menu_structure']['std'];
 		$template_args['count_items_display'] = isset( $instance['count_items_display'] ) ? (bool) $instance['count_items_display'] : $this->settings['count_items_display']['std'];
+		$template_args['background_color'] = isset( $instance['background_color'] ) ? $instance['background_color'] : $this->settings['background_color']['std'];
+		$template_args['background_image'] = isset( $instance['background_image'] ) ? $instance['background_image'] : $this->settings['background_image']['std'];
+		$template_args['display']          = isset( $instance['display'] ) ? $instance['display'] : $this->settings['display']['std'];
 
 		get_template_part( 'templates/widget/widget-menus', '', $template_args );
 

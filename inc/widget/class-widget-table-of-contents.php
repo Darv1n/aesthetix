@@ -47,6 +47,12 @@ class WPA_Widget_Table_Of_Contents extends WPA_Widget {
 				'std'   => '',
 				'label' => __( 'Background image (used instead of background color)', 'aesthetix' ),
 			),
+			'display'          => array(
+				'type'    => 'select',
+				'std'     => 'all',
+				'label'   => __( 'Choose how to display the widget', 'aesthetix' ),
+				'options' => get_aesthetix_customizer_display(),
+			),
 		);
 
 		parent::__construct();
@@ -66,6 +72,7 @@ class WPA_Widget_Table_Of_Contents extends WPA_Widget {
 		$template_args                     = array();
 		$template_args['background_color'] = isset( $instance['background_color'] ) ? $instance['background_color'] : $this->settings['background_color']['std'];
 		$template_args['background_image'] = isset( $instance['background_image'] ) ? $instance['background_image'] : $this->settings['background_image']['std'];
+		$template_args['display']          = isset( $instance['display'] ) ? $instance['display'] : $this->settings['display']['std'];
 
 		get_template_part( 'templates/widget/widget-table-of-contents', '', $template_args );
 

@@ -50,18 +50,45 @@ html
 	flex-wrap: wrap
 	margin-right: -.75rem
 	margin-left: -.75rem
-
-.row-sm
-	margin-right: -.5rem
-	margin-left: -.5rem	
-
-.row-xs
-	margin-right: -.375rem
-	margin-left: -.375rem	
-
-.row-xxs
-	margin-right: -.25rem
-	margin-left: -.25rem	
+	> *
+		padding-right: .75rem
+		padding-left: .75rem
+	&-xxs
+		margin-right: -.25rem
+		margin-left: -.25rem
+		> *
+			padding-right: .25rem
+			padding-left: .25rem
+	&-xs
+		margin-right: -.375rem
+		margin-left: -.375rem
+		> *
+			padding-right: .375rem
+			padding-left: .375rem
+	&-sm
+		margin-right: -.5rem
+		margin-left: -.5rem
+		> *
+			padding-right: .5rem
+			padding-left: .5rem
+	&-lg
+		margin-right: -1rem
+		margin-left: -1rem
+		> *
+			padding-right: 1rem
+			padding-left: 1rem
+	&-xl
+		margin-right: -1.5rem
+		margin-left: -1.5rem
+		> *
+			padding-right: 1.5rem
+			padding-left: 1.5rem
+	&-xxl
+		margin-right: -3rem
+		margin-left: -3rem
+		> *
+			padding-right: 3rem
+			padding-left: 3rem
 
 .no-gutters
 	margin-right: 0
@@ -75,20 +102,9 @@ html
 	position: relative
 	width: 100%
 	min-height: 1px
-	padding-right: .75rem
-	padding-left: .75rem
 
-.col-sm
-	padding-right: .5rem
-	padding-left: .5rem
-
-.col-xs
-	padding-right: .375rem
-	padding-left: .375rem
-
-.col-xxs
-	padding-right: .25rem
-	padding-left: .25rem
+.col-sm-state-change, .col-md-state-change, .col-lg-state-change, .col-xl-state-change
+	margin-bottom: 1rem
 
 .col
 	-ms-flex-preferred-size: 0
@@ -293,6 +309,8 @@ html
 		-ms-flex-positive: 1
 		flex-grow: 1
 		max-width: 100%
+	.col-sm-state-change
+		margin-bottom: 0
 	.col-sm-auto
 		-webkit-box-flex: 0
 		-ms-flex: 0 0 auto
@@ -452,6 +470,8 @@ html
 		-ms-flex-positive: 1
 		flex-grow: 1
 		max-width: 100%
+	.col-md-state-change
+		margin-bottom: 0
 	.col-md-auto
 		-webkit-box-flex: 0
 		-ms-flex: 0 0 auto
@@ -611,6 +631,8 @@ html
 		-ms-flex-positive: 1
 		flex-grow: 1
 		max-width: 100%
+	.col-lg-state-change
+		margin-bottom: 0
 	.col-lg-auto
 		-webkit-box-flex: 0
 		-ms-flex: 0 0 auto
@@ -770,6 +792,8 @@ html
 		-ms-flex-positive: 1
 		flex-grow: 1
 		max-width: 100%
+	.col-xl-state-change
+		margin-bottom: 0
 	.col-xl-auto
 		-webkit-box-flex: 0
 		-ms-flex: 0 0 auto

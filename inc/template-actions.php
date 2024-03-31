@@ -142,7 +142,7 @@ if ( ! function_exists( 'after_site_content_structure' ) ) {
 					get_template_part( 'templates/wrapper/wrapper-section-content-end' );
 					break;
 				case 'section-widget':
-					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'before-footer' ) );
+					get_template_part( 'templates/section/section-widget', '', array( 'widget_id' => 'before-footer' ) );
 					break;
 				default:
 					if ( locate_template( '/templates/section/' . $value . '.php' ) !== '' ) {
@@ -196,9 +196,9 @@ if ( ! function_exists( 'after_single_post_structure' ) ) {
 
 		$structure = array(
 			'single-pagination',
+			'single-comments',
 			'section-widget',
 			'single-similar-posts',
-			'single-comments',
 		);
 
 		$structure = apply_filters( 'after_single_post_structure', $structure );

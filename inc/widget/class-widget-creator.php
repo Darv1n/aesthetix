@@ -35,6 +35,11 @@ class WPA_Widget_Creator extends WPA_Widget {
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
+			'creator_link'     => array(
+				'type'  => 'url',
+				'std'   => 'https://zolin.digital/',
+				'label' => __( 'Creator link', 'aesthetix' ),
+			),
 			'background_color' => array(
 				'type'    => 'select',
 				'std'     => get_aesthetix_options( 'root_bg_aside_widgets' ),
@@ -46,10 +51,11 @@ class WPA_Widget_Creator extends WPA_Widget {
 				'std'   => '',
 				'label' => __( 'Background image (used instead of background color)', 'aesthetix' ),
 			),
-			'creator_link'     => array(
-				'type'  => 'url',
-				'std'   => 'https://zolin.digital/',
-				'label' => __( 'Creator link', 'aesthetix' ),
+			'display'          => array(
+				'type'    => 'select',
+				'std'     => 'all',
+				'label'   => __( 'Choose how to display the widget', 'aesthetix' ),
+				'options' => get_aesthetix_customizer_display(),
 			),
 		);
 
@@ -68,9 +74,10 @@ class WPA_Widget_Creator extends WPA_Widget {
 		$this->widget_start( $args, $instance );
 
 		$template_args                     = array();
+		$template_args['creator_link']     = isset( $instance['creator_link'] ) ? $instance['creator_link'] : $this->settings['creator_link']['std'];
 		$template_args['background_color'] = isset( $instance['background_color'] ) ? $instance['background_color'] : $this->settings['background_color']['std'];
 		$template_args['background_image'] = isset( $instance['background_image'] ) ? $instance['background_image'] : $this->settings['background_image']['std'];
-		$template_args['creator_link']     = isset( $instance['creator_link'] ) ? $instance['creator_link'] : $this->settings['creator_link']['std'];
+		$template_args['display']          = isset( $instance['display'] ) ? $instance['display'] : $this->settings['display']['std'];
 
 		get_template_part( 'templates/widget/widget-creator', '', $template_args );
 

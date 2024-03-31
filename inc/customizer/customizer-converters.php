@@ -587,7 +587,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_display' ) ) {
 		}
 
 		if ( $control === 'front-page' ) {
-			if ( ( is_front_page() || is_home() ) && is_paged() ) {
+			if ( ( is_front_page() || is_home() ) && ! is_paged() ) {
 				$display = true;
 			}
 		}

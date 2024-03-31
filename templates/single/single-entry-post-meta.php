@@ -33,7 +33,7 @@ if ( is_array( $args['post_meta_structure'] ) && ! empty( $args['post_meta_struc
 					<?php break;
 				case 'date': ?>
 					<li class="post-entry-meta-item icon icon-before icon-calendar">
-						<time class="post-date published data-title" datetime="<?php echo get_the_date( 'Y-m-d\TH:i:sP' ); ?>" data-title="<?php esc_attr_e( 'Publication date', 'aesthetix' ); ?>"><?php echo get_the_date( 'j F, Y' ); ?></time>
+						<time class="post-date published data-title" datetime="<?php echo get_the_date( 'Y-m-d\TH:i:sP' ); ?>" data-title="<?php esc_attr_e( 'Publication date', 'aesthetix' ); ?>"><?php echo get_the_date( 'j M, Y' ); ?></time>
 					</li>
 					<?php break;
 				case 'category': ?>

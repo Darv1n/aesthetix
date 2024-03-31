@@ -27,9 +27,7 @@ if ( ! function_exists( 'aesthetix_shortcode_logo' ) ) {
 			'logo_size' => get_aesthetix_options( 'title_tagline_logo_size' ),
 		);
 
-		$args = shortcode_atts( $defaults, $atts );
-
-		return return_template_part( 'templates/widget/widget-logo', '', $args );
+		return return_template_part( 'templates/widget/widget-logo', '', shortcode_atts( $defaults, $atts ) );
 	}
 }
 add_shortcode( 'aesthetix-logo', 'aesthetix_shortcode_logo' );

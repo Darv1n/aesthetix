@@ -34,8 +34,6 @@ if ( ! function_exists( 'get_table_of_contents' ) ) {
 		// Perform a regular expression match on the post content.
 		preg_match_all( $pattern, $post->post_content, $matches );
 
-		// vardump( $matches );
-
 		if ( count( $matches ) > 0 ) {
 
 			$levels = array_flip( array_unique( $matches[1] ) );
@@ -54,8 +52,6 @@ if ( ! function_exists( 'get_table_of_contents' ) ) {
 				$table_of_contents[ $key ][ 'title' ] = $matches[3][ $key ];
 			}
 		}
-		
-		// vardump( $table_of_contents );
 		
 		return $table_of_contents;
 	}

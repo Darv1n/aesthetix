@@ -12,14 +12,14 @@
 	<div <?php aesthetix_container_classes( 'container-outer' ); ?>>
 		<div <?php aesthetix_container_classes( 'container-inner' ); ?>>
 			<div <?php aesthetix_archive_page_columns_wrapper_classes( 'align-items-center' ); ?>>
-				<div class="col-12 col-xs-12 col-md-6">
+				<div class="col-12 col-md-6 col-md-state-change">
 					<?php if ( is_active_sidebar( 'header-top-left' ) ) { ?>
 						<div <?php widgets_classes( '', 'header-top-left' ); ?>>
 							<?php dynamic_sidebar( 'header-top-left' ); ?>
 						</div>
 					<?php } ?>
 				</div>
-				<div class="col-12 col-xs-12 col-md-6">
+				<div class="col-12 col-md-6">
 					<?php if ( is_active_sidebar( 'header-top-right' ) ) { ?>
 						<div <?php widgets_classes( '', 'header-top-right' ); ?>>
 							<?php dynamic_sidebar( 'header-top-right' ); ?>

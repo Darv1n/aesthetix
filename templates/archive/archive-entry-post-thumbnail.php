@@ -46,7 +46,7 @@ if ( has_post_format() && $args['post_format'] === 'gallery' && get_post_meta( g
 
 		<figure class="post-thumbnail">
 			<a href="<?php the_permalink(); ?>" class="post-thumbnail-link" tabindex="-1">
-				<?php $default_thumbnail_file_path = apply_filters( 'default_thumbnail_file_path', '/assets/img/default-thumbnail.jpg' );
+				<?php $default_thumbnail_file_path = apply_filters( 'default_thumbnail_file_path', '/assets/img/placeholder.jpg' );
 
 				if ( file_exists( get_theme_file_path( $default_thumbnail_file_path ) ) ) {
 					list( $width, $height, $type, $attr ) = getimagesize( get_theme_file_path( $default_thumbnail_file_path ) ); ?>

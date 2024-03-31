@@ -1,32 +1,77 @@
 .widgets
-	> *
-		&:not(:last-child)
-			margin-bottom: 2rem
-	&-left
-		text-align: left
-	&-center
-		text-align: center
-	&-right
-		text-align: right
+	&-block
+		> *
+			margin-bottom: 1.5rem
+			&:last-child
+				margin-bottom: 0
+		&.widgets-main
+			> *
+				margin-bottom: 3rem
+				&:last-child
+					margin-bottom: 0
 	&-inline
-		.widget-primary-menu
-			margin-right: 1rem
+		margin-bottom: 0
 		> *
 			margin-bottom: .125rem
-			margin-right: .5rem
+			margin-right: .375rem
 			display: inline-block
 			vertical-align: middle
-			&:not(:last-child)
-				margin-bottom: .125rem
 			&:last-child
-				margin-right: 0 !important
+				margin-right: 0
+				margin-bottom: .125rem
 
-.footer .widgets
-	margin-bottom: 1.5rem
+@media (min-width: 576px)
+	.widgets
+		&-sm-inline
+			margin-bottom: 0
+			> *
+				margin-bottom: .125rem
+				margin-right: .375rem
+				display: inline-block
+				vertical-align: middle
+				&:last-child
+					margin-right: 0
+					margin-bottom: .125rem
+
+@media (min-width: 768px)
+	.widgets-md-inline
+		margin-bottom: 0
+		> *
+			margin-bottom: .125rem
+			margin-right: .375rem
+			display: inline-block
+			vertical-align: middle
+			&:last-child
+				margin-right: 0
+				margin-bottom: .125rem
+
+@media (min-width: 992px)
+	.widgets-lg-inline
+		margin-bottom: 0
+		> *
+			margin-bottom: .125rem
+			margin-right: .375rem
+			display: inline-block
+			vertical-align: middle
+			&:last-child
+				margin-right: 0
+				margin-bottom: .125rem
+
+@media (min-width: 1200px)
+	.widgets-xl-inline
+		margin-bottom: 0
+		> *
+			margin-bottom: .125rem
+			margin-right: .375rem
+			display: inline-block
+			vertical-align: middle
+			&:last-child
+				margin-right: 0
+				margin-bottom: .125rem
 
 .widget
 	position: relative
-	&-title
+	&title, &-title
 		@extend .h4
 		margin-bottom: .5rem
 	&-subtitle, &-description
@@ -42,12 +87,20 @@
 	&-secondary
 		background: $secondary-color-50
 	&-title-wrap
-		margin-bottom: .5rem
-		> *:not(:last-child)
+		margin-bottom: .75rem
+		> *
 			margin-bottom: .25rem
+			&:last-child
+				margin-bottom: 0
 	&-menu-title
 		@extend .h6
-		margin: .25rem 0
+		margin-bottom: .25rem
+	&-menus
+		nav
+			margin-bottom: .375rem
+	&-header-top-left, &-header-top-right, &-footer-top-left, &-footer-top-right, &-footer-bottom-left, &-footer-bottom-right
+		.menu
+			@extend .list-inline
 	&_recent_entries
 		a
 			@extend .link

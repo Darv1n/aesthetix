@@ -16,7 +16,6 @@ require_once ABSPATH . '/wp-admin/includes/taxonomy.php';
 
 // Setup.
 require_once get_template_directory() . '/inc/meta-boxes.php';
-require_once get_template_directory() . '/inc/register-post-types.php';
 require_once get_template_directory() . '/inc/template-actions.php';
 require_once get_template_directory() . '/inc/template-filters.php';
 require_once get_template_directory() . '/inc/template-functions.php';
@@ -44,7 +43,7 @@ require_once get_template_directory() . '/inc/customizer/customizer-sortable.php
 require_once get_template_directory() . '/inc/customizer/customizer.php';
 
 // Widgets.
-require_once get_template_directory() . '/inc/widget/abstract-widget.php';
+require_once get_template_directory() . '/inc/widget/class-widget-abstract.php';
 require_once get_template_directory() . '/inc/widget/class-widget-adv-banner.php';
 require_once get_template_directory() . '/inc/widget/class-widget-breadcrumbs.php';
 require_once get_template_directory() . '/inc/widget/class-widget-buttons.php';
@@ -64,23 +63,13 @@ require_once get_template_directory() . '/inc/widget/class-widget-subscribe-popu
 require_once get_template_directory() . '/inc/widget/class-widget-table-of-contents.php';
 require_once get_template_directory() . '/inc/widget/class-widget-use-materials.php';
 require_once get_template_directory() . '/inc/widget/class-widget-user.php';
-require_once get_template_directory() . '/inc/widget/widget-defaults.php';
 require_once get_template_directory() . '/inc/widget/widget-init.php';
 
 // Shortcodes.
 require_once get_template_directory() . '/inc/shortcode/shortcode-adv-banner.php';
-require_once get_template_directory() . '/inc/shortcode/shortcode-buttons.php';
-require_once get_template_directory() . '/inc/shortcode/shortcode-contacts.php';
-require_once get_template_directory() . '/inc/shortcode/shortcode-copyright.php';
-require_once get_template_directory() . '/inc/shortcode/shortcode-creator.php';
 require_once get_template_directory() . '/inc/shortcode/shortcode-current-date.php';
 require_once get_template_directory() . '/inc/shortcode/shortcode-current-year.php';
-require_once get_template_directory() . '/inc/shortcode/shortcode-language-switcher.php';
 require_once get_template_directory() . '/inc/shortcode/shortcode-logo.php';
-require_once get_template_directory() . '/inc/shortcode/shortcode-search-toggle.php';
-require_once get_template_directory() . '/inc/shortcode/shortcode-socials.php';
-require_once get_template_directory() . '/inc/shortcode/shortcode-subscribe-toggle.php';
-require_once get_template_directory() . '/inc/shortcode/shortcode-use-materials.php';
 
 // Notices.
 require_once get_template_directory() . '/inc/admin/notice.php';

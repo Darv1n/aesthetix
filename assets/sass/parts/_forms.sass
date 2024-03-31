@@ -62,17 +62,19 @@ textarea
 		appearance: none !important
 
 form
-	@extend .mb
 	*
 		hyphens: none
 		outline: none
-	label, input, select, textarea
-		@extend .mb
-		max-width: 480px
+	> *
+		margin-bottom: .75rem
+		&:last-child
+			margin-bottom: 0
 	label
 		display: block
 		> *:last-child
 			margin-bottom: 0
+	label, input, select, textarea
+		max-width: 480px
 	textarea
 		min-height: 140px
 
@@ -464,9 +466,6 @@ input[type="submit"]
 			border: none
 
 .form
-	margin-bottom: 0
-	> *:not(:last-child)
-		margin-bottom: .75rem
 	.notification
 		max-width: 480px
 	&-confirm-text
@@ -485,6 +484,14 @@ input[type="submit"]
 		right: 0
 		height: 100%
 		box-shadow: none
+
+.wp-lightbox-overlay .close-button
+	box-shadow: none
+	color: $text-color
+	transition: $transition
+	&:hover, &:focus, &:active
+		color: $text-color
+		opacity: .65
 
 // Resets.
 .button

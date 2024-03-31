@@ -36,11 +36,9 @@ if ( is_single() ) {
 				} ?>
 
 				<li class="toc-list-item level-<?php echo esc_attr( $table_of_content['level'] ); ?>">
-					<a <?php link_classes(); ?> href="<?php echo esc_url( get_permalink( $post_id ) . '#' . $anchor ); ?>"><?php echo esc_html( wp_strip_all_tags( $table_of_content['title'] ) ); ?></a>
+					<a <?php link_classes(); ?> href="<?php echo esc_attr( '#' . $anchor ); ?>"><?php echo esc_html( wp_strip_all_tags( $table_of_content['title'] ) ); ?></a>
 				</li>
 			<?php } ?>
 		</ul>
 	<?php }
-
-	// vardump( $table_of_contents );
 }

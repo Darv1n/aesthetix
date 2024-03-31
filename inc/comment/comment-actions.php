@@ -26,18 +26,20 @@ if ( ! function_exists( 'aesthetix_pre_get_comments' ) ) {
 		}
 
 		// Exclude non-confirmed comments.
-		$meta_query_args = array(
-			'relation' => 'OR',
-			array(
-				'key'     => 'confirm',
-				'value'   => '1',
-				'compare' => '=',
-			),
-			array(
-				'key'     => 'confirm',
-				'compare' => 'NOT EXISTS',
-			),
-		);
+		if ( get_aesthetix_options( 'comments_ajax' ) ) {
+			$meta_query_args = array(
+				'relation' => 'OR',
+				array(
+					'key'     => 'confirm',
+					'value'   => '1',
+					'compare' => '=',
+				),
+				array(
+					'key'     => 'confirm',
+					'compare' => 'NOT EXISTS',
+				),
+			);
+		}
 
 		if ( isset( $_COOKIE['author_comments_' . COOKIEHASH ] ) ) {
 			$comments_ids = json_decode( stripslashes( $_COOKIE['author_comments_' . COOKIEHASH ] ) );
@@ -51,7 +53,9 @@ if ( ! function_exists( 'aesthetix_pre_get_comments' ) ) {
 					$query->query_vars['comment__not_in'] = array_unique( array_diff( $nonconfirmed_comments, $comments_ids ) );
 				}
 			}
-		} elseif ( ! is_user_logged_in() || ! current_user_can( 'moderate_comments' ) ) {
+		}
+
+		if ( isset( $meta_query_args ) && ! is_user_logged_in() || ! current_user_can( 'moderate_comments' ) ) {
 			$query->query_vars['meta_query'] = $meta_query_args;
 		}
 	}

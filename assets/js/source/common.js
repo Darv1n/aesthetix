@@ -47,17 +47,28 @@ $( document ).ready( function() {
 	$( 'body' ).on( 'click', '.notification-button', function( e ) {
 		$( this ).closest( '.notification' ).remove();
 	} );
+
+	$( '.toc-list a' ).on( 'click', function( e ) {
+
+		var id = $( this ).attr( 'href' );
+
+		if ( $( id ).length === 1 ) {
+			$( 'html, body' ).animate( { scrollTop: $( id ).position().top }, 'slow' );
+		}
+
+		e.preventDefault();
+	} );
+
+	initStickySidebar();
 } );
 
 $( window ).on( 'load', function() {
-	headerMobileButtons();
-	initStickySidebar();
+	// initStickySidebar();
 	initCookieAcceper();
 	notificationButton();
 } );
 
 $( window ).on( 'resize', function() {
-	headerMobileButtons();
 	initStickySidebar();
 } );
 
@@ -95,7 +106,7 @@ function initStickySidebar() {
 		}
 
 		sidebar.stick_in_parent( {
-			parent: '#section-content',
+			parent: '#aside',
 			offset_top: sidebarOffset,
 		} );
 
@@ -127,22 +138,5 @@ function initCookieAcceper() {
 		if ( 'on' === localStorage.getItem( 'cookieAccept' ) ) {
 			localStorage.setItem( 'cookieAccept', 'off' );
 		}
-	}
-}
-
-// Header Mobile Buttons.
-// TODO Переделать
-function headerMobileButtons() {
-
-	var sumWidth = 0;
-
-	$( '.widgets-header-mobile-right .widget' ).each( function() {
-		sumWidth += $( this ).width();
-	} );
-
-	if ( sumWidth > $( '.widgets-header-mobile-right' ).width() ) {
-		$( '.widgets-header-mobile-right .button' ).each( function() {
-			$( this ).addClass( 'button-icon' ).removeClass( 'icon-before' ).empty();
-		} );
 	}
 }

@@ -7,19 +7,17 @@
  * @package Aesthetix
  */
 
-$url    = get_comment_author_url( $args['comment'] );
-$author = get_comment_author( $args['comment'] );
+$url         = get_comment_author_url( $args['comment'] );
+$author      = get_comment_author( $args['comment'] );
+$avatar_size = 44;
+$avatar_url  = get_avatar_url( $args['comment']->user_id, array( 'size' => $avatar_size ) );
 
 ?>
 
 <div class="comment-header">
 
 	<div class="comment-avatar">
-		<?php if ( $args['comment']->comment_type === 'deleted' ) {
-			echo get_avatar( $args['comment'], $args['avatar_size'], 'mystery' );
-		} else {
-			echo get_avatar( $args['comment'], $args['avatar_size'] );
-		} ?>
+		<img class="avatar avatar-<?php echo esc_attr( $avatar_size ); ?>" src="<?php echo esc_url( $avatar_url ); ?>" alt="<?php $author; ?>" width="<?php echo esc_attr( $avatar_size ); ?>" height="<?php echo esc_attr( $avatar_size ); ?>">
 	</div>
 
 	<?php if ( $url && $author ) { ?>
@@ -30,7 +28,7 @@ $author = get_comment_author( $args['comment'] );
 
 	<ul class="comment-meta">
 		<li class="comment-meta-item">
-			<time class="comment-date data-title" data-title="<?php esc_attr_e( 'Published date', 'aesthetix' ); ?>" datetime="<?php echo get_comment_date( 'Y-m-d\TH:i:sP', $args['comment']->comment_ID ); ?>"><?php echo get_comment_date( 'j F Y', $args['comment']->comment_ID ); ?></time>
+			<time class="comment-date data-title" data-title="<?php esc_attr_e( 'Published date', 'aesthetix' ); ?>" datetime="<?php echo get_comment_date( 'Y-m-d\TH:i:sP', $args['comment']->comment_ID ); ?>"><?php echo get_comment_date( 'j M, Y', $args['comment']->comment_ID ); ?></time>
 		</li>
 		<?php if ( wp_http_validate_url( $url ) && $args['comment']->comment_type !== 'deleted' ) { ?>
 			<li class="comment-meta-item">

@@ -35,6 +35,16 @@ class WPA_Widget_User extends WPA_Widget {
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
+			'display_user'     => array(
+				'type'    => 'select',
+				'std'     => 'post_author_default_admin',
+				'label'   => __( 'Select which user to display', 'aesthetix' ),
+				'options' => array( 
+					'admin_only'                => __( 'Only admin', 'aesthetix' ),
+					'post_author_only'          => __( 'Only post author', 'aesthetix' ),
+					'post_author_default_admin' => __( 'Post author, default admin', 'aesthetix' ),
+				),
+			),
 			'background_color' => array(
 				'type'    => 'select',
 				'std'     => get_aesthetix_options( 'root_bg_aside_widgets' ),
@@ -46,15 +56,11 @@ class WPA_Widget_User extends WPA_Widget {
 				'std'   => '',
 				'label' => __( 'Background image (used instead of background color)', 'aesthetix' ),
 			),
-			'display_user'     => array(
+			'display'          => array(
 				'type'    => 'select',
-				'std'     => 'post_author_default_admin',
-				'label'   => __( 'Select which user to display', 'aesthetix' ),
-				'options' => array( 
-					'admin_only'                => __( 'Only admin', 'aesthetix' ),
-					'post_author_only'          => __( 'Only post author', 'aesthetix' ),
-					'post_author_default_admin' => __( 'Post author, default admin', 'aesthetix' ),
-				),
+				'std'     => 'all',
+				'label'   => __( 'Choose how to display the widget', 'aesthetix' ),
+				'options' => get_aesthetix_customizer_display(),
 			),
 		);
 
@@ -73,11 +79,12 @@ class WPA_Widget_User extends WPA_Widget {
 		$this->widget_start( $args, $instance );
 
 		$template_args                     = array();
+		$template_args['display_user']     = isset( $instance['display_user'] ) ? $instance['display_user'] : $this->settings['display_user']['std'];
 		$template_args['background_color'] = isset( $instance['background_color'] ) ? $instance['background_color'] : $this->settings['background_color']['std'];
 		$template_args['background_image'] = isset( $instance['background_image'] ) ? $instance['background_image'] : $this->settings['background_image']['std'];
-		$template_args['display_user']     = isset( $instance['display_user'] ) ? $instance['display_user'] : $this->settings['display_user']['std'];
+		$template_args['display']          = isset( $instance['display'] ) ? $instance['display'] : $this->settings['display']['std'];
 
-		if ( ! in_array( $args['id'], array( 'before-post-content', 'after-post-content' ), true ) ) {
+		if ( isset( $args['id'] ) && ! in_array( $args['id'], array( 'before-post-content', 'after-post-content' ), true ) ) {
 			$template_args['container_class'] = 'user-aside';
 		}
 

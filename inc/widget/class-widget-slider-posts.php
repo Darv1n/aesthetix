@@ -35,23 +35,6 @@ class WPA_Widget_Slider_Posts extends WPA_Widget {
 				'std'   => '',
 				'label' => __( 'Description', 'aesthetix' ) . ' (' . mb_strtolower( __( 'After title', 'aesthetix' ) ) . ')',
 			),
-			'display'             => array(
-				'type'    => 'select',
-				'std'     => 'all',
-				'label'   => __( 'Choose how to display the widget', 'aesthetix' ),
-				'options' => get_aesthetix_customizer_display(),
-			),
-			'background_color'    => array(
-				'type'    => 'select',
-				'std'     => get_aesthetix_options( 'root_bg_aside_widgets' ),
-				'label'   =>__( 'Background color', 'aesthetix' ),
-				'options' => get_aesthetix_customizer_background_colors(),
-			),
-			'background_image'    => array(
-				'type'  => 'image',
-				'std'   => '',
-				'label' => __( 'Background image (used instead of background color)', 'aesthetix' ),
-			),
 			'posts_to_show'       => array(
 				'type'  => 'number',
 				'min'   => 1,
@@ -104,6 +87,23 @@ class WPA_Widget_Slider_Posts extends WPA_Widget {
 				'label'   => __( 'Post meta structure', 'aesthetix' ),
 				'options' => get_aesthetix_customizer_post_meta_structure(),
 			),
+			'background_color'    => array(
+				'type'    => 'select',
+				'std'     => get_aesthetix_options( 'root_bg_aside_widgets' ),
+				'label'   =>__( 'Background color', 'aesthetix' ),
+				'options' => get_aesthetix_customizer_background_colors(),
+			),
+			'background_image'    => array(
+				'type'  => 'image',
+				'std'   => '',
+				'label' => __( 'Background image (used instead of background color)', 'aesthetix' ),
+			),
+			'display'             => array(
+				'type'    => 'select',
+				'std'     => 'all',
+				'label'   => __( 'Choose how to display the widget', 'aesthetix' ),
+				'options' => get_aesthetix_customizer_display(),
+			),
 		);
 
 		parent::__construct();
@@ -120,20 +120,21 @@ class WPA_Widget_Slider_Posts extends WPA_Widget {
 	public function widget( $args, $instance ) {
 		$this->widget_start( $args, $instance );
 
-		$post_args                        = array();
-		$post_args['background_color']    = isset( $instance['background_color'] ) ? $instance['background_color'] : $this->settings['background_color']['std'];
-		$post_args['background_image']    = isset( $instance['background_image'] ) ? $instance['background_image'] : $this->settings['background_image']['std'];
-		$post_args['posts_to_show']       = isset( $instance['posts_to_show'] ) ? $instance['posts_to_show'] : $this->settings['posts_to_show']['std'];
-		$post_args['posts_per_page']      = isset( $instance['posts_per_page'] ) ? $instance['posts_per_page'] : $this->settings['posts_per_page']['std'];
-		$post_args['order']               = isset( $instance['posts_order'] ) ? $instance['posts_order'] : $this->settings['posts_order']['std'];
-		$post_args['orderby']             = isset( $instance['posts_orderby'] ) ? $instance['posts_orderby'] : $this->settings['posts_orderby']['std'];
-		$post_args['post_title_size']     = isset( $instance['post_title_size'] ) ? $instance['post_title_size'] : $this->settings['post_title_size']['std'];
-		$post_args['post_layout']         = isset( $instance['post_layout'] ) ? $instance['post_layout'] : $this->settings['post_layout']['std'];
-		$post_args['post_structure']      = isset( $instance['post_structure'] ) ? $instance['post_structure'] : $this->settings['post_structure']['std'];
-		$post_args['post_meta_structure'] = isset( $instance['post_meta_structure'] ) ? $instance['post_meta_structure'] : $this->settings['post_meta_structure']['std'];
-		$post_args['button_size']         = 'xxs';
+		$template_args                        = array();
+		$template_args['posts_to_show']       = isset( $instance['posts_to_show'] ) ? $instance['posts_to_show'] : $this->settings['posts_to_show']['std'];
+		$template_args['posts_per_page']      = isset( $instance['posts_per_page'] ) ? $instance['posts_per_page'] : $this->settings['posts_per_page']['std'];
+		$template_args['order']               = isset( $instance['posts_order'] ) ? $instance['posts_order'] : $this->settings['posts_order']['std'];
+		$template_args['orderby']             = isset( $instance['posts_orderby'] ) ? $instance['posts_orderby'] : $this->settings['posts_orderby']['std'];
+		$template_args['post_title_size']     = isset( $instance['post_title_size'] ) ? $instance['post_title_size'] : $this->settings['post_title_size']['std'];
+		$template_args['post_layout']         = isset( $instance['post_layout'] ) ? $instance['post_layout'] : $this->settings['post_layout']['std'];
+		$template_args['post_structure']      = isset( $instance['post_structure'] ) ? $instance['post_structure'] : $this->settings['post_structure']['std'];
+		$template_args['post_meta_structure'] = isset( $instance['post_meta_structure'] ) ? $instance['post_meta_structure'] : $this->settings['post_meta_structure']['std'];
+		$template_args['button_size']         = 'xxs';
+		$template_args['background_color']    = isset( $instance['background_color'] ) ? $instance['background_color'] : $this->settings['background_color']['std'];
+		$template_args['background_image']    = isset( $instance['background_image'] ) ? $instance['background_image'] : $this->settings['background_image']['std'];
+		$template_args['display']             = isset( $instance['display'] ) ? $instance['display'] : $this->settings['display']['std'];
 
-		get_template_part( 'templates/widget/widget-slider-posts', '', $post_args );
+		get_template_part( 'templates/widget/widget-slider-posts', '', $template_args );
 
 		$this->widget_end( $args, $instance );
 	}

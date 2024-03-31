@@ -11,29 +11,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Remove autogen styles with .wp-block-button__link and .wp-block-file__button classes
-add_action( 'wp_enqueue_scripts', function() {
-	wp_dequeue_style( 'classic-theme-styles' );
-}, 20 );
-
-// Button block additional class.
 add_filter( 'render_block', function( $block_content, $block ) {
 
-/*	$block_content = str_replace(
-		'wp-block-button__link',
-		implode( ' ', get_button_classes() ),
-		$block_content
-	);*/
+	// Replacement of search form layout.
+	if ( $block['blockName'] === 'core/search' ) {
+		$block_content = get_search_form( array( 'echo' => false ) );
+	}
 
-	if ( $block['blockName'] === 'core/heading' ) {
+	// Add IDs to h1-h6 tags for ToC's work.
+	if ( is_single() && $block['blockName'] === 'core/heading' ) {
 
 		// Define a regular expression pattern to match HTML heading tags.
 		$pattern = '/<h([1-6])([^>]*)>([^<]+)<\/h\\1>/iu';
 
 		// Perform a regular expression match on the post content.
 		preg_match_all( $pattern, $block_content, $matches );
+
 		// Filter html id.
 		if ( isset( $matches[2], $matches[2][0] ) ) {
+
 			$pattern = '/id="([^"]+)"/';
 			preg_match( $pattern, $matches[2][0], $match_id );
 

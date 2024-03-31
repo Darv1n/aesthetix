@@ -34,10 +34,6 @@
 						<?php } ?>
 
 						<?php
-							if ( in_array( get_aesthetix_options( 'root_button_size' ), array( 'lg', 'xl' ), true ) ) {
-								$args['button_size'] = 'md';
-							}
-
 							if ( in_array( get_aesthetix_options( 'root_menu_button_content' ), array( 'button-icon-text', 'button-text', 'button-icon' ), true ) ) {
 								$args['button_content'] = 'button-icon';
 							} else {

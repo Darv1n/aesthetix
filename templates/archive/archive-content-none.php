@@ -12,7 +12,7 @@
 	<h2 class="content-area-title"><?php esc_html_e( 'Nothing found', 'aesthetix' ); ?></h2>
 </header>
 
-<section class="content-area-content" aria-label="<?php esc_attr_e( 'Page content', 'aesthetix' ); ?>">
+<section class="content-area-loop" aria-label="<?php esc_attr_e( 'Page content', 'aesthetix' ); ?>">
 	<div class="no-results-content">
 		<?php if ( is_home() && current_user_can( 'publish_posts' ) ) { ?>
 			<?php printf( '<p>' . wp_kses( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>', 'aesthetix' ), array( 'a' => array( 'href' => array() ) ) ) . '</p>', esc_url( admin_url( 'post-new.php' ) ) ); ?>

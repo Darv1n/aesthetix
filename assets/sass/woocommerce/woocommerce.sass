@@ -159,8 +159,9 @@
 			> span
 				display: inline-block
 				align-items: center
-				&:not(:last-child)
-					margin-right: 1rem
+				margin-right: 1rem
+				&:last-child
+					margin-right: 0
 		.woocommerce-product-rating
 			margin-bottom: .25rem
 		.single-product-category
@@ -241,9 +242,10 @@
 					float: left
 					list-style: none
 					margin-bottom: .5rem
+					margin-right: .5rem
 					max-width: 100px
-					&:not(:last-child)
-						margin-right: .5rem
+					&:last-child
+						margin-right: 0
 					img
 						cursor: pointer
 						opacity: .5
@@ -385,8 +387,9 @@
 				clear: both
 			> *
 				margin-bottom: 0
-				&:not(:last-child)
-					margin-right: $margin
+				margin-right: 1rem
+				&:last-child
+					margin-right: 0
 			.quantity
 				.qty
 					margin-bottom: 0

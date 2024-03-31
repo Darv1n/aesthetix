@@ -370,13 +370,13 @@ if ( ! function_exists( 'get_aesthetix_content_area_classes' ) ) {
 		// Add elements to array.
 		$classes[] = 'col-12';
 		$classes[] = 'order-2';
-		$classes[] = 'col-sm-12';
 
 		$sidebar = apply_filters( 'get_aesthetix_sidebar', 'main' );
 
 		if ( is_active_sidebar( $sidebar ) ) {
 			$classes[] = 'col-lg-8';
 			$classes[] = 'col-xl-9';
+			$classes[] = 'col-lg-state-change';
 		}
 
 		$classes[] = 'content-area';
@@ -440,9 +440,9 @@ if ( ! function_exists( 'get_aesthetix_widget_area_classes' ) ) {
 		$classes[] = 'widget-area';
 
 		$classes[] = 'col-12';
-		$classes[] = 'col-sm-12';
 		$classes[] = 'col-lg-4';
 		$classes[] = 'col-xl-3';
+		$classes[] = 'col-lg-state-change';
 
 		if ( get_aesthetix_options( 'general_sidebar_align' ) === 'left' ) {
 			$classes[] = 'order-3';
@@ -641,10 +641,14 @@ if ( ! function_exists( 'get_aesthetix_archive_page_columns_wrapper_classes' ) )
 
 		// Add elements to array.
 		$classes[] = 'row';
-		$classes[] = 'row-' . get_aesthetix_options( 'archive_' . $post_type . '_columns' ) . '-col';
 
 		if ( in_array( 'loop', $classes, true ) && get_aesthetix_options( 'archive_' . get_post_type() . '_masonry' ) ) {
-			$classes[] = 'masonry-gallery';
+
+			$classes[] = 'row-' . get_aesthetix_options( 'archive_' . $post_type . '_columns' ) . '-col';
+
+			if ( get_aesthetix_options( 'archive_' . get_post_type() . '_masonry' ) ) {
+				$classes[] = 'masonry-gallery';
+			}
 		}
 
 		// Add filter to array.
@@ -1217,12 +1221,12 @@ if ( ! function_exists( 'get_widgets_classes' ) ) {
 	/**
 	 * Get classes for widgets.
 	 *
-	 * @param string $class Widgets classes. Default ''.
-	 * @param string $id    Widgets ID. Default null.
+	 * @param string $class      Widgets classes. Default ''.
+	 * @param string $sidebar_id Sidebar ID. Default null.
 	 *
 	 * @return array
 	 */
-	function get_widgets_classes( $class = '', $id = null ) {
+	function get_widgets_classes( $class = '', $sidebar_id = null ) {
 
 		// Check the function has accepted any classes.
 		if ( isset( $class ) && ! empty( $class ) ) {
@@ -1240,28 +1244,60 @@ if ( ! function_exists( 'get_widgets_classes' ) ) {
 		// Add elements to array.
 		$classes[] = 'widgets';
 
-		if ( ! is_null( $id ) ) {
+		if ( ! is_null( $sidebar_id ) ) {
 
-			$classes[] = 'widgets-' . $id;
+			$classes[] = 'widgets-' . $sidebar_id;
 
-			if ( in_array( $id, array( 'header-mobile-left', 'header-mobile-center', 'header-mobile-right', 'header-main-left', 'header-top-left', 'header-top-right', 'header-main-left', 'header-main-center', 'header-main-right', 'header-bottom-left', 'header-bottom-center', 'header-bottom-right', 'footer-top-left', 'footer-top-right', 'footer-bottom-left', 'footer-bottom-right' ), true ) ) {
-				$classes[] = 'widgets-inline';
+			if ( in_array( $sidebar_id, array( 'header-mobile-left', 'header-mobile-center', 'header-mobile-right', 'header-main-left', 'header-top-left', 'header-top-right', 'header-main-left', 'header-main-center', 'header-main-right', 'header-bottom-left', 'header-bottom-center', 'header-bottom-right', 'footer-top-left', 'footer-top-right', 'footer-bottom-left', 'footer-bottom-right' ), true ) ) {
+				
 				$classes[] = 'd-flex';
-				$classes[] = 'align-items-center';
+
+				if ( in_array( $sidebar_id, array( 'header-top-left', 'header-top-right', 'footer-bottom-left', 'footer-bottom-right' ), true ) ) {
+
+					$classes[] = 'widgets-md-inline';
+					$classes[] = 'align-items-md-center';
+
+					if ( str_contains( $sidebar_id, 'left' ) ) {
+						$classes[] = 'justify-content-md-start';
+					} elseif ( str_contains( $sidebar_id, 'right' ) ) {
+						$classes[] = 'justify-content-md-end';
+					} elseif ( str_contains( $sidebar_id, 'center' ) ) {
+						$classes[] = 'justify-content-md-center';
+					}
+				} elseif ( in_array( $sidebar_id, array( 'footer-top-left', 'footer-top-right' ), true ) ) {
+
+					$classes[] = 'widgets-sm-inline';
+					$classes[] = 'align-items-sm-center';
+
+					if ( str_contains( $sidebar_id, 'left' ) ) {
+						$classes[] = 'justify-content-sm-start';
+					} elseif ( str_contains( $sidebar_id, 'right' ) ) {
+						$classes[] = 'justify-content-sm-end';
+					} elseif ( str_contains( $sidebar_id, 'center' ) ) {
+						$classes[] = 'justify-content-sm-center';
+					}
+
+				} else {
+
+					$classes[] = 'widgets-inline';
+					$classes[] = 'align-items-center';
+
+					if ( str_contains( $sidebar_id, 'left' ) ) {
+						$classes[] = 'justify-content-start';
+					} elseif ( str_contains( $sidebar_id, 'right' ) ) {
+						$classes[] = 'justify-content-end';
+					} elseif ( str_contains( $sidebar_id, 'center' ) ) {
+						$classes[] = 'justify-content-center';
+					}
+
+				}
 			}
 
-			if ( str_contains( $id, 'left' ) ) {
-				$classes[] = 'widgets-left';
-				$classes[] = 'justify-content-start';
-			} elseif ( str_contains( $id, 'right' ) ) {
-				$classes[] = 'widgets-right';
-				$classes[] = 'justify-content-end';
-			} elseif ( str_contains( $id, 'center' ) ) {
-				$classes[] = 'widgets-center';
-				$classes[] = 'justify-content-center';
+			if ( ! in_array( 'widgets-inline', $classes, true ) ) {
+				$classes[] = 'widgets-block';
 			}
 
-			if ( $id === 'main' && get_aesthetix_options( 'general_sidebar_stuck' ) ) {
+			if ( $sidebar_id === 'main' && get_aesthetix_options( 'general_sidebar_stuck' ) ) {
 				$classes[] = 'sidebar-main';
 				$classes[] = 'sidebar-stuck';
 			}
@@ -1282,14 +1318,14 @@ if ( ! function_exists( 'widgets_classes' ) ) {
 	 * Display classes for widgets.
 	 *
 	 * @param string $class Additional widgets classes. Default ''.
-	 * @param string $id    Widgets id. Default null.
+	 * @param string $sidebar_id Sidebar ID. Default null.
 	 * @param bool   $echo  Echo or return widgets classes.
 	 *
 	 * @return string|void
 	 */
-	function widgets_classes( $class = '', $id = null, $echo = true ) {
+	function widgets_classes( $class = '', $sidebar_id = null, $echo = true ) {
 
-		$classes = get_widgets_classes( $class, $id );
+		$classes = get_widgets_classes( $class, $sidebar_id );
 
 		if ( $echo ) {
 			echo 'class="' . esc_attr( implode( ' ', $classes ) ) . '"';
@@ -1360,7 +1396,7 @@ if ( ! function_exists( 'widget_classes' ) ) {
 	 * Display classes for widgets.
 	 *
 	 * @param string $class      Additional widget classes. Default ''.
-	 * @param string $sidebar_id Sideabr ID. Default null.
+	 * @param string $sidebar_id Sidebar ID. Default null.
 	 * @param string $background Background type. Default null.
 	 * @param bool   $echo       Echo or return widget classes.
 	 *
