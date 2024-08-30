@@ -15,6 +15,8 @@ html
 	padding-left: .75rem
 	margin-right: auto
 	margin-left: auto
+	&-rounded
+		border-radius: $border-radius
 
 @media (min-width: 576px)
 	.container
@@ -53,42 +55,77 @@ html
 	> *
 		padding-right: .75rem
 		padding-left: .75rem
+	&-block
+		> *
+			margin-bottom: .375rem
+			&:last-child
+				margin-bottom: 0
 	&-xxs
 		margin-right: -.25rem
 		margin-left: -.25rem
 		> *
 			padding-right: .25rem
 			padding-left: .25rem
+		&.row-block
+			> *
+				margin-bottom: .25rem
+				&:last-child
+					margin-bottom: 0
 	&-xs
 		margin-right: -.375rem
 		margin-left: -.375rem
 		> *
 			padding-right: .375rem
 			padding-left: .375rem
+		&.row-block
+			> *
+				margin-bottom: .375rem
+				&:last-child
+					margin-bottom: 0
 	&-sm
 		margin-right: -.5rem
 		margin-left: -.5rem
 		> *
 			padding-right: .5rem
 			padding-left: .5rem
+		&.row-block
+			> *
+				margin-bottom: .5rem
+				&:last-child
+					margin-bottom: 0
 	&-lg
 		margin-right: -1rem
 		margin-left: -1rem
 		> *
 			padding-right: 1rem
 			padding-left: 1rem
+		&.row-block
+			> *
+				margin-bottom: 1rem
+				&:last-child
+					margin-bottom: 0
 	&-xl
 		margin-right: -1.5rem
 		margin-left: -1.5rem
 		> *
 			padding-right: 1.5rem
 			padding-left: 1.5rem
+		&.row-block
+			> *
+				margin-bottom: 1.5rem
+				&:last-child
+					margin-bottom: 0
 	&-xxl
 		margin-right: -3rem
 		margin-left: -3rem
 		> *
 			padding-right: 3rem
 			padding-left: 3rem
+		&.row-block
+			> *
+				margin-bottom: 3rem
+				&:last-child
+					margin-bottom: 0
 
 .no-gutters
 	margin-right: 0
@@ -102,9 +139,6 @@ html
 	position: relative
 	width: 100%
 	min-height: 1px
-
-.col-sm-state-change, .col-md-state-change, .col-lg-state-change, .col-xl-state-change
-	margin-bottom: 1rem
 
 .col
 	-ms-flex-preferred-size: 0
@@ -302,6 +336,9 @@ html
 	margin-left: 91.666667%
 
 @media (min-width: 576px)
+	.row-sm-inline
+		> *
+			margin-bottom: 0
 	.col-sm
 		-ms-flex-preferred-size: 0
 		flex-basis: 0
@@ -309,8 +346,6 @@ html
 		-ms-flex-positive: 1
 		flex-grow: 1
 		max-width: 100%
-	.col-sm-state-change
-		margin-bottom: 0
 	.col-sm-auto
 		-webkit-box-flex: 0
 		-ms-flex: 0 0 auto
@@ -463,6 +498,9 @@ html
 		margin-left: 91.666667%
 
 @media (min-width: 768px)
+	.row-md-inline
+		> *
+			margin-bottom: 0
 	.col-md
 		-ms-flex-preferred-size: 0
 		flex-basis: 0
@@ -470,8 +508,6 @@ html
 		-ms-flex-positive: 1
 		flex-grow: 1
 		max-width: 100%
-	.col-md-state-change
-		margin-bottom: 0
 	.col-md-auto
 		-webkit-box-flex: 0
 		-ms-flex: 0 0 auto
@@ -624,6 +660,9 @@ html
 		margin-left: 91.666667%
 
 @media (min-width: 992px)
+	.row-lg-inline
+		> *
+			margin-bottom: 0
 	.col-lg
 		-ms-flex-preferred-size: 0
 		flex-basis: 0
@@ -631,8 +670,6 @@ html
 		-ms-flex-positive: 1
 		flex-grow: 1
 		max-width: 100%
-	.col-lg-state-change
-		margin-bottom: 0
 	.col-lg-auto
 		-webkit-box-flex: 0
 		-ms-flex: 0 0 auto
@@ -785,6 +822,9 @@ html
 		margin-left: 91.666667%
 
 @media (min-width: 1200px)
+	.row-xl-inline
+		> *
+			margin-bottom: 0
 	.col-xl
 		-ms-flex-preferred-size: 0
 		flex-basis: 0
@@ -792,8 +832,6 @@ html
 		-ms-flex-positive: 1
 		flex-grow: 1
 		max-width: 100%
-	.col-xl-state-change
-		margin-bottom: 0
 	.col-xl-auto
 		-webkit-box-flex: 0
 		-ms-flex: 0 0 auto
@@ -1669,6 +1707,25 @@ html
 .offset-5th
 	margin-left: 20%
 
+.col-mb
+	margin-bottom: .75rem
+	&-xxs
+		margin-bottom: .25rem
+	&-xs
+		margin-bottom: .375rem
+	&-sm
+		margin-bottom: .5rem
+	&-md
+		margin-bottom: .75rem
+	&-lg
+		margin-bottom: 1rem
+	&-xl
+		margin-bottom: 1.5rem
+	&-xxl
+		margin-bottom: 3rem
+	&-auto
+		margin-bottom: 0
+
 @media (min-width: 576px)
 	.offset-sm-5th
 		margin-left: 20%
@@ -1677,6 +1734,8 @@ html
 		-ms-flex: 0 0 20%
 		flex: 0 0 20%
 		max-width: 20%
+	.col-sm-mb-auto
+		margin-bottom: 0
 
 @media (min-width: 768px)
 	.offset-md-5th
@@ -1686,6 +1745,8 @@ html
 		-ms-flex: 0 0 20%
 		flex: 0 0 20%
 		max-width: 20%
+	.col-md-mb-auto
+		margin-bottom: 0
 
 @media (min-width: 992px)
 	.offset-lg-5th
@@ -1695,6 +1756,8 @@ html
 		-ms-flex: 0 0 20%
 		flex: 0 0 20%
 		max-width: 20%
+	.col-lg-mb-auto
+		margin-bottom: 0
 
 @media (min-width: 1200px)
 	.offset-xl-5th
@@ -1704,6 +1767,8 @@ html
 		-ms-flex: 0 0 20%
 		flex: 0 0 20%
 		max-width: 20%
+	.col-xl-mb-auto
+		margin-bottom: 0
 
 .wp-block-columns
 	@extend .row

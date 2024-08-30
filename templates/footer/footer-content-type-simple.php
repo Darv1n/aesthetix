@@ -9,7 +9,7 @@
  ?>
 
 <div <?php aesthetix_archive_page_columns_wrapper_classes(); ?>>
-	<div class="col-12 col-md-3 col-md-state-change">
+	<div class="col-12 col-md-3">
 		<?php if ( is_active_sidebar( 'footer-main-first' ) ) { ?>
 			<div <?php widgets_classes( '', 'footer-main-first' ); ?>>
 				<?php dynamic_sidebar( 'footer-main-first' ); ?>

@@ -15,25 +15,12 @@ if ( ! function_exists( 'aesthetix_widgets_init' ) ) {
 	 * Register widgets.
 	 */
 	function aesthetix_widgets_init() {
-		register_widget( 'WPA_Widget_Adv_Banner' );
-		register_widget( 'WPA_Widget_Breadcrumbs' );
-		register_widget( 'WPA_Widget_Buttons' );
-		register_widget( 'WPA_Widget_Contacts' );
-		register_widget( 'WPA_Widget_Copyright' );
-		register_widget( 'WPA_Widget_Creator' );
-		register_widget( 'WPA_Widget_Language_Switcher' );
-		register_widget( 'WPA_Widget_Logo' );
-		register_widget( 'WPA_Widget_Menus' );
-		register_widget( 'WPA_Widget_Recent_Posts' );
-		register_widget( 'WPA_Widget_Recent_Users' );
-		register_widget( 'WPA_Widget_Search_Popup_Form' );
-		register_widget( 'WPA_Widget_Slider_Posts' );
-		register_widget( 'WPA_Widget_Socials' );
-		register_widget( 'WPA_Widget_Subscribe_Form' );
-		register_widget( 'WPA_Widget_Subscribe_Popup_Form' );
-		register_widget( 'WPA_Widget_Table_Of_Contents' );
-		register_widget( 'WPA_Widget_Use_Materials' );
-		register_widget( 'WPA_Widget_User' );
+
+		$widgets = get_widget_name();
+
+		foreach ( $widgets as $widget_name => $widget_title ) {
+			register_widget( $widget_name );
+		}
 	}
 }
 add_action( 'widgets_init', 'aesthetix_widgets_init' );
@@ -263,11 +250,9 @@ if ( ! function_exists( 'get_widget_name' ) ) {
 			'WPA_Widget_Creator'              => 'Aesthetix ' . mb_strtolower( __( 'Creator', 'aesthetix' ) ),
 			'WPA_Widget_Language_Switcher'    => 'Aesthetix ' . mb_strtolower( __( 'Language switcher', 'aesthetix' ) ),
 			'WPA_Widget_Logo'                 => 'Aesthetix ' . mb_strtolower( __( 'Logo', 'aesthetix' ) ),
-			// 'widget-menu-primary'          => 'Aesthetix ' . mb_strtolower( __( 'Primary menu', 'aesthetix' ) ),
 			'WPA_Widget_Menus'                => 'Aesthetix ' . mb_strtolower( __( 'Menus', 'aesthetix' ) ),
 			'WPA_Widget_Recent_Posts'         => 'Aesthetix ' . mb_strtolower( __( 'Recent posts', 'aesthetix' ) ),
 			'WPA_Widget_Recent_Users'         => 'Aesthetix ' . mb_strtolower( __( 'Recent users', 'aesthetix' ) ),
-			'widget-search-form'              => 'Aesthetix ' . mb_strtolower( __( 'Search form', 'aesthetix' ) ),
 			'WPA_Widget_Search_Popup_Form'    => 'Aesthetix ' . mb_strtolower( __( 'Search button', 'aesthetix' ) ),
 			'WPA_Widget_Slider_Posts'         => 'Aesthetix ' . mb_strtolower( __( 'Slider posts', 'aesthetix' ) ),
 			'WPA_Widget_Socials'              => 'Aesthetix ' . mb_strtolower( __( 'Socials', 'aesthetix' ) ),

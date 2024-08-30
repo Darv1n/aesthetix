@@ -160,7 +160,7 @@ if ( ! function_exists( 'aesthetix_enqueue_scripts' ) ) {
 		wp_add_inline_style( 'common-styles', ':root {' . esc_attr( $root_string ) . '}' );
 
 		// Basic scripts. Gulp compilation. Can be overridden in a child theme.
-		wp_enqueue_script( 'common-scripts', get_theme_file_uri( '/assets/js/source/common.js' ), array( 'jquery' ), filemtime( get_theme_file_path( '/assets/js/source/common.js' ) ), true );
+		wp_enqueue_script( 'common-scripts', get_theme_file_uri( '/assets/js/common.min.js' ), array( 'jquery' ), filemtime( get_theme_file_path( '/assets/js/common.min.js' ) ), true );
 
 		// Comments.
 		if ( is_singular() && comments_open() ) {

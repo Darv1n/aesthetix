@@ -105,7 +105,9 @@ if ( ! function_exists( 'before_site_content_structure' ) ) {
 					get_template_part( 'templates/wrapper/wrapper-section-content-start' );
 					break;
 				default:
-					if ( locate_template( '/templates/section/' . $value . '.php' ) !== '' ) {
+					if ( locate_template( '/templates/aside/' . $value . '.php' ) !== '' ) {
+						get_template_part( 'templates/aside/' . $value );
+					} elseif ( locate_template( '/templates/section/' . $value . '.php' ) !== '' ) {
 						get_template_part( 'templates/section/' . $value );
 					}
 					break;

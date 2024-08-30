@@ -47,6 +47,6 @@
 		/**
 		 * Hook: before_site_content.
 		 *
-		 * @hooked aesthetix_before_site_content - 10
+		 * @hooked before_site_content_structure - 10
 		 */
 		do_action( 'before_site_content' );

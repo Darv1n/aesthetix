@@ -9,7 +9,7 @@
  ?>
 
 <div <?php aesthetix_archive_page_columns_wrapper_classes( 'align-items-center' ); ?>>
-	<div class="col-12 col-md-6 col-md-state-change">
+	<div class="col-12 col-md-6">
 		<?php if ( is_active_sidebar( 'footer-bottom-left' ) ) { ?>
 			<div <?php widgets_classes( '', 'footer-bottom-left' ); ?>>
 				<?php dynamic_sidebar( 'footer-bottom-left' ); ?>

@@ -23,7 +23,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 		// Selects.
 		$root_color_scheme_select = array(
 			'white' => __( 'White', 'aesthetix' ),
-			'black' => __( 'Black', 'aesthetix' ),
+			'dark'  => __( 'Dark', 'aesthetix' ),
 		);
 
 		$general_content_width_select = array(

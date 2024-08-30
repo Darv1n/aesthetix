@@ -4,7 +4,7 @@
  * Form js handler  - /assets/js/source/ajax-subscribe-from.js
  * Setup js scripts - /inc/template-setup.php
  * Form php handler - /inc/template-handlers.php
- * Form html        - /templates/subscribe-form.php
+ * Form html        - /templates/aside/aside-subscribe.php
  */
 
 jQuery( document ).ready( function( $ ) {

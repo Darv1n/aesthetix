@@ -63,6 +63,7 @@ textarea
 
 form
 	*
+		font-family: $secondary-font
 		hyphens: none
 		outline: none
 	> *
@@ -465,11 +466,45 @@ input[type="submit"]
 		&:hover, &:focus, &:active
 			border: none
 
+.button-list
+	&-inline
+		> *
+			margin-bottom: .5rem
+			margin-right: .5rem
+			vertical-align: middle
+			display: inline-block
+			&:last-child
+				margin-right: 0
+	&-block
+		> *
+			display: block
+			margin-bottom: .25rem
+			&:last-child
+				margin-bottom: 0
+
 .form
-	.notification
-		max-width: 480px
+	&-title-wrap
+		> *
+			margin-bottom: .25rem
+			&:last-child
+				margin-bottom: 0
+	&-title
+		@extend .h3
+	&-subtitle
+		font-size: $font-size-sm
+		color: $gray-color-500
+	&-input-wrap
+		> *
+			margin-bottom: .5rem
+			&:last-child
+				margin-bottom: 0
+	&-input-title
+	&-radio, &-label-radio
+		display: inline-block
 	&-confirm-text
 		font-size: $font-size-sm
+	.notification
+		max-width: 480px
 
 .search-form
 	position: relative

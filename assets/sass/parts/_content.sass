@@ -57,6 +57,12 @@ a.logo
 			img
 				max-height: calc( ( .75rem * 1.25 * 2 + 1.125rem ) * 1.125 )
 
+.custom-logo-link
+	display: inline-block
+
+.main
+	width: 100%
+
 .container-inner
 	padding-top: .5rem
 	padding-bottom: .5rem
@@ -65,20 +71,23 @@ a.logo
 	position: relative
 	margin-bottom: 3rem
 	border-radius: $border-radius
+	&-widgets
+		margin-bottom: 3rem
 	&-title, &-title-wrapper
 		@extend .mb
 	&-title-wrapper
 		position: relative
 		.section-title
 			margin-bottom: .375rem
-	&-content
-		margin-top: 1.25rem
-		margin-bottom: 3rem
 	&-background
 		.container-outer
-			padding-top: 1.5rem
-			padding-bottom: 1.5rem
+			padding-top: 2.5rem
+			padding-bottom: 2.5rem
 			border-radius: $border-radius
+		&.section-widget
+			.container-outer
+				padding-top: 1.5rem
+				padding-bottom: 1.5rem
 		&.header-top-bar, &.footer-bottom-bar, &.section-breadcrumbs
 			.container-outer
 				padding-top: .75rem
@@ -86,6 +95,10 @@ a.logo
 	&-gray
 		.container-outer
 			background: $gray-color-100
+	&-dark
+		.container-outer
+			background: $gray-color-900
+			color: $gray-color-50
 	&-primary
 		.container-outer
 			background: $primary-color-50
@@ -94,13 +107,14 @@ a.logo
 			background: $secondary-color-50
 
 @media (min-width: 768px)
-	.section-title-wrapper
-		.section-title
-			margin-bottom: 0
-	.section-title-link
-		position: absolute
-		top: .375rem
-		right: 0
+	.section
+		&-title-wrapper
+			.section-title
+				margin-bottom: 0
+		&-title-link
+			position: absolute
+			top: .375rem
+			right: 0
 
 .header, .footer
 	position: relative
@@ -120,7 +134,6 @@ a.logo
 				border-bottom-right-radius: 0
 
 .header
-	margin-bottom: 1.25rem
 	&-top-bar
 		font-size: $font-size-sm
 		.container-outer
@@ -223,13 +236,8 @@ a.logo
 			&:last-child
 				margin-bottom: 0
 	&-entry-content
-		> p, ul, ol
+		> p, ul, ol, blockquote
 			max-width: 960px
-		p
-			margin-top: 1rem
-			margin-bottom: 1rem
-		ul, ol, dd, dl, figure, optgroup, fieldset, blockquote
-			margin-bottom: 1rem
 		h2
 			margin-top: $gutter*5
 		h3

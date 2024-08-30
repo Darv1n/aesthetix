@@ -21,15 +21,12 @@
 				</div>
 				<div class="col-12 col-md-9">
 					<div <?php widgets_classes( '', 'header-main-right' ); ?>>
-
 						<div <?php widget_classes( 'widget-primary-menu', 'header-main-right' ); ?>>
 							<?php get_template_part( 'templates/widget/widget-menu', '', array( 'theme_location' => 'primary' ) ); ?>
 						</div>
-
 						<?php if ( is_active_sidebar( 'header-main-right' ) ) {
 							dynamic_sidebar( 'header-main-right' );
 						} ?>
-
 					</div>
 				</div>
 			</div>

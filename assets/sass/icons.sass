@@ -125,17 +125,16 @@
 		&::after
 			border-radius: 50%
 
-// a, button
-// 	&.icon-reset
-// 		background: transparent
-// 		color: $text-color
-// 		border: $button-bd-width solid transparent
-// 		box-shadow: none
-// 		&:hover, &:focus, &:active
-// 			background: transparent
-// 			color: $link-color
-// 			border: $button-bd-width solid transparent
-// 			box-shadow: none
+blockquote, .blockquote
+	@extend .icon
+	@extend .icon-top
+	@extend .icon-before
+	padding: .5rem 0 .5rem 3rem
+	&::before
+		content: '\f10d'
+		top: -.5rem
+		left: .5rem
+		font-size: 2rem
 
 .icon
 	&-angle-down

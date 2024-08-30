@@ -121,7 +121,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 					$roots[ $post_type . '-background' ]   = get_aesthetix_customizer_converter_colors( $gray_color . '-50' );
 					$roots[ $post_type . '-border-color' ] = get_aesthetix_customizer_converter_colors( $gray_color . '-100' );
 					break;
-				case 'black':
+				case 'dark':
 					$roots[ $post_type . '-background' ]   = get_aesthetix_customizer_converter_colors( $gray_color . '-950' );
 					$roots[ $post_type . '-border-color' ] = get_aesthetix_customizer_converter_colors( $gray_color . '-900' );
 					break;
@@ -185,7 +185,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 
 		foreach ( $roots as $key => $value ) {
 			if ( $value === false || $value === null ) {
-				vardump( $key . ': ' . $value  );
+				// vardump( $key . ': ' . $value  );
 			}
 		}
 

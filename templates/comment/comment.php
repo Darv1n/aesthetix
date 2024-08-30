@@ -27,8 +27,6 @@ if ( is_string( $args['comments_structure'] ) && ! empty( $args['comments_struct
 	$args['comments_structure'] = array_map( 'trim', explode( ',', $args['comments_structure'] ) );
 }
 
-// vardump( $args['comment'] );
-
 $classes[] = 'comment';
 
 if ( $args['comment']->comment_approved === '0' ) {

@@ -273,7 +273,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_colors' ) ) {
 
 		// Main converter array.
 		$converter = array(
-			'black'        => RGBtoHEX( 'rgb(0, 0, 0)' ),
+			'dark'         => RGBtoHEX( 'rgb(0, 0, 0)' ),
 			'white'        => RGBtoHEX( 'rgb(255, 255, 255)' ),
 
 			'slate-50'     => RGBtoHEX( 'rgb(248, 250, 252)' ),

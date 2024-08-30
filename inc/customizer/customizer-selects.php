@@ -644,7 +644,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_fonts' ) ) {
 			'cormorant'        => 'Cormorant',
 			'anonymous-pro'    => 'Anonymous Pro',
 			'bona-nova'        => 'Bona Nova',
-			'cormorant'        => 'Cormorant',
 		);
 
 		// Merge child and parent default options.
@@ -660,10 +659,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_fonts' ) ) {
 		}
 	}
 }
-
-
-
-
 
 if ( ! function_exists( 'get_aesthetix_customizer_subscribe_form_type' ) ) {
 

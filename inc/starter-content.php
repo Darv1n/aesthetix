@@ -58,7 +58,7 @@ if ( ! function_exists( 'aesthetix_starter_content' ) ) {
 					// 'aesthetix-widget-language-switcher' => array( 'aesthetix-widget-language-switcher', array(), ),
 				),
 				'after-header'         => array(
-					'aesthetix-widget-slider-posts' => array( 'aesthetix-widget-slider-posts', array(
+					'aesthetix-widget-slider-posts-2' => array( 'aesthetix-widget-slider-posts', array(
 						'posts_to_show'  => 4,
 						'posts_per_page' => 8,
 						'display'        => 'front-page',

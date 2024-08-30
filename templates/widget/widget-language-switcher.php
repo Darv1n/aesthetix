@@ -38,9 +38,6 @@ if ( ( is_plugin_active( 'polylang/polylang.php' ) && function_exists( 'pll_the_
 		return;
 	}
 
-	// vardump( get_locale() );
-	// vardump( $languages );
-
 	$locale       = get_first_value_from_string( get_locale(), '_' );
 	$css_style    = '';
 	$lang_classes = array( 'language-switcher-item' );

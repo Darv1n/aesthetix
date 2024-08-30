@@ -39,24 +39,28 @@ $( document ).ready( function() {
 		$( this ).closest( '.aside' ).removeClass( 'on' );
 	} );
 
-	$( '.scroll-top' ).on( 'click', function() {
-		$( 'html, body' ).animate( { scrollTop : 0 }, 800 );
-		return false;
-	} );
-
 	$( 'body' ).on( 'click', '.notification-button', function( e ) {
 		$( this ).closest( '.notification' ).remove();
 	} );
 
-	$( '.toc-list a' ).on( 'click', function( e ) {
+	$( 'a' ).on( 'click', function( e ) {
 
-		var id = $( this ).attr( 'href' );
+		var href   = $( this ).attr( 'href' );
+			anchor = href.split('#')[1];
 
-		if ( $( id ).length === 1 ) {
-			$( 'html, body' ).animate( { scrollTop: $( id ).position().top }, 'slow' );
-		}
+			if ( typeof anchor !== 'undefined' ) {
+				var id = $( '#' + anchor );
+				if ( id.length > 0 ) {
+					$( 'html, body' ).animate( { scrollTop: id.offset().top }, 'slow' );
+					$( this ).closest( '.aside' ).removeClass( 'on' );
+					e.preventDefault();
+				}
+			}
+	} );
 
-		e.preventDefault();
+	$( '.scroll-top' ).on( 'click', function() {
+		$( 'html, body' ).animate( { scrollTop : 0 }, 800 );
+		return false;
 	} );
 
 	initStickySidebar();
