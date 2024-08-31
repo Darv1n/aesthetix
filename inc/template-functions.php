@@ -225,61 +225,90 @@ if ( ! function_exists( 'get_curl_content' ) ) {
 if ( ! function_exists( 'save_remote_file' ) ) {
 
 	/**
-	 * Retrieves content via curl and writes an acknowledgement/error in the log file.
+	 * Receives and saves a file (html or image) by the given link.
+	 * Returns an array of information about the function's operation.
 	 *
-	 * @param string $file_link External file link.
-	 * @param string $file_name File name.
-	 * @param string $file_path Path on the server to save the file.
-	 * @param string $sleep     Delay after receiving a file. Default: 0.1 sec
+	 * @param string $file_link External file link. Default: null
+	 *        string $delay     Delay to reload. In strtotime values. 1 month example. Default: null
+	 *        string $file_type Сontent type to parse. html/image options. Default: html
+	 *        string $sleep     Delay after receiving a file. Default: 100000 (0.1 sec)
 	 *
-	 * @return string
+	 * @return array
 	 */
-	function save_remote_file( $file_link = null, $file_name = null, $file_path = null, $sleep = 100000 ) {
+	function save_remote_file( $file_link = null, $delay = null, $file_type = 'html', $sleep = 100000 ) {
 
+		$response = array(
+			'where' => 'save_remote_file',
+		);
+
+		// Check that the link exists.
 		if ( is_null( $file_link ) ) {
-			return;
+			$response['ok']   = false;
+			$response['text'] = 'Function args missing';
+			return $response;
+		} elseif ( wp_http_validate_url( $file_link ) === false ) {
+			$response['ok']   = false;
+			$response['text'] = 'The link failed validation via the wp_http_validate_url function';
+			return $response;
 		}
 
-		if ( is_null( $file_name ) ) {
-			$file_name = get_last_value_from_string( untrailingslashit( $file_link ), '/' );
+		$pathinfo  = pathinfo( $file_link );
+		$file_name = $pathinfo['filename'];
+		$file_dir  = get_stylesheet_directory() . trailingslashit( '/data/' . $file_type );
+
+		// Сheck folder exists.
+		if ( ! is_dir( $file_dir ) ) {
+			mkdir( $file_dir, 0755, true );
 		}
 
-		$file_name = get_title_slug( $file_name );
-
-		if ( is_null( $file_path ) ) {
-			$html_dir   = get_stylesheet_directory() . '/data/html/';
-
-			if ( ! is_dir( $html_dir ) ) {
-				mkdir( $html_dir, 0755, true );
-			}
-
-			$file_path = trailingslashit( $html_dir ) . $file_name . '.html';
+		if ( $file_type === 'html' ) {
+			$basename = $file_name . '.html';
+		} elseif ( isset( $pathinfo['extension'] ) && ! empty( $pathinfo['extension'] ) ) {
+			$basename = $pathinfo['basename'];
+		} else {
+			$response['ok']   = false;
+			$response['text'] = sprintf( 'For some reason the file %s doesn\'t have an extension', $file_link );
+			return $response;
 		}
 
-		$ext = pathinfo( $file_path, PATHINFO_EXTENSION );
+		$file_path = trailingslashit( $file_dir ) . $basename;
 
-		// vardump( $file_link );
-		// vardump( $file_name );
-		// vardump( $file_path );
+		// Сheck file exists or it needs to be updated.
+		if ( ! file_exists( $file_path ) || ( ! is_null( $delay ) && strtotime( '-' . $delay, time() ) !== false && strtotime( '-' . $delay, time() ) > filectime( $file_path ) ) ) {
 
-		// Если файла не существует, пытаемся его получить.
-		if ( ! file_exists( $file_path ) ) {
-			$external_html = get_curl_content( $file_link, $file_name );
-			if ( $external_html !== false ) {
-				$external_html     = apply_filters( 'save_remote_file', $external_html, $file_link );
-				$file_put_contents = file_put_contents( $file_path, $external_html, LOCK_EX );
+			usleep( (int) $sleep );
+			$request = wp_remote_request( $file_link );
+
+			if ( is_wp_error( $request ) ) {
+				$response['ok']   = false;
+				$response['text'] = sprintf( 'There was an error parsing the file %s. Message: %s. Link: %s', $basename, $request->get_error_message(), $file_link );
+			} elseif ( in_array( wp_remote_retrieve_response_code( $request ), array( 400, 401, 403, 404 ), true ) ) {
+				$response['ok']   = false;
+				$response['text'] = sprintf( 'There was an error parsing the file %s. Code %s. Link: %s', $basename, wp_remote_retrieve_response_code( $request ), $file_link );
+			} elseif ( wp_remote_retrieve_response_code( $request ) === 200 ) {
+
+				// New or updated file.
+				$new_file          = file_exists( $file_path ) ? true : false;
+				$file_put_contents = file_put_contents( $file_path, wp_remote_retrieve_body( $request ), LOCK_EX );
+
 				if ( $file_put_contents === false ) {
-					vardump( 'Возникла ошибка при парсинге файла ' . $file_name . '.' . $ext . ' (ссылка ' . $file_link . ')' );
+					$response['ok']   = false;
+					$response['text'] = sprintf( 'There was an error parsing the file %s. Link: %s', $basename, $file_link );
 				} else {
-					vardump( 'Файл ' . $file_name . '.' . $ext . ' успешно скачан' );
+					$response['ok']   = true;
+					if ( $new_file ) {
+						$response['text'] = sprintf( 'File %s updated successfully', $basename );
+					} else {
+						$response['text'] = sprintf( 'File %s downloaded successfully', $basename );
+					}
 				}
-				usleep( (int) $sleep );
-			} else {
-				vardump( 'Хуевый ответ от функции get_curl_content() (ссылка ' . $file_link . ')' );
 			}
+		} else {
+			$response['ok']   = true;
+			$response['text'] = 'The file already exists';
 		}
 
-		return $file_path;
+		return $response;
 	}
 }
 
