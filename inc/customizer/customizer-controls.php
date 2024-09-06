@@ -148,6 +148,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 			'link_color'                            => array( 'select_control', __( 'Select link color', 'aesthetix' ), '', get_aesthetix_customizer_link_colors() ),
 
 			'bg_tab_title'                          => array( 'tab_title', __( 'Backgrounds', 'aesthetix' ), '' ),
+			'bg_section_type'                       => array( 'select_control', __( 'Select section background type', 'aesthetix' ), '', $general_content_width_select ),
 			'bg_header_top_bar'                     => array( 'select_control', __( 'Header top bar background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
 			'bg_header_middle_bar'                  => array( 'select_control', __( 'Header middle bar widgets background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
 			'bg_header_bottom_bar'                  => array( 'select_control', __( 'Header bottom bar widgets background color', 'aesthetix' ), '', get_aesthetix_customizer_background_colors() ),
@@ -269,6 +270,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_controls' ) ) {
 					'thumbnail_padding'      => array( 'select_control', __( 'Select post thumbnail padding', 'aesthetix' ), '', get_aesthetix_customizer_padding_sizes() ),
 					'content_padding'        => array( 'select_control', __( 'Select post content padding', 'aesthetix' ), '', get_aesthetix_customizer_padding_sizes() ),
 					'shadow'                 => array( 'select_control', __( 'Select post shadow', 'aesthetix' ), '', get_aesthetix_customizer_box_shadows() ),
+					'border_color'           => array( 'checkbox_control', __( 'Border color', 'aesthetix' ), '' ),
 					'border_width'           => array( 'select_control', __( 'Select post border width', 'aesthetix' ), '', get_aesthetix_customizer_border_widths() ),
 					'border_radius'          => array( 'select_control', __( 'Select post border radius', 'aesthetix' ), '', get_aesthetix_customizer_border_radiuses() ),
 

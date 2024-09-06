@@ -455,7 +455,7 @@ if ( ! function_exists( 'aesthetix_nav_menu_submenu_css_class' ) ) {
 		$classes[] = 'dropdown-content';
 
 		// TODO: Inline надо проверять
-		if ( $args->theme_location == 'primary' ) {
+		if ( $args->theme_location == 'primary' && $depth === 0 ) {
 			$classes[] = 'dropdown-content-absolute';
 		}
 

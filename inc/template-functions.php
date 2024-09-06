@@ -25,6 +25,86 @@ if ( ! function_exists( 'vardump' ) ) {
 	}
 }
 
+if ( ! function_exists( 'get_post_type_archive_template_path' ) ) {
+
+	/**
+	 * Function to get archive template.
+	 *
+	 * @param string $post_type
+	 *        string $post_layout
+	 *        string $post_format
+	 * 
+	 * @return void
+	 */
+	function get_post_type_archive_template_path( $post_type, $post_layout = null, $post_format = false ) {
+
+		if ( is_null( $post_layout ) ) {
+			$post_layout = get_aesthetix_options( 'archive_' . $post_type . '_layout' );
+		}
+
+		if ( $post_format === false ) {
+			$post_format = 'standard';
+		}
+
+		$templates = array(
+			"templates/archive/archive-{$post_type}-{$post_layout}-{$post_format}",
+			"templates/archive/archive-{$post_type}-{$post_format}",
+			"templates/archive/archive-{$post_type}-{$post_layout}",
+			"templates/archive/archive-{$post_type}",
+			"templates/archive/archive-post",
+		);
+
+		foreach ( $templates as $template ) {
+			if ( locate_template( $template . '.php', false, false ) ) {
+				return $template;
+				break;
+			}
+		}
+
+		return $templates[ array_key_last( $templates ) ];
+	}
+}
+
+if ( ! function_exists( 'get_post_type_widget_template_path' ) ) {
+
+	/**
+	 * Function to get widget template.
+	 *
+	 * @param string $post_type
+	 *        string $post_layout
+	 *        string $post_format
+	 * 
+	 * @return void
+	 */
+	function get_post_type_widget_template_path( $post_type, $post_layout = null, $post_format = false ) {
+
+		if ( is_null( $post_layout ) ) {
+			$post_layout = get_aesthetix_options( 'archive_' . $post_type . '_layout' );
+		}
+
+		if ( $post_format === false ) {
+			$post_format = 'standard';
+		}
+
+		$templates = array(
+			"templates/widget/widget-{$post_type}-{$post_layout}-{$post_format}",
+			"templates/widget/widget-{$post_type}-{$post_format}",
+			"templates/widget/widget-{$post_type}-{$post_layout}",
+			"templates/widget/widget-{$post_type}",
+			"templates/widget/widget-post",
+		);
+
+		foreach ( $templates as $template ) {
+			if ( locate_template( $template . '.php', false, false ) ) {
+				return $template;
+				break;
+			}
+		}
+
+		return $templates[ array_key_last( $templates ) ];
+	}
+}
+
 if ( ! function_exists( 'get_template_call_count' ) ) {
 
 	/**
@@ -181,134 +261,6 @@ if ( ! function_exists( 'kses_available_tags' ) ) {
 		);
 
 		return apply_filters( 'kses_available_tags', $available_tags );
-	}
-}
-
-if ( ! function_exists( 'get_curl_content' ) ) {
-
-	/**
-	 * Retrieves content via curl and writes an acknowledgement/error in the log file.
-	 *
-	 * @param string $url   Source url for parsing.
-	 * @param string $proxy Proxy server.
-	 *
-	 * @return string
-	 */
-	function get_curl_content( $url, $proxy = '' ) {
-
-		$ch = curl_init();
-
-		curl_setopt( $ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36' );
-		curl_setopt( $ch, CURLOPT_URL, $url );
-
-		curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false ); // Остановка проверки сертификата.
-		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true ); // Возвращаем результат в строке вместо вывода в браузер.
-		curl_setopt( $ch, CURLOPT_HEADER, false );
-		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true ); // Переходим по редиректу.
-		curl_setopt( $ch, CURLOPT_COOKIESESSION, true ); // Устанавливаем новую «сессию» cookies.
-		curl_setopt( $ch, CURLOPT_COOKIE, session_name() . '=' . session_id() );
-		curl_setopt( $ch, CURLOPT_COOKIEFILE, dirname( __FILE__ ) . '/temp/cookie.txt' );
-		curl_setopt( $ch, CURLOPT_COOKIEJAR, dirname( __FILE__ ) . '/temp/cookie.txt' );
-
-		// curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
-		// curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
-		// curl_setopt($ch, CURLOPT_PROXY, '$proxy');
-
-		$html = curl_exec( $ch );
-
-		curl_close( $ch );
-
-		return $html;
-	}
-}
-
-if ( ! function_exists( 'save_remote_file' ) ) {
-
-	/**
-	 * Receives and saves a file (html or image) by the given link.
-	 * Returns an array of information about the function's operation.
-	 *
-	 * @param string $file_link External file link. Default: null
-	 *        string $delay     Delay to reload. In strtotime values. 1 month example. Default: null
-	 *        string $file_type Сontent type to parse. html/image options. Default: html
-	 *        string $sleep     Delay after receiving a file. Default: 100000 (0.1 sec)
-	 *
-	 * @return array
-	 */
-	function save_remote_file( $file_link = null, $delay = null, $file_type = 'html', $sleep = 100000 ) {
-
-		$response = array(
-			'where' => 'save_remote_file',
-		);
-
-		// Check that the link exists.
-		if ( is_null( $file_link ) ) {
-			$response['ok']   = false;
-			$response['text'] = 'Function args missing';
-			return $response;
-		} elseif ( wp_http_validate_url( $file_link ) === false ) {
-			$response['ok']   = false;
-			$response['text'] = 'The link failed validation via the wp_http_validate_url function';
-			return $response;
-		}
-
-		$pathinfo  = pathinfo( $file_link );
-		$file_name = $pathinfo['filename'];
-		$file_dir  = get_stylesheet_directory() . trailingslashit( '/data/' . $file_type );
-
-		// Сheck folder exists.
-		if ( ! is_dir( $file_dir ) ) {
-			mkdir( $file_dir, 0755, true );
-		}
-
-		if ( $file_type === 'html' ) {
-			$basename = $file_name . '.html';
-		} elseif ( isset( $pathinfo['extension'] ) && ! empty( $pathinfo['extension'] ) ) {
-			$basename = $pathinfo['basename'];
-		} else {
-			$response['ok']   = false;
-			$response['text'] = sprintf( 'For some reason the file %s doesn\'t have an extension', $file_link );
-			return $response;
-		}
-
-		$file_path = trailingslashit( $file_dir ) . $basename;
-
-		// Сheck file exists or it needs to be updated.
-		if ( ! file_exists( $file_path ) || ( ! is_null( $delay ) && strtotime( '-' . $delay, time() ) !== false && strtotime( '-' . $delay, time() ) > filectime( $file_path ) ) ) {
-
-			usleep( (int) $sleep );
-			$request = wp_remote_request( $file_link );
-
-			if ( is_wp_error( $request ) ) {
-				$response['ok']   = false;
-				$response['text'] = sprintf( 'There was an error parsing the file %s. Message: %s. Link: %s', $basename, $request->get_error_message(), $file_link );
-			} elseif ( in_array( wp_remote_retrieve_response_code( $request ), array( 400, 401, 403, 404 ), true ) ) {
-				$response['ok']   = false;
-				$response['text'] = sprintf( 'There was an error parsing the file %s. Code %s. Link: %s', $basename, wp_remote_retrieve_response_code( $request ), $file_link );
-			} elseif ( wp_remote_retrieve_response_code( $request ) === 200 ) {
-
-				// New or updated file.
-				$new_file          = file_exists( $file_path ) ? true : false;
-				$file_put_contents = file_put_contents( $file_path, wp_remote_retrieve_body( $request ), LOCK_EX );
-
-				if ( $file_put_contents === false ) {
-					$response['ok']   = false;
-					$response['text'] = sprintf( 'There was an error parsing the file %s. Link: %s', $basename, $file_link );
-				} else {
-					$response['ok']   = true;
-					if ( $new_file ) {
-						$response['text'] = sprintf( 'File %s updated successfully', $basename );
-					} else {
-						$response['text'] = sprintf( 'File %s downloaded successfully', $basename );
-					}
-				}
-			}
-		} else {
-			$response['ok']   = true;
-			$response['text'] = 'The file already exists';
-		}
-
-		return $response;
 	}
 }
 
@@ -738,14 +690,15 @@ if ( ! function_exists( 'has_menu_items' ) ) {
 	 * @return bool Whether the menu has items (true) or is empty (false).
 	 */
 	function has_menu_items( $menu_name ) {
+
 		// Get all registered menu locations and their assigned menus.
 		$locations = get_nav_menu_locations();
-		
+
 		// Check if the menu location exists.
 		if ( isset( $locations[ $menu_name] ) ) {
 			// Get the menu object based on the menu location.
 			$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
-			
+
 			// Check if the menu has items
 			if ( $menu && ! empty( wp_get_nav_menu_items( $menu->term_id ) ) ) {
 				return true;
@@ -809,6 +762,158 @@ if ( ! function_exists( 'is_magnific_popup_active' ) ) {
 		$active = apply_filters( 'is_magnific_popup_active', $active );
 
 		return $active;
+	}
+}
+
+if ( ! function_exists( 'get_curl_content' ) ) {
+
+	/**
+	 * Retrieves content via curl and writes an acknowledgement/error in the log file.
+	 *
+	 * @param string $url   Source url for parsing.
+	 * @param string $proxy Proxy server.
+	 *
+	 * @return string
+	 */
+	function get_curl_content( $url, $proxy = '' ) {
+
+		$ch = curl_init();
+
+		curl_setopt( $ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36' );
+		curl_setopt( $ch, CURLOPT_URL, $url );
+
+		curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false ); // Остановка проверки сертификата.
+		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true ); // Возвращаем результат в строке вместо вывода в браузер.
+		curl_setopt( $ch, CURLOPT_HEADER, false );
+		curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true ); // Переходим по редиректу.
+		curl_setopt( $ch, CURLOPT_COOKIESESSION, true ); // Устанавливаем новую «сессию» cookies.
+		curl_setopt( $ch, CURLOPT_COOKIE, session_name() . '=' . session_id() );
+		curl_setopt( $ch, CURLOPT_COOKIEFILE, dirname( __FILE__ ) . '/temp/cookie.txt' );
+		curl_setopt( $ch, CURLOPT_COOKIEJAR, dirname( __FILE__ ) . '/temp/cookie.txt' );
+
+		// curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+		// curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_SOCKS5);
+		// curl_setopt($ch, CURLOPT_PROXY, '$proxy');
+
+		$html = curl_exec( $ch );
+
+		curl_close( $ch );
+
+		return $html;
+	}
+}
+
+if ( ! function_exists( 'save_remote_file' ) ) {
+
+	/**
+	 * Receives and saves a file (html or image) by the given link.
+	 * Returns an array of information about the function's operation.
+	 *
+	 * @param string $file_link External file link. Required
+	 *        string $delay     Delay to reload. In strtotime values. 1 month example. Default: null
+	 *        string $file_type Сontent type to parse. html/image options. Default: html
+	 *        string $sleep     Delay after receiving a file. Default: 100000 (0.1 sec)
+	 *
+	 * @return array
+	 */
+	function save_remote_file( $file_link, $delay = null, $file_type = 'html', $sleep = 100000 ) {
+
+		$response = array(
+			'where' => 'save_remote_file',
+		);
+
+		// Check that the link validate.
+		if ( wp_http_validate_url( sanitize_url( $file_link ) ) === false ) {
+
+			$response['ok']      = false;
+			$response['message'] = 'The link failed validation via the wp_http_validate_url function';
+			return apply_filters( 'save_remote_file', $response );
+
+		}
+
+		$file_dir  = get_stylesheet_directory() . trailingslashit( '/data/' . $file_type );
+
+		// Сheck folder exists.
+		if ( ! is_dir( $file_dir ) ) {
+			mkdir( $file_dir, 0755, true );
+		}
+
+		$file_link = sanitize_url( $file_link );
+
+		if ( $file_type === 'html' ) {
+
+			$parse_url = wp_parse_url( $file_link );
+
+			if ( empty( untrailingslashit( $parse_url['path'] ) ) ) {
+				$file_name = get_title_slug( $parse_url['host'] );
+			} else {
+				$file_name = get_title_slug( $parse_url['host'] . '-' . untrailingslashit( $parse_url['path'] ) );
+			}
+
+			$file_name = preg_replace('/^www-/', '', $file_name );
+			$file_name = apply_filters( 'save_remote_file_name', $file_name, $file_link );
+			$basename  = $file_name . '.html';
+
+		} elseif ( ! empty( pathinfo( $file_link, PATHINFO_EXTENSION ) ) ) {
+
+			$file_name = pathinfo( $file_link, PATHINFO_FILENAME );
+			$basename  = pathinfo( $file_link, PATHINFO_BASENAME );
+
+		} else {
+
+			$response['ok']      = false;
+			$response['message'] = sprintf( 'For some reason the file %s doesn\'t have an extension', $file_link );
+			return apply_filters( 'save_remote_file', $response );
+
+		}
+
+		$file_path        = trailingslashit( $file_dir ) . $basename;
+		$response['file'] = $file_path;
+
+		// Сheck file exists or it needs to be updated.
+		if ( ! file_exists( $file_path ) || ( ! is_null( $delay ) && strtotime( '-' . $delay, time() ) !== false && strtotime( '-' . $delay, time() ) > filemtime( $file_path ) ) ) {
+
+			usleep( (int) $sleep );
+			$request = wp_remote_request( $file_link );
+
+			if ( is_wp_error( $request ) ) {
+
+				$response['ok']      = false;
+				$response['message'] = sprintf( 'There was an error parsing the file %s. Message: %s. Link: %s', $basename, $request->get_error_message(), $file_link );
+
+			} elseif ( in_array( wp_remote_retrieve_response_code( $request ), array( 400, 401, 403, 404 ), true ) ) {
+
+				$response['ok']      = false;
+				$response['message'] = sprintf( 'There was an error parsing the file %s. Code %s. Link: %s', $basename, wp_remote_retrieve_response_code( $request ), $file_link );
+
+			} elseif ( wp_remote_retrieve_response_code( $request ) === 200 ) {
+
+				// New or updated file.
+				$new_file          = file_exists( $file_path ) ? true : false;
+				$body              = apply_filters( 'save_remote_file_body', wp_remote_retrieve_body( $request ), $file_link, $file_type );
+				$file_put_contents = file_put_contents( $file_path, $body, LOCK_EX );
+
+				if ( $file_put_contents === false ) {
+					$response['ok']      = false;
+					$response['message'] = sprintf( 'There was an error parsing the file %s. Link: %s', $basename, $file_link );
+				} else {
+					$response['ok'] = true;
+					if ( $new_file ) {
+						$response['message'] = sprintf( 'File %s updated successfully', $basename );
+					} else {
+						$response['message'] = sprintf( 'File %s downloaded successfully', $basename );
+					}
+				}
+
+			}
+		} else {
+
+			$response['ok']      = true;
+			$response['message'] = sprintf( 'The file %s already exists', $basename );'The file already exists';
+
+		}
+
+		return apply_filters( 'save_remote_file', $response );
 	}
 }
 

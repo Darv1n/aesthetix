@@ -539,6 +539,18 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_colors' ) ) {
 			'rose-800'     => RGBtoHEX( 'rgb(159, 18, 57)' ),
 			'rose-900'     => RGBtoHEX( 'rgb(136, 19, 55)' ),
 			'rose-950'     => RGBtoHEX( 'rgb(76, 5, 25)' ),
+
+			'material-blue-gray-50'      => RGBtoHEX( 'rgb(240, 243, 245)' ),
+			'material-blue-gray-100'     => RGBtoHEX( 'rgb(222, 229, 232)' ),
+			'material-blue-gray-200'     => RGBtoHEX( 'rgb(189, 202, 209)' ),
+			'material-blue-gray-300'     => RGBtoHEX( 'rgb(158, 178, 188)' ),
+			'material-blue-gray-400'     => RGBtoHEX( 'rgb(125, 152, 165)' ),
+			'material-blue-gray-500'     => RGBtoHEX( 'rgb(96, 125, 139)' ),
+			'material-blue-gray-600'     => RGBtoHEX( 'rgb(77, 100, 112)' ),
+			'material-blue-gray-700'     => RGBtoHEX( 'rgb(58, 76, 84)' ),
+			'material-blue-gray-800'     => RGBtoHEX( 'rgb(38, 49, 54)' ),
+			'material-blue-gray-900'     => RGBtoHEX( 'rgb(19, 24, 27)' ),
+			'material-blue-gray-950'     => RGBtoHEX( 'rgb(10, 14, 15)' ),
 		);
 
 		$converter = apply_filters( 'get_aesthetix_customizer_converter_colors', $converter );
@@ -578,6 +590,10 @@ if ( ! function_exists( 'get_aesthetix_customizer_converter_display' ) ) {
 		// Sanitize string (just to be safe).
 		if ( ! is_null( $control ) ) {
 			$control = get_title_slug( $control );
+		}
+
+		if ( is_admin() ) {
+			return true;
 		}
 
 		$display = false;

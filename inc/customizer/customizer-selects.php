@@ -479,6 +479,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_gray_colors' ) ) {
 			'zinc'    => 'Zinc',
 			'neutral' => 'Neutral',
 			'stone'   => 'Stone',
+			'material-blue-gray' => 'Material Blue Gray',
 		);
 
 		// Merge child and parent default options.
@@ -756,15 +757,19 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_orderby' ) ) {
 		}
 
 		$converter = array(
-			'date'     => __( 'By date', 'aesthetix' ),
-			'modified' => __( 'By modified date', 'aesthetix' ),
-			'title'    => __( 'By title', 'aesthetix' ),
-			'rand'     => __( 'By random', 'aesthetix' ),
+			'date'          => __( 'By date', 'aesthetix' ),
+			'modified'      => __( 'By modified date', 'aesthetix' ),
+			'title'         => __( 'By title', 'aesthetix' ),
+			'views'         => __( 'By views', 'aesthetix' ),
+			'likes'         => __( 'By likes', 'aesthetix' ),
+			'comment_count' => __( 'By comments', 'aesthetix' ),
 		);
 
 		if ( post_type_supports( $post_type, 'page-attributes' ) ) {
 			$converter['menu_order'] = __( 'By menu order', 'aesthetix' );
 		}
+
+		$converter['rand'] = __( 'By random', 'aesthetix' );
 
 		// Merge child and parent default options.
 		$converter = apply_filters( 'get_aesthetix_customizer_archive_post_orderby', $converter, $post_type );
@@ -806,6 +811,7 @@ if ( ! function_exists( 'get_aesthetix_customizer_archive_post_layout' ) ) {
 		}
 
 		$converter = array(
+			'simple'     => __( 'Simple', 'aesthetix' ),
 			'grid'       => __( 'Grid', 'aesthetix' ),
 			'grid-image' => __( 'Grid image', 'aesthetix' ),
 			'list'       => __( 'List', 'aesthetix' ),

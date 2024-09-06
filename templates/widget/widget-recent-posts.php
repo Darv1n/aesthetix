@@ -25,7 +25,20 @@ if ( is_single() ) {
 	$defaults['post__not_in'] = array( get_the_ID() );
 }
 
-$args  = array_merge( apply_filters( 'get_aesthetix_widget_recent_posts_default_args', $defaults ), $args );
+$args = array_merge( apply_filters( 'get_aesthetix_widget_recent_posts_default_args', $defaults, $args ), $args );
+
+if ( $args['orderby'] === 'views' ) {
+	$args['orderby']  = array( 'meta_value_num' => $args['order'] );
+	$args['meta_key'] = 'views';
+	unset( $args['order'] );
+}
+
+if ( $args['orderby'] === 'likes' ) {
+	$args['orderby']  = array( 'meta_value_num' => $args['order'] );
+	$args['meta_key'] = '_like';
+	unset( $args['order'] );
+}
+
 $query = new WP_Query( $args );
 
 if ( $query->have_posts() ) {
@@ -37,19 +50,8 @@ if ( $query->have_posts() ) {
 
 		$args['counter'] = $i;
 
-		if ( in_array( $args['post_layout'], array( 'list', 'list-chess' ), true ) ) {
-			get_template_part( 'templates/widget/widget-post-list', get_post_type(), $args );
-		} else {
-			if ( has_post_format() ) {
-				if ( get_theme_file_path( 'templates/widget/widget-post-' . get_post_type() . '-' . get_post_format() . '.php' ) ) {
-					get_template_part( 'templates/widget/widget-post', get_post_type() . '-' . get_post_format(), $args );
-				} else {
-					get_template_part( 'templates/widget/widget-post', get_post_format(), $args );
-				}
-			} else {
-				get_template_part( 'templates/widget/widget-post', get_post_type(), $args );
-			}
-		}
+		$template_path = get_post_type_widget_template_path( get_post_type(), $args['post_layout'], get_post_format() );
+		get_template_part( $template_path, null, $args );
 
 		$args['counter'] = $i++;
 	}

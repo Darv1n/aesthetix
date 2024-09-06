@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying post.
+ * Template part for displaying widget post.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -18,7 +18,6 @@ $defaults = array(
 	'post_meta_structure' => get_aesthetix_options( 'archive_' . get_post_type() . '_meta_structure' ),
 	'post_equal_height'   => get_aesthetix_options( 'archive_' . get_post_type() . '_equal_height' ),
 	'post_title_size'     => get_aesthetix_options( 'archive_' . get_post_type() . '_title_size' ),
-	'max_tax'             => -1,
 );
 
 $args      = array_merge( $defaults, $args );
@@ -32,31 +31,15 @@ if ( $args['post_layout'] === 'grid-image' || $args['post_format'] === 'image' &
 	array_unshift( $args['post_structure'], implode( ',', array( get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_before' ), get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_after' ) ) ) );
 } ?>
 
-<article id="post-<?php the_ID(); ?>" <?php aesthetix_post_classes( '', $args ); ?> data-object-id="<?php the_ID(); ?>">
-
-	<?php if ( has_post_thumbnail( $post ) || get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_default' ) ) {
-
-		$classes[] = 'has-post-thumbnail'; ?>
-
-		<div class="post-thumbnail-wrap">
-
-			<?php get_template_part( 'templates/archive/archive-entry-post-thumbnail', '', $args ); ?>
-
-			<?php if ( $args['post_layout'] !== 'grid-image' && $args['post_format'] !== 'image' ) {
-				get_template_part( 'templates/archive/archive-entry-post-taxonomies', '', array_merge( $args, array( 'structure' => get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_before' ) ) ) );
-				get_template_part( 'templates/archive/archive-entry-post-taxonomies', '', array_merge( $args, array( 'structure' => get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_after' ) ) ) );
-			} ?>
-
-		</div>
-	<?php } ?>
+<article id="post-<?php the_ID(); ?>" <?php aesthetix_post_classes( 'post-aside', $args ); ?>>
 
 	<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 
 		<?php if ( is_array( $args['post_structure'] ) && ! empty( $args['post_structure'] ) ) {
 			foreach ( $args['post_structure'] as $key => $value ) {
 				switch ( $value ) {
-					case has_action( 'aesthetix_archive_entry_post_loop_' . $value ):
-						do_action( 'aesthetix_archive_entry_post_loop_' . $value, $post, $args );
+					case has_action( 'aesthetix_widget_entry_post_loop_' . $value ):
+						do_action( 'aesthetix_widget_entry_post_loop_' . $value, $post, $args );
 						break;
 					case 'title':
 						get_template_part( 'templates/archive/archive-entry-post-title', '', $args );
@@ -74,11 +57,7 @@ if ( $args['post_layout'] === 'grid-image' || $args['post_format'] === 'image' &
 						get_template_part( 'templates/archive/archive-entry-post-more-button', '', $args );
 						break;
 					default:
-						if ( locate_template( '/templates/archive/archive-entry-post-' . $value . '.php' ) !== '' ) {
-							get_template_part( 'templates/archive/archive-entry-post-' . $value );
-						} else {
-							get_template_part( 'templates/archive/archive-entry-post-taxonomies', '', array_merge( $args, array( 'structure' => $value ) ) );
-						}
+						get_template_part( 'templates/archive/archive-entry-post-taxonomies', '', array_merge( $args, array( 'structure' => $value ) ) );
 						break;
 				}
 			}

@@ -61,6 +61,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 			'root_border_width'                         => 'sm',
 			'root_border_radius'                        => 'md',
 
+			'root_bg_section_type'                      => 'narrow',
 			'root_bg_header_top_bar'                    => 'gray',
 			'root_bg_header_middle_bar'                 => 'theme',
 			'root_bg_header_bottom_bar'                 => 'theme',
@@ -150,6 +151,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 					'archive_' . $post_type . '_thumbnail_padding'      => 'xs',
 					'archive_' . $post_type . '_content_padding'        => 'xl',
 					'archive_' . $post_type . '_shadow'                 => 'none',
+					'archive_' . $post_type . '_border_color'           => false,
 					'archive_' . $post_type . '_border_width'           => 'xs',
 					'archive_' . $post_type . '_border_radius'          => 'md',
 

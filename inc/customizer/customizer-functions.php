@@ -183,12 +183,6 @@ if ( ! function_exists( 'get_aesthetix_customizer_roots' ) ) {
 		$roots['border-width']           = get_aesthetix_customizer_converter_borders( get_aesthetix_options( 'root_border_width' ) );
 		$roots['border-radius']          = get_aesthetix_customizer_converter_radiuses( get_aesthetix_options( 'root_border_radius' ) );
 
-		foreach ( $roots as $key => $value ) {
-			if ( $value === false || $value === null ) {
-				// vardump( $key . ': ' . $value  );
-			}
-		}
-
 		// Merge child and parent default options.
 		$roots = apply_filters( 'get_aesthetix_customizer_roots', $roots );
 

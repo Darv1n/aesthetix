@@ -33,9 +33,7 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 } else {
 	$order_left  = 'order-md-1';
 	$order_right = 'order-md-2';
-}
-
-?>
+} ?>
 
 <article id="post-<?php the_ID(); ?>" <?php aesthetix_post_classes( 'post-aside', $args ); ?>>
 	<div <?php aesthetix_archive_page_columns_wrapper_classes( 'row-xs align-items-center' ); ?>>

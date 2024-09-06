@@ -17,7 +17,7 @@ $defaults = array(
 	'count_items_display' => get_aesthetix_options( 'general_menu_count_items_display' ),
 );
 
-$args      = array_merge( apply_filters( 'get_aesthetix_widget_menus_default_args', $defaults ), $args );
+$args      = array_merge( apply_filters( 'get_aesthetix_widget_menus_default_args', $defaults, $args ), $args );
 $locations = get_nav_menu_locations();
 
 if ( (int) $args['columns'] === 4 ) {

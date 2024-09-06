@@ -78,7 +78,9 @@ if ( ! function_exists( 'get_aesthetix_post_classes' ) ) {
 
 		// Merge default args.
 		$defaults = array(
-			'post_layout' => get_aesthetix_options( 'archive_' . get_post_type() . '_layout' ),
+			'post_layout'       => get_aesthetix_options( 'archive_' . get_post_type() . '_layout' ),
+			'post_background'   => get_aesthetix_options( 'archive_' . get_post_type() . '_background' ),
+			'post_border_color' => get_aesthetix_options( 'archive_' . get_post_type() . '_border_color' ),
 		);
 
 		if ( has_post_format() ) {
@@ -102,12 +104,23 @@ if ( ! function_exists( 'get_aesthetix_post_classes' ) ) {
 			$classes[] = 'post-grid';
 		}
 
+		$classes[] = 'post-' . $args['post_layout'];
+
 		if ( $args['post_layout'] === 'grid-image' ) {
 			$classes[] = 'post-format-image';
 		} elseif ( $args['post_format'] ) {
 			$classes[] = 'post-format-' . $args['post_format'];
 		} else {
 			$classes[] = 'post-format-standard';
+		}
+
+		if ( isset( $args['post_background'] ) ) {
+			$classes[] = 'post-background';
+			// $classes[] = 'post-background-' . $args['post_background'];
+		}
+
+		if ( $args['post_border_color'] === true ) {
+			$classes[] = 'post-border-color';
 		}
 
 		if ( is_sticky() ) {
@@ -161,7 +174,7 @@ if ( ! function_exists( 'get_aesthetix_section_classes' ) ) {
 	 *
 	 * @return array
 	 */
-	function get_aesthetix_section_classes( $class = '', $background = 'theme' ) {
+	function get_aesthetix_section_classes( $class = '', $background = 'theme', $type = null ) {
 
 		// Check the function has accepted any classes.
 		if ( isset( $class ) && ! empty( $class ) ) {
@@ -176,6 +189,10 @@ if ( ! function_exists( 'get_aesthetix_section_classes' ) ) {
 			$classes = array();
 		}
 
+		if ( is_null( $type ) ) {
+			$type = get_aesthetix_options( 'root_bg_section_type' );
+		}
+
 		// Add elements to array.
 		$classes[] = 'section';
 
@@ -184,8 +201,14 @@ if ( ! function_exists( 'get_aesthetix_section_classes' ) ) {
 		}
 
 		if ( $background !== 'theme' ) {
+
 			$classes[] = 'section-background';
-			$classes[] = 'section-' . $background;
+
+			if ( $type === 'narrow' ) {
+				$classes[] = 'section-inner-' . $background;
+			} else {
+				$classes[] = 'section-' . $background;
+			}
 		}
 
 		if ( in_array( 'header-section', $classes, true ) ) {
@@ -1378,7 +1401,7 @@ if ( ! function_exists( 'get_widget_classes' ) ) {
 				$classes[] = 'd-flex';
 			}
 
-			if ( in_array( $sidebar_id, array( 'main', 'before-post-content', 'after-post-content' ), true ) && $background !== 'theme' ) {
+			if ( in_array( $sidebar_id, array( 'main', 'background', 'before-post-content', 'after-post-content' ), true ) && $background !== 'theme' ) {
 				$classes[] = 'widget-background';
 				$classes[] = 'widget-' . $background;
 			}

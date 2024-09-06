@@ -42,7 +42,7 @@ if ( $args['post_layout'] === 'list-chess' && isset( $args['counter'] ) && (int)
 
 ?>
 
-<article id="article" <?php aesthetix_post_classes( '', $args ); ?> ata-object-id="<?php the_ID(); ?>">
+<article id="post-<?php the_ID(); ?>" <?php aesthetix_post_classes( '', $args ); ?> ata-object-id="<?php the_ID(); ?>">
 	<div <?php aesthetix_archive_page_columns_wrapper_classes( 'align-items-center' ); ?>>
 
 		<?php if ( has_post_thumbnail( $post ) || get_aesthetix_options( 'archive_' . get_post_type() . '_thumbnail_default' ) ) { ?>
