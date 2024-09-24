@@ -140,7 +140,7 @@ if ( ! function_exists( 'get_aesthetix_options' ) ) {
 
 			if ( $post_type_object->has_archive || ! empty( $object_taxonomies ) ) {
 				$defaults = array_merge( $defaults, array(
-					'archive_' . $post_type . '_layout'                 => 'grid', // grid, grid-image, list, list-chess.
+					'archive_' . $post_type . '_layout'                 => 'grid', // simple, grid, grid-image, list, list-chess.
 					'archive_' . $post_type . '_columns'                => 3,
 					'archive_' . $post_type . '_masonry'                => false,
 

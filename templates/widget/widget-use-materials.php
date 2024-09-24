@@ -17,7 +17,7 @@ $defaults = array(
 	'text' => sprintf( __( 'Use of site materials is permitted only with reference to the source %s', 'aesthetix' ), $url_host ),
 );
 
-$args = array_merge( $defaults, $args );
+$args = array_merge( apply_filters( 'get_aesthetix_widget_use_materials_default_args', $defaults, $args ), $args );
 
 ?>
 

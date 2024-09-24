@@ -151,6 +151,8 @@ if ( ! function_exists( 'after_site_content_structure' ) ) {
 				default:
 					if ( locate_template( '/templates/section/' . $value . '.php' ) !== '' ) {
 						get_template_part( 'templates/section/' . $value );
+					}  elseif ( locate_template( '/templates/' . $value . '.php' ) !== '' ) {
+						get_template_part( 'templates/' . $value );
 					}
 					break;
 			}
@@ -178,11 +180,13 @@ if ( ! function_exists( 'before_single_post_structure' ) ) {
 					do_action( 'before_single_post_structure_loop_' . $value );
 					break;
 				case 'section-widget':
-					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'before-post-content' ) );
+					get_template_part( 'templates/section/section-widget', '', array( 'widget_id' => 'before-post-content' ) );
 					break;
 				default:
 					if ( locate_template( '/templates/section/' . $value . '.php' ) !== '' ) {
 						get_template_part( 'templates/section/' . $value );
+					}  elseif ( locate_template( '/templates/' . $value . '.php' ) !== '' ) {
+						get_template_part( 'templates/' . $value );
 					}
 					break;
 			}
@@ -213,7 +217,7 @@ if ( ! function_exists( 'after_single_post_structure' ) ) {
 					do_action( 'after_single_post_structure_loop_' . $value );
 					break;
 				case 'single-pagination':
-					get_template_part( 'templates/single-pagination' );
+					get_template_part( 'templates/single/single-pagination' );
 					break;
 				case 'single-similar-posts':
 					get_template_part( 'templates/single/single-similar-posts' );
@@ -225,8 +229,12 @@ if ( ! function_exists( 'after_single_post_structure' ) ) {
 					get_template_part( 'templates/section-widget', '', array( 'widget_id' => 'after-post-content' ) );
 					break;
 				default:
-					if ( locate_template( '/templates/section/' . $value . '.php' ) !== '' ) {
+					if ( locate_template( '/templates/single/' . $value . '.php' ) !== '' ) {
+						get_template_part( 'templates/single/' . $value );
+					} elseif ( locate_template( '/templates/section/' . $value . '.php' ) !== '' ) {
 						get_template_part( 'templates/section/' . $value );
+					}  elseif ( locate_template( '/templates/' . $value . '.php' ) !== '' ) {
+						get_template_part( 'templates/' . $value );
 					}
 					break;
 			}

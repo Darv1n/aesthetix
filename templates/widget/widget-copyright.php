@@ -11,7 +11,7 @@ $defaults = array(
 	'start_year' => '',
 );
 
-$args = array_merge( $defaults, $args );
+$args = array_merge( apply_filters( 'get_aesthetix_widget_copyright_default_args', $defaults, $args ), $args );
 
 $url_host = wp_parse_url( get_home_url(), PHP_URL_HOST );
 

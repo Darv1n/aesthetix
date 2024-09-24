@@ -17,7 +17,7 @@ $defaults = array(
 	'button_classes'       => 'menu-open icon icon-bars',
 );
 
-$args = array_merge( $defaults, $args );
+$args = array_merge( apply_filters( 'get_aesthetix_widget_menu_toggle_default_args', $defaults, $args ), $args );
 
 if ( is_string( $args['button_classes'] ) && ! empty( $args['button_classes'] ) ) {
 	$args['button_classes'] = explode( ' ', $args['button_classes'] );

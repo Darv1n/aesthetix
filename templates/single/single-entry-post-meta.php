@@ -11,7 +11,7 @@ $defaults = array(
 	'post_meta_structure' => get_aesthetix_options( 'single_' . get_post_type() . '_meta_structure' ),
 );
 
-$args = array_merge( $defaults, $args );
+$args = array_merge( apply_filters( 'get_aesthetix_single_entry_post_meta_default_args', $defaults, $args ), $args );
 
 if ( is_string( $args['post_meta_structure'] ) && ! empty( $args['post_meta_structure'] ) ) {
 	$args['post_meta_structure'] = array_map( 'trim', explode( ',', $args['post_meta_structure'] ) );

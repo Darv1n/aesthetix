@@ -13,7 +13,7 @@ $defaults = array(
 	'widget_description' => '',
 );
 
-$args = array_merge( $defaults, $args );
+$args = array_merge( apply_filters( 'get_aesthetix_widget_entry_title_default_args', $defaults, $args ), $args );
 
 if ( $args['widget_title'] ) { ?>
 	<div class="widget-title-wrap">

@@ -20,7 +20,7 @@ $defaults = array(
 	'post_title_size'     => get_aesthetix_options( 'archive_' . get_post_type() . '_title_size' ),
 );
 
-$args      = array_merge( $defaults, $args );
+$args      = array_merge( apply_filters( 'get_aesthetix_widget_post_default_args', $defaults, $args ), $args );
 $classes[] = 'post-content-wrap';
 
 if ( is_string( $args['post_structure'] ) && ! empty( $args['post_structure'] ) ) {

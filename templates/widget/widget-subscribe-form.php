@@ -11,7 +11,7 @@ $defaults = array(
 	'form_shortcode'  => '',
 );
 
-$args = array_merge( $defaults, $args ); ?>
+$args = array_merge( apply_filters( 'get_aesthetix_widget_subscribe_form_default_args', $defaults, $args ), $args ); ?>
 
 <?php if ( ! empty( $args['form_shortcode'] ) ) { ?>
 	<?php echo do_shortcode( esc_html( $args['form_shortcode'] ) ); ?>

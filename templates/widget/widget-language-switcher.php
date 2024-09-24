@@ -17,7 +17,7 @@ $defaults = array(
 	'style'                => 'inline', // dropdown, inline, block.
 );
 
-$args = array_merge( $defaults, $args );
+$args = array_merge( apply_filters( 'get_aesthetix_widget_language_switcher_default_args', $defaults, $args ), $args );
 
 if ( ( is_plugin_active( 'polylang/polylang.php' ) && function_exists( 'pll_the_languages' ) ) || is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' ) ) {
 

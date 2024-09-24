@@ -16,7 +16,7 @@ $defaults = array(
 	'button_border_radius' => get_aesthetix_options( 'root_button_border_radius' ),
 );
 
-$args      = array_merge( $defaults, $args );
+$args      = array_merge( apply_filters( 'get_aesthetix_archive_entry_post_more_button_default_args', $defaults, $args ), $args );
 $classes[] = 'post-entry-more-button';
 
 if ( isset( $args['post_equal_height'] ) && $args['post_equal_height'] === 'more' ) {

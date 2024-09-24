@@ -14,7 +14,7 @@ $defaults = array(
 	'container_class' => '',
 );
 
-$args  = array_merge( $defaults, $args );
+$args  = array_merge( apply_filters( 'get_aesthetix_widget_recent_users_default_args', $defaults, $args ), $args );
 $users = get_users( $args );
 
 $classes[] = 'user';

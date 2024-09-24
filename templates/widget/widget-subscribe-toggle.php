@@ -16,7 +16,7 @@ $defaults = array(
 	'button_border_radius' => get_aesthetix_options( 'root_button_border_radius' ),
 );
 
-$args = array_merge( $defaults, $args ); ?>
+$args = array_merge( apply_filters( 'get_aesthetix_widget_subscribe_toggle_default_args', $defaults, $args ), $args ); ?>
 
 <button <?php button_classes( 'subscribe-toggle popup-button icon icon-paper-plane', $args ); ?> data-mfp-src="#aside-subscribe" aria-label="<?php esc_attr_e( 'Popup subscribe button', 'aesthetix' ); ?>" type="button">
 	<?php if ( ! in_array( $args['button_content'], array( 'icon', 'button-icon' ), true ) ) {

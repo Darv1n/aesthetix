@@ -19,7 +19,7 @@ $defaults = array(
 	'style'                => 'inline', // inline, block.
 );
 
-$args      = array_merge( $defaults, $args );
+$args      = array_merge( apply_filters( 'get_aesthetix_widget_socials_default_args', $defaults, $args ), $args );
 $classes[] = 'social-list';
 
 if ( $args['style'] === 'block' ) {

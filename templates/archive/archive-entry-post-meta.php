@@ -11,7 +11,7 @@ $defaults = array(
 	'post_meta_structure' => get_aesthetix_options( 'archive_' . get_post_type() . '_meta_structure' ),
 );
 
-$args      = array_merge( $defaults, $args );
+$args      = array_merge( apply_filters( 'get_aesthetix_archive_entry_post_meta_default_args', $defaults, $args ), $args );
 $classes[] = 'post-entry-meta';
 
 if ( isset( $args['post_equal_height'] ) && $args['post_equal_height'] === 'meta' ) {

@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying archive entry post taxonomies.
+ * Template part for displaying single entry post taxonomies.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -18,7 +18,7 @@ $defaults = array(
 	'max_tax'              => -1,
 );
 
-$args = array_merge( apply_filters( 'get_aesthetix_archive_entry_post_taxonomies_default_args', $defaults, $args ), $args );
+$args = array_merge( apply_filters( 'get_aesthetix_single_entry_post_taxonomies_default_args', $defaults, $args ), $args );
 $i    = 0;
 
 if ( is_string( $args['structure'] ) && ! empty( $args['structure'] ) ) {

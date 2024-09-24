@@ -21,7 +21,7 @@ $defaults = array(
 	'max_tax'             => -1,
 );
 
-$args      = array_merge( $defaults, $args );
+$args      = array_merge( apply_filters( 'get_aesthetix_archive_post_simple_default_args', $defaults, $args ), $args );
 $classes[] = 'post-content-wrap';
 
 if ( is_string( $args['post_structure'] ) && ! empty( $args['post_structure'] ) ) {

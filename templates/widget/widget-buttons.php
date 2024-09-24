@@ -18,7 +18,7 @@ $defaults = array(
 	'style'                => 'inline', // inline, block.
 );
 
-$args      = array_merge( $defaults, $args );
+$args      = array_merge( apply_filters( 'get_aesthetix_widget_buttons_default_args', $defaults, $args ), $args );
 $classes[] = 'button-list';
 
 if ( $args['style'] === 'block' ) {

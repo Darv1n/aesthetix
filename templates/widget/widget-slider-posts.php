@@ -27,7 +27,7 @@ if ( is_single() ) {
 	$defaults['post__not_in'] = array( get_the_ID() );
 }
 
-$args = array_merge( apply_filters( 'get_aesthetix_widget_post_slider_default_args', $defaults, $args ), $args );
+$args = array_merge( apply_filters( 'get_aesthetix_widget_slider_posts_default_args', $defaults, $args ), $args );
 
 $query = new WP_Query( $args );
 

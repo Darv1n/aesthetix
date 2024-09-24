@@ -17,7 +17,7 @@ $defaults = array(
 	'adv_description' => '',
 );
 
-$args      = array_merge( $defaults, $args );
+$args      = array_merge( apply_filters( 'get_aesthetix_widget_adv_banner_default_args', $defaults, $args ), $args );
 $url       = wp_http_validate_url( $args['adv_link'] );
 $classes[] = 'ab';
 

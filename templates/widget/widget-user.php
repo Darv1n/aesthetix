@@ -12,7 +12,7 @@ $defaults = array(
 	'container_class' => '',
 );
 
-$args = array_merge( $defaults, $args );
+$args = array_merge( apply_filters( 'get_aesthetix_widget_user_default_args', $defaults, $args ), $args );
 
 if ( $args['display_user'] === 'admin_only' ) {
 	$args['user_id'] = 1;

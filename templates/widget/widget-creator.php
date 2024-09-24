@@ -11,7 +11,7 @@ $defaults = array(
 	'creator_link' => 'https://zolin.digital/',
 );
 
-$args = array_merge( $defaults, $args );
+$args = array_merge( apply_filters( 'get_aesthetix_widget_creator_default_args', $defaults, $args ), $args );
 
 if ( isset( $args['creator_link'] ) && wp_http_validate_url( $args['creator_link'] ) ) {
 

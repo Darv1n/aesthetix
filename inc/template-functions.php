@@ -25,6 +25,7 @@ if ( ! function_exists( 'vardump' ) ) {
 	}
 }
 
+
 if ( ! function_exists( 'get_post_type_archive_template_path' ) ) {
 
 	/**
@@ -51,6 +52,9 @@ if ( ! function_exists( 'get_post_type_archive_template_path' ) ) {
 			"templates/archive/archive-{$post_type}-{$post_format}",
 			"templates/archive/archive-{$post_type}-{$post_layout}",
 			"templates/archive/archive-{$post_type}",
+			"templates/archive/archive-post-{$post_layout}-{$post_format}",
+			"templates/archive/archive-post-{$post_format}",
+			"templates/archive/archive-post-{$post_layout}",
 			"templates/archive/archive-post",
 		);
 
@@ -91,6 +95,9 @@ if ( ! function_exists( 'get_post_type_widget_template_path' ) ) {
 			"templates/widget/widget-{$post_type}-{$post_format}",
 			"templates/widget/widget-{$post_type}-{$post_layout}",
 			"templates/widget/widget-{$post_type}",
+			"templates/widget/widget-post-{$post_layout}-{$post_format}",
+			"templates/widget/widget-post-{$post_format}",
+			"templates/widget/widget-post-{$post_layout}",
 			"templates/widget/widget-post",
 		);
 
@@ -469,6 +476,43 @@ if ( ! function_exists( 'get_first_post_img' ) ) {
 	}
 }
 
+if ( ! function_exists( 'get_largest_image_from_srcset' ) ) {
+
+	/**
+	 * Gets the largest image from srcset.
+	 *
+	 * @param string $srcset
+	 *
+	 * @return string
+	 */
+	function get_largest_image_from_srcset( $srcset ) {
+
+		// Разбиваем строку srcset на отдельные элементы.
+		$images = explode( ',', $srcset );
+
+		// Инициализация переменных для хранения самого большого изображения.
+		$largest_image = '';
+		$max_width     = 0;
+
+		foreach ( $images as $image ) {
+			// Очищаем пробелы и разбиваем на части: URL и ширину.
+			list( $url, $width ) = array_map( 'trim', explode( ' ', trim( $image ) ) );
+
+			// Убираем "w" из ширины и приводим к целому числу.
+			$width = intval( $width );
+
+			// Проверяем, если ширина больше текущей максимальной, обновляем данные.
+			if ( $width > $max_width ) {
+				$max_width     = $width;
+				$largest_image = $url;
+			}
+		}
+
+		// Возвращаем URL самого большого изображения.
+		return $largest_image;
+	}
+}
+
 if ( ! function_exists( 'format_bytes' ) ) {
 
 	/**
@@ -661,25 +705,6 @@ if ( ! function_exists( 'array_insert_after' ) ) {
 	}
 }
 
-if ( ! function_exists( 'return_template_part' ) ) {
-
-	/**
-	 * Return content from get_template_part() function.
-	 *
-	 * @param string      $slug The slug name for the generic template.
-	 * @param string|null $name The name of the specialized template or null if
-	 *                          there is none.
-	 * @param array       $args Additional arguments passed to the template.
-	 */
-	function return_template_part( $slug, $name = null, $args = array() ) {
-		ob_start();
-		get_template_part( $slug, $name, $args );
-		$output = ob_get_contents();
-		ob_end_clean();
-		return $output;
-	}
-}
-
 if ( ! function_exists( 'has_menu_items' ) ) {
 
 	/**
@@ -812,11 +837,21 @@ if ( ! function_exists( 'save_remote_file' ) ) {
 	 * @param string $file_link External file link. Required
 	 *        string $delay     Delay to reload. In strtotime values. 1 month example. Default: null
 	 *        string $file_type Сontent type to parse. html/image options. Default: html
+	 *        string $file_path Path to save file. Default: html
 	 *        string $sleep     Delay after receiving a file. Default: 100000 (0.1 sec)
 	 *
 	 * @return array
 	 */
-	function save_remote_file( $file_link, $delay = null, $file_type = 'html', $sleep = 100000 ) {
+	function save_remote_file( $file_link, $args = null ) {
+
+		$defaults = array(
+			'delay'      => null,
+			'file_type'  => 'html',
+			'file_path'  => 'data/html/',
+			'sleep'      => 100000,
+		);
+
+		$parsed_args = wp_parse_args( $args, $defaults );
 
 		$response = array(
 			'where' => 'save_remote_file',
@@ -824,14 +859,12 @@ if ( ! function_exists( 'save_remote_file' ) ) {
 
 		// Check that the link validate.
 		if ( wp_http_validate_url( sanitize_url( $file_link ) ) === false ) {
-
 			$response['ok']      = false;
-			$response['message'] = 'The link failed validation via the wp_http_validate_url function';
+			$response['message'] = sprintf( 'The link failed validation via the wp_http_validate_url function. File %s', $file_link );
 			return apply_filters( 'save_remote_file', $response );
-
 		}
 
-		$file_dir  = get_stylesheet_directory() . trailingslashit( '/data/' . $file_type );
+		$file_dir = trailingslashit( get_stylesheet_directory() ) . trailingslashit( $parsed_args['file_path'] );
 
 		// Сheck folder exists.
 		if ( ! is_dir( $file_dir ) ) {
@@ -840,18 +873,18 @@ if ( ! function_exists( 'save_remote_file' ) ) {
 
 		$file_link = sanitize_url( $file_link );
 
-		if ( $file_type === 'html' ) {
+		if ( $parsed_args['file_type'] === 'html' ) {
 
 			$parse_url = wp_parse_url( $file_link );
 
-			if ( empty( untrailingslashit( $parse_url['path'] ) ) ) {
+			if ( ! isset( $parse_url['path'] ) || empty( untrailingslashit( $parse_url['path'] ) ) ) {
 				$file_name = get_title_slug( $parse_url['host'] );
 			} else {
 				$file_name = get_title_slug( $parse_url['host'] . '-' . untrailingslashit( $parse_url['path'] ) );
 			}
 
 			$file_name = preg_replace('/^www-/', '', $file_name );
-			$file_name = apply_filters( 'save_remote_file_name', $file_name, $file_link );
+			$file_name = apply_filters( 'save_remote_file_name', $file_name, $file_link, $parsed_args );
 			$basename  = $file_name . '.html';
 
 		} elseif ( ! empty( pathinfo( $file_link, PATHINFO_EXTENSION ) ) ) {
@@ -869,11 +902,15 @@ if ( ! function_exists( 'save_remote_file' ) ) {
 
 		$file_path        = trailingslashit( $file_dir ) . $basename;
 		$response['file'] = $file_path;
+		$response['name'] = $file_name;
 
 		// Сheck file exists or it needs to be updated.
-		if ( ! file_exists( $file_path ) || ( ! is_null( $delay ) && strtotime( '-' . $delay, time() ) !== false && strtotime( '-' . $delay, time() ) > filemtime( $file_path ) ) ) {
+		if ( ! file_exists( $file_path ) || ( ! is_null( $parsed_args['delay'] ) && strtotime( '-' . $parsed_args['delay'], time() ) !== false && strtotime( '-' . $parsed_args['delay'], time() ) > filemtime( $file_path ) ) ) {
 
-			usleep( (int) $sleep );
+			if ( is_int( $parsed_args['sleep'] ) && $parsed_args['sleep'] > 0 ) {
+				usleep( (int) $parsed_args['sleep'] );
+			}
+
 			$request = wp_remote_request( $file_link );
 
 			if ( is_wp_error( $request ) ) {
@@ -890,7 +927,7 @@ if ( ! function_exists( 'save_remote_file' ) ) {
 
 				// New or updated file.
 				$new_file          = file_exists( $file_path ) ? true : false;
-				$body              = apply_filters( 'save_remote_file_body', wp_remote_retrieve_body( $request ), $file_link, $file_type );
+				$body              = apply_filters( 'save_remote_file_body', wp_remote_retrieve_body( $request ), $file_link, $parsed_args );
 				$file_put_contents = file_put_contents( $file_path, $body, LOCK_EX );
 
 				if ( $file_put_contents === false ) {

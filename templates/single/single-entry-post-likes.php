@@ -14,7 +14,7 @@ $defaults = array(
 	'button_color' => 'gray',
 );
 
-$args = array_merge( $defaults, $args );
+$args = array_merge( apply_filters( 'get_aesthetix_single_entry_post_likes_default_args', $defaults, $args ), $args );
 
 ?>
 

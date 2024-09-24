@@ -12,7 +12,7 @@ $defaults = array(
 	'post_equal_height' => get_aesthetix_options( 'archive_' . get_post_type() . '_equal_height' ),
 );
 
-$args = array_merge( $defaults, $args );
+$args = array_merge( apply_filters( 'get_aesthetix_archive_entry_post_title_default_args', $defaults, $args ), $args );
 
 $classes[] = 'post-entry-header';
 

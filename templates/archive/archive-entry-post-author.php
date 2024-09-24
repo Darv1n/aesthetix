@@ -12,7 +12,7 @@ $defaults = array(
 	'avatar_url'  => get_avatar_url( get_the_author_meta( 'ID' ), array( 'size' => 44 ) ),
 );
 
-$args      = array_merge( $defaults, $args );
+$args      = array_merge( apply_filters( 'get_aesthetix_archive_entry_post_author_default_args', $defaults, $args ), $args );
 $classes[] = 'post-entry-author';
 
 if ( isset( $args['post_equal_height'] ) && $args['post_equal_height'] === 'author' ) {

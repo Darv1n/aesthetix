@@ -11,7 +11,7 @@ $defaults = array(
 	'style' => 'block', // inline, block.
 );
 
-$args      = array_merge( $defaults, $args );
+$args      = array_merge( apply_filters( 'get_aesthetix_widget_table_of_contents_default_args', $defaults, $args ), $args );
 $classes[] = 'toc-list';
 
 if ( $args['style'] === 'block' ) {

@@ -36,6 +36,11 @@ get_header(); ?>
 								the_archive_description( '<div class="content-area-description">', '</div>' );
 								break;
 							default:
+								if ( locate_template( '/templates/section/' . $value . '.php' ) !== '' ) {
+									get_template_part( 'templates/section/' . $value );
+								}  elseif ( locate_template( '/templates/' . $value . '.php' ) !== '' ) {
+									get_template_part( 'templates/' . $value );
+								}
 								break;
 						}
 					} ?>
