@@ -1,6 +1,6 @@
 jQuery( document ).ready( function( $ ) {
 
-	var article = $( '#article' );
+	var article = $( '.post-single' );
 		post_id = article.data( 'object-id' );
 		updated = false;
 

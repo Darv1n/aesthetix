@@ -19,7 +19,9 @@ get_header(); ?>
 
 	<section class="content-area-loop" aria-label="<?php esc_attr_e( '404 page content', 'aesthetix' ); ?>">
 		<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'aesthetix' ); ?></p>
+	</section>
 
+	<section class="content-area-searchform" aria-label="<?php esc_attr_e( 'Searchform', 'aesthetix' ); ?>">
 		<?php get_search_form(); ?>
 	</section>
 

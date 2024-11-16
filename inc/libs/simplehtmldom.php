@@ -164,7 +164,7 @@ function str_get_html(
 		$defaultBRText,
 		$defaultSpanText);
 
-	if (empty($str) || strlen($str) > MAX_FILE_SIZE) {
+	if (empty($str)) {
 		$dom->clear();
 		return false;
 	}

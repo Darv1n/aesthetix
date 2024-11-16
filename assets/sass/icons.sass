@@ -158,6 +158,9 @@ blockquote, .blockquote
 	&-arrow-right
 		&::before
 			content: '\f061'
+	&-arrows-rotate
+		&::before
+			content: '\f021'	
 	&-arrow-up
 		&::before
 			content: '\f062'
@@ -500,6 +503,10 @@ blockquote, .blockquote
 	&-xmark
 		&::before
 			content: '\f00d'
+	&-rotation
+		&::before
+			transform-origin: center
+			animation: icon_rotation 2s infinite linear
 	&-loading
 		&::before
 			content: '\f110'

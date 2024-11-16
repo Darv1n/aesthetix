@@ -116,7 +116,6 @@ if ( ! function_exists( 'get_aesthetix_post_classes' ) ) {
 
 		if ( isset( $args['post_background'] ) ) {
 			$classes[] = 'post-background';
-			// $classes[] = 'post-background-' . $args['post_background'];
 		}
 
 		if ( $args['post_border_color'] === true ) {
@@ -850,17 +849,6 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 
 		$classes[] = 'button';
 
-		$size_exists = false;
-		foreach ( get_aesthetix_customizer_button_sizes() as $key => $size ) {
-			if ( in_array( 'button-' . $key, $classes, true ) ) {
-				$size_exists = true;
-			}
-		}
-
-		if ( ! $size_exists ) {
-			$classes[] = 'button-' . $args['button_size'];
-		}
-
 		if ( ! in_array( 'button-reset', $classes, true ) && ! in_array( 'button-none', $classes, true ) ) {
 			if ( $args['button_type'] === 'common' ) {
 				$classes[] = 'button-' . $args['button_color'];
@@ -895,6 +883,17 @@ if ( ! function_exists( 'get_button_classes' ) ) {
 					unset( $classes[ $key ] );
 				}
 			}
+		}
+
+		$size_exists = false;
+		foreach ( get_aesthetix_customizer_button_sizes() as $key => $size ) {
+			if ( in_array( 'button-' . $key, $classes, true ) ) {
+				$size_exists = true;
+			}
+		}
+
+		if ( $size_exists === false ) {
+			$classes[] = 'button-' . $args['button_size'];
 		}
 
 		if ( in_array( $args['button_content'], array( 'link-icon-text', 'link-text' ) ) ) {

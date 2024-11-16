@@ -25,6 +25,24 @@ if ( ! function_exists( 'vardump' ) ) {
 	}
 }
 
+if ( ! function_exists( 'return_template_part' ) ) {
+
+	/**
+	 * Return content from get_template_part() function.
+	 *
+	 * @param string      $slug The slug name for the generic template.
+	 * @param string|null $name The name of the specialized template or null if
+	 *                          there is none.
+	 * @param array       $args Additional arguments passed to the template.
+	 */
+	function return_template_part( $slug, $name = null, $args = array() ) {
+		ob_start();
+		get_template_part( $slug, $name, $args );
+		$output = ob_get_contents();
+		ob_end_clean();
+		return $output;
+	}
+}
 
 if ( ! function_exists( 'get_post_type_archive_template_path' ) ) {
 
